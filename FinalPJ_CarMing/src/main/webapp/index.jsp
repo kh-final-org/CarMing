@@ -8,6 +8,6 @@
 </head>
 <body>
 	<jsp:forward page="home.do"></jsp:forward>
-	carMing 화이팅이요!
+	<!-- 수정 -->
 </body>
 </html>
