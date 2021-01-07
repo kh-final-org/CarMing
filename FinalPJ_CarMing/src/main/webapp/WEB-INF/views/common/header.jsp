@@ -55,21 +55,15 @@
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠플레이스</a></li>
 							
 							<!-- 드롭다운 메뉴 -->
-		
-							<!-- <li class="nav-item submenu dropdown">
+							<!-- 
+							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">캠핑 렌트</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">카테고리</a></li>
+									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
 								</ul>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">제품</a></li>
-								</ul>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">장바구니</a></li>
-								</ul>
-							</li> -->
-
+							</li>
+							-->
 						</ul>
 						
 						<ul class="nav navbar-nav navbar-right">
@@ -100,9 +94,10 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Element Pages</h1>
+					<h1>Element Page</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Element</a>
 					</nav>
 				</div>
 			</div>
