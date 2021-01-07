@@ -128,7 +128,6 @@
 			<div class="dropdown-menu">
 				<ul class="navi">
 					<li><a class="dropdown-item" href="#">일반 캠핑</a></li>
-					<li><a class="dropdown-item" href="#">오토 캠핑</a></li>
 					<li><a class="dropdown-item" href="#">카라반</a></li>
 					<li><a class="dropdown-item" href="#">글램핑</a></li>
 					<li><a class="dropdown-item" href="#">차박</a></li>
