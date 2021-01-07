@@ -8,6 +8,5 @@
 </head>
 <body>
 	<jsp:forward page="home.do"></jsp:forward>
-	<!-- 수정 -->
 </body>
 </html>
