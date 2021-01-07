@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: sohyun
-Build-Jdk: 1.8.0_262
+Built-By: ￭ﾙﾩ￬ﾠﾕ￫ﾯﾼ
+Build-Jdk: 1.8.0_252
 Created-By: Maven Integration for Eclipse
 
