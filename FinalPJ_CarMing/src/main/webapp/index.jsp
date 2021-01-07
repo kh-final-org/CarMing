@@ -7,7 +7,9 @@
 <title>CarMing</title>
 </head>
 <body>
-	<jsp:forward page="home.do"></jsp:forward>
-	carMing 화이팅이요!
+	<jsp:forward page="/category.do"></jsp:forward>
+	<!-- 수정 -->
 </body>
 </html>
+
+

@@ -1,6 +1,12 @@
 /*--------------------------- Color variations ----------------------*/
 /*--------------------------- Fonts ----------------------*/
-@import url("https://fonts.googleapis.com/css?family=Poppins:500,700|Roboto:400,500");
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Medium Layout: 1280px */
 /* Tablet Layout: 768px */
 /* Mobile Layout: 320px */
@@ -118,7 +124,7 @@
 body {
   line-height: 24px;
   font-size: 14px;
-  font-family: "Roboto", sans-serif;
+  font-family: "TmoneyRoundWindRegular";
   font-weight: 400;
   color: #777777;
   background: #fff; }
@@ -138,7 +144,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "TmoneyRoundWindRegular", sans-serif;
   color: #222222;
   font-weight: 500;
   line-height: 1.2 !important; }
@@ -264,7 +270,8 @@ h1, h2, h3, h4, h5, h6 {
   .genric-btn.primary {
     color: #fff;
     background: #ffba00;
-    border: 1px solid transparent; }
+    border: 1px solid transparent; 
+    }
     .genric-btn.primary:hover {
       color: #ffba00;
       border: 1px solid #ffba00;
@@ -272,7 +279,8 @@ h1, h2, h3, h4, h5, h6 {
   .genric-btn.primary-border {
     color: #ffba00;
     border: 1px solid #ffba00;
-    background: #fff; }
+    background: #fff; 
+    }
     .genric-btn.primary-border:hover {
       color: #fff;
       background: #ffba00;
@@ -1206,7 +1214,7 @@ h1, h2, h3, h4, h5, h6 {
 /* banner area css
 ============================================================================================ */
 .banner-area {
-  background: url(../img/banner/banner-bg2.jpg) center no-repeat;
+  background: url(../img/banner/banner-bg.jpg) center no-repeat;
   background-size: cover;
   position: relative; }
   @media (max-width: 768px) {
@@ -1277,14 +1285,14 @@ h1, h2, h3, h4, h5, h6 {
   .add-bag .add-text {
     padding-left: 15px;
     font-size: 12px;
-    font-family: "Poppins", sans-serif;
+    font-family: "TmoneyRoundWindRegular", sans-serif;
     font-weight: 500;
     color: #222222; }
 
 .organic-breadcrumb {
-  background: url(../img/banner/banner-bg2.jpg) center no-repeat;
+  background: url(../img/banner/banner_common.jpg) center no-repeat;
   background-size: cover;
-  padding-top: 130px; }
+  padding-top: 80px; }
   @media (max-width: 991px) {
     .organic-breadcrumb {
       padding-top: 80px; } }
@@ -1300,7 +1308,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 100px; }
 
 .breadcrumb-banner {
-  padding: 90px 0 100px 0; }
+  padding: 120px 0 80px 0; }
   .breadcrumb-banner h1 {
     font-weight: 600;
     color: #fff; }
@@ -1564,7 +1572,7 @@ h1, h2, h3, h4, h5, h6 {
         width: 100px;
         left: -40px;
         text-transform: uppercase;
-        font-family: "Poppins", sans-serif;
+        font-family: "TmoneyRoundWindRegular", sans-serif;
         font-weight: 500;
         font-size: 12px;
         color: #222222;
@@ -2886,7 +2894,7 @@ label {
     text-align: center;
     padding-bottom: 40px; }
     .jewellery-single-product .desc h6 {
-      font-family: "Roboto", sans-serif;
+      font-family: "TmoneyRoundWindRegular", sans-serif;
       font-weight: 400;
       margin-bottom: 8px; }
     .jewellery-single-product .desc h5 {
@@ -2894,7 +2902,7 @@ label {
       -moz-transition: all 0.3s ease 0s;
       -o-transition: all 0.3s ease 0s;
       transition: all 0.3s ease 0s;
-      font-family: "Roboto", sans-serif;
+      font-family: "TmoneyRoundWindRegular", sans-serif;
       font-weight: 700;
       margin-bottom: 8px; }
       .jewellery-single-product .desc h5 del {
@@ -3507,7 +3515,7 @@ label {
       margin-top: 26px;
       margin-left: 26px;
       color: #222222;
-      font-family: "Roboto", sans-serif;
+      font-family: "TmoneyRoundWindRegular", sans-serif;
       font-weight: 500;
       font-size: 30px; }
     .hot_p_item .product_text a {
@@ -3670,7 +3678,7 @@ label {
   margin-bottom: 13px; }
   .cat_widgets .list li a {
     font-size: 14px;
-    font-family: "Roboto", sans-serif;
+    font-family: "TmoneyRoundWindRegular", sans-serif;
     color: #222222; }
   .cat_widgets .list li .list {
     margin-top: 10px;
@@ -3686,7 +3694,7 @@ label {
 .p_filter_widgets h4 {
   color: #222222;
   font-size: 14px;
-  font-family: "Roboto", sans-serif;
+  font-family: "TmoneyRoundWindRegular", sans-serif;
   font-weight: normal;
   margin-bottom: 22px;
   margin-top: 10px; }
@@ -3695,7 +3703,7 @@ label {
   .p_filter_widgets .list li a {
     padding-left: 30px;
     font-size: 14px;
-    font-family: "Roboto", sans-serif;
+    font-family: "TmoneyRoundWindRegular", sans-serif;
     font-weight: normal;
     color: #777777;
     position: relative; }
@@ -3751,7 +3759,7 @@ label {
   font-size: 14px;
   font-weight: normal;
   color: #777777;
-  font-family: "Roboto", sans-serif;
+  font-family: "TmoneyRoundWindRegular", sans-serif;
   margin-top: 15px; }
 .p_filter_widgets .range_item input {
   display: inline-block;
@@ -3759,25 +3767,25 @@ label {
   width: 100px;
   font-size: 14px;
   color: #777777;
-  font-family: "Roboto", sans-serif;
+  font-family: "TmoneyRoundWindRegular", sans-serif;
   margin-top: 9px;
   padding-left: 3px; }
   .p_filter_widgets .range_item input.placeholder {
     font-size: 14px;
     color: #777777;
-    font-family: "Roboto", sans-serif; }
+    font-family: "TmoneyRoundWindRegular", sans-serif; }
   .p_filter_widgets .range_item input:-moz-placeholder {
     font-size: 14px;
     color: #777777;
-    font-family: "Roboto", sans-serif; }
+    font-family: "TmoneyRoundWindRegular", sans-serif; }
   .p_filter_widgets .range_item input::-moz-placeholder {
     font-size: 14px;
     color: #777777;
-    font-family: "Roboto", sans-serif; }
+    font-family: "TmoneyRoundWindRegular", sans-serif; }
   .p_filter_widgets .range_item input::-webkit-input-placeholder {
     font-size: 14px;
     color: #777777;
-    font-family: "Roboto", sans-serif; }
+    font-family: "TmoneyRoundWindRegular", sans-serif; }
 
 .product_top_bar {
   background: #e8f0f2;
@@ -3794,14 +3802,14 @@ label {
     padding-left: 20px; }
     .product_top_bar .left_dorp .sorting span {
       font-size: 14px;
-      font-family: "Roboto", sans-serif;
+      font-family: "TmoneyRoundWindRegular", sans-serif;
       color: #555555; }
     .product_top_bar .left_dorp .sorting .list {
       width: 100%;
       border-radius: 0px; }
       .product_top_bar .left_dorp .sorting .list li {
         font-size: 14px;
-        font-family: "Roboto", sans-serif;
+        font-family: "TmoneyRoundWindRegular", sans-serif;
         color: #555555; }
     .product_top_bar .left_dorp .sorting:after {
       content: "\f0d7";
@@ -3823,14 +3831,14 @@ label {
     margin-left: 10px; }
     .product_top_bar .left_dorp .show span {
       font-size: 14px;
-      font-family: "Roboto", sans-serif;
+      font-family: "TmoneyRoundWindRegular", sans-serif;
       color: #555555; }
     .product_top_bar .left_dorp .show .list {
       width: 100%;
       border-radius: 0px; }
       .product_top_bar .left_dorp .show .list li {
         font-size: 14px;
-        font-family: "Roboto", sans-serif;
+        font-family: "TmoneyRoundWindRegular", sans-serif;
         color: #555555; }
     .product_top_bar .left_dorp .show:after {
       content: "\f0d7";
@@ -3857,7 +3865,7 @@ label {
     font-size: 14px;
     color: #222222;
     font-weight: normal;
-    font-family: "Roboto", sans-serif; }
+    font-family: "TmoneyRoundWindRegular", sans-serif; }
   .cat_page .pagination li.blank a {
     background: transparent;
     color: #cccccc;
@@ -3912,7 +3920,7 @@ label {
     margin-bottom: 5px; }
     .s_product_text .list li a {
       font-size: 14px;
-      font-family: "Roboto", sans-serif;
+      font-family: "TmoneyRoundWindRegular", sans-serif;
       font-weight: normal;
       color: #555555; }
       .s_product_text .list li a span {
@@ -3974,7 +3982,7 @@ label {
   .product_count label {
     font-size: 14px;
     color: #777777;
-    font-family: "Roboto", sans-serif;
+    font-family: "TmoneyRoundWindRegular", sans-serif;
     font-weight: normal;
     padding-right: 10px; }
   .product_count input {
@@ -4065,7 +4073,7 @@ label {
       .product_description_area .tab-content .total_rate .rating_list h3 {
         font-size: 18px;
         color: #222222;
-        font-family: "Roboto", sans-serif;
+        font-family: "TmoneyRoundWindRegular", sans-serif;
         font-weight: 500;
         margin-bottom: 10px; }
       .product_description_area .tab-content .total_rate .rating_list .list li a {
@@ -4084,7 +4092,7 @@ label {
         padding-bottom: 14px; }
         .product_description_area .tab-content .table tbody tr td h5 {
           font-size: 14px;
-          font-family: "Roboto", sans-serif;
+          font-family: "TmoneyRoundWindRegular", sans-serif;
           font-weight: normal;
           color: #777777;
           margin-bottom: 0px;
@@ -4107,7 +4115,7 @@ label {
         margin-bottom: 0px;
         font-size: 14px;
         color: #222222;
-        font-family: "Roboto", sans-serif;
+        font-family: "TmoneyRoundWindRegular", sans-serif;
         margin-bottom: 8px; }
       .review_item .media .media-body i {
         color: #fbd600; }
@@ -4122,7 +4130,7 @@ label {
         line-height: 32px;
         border-radius: 16px;
         font-size: 14px;
-        font-family: "Roboto", sans-serif;
+        font-family: "TmoneyRoundWindRegular", sans-serif;
         color: #222222;
         position: absolute;
         right: 0px;
@@ -5092,7 +5100,7 @@ label {
       height: 1px; }
   .categories_post:hover .categories_details {
     background: rgba(255, 186, 0, 0.8); }
-
+    
 /*============ blog_left_sidebar css ==============*/
 .blog_item {
   margin-bottom: 40px; }
