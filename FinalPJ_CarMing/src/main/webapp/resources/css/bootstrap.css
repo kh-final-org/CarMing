@@ -624,8 +624,8 @@ pre code {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px
+    margin-right: -80px;
+    margin-left: -100px;
 }
 
 .no-gutters {
@@ -2346,7 +2346,7 @@ textarea.form-control {
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
     -ms-flex-align: center;
-    align-items: center
+    align-items: center;
 }
 
 .form-inline .form-check {
@@ -2361,7 +2361,7 @@ textarea.form-control {
         align-items: center;
         -ms-flex-pack: center;
         justify-content: center;
-        margin-bottom: 0
+        margin-bottom: 0;
     }
     .form-inline .form-group {
         display: -ms-flexbox;
@@ -2372,7 +2372,7 @@ textarea.form-control {
         flex-flow: row wrap;
         -ms-flex-align: center;
         align-items: center;
-        margin-bottom: 0
+        margin-bottom: 0;
     }
     .form-inline .form-control {
         display: inline-block;
@@ -4163,11 +4163,11 @@ input[type=submit].btn-block {
 }
 
 .tab-content>.tab-pane {
-    display: none
+	text-align:center;
 }
 
 .tab-content>.active {
-    display: block
+    text-align:center;
 }
 
 .navbar {

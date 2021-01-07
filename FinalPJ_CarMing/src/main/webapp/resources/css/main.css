@@ -270,8 +270,7 @@ h1, h2, h3, h4, h5, h6 {
   .genric-btn.primary {
     color: #fff;
     background: #ffba00;
-    border: 1px solid transparent; 
-    }
+    border: 1px solid transparent; }
     .genric-btn.primary:hover {
       color: #ffba00;
       border: 1px solid #ffba00;
@@ -279,8 +278,7 @@ h1, h2, h3, h4, h5, h6 {
   .genric-btn.primary-border {
     color: #ffba00;
     border: 1px solid #ffba00;
-    background: #fff; 
-    }
+    background: #fff; }
     .genric-btn.primary-border:hover {
       color: #fff;
       background: #ffba00;
@@ -5100,7 +5098,7 @@ label {
       height: 1px; }
   .categories_post:hover .categories_details {
     background: rgba(255, 186, 0, 0.8); }
-    
+
 /*============ blog_left_sidebar css ==============*/
 .blog_item {
   margin-bottom: 40px; }

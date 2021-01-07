@@ -33,7 +33,16 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "common/header_main";
+		return "campingrent/category";
 	}
 	
+	@RequestMapping(value = "/mypage.do")
+	public String myPage() {
+		return "my/mypage";
+	}
+	
+	@RequestMapping(value = "/ordernpay.do")
+	public String orderNPay() {
+		return "my/ordernpay";
+	}
 }
