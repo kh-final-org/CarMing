@@ -7,7 +7,9 @@
 <title>CarMing</title>
 </head>
 <body>
-	<jsp:forward page="home.do"></jsp:forward>
+	<jsp:forward page="/recipeCrawling.do"></jsp:forward>
 	<!-- 수정 -->
 </body>
 </html>
+
+
