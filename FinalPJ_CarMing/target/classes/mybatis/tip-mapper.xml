@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="tip">
+ 
+	<insert id="insertList" parameterType="java.util.List">
+		
+	INSERT ALL 
+	<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
+		  INTO TIP VALUES
+		  (
+			#{item.tipTitle}
+			, #{item.tipURL}
+			, #{item.tipFile}
+			, DEFAULT
+			)
+			
+	</foreach>
+	</insert>
+ 
+ 
+ </mapper>
