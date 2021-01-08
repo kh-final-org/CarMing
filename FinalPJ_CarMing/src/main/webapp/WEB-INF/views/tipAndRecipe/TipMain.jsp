@@ -34,7 +34,52 @@
 <link rel="stylesheet" href="resources/css/ion.rangeSlider.skinFlat.css" />
 <link rel="stylesheet" href="resources/css/main.css">
 
-
+<script>
+/* 	article = document.getElementsByTagName("article");
+	var x = article.style.display;
+	console.log(x);
+	if( x === "none"){
+	    
+	   
+		} */
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue, article;
+    input = document.getElementById("input");
+    filter = input.value;
+    /* .value.split(" ").join(""); */
+    article = document.getElementsByTagName("article");
+    
+    for(i=0; i<article.length; i++){
+        a = document.getElementsByClassName("name")[i];
+        txtValue = a.textContent || a.innerText;
+        
+        if (txtValue.indexOf(filter) > -1) {
+        	article[i].style.display = "";
+        	
+        	
+        } else {
+            article[i].style.display = "none";
+            var x = article[i].style.display;
+        	
+            }
+		}if(x === "none"){
+			 console.log(x);
+			 
+			 var para = document.createElement("p");
+				para.innerText = "검색하신 결과가 없습니다.";
+				console.log(para)
+				var mydiv = document.getElementById("myDIV")
+				mydiv.style.textAlign = "center";
+				mydiv.style.fontSize = "30px";
+				mydiv.appendChild(para);
+		}
+    
+   
+    	
+    
+  
+	}
+</script>
 
 
 
@@ -115,67 +160,71 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="blog_left_sidebar">
-					
-					<c:forEach var = "list" items ="${list}">
-					
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<div class="post_tag">
-										<a class="active" href="#"><b>카밍 꿀팁</b></a>
+					<div id="myDIV"class="blog_left_sidebar">
 
-									</div>
+						<c:forEach var="list" items="${list}">
 
-									<ul class="blog_meta list">
-										<li><a href="#">${list.views }<i class="lnr lnr-eye"></i></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<a href="https://www.5gcamp.com${list.tipURL }" ><img src="https://www.5gcamp.com/${list.tipFile }"
-										style="width: 500px; height: 300px;"></a>
-									<div class="blog_details">
-										<a href="https://www.5gcamp.com${list.tipURL }">
-											<h2>${list.tipTitle}</h2>
-										</a>
-										<a href="https://www.5gcamp.com${list.tipURL }" class="genric-btn primary" style="margin-top: 3%; "><strong>꿀팁 보기</strong></a>
+							<article class="row blog_item">
+								<div class="col-md-3">
+									<div class="blog_info text-right">
+										<div class="post_tag">
+											<a class="active" href="#"><b>카밍 꿀팁</b></a>
+
+										</div>
+
+										<ul class="blog_meta list">
+											<li><a href="#">${list.views }<i class="lnr lnr-eye"></i></a></li>
+										</ul>
 									</div>
 								</div>
-							</div>
-						</article>
+								<div class="col-md-9">
+									<div class="blog_post">
+										<a href="https://www.5gcamp.com${list.tipURL }"><img
+											src="https://www.5gcamp.com/${list.tipFile }"
+											style="width: 500px; height: 300px;"></a>
+										<div class="blog_details">
+											<a class="name" href="https://www.5gcamp.com${list.tipURL }">
+												<h2>${list.tipTitle}</h2>
+											</a> <a href="https://www.5gcamp.com${list.tipURL }"
+												class="genric-btn primary" style="margin-top: 3%;"><strong>꿀팁
+													보기</strong></a>
+										</div>
+									</div>
+								</div>
+							</article>
 						</c:forEach>
-						
-						
-						<nav class="blog-pagination justify-content-center d-flex">
-							<ul class="pagination">
-								<li class="page-item"><a href="#" class="page-link"
-									aria-label="Previous"> <span aria-hidden="true"> <span
-											class="lnr lnr-chevron-left"></span>
-									</span>
-								</a></li>
-								<li class="page-item"><a href="#" class="page-link">01</a></li>
-								<li class="page-item active"><a href="#" class="page-link">02</a></li>
-								<li class="page-item"><a href="#" class="page-link">03</a></li>
-								<li class="page-item"><a href="#" class="page-link">04</a></li>
-								<li class="page-item"><a href="#" class="page-link">05</a></li>
-								<li class="page-item"><a href="#" class="page-link"
-									aria-label="Next"> <span aria-hidden="true"> <span
-											class="lnr lnr-chevron-right"></span>
-									</span>
-								</a></li>
-							</ul>
-						</nav>
+
+
+						<!-- <nav class="blog-pagination justify-content-center d-flex">
+									<ul class="pagination">
+										<li class="page-item"><a href="#" class="page-link"
+											aria-label="Previous"> <span aria-hidden="true"> <span
+													class="lnr lnr-chevron-left"></span>
+											</span>
+										</a></li>
+										<li class="page-item"><a href="#" class="page-link">01</a></li>
+										<li class="page-item active"><a href="#"
+											class="page-link">02</a></li>
+										<li class="page-item"><a href="#" class="page-link">03</a></li>
+										<li class="page-item"><a href="#" class="page-link">04</a></li>
+										<li class="page-item"><a href="#" class="page-link">05</a></li>
+										<li class="page-item"><a href="#" class="page-link"
+											aria-label="Next"> <span aria-hidden="true"> <span
+													class="lnr lnr-chevron-right"></span>
+											</span>
+										</a></li>
+									</ul>
+								</nav> -->
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="blog_right_sidebar">
 						<aside class="single_sidebar_widget search_widget">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="카밍 검색하기"
-									onfocus="this.placeholder = ''"
-									onblur="this.placeholder = '검색하기'"> <span
+								<input type="text" class="form-control" id="input"
+									onkeyup="myFunction()" placeholder="무엇을 검색할까요?"
+									onfocus="this.placeholder = '무엇을 검색할까요?'"
+									onblur="this.placeholder = '무엇을 검색할까요?'"> <span
 									class="input-group-btn">
 									<button class="btn btn-default" type="button">
 										<i class="lnr lnr-magnifier"></i>

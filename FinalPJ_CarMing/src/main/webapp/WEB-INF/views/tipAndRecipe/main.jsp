@@ -24,22 +24,22 @@
 <title>카밍 정보 메인</title>
 <script>
 function myFunction() {
-    var input, filter, ul, li, a, i, txtValue;
+    var input, filter, ul, li, a, i, txtValue, article;
     input = document.getElementById("input");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("title");
-    li = ul.getElementsByTagName("li");
+    filter = input.value
 
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
+    article = document.getElementsByTagName("article");
+    
+    for(i=0; i<article.length; i++){
+        a = document.getElementsByClassName("name")[i];
         txtValue = a.textContent || a.innerText;
-        console.log(i)
+        
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
+        	article[i].style.display = "";
         } else {
-            li[i].style.display = "none";
+            article[i].style.display = "none";
         }
-    }
+	}
 }
 </script>
 
@@ -146,20 +146,19 @@ function myFunction() {
 											src="${list.recipeFile }"
 											style="width: 500px; height: 300px;"></a>
 										<div  class="blog_details">
-											<ul id="title" >
-											<li><a href="https://www.10000recipe.com${list.recipeURL }">
+											<a class="name" href="https://www.10000recipe.com${list.recipeURL }">
 												<h2>${list.recipeTitle}</h2>
-											</a></li>
-											<li><a href="https://www.10000recipe.com${list.recipeURL }"
+											</a>
+											<a href="https://www.10000recipe.com${list.recipeURL }"
 												class="genric-btn primary" style="margin-top: 3%;"><strong>레시피
-													보기</strong></a></li>
-											</ul>
+													보기</strong></a>
+											
 										</div>
 									</div>
 								</div>
 							</article>
 						</c:forEach>
-
+		
 
 						<nav class="blog-pagination justify-content-center d-flex">
 							<ul class="pagination">
