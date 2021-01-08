@@ -68,6 +68,16 @@
 	 	margin: 15px 0px 0px 0px; 
 	 	font-size: 1.2em;
 	}
+	
+	.location-logo-text-1{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.location-logo-text-2{
+		display: inline-block;
+		vertical-align: middle;
+	}
 	 	
 	.location-logo{
 	 	width: 25px;
@@ -89,7 +99,7 @@
 	}
 	 	
 	.body-checklist{
-	 	margin: 10px -10px;
+	 	margin: 10px 0px;
 	}	
 	 	
 	#button-write{
@@ -111,37 +121,71 @@
 		cursor: pointer;
 	}
 	
-	/*체크박스 디자인 */
-	input[type="checkbox"]{
+	.check input{
 		display: none;
 	}
 	
-	input[type="checkbox"] + label{
+	.check span{
 		cursor: pointer;
-	}
-	
-	input[type="checkbox"] + label:before{
-		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 3px;
+	} 	
+
+	.check .icon{
 		display: inline-block;
 		width: 20px;
 		height: 20px;
-		margin-right: 10px;
-		border: 1px solid silver;
+		background-color: transparent;
+		border: 2px solid silver;
 		border-radius: 3px;
-		vertical-align: middle;
-		transition: all 0.3s;
+		position: relative;
+		cursor: pointer;
+	}
+
+	.check .icon::before, .check .icon::after {
+		content: '';
+		display: inline-block;
+		width: 1.7px;
+		height: 0px;
+		background-color: #fff;
+		position: absolute;
+		transform-origin: left top;
+		border-radius: 2px;
 	}
 	
-	input[type=checkbox]:checked + label:before{
+	.check .icon::before {
+		top: 7px;
+		left: 1.5px;
+		transform: rotate(-45deg);
+	}
+	
+	.check .icon::after {
+		top: 12.5px;
+		left: 7px;
+		transform: rotate(-135deg);
+	}
+	 
+	.check input:checked ~ .icon{
 		background-color: orange;
 		border-color: orange;
-		box-shadow: insert 5px 5px 5px 5px gray;
-	} 
-	
-	input[type=checkbox]:checked + label:after{ 
-		background: url('./resources/img/check.png') no-repeat;
 	}
-	 	
+	
+	.check input:checked ~ .icon::before{
+		height: 7px;
+		transition: all 0.12s ease;
+	}
+	
+	.check input:checked ~ .icon::after{
+		height: 11px;
+		transition: all 0.12s ease 0.12s;
+	}
+	
+	.navi .dropdown-item{
+		padding-left: -10px;
+	}
+	
+	
 </style>
 
 <!-- 
@@ -153,10 +197,6 @@
   
   
   
-  
-  
-  
-
 	
 	
 	
@@ -184,7 +224,7 @@
 			<div class="card-body-right">
 				<div class="body-category">
 					<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="button-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						&nbsp;&nbsp;&nbsp;카테고리&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						카테고리&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					</button>
 					<div class="dropdown-menu">
 						<ul class="navi">
@@ -211,26 +251,43 @@
 				 -->
 				
 				<div class="body-content">
-				   	<textarea rows="11" cols="54" placeholder=" 내용을 입력해주세요." style="resize: none;"></textarea>
+				   	<textarea rows="11" cols="54" placeholder="  내용을 입력해주세요." style="resize: none;"></textarea>
 				</div>
 				
 				<div class="body-location">
 					<div class="body-location-left">
-						<div><img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장</div>
+						<div>
+							<span class="location-logo-text-1">
+								<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장
+							</span>
+						</div>
 					</div>
 					<div class="body-location-right">
-						<div><img class="location-logo" src="./resources/img/precision.png">&nbsp;
-							 <a href="#" style="color: gray;">위치 등록</a>
+						<div>
+							<span class="location-logo-text-2">
+								<img class="location-logo" src="./resources/img/precision.png">&nbsp;
+								<a href="#" style="color: gray;">위치 등록</a>
+							</span>
 						</div>
 					</div>
 				</div>
 				<br>
 				
 				<div class="body-checklist">
+					<label class="check">
+						<input type="checkbox" id="chkcarplace" value="chkcarplace">
+						<span class="icon"></span>
+						<span class="text">차박 명소 등록하기</span>
+					</label>&emsp;&emsp;
+					<label class="check">
+						<input type="checkbox" id="chkprivate" value="chkprivate">
+						<span class="icon"></span>
+						<span class="text">나만 보기</span>
+					</label>
+					<!-- 
 					<input type="checkbox" id="chkcarplace" value="chkcarplace">&nbsp;&nbsp;
 						<label for="chkcarplace">차박 명소 등록하기</label>&emsp;&emsp;
-					<input type="checkbox" id="chkprivate" value="chkprivate">&nbsp;&nbsp;
-						<label for="chkprivate">나만 보기</label>
+					 -->
 				</div>
 			</div>
 		</div>
