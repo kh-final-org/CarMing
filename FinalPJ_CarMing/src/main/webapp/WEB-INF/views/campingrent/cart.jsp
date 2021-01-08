@@ -30,8 +30,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                            	<td colspan="2"><input type="checkbox"></td>
-                                <td>
+                            	<td><input type="checkbox"></td>
+                                <td colspan="2">
                                     <div class="media">
                                         <div class="d-flex">
                                             <img style="width:152px; height:102px;" src="resources/img/tent.jpg" alt="">
