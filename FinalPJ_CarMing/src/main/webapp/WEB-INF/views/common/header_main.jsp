@@ -64,7 +64,7 @@
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">핑구추천</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑렌트</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑토크</a></li>
+							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">우리서로 캠Live</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠플레이스</a></li>
 							

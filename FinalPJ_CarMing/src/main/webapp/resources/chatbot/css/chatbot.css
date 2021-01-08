@@ -1,0 +1,61 @@
+/* ChatBot */
+.chat_icon {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	width: 50px;
+	height: 50px;
+	font-size: 80px;
+	color: #fff;
+	cursor: pointer;
+	z-index: 1000;
+}
+.chat_box{
+	position: fixed;	
+	right: 20px;
+	bottom: 100px;
+	width: 330px;
+	height: 75vh;
+	z-index: 1000;
+	transition: all 0.3s easy-out;
+	transform: scaleY(0);
+}
+.chat_box.active{ 
+	transform: scaleY(1);
+}
+.hidden{
+	display: none !important;
+}
+.conv-form-wrapper textarea{
+	height: 30px;
+	overflow: hidden;
+	resize: none;
+}
+#message{
+	padding: 20px;
+}
+
+
+.fullHeaderStyle {
+    content: '';
+    position: absolute;
+    padding: 20px;
+    width: 290px;
+    display: block;
+    height: 40px;
+    top: 0;
+    left: 0;
+    z-index: 2; 
+    background: linear-gradient(#ffba00, transparent);
+    border-radius: 15px;
+}
+.headerTitle {
+	width: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing :1px;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
