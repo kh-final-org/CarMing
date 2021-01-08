@@ -36,12 +36,12 @@ public class LogFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest)request;
 
-		String remoteAddr = req.getRemoteAddr(); 	// 로컬 호스트 IP 주소
+		String remoteAddr = req.getRemoteAddr(); 	//로컬 호스트 IP 주소
 		String uri = req.getRequestURI();
 		String url = req.getRequestURL().toString();
 		String queryString = req.getQueryString();
-		String referer = req.getHeader("referer");	// 이전 페이지 (보내는 페이지)
-		String agent = req.getHeader("User-Agent");
+		String referer = req.getHeader("referer");	//이전 페이지 (보내는 페이지)
+		String agent = req.getHeader("User-Agent");	//사용자 정보(브라우저, os 등)
 
 		StringBuffer sb = new StringBuffer();
 		// string버퍼에 하나씩 추가.
@@ -57,6 +57,8 @@ public class LogFilter implements Filter {
 		chain.doFilter(req, response);
 	}
 
+	
+	
 	@Override
 	public void destroy() {
 		// 필터 인스턴스 종료
