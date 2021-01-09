@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+<mapper namespace="inquiry">
+<resultMap type="inquiryDto" id="inquiryMap">
+	
+</resultMap>
+	<select id="select" resultMap = "inquiryMap">
+		SELECT MEMBER.MEMNICK, INQUIRYLIST.*
+FROM INQUIRYLIST
+INNER JOIN MEMBER ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
+	</select> 
+	<insert id="insertList" parameterType="java.util.List">
+		
+	INSERT ALL 
+	<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
+		  INTO RECIPE VALUES
+		  (
+			#{item.recipeFile}
+			, #{item.recipeTitle}
+			, #{item.recipeWriter}
+			, #{item.recipeWriterURL}
+			, DEFAULT
+			, #{item.recipeURL}
+			)
+			
+	</foreach>
+	</insert>
+ 
+ 
+ 
+ </mapper>
