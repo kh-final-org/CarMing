@@ -9,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-
 <style type="text/css">
 	.card-container{
 		margin: 50px 200px;
@@ -127,84 +126,80 @@
 		border: none;
 		border-radius: 0px 0px 10px 0px;
 	}
-
-
-
-	
-	
 	
 </style>	
 	
 </head>
 <body>
-	<!-- Start Header Area -->
-   	<%@include file="../common/header.jsp"%>
-   	<!-- End Header Area -->	
-	<div class="card-container">
-		<div class="card-wrap">
-		<div class="card-chatlist">
-			<div class="chatlist-header">
-				<a href="profileform.do"><img class="next-left" src="./resources/img/left.png"></a>
-				<div class="chatlist-header-text">채팅 목록</div>
-			</div>
-			
-			<!-- 채팅목록 사용자 프로필/아이디 -->
-			<div class="chatlist-body">
-				<div class="chatlist-profile">
-					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-					<span style="font-size:1.2em;">&nbsp;user10</span>
-				</div>
-				<div class="chatlist-chk">
-					<div class="chat-time">오후 3:45</div>
-				</div>
-			</div>
-			<div class="chatlist-body">
-				<div class="chatlist-profile">
-					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-					<span style="font-size:1.2em;">&nbsp;user11</span>
-				</div>
-				<div class="chatlist-chk">
-					<div class="chat-time">오전 11:20</div>
-				</div>
-			</div>
-			<div class="chatlist-body">
-				<div class="chatlist-profile">
-					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-					<span style="font-size:1.2em;">&nbsp;user8</span>
-				</div>
-				<div class="chatlist-chk">
-					<div class="chat-time">오후 1:10</div>
-					<div class="chat-notread">2</div>
-				</div>
-			</div>
+<!-- Start Header Area -->
+<%@include file="../common/header.jsp"%>
+<!-- End Header Area -->
+  		
+<div class="card-container">
+	<div class="card-wrap">
+	<div class="card-chatlist">
+		<div class="chatlist-header">
+			<a href="profileform.do"><img class="next-left" src="./resources/img/left.png"></a>
+			<div class="chatlist-header-text">채팅 목록</div>
 		</div>
 		
-		<!-- 채팅창 -->
-		<div class="card-chatscreen">
-			<div class="chat-opponent">
-				<img class="opponent-profile" src="./resources/img/profile.png">
+		<!-- 채팅목록 사용자 프로필/아이디 -->
+		<div class="chatlist-body">
+			<div class="chatlist-profile">
+				<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
 				<span style="font-size:1.2em;">&nbsp;user10</span>
 			</div>
-			
-			<div class="chat-talk"></div>
-			
-			<div class="chat-input">
-				<div class="input-group mb-3" >
-					<input type="text" class="form-control" placeholder="내용을 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
-					<div class="input-group-append">
-					    <button class="btn btn-outline-secondary" type="submit" id="button-addon2" ><img class="sendimg" src="./resources/img/send.png"></button>
-					  </div>
-				</div>	
+			<div class="chatlist-chk">
+				<div class="chat-time">오후 3:45</div>
 			</div>
 		</div>
+		<div class="chatlist-body">
+			<div class="chatlist-profile">
+				<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
+				<span style="font-size:1.2em;">&nbsp;user11</span>
+			</div>
+			<div class="chatlist-chk">
+				<div class="chat-time">오전 11:20</div>
+			</div>
 		</div>
-	
-	
-	
-	
-	
-	
+		<div class="chatlist-body">
+			<div class="chatlist-profile">
+				<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
+				<span style="font-size:1.2em;">&nbsp;user8</span>
+			</div>
+			<div class="chatlist-chk">
+				<div class="chat-time">오후 1:10</div>
+				<div class="chat-notread">2</div>
+			</div>
+		</div>
 	</div>
+	
+	<!-- 채팅창 -->
+	<div class="card-chatscreen">
+		<div class="chat-opponent">
+			<img class="opponent-profile" src="./resources/img/profile.png">
+			<span style="font-size:1.2em;">&nbsp;user10</span>
+		</div>
+		
+		<div class="chat-talk"></div>
+		
+		<div class="chat-input">
+			<div class="input-group mb-3" >
+				<input type="text" class="form-control" placeholder="내용을 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+				<div class="input-group-append">
+				    <button class="btn btn-outline-secondary" type="submit" id="button-addon2" ><img class="sendimg" src="./resources/img/send.png"></button>
+				  </div>
+			</div>	
+		</div>
+	</div>
+	</div>
+
+
+
+
+
+
+</div>
 
 
 </body>

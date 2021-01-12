@@ -10,50 +10,65 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.finalPJ.carming.model.biz.BoardBiz;
+import com.finalPJ.carming.model.biz.boardBiz;
+import com.finalPJ.carming.model.dto.boardDto;
 
 @Controller
-public class BoardController {
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+public class boardController {
+	private static final Logger logger = LoggerFactory.getLogger(boardController.class);
 	
 	@Autowired
-	private BoardBiz biz;
+	private boardBiz biz;
 	
+	//캠핑토크 메인 화면
 	@RequestMapping(value = "/boardmainform.do")
-	public String boardMain() {
-	
+	public String boardMain(Model model) {
 	   logger.info("[boardmain]");
-	   //model.addAttribute("list", biz.selectList());
+	   model.addAttribute("list", biz.selectList());
 	   
 	   return "board/boardmain";
 	}
 	
+	//게시글 작성 페이지로 이동
 	@RequestMapping(value = "/boardwriteform.do")
-	public String boardWrite() {
-	
+	public String boardWrite(boardDto dto) {
 	   logger.info("[boardwrite]");
+	   
 	   return "board/boardwrite";
 	}
 	
+	//게시글 작성 완료 시
+	//@RequestMapping(value = "/boardinsertres.do")
+	//public String boardInsertRes() {
+	//	logger.info("[boardinser_res]");
+		
+	//	int res = biz.insert(dto);
+	//  if(res>0){
+	//	   return "redirect:list.do";
+	//  }
+	//  return null;
+	//}
+
 	@RequestMapping(value = "/boarddetailform.do")
 	public String boardDetail() {
-		
 		logger.info("[boarddetail]");
 		return "board/boarddetail";
+		
 	}
 
 	@RequestMapping(value = "/profileform.do")
 	public String profilePage() {
-		
 		logger.info("[profilepage]");
+		
 		return "board/profilepage";
 	}
 	
 	@RequestMapping(value = "/privateform.do")
 	public String privateChat() {
-		
 		logger.info("[privatechat]");
+		
 		return "board/privatechat";
 	}
 	

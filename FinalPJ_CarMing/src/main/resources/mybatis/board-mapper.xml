@@ -14,23 +14,29 @@
 		<result property="brddate" column="BRDDATE"/>
 		<result property="brdprivate" column="BRDPRIVATE"/>
 	</resultMap>
-
+	
 	<select id="selectList" resultMap="boardMap">
 		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDDATE, BRDPRIVATE
 		FROM BOARD
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="boardDto">
-		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDDATE, BRDPRIVATE
-		FROM BOARD
-		WHERE BRDNO=#{brdno}
+	
 	</select>
 	
 	<insert id="insert" parameterType="boardDto">
   		INSERT INTO BOARD
-  		VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno}, #{brdcontent}) <!-- 여기서부터 다시 -->
+  		VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno}, #{brdcontent}) 
   	</insert>	
 	
+	<update id="update" parameterType="boardDto">
+	
+	</update>
+	
+	<delete id="delete" parameterType="int">
+
+  	</delete>
+  
 
 
 </mapper>

@@ -9,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-	
 <style type="text/css">
 	.card-container{
 		margin: 50px 200px;
@@ -85,7 +84,11 @@
 	 	text-align: right;
 	 	margin: 3px 0px 0px 0px;
 	}
-	 
+	
+	#main-dropdown-menu {
+		width: 120px;
+	} 
+	
 	#dropdown-category{
 	 	width: 140px; 
 	 	text-align: left;
@@ -102,12 +105,7 @@
 		background-color: #fff5e9;
 	}
 	
-		
-		
-		
-		
-		
-	</style>
+</style>
 	
 </head>
 <body>
@@ -115,6 +113,7 @@
 <%@include file="../common/header.jsp"%>
 <!-- End Header Area -->
 
+<!-- start of container -->
 <div class="card-container">
 	<div class="card-head">
 		<div class="card-head-first">
@@ -138,57 +137,101 @@
 	</div>
 	<br><br><br><br>
 	
-	<!-- 게시글이 없을 경우 
+	<!-- 게시글이 없을 경우 -->
 	<c:if test="${empty list }">
-		<span>작성된 게시글이 없습니다.</span>
-	</c:if>-->
+			<p>작성된 게시글이 없습니다.</p>
+	</c:if>
 	
 	<!-- 게시글이 있을 경우 -->
-	<div class="card-body">
-		<div class="card-body-first">
-			<!-- 프로필 사진/아이디 -->
-			<div class="board-profile">
-				<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-				<span style="font-size:1.2em;">&nbsp;${dto.brdwriter}</span>
-			</div>	
-			<!-- 사용자가 업로드한 이미지 -->
-			<div class="board-uploadimg">
-				<a href="boarddetailform.do"><img class="uploadimg" src="./resources/img/boardUpload/mycamp18.JPG"></a><br>
-				<div class="board-count">${dto.brdcount }</div>
+	<c:forEach items="${list }" var="dto">
+		<div class="card-body">
+			<div class="card-body-first">
+				<!-- 프로필 사진/아이디 -->
+				<div class="board-profile">
+					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
+					<span style="font-size:1.2em;">&nbsp;${dto.brdwriter}</span>
+				</div>	
+				<!-- 사용자가 업로드한 이미지 -->
+				<div class="board-uploadimg">
+					<a href="boarddetailform.do"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
+					<div class="board-count">${dto.brdcount}</div>
+				</div>
+			</div>
+	
+			<div class="card-body-second">
+				<!-- 프로필 사진/아이디 -->
+				<div class="board-profile">
+					<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">&nbsp; 
+					<span style="font-size:1.2em;">&nbsp;${dto.brdwriter}</span>
+				</div>	
+				<!-- 사용자가 업로드한 이미지 -->
+				<div class="board-uploadimg">
+					<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"><br>
+					<div class="board-count">${dto.brdcount}</div>
+				</div>
+			</div>
+			
+			<div class="card-body-third">
+				<!-- 프로필 사진/아이디 -->
+				<div class="board-profile">
+					<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">&nbsp; 
+					<span style="font-size:1.2em;">&nbsp;${dto.brdwriter}</span>
+				</div>	
+				<!-- 사용자가 업로드한 이미지 -->
+				<div class="board-uploadimg">
+					<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"><br>
+					<div class="board-count">${dto.brdcount}</div>
+				</div>
 			</div>
 		</div>
-
-		<div class="card-body-second">
-			<!-- 프로필 사진/아이디 -->
-			<div class="board-profile">
-				<img class="user-profile" src="./resources/img/profile.png">&nbsp; 
-				<span style="font-size:1.2em;">&nbsp;user2</span>
-			</div>	
-			<!-- 사용자가 업로드한 이미지 -->
-			<div class="board-uploadimg">
-				<img class="uploadimg" src="./resources/img/boardUpload/mycamp15-1.jpg"><br>
-				<div class="board-count">조회수 2,000</div>
-			</div>
-		</div>
-		
-		<div class="card-body-third">
-			<!-- 프로필 사진/아이디 -->
-			<div class="board-profile">
-				<img class="user-profile" src="./resources/img/profile.png">&nbsp; 
-				<span style="font-size:1.2em;">&nbsp;user3</span>
-			</div>	
-			<!-- 사용자가 업로드한 이미지 -->
-			<div class="board-uploadimg">
-				<img class="uploadimg" src="./resources/img/boardUpload/mycamp14.JPG"><br>
-				<div class="board-count">조회수 3,000</div>
-			</div>
-		</div>
-	</div>
-
+	</c:forEach>
 </div>
+<!-- end of container -->	
+	
+	
+<!-- start paging -->
+<div class="card-bottom">
+	<tr>
+		<td colspan="5">
+			<!-- 처음 페이지로 이동: 현재 페이지가 1보다 크면 	[<<] 하이퍼 링크를 화면에 출력 -->
+			<c:if test="${map.boardPager.curBlock > 1}">
+				<a href="javascript:list('1')">[&laquo;]</a>
+			</c:if>
+			<!-- 이전페이지 블록으로 이동: 현재 페이지 블럭이 1보다 크면 [<] 하이퍼링크를 화면에 출력 -->
+			<c:if test="${map.boardPager.curBlock > 1}">
+				<a href="javascript:list('1')">[&lt;]</a>
+			</c:if>
+		
+			<!-- **하나의 블럭 시작 페이지부터 끝 페이지까지 반복문 실행 -->
+			<c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
+				<!-- 현재페이지이면 하이퍼링크 제거 -->
+				<c:choose>
+					<c:when test="${num == map.boardPager.curPage}">
+						<span style="color: red">${num}</span>&nbsp;
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:list('${num}')">${num}</a>&nbsp;
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
+			<!-- 다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [>]하이퍼링크를 화면에 출력 -->
+			<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
+				<a href="javascript:list('${map.boardPager.nextPage}')">[&gt;]</a>
+			</c:if>
+				
+			<!-- 끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [>>]하이퍼링크를 화면에 출력 -->
+			<c:if test="${map.boardPager.curPage <= map.baordPager.totPage}">
+				<a href="javascript:list('${map.boardPager.totPage}')">[&raquo;]</a>
+			</c:if>
+		</td>
+	</tr>
+</div>
+<!-- end paging -->	
+
 	
 <!-- start footer Area -->
-<!-- End footer Area -->
+<!-- end footer Area -->
 
 </body>
 </html>

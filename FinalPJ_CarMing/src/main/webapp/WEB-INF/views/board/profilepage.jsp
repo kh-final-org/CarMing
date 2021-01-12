@@ -9,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-
 <style type="text/css">
 	.card-container{
 		margin: 50px 200px;
@@ -88,7 +87,7 @@
 	
 	.boardlistup{	
 		overflow: hidden;			/*부모태그를 벗어나지 않고 내부에서만 확대*/
-		border-radius: 5px;
+		border-radius: 5px;		
 		margin-bottom: 10px;
 	}
 	
@@ -104,73 +103,67 @@
 	#board-third{
 		float: right;
 	}
-		
-
-
-
-		
-		
+	
 </style>	
-
 
 </head>
 <body>
-	<!-- Start Header Area -->
-   	<%@include file="../common/header.jsp"%>
-   	<!-- End Header Area -->
+<!-- Start Header Area -->
+<%@include file="../common/header.jsp"%>
+<!-- End Header Area -->
 
-	<div class="card-container">
-		<!-- 사용자 프로필 -->
-		<div class="card-profile">
-			<div class="profilepage-profile">
-				<img class="user-profile" src="./resources/img/profile.png">
-				<div class="user-id">황정민</div>
-			</div>
-			<div class="profilepage-message">
-				<a href="privateform.do">
-					<img class="user-message" src="./resources/img/message.png">
-					<span class="user-message-text">&nbsp;1:1 채팅</span>
-				</a>
-			</div>
+<div class="card-container">
+	<!-- 사용자 프로필 -->
+	<div class="card-profile">
+		<div class="profilepage-profile">
+			<img class="user-profile" src="./resources/img/profile.png">
+			<div class="user-id">황정민</div>
 		</div>
-	
-		<!-- 사용자가 올린 게시글 목록 -->
-		<!-- 게시글 1행 -->
-		<div class="card-board">
-			<div class="card-boardtext">게시글 보기</div>
-			
-			<!-- 1행 -->
-			<div class="card-boardlist">
-				<div class="boardlistup" id="board-first">
-					<a href="boarddetailform.do"><img class="boardlist-img" src="./resources/img/boardUpload/mycamp18.JPG"></a>
-				</div>
-				<div class="boardlistup" id="board-second">
-					<img class="boardlist-img" src="./resources/img/boardUpload/carcamp11.jpg">
-				</div>
-				<div class="boardlistup" id="board-third">
-					<img class="boardlist-img" src="./resources/img/boardUpload/carcamp10-1.jpg">
-				</div>
+		<div class="profilepage-message">
+			<a href="privateform.do">
+				<img class="user-message" src="./resources/img/message.png">
+				<span class="user-message-text">&nbsp;1:1 채팅</span>
+			</a>
+		</div>
+	</div>
+
+	<!-- 사용자가 올린 게시글 목록 -->
+	<!-- 게시글 1행 -->
+	<div class="card-board">
+		<div class="card-boardtext">게시글 보기</div>
+		
+		<!-- 1행 -->
+		<div class="card-boardlist">
+			<div class="boardlistup" id="board-first">
+				<a href="boarddetailform.do"><img class="boardlist-img" src="./resources/img/boardUpload/mycamp18.JPG"></a>
 			</div>
-			
-			<!-- 2행 -->
-			<div class="card-boardlist">
-				<div class="boardlistup" id="board-first">
-					<img class="boardlist-img" src="./resources/img/boardUpload/general10-1.jpg">
-				</div>
-				<div class="boardlistup" id="board-second">
-					<img class="boardlist-img" src="./resources/img/boardUpload/glam11-1.jpg">
-				</div>
-				<div class="boardlistup" id="board-third">
-					<img class="boardlist-img" src="./resources/img/boardUpload/carcamp14-1.jpg">
-				</div>
+			<div class="boardlistup" id="board-second">
+				<img class="boardlist-img" src="./resources/img/boardUpload/carcamp11.jpg">
+			</div>
+			<div class="boardlistup" id="board-third">
+				<img class="boardlist-img" src="./resources/img/boardUpload/carcamp10-1.jpg">
 			</div>
 		</div>
 		
-	
-	
-	
-	
+		<!-- 2행 -->
+		<div class="card-boardlist">
+			<div class="boardlistup" id="board-first">
+				<img class="boardlist-img" src="./resources/img/boardUpload/general10-1.jpg">
+			</div>
+			<div class="boardlistup" id="board-second">
+				<img class="boardlist-img" src="./resources/img/boardUpload/glam11-1.jpg">
+			</div>
+			<div class="boardlistup" id="board-third">
+				<img class="boardlist-img" src="./resources/img/boardUpload/carcamp14-1.jpg">
+			</div>
+		</div>
 	</div>
+	
+
+
+
+
+</div>
 
 	
 

@@ -198,96 +198,96 @@
 
 </head>
 <body>
-	<!-- Start Header Area -->
-   	<%@include file="../common/header.jsp"%>
-   	<!-- End Header Area -->
+<!-- Start Header Area -->
+<%@include file="../common/header.jsp"%>
+<!-- End Header Area -->
 
-	<div class="card-container">
-		<div class="card-wrap">
-			<div class="card-first">
-				<img class="next-left" src="./resources/img/left.png">
+<div class="card-container">
+	<div class="card-wrap">
+		<div class="card-first">
+			<img class="next-left" src="./resources/img/left.png">
+		</div>
+	
+		<div class="card-second">
+			<div class="card-body-1">
+				<!-- 프로필 사진/아이디 -->
+				<div class="board-profile">
+					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
+					<span style="font-size:1.2em;">&nbsp;user1</span>
+				</div>	
+				<div class="board-location">
+					<div>서울특별시 카밍캠핑장</div>
+					<div>2021.1.1</div>
+				</div>
 			</div>
+			
+			<div class="card-body-2">
+				<!-- 사용자가 업로드한 이미지 -->
+				<div class="board-uploadimg">
+					<img class="uploadimg" src="./resources/img/boardUpload/mycamp18.JPG">
+				</div>
+			</div>
+			
+			<div class="card-body-3">
+				<div class="board-content">게시글 내용</div>
+				<div class="board-count">조회수 1,000</div>&nbsp;&middot;&nbsp;
+				<div class="board-report">신고</div>
+			</div><br><br>
+			
+			<div class="card-body-4">
+				<div class="board-comment-header-1">
+					<div class="board-comment-head"><strong>댓글</strong></div>
+					<div class="board-comment-count"><b>2</b></div>
+				</div>
+				<div class="board-comment-header-2">
+					<div class="board-share"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></div>
+					<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
+					<div class="board-delete">&#124;&nbsp;&nbsp;삭제</div>
+				</div>
+			</div><br>
 		
-			<div class="card-second">
-				<div class="card-body-1">
-					<!-- 프로필 사진/아이디 -->
-					<div class="board-profile">
+			<div class="card-body-5">
+				<div class="board-profile-comment">
+					<img class="user-profile" src="./resources/img/profile.png">&nbsp; 
+				</div>	
+				<div class="board-input-comment">
+					<div class="input-group mb-3" >
+						<input type="text" class="form-control" placeholder="댓글 달기.." aria-label="Recipient's username" aria-describedby="button-addon2">
+						<div class="input-group-append">
+					    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="sendimg" src="./resources/img/send.png"></button>
+					  	</div>
+					</div>	
+				</div>
+			</div>
+			
+			<div class="card-body-6">
+				<div class="commentuser-first">
+					<div class="board-profile-commentuser">
 						<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-						<span style="font-size:1.2em;">&nbsp;user1</span>
-					</div>	
-					<div class="board-location">
-						<div>서울특별시 카밍캠핑장</div>
-						<div>2021.1.1</div>
+						<span><strong>&nbsp;user88</strong></span>
 					</div>
+					<div class="commentuser-comment">Comment</div>
 				</div>
 				
-				<div class="card-body-2">
-					<!-- 사용자가 업로드한 이미지 -->
-					<div class="board-uploadimg">
-						<img class="uploadimg" src="./resources/img/boardUpload/mycamp18.JPG">
-					</div>
+				<div class="commentuser-second">
+					<div class="comment-time">오후 12:30</div>&nbsp;&middot;&nbsp;
+					<div class="comment-report">신고</div>
 				</div>
-				
-				<div class="card-body-3">
-					<div class="board-content">게시글 내용</div>
-					<div class="board-count">조회수 1,000</div>&nbsp;&middot;&nbsp;
-					<div class="board-report">신고</div>
-				</div><br><br>
-				
-				<div class="card-body-4">
-					<div class="board-comment-header-1">
-						<div class="board-comment-head"><strong>댓글</strong></div>
-						<div class="board-comment-count"><b>2</b></div>
-					</div>
-					<div class="board-comment-header-2">
-						<div class="board-share"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></div>
-						<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
-						<div class="board-delete">&#124;&nbsp;&nbsp;삭제</div>
-					</div>
-				</div><br>
-			
-				<div class="card-body-5">
-					<div class="board-profile-comment">
-						<img class="user-profile" src="./resources/img/profile.png">&nbsp; 
-					</div>	
-					<div class="board-input-comment">
-						<div class="input-group mb-3" >
-							<input type="text" class="form-control" placeholder="댓글 달기.." aria-label="Recipient's username" aria-describedby="button-addon2">
-							<div class="input-group-append">
-						    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="sendimg" src="./resources/img/send.png"></button>
-						  	</div>
-						</div>	
-					</div>
-				</div>
-				
-				<div class="card-body-6">
-					<div class="commentuser-first">
-						<div class="board-profile-commentuser">
-							<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-							<span><strong>&nbsp;user88</strong></span>
-						</div>
-						<div class="commentuser-comment">Comment</div>
-					</div>
-					
-					<div class="commentuser-second">
-						<div class="comment-time">오후 12:30</div>&nbsp;&middot;&nbsp;
-						<div class="comment-report">신고</div>
-					</div>
-				</div>
-				
 			</div>
 			
-			<div class="card-third">
-				<img class="next-right" src="./resources/img/right.png"> 
-			</div>
 		</div>
 		
-		
-		
-		
-		
-		
+		<div class="card-third">
+			<img class="next-right" src="./resources/img/right.png"> 
+		</div>
 	</div>
+	
+	
+	
+	
+	
+	
+</div>
 
 
 

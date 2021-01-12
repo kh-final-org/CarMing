@@ -2,7 +2,7 @@ package com.finalPJ.carming.model.dto;
 
 import java.util.Date;
 
-public class BoardDto {
+public class boardDto {
 	
 	private int brdno;			//게시글 번호
 	private int bcategoryno;	//카테고리 번호 참조
@@ -10,17 +10,15 @@ public class BoardDto {
 	private String brdfile;		//파일명
 	private String brdcontent;	//게시글 내용
 	private int brdcount;		//게시글 조회수
-	private Date date;			//게시글 작성 날짜
+	private Date brddate;			//게시글 작성 날짜
 	private String brdprivate;	//나만보기 체크 여부
 	
-	
-	public BoardDto() {
+	public boardDto() {
 		super();
 	}
 
-
-	public BoardDto(int brdno, int bcategoryno, String brdwriter, String brdfile, String brdcontent, int brdcount,
-			Date date, String brdprivate) {
+	public boardDto(int brdno, int bcategoryno, String brdwriter, String brdfile, String brdcontent, int brdcount,
+			Date brddate, String brdprivate) {
 		super();
 		this.brdno = brdno;
 		this.bcategoryno = bcategoryno;
@@ -28,10 +26,9 @@ public class BoardDto {
 		this.brdfile = brdfile;
 		this.brdcontent = brdcontent;
 		this.brdcount = brdcount;
-		this.date = date;
+		this.brddate = brddate;
 		this.brdprivate = brdprivate;
 	}
-
 
 	public int getBrdno() {
 		return brdno;
@@ -69,11 +66,11 @@ public class BoardDto {
 	public void setBrdcount(int brdcount) {
 		this.brdcount = brdcount;
 	}
-	public Date getDate() {
-		return date;
+	public Date getBrddate() {
+		return brddate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setBrddate(Date brddate) {
+		this.brddate = brddate;
 	}
 	public String getBrdprivate() {
 		return brdprivate;
@@ -81,7 +78,8 @@ public class BoardDto {
 	public void setBrdprivate(String brdprivate) {
 		this.brdprivate = brdprivate;
 	}
-	
+
+
 	
 	
 	

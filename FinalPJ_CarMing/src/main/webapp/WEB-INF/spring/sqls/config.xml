@@ -9,12 +9,20 @@
 		<typeAlias type="com.finalPJ.carming.model.dto.MemberDto" alias="memberDto" />
 		<typeAlias type="com.finalPJ.carming.model.dto.RecipeDto" alias="recipeDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.TipDto" alias="tipDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.boardDto" alias="boardDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.boardDto" alias="bcommentDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.boardDto" alias="dmDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.boardDto" alias="mapLocationDto"/>	
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mybatis/member-mapper.xml" />
 		<mapper resource="/mybatis/recipe-mapper.xml" />
 		<mapper resource="/mybatis/tip-mapper.xml" />
+		<mapper resource="/mybatis/board-mapper.xml" />
+	<!-- <mapper resource="/mybatis/bcomment-mapper.xml" />
+		<mapper resource="/mybatis/dm-mapper.xml" />
+		<mapper resource="/mybatis/mapLocation-mapper.xml" /> -->
 	</mappers>
 
 </configuration>
