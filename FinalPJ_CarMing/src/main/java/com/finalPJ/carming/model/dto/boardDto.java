@@ -10,7 +10,7 @@ public class boardDto {
 	private String brdfile;		//파일명
 	private String brdcontent;	//게시글 내용
 	private int brdcount;		//게시글 조회수
-	private Date brddate;			//게시글 작성 날짜
+	private Date brddate;		//게시글 작성 날짜
 	private String brdprivate;	//나만보기 체크 여부
 	
 	public boardDto() {

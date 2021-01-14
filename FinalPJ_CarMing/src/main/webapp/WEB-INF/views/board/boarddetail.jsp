@@ -68,28 +68,41 @@
 	
 	.uploadimg{
 	 	width: 450px;
-	 	height: 100%;
+	 	height: 450px;
 	 	margin: 0px 50px;
 	 }
 	 
 	 .card-body-3{
-	 	margin: 10px 0px;
+	 	margin: 10px 0px 10px 50px;
+	 	position: relative;
 	 }
 	 	
 	 .board-content{
 	 	float: left;
-	 	margin-left: 50px;
+	 	position: absolute;
+	 	left: 0;
+	 	width: 70%;
 	 }
 	 	
 	 .board-count{
 	 	float: left;
-	 	margin-left: 255px;
 	 	text-align: right;
+	 	position: absolute;
+	 	left: 320px;
+		width: 20%;	 
 	 }
 		 	
 	 .board-report{
 	 	float: right;
+	 	text-align: right;
+	 	position: absolute;
+	 	right: 0;
+		width: 10%;	
 	 }
+	 	
+	 .board-report-target1, .board-report-target2{
+	 	color: #5f5f5f;
+	 }	
 	 	
 	 #report{
 		border: none;
@@ -124,6 +137,7 @@
 	.board-share{
 		float: left;
 		margin-right: 10px;
+		cursor: pointer;
 	}
 	
 	.board-modify{
@@ -190,11 +204,48 @@
 		margin: 10px 20px;
 	}
 		
-		
-		
-	 	
-	 	
-	</style>
+</style>
+
+<!-- kakao share -->
+<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript">
+	function sendLinkCustom() {
+	       Kakao.init("ec2908c95e9e6b6c236066424e7e8fa2");
+	       Kakao.Link.sendCustom({
+	           templateId: 44747
+	       });
+	   }
+</script>
+<script>	
+	try {
+			function sendLinkDefault(brdno) {
+				
+			Kakao.init('ec2908c95e9e6b6c236066424e7e8fa2')
+			Kakao.Link.sendDefault({
+	 				objectType: 'feed',
+	 				content: {
+	   				title: 'Camping Talk',
+	   				description: 'www.localhost:8899/carming',
+	   				imageUrl: 'http://localhost:8899/carming//boarddetailform.do',
+	   				link: {
+	     					mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	     					webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	   				},
+	 				},
+	 				buttons: [{
+	     				title: '게시글 보러가기',
+	     				link: {
+	       				mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	       				webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	     				},
+	   			}],
+				})
+			}; window.kakaoDemoCallback && window.kakaoDemoCallback() }
+	catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
+
+	
+</script>
+
 
 </head>
 <body>
@@ -202,6 +253,7 @@
 <%@include file="../common/header.jsp"%>
 <!-- End Header Area -->
 
+<!-- start of container -->
 <div class="card-container">
 	<div class="card-wrap">
 		<div class="card-first">
@@ -213,25 +265,26 @@
 				<!-- 프로필 사진/아이디 -->
 				<div class="board-profile">
 					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-					<span style="font-size:1.2em;">&nbsp;user1</span>
+					<span style="font-size:1.2em;">&nbsp;${dto.brdwriter }</span>
 				</div>	
 				<div class="board-location">
 					<div>서울특별시 카밍캠핑장</div>
-					<div>2021.1.1</div>
+					<div>${dto.brddate }</div>
 				</div>
 			</div>
 			
 			<div class="card-body-2">
 				<!-- 사용자가 업로드한 이미지 -->
 				<div class="board-uploadimg">
-					<img class="uploadimg" src="./resources/img/boardUpload/mycamp18.JPG">
+					<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile }">
 				</div>
 			</div>
 			
+			
 			<div class="card-body-3">
-				<div class="board-content">게시글 내용</div>
-				<div class="board-count">조회수 1,000</div>&nbsp;&middot;&nbsp;
-				<div class="board-report">신고</div>
+				<div class="board-content">${dto.brdcontent }</div>
+				<div class="board-count">조회수 ${dto.brdcount }</div>
+				<div class="board-report">&nbsp;&middot;&nbsp;<a href="#" class="board-report-target1">신고</a></div>
 			</div><br><br>
 			
 			<div class="card-body-4">
@@ -240,7 +293,9 @@
 					<div class="board-comment-count"><b>2</b></div>
 				</div>
 				<div class="board-comment-header-2">
-					<div class="board-share"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></div>
+					<div class="board-share">
+						<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
+					</div>
 					<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
 					<div class="board-delete">&#124;&nbsp;&nbsp;삭제</div>
 				</div>
@@ -271,7 +326,7 @@
 				
 				<div class="commentuser-second">
 					<div class="comment-time">오후 12:30</div>&nbsp;&middot;&nbsp;
-					<div class="comment-report">신고</div>
+					<div class="comment-report"><a href="#" class="board-report-target2">신고</a></div>
 				</div>
 			</div>
 			
@@ -282,13 +337,8 @@
 		</div>
 	</div>
 	
-	
-	
-	
-	
-	
 </div>
-
+<!-- end of container -->
 
 
 </body>

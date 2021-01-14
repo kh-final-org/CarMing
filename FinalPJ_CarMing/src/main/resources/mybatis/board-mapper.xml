@@ -15,9 +15,22 @@
 		<result property="brdprivate" column="BRDPRIVATE"/>
 	</resultMap>
 	
+	<!-- 캠핑토크 게시판 리스트 -->
 	<select id="selectList" resultMap="boardMap">
 		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDDATE, BRDPRIVATE
 		FROM BOARD
+		ORDER BY BRDDATE DESC
+	
+		<!--  SELECT * FROM (
+			SELECT ROWNUM AS RNUM, BRD.*
+			FROM(
+				SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDDATE, BRDPRIVATE
+				FROM BOARD
+				ORDER BY BRDDATE DESC
+			) BRD
+		)
+		WHERE RNUM BETWEEN #{startRow} AND #{endRow}
+		-->
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="boardDto">
