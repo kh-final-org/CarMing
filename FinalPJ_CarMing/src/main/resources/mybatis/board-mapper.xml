@@ -11,6 +11,7 @@
 		<result property="brdfile" column="BRDFILE"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
 		<result property="brdcount" column="BRDCOUNT"/>
+		<result property="brdcomcount" column="BRDCOMCOUNT"/>
 		<result property="brddate" column="BRDDATE"/>
 		<result property="brdprivate" column="BRDPRIVATE"/>
 	</resultMap>
@@ -34,7 +35,9 @@
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="boardDto">
-	
+		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
+		FROM BOARD
+		WHERE BRDNO = #{brdno}
 	</select>
 	
 	<insert id="insert" parameterType="boardDto">

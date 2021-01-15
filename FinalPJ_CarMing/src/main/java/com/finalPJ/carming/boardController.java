@@ -25,18 +25,18 @@ public class boardController {
 	//캠핑토크 메인 화면
 	@RequestMapping(value = "/boardmainform.do")
 	public String boardMain(Model model) {
-	   logger.info("[boardmain]");
+	   logger.info("[SELECT LIST]");
 	   model.addAttribute("list", biz.selectList());
 	   
 	   return "board/boardmain";
 	}
 	
-	//게시글 작성 페이지로 이동
-	@RequestMapping(value = "/boardwriteform.do")
+	//게시글쓰기 페이지로 이동
+	@RequestMapping(value = "/boardinsertform.do")
 	public String boardWrite(boardDto dto) {
-	   logger.info("[boardwrite]");
+	   logger.info("[INSERT FORM]");
 	   
-	   return "board/boardwrite";
+	   return "board/boardinsert";
 	}
 	
 	//게시글 작성 완료 시
@@ -51,9 +51,12 @@ public class boardController {
 	//  return null;
 	//}
 
+	//게시글 상세 페이지로 이동
 	@RequestMapping(value = "/boarddetailform.do")
-	public String boardDetail() {
-		logger.info("[boarddetail]");
+	public String boardDetail(Model model, int brdno) {
+		logger.info("[SELECT ONE]");
+		model.addAttribute("dto", biz.selectOne(brdno));
+		
 		return "board/boarddetail";
 		
 	}

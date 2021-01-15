@@ -56,16 +56,8 @@
 	 	padding: 0px;
 	}
 	 	
-	.dropdown-item{
-	 	width: 500px;
-	}
-	 
-	.dropdown-menu{
-	 	width: 500px;
-	}
-	 	
 	.body-content{
-	 	margin: 15px 0px 0px 0px; 
+	 	margin-top: 53px; 
 	 	font-size: 1.2em;
 	}
 	
@@ -115,11 +107,6 @@
 		width: 500px; 
 		text-align: left;
 	}	
-	
-	.navi li a:hover{
-		background-color: #fff5e9;
-		cursor: pointer;
-	}
 	
 	.check input{
 		display: none;
@@ -181,18 +168,52 @@
 		transition: all 0.12s ease 0.12s;
 	}
 	
-	.navi .dropdown-item{
-		padding-left: -10px;
+	#geolocation-link-btn{
+		cursor: pointer;
+		color: gray;
 	}
 	
+	/*.navi li a:hover{
+		background-color: #fff5e9;
+	}*/
 	
 </style>
 
-<!-- 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
+try {
+		function geoLinkDefault() {
+			const status = document.querySelector('#status');
+			const mapLink = document.querySelcetor('#map-link');
+			
+			mapLink.href = '';
+			mapLink.textContent = '';
+			
+			function sucess(position){
+				const latitude = position.coords.latitude;
+				const longitude = position.coords.longitude;
+				
+				status.textContent = '';
+				mapLink.href = 'https://www.openstreetmap.org/#map=18/${latitude}/${longitude}';
+				mapLink.textContent = 'Latitude: ${latitude} °, Longitude: ${longitude} °';
+			}
+		
+			function error(){
+				status.textContent = 'Unable to retrieve your location';
+			}
+
+			if(!navigator.geolocation){
+				status.textContent = 'Geolocation is not supported by your browser';
+			}else{
+				status.textContent = 'Locating..';
+				navigator.geolocation.getCurrentPosition(sucess, eroor);
+			}
+		}
+		document.querySelector('#geolocation-link-btn').addEventListener('click', geoLinkDefault);	
+			
+	}; 
+
 </script>	
- -->	
 	
 	
 	
@@ -219,7 +240,18 @@
 			</div>
 			
 			<div class="card-body-right">
-				<div class="body-category">
+				<div class="body-category" style="width: 500px;">
+					<div class="dropdown-selectbox">
+				  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+							<option value="generalCamping" selected>일반 캠핑</option>
+						    <option value="caravan">카라반</option>
+						    <option value="glamping">글램핑</option>
+						    <option value="carCamping">차박</option>
+						    <option value="myOwnCamping">나만의 캠핑</option>
+					  	</select>
+					</div>
+				</div>			
+				<!-- 
 					<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="button-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						카테고리&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					</button>
@@ -232,23 +264,20 @@
 							<li><a class="dropdown-item">나만의 캠핑</a></li>
 						</ul>
 					</div>
-				</div>
-				
-				<!-- 
-				<div class="input-group mb-3" style="width: 500px;">
-				  <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon" >
-				    <option selected>카테고리</option>
-				    <option value="1">일반 캠핑</option>
-				    <option value="2">카라반</option>
-				    <option value="3">글램핑</option>
-				    <option value="4">차박</option>
-				    <option value="5">나만의 캠핑</option>
-				  </select>
-				</div>
+					
+					<div class="input-group mb-3" style="width: 500px;">
+				  		<select class="custom-select" id="selectbox" aria-label="Example select with button addon" >
+							<option value="generalCamping" selected>일반 캠핑</option>
+						    <option value="caravan" >카라반</option>
+						    <option value="glamping">글램핑</option>
+						    <option value="carCamping">차박</option>
+						    <option value="myOwnCamping">나만의 캠핑</option>
+					  	</select>
+					</div>
 				 -->
 				
 				<div class="body-content">
-				   	<textarea rows="11" cols="54" placeholder="  내용을 입력해주세요." style="resize: none;"></textarea>
+				   	<textarea rows="11" cols="54" placeholder="  게시글 내용을 입력해주세요." style="resize: none;"></textarea>
 				</div>
 				
 				<div class="body-location">
@@ -263,7 +292,7 @@
 						<div>
 							<span class="location-logo-text-2">
 								<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-								<a href="#" style="color: gray;">위치 등록</a>
+								<a id="geolocation-link-btn" onClick="geoLinkDefault();">위치 등록</a>
 							</span>
 						</div>
 					</div>

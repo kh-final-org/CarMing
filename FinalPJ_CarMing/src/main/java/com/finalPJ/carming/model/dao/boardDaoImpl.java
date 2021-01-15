@@ -34,21 +34,29 @@ public class boardDaoImpl implements boardDao{
 	//02. 게시글 상세보기
 	@Override
 	public boardDto selectOne(int brdno) {
-		return null;
+		boardDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", brdno);
+		} catch (Exception e) {
+			System.out.println("[error : selectOne]");
+			e.printStackTrace();
+		}
+		return dto;
 	}
 	
 	//03. 게시글 작성
 	@Override
 	public int insert(boardDto dto) {
-		//int res = 0;
+		int res = 0;
 		
-		//try {
-		//	res = sqlSession.insert(NAMESPACE+"insert", dto);
-		//} catch (Exception e) {
-		//	System.out.println("[error : insert]");
-		//	e.printStackTrace();
-		//}
-		return 0;
+		try {
+			res = sqlSession.insert(NAMESPACE+"insert", dto);
+		} catch (Exception e) {
+			System.out.println("[error : insert]");
+			e.printStackTrace();
+		}
+		return res;
 	}
 	
 	//04. 게시글 수정

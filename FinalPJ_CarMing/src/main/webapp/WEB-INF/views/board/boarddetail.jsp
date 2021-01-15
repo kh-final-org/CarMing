@@ -3,6 +3,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
         
 <!DOCTYPE html>
 <html>
@@ -269,7 +270,7 @@
 				</div>	
 				<div class="board-location">
 					<div>서울특별시 카밍캠핑장</div>
-					<div>${dto.brddate }</div>
+					<div><fmt:formatDate pattern="yyyy.MM.dd" value="${dto.brddate }"/></div>
 				</div>
 			</div>
 			

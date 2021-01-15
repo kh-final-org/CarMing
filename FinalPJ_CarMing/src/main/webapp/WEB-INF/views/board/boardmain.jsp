@@ -84,11 +84,12 @@
 		color: #5f5f5f;	/*색상코드: 진회색*/
 		background-color: #ffe6be;
 	} 
-	 
+	
+	
+	/*
 	.navi li a:hover{
 		background-color: #fff5e9;
-	}
-	
+	} */ 
 	
 </style>
 	
@@ -105,10 +106,24 @@
 		<div class="card-head-first">
 			<h2 style="color: #5f5f5f;  font-family:'Malgun Gothic';">CAMPING TALK</h2>
 		</div>
+		
 		<div class="card-head-second">
-			<button type="button" class="btn btn-light" onclick="location.href='boardwriteform.do'" id="button-boardwrite">+ 게시글 쓰기</button>
+			<button type="button" class="btn btn-light" onclick="location.href='boardinsertform.do'" id="button-boardwrite">+ 게시글 쓰기</button>
 		</div>
-		<div class="card-head-third">
+		
+		<div class="card-head-third" style="width: 140px;">
+			<div class="dropdown-selectbox">
+		  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+					<option value="generalCamping" selected>일반 캠핑</option>
+				    <option value="caravan">카라반</option>
+				    <option value="glamping">글램핑</option>
+				    <option value="carCamping">차박</option>
+				    <option value="myOwnCamping">나만의 캠핑</option>
+			  	</select>
+			</div>
+			<!-- 
+			
+			
 			<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdown-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;&nbsp;카테고리&emsp;</button>
 			<div class="dropdown-menu">
 				<ul class="navi">
@@ -119,6 +134,7 @@
 					<li><a class="dropdown-item" href="#">나만의 캠핑</a></li>
 				</ul>
 			</div>
+			 -->
 		</div>
 	</div>
 	<br><br><br><br>
@@ -138,7 +154,7 @@
 			</div>	
 			<!-- 사용자가 업로드한 이미지 -->
 			<div class="board-uploadimg">
-				<a href="boarddetailform.do"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
+				<a href="boarddetailform.do?brdno=${dto.brdno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
 				<div class="board-count">조회수 ${dto.brdcount}</div>
 			</div>
 		</div>
