@@ -3,8 +3,6 @@ package com.finalPJ.carming.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -73,7 +71,13 @@ public class boardDaoImpl implements boardDao{
 
 	//06. 게시글 조회수
 	@Override
-	public void viewCount(int brdno, HttpSession session) {
+	public void viewCount(int brdno) {
+		try {
+			sqlSession.update(NAMESPACE+"viewCount", brdno);
+		} catch (Exception e) {
+			System.out.println("[error : viewCount]");
+			e.printStackTrace();
+		}
 	}
 
 	

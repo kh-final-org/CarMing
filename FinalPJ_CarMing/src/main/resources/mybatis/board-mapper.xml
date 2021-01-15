@@ -16,7 +16,7 @@
 		<result property="brdprivate" column="BRDPRIVATE"/>
 	</resultMap>
 	
-	<!-- 캠핑토크 게시판 리스트 -->
+	<!-- 01. 게시글 전체 목록 -->
 	<select id="selectList" resultMap="boardMap">
 		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
 		FROM BOARD
@@ -34,19 +34,24 @@
 		-->
 	</select>
 	
+	<!-- 02. 게시글 상세보기 -->
 	<select id="selectOne" parameterType="int" resultType="boardDto">
 		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
 		FROM BOARD
 		WHERE BRDNO = #{brdno}
 	</select>
 	
+	<!-- 03. 게시글 작성 -->
 	<insert id="insert" parameterType="boardDto">
   		INSERT INTO BOARD
   		VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno}, #{brdcontent}) 
   	</insert>	
 	
-	<update id="update" parameterType="boardDto">
-	
+	<!-- 06. 게시글 조회수 -->
+	<update id="viewCount" parameterType="int">
+		UPDATE BOARD 
+		SET BRDCOUNT = BRDCOUNT + 1
+		WHERE BRDNO = #{brdno}
 	</update>
 	
 	<delete id="delete" parameterType="int">

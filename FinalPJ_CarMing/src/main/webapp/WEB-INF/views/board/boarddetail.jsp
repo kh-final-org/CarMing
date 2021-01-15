@@ -74,7 +74,7 @@
 	 }
 	 
 	 .card-body-3{
-	 	margin: 10px 0px 10px 50px;
+	 	margin: 10px 0px 30px 50px;
 	 	position: relative;
 	 }
 	 	
