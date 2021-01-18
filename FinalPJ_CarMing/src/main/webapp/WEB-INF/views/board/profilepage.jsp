@@ -61,7 +61,7 @@
 		<!-- 1행 -->
 		<div class="card-boardlist">
 			<div class="boardlistup" id="board-first">
-				<a href="boarddetailform.do"><img class="boardlist-img" src="./resources/img/boardUpload/mycamp18.JPG"></a>
+				<a href="boarddetailform.do"><img class="boardlist-img" src="./resources/img/boardUpload/${dto.brdfile }"></a>
 			</div>
 			<div class="boardlistup" id="board-second">
 				<img class="boardlist-img" src="./resources/img/boardUpload/carcamp11.jpg">

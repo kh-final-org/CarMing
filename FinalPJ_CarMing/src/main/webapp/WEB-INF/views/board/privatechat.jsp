@@ -30,7 +30,7 @@
 	.chat-talk{width: 700px; height: 392px; background-color: orange;}
 	.opponent-profile{width: 50px;height: 50px; margin: 10px 3px 10px 20px; }
 	.btn btn-outline-secondary{background-color: gray;}
-	#button-addon2{background-color: silver; border: none; border-radius: 0px 0px 10px 0px;}
+	#button-addon2{background-color: #fff5e9; border: 1px solid silver; border-radius: 0px 0px 10px 0px;}
 </style>	
 	
 </head>

@@ -44,7 +44,7 @@
 	.board-delete{float: right; margin-left: 8px;}
 	
 	.card-body-5{margin: 10px 0px;}
-	#button-addon2{background-color: silver; border: none;}	
+	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
 	.sendimg{width: 20px; height: 20px; opacity: 50%;}
 	.board-profile-comment{float: left;	margin-left: 50px;}
 	.board-input-comment{float: right; width: 390px; margin: 5px 0px;}
