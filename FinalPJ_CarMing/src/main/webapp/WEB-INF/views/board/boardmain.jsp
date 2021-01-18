@@ -10,88 +10,32 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <style type="text/css">
-	.card-container{
-		margin: 0px 200px;
-		padding-bottom: 50px;
-	}
+	.card-container{margin: 0px 200px; padding-bottom: 50px;}
 	
-	.card-head-first{
-		float: left;
-	}
-		
-	.card-head-second{
-		float: left;
-		margin-left: 610px;
-	}
-		
-	.card-head-third{
-		float: right;
-		margin-right: 10px;
-	}
+	.card-head-first{float: left;}
+	.card-head-second{float: left; margin-left: 610px;}
+	.card-head-third{float: right; margin-right: 10px;}
+	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
 	
-	.card-body{
-		float: left;
-		width: 33.3%;
-		margin-bottom: 20px;
-	}
+	.uploadimg{width: 360px; height: 360px; border-radius: 10px; transform: scale(1.00); transition: transform .3s;}
+	.uploadimg:hover{transform: scale(1.03); transition: transform .3s;}
+	.board-uploadimg{overflow: hidden; border-radius: 10px;}
 	
-	.user-profile{
-	 	width: 50px;
-	 	height: 50px;
-	}	
+	.user-profile{width: 50px; height: 50px;}	
+	.board-profile{margin: 0px 0px 8px 8px;}	
+	.board-count{width: 360px; font-size: 0.8em; text-align: right; margin: 3px 0px 0px 0px;}
 	
-	.uploadimg{
-	 	width: 360px;
-	 	height: 360px;
-	 	border-radius: 10px;
-	 	transform: scale(1.00);		/*마우스가 이미지를 벗어나도 자연스럽게 크기가 줄어들기 위함*/
-	 	transition: transform .3s;	
-	}
-	 
-	.uploadimg:hover{				/*마우스 호버시*/
-		transform: scale(1.03);		/*이미지 확대*/
-		transition: transform .3s;	/*시간 설정*/
-	}
+	#main-dropdown-menu {width: 120px;} 
+	#dropdown-category{width: 140px; text-align: left; border-color: silver;}
+	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;} 
 	
-	.board-uploadimg{	
-		overflow: hidden;			/*부모태그를 벗어나지 않고 내부에서만 확대*/
-		border-radius: 10px;
-	}
-			
-	.board-profile{
-	 	margin: 0px 0px 8px 8px;
-	}	
-	
-	.board-count{
-		width: 360px;
-	 	font-size: 0.8em; 
-	 	text-align: right;
-	 	margin: 3px 0px 0px 0px;
-	}
-	
-	#main-dropdown-menu {
-		width: 120px;
-	} 
-	
-	#dropdown-category{
-	 	width: 140px; 
-	 	text-align: left;
-	 	border-color: silver;
-	}
-	
-	#button-boardwrite{
-		width: 140px; 
-		color: #5f5f5f;	/*색상코드: 진회색*/
-		background-color: #ffe6be;
-	} 
-	
-	
-	/*
-	.navi li a:hover{
-		background-color: #fff5e9;
-	} */ 
-	
+	/**********************************************
+	.navi li a:hover{background-color: #fff5e9;} 
+	***********************************************
+	진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
+	
+
 	
 </head>
 <body>
@@ -108,7 +52,7 @@
 		</div>
 		
 		<div class="card-head-second">
-			<button type="button" class="btn btn-light" onclick="location.href='boardinsertform.do'" id="button-boardwrite">+ 게시글 쓰기</button>
+			<button type="button" class="btn btn-light" onclick="location.href='boardinsertform.do'" id="button-boardinsert">+ 게시글 쓰기</button>
 		</div>
 		
 		<div class="card-head-third" style="width: 140px;">
@@ -121,17 +65,16 @@
 				    <option value="myOwnCamping">나만의 캠핑</option>
 			  	</select>
 			</div>
+			
 			<!-- 
-			
-			
 			<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdown-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;&nbsp;카테고리&emsp;</button>
 			<div class="dropdown-menu">
 				<ul class="navi">
-					<li><a class="dropdown-item" href="#">일반 캠핑</a></li>
-					<li><a class="dropdown-item" href="#">카라반</a></li>
-					<li><a class="dropdown-item" href="#">글램핑</a></li>
-					<li><a class="dropdown-item" href="#">차박</a></li>
-					<li><a class="dropdown-item" href="#">나만의 캠핑</a></li>
+					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">일반 캠핑</a></li>
+					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">카라반</a></li>
+					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">글램핑</a></li>
+					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">차박</a></li>
+					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">나만의 캠핑</a></li>
 				</ul>
 			</div>
 			 -->

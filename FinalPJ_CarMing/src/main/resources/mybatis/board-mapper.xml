@@ -6,7 +6,6 @@
 <mapper namespace="board">
 	<resultMap type="boardDto" id="boardMap">
 		<result property="brdno" column="BRDNO"/>
-		<result property="bcategoryno" column="BCATEGORYNO"/>
 		<result property="brdwriter" column="BRDWRITER"/>
 		<result property="brdfile" column="BRDFILE"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
@@ -18,7 +17,7 @@
 	
 	<!-- 01. 게시글 전체 목록 -->
 	<select id="selectList" resultMap="boardMap">
-		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
+		SELECT BRDNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
 		FROM BOARD
 		ORDER BY BRDDATE DESC
 	

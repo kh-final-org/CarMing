@@ -11,200 +11,51 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <style type="text/css">
-	.card-container{
-		margin: 50px 200px;
-		padding: 0px;
-	}
+	.card-container{margin: 50px 200px; padding: 0px;}
+	.card-wrap{width: 100%; height: 800px;}	/* 하단의 여백이 생기지 않아 추가 함 */
 	
-	.card-wrap{			/*하단 여백이 안생겨서 추가함(추후 수정)*/
-		width: 100%;
-		height: 800px;
-	}	
+	.card-first{float: left; margin: 100px 50px 100px 50px;}
+	.card-second{float: left; width: 500px; margin-bottom: 50px;}
+	.card-third{float: right; margin: 100px 80px;}
+	
+	.next-left{width: 40px; height: 40px; margin: 160px 0px 0px 150px; padding: 0px;}
+	.next-right{width: 40px; height: 40px; margin: 160px 100px 0px 0px; padding: 0px;}	
+	
+	.user-profile{width: 50px; height: 50px;}
+	.board-profile{float: left; margin: 5px 50px;}
+	.board-location{float: right; text-align: right; margin: 10px 0px 5px 0px;}
+	.uploadimg{width: 450px; height: 450px; margin: 0px 50px;}
+	
+	.card-body-3{margin: 10px 0px 30px 50px; position: relative;}
+	.board-content{float: left; position: absolute; left: 0; width: 70%;}
+	.board-count{float: left; text-align: right; position: absolute; left: 320px; width: 20%;}
+	.board-report{float: right; text-align: right; position: absolute; right: 0; width: 10%;}
+	.board-report-target1, .board-report-target2{color: #5f5f5f;}
+	#report{border: none; background-color: white;}	 	
 		
-	.card-first{
-		float: left;
-		margin: 100px 50px 100px 50px;
-	}
-	
-	.card-second{
-		float: left;
-		width: 500px;
-		margin-bottom: 50px;
-	}
-	
-	.card-third{
-		float: right;
-		margin: 100px 80px;
-	}
-		
-	.next-left{
-		width: 40px;
-		height: 40px;
-		margin: 160px 0px 0px 150px;
-		padding: 0px;
-	}
-	
-	.next-right{
-		width: 40px;
-		height: 40px;
-		margin: 160px 100px 0px 0px;
-		padding: 0px;
-	}	
-		
-	.user-profile{
-	 	width: 50px;
-	 	height: 50px;
-	 }
-		
-	.board-profile{
-		float: left;
-		margin: 5px 50px;
-	}
-	
-	.board-location{
-		float: right;
-		text-align: right;
-		margin: 10px 0px 5px 0px;
-	}
-	
-	.uploadimg{
-	 	width: 450px;
-	 	height: 450px;
-	 	margin: 0px 50px;
-	 }
-	 
-	 .card-body-3{
-	 	margin: 10px 0px 30px 50px;
-	 	position: relative;
-	 }
-	 	
-	 .board-content{
-	 	float: left;
-	 	position: absolute;
-	 	left: 0;
-	 	width: 70%;
-	 }
-	 	
-	 .board-count{
-	 	float: left;
-	 	text-align: right;
-	 	position: absolute;
-	 	left: 320px;
-		width: 20%;	 
-	 }
-		 	
-	 .board-report{
-	 	float: right;
-	 	text-align: right;
-	 	position: absolute;
-	 	right: 0;
-		width: 10%;	
-	 }
-	 	
-	 .board-report-target1, .board-report-target2{
-	 	color: #5f5f5f;
-	 }	
-	 	
-	 #report{
-		border: none;
-	 	background-color: white;
-	 }	 	
-		 	
-	.share-kakaotalk{
-	 	width: 25px;
-	 	height: 25px;
-	 }
-	
-	.board-comment-header-1{
-		float: left;
-		margin-left: 50px;
-	}	
-	
-	.board-comment-header-2{
-		float: right;
-	}
-		
-	.board-comment-head{
-		float: left;
-		font-size:1.2em;
-	}
-	
-	.board-comment-count{
-		float: right;
-		margin-left: 15px;
-		font-size: 1.2em; 
-	}
-		
-	.board-share{
-		float: left;
-		margin-right: 10px;
-		cursor: pointer;
-	}
-	
-	.board-modify{
-		float: left;
-		margin-left: 0px 10px;
-	}
+	.board-comment-header-1{float: left; margin-left: 50px;}	
+	.board-comment-head{float: left; font-size:1.2em;}
+	.board-comment-count{float: right; margin-left: 15px; font-size: 1.2em;}
 
-	.board-delete{
-		float: right;
-		margin-left: 8px;
-	}
-
-	.sendimg{
-		width: 20px;
-	 	height: 20px;
-	 	opacity: 50%;
-	 }
-	 	
-	 #button-addon2{
-	 	background-color: silver;
-		border: none;
-	}	
-	 	
-	 .board-profile-comment{
-	 	float: left;
-	 	margin-left: 50px;
-	 }
-	 	
-	.board-input-comment{
-		float: right;
-		width: 390px;
-		margin: 5px 0px;	
-	}
+	.board-comment-header-2{float: right;}
+	.board-share{float: left; margin-right: 10px; cursor: pointer;}
+	.share-kakaotalk{width: 25px; height: 25px;}
+	.board-modify{float: left; margin-left: 0px 10px;}
+	.board-delete{float: right; margin-left: 8px;}
 	
-	.card-body-5{
-		margin: 10px 0px;
-	}
-		
-	.commentuser-first{
-		float: left;
-		margin-left: 50px;
-	}
-		
-	.commentuser-second{
-		float: right;
-		margin: 10px 0px;
-	}
-		
-	.comment-time{
-		float: left;
-		text-align: right;
-	}
-		
-	.comment-report{
-		float: right;
-	}
-		
-	.board-profile-commentuser{
-		float: left;
-	}
-		
-	.commentuser-comment{
-		float: right;
-		margin: 10px 20px;
-	}
-		
+	.card-body-5{margin: 10px 0px;}
+	#button-addon2{background-color: silver; border: none;}	
+	.sendimg{width: 20px; height: 20px; opacity: 50%;}
+	.board-profile-comment{float: left;	margin-left: 50px;}
+	.board-input-comment{float: right; width: 390px; margin: 5px 0px;}
+
+	.commentuser-first{float: left; margin-left: 50px;}
+	.board-profile-commentuser{float: left;}
+	.commentuser-comment{float: right; margin: 10px 20px;}
+	
+	.commentuser-second{float: right; margin: 10px 0px;}
+	.comment-time{float: left; text-align: right;}
+	.comment-report{float: right;}
 </style>
 
 <!-- kakao share -->

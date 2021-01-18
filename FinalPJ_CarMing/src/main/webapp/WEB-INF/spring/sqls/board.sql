@@ -32,6 +32,7 @@ SELECT * FROM MEMBER;
 
 
 
+
 ----------------------------------------------------------------------------------------------------------------------------
 --캠핑 토크(BOARD)
 DROP TABLE BOARD CASCADE CONSTRAINTS;
@@ -61,6 +62,7 @@ INSERT INTO BOARD
 VALUES(BRDNOSEQ.NEXTVAL, 4, (SELECT MEMNICK FROM MEMBER WHERE MEMNO=2),'mycamp18.JPG','게시글 내용4',0,0,SYSDATE,'Y');
 
 SELECT * FROM BOARD ORDER BY BRDDATE,BRDNO DESC;
+
 
 
 
@@ -156,6 +158,25 @@ SELECT * FROM BCOMMENT WHERE BRDNO = 2;
 
 SELECT * FROM BCOMMENT;
 
+
+
+
+
+--DM
+DROP TABLE DM CASCADE CONSTRAINTS;
+DROP SEQUENCE DMNOSEQ;
+
+CREATE SEQUENCE DMNOSEQ;
+CREATE TABLE DM(
+    DMNO NUMBER PRIMARY KEY,            --고유 번호
+    FROMID VARCHAR2(100) NOT NULL,     	--보내는 사람
+    TOID VARCHAR2(100) NOT NULL,     	--받는 사람
+    DMCONTENT VARCHAR2(1000) NOT NULL,  --DM 내용
+    DMTIME DATE NOT NULL,               --DM 보낸 시간
+	DMREAD NUMBER NULL					--0: 읽음 / 1: 읽지 않음
+);
+
+SELECT * FROM DM;
 
 
 

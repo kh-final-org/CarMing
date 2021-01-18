@@ -10,100 +10,26 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <style type="text/css">
-	.card-container{
-		margin: 50px 200px;
-		padding: 0px;
-	}
-		
-	.card-profile{
-		float: left;
-		width: 300px;
-		height: 400px;
-		margin-top: 40px;
-		border-radius: 10px;
-		box-shadow: 10px 10px 30px silver;
-	}	
-		
-	.profilepage-profile{
-		margin: 70px 63px 25px 63px;
-	}	
-		
-	.user-profile{
-		width: 170px;
-		height: 170px;
-	}
-		
-	.user-id{
-		font-size:1.6em;
-		margin: 15px 38px 10px 38px;
-		width: 100px;
-		text-align: center;
-	}
+	.card-container{margin: 50px 200px; padding: 0px;}
 	
-	.profilepage-message{
-		margin: 10px 0px 10px 95px;
-	}
+	.card-profile{float: left; width: 300px; height: 400px; margin-top: 40px; border-radius: 10px; box-shadow: 10px 10px 30px silver;}	
+	.profilepage-profile{margin: 70px 63px 25px 63px;}	
+	.user-profile{width: 170px; height: 170px;}
+	.user-id{font-size:1.6em; margin: 15px 38px 10px 38px; width: 100px; text-align: center;}
+	.profilepage-message{margin: 10px 0px 10px 95px;}
+	.user-message{width: 30px; height: 30px;opacity: 35%;}
+	.user-message-text{font-size:1.2em; color: silver;}
 	
-	.user-message{
-		width: 30px;
-		height: 30px;
-		opacity: 35%;
-	}
+	.card-board{float: right; width: 730px; height: 600px; margin-bottom: 100px;}
+	.boardlist{margin-bottom: 10px;}
+	.card-boardtext{font-size:1.8em; margin-bottom: 17px;color: #5f5f5f;}
+	.boardlist-img{width: 235px; height: 235px; border-radius: 5px; transform: scale(1.00);	transition: transform .2s;}
+	.boardlist-img:hover{transform: scale(1.02);	transition: transform .2s;}
+	.boardlistup{overflow: hidden; border-radius: 5px; margin-bottom: 10px;}
 	
-	.user-message-text{
-		font-size:1.2em;
-		color: silver;
-	}
-	
-	.card-board{
-		float: right;
-		width: 730px;
-		height: 600px; 	/*하단 여백이 안생겨서 추가함(추후 수정)*/
-		margin-bottom: 100px;
-	}
-	
-	.boardlist{
-		margin-bottom: 10px;	
-	}
-	
-	.card-boardtext{
-		font-size:1.8em;
-		margin-bottom: 17px;
-		color: #5f5f5f;
-	}
-	
-	.boardlist-img{
-		width: 235px;
-		height: 235px;
-		border-radius: 5px;
-		transform: scale(1.00);		/*마우스가 이미지를 벗어나도 자연스럽게 크기가 줄어들기 위함*/
-		transition: transform .2s;
-	}
-	
-	.boardlist-img:hover{			/*마우스 호버시*/
-		transform: scale(1.02);		/*이미지 확대*/
-		transition: transform .2s;	/*시간 설정*/
-	}
-	
-	.boardlistup{	
-		overflow: hidden;			/*부모태그를 벗어나지 않고 내부에서만 확대*/
-		border-radius: 5px;		
-		margin-bottom: 10px;
-	}
-	
-	#board-first{
-		float: left;
-	}
-	
-	#board-second{
-		float: left;
-		margin-left: 1.8%;
-	}
-		
-	#board-third{
-		float: right;
-	}
-	
+	#board-first{float: left;}
+	#board-second{float: left; margin-left: 1.8%;}
+	#board-third{float: right;}
 </style>	
 
 </head>

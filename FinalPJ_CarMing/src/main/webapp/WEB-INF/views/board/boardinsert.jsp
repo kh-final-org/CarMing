@@ -10,173 +10,38 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <style type="text/css">
-	.card-container{
-		margin: 50px 200px;
-	}
-		
-	.card-body{
-		padding: 0px;
-	}
-		
-	.card-body-left{
-	 	float: left;
-	 	width: 530px;
-	 	height: 400px;
-	 	margin: 0px 0px 0px -20px;
-	 	text-align: center;
-	 	background-color: #fff5e9;
-	 	border-radius: 20px;
-	}
-	 	
-	.card-context{
-		margin: 100px;
-		font-size: 1.2em;
-	}	 		
+	.card-container{margin: 50px 200px;}
+	.card-body{padding: 0px;}
 	
-	.card-body-right{
-	 	float: right;
-	 	width: 530px;
-	 	height: 450px;
-	}
-	 
-	.camera-logo{
-	 	margin-top: 5px;
-	 	width: 120px;
-	 	height: 120px;
-	 	opacity: 25%;
-	}
+	.card-body-left{float: left; width: 530px; height: 400px; margin: 0px 0px 0px -20px; text-align: center; background-color: #fff5e9; border-radius: 20px;}
+	.card-context{margin: 100px; font-size: 1.2em;}	 		
+	.camera-logo{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
+	.logo-bottom-context{color: gray;} 	
 	
-	.logo-bottom-context{
-		color: gray;
-	}
-	 	
-	.card-body-bottom{
-	 	clear: both;
-	 	margin: 50px 400px;
-	 	padding: 0px;
-	}
-	 	
-	.body-content{
-	 	margin-top: 53px; 
-	 	font-size: 1.2em;
-	}
+	.card-body-right{float: right; width: 530px; height: 450px;}
+	#button-dropdown{width: 500px; text-align: left;}	
+	.body-content{margin-top: 53px; font-size: 1.2em;}
+	.location-logo{width: 25px;height: 25px;}
+	.body-location{margin: 10px 0px;}
+	.body-location-left{float: left; width: 77%;}
+	.body-location-right{float: right; width: 23%;}
+	.location-logo-text-1{display: inline-block; vertical-align: middle;}
+	.location-logo-text-2{display: inline-block; vertical-align: middle;}
+	#geolocation-link-btn{cursor: pointer; color: gray;}
+	.body-checklist{margin: 10px 0px;}	
 	
-	.location-logo-text-1{
-		display: inline-block;
-		vertical-align: middle;
-	}
-	
-	.location-logo-text-2{
-		display: inline-block;
-		vertical-align: middle;
-	}
-	 	
-	.location-logo{
-	 	width: 25px;
-	 	height: 25px;
-	}
-	 	
-	.body-location{
-	 	margin: 10px 0px;
-	}
-	 	
-	.body-location-left{
-	 	float: left;
-	 	width: 77%;
-	}
-	 	
-	.body-location-right{
-	 	float: right;
-	 	width: 23%;
-	}
-	 	
-	.body-checklist{
-	 	margin: 10px 0px;
-	}	
-	 	
-	#button-write{
-	 	width: 350px; 
-	 	height: 50px; 
-	 	background-color: silver; 
-		border-radius: 10px; 
-		font-size:1.2em;  
-		margin: -20px 0px 50px 0px;
-	}
-	 	
-	#button-dropdown{
-		width: 500px; 
-		text-align: left;
-	}	
-	
-	.check input{
-		display: none;
-	}
-	
-	.check span{
-		cursor: pointer;
-		display: inline-block;
-		vertical-align: middle;
-		margin-left: 3px;
-	} 	
+	.card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}	
+	#button-write{width: 350px; height: 50px; background-color: silver; border-radius: 10px; font-size:1.2em; margin: -20px 0px 50px 0px;}
 
-	.check .icon{
-		display: inline-block;
-		width: 20px;
-		height: 20px;
-		background-color: transparent;
-		border: 2px solid silver;
-		border-radius: 3px;
-		position: relative;
-		cursor: pointer;
-	}
-
-	.check .icon::before, .check .icon::after {
-		content: '';
-		display: inline-block;
-		width: 1.7px;
-		height: 0px;
-		background-color: #fff;
-		position: absolute;
-		transform-origin: left top;
-		border-radius: 2px;
-	}
-	
-	.check .icon::before {
-		top: 7px;
-		left: 1.5px;
-		transform: rotate(-45deg);
-	}
-	
-	.check .icon::after {
-		top: 12.5px;
-		left: 7px;
-		transform: rotate(-135deg);
-	}
-	 
-	.check input:checked ~ .icon{
-		background-color: orange;
-		border-color: orange;
-	}
-	
-	.check input:checked ~ .icon::before{
-		height: 7px;
-		transition: all 0.12s ease;
-	}
-	
-	.check input:checked ~ .icon::after{
-		height: 11px;
-		transition: all 0.12s ease 0.12s;
-	}
-	
-	#geolocation-link-btn{
-		cursor: pointer;
-		color: gray;
-	}
-	
-	/*.navi li a:hover{
-		background-color: #fff5e9;
-	}*/
-	
+	.check input{display: none;}
+	.check span{cursor: pointer; isplay: inline-block; vertical-align: middle; margin-left: 3px;} 	
+	.check .icon{display: inline-block; width: 20px; height: 20px; background-color: transparent; border: 2px solid silver; border-radius: 3px; position: relative; cursor: pointer;}
+	.check .icon::before, .check .icon::after {content: ''; display: inline-block; width: 1.7px; height: 0px; background-color: #fff; position: absolute; transform-origin: left top; border-radius: 2px;}
+	.check .icon::before {top: 7px; left: 1.5px; transform: rotate(-45deg);}
+	.check .icon::after {top: 12.5px; left: 7px; transform: rotate(-135deg);}
+	.check input:checked ~ .icon{background-color: orange; border-color: orange;}
+	.check input:checked ~ .icon::before{height: 7px; transition: all 0.12s ease;}
+	.check input:checked ~ .icon::after{height: 11px; transition: all 0.12s ease 0.12s;}
 </style>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -210,11 +75,8 @@ try {
 			}
 		}
 		document.querySelector('#geolocation-link-btn').addEventListener('click', geoLinkDefault);	
-			
 	}; 
-
 </script>	
-	
 	
 	
 </head>
