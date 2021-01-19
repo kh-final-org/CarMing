@@ -21,7 +21,8 @@
 	
 	.card-body-right{float: right; width: 530px; height: 450px;}
 	#button-dropdown{width: 500px; text-align: left;}	
-	.body-content{margin-top: 53px; font-size: 1.2em;}
+	.body-content{margin-top: 55px; font-size: 1.2em;}
+	textarea {padding: 10px 12px;}
 	.location-logo{width: 25px;height: 25px;}
 	.body-location{margin: 10px 0px;}
 	.body-location-left{float: left; width: 77%;}
@@ -62,28 +63,9 @@
 	.searchimg{width: 20px; height: 20px; opacity: 50%;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
 	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
-	
-	
 </style>
-<script>
-$(document).ready(function(){
 
-	$(".popup-open").on('click',function(){
-		$(".popup").show();
-		$(".dim").show();
-	});
-	
-	$(".popup-open .close").on('click',function(){
-		$(this).parent().hide();
-		$(".dim").hide();
-	});
-	
-	
-});
-</script>
 
-</body>
-</html>
 </head>
 <body>
 <!-- Start Header Area -->
@@ -144,78 +126,74 @@ $(document).ready(function(){
 				 -->
 				
 				<div class="body-content">
-				   	<textarea rows="11" cols="54" placeholder="  게시글 내용을 입력해주세요." style="resize: none;"></textarea>
+				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해주세요." style="resize: none;"></textarea>
 				</div>
 				
 				<div class="body-location">
 					<!-- start of body-location-left -->
 					<div class="body-location-left">
-						<div class="body-location-element">
-							<span class="location-logo-text-1">
-								<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장
-							</span>
-						</div>
+						<span class="location-logo-text-1">
+							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장
+						</span>
 					</div>
 					<!-- end of body-location-left -->
 					
 					<!-- start of body-location-right -->
 					<div class="body-location-right">
-						<div class="body-location-element">
-							<div class="location-logo-text-2">
-								<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-								<a href="#location-popup" id="locaion-upload">위치 등록</a>
-								<!-- 위치등록 버튼 클릭 시  레이어팝업 -->
-								<div class="popup" id="location-popup">
-									<!-- 지도/레이어팝업 -->
-									<div class="popup-title"><strong>위치 찾기</strong></div>
-									<div id="map"></div>
-									<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2"></script>
-									<script>
-										var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-									   		mapOption = { 
-									        	center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-									        	level: 3 // 지도의 확대 레벨
-									    	};
-									
-										// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-										var map = new kakao.maps.Map(mapContainer, mapOption); 
-									</script> 
-														
-									<div class="location-search">
-										<div class="input-group mb-3" >
-											<input type="search" class="form-control" placeholder="주소를  검색해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
-											<div class="input-group-append">
-										    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="searchimg" src="./resources/img/search.png"></button>
-										  	</div>
-										</div>	
+						<div class="location-logo-text-2">
+							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
+							<a href="#location-popup" class="location-open">위치 등록</a>
+							<!-- 위치등록 버튼 클릭 시  레이어팝업 -->
+							<div class="popup" id="location-popup">
+								<!-- 지도/레이어팝업 -->
+								<div class="popup-title"><strong>위치 찾기</strong></div>
+								<div id="map"></div>
+								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2"></script>
+								<script>
+									var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+								   		mapOption = { 
+								        	center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+								        	level: 3 // 지도의 확대 레벨
+								    	};
+								
+									// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+									var map = new kakao.maps.Map(mapContainer, mapOption); 
+								</script> 
+													
+								<div class="location-search">
+									<div class="input-group mb-3" >
+										<input type="search" class="form-control" placeholder="주소를  검색해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+										<div class="input-group-append">
+									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="searchimg" src="./resources/img/search.png"></button>
+									  	</div>
+									</div>	
+								</div>
+								
+								<div class="location-input-value">
+									<div class="latitude">
+										<span>위도 &#58; </span>
+										<span>1234567890</span>&deg;
 									</div>
-									
-									<div class="location-input-value">
-										<div class="latitude">
-											<span>위도 &#58; </span>
-											<span>1234567890</span>&deg;
-										</div>
-										<div class="longitude">
-											<span>경도 &#58; </span>
-											<span>1234567890</span>&deg;
-										</div>
-									</div>
-									
-									<div class="location-finish">
-										<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
-									</div>
-									<div class="location-cancel">
-										<a href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>							
+									<div class="longitude">
+										<span>경도 &#58; </span>
+										<span>1234567890</span>&deg;
 									</div>
 								</div>
 								
-								<!-- 레이어 팝업 배경 -->
-								<div class="popup-dim"></div>
-							
-							
-							
-							
+								<div class="location-finish">
+									<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
+								</div>
+								<div class="location-cancel">
+									<a href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>							
+								</div>
 							</div>
+							
+							<!-- 레이어 팝업 배경 -->
+							<div class="popup-dim"></div>
+						
+						
+						
+						
 						</div>
 					</div>
 					<!-- end of body-location-right -->
