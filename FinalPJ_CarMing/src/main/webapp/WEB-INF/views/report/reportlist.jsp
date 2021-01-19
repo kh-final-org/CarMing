@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,62 +82,29 @@
 			<div class="col-md-12">
 				<div class="card">
 
-					<div class="gaadiex-list">
+					<div class="gaadiex-list"  style="padding-bottom: 3%; margin-bottom: 3%">
+					<c:forEach var = "list" items="${list }">
 						<div class="gaadiex-list-item">
 							<img class="gaadiex-list-item-img"
 								src="resources/img/tipandrecipe/honey.jpg"
-								alt="List user">
+								alt="List user"><%-- ${list.reportFileName } --%>
 							<div class="gaadiex-list-item-text">
 								<h3 style="color: orange">
-									<a href="#">이예슬</a>
+									<a href="#">제보자 닉네임:${list.reportWriter}</a>
 								</h3>
 								
-								<h4><a href="#">brunch this weekend?</a></h4>
-								<p>캠렌트</p>
-								<p>2020/12/29</p>
+								<h4><a href="reportdetail.do?reportNo=${list.reportNo }" id="content">
 								
-							</div>
-						</div>
-						<div class="gaadiex-list-item">
-							<img class="gaadiex-list-item-img"
-								src="resources/img/tipandrecipe/honey.jpg"
-								alt="List user">
-							<div class="gaadiex-list-item-text">
-								<h3>
-									<a href="#">이예슬</a>
-								</h3>
+								<c:set var="TextValue" value="${list.reportContent }"/> 
+								내용: ${fn:substring(TextValue,0,10)}</a></h4>
 								
-								<h4>Brunch this weekend?</h4>
-								<p>캠렌트</p>
-								<p>2020/12/29</p>
-							</div>
-						</div>
-						<div class="gaadiex-list-item">
-							<img class="gaadiex-list-item-img"
-								src="resources/img/tipandrecipe/honey.jpg"
-								alt="List user">
-							<div class="gaadiex-list-item-text">
-								<h3>
-									<a href="#">이예슬</a>
-								</h3>
 								
-								<h4>Brunch this weekend?</h4>
-								<p>캠렌트</p>
-								<p>2020/12/29</p>
+								<p>카테고리: ${list.categoryName }</p>
+								<p>작성날짜:<fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${list.reportDate}" /></p>	
 							</div>
 						</div>
-						<div class="gaadiex-list-item">
-							<img class="gaadiex-list-item-img"
-								src="http://www.free-icons-download.net/images/commercial-male-user-icon-32765.png"
-								alt="List user">
-							<div class="gaadiex-list-item-text">
-								<h3>
-									<a href="#">Guy Carpenter</a>
-								</h3>
-								<h4>Brunch this weekend?</h4>
-								<p>I'll be in your neighborhood doing errands</p>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

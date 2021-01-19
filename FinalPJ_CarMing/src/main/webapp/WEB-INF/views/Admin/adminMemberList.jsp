@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,6 +118,7 @@ $(document).ready(function(){
 				<thead>
 					<tr>
 						<th>NO.</th>
+						<th></th>
 						<th>이름</th>
 						<th>닉네임</th>
 						<th>생년월일</th>
@@ -127,81 +129,29 @@ $(document).ready(function(){
 					</tr>
 				</thead>
 				<tbody>
+					<c:forEach var="list" items="${list }">
 					<tr>
-						<td>1</td>
-						<td><a href="#"><img
+						<td>${list.memNo}</td>
+						<td><a href="memdetail.do?memNo=${list.memNo }"><img
 								src="resources/img/tipandrecipe/honey.jpg" class="avatar"
-								alt="Avatar"> Michael Holz</a></td>
-						<td>camlove</td>
-						<td>04/10/2013</td>
-						<td>Admin@gmail.com</td>
-						<td>010-1234-1234</td>
-						<td>남</td>
-						<!--    <td><span class="status text-success">&bull;</span> Active</td> -->
-						<td><a href="#" class="delete" title="Delete"
+								alt="Avatar"></a></td>
+						<td><a href="memdetail.do?memNo=${list.memNo }">${list.memName}</a></td>
+						<td>${list.memNick}</td>
+						<td>${list.memBirth}</td>
+						<td>${list.memAddr}</td>
+						<td>${list.memPhone}</td>
+						<td><c:set var="gen" value="${list.memGender }" />
+
+								<c:choose>
+									<c:when test="${gen == 1 }">여</c:when>
+									<c:when test="${gen == 2 }">남</c:when>
+								</c:choose> <!--    <td><span class="status text-success">&bull;</span> Active</td> -->
+						</td>
+						<td><a href="deletemem.do?memNo=${list.memNo}" class="delete" title="Delete"
 							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
 						</td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td><a href="#"><img
-								src="resources/img/tipandrecipe/honey.jpg" class="avatar"
-								alt="Avatar"> Michael Holz</a></td>
-						<td>camlove</td>
-						<td>04/10/2013</td>
-						<td>Admin@gmail.com</td>
-						<td>010-1234-1234</td>
-						<td>남</td>
-						<!--    <td><span class="status text-success">&bull;</span> Active</td> -->
-						<td><a href="#" class="delete" title="Delete"
-							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td><a href="#"><img
-								src="resources/img/tipandrecipe/honey.jpg" class="avatar"
-								alt="Avatar"> Michael Holz</a></td>
-						<td>camlove</td>
-						<td>04/10/2013</td>
-						<td>Admin@gmail.com</td>
-						<td>010-1234-1234</td>
-						<td>남</td>
-						<!--    <td><span class="status text-success">&bull;</span> Active</td> -->
-						<td><a href="#" class="delete" title="Delete"
-							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td><a href="#"><img
-								src="resources/img/tipandrecipe/honey.jpg" class="avatar"
-								alt="Avatar"> Michael Holz</a></td>
-						<td>camlove</td>
-						<td>04/10/2013</td>
-						<td>Admin@gmail.com</td>
-						<td>010-1234-1234</td>
-						<td>남</td>
-						<!--    <td><span class="status text-success">&bull;</span> Active</td> -->
-						<td><a href="#" class="delete" title="Delete"
-							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td><a href="#"><img
-								src="resources/img/tipandrecipe/honey.jpg" class="avatar"
-								alt="Avatar"> Michael Holz</a></td>
-						<td>camlove</td>
-						<td>04/10/2013</td>
-						<td>Admin@gmail.com</td>
-						<td>010-1234-1234</td>
-						<td>남</td>
-						<!--    <td><span class="status text-success">&bull;</span> Active</td> -->
-						<td><a href="#" class="delete" title="Delete"
-							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-						</td>
-					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			<div class="clearfix">

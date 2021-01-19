@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,7 +106,7 @@
 							<label class="control-label col-sm-2" for="writerNickname"> 제보자
 								닉네임:</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="writerNickname">이예슬</p>		
+								<p class="form-control" id="writerNickname">${list.reportWriter }</p>		
 							</div>
 						</div>
 						
@@ -113,14 +114,14 @@
 							<label class="control-label col-sm-2" for="receiverNickname"> 신고대상
 								닉네임:</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="receiverNickname">이예슬</p>	
+								<p class="form-control" id="receiverNickname">${list.targetWriter }</p>	
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="category"> 카테고리:
 							</label><div class="col-sm-10">
-								<p class="form-control" id="nickname">허위 물품</p>
+								<p class="form-control" id="nickname">${list.categoryName }</p>
 							</div>
 						</div>
 						<br>
@@ -128,7 +129,7 @@
 							<label class="control-label col-sm-2" for="content" style="">신고
 								내용:</label>
 							<div class="col-sm-10">
-								<textarea rows="15" cols="100" class="form-control"></textarea>
+								<textarea rows="15" cols="100" class="form-control"  readonly="readonly">${list.reportContent }</textarea>
 
 							</div>
 						</div>
@@ -138,7 +139,7 @@
 							<div class="col-sm-10">
 								<img id="img" class=" form-control" style="height: 440px"
 									;
-									src="resources/img/tipandrecipe/honey.jpg">
+									src="resources/img/report/${list.reportFileName }">
 							</div>
 						</div>
 					</div>
@@ -146,8 +147,8 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="comment">작성일:</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control" readonly="readonly"
-								id="date">
+							<p class="form-control" id="category"><fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${list.reportDate}" /></p>	
 						</div>
 					</div>
 				</div>

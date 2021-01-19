@@ -2,30 +2,62 @@ package com.finalPJ.carming.model.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class InquiryDto {
 	private int inquiryNo;
 	private String memNick;
 	private int memNo;
-	private String inquiryFile;
+	private MultipartFile inquiryFile;
+	private String path;
+	private String filename;
 	private String inquiryContent;
 	private Date inquiryDate;
 	private int categoryNo;
+	private String categoryName;
 	
 	public InquiryDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
 	
-	public InquiryDto(int inquiryNo, String memNick, int memNo, String inquiryFile, String inquiryContent,
-			Date inquiryDate, int categoryNo) {
+
+
+	public InquiryDto(int inquiryNo, String memNick, int memNo, MultipartFile inquiryFile, String path, String filename,
+			String inquiryContent, Date inquiryDate, int categoryNo, String categoryName) {
 		super();
 		this.inquiryNo = inquiryNo;
 		this.memNick = memNick;
 		this.memNo = memNo;
 		this.inquiryFile = inquiryFile;
+		this.path = path;
+		this.filename = filename;
 		this.inquiryContent = inquiryContent;
 		this.inquiryDate = inquiryDate;
 		this.categoryNo = categoryNo;
+		this.categoryName = categoryName;
+	}
+
+
+
+
+
+	public InquiryDto( String filename, String inquiryContent, int categoryNo) {
+		super();
+		this.filename = filename;
+		this.inquiryContent = inquiryContent;
+		this.categoryNo = categoryNo;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	public int getInquiryNo() {
@@ -52,11 +84,11 @@ public class InquiryDto {
 		this.memNo = memNo;
 	}
 
-	public String getInquiryFile() {
+	public MultipartFile getInquiryFile() {
 		return inquiryFile;
 	}
 
-	public void setInquiryFile(String inquiryFile) {
+	public void setInquiryFile(MultipartFile inquiryFile) {
 		this.inquiryFile = inquiryFile;
 	}
 
@@ -84,13 +116,41 @@ public class InquiryDto {
 		this.categoryNo = categoryNo;
 	}
 
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "InquiryDto [inquiryNo=" + inquiryNo + ", memNick=" + memNick + ", memNo=" + memNo + ", inquiryFile="
-				+ inquiryFile + ", inquiryContent=" + inquiryContent + ", inquiryDate=" + inquiryDate + ", categoryNo="
-				+ categoryNo + "]";
+				+ inquiryFile + ", path=" + path + ", filename=" + filename + ", inquiryContent=" + inquiryContent
+				+ ", inquiryDate=" + inquiryDate + ", categoryNo=" + categoryNo + ", categoryName=" + categoryName
+				+ "]";
 	}
+
+
+
 	
+	
+
+
 	
 	
 	

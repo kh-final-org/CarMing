@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,7 +127,7 @@
 
 	<!------ Include the above in your HEAD tag ---------->
 	
-	<form action="writeinquiry.do" method="POST">
+	<form:form  method="POST" enctype="multipart/form-data"  modelAttribute="InquiryDto" action="writeinquiry.do" >
 	<div class="container contact">
 		<div class="row">
 				<div class="col-md-3">
@@ -140,13 +143,13 @@
 							<label class="control-label col-sm-2" for="nickname"> 사용자
 								닉네임:</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="nickname"
-									value="이예슬" readonly="readonly" name="nickname">
+								<input type="text" class="form-control" id="memNick"
+									value="이예슬" readonly="readonly" name="memNick">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="category"> 카테고리:
-							</label> <br> <select class="col-sm-10" id="category">
+							<label class="control-label col-sm-2" for="categoryNo"> 카테고리:
+							</label> <br> <select class="col-sm-10" id="categoryNo" name="categoryNo">
 								<option selected>Open this select menu</option>
 								<option value="1">One</option>
 								<option value="2">Two</option>
@@ -155,33 +158,37 @@
 						</div>
 						<br>
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="content" style="">문의
+							<label class="control-label col-sm-2" for="inquiryContent" style="">문의
 								내용:</label>
 							<div class="col-sm-10">
-								<textarea rows="15" cols="100" class="form-control"></textarea>
+								<textarea rows="15" cols="100" id = "inquiryContent" class="form-control" name="inquiryContent"></textarea>
 
 							</div>
 						</div>
-						<div class="form-group">
+					<div class="form-group">
 							<label class="control-label col-sm-2" for="input_img">첨부
 								이미지:</label>
 							<div class="col-sm-10">
 
-								<input type="file" id="input_img" name="input_img"
-									accept="image/*" value="파일"> <img id="img"
+								<input type="file" id="input_img" name="inquiryFile"
+									value="파일"> <form:errors path="inquiryFile"/><img id="img"
 									class=" form-control" style="height: 440px";>
 							</div>
-						</div>
+						</div> 
 					</div>
 
+
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="comment">작성일:</label>
-						<div class="col-sm-10">
-							<input type="date" class="form-control" readonly="readonly"
-								id="date">
+							<label class="control-label col-sm-2" for="date"> 
+								작성일:</label>
+							<div class="col-sm-10">
+							<c:set var = "now" value = "<%= new java.util.Date()%>" />
+								<input type="text" class="form-control" id="date"
+									value=<fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${now}" /> readonly="readonly" >
+							</div>
 						</div>
-					</div>
-					
+						
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="genric-btn primary e-large px-10"
 							style="font-weight: bold; margin-left: 40%; margin-top: 3%">보내기</button>
@@ -189,7 +196,8 @@
 				</div>
 			</div>
 		</div>
-	</form>
+
+	</form:form>
 	<div style="padding-bottom: 20%"></div>
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>

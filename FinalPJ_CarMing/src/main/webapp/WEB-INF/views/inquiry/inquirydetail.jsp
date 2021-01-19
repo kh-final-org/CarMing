@@ -106,14 +106,14 @@
 							<label class="control-label col-sm-2" for="nickname"> 사용자
 								닉네임:</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="nickname">이예슬</p>
+								<p class="form-control" id="nickname">${list.memNick }</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="category">
-								카테고리: </label>
+								카테고리</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="nickname">캠프</p>
+								<p class="form-control" id="category">${list.categoryName }</p>
 							</div>
 						</div>
 						<br>
@@ -121,7 +121,7 @@
 							<label class="control-label col-sm-2" for="content" style="">문의
 								내용:</label>
 							<div class="col-sm-10">
-								<pre class="form-control" style="height: 600px;">fdfdsfsddsfsd dsfldskfjsdlf fsdklfjdslf
+								<pre class="form-control" style="height: 600px;">${list.inquiryContent }
 								</pre>
 							</div>
 						</div>
@@ -131,16 +131,15 @@
 							<div class="col-sm-10">
 								<img id="img" class=" form-control" style="height: 440px"
 									;
-									src="resources/img/tipandrecipe/honey.jpg">
+									src="resources/img/inquiry/${list.filename }">
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="comment">작성일:</label>
+						<label class="control-label col-sm-2" for="category">작성일</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control" readonly="readonly"
-								id="date">
+							<p class="form-control" id="category">${list.inquiryDate}</p>
 						</div>
 					</div>
 

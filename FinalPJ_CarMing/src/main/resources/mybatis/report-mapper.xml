@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+<mapper namespace="report">
+<resultMap type="ReportDto" id="reportMap">
+		<result property="reportNo" column="REPORTNO"/>
+ 		<result property="reportWriter" column="REPORTWRITER"/>
+ 		<result property="memNo" column="MEMNO"/>
+ 		<result property="reportFileName" column="REPORTFILENAME"/>
+ 		<result property="reportContent" column="REPORTCONTENT"/>
+ 		<result property="reportDate" column="REPORTDATE"/>
+ 		<result property="categoryNo" column="CATEGORYNO"/>
+ 		<result property="categoryName" column="CATEGORYNAME"/>
+ 		<result property="targetNo" column="TARGETNO"/>
+ 		<result property="targetWriter" column="BOARDWRITER"/>
+ 		<result property="targetTypeNo" column="TARGETTYPE"/>
+ 		<result property="targetTypeName" column="TARGETNAME"/>
+</resultMap>
+
+
+	<select id="select" resultType= "reportDto">
+	SELECT
+	REPORTLIST.*,     
+	REPORTCATEGORY.CATEGORYNAME
+	FROM REPORTLIST
+	JOIN MEMBER
+	ON REPORTLIST.MEMNO = MEMBER.MEMNO
+	JOIN REPORTCATEGORY
+	ON REPORTLIST.CATEGORYNO = REPORTCATEGORY.CATEGORYNO
+	</select> 
+	
+	<select id="selectOne" parameterType="int" resultMap= "reportMap">
+	SELECT
+	REPORTLIST.*,
+	REPORTCATEGORY.CATEGORYNAME,
+	TARGETCATEGORY.TARGETNAME,
+	BOARD.BOARDWRITER
+	FROM REPORTLIST
+	JOIN MEMBER
+	ON REPORTLIST.MEMNO = MEMBER.MEMNO
+	JOIN REPORTCATEGORY
+	ON REPORTLIST.CATEGORYNO = REPORTCATEGORY.CATEGORYNO
+	JOIN TARGETCATEGORY
+	ON REPORTLIST.TARGETTYPE = TARGETCATEGORY.TARGETNO
+	JOIN BOARD
+	ON REPORTLIST.TARGETNO = BOARD.BOARDNO
+	WHERE REPORTNO = #{reportNo}
+	
+	</select>
+	
+	<insert id="insert" parameterType="ReportDto" >
+		INSERT INTO REPORTLIST
+		VALUES(SEQREPORT.NEXTVAL,(SELECT MEMNICK FROM MEMBER WHERE MEMNO=7),(SELECT MEMNO FROM MEMBER WHERE MEMNO=7), #{reportFileName},#{reportContent},DEFAULT,#{categoryNo},#{targetNo},#{targetTypeNo})
+	</insert>
+	 
+	
+	<insert id="insertList" parameterType="java.util.List">
+		
+	INSERT ALL 
+	<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
+		  INTO RECIPE VALUES
+		  (
+			#{item.recipeFile}
+			, #{item.recipeTitle}
+			, #{item.recipeWriter}
+			, #{item.recipeWriterURL}
+			, DEFAULT
+			, #{item.recipeURL}
+			)
+			
+	</foreach>
+	</insert>
+ 
+ 
+ 
+ </mapper>

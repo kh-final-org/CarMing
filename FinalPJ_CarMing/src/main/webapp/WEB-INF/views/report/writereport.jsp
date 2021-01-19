@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,7 +127,7 @@
 
 	<!------ Include the above in your HEAD tag ---------->
 	
-	<form action="writeinquiry.do" method="POST">
+	<form:form  action="writereport.do?targetNo=1&targetTypeNo=1" method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
 	<div class="container contact">
 		<div class="row">
 				<div class="col-md-3">
@@ -141,13 +144,13 @@
 								닉네임:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="writerNickname"
-									value="이예슬" readonly="readonly" name="writerNickname">
+									value="이예슬" readonly="readonly" name="reportWriter">
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="category"> 카테고리:
-							</label> <br> <select class="col-sm-10" id="category">
+							</label> <br> <select class="col-sm-10" id="category" name="categoryNo">
 								<option selected>Open this select menu</option>
 								<option value="1">One</option>
 								<option value="2">Two</option>
@@ -159,7 +162,7 @@
 							<label class="control-label col-sm-2" for="content" style="">신고
 								내용:</label>
 							<div class="col-sm-10">
-								<textarea rows="15" cols="100" class="form-control"></textarea>
+								<textarea rows="15" cols="100" class="form-control" name="reportContent"></textarea>
 
 							</div>
 						</div>
@@ -168,7 +171,7 @@
 								이미지:</label>
 							<div class="col-sm-10">
 
-								<input type="file" id="input_img" name="input_img"
+								<input type="file" id="input_img" name="reportFile"
 									accept="image/*" value="파일"> <img id="img"
 									class=" form-control" style="height: 440px";>
 							</div>
@@ -176,13 +179,15 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="comment">작성일:</label>
+						<label class="control-label col-sm-2" for="date"> 작성일:</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control" readonly="readonly"
-								id="date">
+							<c:set var="now" value="<%=new java.util.Date()%>" />
+							<input type="date" class="form-control" id="date"
+								value=<fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${now}" />
+								readonly="readonly" >
 						</div>
 					</div>
-					
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="genric-btn primary e-large px-10"
 							style="font-weight: bold; margin-left: 40%; margin-top: 3%">보내기</button>
@@ -190,7 +195,7 @@
 				</div>
 			</div>
 		</div>
-	</form>
+	</form:form>
 	<div style="padding-bottom: 20%"></div>
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>

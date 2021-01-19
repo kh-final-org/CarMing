@@ -1,12 +1,16 @@
 package com.finalPJ.carming.model.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import com.finalPJ.carming.model.dto.RecipeDto;
+import com.finalPJ.carming.model.dto.InquiryDto;
 
 public interface InquiryDao {
 	
-	String NAMESPACE = "recipe.";
+	String NAMESPACE = "inquiry.";
 	
-	public int insertURL(ArrayList<RecipeDto> list);
+	public List<InquiryDto> list();
+	public InquiryDto selectOne(int inquiryNo);
+	public int insert(InquiryDto dto);
+	
+
 }

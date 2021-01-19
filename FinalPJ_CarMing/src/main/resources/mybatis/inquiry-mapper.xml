@@ -6,14 +6,50 @@
  
  
 <mapper namespace="inquiry">
-<resultMap type="inquiryDto" id="inquiryMap">
-	
+<resultMap type="InquiryDto" id="inquiryMap">
+		<result property="inquiryNo" column="INQUIRYNO"/>
+ 		<result property="memNick" column="MEMNICK"/>
+ 		<result property="memNo" column="MEMNO"/>
+ 		<result property="filename" column="INQUIRYFILE"/>
+ 		<result property="inquiryContent" column="INQUIRYCONTENT"/>
+ 		<result property="inquiryDate" column="INQUIRYDATE"/>
+ 		<result property="categoryNo" column="CATEGORYNO"/>
+ 		<result property="categoryName" column="CATEGORYNAME"/>
 </resultMap>
-	<select id="select" resultMap = "inquiryMap">
-		SELECT MEMBER.MEMNICK, INQUIRYLIST.*
-FROM INQUIRYLIST
-INNER JOIN MEMBER ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
+
+
+	<select id="select" resultMap= "inquiryMap">
+	SELECT
+	MEMBER.MEMNICK,
+	INQUIRYLIST.*,     
+	INQUIRYCATEGORY.CATEGORYNAME
+	FROM INQUIRYLIST
+	JOIN MEMBER
+	ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
+	JOIN INQUIRYCATEGORY
+	ON INQUIRYLIST.CATEGORYNO = INQUIRYCATEGORY.CATEGORYNO
 	</select> 
+	
+	<select id="selectOne" parameterType="int" resultMap= "inquiryMap">
+	SELECT
+	MEMBER.MEMNICK,
+	INQUIRYLIST.*,     
+	INQUIRYCATEGORY.CATEGORYNAME
+	FROM INQUIRYLIST
+	
+	JOIN MEMBER
+	ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
+	JOIN INQUIRYCATEGORY
+	ON INQUIRYLIST.CATEGORYNO = INQUIRYCATEGORY.CATEGORYNO
+	WHERE INQUIRYNO = #{inquiryNo}
+	</select>
+	
+	<insert id="insert" parameterType="InquiryDto" >
+		INSERT INTO INQUIRYLIST
+		VALUES(SEQINQUIRY.NEXTVAL,(SELECT MEMNO FROM MEMBER WHERE MEMNO=7), #{filename},#{inquiryContent}, SYSDATE,#{categoryNo})
+	</insert>
+	 
+	
 	<insert id="insertList" parameterType="java.util.List">
 		
 	INSERT ALL 

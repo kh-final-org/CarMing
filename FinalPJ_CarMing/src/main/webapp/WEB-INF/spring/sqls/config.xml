@@ -2,3 +2,26 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+  
+  <configuration>
+
+	<typeAliases>
+		<typeAlias type="com.finalPJ.carming.model.dto.MemberDto" alias="memberDto" />
+		<typeAlias type="com.finalPJ.carming.model.dto.RecipeDto" alias="recipeDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.TipDto" alias="tipDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.InquiryDto" alias="inquiryDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.ReportDto" alias="reportDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.AdmMemberDto" alias="admMemDto"/>	
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="/mybatis/member-mapper.xml" />
+		<mapper resource="/mybatis/recipe-mapper.xml" />
+		<mapper resource="/mybatis/tip-mapper.xml" />
+		<mapper resource="/mybatis/inquiry-mapper.xml" />
+		<mapper resource="/mybatis/report-mapper.xml" />
+		<mapper resource="/mybatis/admin-mapper.xml" />
+	</mappers>
+
+</configuration>

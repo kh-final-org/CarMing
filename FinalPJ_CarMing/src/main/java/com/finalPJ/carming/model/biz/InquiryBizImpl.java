@@ -1,24 +1,45 @@
 package com.finalPJ.carming.model.biz;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.finalPJ.carming.model.dao.RecipeDao;
-import com.finalPJ.carming.model.dto.RecipeDto;
+import com.finalPJ.carming.model.dao.InquiryDao;
+import com.finalPJ.carming.model.dto.InquiryDto;
+
 
 
 
 
 @Service
-public class InquiryBizImpl implements RecipeBiz{
+public class InquiryBizImpl implements InquiryBiz{
+	
 	@Autowired
-	private RecipeDao dao;
+	private InquiryDao dao;
+	
 	
 	@Override
-	public int insert(ArrayList<RecipeDto> list) {
-		return dao.insertURL(list);
+	public List<InquiryDto> list() {
+		return dao.list();
+	}
+
+	@Override
+	public int insertList(ArrayList<InquiryDto> list) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public InquiryDto selectOne(int inquiryNo) {
+		// TODO Auto-generated method stub
+		return dao.selectOne(inquiryNo);
+	}
+
+	@Override
+	public int insert(InquiryDto dto) {
+		return dao.insert(dto);
 	}
 
 }
