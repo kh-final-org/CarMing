@@ -29,16 +29,15 @@
 	<link rel="stylesheet" href="resources/css/nouislider.min.css">
 	<link rel="stylesheet" href="resources/css/bootstrap.css">
 	<link rel="stylesheet" href="resources/css/main.css">
-	
 </head>
 <body>
 <!-- Start Header Area -->
 	<header class="header_area sticky-header">
 		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box" style="height: 100px;">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="#"><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
+					<a class="navbar-brand logo_h" href=""><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -51,8 +50,15 @@
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">핑구추천</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑렌트</a></li>
-							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">우리서로 캠Live</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑토크</a></li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false" style="font-size: 15px;" >우리 서로 캠LIVE</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="category.html" style="font-size: 15px;">캠핑 LIVE</a></li>
+									<li class="nav-item"><a class="nav-link" href="category.html" style="font-size: 15px;">캠핑 MEET</a></li>
+								</ul>
+							</li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠플레이스</a></li>
 							
 							<!-- 드롭다운 메뉴 -->
@@ -89,23 +95,7 @@
 		</div>
 	</header>
 	<!-- End Header Area -->
-	
-	<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb" style="height: 310px;">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" style="padding: 105px 0px;">
-				<div class="col-first">
-					<h1>The stars in the night sky</h1>
-					<nav class="d-flex align-items-center">
-						<a href="#">CarMing MainHome<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">Camping Talk</a>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Banner Area -->
-	
+
 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
