@@ -48,14 +48,14 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">핑구추천</a></li>
+							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false" style="font-size : 15px;">캠핑렌트</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="productlist.do">카테고리</a></li>
-									<li class="nav-item"><a class="nav-link" href="productdetail.do">상품 보기</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.do">장바구니</a></li>
+									<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">카테고리</a></li>
+									<li class="nav-item"><a class="nav-link" href="productdetail.do" style="font-size: 15px;">상품 보기</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart.do" style="font-size: 15px;">장바구니</a></li>
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
