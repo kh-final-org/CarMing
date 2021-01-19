@@ -5,11 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
+<link rel="stylesheet" href="resources/scss/theme/_product.scss">
 <script type="text/javascript"></script>
 	
 </head>
 <body>
-	<%@ include file="../common/header_cart.jsp" %>
+	<%@ include file="../common/header.jsp" %>
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>장바구니</h1>
+					<nav class="d-flex align-items-center">
+						<a href="home.do">홈<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.do">캠핑 렌트<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">장바구니</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
 	<!--================Cart Area =================-->
     <section class="cart_area">
         <div class="container">
@@ -112,7 +129,7 @@
                                 <td>                         	
                             		<div class="checkout_btn_inner d-flex align-items-center">
                                         <a class="gray_btn" href="#">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                        <a class="primary-btn" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                        <a class="primary-btn" href="pay.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                     </div>      
                                 </td>
 
@@ -124,25 +141,6 @@
         </div>
     </section>
     <!--================End Cart Area =================-->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -3,20 +3,49 @@
 <%@
 	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
  %>
+ 
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>CarMing</title>
 </head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
+
+	/* <!-- 제품 등록 알림창 코드-->
+	var insertResult = '${msg}';
+	
+	if(insertResult == '성공'){
+		alert("제품이 등록되었습니다!");
+	} else{
+		alert("제품이 등록되지 않았습니다. 다시 등록해주세요.");
+	} */
 </script>
 <body>
-	<%@include file="../common/header_category.jsp" %>
+	<%@include file="../common/header.jsp" %>
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>캠핑 렌트</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">홈<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">마이페이지<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">카테고리</a><br><br>
+					</nav>
+					<a href="insertform.do" style="a:hover{color:white; text-decoration: none;}">제품 등록</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-3 col-lg-4 col-md-5">
-				<div class="sidebar-categories">
+				<div class="sidebar-categories"> 	
 					<div class="head">렌트 카테고리</div>
 					<ul class="main-categories">
 						<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
@@ -72,6 +101,10 @@
 							<option value="1">Show 12</option>
 						</select>
 					</div>
+					<div class="sorting mr-auto" style="float: right;">
+							<input type="checkbox" name="allCheck" id="allCheck"/><label for="allCheck">모두 선택</label>
+							<input type="button" class="selectDelete_btn" value="선택 삭제">
+					</div>
 				</div>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
@@ -79,20 +112,24 @@
 					<div class="row">
 						<!-- single product -->
 						<c:choose>
-        					<c:when test="${empty list}">
+        					<c:when test="${empty productlist}">
         						<h1 style="text-align:center;">상품이 존재하지 않습니다.</h1>
         					</c:when>
         					<c:otherwise>
-        						<c:forEach var="dto" items="${list}">
+        						<c:forEach var="productDto" items="${productlist}">
 		      						<div class="col-lg-4 col-md-6">
 										<div class="single-product">
-										<img class="img-fluid" src="img/product/p1.jpg" alt="">
+										<input type="checkbox" name="chBox" class="chBox" data-pNo="${productDto.pNo }">
+										<div class="delete_btn" style="float: right;">
+											<button type="button" class="delete_btn" data-pNo="${productDto.pNo }">삭제</button>
+										</div>
+										<img class="img-fluid" src="storage/${productDto.pFile}" alt="">
 											<div class="product-details">
-											<h6>addidas New Hammer so for Sports person</h6>
+											<h6>${productDto.pName }</h6>
 												<div class="price">
-													<h6>$150.00</h6>
-													<h6 class="l-through">$210.00</h6>
+													<h6><fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/></h6>
 												</div>
+												<h6 style="font-size: 20px;">수량: ${productDto.pAmount }</h6>
 										<div class="prd-bottom">
 											<a href="" class="social-info">
 												<span class="ti-bag"></span>
@@ -106,7 +143,7 @@
 												<span class="lnr lnr-sync"></span>
 												<p class="hover-text">공유하기</p>
 											</a>
-											<a href="" class="social-info">
+											<a href="productdetail.do?pNo=${productDto.pNo }" class="social-info">
 												<span class="lnr lnr-move"></span>
 												<p class="hover-text">상세보기</p>
 											</a>
@@ -123,13 +160,15 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+					<c:if test="${pageMaker.prev}">
+						<a href='<c:url value="/campingrent/category?page=${pageMaker.startPage-1 }"/>' class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+					</c:if>
+					<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
+						<a href='<c:url value="/campingrent/category?page=${pageNum }"/>'><i class="fa">${pageNum }</i></a>
+					</c:forEach>
+					<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+						<a href='<c:url value="/campingrent/category?page=${pageMaker.endPage+1 }"/>' class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+					</c:if>
 					</div>
 				</div>
 				<!-- End Filter Bar -->

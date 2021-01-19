@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@
+	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
+ %>
+ 
+ <%@
+ 	taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"
+  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,245 +60,269 @@ function mark(star){
 </script>
 </head>
 <body>
-	<%@ include file="../common/header_productdetail.jsp" %>
-	<!--================Single Product Area =================-->
-
-	<div class="product_image_area">
+	<%@ include file="../common/header.jsp" %>
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
 		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="s_Product_carousel">
-						<div class="single-prd-item">
-							<img class="img-fluid" src="resources/img/tent.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="resources/img/tent.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="resources/img/tent.jpg" alt="">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<h3>올리브 타프 사이드윌 그늘막 텐트타프스크린 타프쉘</h3>
-						<h2>149.99원</h2>
-						<ul class="list">
-							<li><a class="active" href="#"><span>카테고리</span> : 텐트 / 타프</a></li>
-							<li><a href="#"><span>재고</span> : In Stock</a></li>
-						</ul>
-						<p>이것은 텐트/타프이고 좋습니다.</p>
-						<div class="product_count">
-							<label for="qty">수량:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-						</div>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">장바구니에 담기</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--================End Single Product Area =================-->
-
-	<!--================Product Description Area =================-->
-	<section class="product_description_area">
-		<div class="container">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item">
-					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">상품 설명</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-					 aria-selected="false">상품 리뷰</a>
-				</li>
-			</ul>
-			<div class="tab-content" id="myTabContent" style="text-align:center;">
-				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<img class="product_description" src="resources/img/tent(buffalo).jpg">
-				</div>
-				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="comment_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item reply">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="row total_rate">
-								<div class="col-6">
-									<div class="box_total">
-										<h5>평균 평점</h5>
-										<h4>4.0</h4>
-										<h6>리뷰 갯수 : (03 개)</h6>
-									</div>
-								</div>
-								<div class="col-6">
-									<div class="rating_list">
-										<h3>별점 갯수</h3>
-										<ul class="list">
-											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="review_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-6">
-							<div class="review_box">
-								<h4>리뷰 남기기</h4>
-								<span>Your Rating:</span>
-								<div id="rating">
-									<span>
-										<img style="width:15px; height:15px;" id="image1" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)" src="resources/img/nonstar.png">
-										<img style="width:15px; height:15px;" id="image2" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)" src="resources/img/nonstar.png">
-										<img style="width:15px; height:15px;" id="image3" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)" src="resources/img/nonstar.png">
-										<img style="width:15px; height:15px;" id="image4" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)" src="resources/img/nonstar.png">
-										<img style="width:15px; height:15px;" id="image5" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)" src="resources/img/nonstar.png">
-										<input type="hidden" id="starvalue" name="star">
-									</span>
-								</div>
-								<br>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="name" name="name" placeholder="아이디 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = '아이디 입력'">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<textarea class="form-control" name="message" id="message" rows="1" placeholder="리뷰를 남겨주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '리뷰를 남겨주세요.'"></textarea>
-										</div>
-									</div>
-									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="primary-btn">리뷰 남기기</button>
-									</div>
-							</div>
-						</div>
-					</div>
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>캠핑 렌트</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">홈<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">캠핑 렌트<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">상품 보기</a>
+					</nav>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!-- End Banner Area -->
+	
+	<!--================Single Product Area =================-->
+	<form method="post">
+		<div class="product_image_area">
+			<div class="container">
+				<div class="row s_product_inner">
+					<div class="col-lg-6">
+						<div class="s_Product_carousel">
+							<div class="single-prd-item">
+								<img class="img-fluid" src="storage/${productDto.pFile }" alt="">
+							</div>
+							<div class="single-prd-item">
+								<img class="img-fluid" src="storage/${productDto.pFile }" alt="">
+							</div>
+							<div class="single-prd-item">
+								<img class="img-fluid" src="storage/${productDto.pFile }" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-1">
+						<div class="s_product_text">
+							<h3>${productdto.pName }</h3>
+							<h2><fmt:formatNumber value="${productdto.pPrice }" pattern="###,###,###"/></h2>
+							<ul class="list">
+								<c:choose>
+									<c:when test="${productdto.pCategoryNo == 1}"><li><a class="active"><span>카테고리</span> : 텐트 / 타프</a></li></c:when>
+									<c:when test="${productdto.pCategoryNo == 2}"><li><a class="active"><span>카테고리</span> : 매트 / 침낭</a></li></c:when>
+									<c:when test="${productdto.pCategoryNo == 3}"><li><a class="active"><span>카테고리</span> : 코펠 / 버너 / 취사</a></li></c:when>
+									<c:when test="${productdto.pCategoryNo == 4}"><li><a class="active"><span>카테고리</span> : 텐트 / 체어 / 테이블</a></li></c:when>
+									<c:when test="${productdto.pCategoryNo == 5}"><li><a class="active"><span>카테고리</span> : 화로대 / BBQ</a></li></c:when>
+								</c:choose>
+								<li><a href="#"><span>재고</span> : ${productdto.pAmount }</a></li>
+							</ul>
+							<div class="product_count">
+								<label for="qty">수량:</label>
+								<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+								<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+								 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+								<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+								 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+							</div>
+							<div class="card_area d-flex align-items-center">
+								<a class="primary-btn" href="cart.do?pNo=${productdto.pNo}">장바구니에 담기</a>
+								<a class="primary-btn" href="productlist.do">목록</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+		<!--================End Single Product Area =================-->
+	
+		<!--================Product Description Area =================-->
+		<form>
+		<section class="product_description_area">
+			<div class="container">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">상품 설명</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+						 aria-selected="false">상품 리뷰</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent" style="text-align:center;">
+					<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+						<img class="product_description" src="resources/img/tent(buffalo).jpg">
+					</div>
+					<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="comment_list">
+									<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-1.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<h5>12th Feb, 2018 at 05:56 pm</h5>
+												<a class="reply_btn" href="#">Reply</a>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+									<div class="review_item reply">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-2.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<h5>12th Feb, 2018 at 05:56 pm</h5>
+												<a class="reply_btn" href="#">Reply</a>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+									<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-3.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<h5>12th Feb, 2018 at 05:56 pm</h5>
+												<a class="reply_btn" href="#">Reply</a>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="row total_rate">
+									<div class="col-6">
+										<div class="box_total">
+											<h5>평균 평점</h5>
+											<h4>4.0</h4>
+											<h6>리뷰 갯수 : (03 개)</h6>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="rating_list">
+											<h3>별점 갯수</h3>
+											<ul class="list">
+												<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+												<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+												<li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+												<li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+												<li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="review_list">
+									<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-1.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+									<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-2.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+									<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-3.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-lg-6">
+								<div class="review_box">
+									<h4>리뷰 남기기</h4>
+									<span>Your Rating:</span>
+									<div id="rating">
+										<span>
+											<img style="width:15px; height:15px;" id="image1" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" id="image2" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" id="image3" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" id="image4" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" id="image5" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)" src="resources/img/nonstar.png">
+											<input type="hidden" id="starvalue" name="star">
+										</span>
+									</div>
+									<br>
+										<div class="col-md-12">
+											<div class="form-group">
+												<input type="text" class="form-control" id="name" name="name" placeholder="아이디 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = '아이디 입력'">
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<textarea class="form-control" name="message" id="message" rows="1" placeholder="리뷰를 남겨주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '리뷰를 남겨주세요.'"></textarea>
+											</div>
+										</div>
+										<div class="col-md-12 text-right">
+											<button type="submit" value="submit" class="primary-btn">리뷰 남기기</button>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		</form>
 	<!--================End Product Description Area =================-->
 
 	<%@ include file="../common/footer.jsp" %>

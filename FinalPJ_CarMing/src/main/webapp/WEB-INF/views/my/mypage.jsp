@@ -39,7 +39,22 @@
 </style>
 </head>
 <body>
-	<%@ include file="../common/header_mypage.jsp" %>
+	<%@ include file="../common/header.jsp" %>
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>마이페이지</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">홈<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">마이페이지</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
 	<!-- start 프로필 정보 영역 -->
 		<div class="container">
 		<div class="row">
