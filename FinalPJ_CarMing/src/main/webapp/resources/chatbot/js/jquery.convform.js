@@ -1,12 +1,16 @@
+//
 function SingleConvState(input){
     this.input = input;
     this.answer = '';
     this.next = false;
     return this;
 };
+//
 SingleConvState.prototype.hasNext = function(){
     return this.next;
 };
+
+//
 function ConvState(wrapper, SingleConvState, form, params, originalFormHtml) {
     this.form = form;
     this.wrapper = wrapper;
@@ -18,6 +22,7 @@ function ConvState(wrapper, SingleConvState, form, params, originalFormHtml) {
         $(this.wrapper).find('#messages').stop().animate({scrollTop: $(this.wrapper).find('#messages')[0].scrollHeight}, 600);
     }.bind(this);
 };
+//
 ConvState.prototype.destroy = function(){
     if(this.originalFormHtml) {
         $(this.wrapper).html(this.originalFormHtml);
@@ -304,7 +309,9 @@ ConvState.prototype.answerWith = function(answerText, answerObject) {
                 input['required'] = true;
             if($(this).attr('type'))
                 input['type'] = $(this).attr('type');
+
             input['questions'] = $(this).attr('data-conv-question').split("|");
+
             if($(this).attr('data-pattern'))
                 input['pattern'] = $(this).attr('data-pattern');
             if($(this).attr('data-callback'))

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="survey">
+	<resultMap type="surveyDto" id="surveyMap">
+		<result property="memno" column="MEMNO"/>
+		<result property="survey1" column="SURVEY1"/>
+		<result property="survey2" column="SURVEY2"/>
+		<result property="survey3" column="SURVEY3"/>
+		<result property="survey4" column="SURVEY4"/>
+		<result property="survey5" column="SURVEY5"/>
+	</resultMap>
+
+	<select id="selectList" resultMap="surveyMap">
+		SELECT MEMNO, SURVEY1, SURVEY2, SURVEY3, SURVEY4, SURVEY5
+		FROM SURVEY
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="surveyDto">
+		SELECT MEMNO, SURVEY1, SURVEY2, SURVEY3, SURVEY4, SURVEY5
+		FROM SURVEY
+		WHERE MEMNO=#{memno}
+	</select>
+	
+	
+	<!-- gender who people campingCategory place -->	
+	<insert id="insert" parameterType="surveyDto">
+   		INSERT INTO SURVEY
+   		VALUES(#{memno}, #{survey1}, #{survey2}, #{survey3}, #{survey4}, #{survey5})
+    </insert>
+   
+    
+	
+</mapper>
