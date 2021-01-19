@@ -9,12 +9,16 @@
 		<typeAlias type="com.finalPJ.carming.model.dto.MemberDto" alias="memberDto" />
 		<typeAlias type="com.finalPJ.carming.model.dto.RecipeDto" alias="recipeDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.TipDto" alias="tipDto"/>	
+		<typeAlias type="com.finalPJ.carming.model.dto.TipDto" alias="tipDto"/>
+		<typeAlias type="com.finalPJ.carming.model.dto.ProductDto" alias="productDto"/>
+		<typeAlias type="com.finalPJ.carming.model.dto.Pagination" alias="pagination"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mybatis/member-mapper.xml" />
 		<mapper resource="/mybatis/recipe-mapper.xml" />
 		<mapper resource="/mybatis/tip-mapper.xml" />
+		<mapper resource="/mybatis/product-mapper.xml"/>
 	</mappers>
 
 </configuration>

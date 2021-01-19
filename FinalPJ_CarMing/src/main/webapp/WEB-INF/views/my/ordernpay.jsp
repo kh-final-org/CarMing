@@ -5,122 +5,79 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
+<style type="text/css">
+	.order-table{
+		text-align: center;
+		vertical-align: center;
+	}	
+</style>
 </head>
 <body>
-	<%@ include file="../common/header_ordernpay.jsp" %>
+	<%@ include file="../common/header.jsp" %>
 	<!--================Cart Area =================-->
-    <section class="cart_area">
-        <div class="container">
-            <div class="cart_inner">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                            	<th scope="col"><input type="checkbox"></th>
-                            	<th scope="col" style="width:100px;">전체 선택</th>
-                                <th scope="col">상품</th>
-                                <th scope="col">렌트 대여일</th>
-                                <th scope="col">렌트 반납일</th>
-                                <th scope="col">가격</th>
-                                <th scope="col">수량</th>
-                                <th scope="col">총합</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            	<td colspan="2"><input type="checkbox"></td>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img style="width:152px; height:102px;" src="resources/img/tent.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use 	 	 	 	 	 	 	 </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                	<input type="date">
-                                </td>
-                                <td>
-                                	<input type="date">
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                         
-                            <tr class="bottom_button">
-                                <td colspan="3">
-                                    <a class="gray_btn" href="onclick=allDelete();">전체 삭제</a>
-                                    <a class="gray_btn" href="onclick=oneDelete();">선택 삭제</a>
-                                </td>
-                                <td>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                            </tr>
-                            <tr>
-                            	<td></td>
-                            	<td></td>
-                                <td>
-
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Subtotal</h5>
-                                </td>
-                                <td>
-                                    <h5>$2160.00</h5>
-                                </td>
-                            </tr>
-                            <tr class="out_button_area">
-                            	<td></td>
-                            	<td></td>
-                                <td></td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>주문 / 결제 내역</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">홈<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">주문 / 결제 내역</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+        <div class="order_details_table" style="margin-top: 10%; margin-bottom: 10%; margin-left: 5%; margin-right: 5%;">
+				<div class="table-responsive">
+						<tr>
+							<h2>주문 내역</h2>
+						</tr>
+						<table class="table" style="padding: 10px; text-align: center;">
+							<p>주문 상품 정보</p>
+							<tr>
+								<th>주문 번호</th>
+								<th>제품 썸네일</th>
+								<th>제품 이름</th>
+								<th>수량</th>
+								<th>렌트 기간</th>
+								<th>렌트 처리 상태</th>
+							</tr>
+							<tr>
+								<td>30</td>
+								<td><img src="resources/img/logo.png" width="100px;" height="100px;"></td>
+								<td>겨울 나기용 텐트</td>
+								<td>3</td>
+								<td>2020.1.17~2020.1.18</td>
 								<td></td>
-								<td></td>
-                                <td>                         	
-                            		<div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                        <a class="primary-btn" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                    </div>      
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
+							</tr>
+						</table>
+				</div>
+				<div class="table-responsive">
+					<tr>
+						<h2>결제 내역</h2>
+					</tr>
+					<table class="table" style="padding: 10px; text-align: center;">
+						<p>결제 정보</p>
+						<tr>
+							<th>결제 번호</th>
+							<th>결제 수단</th>
+							<th>배송지</th>
+							<th>결제일</th>
+							<th>결제 수단</th>
+						</tr>
+						<tr>
+							<td>30</td>
+							<td><img src="resources/img/logo.png" width="100px;" height="100px;"></td>
+							<td>겨울 나기용 텐트</td>
+							<td>3</td>
+							<td>2020.1.17~2020.1.18</td>
+						</tr>
+					</table>
+				</div>
+			</div>	
     <!--================End Cart Area =================-->
 	<%@ include file="../common/footer.jsp" %>
 </body>

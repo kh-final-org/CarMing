@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="product">
+<!-- 	<resultMap type="productDto" id="productMap">
+		<result property="pNo" column="PNO"/>
+		<result property="pCategoryNo" column="PCATEGORYNO"/>
+		<result property="pName" column="PNAME"/>
+		<result property="pPrice" column="PPRICE"/>
+		<result property="pDesc" column="pDesc"/>
+		<result property="pFile" column="pFile"/>
+		<result property="pAmount" column="pAmount"/>
+	</resultMap> -->
+
+<!-- 	<select id="selectList" resultType="productMap" parameterType="pagination">
+		SELECT PNO, PCATEGORYNO, PNAME, PPRCIE, PDESC, PFILE, PAMOUNT
+		FROM (
+            SELECT ROWNUM PNO
+            FROM PRODUCT
+            ORDER BY PNO
+            )
+		WHERE PNO BETWEEN #{pageStart} AND #{perPageNum}
+	</select> -->
+	
+	<select id="selectAll" resultType="productDto">
+		SELECT *
+		FROM PRODUCT
+		ORDER BY PNO
+ 	</select>
+
+	<select id="selectOne" resultType="productDto" parameterType="int">
+		SELECT * 
+		FROM PRODUCT
+		WHERE PNO = #{pNo}
+	</select>
+	
+	<select id="countListTotal" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM PRODUCT
+		]]>
+	</select>
+	 	 	 
+	<insert id="insertProduct" parameterType="productDto">
+		INSERT INTO PRODUCT
+		VALUES(PRODUCT_SEQ.NEXTVAL, #{pCategoryNo}, #{pName}, #{pPrice}, #{pDesc}, #{pFile}, #{pAmount}, #{pPath})
+	</insert>
+	
+	<delete id="deleteProduct" parameterType="productDto">
+		DELETE 
+		FROM PRODUCT
+		WHERE PNO = #{pNo}
+	</delete>
+</mapper>
