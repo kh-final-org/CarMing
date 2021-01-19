@@ -59,7 +59,7 @@
 	.searchimg{width: 20px; height: 20px; opacity: 50%;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
 	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
-	#clickLatlng{text-align: center;}
+	#clickLatlng{text-align: center; margin-top: -5px;}
 </style>
 
 <!-- 
