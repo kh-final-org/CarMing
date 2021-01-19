@@ -36,7 +36,7 @@
 
 	.check input{display: none;}
 	.check span{cursor: pointer; isplay: inline-block; vertical-align: middle; margin-left: 3px;} 	
-	.check .icon{display: inline-block; width: 20px; height: 20px; background-color: transparent; 
+	.check .icon{z-index: 5; display: inline-block; width: 20px; height: 20px; background-color: transparent; 
 				 border: 2px solid silver; border-radius: 3px; position: relative; cursor: pointer;}
 	.check .icon::before, .check .icon::after {content: ''; display: inline-block; width: 1.7px; height: 0px; 
 											   background-color: #fff; position: absolute; transform-origin: left top; border-radius: 2px;}
@@ -46,7 +46,7 @@
 	.check input:checked ~ .icon::before{height: 7px; transition: all 0.12s ease;}
 	.check input:checked ~ .icon::after{height: 11px; transition: all 0.12s ease 0.12s;}
 	
-	#locaion-upload{color: gray;}
+	.location-open{color: gray;}
 	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 5;
 	   	   text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
 	.popup:target{opacity: 1;}
@@ -63,8 +63,25 @@
 	.searchimg{width: 20px; height: 20px; opacity: 50%;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
 	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
+
 </style>
 
+<!-- 
+<script type="text/javascript">
+	$(document).ready(function(){
+	
+		$(".location-logo-text-2 > a").click(function(){
+			$(".popup").show();
+			return false;
+		});
+		
+		$(".popup .close").click(function(){
+			$(this).parent().hide();
+			$(".popup-dim").hide();
+		});
+	});
+</script>
+ -->
 
 </head>
 <body>
@@ -143,17 +160,17 @@
 						<div class="location-logo-text-2">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
 							<a href="#location-popup" class="location-open">위치 등록</a>
-							<!-- 위치등록 버튼 클릭 시  레이어팝업 -->
+							<!-- start of location-popup -->
 							<div class="popup" id="location-popup">
-								<!-- 지도/레이어팝업 -->
 								<div class="popup-title"><strong>위치 찾기</strong></div>
+								<!-- 지도를 담는 map -->
 								<div id="map"></div>
 								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2"></script>
 								<script>
 									var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 								   		mapOption = { 
 								        	center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-								        	level: 3 // 지도의 확대 레벨
+								        	level: 3 //지도의 확대 레벨
 								    	};
 								
 									// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -190,9 +207,7 @@
 							
 							<!-- 레이어 팝업 배경 -->
 							<div class="popup-dim"></div>
-						
-						
-						
+							<!-- end of location-popup -->
 						
 						</div>
 					</div>
