@@ -130,16 +130,6 @@
 							<li><a class="dropdown-item">나만의 캠핑</a></li>
 						</ul>
 					</div>
-					
-					<div class="input-group mb-3" style="width: 500px;">
-				  		<select class="custom-select" id="selectbox" aria-label="Example select with button addon" >
-							<option value="generalCamping" selected>일반 캠핑</option>
-						    <option value="caravan" >카라반</option>
-						    <option value="glamping">글램핑</option>
-						    <option value="carCamping">차박</option>
-						    <option value="myOwnCamping">나만의 캠핑</option>
-					  	</select>
-					</div>
 				 -->
 				
 				<div class="body-content">
