@@ -1,5 +1,5 @@
 package com.finalPJ.carming.model.biz;
 
-public interface MemberBiz {
+public class mapLocationBizImpl {
 
 }

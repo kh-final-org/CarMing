@@ -50,8 +50,16 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">핑구추천</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑렌트</a></li>
-							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false" style="font-size : 15px;">캠핑렌트</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="productlist.do">카테고리</a></li>
+									<li class="nav-item"><a class="nav-link" href="productdetail.do">상품 보기</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart.do">장바구니</a></li>
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑토크</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">우리서로 캠Live</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠플레이스</a></li>
 							
@@ -68,8 +76,21 @@
 						</ul>
 						
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="#" class="user"><span class="lnr lnr-user"></span></a></li>
-							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+						<!--nav navbar-nav navbar-right  -->
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false"><span class="lnr lnr-user"></span></a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
+									<li class="nav-item"><a class="nav-link" href="ordernpay.do">주문/결제 내역</a></li>
+								</ul>
+							</li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false"><span class="ti-bag"></span></a>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>
@@ -90,21 +111,6 @@
 	</header>
 	<!-- End Header Area -->
 	
-	<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb" style="height: 310px;">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" style="padding: 105px 0px;">
-				<div class="col-first">
-					<h1>The stars in the night sky</h1>
-					<nav class="d-flex align-items-center">
-						<a href="#">CarMing MainHome<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">Camping Talk</a>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Banner Area -->
 	
 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
@@ -120,5 +126,6 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="resources/js/gmaps.min.js"></script>
 	<script src="resources/js/main.js"></script>
+	<script src="resources/js/category.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@
 	<aop:config>
 		<!-- 모든 dao 에 있는 모든 메소드! -->
 		<aop:pointcut
-			expression="execution(public * com.mvc.upgrade.model.dao.*Dao*.*(..))" id="daoPoint" />
+			expression="execution(public * com.finalPJ.carming.model.dao.*Dao*.*(..))" id="daoPoint" />
 		<aop:aspect id="logAop" ref="logAop">
 			<aop:before method="before" pointcut-ref="daoPoint" />
 			<aop:after method="after" pointcut-ref="daoPoint" />

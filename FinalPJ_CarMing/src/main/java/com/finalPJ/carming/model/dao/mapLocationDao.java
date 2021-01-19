@@ -1,5 +1,5 @@
 package com.finalPJ.carming.model.dao;
 
-public interface MemberDao {
+public interface mapLocationDao {
 
 }

@@ -2,33 +2,33 @@ package com.finalPJ.carming.model.dto;
 
 import java.util.Date;
 
-public class BoardDto {
+public class boardDto {
 	
 	private int brdno;			//게시글 번호
-	private int bcategoryno;	//카테고리 번호 참조
 	private String brdwriter;	//게시글 작성자
 	private String brdfile;		//파일명
 	private String brdcontent;	//게시글 내용
-	private int brdcount;		//게시글 조회수
-	private Date date;			//게시글 작성 날짜
+	private int brdcount;		//게시글 조회 수
+	private int brdcomcount;	//게시글 댓글 수 
+	private Date brddate;		//게시글 작성 날짜
 	private String brdprivate;	//나만보기 체크 여부
 	
-	
-	public BoardDto() {
+
+	public boardDto() {
 		super();
 	}
 
 
-	public BoardDto(int brdno, int bcategoryno, String brdwriter, String brdfile, String brdcontent, int brdcount,
-			Date date, String brdprivate) {
+	public boardDto(int brdno, String brdwriter, String brdfile, String brdcontent, int brdcount, int brdcomcount,
+			Date brddate, String brdprivate) {
 		super();
 		this.brdno = brdno;
-		this.bcategoryno = bcategoryno;
 		this.brdwriter = brdwriter;
 		this.brdfile = brdfile;
 		this.brdcontent = brdcontent;
 		this.brdcount = brdcount;
-		this.date = date;
+		this.brdcomcount = brdcomcount;
+		this.brddate = brddate;
 		this.brdprivate = brdprivate;
 	}
 
@@ -38,12 +38,6 @@ public class BoardDto {
 	}
 	public void setBrdno(int brdno) {
 		this.brdno = brdno;
-	}
-	public int getBcategoryno() {
-		return bcategoryno;
-	}
-	public void setBcategoryno(int bcategoryno) {
-		this.bcategoryno = bcategoryno;
 	}
 	public String getBrdwriter() {
 		return brdwriter;
@@ -69,11 +63,17 @@ public class BoardDto {
 	public void setBrdcount(int brdcount) {
 		this.brdcount = brdcount;
 	}
-	public Date getDate() {
-		return date;
+	public int getBrdcomcount() {
+		return brdcomcount;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setBrdcomcount(int brdcomcount) {
+		this.brdcomcount = brdcomcount;
+	}
+	public Date getBrddate() {
+		return brddate;
+	}
+	public void setBrddate(Date brddate) {
+		this.brddate = brddate;
 	}
 	public String getBrdprivate() {
 		return brdprivate;
@@ -81,13 +81,6 @@ public class BoardDto {
 	public void setBrdprivate(String brdprivate) {
 		this.brdprivate = brdprivate;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

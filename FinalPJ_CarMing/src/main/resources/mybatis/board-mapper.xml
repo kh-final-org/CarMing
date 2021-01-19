@@ -6,31 +6,57 @@
 <mapper namespace="board">
 	<resultMap type="boardDto" id="boardMap">
 		<result property="brdno" column="BRDNO"/>
-		<result property="bcategoryno" column="BCATEGORYNO"/>
 		<result property="brdwriter" column="BRDWRITER"/>
 		<result property="brdfile" column="BRDFILE"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
 		<result property="brdcount" column="BRDCOUNT"/>
+		<result property="brdcomcount" column="BRDCOMCOUNT"/>
 		<result property="brddate" column="BRDDATE"/>
 		<result property="brdprivate" column="BRDPRIVATE"/>
 	</resultMap>
-
+	
+	<!-- 01. 게시글 전체 목록 -->
 	<select id="selectList" resultMap="boardMap">
-		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDDATE, BRDPRIVATE
+		SELECT BRDNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
 		FROM BOARD
+		ORDER BY BRDDATE DESC
+	
+		<!--  SELECT * FROM (
+			SELECT ROWNUM AS RNUM, BRD.*
+			FROM(
+				SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDDATE, BRDPRIVATE
+				FROM BOARD
+				ORDER BY BRDDATE DESC
+			) BRD
+		)
+		WHERE RNUM BETWEEN #{startRow} AND #{endRow}
+		-->
 	</select>
 	
+	<!-- 02. 게시글 상세보기 -->
 	<select id="selectOne" parameterType="int" resultType="boardDto">
-		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDDATE, BRDPRIVATE
+		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
 		FROM BOARD
-		WHERE BRDNO=#{brdno}
+		WHERE BRDNO = #{brdno}
 	</select>
 	
+	<!-- 03. 게시글 작성 -->
 	<insert id="insert" parameterType="boardDto">
   		INSERT INTO BOARD
-  		VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno}, #{brdcontent}) <!-- 여기서부터 다시 -->
+  		VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno}, #{brdcontent}) 
   	</insert>	
 	
+	<!-- 06. 게시글 조회수 -->
+	<update id="viewCount" parameterType="int">
+		UPDATE BOARD 
+		SET BRDCOUNT = BRDCOUNT + 1
+		WHERE BRDNO = #{brdno}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+
+  	</delete>
+  
 
 
 </mapper>
