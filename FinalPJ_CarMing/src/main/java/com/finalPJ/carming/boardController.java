@@ -69,6 +69,14 @@ public class boardController {
 	}
 	
 	
+	@RequestMapping(value = "/privateform.do")
+	public String privateChat() {
+		logger.info("[privatechat]");
+		
+		return "board/privatechat";
+	}
+	
+	
 	
 	
 	
