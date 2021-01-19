@@ -125,8 +125,7 @@
 							<li><a class="dropdown-item">차박</a></li>
 							<li><a class="dropdown-item">나만의 캠핑</a></li>
 						</ul>
-					</div>
-				 -->
+					</div> -->
 				
 				<div class="body-content">
 				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해주세요." style="resize: none;"></textarea>
