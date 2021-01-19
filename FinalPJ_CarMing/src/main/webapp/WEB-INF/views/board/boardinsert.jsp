@@ -27,8 +27,7 @@
 	.body-location{margin: 10px 0px;}
 	.body-location-left{float: left; width: 77%;}
 	.body-location-right{float: right; width: 23%;}
-	.location-logo-text-1{display: inline-block; vertical-align: middle;}
-	.location-logo-text-2{display: inline-block; vertical-align: middle;}
+	.location-logo-text{display: inline-block; vertical-align: middle;}
 	.body-checklist{margin: 10px 0px;}	
 	
 	.card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}	
@@ -36,7 +35,7 @@
 
 	.check input{display: none;}
 	.check span{cursor: pointer; isplay: inline-block; vertical-align: middle; margin-left: 3px;} 	
-	.check .icon{z-index: 5; display: inline-block; width: 20px; height: 20px; background-color: transparent; 
+	.check .icon{display: inline-block; width: 20px; height: 20px; background-color: transparent; /*z-index: 5*/
 				 border: 2px solid silver; border-radius: 3px; position: relative; cursor: pointer;}
 	.check .icon::before, .check .icon::after {content: ''; display: inline-block; width: 1.7px; height: 0px; 
 											   background-color: #fff; position: absolute; transform-origin: left top; border-radius: 2px;}
@@ -57,13 +56,10 @@
 	
 	.popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
 	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
-	.location-input-value{margin-top: -5px;}
-	.latitude{float: left; width: 35%; margin: 0px 68px; text-align: left;}
-	.longitude{float: left; width: 35%; text-align: left;}
 	.searchimg{width: 20px; height: 20px; opacity: 50%;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
 	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
-
+	#clickLatlng{text-align: center;}
 </style>
 
 <!-- 
@@ -139,7 +135,7 @@
 				<div class="body-location">
 					<!-- start of body-location-left -->
 					<div class="body-location-left">
-						<span class="location-logo-text-1">
+						<span class="location-logo-text">
 							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장
 						</span>
 					</div>
@@ -147,7 +143,7 @@
 					
 					<!-- start of body-location-right -->
 					<div class="body-location-right">
-						<div class="location-logo-text-2">
+						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
 							<a href="#location-popup" class="location-open">위치 등록</a>
 							<!-- start of location-popup -->
@@ -155,18 +151,6 @@
 								<div class="popup-title"><strong>위치 찾기</strong></div>
 								<!-- 지도를 담는 map -->
 								<div id="map"></div>
-								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2"></script>
-								<script>
-									var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-								   		mapOption = { 
-								        	center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-								        	level: 3 //지도의 확대 레벨
-								    	};
-								
-									// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-									var map = new kakao.maps.Map(mapContainer, mapOption); 
-								</script> 
-													
 								<div class="location-search">
 									<div class="input-group mb-3" >
 										<input type="search" class="form-control" placeholder="주소를  검색해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -175,18 +159,43 @@
 									  	</div>
 									</div>	
 								</div>
-								
-								<div class="location-input-value">
-									<div class="latitude">
-										<span>위도 &#58; </span>
-										<span>1234567890</span>&deg;
-									</div>
-									<div class="longitude">
-										<span>경도 &#58; </span>
-										<span>1234567890</span>&deg;
-									</div>
-								</div>
-								
+								<div id="clickLatlng"></div>
+								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2"></script>
+								<script>
+									var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+									    mapOption = { 
+									        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+									        level: 3 // 지도의 확대 레벨
+									    };
+									
+									var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+									
+									// 지도를 클릭한 위치에 표출할 마커입니다
+									var marker = new kakao.maps.Marker({ 
+									    // 지도 중심좌표에 마커를 생성합니다 
+									    position: map.getCenter() 
+									}); 
+									// 지도에 마커를 표시합니다
+									marker.setMap(map);
+									
+									// 지도에 클릭 이벤트를 등록합니다
+									// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+									kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+									    
+									    // 클릭한 위도, 경도 정보를 가져옵니다 
+									    var latlng = mouseEvent.latLng; 
+									    // 마커 위치를 클릭한 위치로 옮깁니다
+									    marker.setPosition(latlng);
+									    
+									    var message = '위도 : ' + latlng.getLat() + ' , ';
+									    message += '경도 : ' + latlng.getLng();
+									    
+									    var resultDiv = document.getElementById('clickLatlng'); 
+									    resultDiv.innerHTML = message;
+									    
+									});
+								</script>
+													
 								<div class="location-finish">
 									<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
 								</div>
@@ -215,10 +224,6 @@
 						<span class="icon"></span>
 						<span class="text">나만 보기</span>
 					</label>
-					<!-- 
-					<input type="checkbox" id="chkcarplace" value="chkcarplace">&nbsp;&nbsp;
-						<label for="chkcarplace">차박 명소 등록하기</label>&emsp;&emsp;
-					 -->
 				</div>
 			</div>
 		</div>
