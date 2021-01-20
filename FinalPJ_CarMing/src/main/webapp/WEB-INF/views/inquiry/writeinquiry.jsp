@@ -23,17 +23,6 @@
 <meta charset="UTF-8">
 
 
-<!--
-		CSS
-		============================================= -->
-<link rel="stylesheet" href="resources/css/linearicons.css">
-<link rel="stylesheet" href="resources/css/owl.carousel.css">
-<link rel="stylesheet" href="resources/css/themify-icons.css">
-<link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<link rel="stylesheet" href="resources/css/nice-select.css">
-<link rel="stylesheet" href="resources/css/nouislider.min.css">
-<link rel="stylesheet" href="resources/css/bootstrap.css">
-<link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/contactus.css">
 
 <script
@@ -95,7 +84,7 @@
 <body>
 
 	<!-- Start Header Area -->
-	<%@include file="../tipAndRecipe/header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 	<br>
 	<!-- Start Banner Area -->

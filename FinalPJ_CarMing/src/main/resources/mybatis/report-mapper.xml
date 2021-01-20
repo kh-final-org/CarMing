@@ -16,7 +16,7 @@
  		<result property="categoryNo" column="CATEGORYNO"/>
  		<result property="categoryName" column="CATEGORYNAME"/>
  		<result property="targetNo" column="TARGETNO"/>
- 		<result property="targetWriter" column="BOARDWRITER"/>
+ 		<result property="targetWriter" column="BRDWRITER"/>
  		<result property="targetTypeNo" column="TARGETTYPE"/>
  		<result property="targetTypeName" column="TARGETNAME"/>
 </resultMap>
@@ -38,7 +38,7 @@
 	REPORTLIST.*,
 	REPORTCATEGORY.CATEGORYNAME,
 	TARGETCATEGORY.TARGETNAME,
-	BOARD.BOARDWRITER
+	BOARD.BRDWRITER
 	FROM REPORTLIST
 	JOIN MEMBER
 	ON REPORTLIST.MEMNO = MEMBER.MEMNO
@@ -47,14 +47,14 @@
 	JOIN TARGETCATEGORY
 	ON REPORTLIST.TARGETTYPE = TARGETCATEGORY.TARGETNO
 	JOIN BOARD
-	ON REPORTLIST.TARGETNO = BOARD.BOARDNO
+	ON REPORTLIST.TARGETNO = BOARD.BRDNO
 	WHERE REPORTNO = #{reportNo}
 	
 	</select>
 	
 	<insert id="insert" parameterType="ReportDto" >
 		INSERT INTO REPORTLIST
-		VALUES(SEQREPORT.NEXTVAL,(SELECT MEMNICK FROM MEMBER WHERE MEMNO=7),(SELECT MEMNO FROM MEMBER WHERE MEMNO=7), #{reportFileName},#{reportContent},DEFAULT,#{categoryNo},#{targetNo},#{targetTypeNo})
+		VALUES(SEQREPORT.NEXTVAL,(SELECT MEMNICK FROM MEMBER WHERE MEMNO=3),(SELECT MEMNO FROM MEMBER WHERE MEMNO=3), #{reportFileName},#{reportContent},DEFAULT,#{categoryNo},#{targetNo},#{targetTypeNo})
 	</insert>
 	 
 	

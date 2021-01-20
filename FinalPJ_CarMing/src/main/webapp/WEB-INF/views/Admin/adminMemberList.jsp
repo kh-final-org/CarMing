@@ -21,44 +21,13 @@
 <meta charset="UTF-8">
 
 
-<!--
-		CSS
-		============================================= -->
-<link rel="stylesheet" href="resources/css/linearicons.css">
-<link rel="stylesheet" href="resources/css/owl.carousel.css">
-<link rel="stylesheet" href="resources/css/themify-icons.css">
-<link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<link rel="stylesheet" href="resources/css/nice-select.css">
-<link rel="stylesheet" href="resources/css/nouislider.min.css">
-<link rel="stylesheet" href="resources/css/bootstrap.css">
-<link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/contactus.css">
 <link rel="stylesheet" href="resources/css/adminList.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-	integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	crossorigin="anonymous"></script>
-<script src="resources/js/vendor/bootstrap.min.js"></script>
-<script src="resources/js/jquery.ajaxchimp.min.js"></script>
-<script src="resources/js/jquery.nice-select.min.js"></script>
-<script src="resources/js/jquery.sticky.js"></script>
-<script src="resources/js/nouislider.min.js"></script>
-<script src="resources/js/jquery.magnific-popup.min.js"></script>
-<script src="resources/js/owl.carousel.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<!--gmaps Js-->
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-<script src="resources/js/gmaps.min.js"></script>
-<script src="resources/js/main.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+ -->
+
+
 <script>
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
@@ -67,7 +36,7 @@ $(document).ready(function(){
 </head>
 <body>
 	<!-- Start Header Area -->
-	<%@include file="../tipAndRecipe/header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 	<br>
 	<!-- Start Banner Area -->

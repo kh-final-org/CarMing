@@ -20,19 +20,7 @@
 <meta charset="UTF-8">
 <!-- Site Title -->
 <title>카밍 정보 메인</title>
-<!--
-			CSS
-			============================================= -->
-<link rel="stylesheet" href="resources/css/linearicons.css">
-<link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<link rel="stylesheet" href="resources/css/themify-icons.css">
-<link rel="stylesheet" href="resources/css/bootstrap.css">
-<link rel="stylesheet" href="resources/css/owl.carousel.css">
-<link rel="stylesheet" href="resources/css/nice-select.css">
-<link rel="stylesheet" href="resources/css/nouislider.min.css">
-<link rel="stylesheet" href="resources/css/ion.rangeSlider.css" />
-<link rel="stylesheet" href="resources/css/ion.rangeSlider.skinFlat.css" />
-<link rel="stylesheet" href="resources/css/main.css">
+
 
 <script>
 /* 	article = document.getElementsByTagName("article");
@@ -88,7 +76,7 @@ function myFunction() {
 <body>
 
 	<!-- Start Header Area -->
-	<%@include file="header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->

@@ -48,7 +48,7 @@ function myFunction() {
 
 <body>
 	<!-- Start Header Area -->
-	<%@include file="header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->

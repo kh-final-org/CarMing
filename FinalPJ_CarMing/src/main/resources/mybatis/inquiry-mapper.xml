@@ -10,7 +10,7 @@
 		<result property="inquiryNo" column="INQUIRYNO"/>
  		<result property="memNick" column="MEMNICK"/>
  		<result property="memNo" column="MEMNO"/>
- 		<result property="filename" column="INQUIRYFILE"/>
+ 		<result property="filename" column="INQUIRYFILENAME"/>
  		<result property="inquiryContent" column="INQUIRYCONTENT"/>
  		<result property="inquiryDate" column="INQUIRYDATE"/>
  		<result property="categoryNo" column="CATEGORYNO"/>
@@ -46,7 +46,7 @@
 	
 	<insert id="insert" parameterType="InquiryDto" >
 		INSERT INTO INQUIRYLIST
-		VALUES(SEQINQUIRY.NEXTVAL,(SELECT MEMNO FROM MEMBER WHERE MEMNO=7), #{filename},#{inquiryContent}, SYSDATE,#{categoryNo})
+		VALUES(SEQINQUIRY.NEXTVAL,(SELECT MEMNO FROM MEMBER WHERE MEMNO=3), #{filename},#{inquiryContent}, SYSDATE,#{categoryNo})
 	</insert>
 	 
 	
