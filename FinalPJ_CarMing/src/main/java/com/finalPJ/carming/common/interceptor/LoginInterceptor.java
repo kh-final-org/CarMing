@@ -23,6 +23,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if(		request.getRequestURI().contains("/loginform.do") ||
 				request.getRequestURI().contains("/home.do") ||
 				request.getRequestURI().contains("/boardmainform.do") ||
+				request.getRequestURI().contains("/boardinsertform.do") ||
+				request.getRequestURI().contains("/boardinsertres.do") ||
+				request.getRequestURI().contains("/boarddetailform.do") ||
+				request.getRequestURI().contains("/profileform.do") ||
+				request.getRequestURI().contains("/privateform.do") ||
 				request.getSession().getAttribute("login")!=null) {
 			
 			return true;
@@ -36,8 +41,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 			out.println("<script>alert('로그인 이후 사용하실 수 있습니다.'); location.href='loginform.do'; </script>");
 			out.flush();
 		}
-		
+	
 		return false;
+		
 	}
 
 	@Override
@@ -53,5 +59,5 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// TODO Auto-generated method stub
 		logger.info("[interceptor]: afterCompletion");
 	}
-
+	
 }

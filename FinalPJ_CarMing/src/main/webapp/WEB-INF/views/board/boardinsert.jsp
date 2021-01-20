@@ -46,10 +46,10 @@
 	.check input:checked ~ .icon::after{height: 11px; transition: all 0.12s ease 0.12s;}
 	
 	.location-open{color: gray;}
-	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 5;
+	.popup{position: absolute; left: 33%; top: 57%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 5;
 	   	   text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
 	.popup:target{opacity: 1;}
-	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 127%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
+	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 135%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
 	.popup:target + .popup-dim{opacity: 1; z-index: 2;} /*위치등록 아이콘 클릭 했을 시 */	
 	.popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
 	.location-cancel{position: absolute; top: 10px; right: 15px;}
@@ -62,22 +62,6 @@
 	#clickLatlng{text-align: center; margin-top: -5px;}
 </style>
 
-<!-- 
-<script type="text/javascript">
-	$(document).ready(function(){
-	
-		$(".location-logo-text-2 > a").click(function(){
-			$(".popup").show();
-			return false;
-		});
-		
-		$(".popup .close").click(function(){
-			$(this).parent().hide();
-			$(".popup-dim").hide();
-		});
-	});
-</script>
- -->
 
 </head>
 <body>
