@@ -56,4 +56,5 @@ public class boardBizImpl implements boardBiz{
 	public void viewCount(int brdno) {
 	}
 
+
 }
