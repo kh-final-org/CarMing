@@ -28,6 +28,13 @@ public class LoginInterceptor implements HandlerInterceptor {
 				request.getRequestURI().contains("/boarddetailform.do") ||
 				request.getRequestURI().contains("/profileform.do") ||
 				request.getRequestURI().contains("/privateform.do") ||
+				
+				request.getRequestURI().contains("/insertform.do") ||
+				request.getRequestURI().contains("//productinsert.do") ||
+				request.getRequestURI().contains("/productdetail.do") ||
+				request.getRequestURI().contains("/productlist.do") ||
+				request.getRequestURI().contains("/productdelete.do") ||
+				
 				request.getSession().getAttribute("login")!=null) {
 			
 			return true;
