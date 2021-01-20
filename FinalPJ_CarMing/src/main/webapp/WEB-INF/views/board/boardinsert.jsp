@@ -85,6 +85,23 @@
 <%@include file="../common/header.jsp"%>
 <!-- End Header Area -->
 
+<!-- Start Banner Area -->
+   <section class="banner-area organic-breadcrumb">
+      <div class="container">
+         <div
+            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+               <h1>Camping Talk</h1>
+               <nav class="d-flex align-items-center">
+                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                  <a href="boardmainform.do">Talk</a>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </section>
+<!-- End Banner Area -->
+
 <form action="boardinsertres.do" method="post">
 	<div class="card-container">
 		<div class="card-head">
@@ -92,7 +109,7 @@
 		</div>
 		
 		<div class="card-body">
-			<!-- 사진/동영상 올리기  -->
+			<!-- Start Photo/Video upload Area -->
 			<div class="card-body-left">
 				<div class="card-context">
 					<img class="camera-logo" src="./resources/img/camera.png"><br>
@@ -100,8 +117,11 @@
 					<span class="logo-bottom-context">(사진은 최대 5장, 동영상은 1개만)</span>
 				</div>
 			</div>
+			<!-- End Photo/Video Upload Area -->
 			
+			<!-- Start Upload Contents Area -->
 			<div class="card-body-right">
+				<!-- Category -->
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
 				  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
@@ -113,46 +133,32 @@
 					  	</select>
 					</div>
 				</div>			
-				<!-- 
-					<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="button-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						카테고리&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					</button>
-					<div class="dropdown-menu">
-						<ul class="navi">
-							<li><a class="dropdown-item">일반 캠핑</a></li>
-							<li><a class="dropdown-item">카라반</a></li>
-							<li><a class="dropdown-item">글램핑</a></li>
-							<li><a class="dropdown-item">차박</a></li>
-							<li><a class="dropdown-item">나만의 캠핑</a></li>
-						</ul>
-					</div> -->
 				
+				<!-- Textarea -->
 				<div class="body-content">
-				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해주세요." style="resize: none;"></textarea>
+				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required"></textarea>
 				</div>
 				
+				<!-- Location Upload -->
 				<div class="body-location">
-					<!-- start of body-location-left -->
 					<div class="body-location-left">
 						<span class="location-logo-text">
 							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장
 						</span>
 					</div>
-					<!-- end of body-location-left -->
 					
-					<!-- start of body-location-right -->
 					<div class="body-location-right">
 						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
 							<a href="#location-popup" class="location-open">위치 등록</a>
-							<!-- start of location-popup -->
+							<!-- Start Location-Popup -->
 							<div class="popup" id="location-popup">
 								<div class="popup-title"><strong>위치 찾기</strong></div>
 								<!-- 지도를 담는 map -->
 								<div id="map"></div>
 								<div class="location-search">
 									<div class="input-group mb-3" >
-										<input type="search" class="form-control" placeholder="주소를  검색해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
 										<div class="input-group-append">
 									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="searchimg" src="./resources/img/search.png"></button>
 									  	</div>
@@ -202,16 +208,15 @@
 									<a href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>							
 								</div>
 							</div>
+							<!-- End Location-Popup -->
 							
-							<!-- 레이어 팝업 배경 -->
+							<!-- Popup Background -->
 							<div class="popup-dim"></div>
-							<!-- end of location-popup -->
-						
 						</div>
 					</div>
-					<!-- end of body-location-right -->
 				</div><br>
 				
+				<!-- Checkbox -->
 				<div class="body-checklist">
 					<label class="check">
 						<input type="checkbox" id="chkcarplace" value="chkcarplace">
@@ -225,12 +230,12 @@
 					</label>
 				</div>
 			</div>
+			<!-- End Upload Contents Area -->
 		</div>
 		
 		<div class="card-body-bottom">
 			<button type="submit" class="btn btn-light" id="button-boardupload">올리기</button>
 		</div>
-	
 	
 	
 	</div>

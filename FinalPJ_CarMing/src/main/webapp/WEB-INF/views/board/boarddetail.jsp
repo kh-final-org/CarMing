@@ -105,16 +105,35 @@
 <%@include file="../common/header.jsp"%>
 <!-- End Header Area -->
 
-<!-- start of container -->
+<!-- Start Banner Area -->
+   <section class="banner-area organic-breadcrumb">
+      <div class="container">
+         <div
+            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+               <h1>Camping Talk</h1>
+               <nav class="d-flex align-items-center">
+                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                  <a href="boardmainform.do">Talk</a>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </section>
+<!-- End Banner Area -->
+
+<!-- Start Container Area -->
 <div class="card-container">
 	<div class="card-wrap">
+		<!-- Left Arrow -->
 		<div class="card-first">
 			<img class="next-left" src="./resources/img/left.png">
 		</div>
 	
+		<!-- Start BoardDetil Area -->
 		<div class="card-second">
+			<!-- 프로필 사진/아이디/위취/날짜 -->
 			<div class="card-body-1">
-				<!-- 프로필 사진/아이디 -->
 				<div class="board-profile">
 					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
 					<span style="font-size:1.2em;">&nbsp;${dto.brdwriter }</span>
@@ -125,20 +144,21 @@
 				</div>
 			</div>
 			
+			<!-- 사용자가 업로드한 이미지 -->
 			<div class="card-body-2">
-				<!-- 사용자가 업로드한 이미지 -->
 				<div class="board-uploadimg">
 					<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile }">
 				</div>
 			</div>
 			
-			
+			<!-- 게시글 내용/조회수/신고 -->
 			<div class="card-body-3">
 				<div class="board-content">${dto.brdcontent }</div>
 				<div class="board-count">조회수 ${dto.brdcount }</div>
 				<div class="board-report">&nbsp;&middot;&nbsp;<a href="#" class="board-report-target1">신고</a></div>
 			</div><br><br>
 			
+			<!-- 게시글 전체 댓글 수/카카오 공유/수정/삭제 -->
 			<div class="card-body-4">
 				<div class="board-comment-header-1">
 					<div class="board-comment-head"><strong>댓글</strong></div>
@@ -153,13 +173,14 @@
 				</div>
 			</div><br>
 		
+			<!-- 게시글에 댓글 입력하는 부분 -->
 			<div class="card-body-5">
 				<div class="board-profile-comment">
 					<img class="user-profile" src="./resources/img/profile.png">&nbsp; 
 				</div>	
 				<div class="board-input-comment">
 					<div class="input-group mb-3" >
-						<input type="text" class="form-control" placeholder="댓글 달기.." aria-label="Recipient's username" aria-describedby="button-addon2">
+						<input type="text" class="form-control" placeholder="소중한 댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required">
 						<div class="input-group-append">
 					    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="sendimg" src="./resources/img/send.png"></button>
 					  	</div>
@@ -167,6 +188,7 @@
 				</div>
 			</div>
 			
+			<!-- 댓글 -->
 			<div class="card-body-6">
 				<div class="commentuser-first">
 					<div class="board-profile-commentuser">
@@ -181,16 +203,16 @@
 					<div class="comment-report"><a href="#" class="board-report-target2">신고</a></div>
 				</div>
 			</div>
-			
 		</div>
+		<!-- End BoardDetil Area -->
 		
+		<!-- Right Arrow -->
 		<div class="card-third">
 			<img class="next-right" src="./resources/img/right.png"> 
 		</div>
 	</div>
-	
 </div>
-<!-- end of container -->
+<!-- End Container Area -->
 
 
 </body>
