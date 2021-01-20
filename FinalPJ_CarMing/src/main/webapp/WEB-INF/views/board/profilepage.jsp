@@ -38,6 +38,24 @@
 <%@include file="../common/header.jsp"%>
 <!-- End Header Area -->
 
+<!-- Start Banner Area -->
+   <section class="banner-area organic-breadcrumb">
+      <div class="container">
+         <div
+            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+               <h1>Camping Talk</h1>
+               <nav class="d-flex align-items-center">
+                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                  <a href="boardmainform.do">Talk</a>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </section>
+<!-- End Banner Area -->
+
+<!-- Start Container Area -->
 <div class="card-container">
 	<!-- 사용자 프로필 -->
 	<div class="card-profile">
@@ -85,12 +103,8 @@
 		</div>
 	</div>
 	
-
-
-
-
 </div>
-
+<!-- End Container Area -->
 	
 
 </body>

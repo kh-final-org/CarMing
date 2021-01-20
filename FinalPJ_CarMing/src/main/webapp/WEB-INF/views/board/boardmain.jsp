@@ -42,9 +42,26 @@
 <!-- Start Header Area -->
 <%@include file="../common/header.jsp"%>
 <!-- End Header Area -->
+
+<!-- Start Banner Area -->
+   <section class="banner-area organic-breadcrumb">
+      <div class="container">
+         <div
+            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+               <h1>Camping Talk</h1>
+               <nav class="d-flex align-items-center">
+                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                  <a href="boardmainform.do">Talk</a>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </section>
+<!-- End Banner Area -->
 <main role="main" style="padding-top: 50px; padding-bottom: 50px;">
 
-<!-- start of container -->
+<!-- Start Container Area -->
 <div class="card-container">
 	<div class="card-head">
 		<div class="card-head-first">
@@ -65,19 +82,6 @@
 				    <option value="myOwnCamping">나만의 캠핑</option>
 			  	</select>
 			</div>
-			
-			<!-- 
-			<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdown-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;&nbsp;카테고리&emsp;</button>
-			<div class="dropdown-menu">
-				<ul class="navi">
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">일반 캠핑</a></li>
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">카라반</a></li>
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">글램핑</a></li>
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">차박</a></li>
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">나만의 캠핑</a></li>
-				</ul>
-			</div>
-			 -->
 		</div>
 	</div>
 	<br><br><br><br>
@@ -103,52 +107,8 @@
 		</div>
 	</c:forEach>
 </div>
-<!-- end of container -->
+<!-- End Container Area -->
+
 </main>	
-	
-<!-- start paging 
-<div class="card-bottom">
-	<tr>
-		<td colspan="5">
-			<!-- 처음 페이지로 이동: 현재 페이지가 1보다 크면 	[<<] 하이퍼 링크를 화면에 출력 -->
-		<!-- 	<c:if test="${map.boardPager.curBlock > 1}">
-				<a href="javascript:list('1')">[&laquo;]</a>-->
-		<!-- 	</c:if>
-			<!-- 이전페이지 블록으로 이동: 현재 페이지 블럭이 1보다 크면 [<] 하이퍼링크를 화면에 출력 -->
-		<!-- 	<c:if test="${map.boardPager.curBlock > 1}">
-				<a href="javascript:list('1')">[&lt;]</a>
-			</c:if>
-		
-			<!-- **하나의 블럭 시작 페이지부터 끝 페이지까지 반복문 실행 -->
-		<!-- 	<c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
-				<!-- 현재페이지이면 하이퍼링크 제거 -->
-		<!-- 		<c:choose>
-					<c:when test="${num == map.boardPager.curPage}">
-						<span style="color: red">${num}</span>&nbsp;
-					</c:when>
-					<c:otherwise>
-						<a href="javascript:list('${num}')">${num}</a>&nbsp;
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			
-			<!-- 다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [>]하이퍼링크를 화면에 출력 -->
-		<!-- 	<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
-				<a href="javascript:list('${map.boardPager.nextPage}')">[&gt;]</a>
-			</c:if>
-				
-			<!-- 끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [>>]하이퍼링크를 화면에 출력 -->
-		<!-- 	<c:if test="${map.boardPager.curPage <= map.baordPager.totPage}">
-				<a href="javascript:list('${map.boardPager.totPage}')">[&raquo;]</a>
-			</c:if>
-		</td>
-	</tr>
-</div>
-<!-- end paging -->	
-
-	
-<!-- start footer Area -->
-<!-- end footer Area -->
-
 </body>
 </html>
