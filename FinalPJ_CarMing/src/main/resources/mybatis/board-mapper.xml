@@ -46,6 +46,16 @@
   		VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno}, #{brdcontent}) 
   	</insert>	
 	
+	<!-- 04. 게시글 수정 -->
+	<update id="" parameterType="int">
+
+	</update>
+	
+	<!-- 05. 게시글 삭제 -->
+	<delete id="delete" parameterType="int">
+
+  	</delete>
+	
 	<!-- 06. 게시글 조회수 -->
 	<update id="viewCount" parameterType="int">
 		UPDATE BOARD 
