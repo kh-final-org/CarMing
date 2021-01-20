@@ -101,7 +101,9 @@
 
 </div>
 <!-- End Container Area -->
-
+<!-- Start Footer Area -->
+<%@ include file="../common/footer.jsp" %>
+<!-- End Footer Area -->
 
 </body>
 </html>

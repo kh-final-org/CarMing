@@ -49,7 +49,7 @@
 	.popup{position: absolute; left: 33%; top: 57%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 5;
 	   	   text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
 	.popup:target{opacity: 1;}
-	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 135%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
+	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 140%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
 	.popup:target + .popup-dim{opacity: 1; z-index: 2;} /*위치등록 아이콘 클릭 했을 시 */	
 	.popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
 	.location-cancel{position: absolute; top: 10px; right: 15px;}
@@ -224,6 +224,8 @@
 	
 	</div>
 </form>
-
+<!-- Start Footer Area -->
+<%@ include file="../common/footer.jsp" %>
+<!-- End Footer Area -->
 </body>
 </html>

@@ -63,9 +63,6 @@
 		WHERE BRDNO = #{brdno}
 	</update>
 	
-	<delete id="delete" parameterType="int">
-
-  	</delete>
   
 
 
