@@ -40,9 +40,6 @@
     font-style: normal;
 }
 	</style>
-
-
-
 </head>
 <body>
 <!-- Start Header Area -->
@@ -94,37 +91,32 @@
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
-							
-							<!-- 드롭다운 메뉴 -->
-							<!-- 
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">캠핑 렌트</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-								</ul>
-							</li>
-							-->
 						</ul>
 						
 						<ul class="nav navbar-nav navbar-right">
-						<!--nav navbar-nav navbar-right  -->
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false"><span class="lnr lnr-user"></span></a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
-									<li class="nav-item"><a class="nav-link" href="ordernpay.do">주문/결제 내역</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false"><span class="ti-bag"></span></a>
-							</li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+								<a href="mypage.do"> <!-- 마이페이지 -->        				
+								<span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+								</svg></span></a>
+							</li>
+							<li class="nav-item">
+								<a href="#"> <!-- 장바구니 -->
+								<span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+								</svg></span></a>
+							</li>
+							<li class="nav-item">
+								<a href="#"> <!-- 로그인/로그아웃 || 아이콘 상태 변하도록 구현 필요-->
+								<span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16"></svg>
+								<!-- 로그아웃 아이콘 -->
+								<!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16"> -->
+								</span>
+								</a>
+							</li>
+							<!-- 검색 -->
+							<li class="nav-item">
+								<button class="search"><span id="search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+								</svg></span></button>
 							</li>
 						</ul>
 					</div>
