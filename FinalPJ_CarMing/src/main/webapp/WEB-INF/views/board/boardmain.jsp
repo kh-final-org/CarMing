@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
     
 <!DOCTYPE html>
 <html>
@@ -10,8 +11,8 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <style type="text/css">
-	.card-container{margin: 0px 200px; padding-bottom: 50px;}
-	
+	.card-container{width: 100%;}
+
 	.card-head-first{float: left;}
 	.card-head-second{float: left; margin-left: 610px;}
 	.card-head-third{float: right; margin-right: 10px;}
@@ -28,6 +29,8 @@
 	#main-dropdown-menu {width: 120px;} 
 	#dropdown-category{width: 140px; text-align: left; border-color: silver;}
 	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;} 
+	
+	#paging-container{margin: 50px 0px 20px 0px;}
 	
 	/**********************************************
 	.navi li a:hover{background-color: #fff5e9;} 
@@ -59,7 +62,7 @@
       </div>
    </section>
 <!-- End Banner Area -->
-<main role="main" style="padding-top: 50px; padding-bottom: 50px;">
+<main role="main" style="padding: 50px 200px; ">
 
 <!-- Start Container Area -->
 <div class="card-container">
@@ -108,6 +111,64 @@
 	</c:forEach>
 </div>
 <!-- End Container Area -->
+
+<!-- 중간에 여백을 주기 위해 임시로 만들어 놓음 -->
+<table class="table table-hover"></table>
+
+<!-- Start Paging Area -->
+<div class="container ml-auto" id="paging-container" align="center">
+	<nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+	
+			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
+			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
+			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.')}"></c:set>
+		
+			<!-- 이전 버튼 -->
+			<c:if test="${startNum > 1 }">
+				<li class="page-item">
+					<a class="page-link text-warning" href="?command=userBoard&page=${startNum - 1 }&boardwriter=${board_writer}" aria-label="Previous">
+		 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+			    	</a>
+			   	</li>
+			</c:if>		
+		
+			<c:if test="${startNum <= 1 }">
+				<li class="page-item">
+					<a class="page-link text-warning" aria-label="Previous">
+		 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+		    		</a>
+			   	</li>
+			</c:if>
+		
+			<c:forEach var="i" begin="0" end="4">
+				<c:if test="${(startNum + i ) <= lastNum }"></c:if>
+				<li class="page-item"><a class="page-link text-warning" href="?command=userBoard&page=${startNum + i }&boardwriter=${board_writer}">${startNum + i }</a></li>
+			</c:forEach>
+		  			
+		  	<!-- 다음 버튼 -->
+		  	<c:if test="${startNum + 4 < lastNum }">
+			    <li class="page-item">
+			    	<a class="page-link text-warning" href="?command=userBoard&page=${startNum + i }&boardwriter=${board_writer}" aria-label="Next">
+			    		<span aria-hidden="true">&raquo;</span>
+			      	</a>
+			   	</li>
+		  	</c:if>
+		  	
+		  	<c:if test="${startNum + 4 >= lastNum }">
+			    <li class="page-item">
+			    	<a class="page-link text-warning" aria-label="Next">
+			    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+			      	</a>
+			   	</li>
+		  	</c:if>	
+	  				
+		</ul>
+	</nav>
+</div>
+<!-- End Paging Area  -->
+
+
 
 </main>	
 </body>

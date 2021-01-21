@@ -4,6 +4,8 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+      
+<%@ page import = "com.finalPJ.carming.model.dto.MemberDto" %>      
         
 <!DOCTYPE html>
 <html>
@@ -42,6 +44,9 @@
 	.share-kakaotalk{width: 25px; height: 25px;}
 	.board-modify{float: left; margin-left: 0px 10px;}
 	.board-delete{float: right; margin-left: 8px;}
+	#board-modify-text{color: gray;}
+	#board-delete-text{color: gray;}
+	input{border: none; background: #fff; color: gray; padding: 0; font-size: 1.5em;}
 	
 	.card-body-5{margin: 10px 0px;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
@@ -56,6 +61,8 @@
 	.commentuser-second{float: right; margin: 10px 0px;}
 	.comment-time{float: left; text-align: right;}
 	.comment-report{float: right;}
+	
+	
 </style>
 
 <!-- kakao share -->
@@ -77,10 +84,10 @@
 	 				objectType: 'feed',
 	 				content: {
 	   				title: 'Camping Talk',
-	   				description: 'www.localhost:8899/carming',
-	   				imageUrl: 'http://localhost:8899/carming//boarddetailform.do',
+	   				description: '아웃도어 라이프 우리 모두의 캠핑',
+	   				imageUrl: 'https://postfiles.pstatic.net/MjAyMTAxMjFfNDgg/MDAxNjExMjE5MDc4MjE2.jLlgUhy3A2J847CYZ_4Sp4X5FI3S8gz_luJHphBr6ocg.czFVIO2I_A-hEsZD7ucwCMfehhtK-PWhH1QFSqbrUmog.JPEG.ghkdwjdals33/kakaoCarMing.JPG?type=w966',
 	   				link: {
-	     					mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	     					mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno + '&brdfile',
 	     					webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
 	   				},
 	 				},
@@ -94,9 +101,18 @@
 				})
 			}; window.kakaoDemoCallback && window.kakaoDemoCallback() }
 	catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
-
-	
 </script>
+
+<!-- 
+<script>
+	function del(brdno){
+		var chk = confirm("게시글을  삭제하겠습니까?");
+		if(chk){
+			location.href='boarddelete.do?brdno=' + brdno;
+		}
+	}
+</script>
+-->
 
 
 </head>
@@ -168,8 +184,13 @@
 					<div class="board-share">
 						<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
 					</div>
-					<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
-					<div class="board-delete">&#124;&nbsp;&nbsp;삭제</div>
+					<div class="board-modify">&#124;
+						<a href="boardupdateform.do?brdno=${dto.brdno }" id="board-modify-text">&nbsp;수정</a>
+					</div>
+					<div class="board-delete">&#124;
+						<a href="boarddelete.do?brdno=${dto.brdno }" id="board-delete-text">&nbsp;삭제</a>
+						<input type="button" value="삭제" onclick="del($dto.brdno)">
+					</div>
 				</div>
 			</div><br>
 		
@@ -180,7 +201,7 @@
 				</div>	
 				<div class="board-input-comment">
 					<div class="input-group mb-3" >
-						<input type="text" class="form-control" placeholder="소중한 댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required">
+						<input type="text" class="form-control" placeholder="댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required">
 						<div class="input-group-append">
 					    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="sendimg" src="./resources/img/send.png"></button>
 					  	</div>

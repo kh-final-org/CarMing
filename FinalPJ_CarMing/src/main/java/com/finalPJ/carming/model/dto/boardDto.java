@@ -81,7 +81,13 @@ public class boardDto {
 	public void setBrdprivate(String brdprivate) {
 		this.brdprivate = brdprivate;
 	}
-	
+
+
+
+
+
+
+
 	
 	
 	

@@ -41,9 +41,8 @@
 	</select>
 	
 	<!-- 03. 게시글 작성 -->
-	<insert id="insert" parameterType="boardDto">
-  		INSERT INTO BOARD
-  		VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno}, #{brdcontent}) 
+	<insert id="insertBoard" parameterType="boardDto">
+	
   	</insert>	
 	
 	<!-- 04. 게시글 수정 -->
@@ -53,7 +52,8 @@
 	
 	<!-- 05. 게시글 삭제 -->
 	<delete id="delete" parameterType="int">
-
+		DELETE FROM BOARD
+		WHERE BRDNO = #{brdno}
   	</delete>
 	
 	<!-- 06. 게시글 조회수 -->

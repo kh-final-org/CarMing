@@ -28,6 +28,10 @@ public class LoginInterceptor implements HandlerInterceptor {
 				request.getRequestURI().contains("/boarddetailform.do") ||
 				request.getRequestURI().contains("/profileform.do") ||
 				request.getRequestURI().contains("/privateform.do") ||
+				request.getRequestURI().contains("/boardmodifyform.do") ||
+				request.getRequestURI().contains("/boarddelete.do") ||
+
+				request.getRequestURI().contains("/ajaxlogin.do") ||
 				
 				request.getRequestURI().contains("/insertform.do") ||
 				request.getRequestURI().contains("//productinsert.do") ||
