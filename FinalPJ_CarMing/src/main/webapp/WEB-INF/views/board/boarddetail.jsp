@@ -53,7 +53,7 @@
 	.card-body-6{float: left; width: 100%; margin-bottom: 13px;}
 	.commentuser-first{float: left; margin-left: 50px;}
 	.board-profile-commentuser{float: left;}
-	.commentuser-comment{float: right; margin: 11px 20px;}
+	.commentuser-comment{float: right; margin: 11px 5px 11px 20px;}
 	.commentuser-second{float: right; margin: 10px 0px; font-size: 0.85em;}
 	.comment-time{float: left; text-align: right;}
 	.comment-report{float: right;}

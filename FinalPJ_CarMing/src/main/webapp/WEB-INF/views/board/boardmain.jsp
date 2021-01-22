@@ -36,7 +36,7 @@
 </style>
 <script type="text/javascript">
 	function myFunction() {
-	    var input, filter, ul, li, a, i, txtValue, list;
+	    var selectbox, filter, a, txtValue, list;
 	    selectbox = document.getElementById("selectbox");
 	    filter = selectbox.value
 	
@@ -92,7 +92,7 @@
 		
 		<div class="card-head-third" style="width: 140px;">
 			<div class="dropdown-selectbox">
-		  		<select onchange="myFunction()"   class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+		  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
 					<option value="일반 캠핑" selected>일반 캠핑</option>
 				    <option value="카라반">카라반</option>
 				    <option value="글램핑">글램핑</option>

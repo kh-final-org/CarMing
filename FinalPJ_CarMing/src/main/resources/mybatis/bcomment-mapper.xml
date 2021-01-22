@@ -8,7 +8,7 @@
   
   	<select id="selectList" resultType="bcommentDto" parameterType="int">
   		SELECT * FROM BCOMMENT WHERE BRDNO = #{brdno}
-  	
+  		ORDER BY COMNO
   	</select>
   	
   	<insert id="insert" parameterType="bcommentDto">
