@@ -119,6 +119,15 @@
             </div>
          </div>
       </div>
+      <div class="section-top-border text-right">
+				<div class="button-group-area mt-40" style="padding-bottom: 5em">
+					<a href="tipAndRecipeMain.do"
+						class="genric-btn danger-border e-large">목록으로</a> <a
+						href="writeinquiryform.do"
+						class="genric-btn danger-border e-large">새 글 작성하기</a>
+				</div>
+			</div>
+		</div>
    </section>
 <!-- End Banner Area -->
 

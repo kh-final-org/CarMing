@@ -32,7 +32,26 @@
 
 <link rel="stylesheet" href="resources/css/list.css">
 
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue, list;
+    input = document.getElementById("input");
+    filter = input.value
 
+    list = document.getElementsByClassName("gaadiex-list-item");
+    
+    for(i=0; i<list.length; i++){
+        a = document.getElementsByClassName("category")[i];
+        txtValue = a.textContent || a.innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        	list[i].style.display = "";
+        } else {
+        	list[i].style.display = "none";
+        }
+	}
+}
+</script>
 </head>
 
 <body>
@@ -66,6 +85,22 @@
 		</div>
 	</section>
 	<!-- End Banner Area -->
+	<div class="blog_right_sidebar"
+		style=" height:10%; float: right; background-color: white; border: 0px;">
+		<aside class="single_sidebar_widget search_widget">
+			<div  class="input-group">
+				<input style="  padding:10%;" type="text" id="input" onkeyup="myFunction()"
+					class="form-control" placeholder="카테고리 검색하기"
+					onfocus="this.placeholder = ''"
+					onblur="this.placeholder = '카테고리 검색하기'"> <span
+					class="input-group-btn">
+					<button class="btn btn-default" type="button">
+						<i class="lnr lnr-magnifier"></i>
+					</button>
+				</span>
+			</div>
+		</aside>
+	</div>
 	<!-- 목록 부분 -->
 	<div class="container">
 		<div class="row">
@@ -89,7 +124,7 @@
 								내용: ${fn:substring(TextValue,0,10)}</a></h4>
 								
 								
-								<p>카테고리: ${list.categoryName}</p>
+								<p class="category">카테고리: ${list.categoryName}</p>
 								
 								<p>작성날짜:<fmt:formatDate pattern = "yyyy-MM-dd" 
          						value = "${list.inquiryDate}" /></p>			
