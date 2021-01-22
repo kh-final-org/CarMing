@@ -36,7 +36,10 @@
 </style>
 <script type="text/javascript">
 	function selectFunction(){
-	    var select = document.getElementById("selectBox");
+		var x = document.getElementById("selectBox").value;
+		  		document.getElementById("demo").innerHTML = "You selected: " + x;
+		
+		var select = document.getElementById("selectBox");
 	    var selectVal = select.options[select.selectedIndex].value;
 	
 	    alert(selectVal);
@@ -88,11 +91,11 @@
 		<div class="card-head-third" style="width: 140px;">
 			<div class="dropdown-selectbox">
 		  		<select class="selectpicker form-control" id="selectBox" name="selectBox" onchange="selectFunction();" aria-label="Example select with button addon">
-					<option value="1" selected>일반 캠핑</option>
-				    <option value="2">카라반</option>
-				    <option value="3">글램핑</option>
-				    <option value="4">차박</option>
-				    <option value="5">나만의 캠핑</option>
+					<option value="일반 캠핑" selected>일반 캠핑</option>
+				    <option value="카라반">카라반</option>
+				    <option value="글램핑">글램핑</option>
+				    <option value="차박">차박</option>
+				    <option value="나만의 캠핑">나만의 캠핑</option>
 			  	</select>
 			</div>
 		</div>
