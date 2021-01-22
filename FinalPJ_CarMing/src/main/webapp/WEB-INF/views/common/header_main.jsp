@@ -118,7 +118,7 @@
 								<span class="bi bi-cart2" style="font-size: 20px"></span></a>
 							</li>
 							<li class="nav-item">
-								<a href="#"> <!-- 로그인/로그아웃 || 아이콘 상태 변하도록 구현 필요-->
+								<a href="logout.do"> <!-- 로그인/로그아웃 || 아이콘 상태 변하도록 구현 필요-->
 								<span class="bi bi-box-arrow-in-right" style="font-size: 20px"></span>
 								<!-- 로그아웃 아이콘 -->
 								<!-- <span class="bi bi-box-arrow-left" style="font-size: 20px"></span> -->

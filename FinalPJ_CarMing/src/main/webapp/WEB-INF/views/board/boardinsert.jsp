@@ -28,18 +28,19 @@
 	});
 </script> -->
 <script>
-function myFunction() {
+ function myFunction() {
   var x = document.getElementById("location-popup");
-  if (x.style.display === "none") {
+  if (x.style.display == "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
-  }
-}
+  } 
+}  
+
 </script>
 
 </head>
-<body>
+<body onload="location.href='#location-popup'">
 <!-- Start Header Area -->
 <%@include file="../common/header.jsp"%>
 <!-- End Header Area -->
@@ -111,11 +112,11 @@ function myFunction() {
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
 						<!-- 	<a href="#location-popup" class="location-open">위치 등록</a> -->
 							
-							<a  href="#location-popup" class="location-open">위치 등록</a>
+							<a onclick="myFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
 							<!-- onclick="myFunction()" -->
-							
+							<!--  --> 
 							<!-- Start Location-Popup -->
-							<div class="popup" id="location-popup" >
+							<div class="popup" id="location-popup">
 								<div class="popup-title"><strong>위치 찾기</strong></div>
 								<!-- 지도를 담는 map -->
 								<div id="map"></div>
@@ -171,7 +172,7 @@ function myFunction() {
 									<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
 								</div>
 								<div class="location-cancel">
-									<a onclick="myFunction()" href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>							
+									<a onclick="myFunction()" id="close" href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>							
 									<!-- onclick="myFunction()" -->
 								</div>
 							</div>
