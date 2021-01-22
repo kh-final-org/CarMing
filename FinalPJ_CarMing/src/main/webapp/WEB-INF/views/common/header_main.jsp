@@ -67,7 +67,7 @@
 						<ul class="nav navbar-nav menu_nav ml-auto">
 
 
-							<%-- <c:if test="${login.memcode == 1}"> --%>
+							<c:if test="${login.memcode == 1}">
 									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
 									<li class="nav-item submenu dropdown"><a href="#"
 										class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -84,7 +84,7 @@
 												href="adminRentList.do" style="font-size: 15px;">렌탈목록</a></li>
 										</ul></li>
 									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
-						<%-- 	</c:if> --%>
+							</c:if> 
 
 							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
 							<li class="nav-item submenu dropdown">

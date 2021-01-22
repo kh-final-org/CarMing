@@ -4,7 +4,7 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-        
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,7 +127,6 @@
 						class="genric-btn danger-border e-large">새 글 작성하기</a>
 				</div>
 			</div>
-		</div>
    </section>
 <!-- End Banner Area -->
 
@@ -164,54 +163,62 @@
 			<div class="card-body-3">
 				<div class="board-content">${dto.brdcontent }</div>
 				<div class="board-count">조회수 ${dto.brdcount }</div>
-				<div class="board-report">&nbsp;&middot;&nbsp;<a href="#" class="board-report-target1">신고</a></div>
+				<div class="board-report">&nbsp;&middot;&nbsp;<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1">신고</a></div>
 			</div><br><br>
 			
 			<!-- 게시글 전체 댓글 수/카카오 공유/수정/삭제 -->
 			<div class="card-body-4">
 				<div class="board-comment-header-1">
 					<div class="board-comment-head"><strong>댓글</strong></div>
-					<div class="board-comment-count"><b>2</b></div>
+					<c:forEach items="${comment }" varStatus="status">
+					<div class="board-comment-count"><b>${status.end}</b></div>
+					</c:forEach>
 				</div>
 				<div class="board-comment-header-2">
 					<div class="board-share">
 						<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
 					</div>
 					<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
-					<div class="board-delete">&#124;&nbsp;&nbsp;삭제</div>
 				</div>
 			</div><br>
 		
 			<!-- 게시글에 댓글 입력하는 부분 -->
+			<form:form action="writebcomment.do?memno=${login.memno}&brdno=${dto.brdno }" method="post">
 			<div class="card-body-5">
 				<div class="board-profile-comment">
 					<img class="user-profile" src="./resources/img/profile.png">&nbsp; 
 				</div>	
 				<div class="board-input-comment">
 					<div class="input-group mb-3" >
-						<input type="text" class="form-control" placeholder="소중한 댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required">
+						<input type="text" class="form-control" placeholder="소중한 댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required" name="comcontext">
 						<div class="input-group-append">
 					    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="sendimg" src="./resources/img/send.png"></button>
 					  	</div>
 					</div>	
 				</div>
 			</div>
-			
+			</form:form>
 			<!-- 댓글 -->
+			<c:forEach var="comment" items="${comment }">
 			<div class="card-body-6">
 				<div class="commentuser-first">
 					<div class="board-profile-commentuser">
-						<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-						<span><strong>&nbsp;user88</strong></span>
+						<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png" ></a>
+						<span><strong>${comment.comwriter }</strong></span>
 					</div>
-					<div class="commentuser-comment">Comment</div>
+					<div class="commentuser-comment">${comment.comcontext}</div>
 				</div>
-				
+
 				<div class="commentuser-second">
-					<div class="comment-time">오후 12:30</div>&nbsp;&middot;&nbsp;
-					<div class="comment-report"><a href="#" class="board-report-target2">신고</a></div>
+					<c:if test="${login.memnick == comment.comwriter }">
+					<div class="board-delete"><a href="deletbcomment.do?comno=${comment.comno }&brdno=${dto.brdno}" class="board-report-target2">삭제</a></div>
+					</c:if>
+					<div class="comment-report"><a href="writereportform.do?targetNo=${comment.comno}&targetTypeNo=2" class="board-report-target2">신고</a></div>
+					<div class="comment-time"><fmt:formatDate pattern="yyyy.MM.dd" value="${comment.comdate }"/></div>
 				</div>
 			</div>
+			<br>
+			</c:forEach>
 		</div>
 		<!-- End BoardDetil Area -->
 		

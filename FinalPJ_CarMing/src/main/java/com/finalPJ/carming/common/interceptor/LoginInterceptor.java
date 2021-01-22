@@ -23,6 +23,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if(		request.getRequestURI().contains("/loginform.do") ||
 				request.getRequestURI().contains("/home.do") ||
 				request.getRequestURI().contains("/boardmainform.do") ||
+				request.getRequestURI().contains("/ajaxlogin.do") ||
 				request.getSession().getAttribute("login")!=null) {
 			
 			return true;

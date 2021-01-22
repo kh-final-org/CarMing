@@ -12,21 +12,6 @@
 
 <link rel="stylesheet" href="resources/css/board.css">
 
-
-<!-- <script type="text/javascript">
-	$(document).ready(function(){
-	
-		$(".location-logo-text-2 > a").click(function(){
-			$(".popup").show();
-			return false;
-		});
-		
-		$(".popup .close").click(function(){
-			$(this).parent().hide();
-			$(".popup-dim").hide();
-		});
-	});
-</script> -->
 <script>
  function myFunction() {
   var x = document.getElementById("location-popup");

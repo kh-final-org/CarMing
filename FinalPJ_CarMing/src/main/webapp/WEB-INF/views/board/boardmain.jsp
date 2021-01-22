@@ -35,7 +35,26 @@
 	진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
 	
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue, list;
+    selectbox = document.getElementById("selectbox");
+    filter = selectbox.value
 
+    list = document.getElementsByClassName("card-body");
+    
+    for(i=0; i<list.length; i++){
+        a = document.getElementsByClassName("category")[i];
+        txtValue = a.textContent;
+        
+        if (txtValue == filter) {
+        	list[i].style.display = "";
+        } else {
+        	list[i].style.display = "none";
+        }
+	}
+}
+</script>
 	
 </head>
 <body>
@@ -74,12 +93,12 @@
 		
 		<div class="card-head-third" style="width: 140px;">
 			<div class="dropdown-selectbox">
-		  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-					<option value="generalCamping" selected>일반 캠핑</option>
-				    <option value="caravan">카라반</option>
-				    <option value="glamping">글램핑</option>
-				    <option value="carCamping">차박</option>
-				    <option value="myOwnCamping">나만의 캠핑</option>
+		  		<select onchange="myFunction()"   class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+					<option value="일반 캠핑" selected>일반 캠핑</option>
+				    <option value="카라반">카라반</option>
+				    <option value="글램핑">글램핑</option>
+				    <option value="차박">차박</option>
+				    <option value="나만의 캠핑">나만의 캠핑</option>
 			  	</select>
 			</div>
 		</div>
@@ -103,6 +122,8 @@
 			<div class="board-uploadimg">
 				<a href="boarddetailform.do?brdno=${dto.brdno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
 				<div class="board-count">조회수 ${dto.brdcount}</div>
+				<div class="category">myOwnCamping
+				${dto.bcategoryname }</div>
 			</div>
 		</div>
 	</c:forEach>

@@ -12,7 +12,7 @@ public class boardDto {
 	private int brdcomcount;	//게시글 댓글 수 
 	private Date brddate;		//게시글 작성 날짜
 	private String brdprivate;	//나만보기 체크 여부
-	
+	private String categoryname;
 
 	public boardDto() {
 		super();

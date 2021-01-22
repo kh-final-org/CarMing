@@ -1,8 +1,5 @@
 package com.finalPJ.carming;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.finalPJ.carming.model.biz.bcommentBiz;
 import com.finalPJ.carming.model.biz.boardBiz;
 import com.finalPJ.carming.model.dto.boardDto;
 
@@ -21,6 +18,9 @@ public class boardController {
 	
 	@Autowired
 	private boardBiz biz;
+	
+	@Autowired
+	private bcommentBiz cbiz;
 	
 	//캠핑토크 메인 화면
 	@RequestMapping(value = "/boardmainform.do")
@@ -39,15 +39,7 @@ public class boardController {
 	   return "board/boardinsert";
 	}
 	
-	//게시글쓰기 페이지로 이동
-		@RequestMapping(value = "/boardinsertform2.do")
-		public String boardWrite2(boardDto dto) {
-		   logger.info("[INSERT FORM]");
-		   
-		   return "board/boardinsert";
-		}
-	
-	
+
 	//게시글 작성 완료 시
 	@RequestMapping(value = "/boardinsertres.do")
 	public String boardInsertRes() {
@@ -65,7 +57,7 @@ public class boardController {
 	public String boardDetail(Model model, int brdno) {
 		logger.info("[SELECT ONE]");
 		model.addAttribute("dto", biz.selectOne(brdno));
-		
+		model.addAttribute("comment",cbiz.selectList(brdno));
 		return "board/boarddetail";
 		
 	}
