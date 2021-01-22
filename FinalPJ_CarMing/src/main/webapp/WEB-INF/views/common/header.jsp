@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,41 +47,56 @@
 					</button>
 					
 					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+					<div class="collapse navbar-collapse offset"
+						id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" style="font-size : 15px;">관리자</a>
+							<c:if test="${login.memcode == 1}">
+									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
+									<li class="nav-item submenu dropdown"><a href="#"
+										class="nav-link dropdown-toggle" data-toggle="dropdown"
+										role="button" aria-haspopup="true" aria-expanded="false"
+										style="font-size: 15px;">관리자</a>
+										<ul class="dropdown-menu">
+											<li class="nav-item"><a class="nav-link"
+												href="memberlist.do" style="font-size: 15px;">회원목록</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="inquirylist.do" style="font-size: 15px;">문의목록</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="reportlist.do" style="font-size: 15px;">신고목록</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="adminRentList.do" style="font-size: 15px;">렌탈목록</a></li>
+										</ul></li>
+									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
+							</c:if>
+							<li class="nav-item"><a class="nav-link"
+								href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
+							<li class="nav-item submenu dropdown"><a href="#"
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false"
+								style="font-size: 15px;">캠핑렌트</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="memberlist.do" style="font-size: 15px;">회원목록</a></li>
-									<li class="nav-item"><a class="nav-link" href="inquirylist.do" style="font-size: 15px;">문의목록</a></li>
-									<li class="nav-item"><a class="nav-link" href="reportlist.do" style="font-size: 15px;">신고목록</a></li>
-									<li class="nav-item"><a class="nav-link" href="adminRentList.do" style="font-size: 15px;">렌탈목록</a></li>
-								</ul>
-							</li>
-							<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
-							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" style="font-size : 15px;">캠핑렌트</a>
+									<li class="nav-item"><a class="nav-link"
+										href="productlist.do" style="font-size: 15px;">카테고리</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="productdetail.do" style="font-size: 15px;">상품 보기</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart.do"
+										style="font-size: 15px;">장바구니</a></li>
+								</ul></li>
+							<li class="nav-item"><a class="nav-link"
+								href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
+							<li class="nav-item submenu dropdown"><a href="#"
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false"
+								style="font-size: 15px;">우리 서로 캠LIVE</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">카테고리</a></li>
-									<li class="nav-item"><a class="nav-link" href="productdetail.do" style="font-size: 15px;">상품 보기</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.do" style="font-size: 15px;">장바구니</a></li>
-								</ul>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" style="font-size: 15px;" >우리 서로 캠LIVE</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 LIVE</a></li>
-									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 MEET</a></li>
-								</ul>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
-							
+									<li class="nav-item"><a class="nav-link" href="#"
+										style="font-size: 15px;">캠핑 LIVE</a></li>
+									<li class="nav-item"><a class="nav-link" href="#"
+										style="font-size: 15px;">캠핑 MEET</a></li>
+								</ul></li>
+							<li class="nav-item"><a class="nav-link" href="#"
+								style="font-size: 15px;">캠플레이스</a></li>
+
 							<!-- 드롭다운 메뉴 -->
 							<!-- 
 							<li class="nav-item submenu dropdown">
@@ -92,25 +108,28 @@
 							</li>
 							-->
 						</ul>
-						
+
 						<ul class="nav navbar-nav navbar-right">
-						<!--nav navbar-nav navbar-right  -->
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false"><span class="lnr lnr-user"></span></a>
+							<!--nav navbar-nav navbar-right  -->
+							<li class="nav-item submenu dropdown"><a href="#"
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false"><span
+									class="lnr lnr-user"></span></a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
-									<li class="nav-item"><a class="nav-link" href="ordernpay.do">주문/결제 내역</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false"><span class="ti-bag"></span></a>
-							</li>
+									<li class="nav-item"><a class="nav-link"
+										href="ordernpay.do">주문/결제 내역</a></li>
+								</ul></li>
+							<li class="nav-item submenu dropdown"><a href="#"
+								class="nav-link dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false"><span
+									class="ti-bag"></span></a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+								<button class="search">
+									<span class="lnr lnr-magnifier" id="search"></span>
+								</button>
 							</li>
 						</ul>
 					</div>

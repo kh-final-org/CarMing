@@ -33,11 +33,20 @@ public class boardController {
 	
 	//게시글쓰기 페이지로 이동
 	@RequestMapping(value = "/boardinsertform.do")
-	public String boardWrite(boardDto dto) {
+	public String boardWrite1(boardDto dto) {
 	   logger.info("[INSERT FORM]");
 	   
 	   return "board/boardinsert";
 	}
+	
+	//게시글쓰기 페이지로 이동
+		@RequestMapping(value = "/boardinsertform2.do")
+		public String boardWrite2(boardDto dto) {
+		   logger.info("[INSERT FORM]");
+		   
+		   return "board/boardinsert";
+		}
+	
 	
 	//게시글 작성 완료 시
 	@RequestMapping(value = "/boardinsertres.do")

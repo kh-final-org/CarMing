@@ -134,7 +134,7 @@
 								닉네임:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="writerNickname"
-									value="이예슬" readonly="readonly" name="reportWriter">
+									value="${login.memnick}" readonly="readonly" name="reportWriter">
 							</div>
 						</div>
 						

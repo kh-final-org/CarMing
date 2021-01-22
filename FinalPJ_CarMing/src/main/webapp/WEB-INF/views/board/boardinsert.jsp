@@ -9,61 +9,11 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-<style type="text/css">
-	.card-container{margin: 50px 200px;}
-	.card-body{padding: 0px;}
-	
-	.card-body-left{float: left; width: 530px; height: 400px; margin: 0px 0px 0px -20px; 
-					text-align: center; background-color: #fff5e9; border-radius: 20px;}
-	.card-context{margin: 100px; font-size: 1.2em;}	 		
-	.camera-logo{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
-	.logo-bottom-context{color: gray;} 	
-	
-	.card-body-right{float: right; width: 530px; height: 450px;}
-	#button-dropdown{width: 500px; text-align: left;}	
-	.body-content{margin-top: 55px; font-size: 1.2em;}
-	textarea {padding: 10px 12px;}
-	.location-logo{width: 25px;height: 25px;}
-	.body-location{margin: 10px 0px;}
-	.body-location-left{float: left; width: 77%;}
-	.body-location-right{float: right; width: 23%;}
-	.location-logo-text{display: inline-block; vertical-align: middle;}
-	.body-checklist{margin: 10px 0px;}	
-	
-	.card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}	
-	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 50px 0px; cursor: pointer;}
 
-	.check input{display: none;}
-	.check span{cursor: pointer; isplay: inline-block; vertical-align: middle; margin-left: 3px;} 	
-	.check .icon{display: inline-block; width: 20px; height: 20px; background-color: transparent; /*z-index: 5*/
-				 border: 2px solid silver; border-radius: 3px; position: relative; cursor: pointer;}
-	.check .icon::before, .check .icon::after {content: ''; display: inline-block; width: 1.7px; height: 0px; 
-											   background-color: #fff; position: absolute; transform-origin: left top; border-radius: 2px;}
-	.check .icon::before {top: 7px; left: 1.5px; transform: rotate(-45deg);}
-	.check .icon::after {top: 12.5px; left: 7px; transform: rotate(-135deg);}
-	.check input:checked ~ .icon{background-color: orange; border-color: orange;}
-	.check input:checked ~ .icon::before{height: 7px; transition: all 0.12s ease;}
-	.check input:checked ~ .icon::after{height: 11px; transition: all 0.12s ease 0.12s;}
-	
-	.location-open{color: gray;}
-	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 5;
-	   	   text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
-	.popup:target{opacity: 1;}
-	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 127%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
-	.popup:target + .popup-dim{opacity: 1; z-index: 2;} /*위치등록 아이콘 클릭 했을 시 */	
-	.popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
-	.location-cancel{position: absolute; top: 10px; right: 15px;}
-	
-	.popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
-	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
-	.searchimg{width: 20px; height: 20px; opacity: 50%;}
-	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
-	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
-	#clickLatlng{text-align: center; margin-top: -5px;}
-</style>
+<link rel="stylesheet" href="resources/css/board.css">
 
-<!-- 
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
 	$(document).ready(function(){
 	
 		$(".location-logo-text-2 > a").click(function(){
@@ -76,8 +26,17 @@
 			$(".popup-dim").hide();
 		});
 	});
+</script> -->
+<script>
+function myFunction() {
+  var x = document.getElementById("location-popup");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 </script>
- -->
 
 </head>
 <body>
@@ -140,7 +99,7 @@
 				</div>
 				
 				<!-- Location Upload -->
-				<div class="body-location">
+				<div class="body-location" >
 					<div class="body-location-left">
 						<span class="location-logo-text">
 							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장
@@ -150,9 +109,13 @@
 					<div class="body-location-right">
 						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-							<a href="#location-popup" class="location-open">위치 등록</a>
+						<!-- 	<a href="#location-popup" class="location-open">위치 등록</a> -->
+							
+							<a  href="#location-popup" class="location-open">위치 등록</a>
+							<!-- onclick="myFunction()" -->
+							
 							<!-- Start Location-Popup -->
-							<div class="popup" id="location-popup">
+							<div class="popup" id="location-popup" >
 								<div class="popup-title"><strong>위치 찾기</strong></div>
 								<!-- 지도를 담는 map -->
 								<div id="map"></div>
@@ -169,7 +132,7 @@
 								<script>
 									var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 									    mapOption = { 
-									        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+									        center: new kakao.maps.LatLng(37.739010, 127.200003), // 지도의 중심좌표
 									        level: 3 // 지도의 확대 레벨
 									    };
 									
@@ -195,8 +158,11 @@
 									    var message = '위도 : ' + latlng.getLat() + ' , ';
 									    message += '경도 : ' + latlng.getLng();
 									    
+									    var lat = latlng.getLat();
+									    var lng = latlng.getLng();
+									    
 									    var resultDiv = document.getElementById('clickLatlng'); 
-									    resultDiv.innerHTML = message;
+									    resultDiv.innerHTML = lat+":"+lng;
 									    
 									});
 								</script>
@@ -205,7 +171,8 @@
 									<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
 								</div>
 								<div class="location-cancel">
-									<a href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>							
+									<a onclick="myFunction()" href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>							
+									<!-- onclick="myFunction()" -->
 								</div>
 							</div>
 							<!-- End Location-Popup -->
