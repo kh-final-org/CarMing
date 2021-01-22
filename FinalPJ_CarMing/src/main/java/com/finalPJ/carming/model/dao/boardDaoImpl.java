@@ -66,7 +66,15 @@ public class boardDaoImpl implements boardDao{
 	//05. 게시글 삭제
 	@Override
 	public int delete(int brdno) {
-		return 0;
+		int res = 0 ;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete",brdno);
+		} catch (Exception e) {
+			System.out.println("[error : delete]");
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	//06. 게시글 조회수
@@ -79,7 +87,21 @@ public class boardDaoImpl implements boardDao{
 			e.printStackTrace();
 		}
 	}
-
+	
+	//07. 사용자 프로필 페이지
+	@Override
+	public List<boardDto> userBoardList(int memno) {
+		List<boardDto> list = new ArrayList<boardDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"userBoardList", memno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
 	
 	
 	

@@ -4,7 +4,8 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>       
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>       
+      
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +43,9 @@
 	.share-kakaotalk{width: 25px; height: 25px;}
 	.board-modify{float: left; margin-left: 0px 10px;}
 	.board-delete{float: right; margin-left: 8px;}
+	#board-modify-text{color: gray;}
+	#board-delete-text{color: gray;}
+	input{border: none; background: #fff; color: gray; padding: 0; font-size: 1.5em;}
 	
 	.card-body-5{margin: 10px 0px;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
@@ -56,6 +60,8 @@
 	.commentuser-second{float: right; margin: 10px 0px;}
 	.comment-time{float: left; text-align: right;}
 	.comment-report{float: right;}
+	
+	
 </style>
 
 <!-- kakao share -->
@@ -77,10 +83,10 @@
 	 				objectType: 'feed',
 	 				content: {
 	   				title: 'Camping Talk',
-	   				description: 'www.localhost:8899/carming',
-	   				imageUrl: 'http://localhost:8899/carming//boarddetailform.do',
+	   				description: '아웃도어 라이프 우리 모두의 캠핑',
+	   				imageUrl: 'https://postfiles.pstatic.net/MjAyMTAxMjFfNDgg/MDAxNjExMjE5MDc4MjE2.jLlgUhy3A2J847CYZ_4Sp4X5FI3S8gz_luJHphBr6ocg.czFVIO2I_A-hEsZD7ucwCMfehhtK-PWhH1QFSqbrUmog.JPEG.ghkdwjdals33/kakaoCarMing.JPG?type=w966',
 	   				link: {
-	     					mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	     					mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno + '&brdfile',
 	     					webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
 	   				},
 	 				},
@@ -94,8 +100,12 @@
 				})
 			}; window.kakaoDemoCallback && window.kakaoDemoCallback() }
 	catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
+</script>
 
-	
+<script>
+	function click(){
+		alert("확인");
+	}
 </script>
 
 
@@ -106,28 +116,20 @@
 <!-- End Header Area -->
 
 <!-- Start Banner Area -->
-   <section class="banner-area organic-breadcrumb">
-      <div class="container">
-         <div
-            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-            <div class="col-first">
-               <h1>Camping Talk</h1>
-               <nav class="d-flex align-items-center">
-                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                  <a href="boardmainform.do">Talk</a>
-               </nav>
-            </div>
+<section class="banner-area organic-breadcrumb">
+   <div class="container">
+      <div
+         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+         <div class="col-first">
+            <h1>The stars in the night sky</h1>
+            <nav class="d-flex align-items-center">
+               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+               <a href="boardmainform.do">Talk</a>
+            </nav>
          </div>
       </div>
-      <div class="section-top-border text-right">
-				<div class="button-group-area mt-40" style="padding-bottom: 5em">
-					<a href="tipAndRecipeMain.do"
-						class="genric-btn danger-border e-large">목록으로</a> <a
-						href="writeinquiryform.do"
-						class="genric-btn danger-border e-large">새 글 작성하기</a>
-				</div>
-			</div>
-   </section>
+   </div>
+</section>
 <!-- End Banner Area -->
 
 <!-- Start Container Area -->
@@ -143,7 +145,7 @@
 			<!-- 프로필 사진/아이디/위취/날짜 -->
 			<div class="card-body-1">
 				<div class="board-profile">
-					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
+					<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
 					<span style="font-size:1.2em;">&nbsp;${dto.brdwriter }</span>
 				</div>	
 				<div class="board-location">
@@ -179,6 +181,9 @@
 						<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
 					</div>
 					<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
+					<div class="board-delete">&#124;
+						<a href="boarddelete.do?brdno=${dto.brdno }" onclick="click()" id="board-delete-text">&nbsp;삭제</a>
+					</div>
 				</div>
 			</div><br>
 		
@@ -190,7 +195,7 @@
 				</div>	
 				<div class="board-input-comment">
 					<div class="input-group mb-3" >
-						<input type="text" class="form-control" placeholder="소중한 댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required" name="comcontext">
+						<input type="text" class="form-control" placeholder="댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required" name="comcontext">
 						<div class="input-group-append">
 					    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="sendimg" src="./resources/img/send.png"></button>
 					  	</div>
@@ -229,7 +234,6 @@
 	</div>
 </div>
 <!-- End Container Area -->
-
 
 </body>
 </html>

@@ -18,7 +18,9 @@ public interface boardBiz {
 	public int delete(int brdno);
 	//06. 게시글 조회수
 	public void viewCount(int brdno);
-	
+	//07. 사용자 프로필 페이지 목록
+	public List<boardDto> userBoardList(int memno);
+		
 	
 	
 }

@@ -9,20 +9,70 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
+<style type="text/css">
+   .card-container{margin: 50px 200px;}
+   .card-body{padding: 0px;}
+   
+   .card-body-left{float: left; width: 530px; height: 400px; margin: 0px 0px 0px -20px; 
+               text-align: center; background-color: #fff5e9; border-radius: 20px;}
+   .card-context{margin: 100px; font-size: 1.2em;}          
+   .camera-logo{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
+   .logo-bottom-context{color: gray;}    
+   
+   .card-body-right{float: right; width: 530px; height: 450px;}
+   #button-dropdown{width: 500px; text-align: left;}   
+   .body-content{margin-top: 55px; font-size: 1.2em;}
+   textarea {padding: 10px 12px;}
+   .location-logo{width: 25px;height: 25px;}
+   .body-location{margin: 10px 0px;}
+   .body-location-left{float: left; width: 77%;}
+   .body-location-right{float: right; width: 23%;}
+   .location-logo-text{display: inline-block; vertical-align: middle;}
+   .body-checklist{margin: 10px 0px;}   
+   
+   .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
+   #button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 50px 0px; cursor: pointer;}
 
-<link rel="stylesheet" href="resources/css/board.css">
+   .check input{display: none;}
+   .check span{cursor: pointer; isplay: inline-block; vertical-align: middle; margin-left: 3px;}    
+   .check .icon{display: inline-block; width: 20px; height: 20px; background-color: transparent; /*z-index: 5*/
+             border: 2px solid silver; border-radius: 3px; position: relative; cursor: pointer;}
+   .check .icon::before, .check .icon::after {content: ''; display: inline-block; width: 1.7px; height: 0px; 
+                                    background-color: #fff; position: absolute; transform-origin: left top; border-radius: 2px;}
+   .check .icon::before {top: 7px; left: 1.5px; transform: rotate(-45deg);}
+   .check .icon::after {top: 12.5px; left: 7px; transform: rotate(-135deg);}
+   .check input:checked ~ .icon{background-color: orange; border-color: orange;}
+   .check input:checked ~ .icon::before{height: 7px; transition: all 0.12s ease;}
+   .check input:checked ~ .icon::after{height: 11px; transition: all 0.12s ease 0.12s;}
+   
+   .location-open{color: gray;}
+   .popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 5;
+            text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
+   .popup:target{opacity: 1;}
+   .popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 140%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
+   .popup:target + .popup-dim{opacity: 1; z-index: 2;} /*위치등록 아이콘 클릭 했을 시 */   
+   .popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
+   .location-cancel{position: absolute; top: 10px; right: 15px;}
+   
+   .popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
+   #map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
+   .searchimg{width: 20px; height: 20px; opacity: 50%;}
+   #button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
+   #location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
+   #clickLatlng{text-align: center; margin-top: -5px;}
+</style>
 
 <script>
- function myFunction() {
-  var x = document.getElementById("location-popup");
-  if (x.style.display == "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  } 
-}  
-
+	function myFunction() {
+		var x = document.getElementById("location-popup");
+			if (x.style.display == "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			} 
+		}  
 </script>
+
 
 </head>
 <body onload="location.href='#location-popup'">
@@ -31,20 +81,20 @@
 <!-- End Header Area -->
 
 <!-- Start Banner Area -->
-   <section class="banner-area organic-breadcrumb">
-      <div class="container">
-         <div
-            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-            <div class="col-first">
-               <h1>Camping Talk</h1>
-               <nav class="d-flex align-items-center">
-                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                  <a href="boardmainform.do">Talk</a>
-               </nav>
-            </div>
+<section class="banner-area organic-breadcrumb">
+   <div class="container">
+      <div
+         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+         <div class="col-first">
+            <h1>The stars in the night sky</h1>
+            <nav class="d-flex align-items-center">
+               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+               <a href="boardmainform.do">Talk</a>
+            </nav>
          </div>
       </div>
-   </section>
+   </div>
+</section>
 <!-- End Banner Area -->
 
 <form action="boardinsertres.do" method="post">
@@ -70,11 +120,11 @@
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
 				  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-							<option value="generalCamping" selected>일반 캠핑</option>
-						    <option value="caravan">카라반</option>
-						    <option value="glamping">글램핑</option>
-						    <option value="carCamping">차박</option>
-						    <option value="myOwnCamping">나만의 캠핑</option>
+							<option value="1" selected>일반 캠핑</option>
+						    <option value="2">카라반</option>
+						    <option value="3">글램핑</option>
+						    <option value="4">차박</option>
+						    <option value="5">나만의 캠핑</option>
 					  	</select>
 					</div>
 				</div>			
@@ -95,11 +145,8 @@
 					<div class="body-location-right">
 						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-						<!-- 	<a href="#location-popup" class="location-open">위치 등록</a> -->
-							
 							<a onclick="myFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
-							<!-- onclick="myFunction()" -->
-							<!--  --> 
+
 							<!-- Start Location-Popup -->
 							<div class="popup" id="location-popup">
 								<div class="popup-title"><strong>위치 찾기</strong></div>
@@ -157,8 +204,7 @@
 									<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
 								</div>
 								<div class="location-cancel">
-									<a onclick="myFunction()" id="close" href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>							
-									<!-- onclick="myFunction()" -->
+									 <a onclick="myFunction()" id="close" href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>
 								</div>
 							</div>
 							<!-- End Location-Popup -->
@@ -193,6 +239,8 @@
 	
 	</div>
 </form>
-
+<!-- Start Footer Area -->
+<%@ include file="../common/footer.jsp" %>
+<!-- End Footer Area -->
 </body>
 </html>

@@ -10,21 +10,21 @@
 		<result property="brdfile" column="BRDFILE"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
 		<result property="brdcount" column="BRDCOUNT"/>
-		<result property="brdcomcount" column="BRDCOMCOUNT"/>
 		<result property="brddate" column="BRDDATE"/>
 		<result property="brdprivate" column="BRDPRIVATE"/>
+		<result property="memno" column="MEMNO"/>
 	</resultMap>
 	
 	<!-- 01. 게시글 전체 목록 -->
-	<select id="selectList" resultMap="boardMap">
-		SELECT BRDNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
+	<select id="selectList" resultType="boardDto">
+		SELECT *
 		FROM BOARD
 		ORDER BY BRDDATE DESC
 	
 		<!--  SELECT * FROM (
 			SELECT ROWNUM AS RNUM, BRD.*
 			FROM(
-				SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDDATE, BRDPRIVATE
+				SELECT *
 				FROM BOARD
 				ORDER BY BRDDATE DESC
 			) BRD
@@ -35,16 +35,26 @@
 	
 	<!-- 02. 게시글 상세보기 -->
 	<select id="selectOne" parameterType="int" resultType="boardDto">
-		SELECT BRDNO, BCATEGORYNO, BRDWRITER, BRDFILE, BRDCONTENT, BRDCOUNT, BRDCOMCOUNT, BRDDATE, BRDPRIVATE
+		SELECT *
 		FROM BOARD
 		WHERE BRDNO = #{brdno}
 	</select>
 	
 	<!-- 03. 게시글 작성 -->
-	<insert id="insert" parameterType="boardDto">
-  		INSERT INTO BOARD
-  		VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno}, #{brdcontent}) 
+	<insert id="insertBoard" parameterType="boardDto">
+	
   	</insert>	
+	
+	<!-- 04. 게시글 수정 -->
+	<update id="" parameterType="int">
+
+	</update>
+	
+	<!-- 05. 게시글 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM BOARD
+		WHERE BRDNO = #{brdno}
+  	</delete>
 	
 	<!-- 06. 게시글 조회수 -->
 	<update id="viewCount" parameterType="int">
@@ -53,10 +63,22 @@
 		WHERE BRDNO = #{brdno}
 	</update>
 	
-	<delete id="delete" parameterType="int">
-
-  	</delete>
-  
-
+	<!-- 07. 사용자 프로필 페이지 목록 -->
+  	<select id="userBoardList" resultMap="boardMap" parameterType="int">
+  		SELECT B.*
+		FROM BOARD B, MEMBER M
+		WHERE B.BRDWRITER = M.MEMNICK AND M.MEMNO = #{memno}
+  	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </mapper>
