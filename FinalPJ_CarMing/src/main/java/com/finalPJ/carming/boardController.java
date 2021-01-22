@@ -45,11 +45,7 @@ public class boardController {
 	public String boardInsertRes() {
 		logger.info("[BOARD INSERT RES]");
 		
-	//	int res = biz.insert(dto);
-	//  if(res>0){
-	//	   return "redirect:list.do";
-	//  }
-	  return null;
+		return null;
     }
 
 	//게시글 상세 페이지로 이동

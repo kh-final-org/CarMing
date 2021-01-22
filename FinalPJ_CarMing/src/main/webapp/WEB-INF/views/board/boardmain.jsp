@@ -128,7 +128,7 @@
 </div>
 <!-- End Container Area -->
 
-<!-- 중간에 여백을 주기 위해 임시로 만들어 놓음 -->
+<!-- 여백을 주기 위해 임시로 만들어 놓음 -->
 <table class="table table-hover"></table>
 
 <!-- Start Paging Area -->

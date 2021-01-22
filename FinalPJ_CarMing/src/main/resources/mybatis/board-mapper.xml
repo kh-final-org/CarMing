@@ -67,7 +67,8 @@
   	<select id="userBoardList" resultMap="boardMap" parameterType="int">
   		SELECT B.*
 		FROM BOARD B, MEMBER M
-		WHERE B.BRDWRITER = M.MEMNICK AND M.MEMNO = #{memno}
+		WHERE B.BRDWRITER = M.MEMNICK AND B.BRDPRIVATE='N' AND M.MEMNO = #{memno}
+		ORDER BY BRDDATE DESC
   	</select>
 	
 	

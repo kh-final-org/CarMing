@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class bcommentDto {
 	
-	private int memno; //회원	번호
+	private int memno;	 		//회원번호
 	private int comno;			//댓글 번호
 	private String comwriter;	//댓글 작성자
 	private String comcontext;	//댓글 내용
 	private Date comdate;		//댓글 작성 날짜
-	private int brdno; // 캠핑토크 게시글 번호
+	private int brdno; 			//캠핑토크 게시글 번호
 	
 	public bcommentDto() {
 		super();

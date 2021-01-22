@@ -12,17 +12,14 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <style type="text/css">
-	.card-container{margin: 50px 200px; padding: 0px;}
-	.card-wrap{width: 100%; height: 800px;}	/* 하단의 여백이 생기지 않아 추가 함 */
-	
 	.card-first{float: left; margin: 100px 50px 100px 50px;}
-	.card-second{float: left; width: 500px; margin-bottom: 50px;}
+	.card-second{float: left; width: 500px;}
 	.card-third{float: right; margin: 100px 80px;}
 	
 	.next-left{width: 40px; height: 40px; margin: 160px 0px 0px 150px; padding: 0px;}
 	.next-right{width: 40px; height: 40px; margin: 160px 100px 0px 0px; padding: 0px;}	
 	
-	.user-profile{width: 50px; height: 50px;}
+	.user-profile{width: 50px; height: 50px; margin-right: 10px;}
 	.board-profile{float: left; margin: 5px 50px;}
 	.board-location{float: right; text-align: right; margin: 10px 0px 5px 0px;}
 	.uploadimg{width: 450px; height: 450px; margin: 0px 50px;}
@@ -31,7 +28,7 @@
 	.board-content{float: left; position: absolute; left: 0; width: 70%;}
 	.board-count{float: left; text-align: right; position: absolute; left: 320px; width: 20%;}
 	.board-report{float: right; text-align: right; position: absolute; right: 0; width: 10%;}
-	.board-report-target1, .board-report-target2{color: #5f5f5f;}
+	#board-report-target{color: silver;}
 	#report{border: none; background-color: white;}	 	
 		
 	.board-comment-header-1{float: left; margin-left: 50px;}	
@@ -42,7 +39,7 @@
 	.board-share{float: left; margin-right: 10px; cursor: pointer;}
 	.share-kakaotalk{width: 25px; height: 25px;}
 	.board-modify{float: left; margin-left: 0px 10px;}
-	.board-delete{float: right; margin-left: 8px;}
+	.board-delete{float: right; margin-left: 1px; margin-right: 2px;}
 	#board-modify-text{color: gray;}
 	#board-delete-text{color: gray;}
 	input{border: none; background: #fff; color: gray; padding: 0; font-size: 1.5em;}
@@ -51,16 +48,16 @@
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
 	.sendimg{width: 20px; height: 20px; opacity: 50%;}
 	.board-profile-comment{float: left;	margin-left: 50px;}
-	.board-input-comment{float: right; width: 390px; margin: 5px 0px;}
+	.board-input-comment{float: right; width: 385px; margin: 5px 0px;}
 
+	.card-body-6{float: left; width: 100%; margin-bottom: 13px;}
 	.commentuser-first{float: left; margin-left: 50px;}
 	.board-profile-commentuser{float: left;}
-	.commentuser-comment{float: right; margin: 10px 20px;}
-	
-	.commentuser-second{float: right; margin: 10px 0px;}
+	.commentuser-comment{float: right; margin: 11px 20px;}
+	.commentuser-second{float: right; margin: 10px 0px; font-size: 0.85em;}
 	.comment-time{float: left; text-align: right;}
 	.comment-report{float: right;}
-	
+	.board-delete-comment{color: #5f5f5f;}
 	
 </style>
 
@@ -102,12 +99,6 @@
 	catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
 </script>
 
-<script>
-	function click(){
-		alert("확인");
-	}
-</script>
-
 
 </head>
 <body>
@@ -131,109 +122,116 @@
    </div>
 </section>
 <!-- End Banner Area -->
+<main role="main" style="padding: 50px 200px; ">
 
 <!-- Start Container Area -->
 <div class="card-container">
-	<div class="card-wrap">
-		<!-- Left Arrow -->
-		<div class="card-first">
-			<img class="next-left" src="./resources/img/left.png">
-		</div>
+	<!-- Left Arrow -->
+	<div class="card-first">
+		<img class="next-left" src="./resources/img/left.png">
+	</div>
 	
-		<!-- Start BoardDetil Area -->
-		<div class="card-second">
-			<!-- 프로필 사진/아이디/위취/날짜 -->
-			<div class="card-body-1">
-				<div class="board-profile">
-					<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-					<span style="font-size:1.2em;">&nbsp;${dto.brdwriter }</span>
-				</div>	
-				<div class="board-location">
-					<div>서울특별시 카밍캠핑장</div>
-					<div><fmt:formatDate pattern="yyyy.MM.dd" value="${dto.brddate }"/></div>
-				</div>
+	<!-- Start BoardDetil Area -->
+	<div class="card-second">
+		<!-- 프로필 사진/아이디/위치/날짜 -->
+		<div class="card-body-1">
+			<div class="board-profile">
+				<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
+				<span style="font-size:1.2em;">&nbsp;${dto.brdwriter }</span>
+			</div>	
+			<div class="board-location">
+				<div>서울특별시 카밍캠핑장</div>
+				<div><fmt:formatDate pattern="yyyy.MM.dd" value="${dto.brddate }"/></div>
 			</div>
-			
-			<!-- 사용자가 업로드한 이미지 -->
-			<div class="card-body-2">
-				<div class="board-uploadimg">
-					<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile }">
-				</div>
-			</div>
-			
-			<!-- 게시글 내용/조회수/신고 -->
-			<div class="card-body-3">
-				<div class="board-content">${dto.brdcontent }</div>
-				<div class="board-count">조회수 ${dto.brdcount }</div>
-				<div class="board-report">&nbsp;&middot;&nbsp;<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1">신고</a></div>
-			</div><br><br>
-			
-			<!-- 게시글 전체 댓글 수/카카오 공유/수정/삭제 -->
-			<div class="card-body-4">
-				<div class="board-comment-header-1">
-					<div class="board-comment-head"><strong>댓글</strong></div>
-					<c:forEach items="${comment }" varStatus="status">
-					<div class="board-comment-count"><b>${status.end}</b></div>
-					</c:forEach>
-				</div>
-				<div class="board-comment-header-2">
-					<div class="board-share">
-						<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
-					</div>
-					<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
-					<div class="board-delete">&#124;
-						<a href="boarddelete.do?brdno=${dto.brdno }" onclick="click()" id="board-delete-text">&nbsp;삭제</a>
-					</div>
-				</div>
-			</div><br>
+		</div>
 		
-			<!-- 게시글에 댓글 입력하는 부분 -->
-			<form:form action="writebcomment.do?memno=${login.memno}&brdno=${dto.brdno }" method="post">
+		<!-- 사용자가 업로드한 이미지 -->
+		<div class="card-body-2">
+			<div class="board-uploadimg">
+				<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile }">
+			</div>
+		</div>
+		
+		<!-- 게시글 내용/조회수/신고 -->
+		<div class="card-body-3">
+			<div class="board-content">${dto.brdcontent }</div>
+			<div class="board-count">조회수 ${dto.brdcount }</div>
+			<div class="board-report">&nbsp;&middot;&nbsp;<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1" id="board-report-target">신고</a></div>
+		</div><br><br>
+		
+		<!-- 게시글 전체 댓글 수/카카오톡 공유/수정/삭제 -->
+		<div class="card-body-4">
+			<div class="board-comment-header-1">
+				<div class="board-comment-head"><strong>댓글</strong></div>
+				<c:forEach items="${comment }" varStatus="status">
+					<div class="board-comment-count"><b>${status.end}</b></div>
+				</c:forEach>
+			</div>
+			<div class="board-comment-header-2">
+				<div class="board-share">
+					<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
+				</div>
+				<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
+				<div class="board-delete">&nbsp;&#124;
+					<a href="boarddelete.do?brdno=${dto.brdno }" onclick="#" id="board-delete-text">&nbsp;삭제</a>
+				</div>
+			</div>
+		</div><br>
+	
+		<!-- 게시글에 댓글 입력하는 부분 -->
+		<form:form action="writebcomment.do?memno=${login.memno}&brdno=${dto.brdno }" method="post">
 			<div class="card-body-5">
 				<div class="board-profile-comment">
-					<img class="user-profile" src="./resources/img/profile.png">&nbsp; 
+					<img class="user-profile" src="./resources/img/profile.png">
 				</div>	
 				<div class="board-input-comment">
 					<div class="input-group mb-3" >
-						<input type="text" class="form-control" placeholder="댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required" name="comcontext">
+						<input type="text" class="form-control" name="comcontext" placeholder="댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required">
 						<div class="input-group-append">
 					    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="sendimg" src="./resources/img/send.png"></button>
 					  	</div>
 					</div>	
 				</div>
 			</div>
-			</form:form>
-			<!-- 댓글 -->
-			<c:forEach var="comment" items="${comment }">
+		</form:form>
+		
+		<!-- 댓글 -->
+		<c:forEach var="comment" items="${comment }">
 			<div class="card-body-6">
 				<div class="commentuser-first">
 					<div class="board-profile-commentuser">
-						<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png" ></a>
+						<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" ></a>
 						<span><strong>${comment.comwriter }</strong></span>
 					</div>
 					<div class="commentuser-comment">${comment.comcontext}</div>
 				</div>
-
+	
 				<div class="commentuser-second">
+					<div class="comment-time"><fmt:formatDate pattern="a HH:mm" value="${comment.comdate }"/></div>&nbsp;&middot;&nbsp;
+					<div class="comment-report">
+						<a href="writereportform.do?targetNo=${comment.comno}&targetTypeNo=2" class="board-report-target2" id="board-report-target">신고</a>
+					</div>
 					<c:if test="${login.memnick == comment.comwriter }">
-					<div class="board-delete"><a href="deletbcomment.do?comno=${comment.comno }&brdno=${dto.brdno}" class="board-report-target2">삭제</a></div>
+						<div class="board-delete">
+							<a href="deletbcomment.do?comno=${comment.comno }&brdno=${dto.brdno}" class="board-delete-comment">삭제</a>&nbsp;&middot;
+						</div>
 					</c:if>
-					<div class="comment-report"><a href="writereportform.do?targetNo=${comment.comno}&targetTypeNo=2" class="board-report-target2">신고</a></div>
-					<div class="comment-time"><fmt:formatDate pattern="yyyy.MM.dd" value="${comment.comdate }"/></div>
 				</div>
 			</div>
-			<br>
-			</c:forEach>
-		</div>
-		<!-- End BoardDetil Area -->
-		
-		<!-- Right Arrow -->
-		<div class="card-third">
-			<img class="next-right" src="./resources/img/right.png"> 
-		</div>
+		</c:forEach>
 	</div>
+	<!-- End BoardDetil Area -->
+		
+	<!-- Right Arrow -->
+	<div class="card-third">
+		<img class="next-right" src="./resources/img/right.png"> 
+	</div>
+	
+	<!-- 여백을 주기 위해 임시로 만들어 놓음 -->
+	<table class="table table-hover"></table>
 </div>
 <!-- End Container Area -->
 
+</main>
 </body>
 </html>
