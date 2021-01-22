@@ -32,12 +32,22 @@
 	
 	#paging-container{margin: 50px 0px 20px 0px;}
 	
-	/**********************************************
-	.navi li a:hover{background-color: #fff5e9;} 
-	***********************************************
-	진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
+	/* 진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
+<script type="text/javascript">
+	function selectFunction(){
+	    var select = document.getElementById("selectBox");
+	    var selectVal = select.options[select.selectedIndex].value;
 	
+	    alert(selectVal);
+	    
+	    if(selectVal.value == ''){
+	    	generalCamping.display = "";
+	    }else{
+	    	dispaly = "none";
+	    }
+	}
+</script>
 
 	
 </head>
@@ -47,20 +57,20 @@
 <!-- End Header Area -->
 
 <!-- Start Banner Area -->
-   <section class="banner-area organic-breadcrumb">
-      <div class="container">
-         <div
-            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-            <div class="col-first">
-               <h1>Camping Talk</h1>
-               <nav class="d-flex align-items-center">
-                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                  <a href="boardmainform.do">Talk</a>
-               </nav>
-            </div>
+<section class="banner-area organic-breadcrumb">
+   <div class="container">
+      <div
+         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+         <div class="col-first">
+            <h1>The stars in the night sky</h1>
+            <nav class="d-flex align-items-center">
+               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+               <a href="boardmainform.do">Talk</a>
+            </nav>
          </div>
       </div>
-   </section>
+   </div>
+</section>
 <!-- End Banner Area -->
 <main role="main" style="padding: 50px 200px; ">
 
@@ -77,12 +87,12 @@
 		
 		<div class="card-head-third" style="width: 140px;">
 			<div class="dropdown-selectbox">
-		  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-					<option value="generalCamping" selected>일반 캠핑</option>
-				    <option value="caravan">카라반</option>
-				    <option value="glamping">글램핑</option>
-				    <option value="carCamping">차박</option>
-				    <option value="myOwnCamping">나만의 캠핑</option>
+		  		<select class="selectpicker form-control" id="selectBox" name="selectBox" onchange="selectFunction();" aria-label="Example select with button addon">
+					<option value="1" selected>일반 캠핑</option>
+				    <option value="2">카라반</option>
+				    <option value="3">글램핑</option>
+				    <option value="4">차박</option>
+				    <option value="5">나만의 캠핑</option>
 			  	</select>
 			</div>
 		</div>
@@ -99,13 +109,13 @@
 		<div class="card-body" style="padding: 0px">
 			<!-- 프로필 사진/아이디 -->
 			<div class="board-profile">
-				<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
+				<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
 				<span style="font-size:1.2em;">&nbsp;${dto.brdwriter}</span>
 			</div>	
 			<!-- 사용자가 업로드한 이미지 -->
 			<div class="board-uploadimg">
-				<a href="boarddetailform.do?brdno=${dto.brdno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
-				<div class="board-count">조회수 ${dto.brdcount}</div>
+				<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
+				<div class="board-count">조회수 ${dto.brdcount }</div>
 			</div>
 		</div>
 	</c:forEach>

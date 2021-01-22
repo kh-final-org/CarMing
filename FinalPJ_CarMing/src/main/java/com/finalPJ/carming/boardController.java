@@ -39,7 +39,7 @@ public class boardController {
 	   return "board/boardinsert";
 	}
 	
-	//게시글 작성 완료
+	//게시글 insert
 	@RequestMapping(value = "/boardinsertres.do")
 	public String boardInsertRes() {
 		logger.info("[BOARD INSERT RES]");
@@ -60,14 +60,6 @@ public class boardController {
 		return "board/boarddetail";
 	}
 
-	//게시글 수정 form
-	@RequestMapping(value = "/boardupdateform.do")
-	public String boardUpdate(Model model, int brdno) {
-		logger.info("[BOARD UPDATE FORM]");
-		
-		return "";
-	}
-	
 	//게시글 삭제
 	@RequestMapping(value = "/boarddelete.do")
 	public String delete(int brdno) {
@@ -81,10 +73,11 @@ public class boardController {
 		}
 	}
 	
-	//프로필 페이지로 이동
+	//프로필 페이지
 	@RequestMapping(value = "/profileform.do")
-	public String profilePage() {
+	public String profilePage(Model model, int memno) {
 		logger.info("[PROFILE PAGE]");
+		model.addAttribute("list", biz.userBoardList(memno));
 		
 		return "board/profilepage";
 	}

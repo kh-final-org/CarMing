@@ -103,16 +103,11 @@
 	catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
 </script>
 
-<!-- 
 <script>
-	function del(brdno){
-		var chk = confirm("게시글을  삭제하겠습니까?");
-		if(chk){
-			location.href='boarddelete.do?brdno=' + brdno;
-		}
+	function click(){
+		alert("확인");
 	}
 </script>
--->
 
 
 </head>
@@ -122,20 +117,20 @@
 <!-- End Header Area -->
 
 <!-- Start Banner Area -->
-   <section class="banner-area organic-breadcrumb">
-      <div class="container">
-         <div
-            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-            <div class="col-first">
-               <h1>Camping Talk</h1>
-               <nav class="d-flex align-items-center">
-                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                  <a href="boardmainform.do">Talk</a>
-               </nav>
-            </div>
+<section class="banner-area organic-breadcrumb">
+   <div class="container">
+      <div
+         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+         <div class="col-first">
+            <h1>The stars in the night sky</h1>
+            <nav class="d-flex align-items-center">
+               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+               <a href="boardmainform.do">Talk</a>
+            </nav>
          </div>
       </div>
-   </section>
+   </div>
+</section>
 <!-- End Banner Area -->
 
 <!-- Start Container Area -->
@@ -151,7 +146,7 @@
 			<!-- 프로필 사진/아이디/위취/날짜 -->
 			<div class="card-body-1">
 				<div class="board-profile">
-					<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
+					<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
 					<span style="font-size:1.2em;">&nbsp;${dto.brdwriter }</span>
 				</div>	
 				<div class="board-location">
@@ -188,8 +183,7 @@
 						<a href="boardupdateform.do?brdno=${dto.brdno }" id="board-modify-text">&nbsp;수정</a>
 					</div>
 					<div class="board-delete">&#124;
-						<a href="boarddelete.do?brdno=${dto.brdno }" id="board-delete-text">&nbsp;삭제</a>
-						<input type="button" value="삭제" onclick="del($dto.brdno)">
+						<a href="boarddelete.do?brdno=${dto.brdno }" onclick="click()" id="board-delete-text">&nbsp;삭제</a>
 					</div>
 				</div>
 			</div><br>

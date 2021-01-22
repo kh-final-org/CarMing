@@ -12,15 +12,16 @@ public class boardDto {
 	private int brdcomcount;	//게시글 댓글 수 
 	private Date brddate;		//게시글 작성 날짜
 	private String brdprivate;	//나만보기 체크 여부
+	private int memno;		
 	
 
 	public boardDto() {
 		super();
 	}
-
+	
 
 	public boardDto(int brdno, String brdwriter, String brdfile, String brdcontent, int brdcount, int brdcomcount,
-			Date brddate, String brdprivate) {
+			Date brddate, String brdprivate, int memno) {
 		super();
 		this.brdno = brdno;
 		this.brdwriter = brdwriter;
@@ -30,58 +31,101 @@ public class boardDto {
 		this.brdcomcount = brdcomcount;
 		this.brddate = brddate;
 		this.brdprivate = brdprivate;
+		this.memno = memno;
 	}
 
 
 	public int getBrdno() {
 		return brdno;
 	}
+
+
 	public void setBrdno(int brdno) {
 		this.brdno = brdno;
 	}
+
+
 	public String getBrdwriter() {
 		return brdwriter;
 	}
+
+
 	public void setBrdwriter(String brdwriter) {
 		this.brdwriter = brdwriter;
 	}
+
+
 	public String getBrdfile() {
 		return brdfile;
 	}
+
+
 	public void setBrdfile(String brdfile) {
 		this.brdfile = brdfile;
 	}
+
+
 	public String getBrdcontent() {
 		return brdcontent;
 	}
+
+
 	public void setBrdcontent(String brdcontent) {
 		this.brdcontent = brdcontent;
 	}
+
+
 	public int getBrdcount() {
 		return brdcount;
 	}
+
+
 	public void setBrdcount(int brdcount) {
 		this.brdcount = brdcount;
 	}
+
+
 	public int getBrdcomcount() {
 		return brdcomcount;
 	}
+
+
 	public void setBrdcomcount(int brdcomcount) {
 		this.brdcomcount = brdcomcount;
 	}
+
+
 	public Date getBrddate() {
 		return brddate;
 	}
+
+
 	public void setBrddate(Date brddate) {
 		this.brddate = brddate;
 	}
+
+
 	public String getBrdprivate() {
 		return brdprivate;
 	}
+
+
 	public void setBrdprivate(String brdprivate) {
 		this.brdprivate = brdprivate;
 	}
 
+
+	public int getMemno() {
+		return memno;
+	}
+
+
+	public void setMemno(int memno) {
+		this.memno = memno;
+	}
+
+	
+	
 
 
 

@@ -87,7 +87,21 @@ public class boardDaoImpl implements boardDao{
 			e.printStackTrace();
 		}
 	}
-
+	
+	//07. 사용자 프로필 페이지
+	@Override
+	public List<boardDto> userBoardList(int memno) {
+		List<boardDto> list = new ArrayList<boardDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"userBoardList", memno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
 	
 	
 	

@@ -54,7 +54,12 @@ public class boardBizImpl implements boardBiz{
 	//06. 게시글 조회수
 	@Override
 	public void viewCount(int brdno) {
-		
+	}
+
+	//07. 사용자 프로필 페이지 목록
+	@Override
+	public List<boardDto> userBoardList(int memno) {
+		return dao.userBoardList(memno);
 	}
 
 	
