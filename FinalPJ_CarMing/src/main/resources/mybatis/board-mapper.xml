@@ -6,6 +6,7 @@
 <mapper namespace="board">
 	<resultMap type="boardDto" id="boardMap">
 		<result property="brdno" column="BRDNO"/>
+		<result property="bcategoryno" column="BCATEGORYNO"/>
 		<result property="brdwriter" column="BRDWRITER"/>
 		<result property="brdfile" column="BRDFILE"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
@@ -13,6 +14,7 @@
 		<result property="brddate" column="BRDDATE"/>
 		<result property="brdprivate" column="BRDPRIVATE"/>
 		<result property="memno" column="MEMNO"/>
+		<result property="bcategoryname" column="BCATEGORYNAME"/>
 	</resultMap>
 	
 	<!-- 01. 게시글 전체 목록 -->
