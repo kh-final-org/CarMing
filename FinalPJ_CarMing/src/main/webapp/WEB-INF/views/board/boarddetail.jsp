@@ -19,22 +19,22 @@
 	.next-left{width: 40px; height: 40px; margin: 160px 0px 0px 150px; padding: 0px;}
 	.next-right{width: 40px; height: 40px; margin: 160px 100px 0px 0px; padding: 0px;}	
 	
-	.user-profile{width: 50px; height: 50px; margin-right: 10px;}
+	.user-profile{width: 50px; height: 50px; margin-right: 10px; border-radius: 5em;}
 	.board-profile{float: left; margin: 5px 50px;}
-	.board-location{float: right; text-align: right; margin: 10px 0px 5px 0px;}
+	.board-location{float: right; text-align: right; margin: 10px 0px 5px 0px; }
+	.board-usernick{display: inline-block; font-size: 1.2em; margin-left: -10px; font-weight: bold;}
 	.uploadimg{width: 450px; height: 450px; margin: 0px 50px;}
 	
 	.card-body-3{margin: 10px 0px 30px 50px; position: relative;}
 	.board-content{float: left; position: absolute; left: 0; width: 70%;}
-	.board-count{float: left; text-align: right; position: absolute; left: 320px; width: 20%;}
-	.board-report{float: right; text-align: right; position: absolute; right: 0; width: 10%;}
+	.board-count{float: left; text-align: right; position: absolute; left: 320px; width: 20%; font-size: 0.85em;} 
+	.board-report{float: right; text-align: right; position: absolute; right: 0; width: 10%; font-size: 0.85em;}
 	#board-report-target{color: silver;}
 	#report{border: none; background-color: white;}	 	
 		
 	.board-comment-header-1{float: left; margin-left: 50px;}	
 	.board-comment-head{float: left; font-size:1.2em;}
 	.board-comment-count{float: right; margin-left: 15px; font-size: 1.2em;}
-
 	.board-comment-header-2{float: right;}
 	.board-share{float: left; margin-right: 10px; cursor: pointer;}
 	.share-kakaotalk{width: 25px; height: 25px;}
@@ -42,13 +42,13 @@
 	.board-delete{float: right; margin-left: 1px; margin-right: 2px;}
 	#board-modify-text{color: gray;}
 	#board-delete-text{color: gray;}
-	input{border: none; background: #fff; color: gray; padding: 0; font-size: 1.5em;}
 	
 	.card-body-5{margin: 10px 0px;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
 	.sendimg{width: 20px; height: 20px; opacity: 50%;}
 	.board-profile-comment{float: left;	margin-left: 50px;}
 	.board-input-comment{float: right; width: 385px; margin: 5px 0px;}
+	input.form-control{font-size: 1.0em;}
 
 	.card-body-6{float: left; width: 100%; margin-bottom: 13px;}
 	.commentuser-first{float: left; margin-left: 50px;}
@@ -137,7 +137,7 @@
 		<div class="card-body-1">
 			<div class="board-profile">
 				<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
-				<span style="font-size:1.2em;">&nbsp;${dto.brdwriter }</span>
+				<span class="board-usernick">&nbsp;${dto.brdwriter }</span>
 			</div>	
 			<div class="board-location">
 				<div>서울특별시 카밍캠핑장</div>
@@ -163,8 +163,8 @@
 		<div class="card-body-4">
 			<div class="board-comment-header-1">
 				<div class="board-comment-head"><strong>댓글</strong></div>
-				<c:forEach items="${comment }" varStatus="status">
-					<div class="board-comment-count"><b>${status.end}</b></div>
+				<c:forEach items="${comment }" var="comment" varStatus="status">
+					<div class="board-comment-count"><b>${status.end }</b></div>
 				</c:forEach>
 			</div>
 			<div class="board-comment-header-2">
@@ -172,14 +172,16 @@
 					<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
 				</div>
 				<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
-				<div class="board-delete">&nbsp;&#124;
-					<a href="boarddelete.do?brdno=${dto.brdno }" onclick="#" id="board-delete-text">&nbsp;삭제</a>
-				</div>
+				<c:if test="${login.memnick == dto.brdwriter }">
+					<div class="board-delete">&nbsp;&#124;
+						<a href="boarddelete.do?brdno=${dto.brdno }" onclick="#" id="board-delete-text">&nbsp;삭제</a>
+					</div>
+				</c:if>
 			</div>
 		</div><br>
 	
 		<!-- 게시글에 댓글 입력하는 부분 -->
-		<form:form action="writebcomment.do?memno=${login.memno}&brdno=${dto.brdno }" method="post">
+		<form:form action="writebcomment.do?memno=${login.memno }&brdno=${dto.brdno }" method="post">
 			<div class="card-body-5">
 				<div class="board-profile-comment">
 					<img class="user-profile" src="./resources/img/profile.png">
@@ -203,17 +205,17 @@
 						<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" ></a>
 						<span><strong>${comment.comwriter }</strong></span>
 					</div>
-					<div class="commentuser-comment">${comment.comcontext}</div>
+					<div class="commentuser-comment">${comment.comcontext }</div>
 				</div>
 	
 				<div class="commentuser-second">
 					<div class="comment-time"><fmt:formatDate pattern="a HH:mm" value="${comment.comdate }"/></div>&nbsp;&middot;&nbsp;
 					<div class="comment-report">
-						<a href="writereportform.do?targetNo=${comment.comno}&targetTypeNo=2" class="board-report-target2" id="board-report-target">신고</a>
+						<a href="writereportform.do?targetNo=${comment.comno }&targetTypeNo=2" class="board-report-target2" id="board-report-target">신고</a>
 					</div>
 					<c:if test="${login.memnick == comment.comwriter }">
 						<div class="board-delete">
-							<a href="deletbcomment.do?comno=${comment.comno }&brdno=${dto.brdno}" class="board-delete-comment">삭제</a>&nbsp;&middot;
+							<a href="deletbcomment.do?comno=${comment.comno }&brdno=${dto.brdno }" class="board-delete-comment">삭제</a>&nbsp;&middot;
 						</div>
 					</c:if>
 				</div>
@@ -229,6 +231,8 @@
 	
 	<!-- 여백을 주기 위해 임시로 만들어 놓음 -->
 	<table class="table table-hover"></table>
+	
+	
 </div>
 <!-- End Container Area -->
 

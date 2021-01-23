@@ -20,13 +20,14 @@
    .logo-bottom-context{color: gray;}    
    
    .card-body-right{float: right; width: 530px; height: 450px;}
-   #button-dropdown{width: 500px; text-align: left;}   
+   .current{padding-left: 5px;}
    .body-content{margin-top: 55px; font-size: 1.2em;}
-   textarea {padding: 10px 12px;}
+   textarea {padding: 10px 14px;}
+   textarea::placeholder{color: silver;}
    .location-logo{width: 25px;height: 25px;}
    .body-location{margin: 10px 0px;}
    .body-location-left{float: left; width: 77%;}
-   .body-location-right{float: right; width: 23%;}
+   .body-location-right{float: right; width: 21.5%; margin-right: 0;}
    .location-logo-text{display: inline-block; vertical-align: middle;}
    .body-checklist{margin: 10px 0px;}   
    

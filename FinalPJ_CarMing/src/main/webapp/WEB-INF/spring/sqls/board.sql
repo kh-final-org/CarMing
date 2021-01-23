@@ -79,7 +79,7 @@ CREATE TABLE BCOMMENT(
     COMNO NUMBER PRIMARY KEY,               		--댓글 번호
     COMWRITER VARCHAR2(100) NOT NULL,       		--댓글 작성자 (Session 이용)
     COMCONTEXT VARCHAR2(1000) NOT NULL,     		--댓글 내용
-    COMDATE DATE DEFAULT SYSDATE NOT NULL,        		--댓글 작성 날짜
+    COMDATE DATE DEFAULT SYSDATE NOT NULL,        	--댓글 작성 날짜
     BRDNO NUMBER NOT NULL,                 			--캠핑토크 게시글 번호
     FOREIGN KEY (BRDNO) REFERENCES BOARD(BRDNO) ON DELETE CASCADE
 );

@@ -22,14 +22,14 @@
 	.uploadimg:hover{transform: scale(1.03); transition: transform .3s;}
 	.board-uploadimg{overflow: hidden; border-radius: 10px;}
 	
-	.user-profile{width: 50px; height: 50px;}	
+	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
 	.board-profile{margin: 0px 0px 8px 8px;}	
+	.board-usernick{font-size: 1.2em; font-weight: bold;}
 	.board-count{width: 360px; font-size: 0.8em; text-align: right; margin: 3px 0px 0px 0px;}
 	
-	#main-dropdown-menu {width: 120px;} 
-	#dropdown-category{width: 140px; text-align: left; border-color: silver;}
-	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;} 
-	
+	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;}
+	.current{padding-left: 5px;}
+	 
 	#paging-container{margin: 50px 0px 20px 0px;}
 	
 	/* 진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
@@ -115,11 +115,11 @@
 			<!-- 프로필 사진/아이디 -->
 			<div class="board-profile">
 				<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
-				<span style="font-size:1.2em;">&nbsp;${dto.brdwriter}</span>
+				<span class="board-usernick">&nbsp;${dto.brdwriter}</span>
 			</div>	
 			<!-- 사용자가 업로드한 이미지 -->
 			<div class="board-uploadimg">
-				<a href="boarddetailform.do?brdno=${dto.brdno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
+				<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
 				<div class="board-count">조회수 ${dto.brdcount}</div>
 				<div class="category"> ${dto.bcategoryname }</div>
 			</div>
@@ -135,50 +135,35 @@
 <div class="container ml-auto" id="paging-container" align="center">
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
-	
-			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
-			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
-			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.')}"></c:set>
-		
+			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"/>
+			<c:set var="startNum" value="${page - (page-1) % 5}"/>
+			<c:set var="lastNum" value="15"/>
+			
 			<!-- 이전 버튼 -->
-			<c:if test="${startNum > 1 }">
-				<li class="page-item">
-					<a class="page-link text-warning" href="?command=userBoard&page=${startNum - 1 }&boardwriter=${board_writer}" aria-label="Previous">
-		 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
-			    	</a>
-			   	</li>
-			</c:if>		
-		
-			<c:if test="${startNum <= 1 }">
-				<li class="page-item">
-					<a class="page-link text-warning" aria-label="Previous">
-		 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
-		    		</a>
-			   	</li>
-			</c:if>
-		
+			<div>
+			  	<c:if test="${startNum > 1}">
+			    	<a href="?page=${startNum - 1 }" class="page-link text-warning" aria-label="Next">&laquo;</a>
+			  	</c:if>
+			  	<c:if test="${startNum <= 1 }">
+			    	<span class="page-link text-warning"  aria-label="Next" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+		  		</c:if>
+		  	</div>
+			
+			<!-- 페이징 목록 -->
 			<c:forEach var="i" begin="0" end="4">
-				<c:if test="${(startNum + i ) <= lastNum }"></c:if>
-				<li class="page-item"><a class="page-link text-warning" href="?command=userBoard&page=${startNum + i }&boardwriter=${board_writer}">${startNum + i }</a></li>
+				<li class="page-item"><a class="page-link text-warning" href="?page=${startNum + i }">${startNum + i }</a></li>
 			</c:forEach>
 		  			
 		  	<!-- 다음 버튼 -->
-		  	<c:if test="${startNum + 4 < lastNum }">
-			    <li class="page-item">
-			    	<a class="page-link text-warning" href="?command=userBoard&page=${startNum + i }&boardwriter=${board_writer}" aria-label="Next">
-			    		<span aria-hidden="true">&raquo;</span>
-			      	</a>
-			   	</li>
-		  	</c:if>
+		  	<div>
+			  	<c:if test="${startNum + 5 < lastNum }">
+			    	<a href="?page=${startNum + 5 }" class="page-link text-warning" aria-label="Next">&raquo;</a>
+			  	</c:if>
+			  	<c:if test="${startNum + 5 >= lastNum }">
+			    	<span class="page-link text-warning" aria-label="Next" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+		  		</c:if>
+		  	</div>
 		  	
-		  	<c:if test="${startNum + 4 >= lastNum }">
-			    <li class="page-item">
-			    	<a class="page-link text-warning" aria-label="Next">
-			    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
-			      	</a>
-			   	</li>
-		  	</c:if>	
-	  				
 		</ul>
 	</nav>
 </div>

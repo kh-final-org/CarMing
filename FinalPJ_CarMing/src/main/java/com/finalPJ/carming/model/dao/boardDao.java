@@ -14,7 +14,7 @@ public interface boardDao {
 	public List<boardDto> selectList();
 	//02. 게시글 상세보기
 	public boardDto selectOne(int brdno);
-	//03. 게시글 작성
+	//03. 게시글 추가
 	public int insert(boardDto dto);
 	//04. 게시글 수정
 	public int update(boardDto dto);

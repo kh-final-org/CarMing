@@ -15,7 +15,7 @@
 
 	.card-profile{float: left; width: 27%; height: 400px; margin-right: 80px; margin-top: 40px; border-radius: 10px; box-shadow: 10px 10px 30px silver;}	
 	.profilepage-profile{margin: 70px 63px 25px 63px;}	
-	.user-profile{width: 170px; height: 170px;}
+	.user-profile{width: 170px; height: 170px; border-radius: 5em;}
 	.user-id{font-size:1.6em; margin: 15px 38px 10px 38px; width: 100px; text-align: center;}
 	.profilepage-message{margin: 10px 0px 10px 95px;}
 	.user-message{width: 30px; height: 30px;opacity: 35%;}
@@ -31,6 +31,7 @@
 	#board-photo{float: left;}
 	
 	#paging-container{margin: 50px 0px 20px 0px;}
+	div #dd{display: inline-block;}
 	
 </style>	
 
@@ -81,6 +82,7 @@
 		<c:if test="${empty list }">
 				<p>작성된 게시글이 없습니다.</p>
 		</c:if>
+		
 		<!-- 게시글이 있을 경우 -->
 		<c:forEach items="${list }" var="dto">
 			<div class="card-boardlist">
@@ -102,50 +104,35 @@
 <div class="container ml-auto" id="paging-container" align="center">
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
-	
-			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
-			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
-			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.')}"></c:set>
-		
+			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"/>
+			<c:set var="startNum" value="${page - (page-1) % 5}"/>
+			<c:set var="lastNum" value="15"/>
+			
 			<!-- 이전 버튼 -->
-			<c:if test="${startNum > 1 }">
-				<li class="page-item">
-					<a class="page-link text-warning" href="?command=userBoard&page=${startNum - 1 }&boardwriter=${board_writer}" aria-label="Previous">
-		 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
-			    	</a>
-			   	</li>
-			</c:if>		
-		
-			<c:if test="${startNum <= 1 }">
-				<li class="page-item">
-					<a class="page-link text-warning" aria-label="Previous">
-		 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
-		    		</a>
-			   	</li>
-			</c:if>
-		
+			<div>
+			  	<c:if test="${startNum > 1}">
+			    	<a href="?page=${startNum - 1 }" class="page-link text-warning" aria-label="Next">&laquo;</a>
+			  	</c:if>
+			  	<c:if test="${startNum <= 1 }">
+			    	<span class="page-link text-warning" onclick="alert('이전 페이지가 없습니다.');" style="margin:50px;">&laquo;</span>
+		  		</c:if>
+		  	</div>
+			
+			<!-- 페이징 목록 -->
 			<c:forEach var="i" begin="0" end="4">
-				<c:if test="${(startNum + i ) <= lastNum }"></c:if>
-				<li class="page-item"><a class="page-link text-warning" href="?command=userBoard&page=${startNum + i }&boardwriter=${board_writer}">${startNum + i }</a></li>
+				<li class="page-item"><a class="page-link text-warning" href="?memno=${dto.memno }&page=${startNum + i }">${startNum + i }</a></li>
 			</c:forEach>
 		  			
 		  	<!-- 다음 버튼 -->
-		  	<c:if test="${startNum + 4 < lastNum }">
-			    <li class="page-item">
-			    	<a class="page-link text-warning" href="?command=userBoard&page=${startNum + i }&boardwriter=${board_writer}" aria-label="Next">
-			    		<span aria-hidden="true">&raquo;</span>
-			      	</a>
-			   	</li>
-		  	</c:if>
+		  	<div>
+			  	<c:if test="${startNum + 5 < lastNum }">
+			    	<a href="?page=${startNum + 5 }" class="page-link text-warning" aria-label="Next">&raquo;</a>
+			  	</c:if>
+			  	<c:if test="${startNum + 5 >= lastNum }">
+			    	<span id="dd" aria-label="Next" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+		  		</c:if>
+		  	</div>
 		  	
-		  	<c:if test="${startNum + 4 >= lastNum }">
-			    <li class="page-item">
-			    	<a class="page-link text-warning" aria-label="Next">
-			    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
-			      	</a>
-			   	</li>
-		  	</c:if>	
-	  				
 		</ul>
 	</nav>
 </div>
