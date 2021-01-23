@@ -28,28 +28,5 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "common/header_main";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

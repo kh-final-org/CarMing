@@ -102,7 +102,7 @@
 								 aria-expanded="false" style="font-size: 15px;" >우리 서로 캠LIVE</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 LIVE</a></li>
-									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 MEET</a></li>
+									<li class="nav-item"><a class="nav-link" href="camMeet.do" style="font-size: 15px;">캠핑 MEET</a></li>
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
@@ -115,7 +115,7 @@
 							</li>
 							<li class="nav-item">
 								<a href="#"> <!-- 장바구니 -->
-								<span class="bi bi-cart2" style="font-size: 20px"></span></a>
+								<span class="bi bi-cart2" style="font-size: 18px"></span></a>
 							</li>
 							<li class="nav-item">
 								<a href="logout.do"> <!-- 로그인/로그아웃 || 아이콘 상태 변하도록 구현 필요-->
