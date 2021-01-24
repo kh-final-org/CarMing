@@ -40,11 +40,11 @@
 		@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 		@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');
 		@font-face {
-    font-family: 'Cafe24Ohsquare';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+		    font-family: 'Cafe24Ohsquare';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
 	</style>
 </head>
 <body>
@@ -54,7 +54,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href=""><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
+					<a class="navbar-brand logo_h" href="home.do"><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>

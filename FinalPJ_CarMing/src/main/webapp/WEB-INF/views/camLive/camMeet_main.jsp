@@ -4,61 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<style type="text/css">
-video {
-	width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-</style>
-
-<script type="text/javascript">
-
-var videoImg = document.getElementById('videoImg');
-
-function getMedia() {
-	var videoDiv = document.getElementById('localVideo');
-	var image = document.getElementById('change');
-
-	if (navigator.getUserMedia) {
-		navigator.getUserMedia({
-			audio : false,
-			video : true
-		}, function(stream) {
-			videoDiv.removeChild(image);
-			var myVideo = document.createElement('video');
-			addVideo(myVideo, stream);
-			
-		}, function(err) {
-			console.log("The following error occurred: " + err.name);
-		});
-	} else {
-		console.log("getUserMedia not supported");
-	}
-}
-
-
-	function addVideo(video, stream) {
-		video.srcObject = stream;
-		video.onloadedmetadata = function(e) {
-			if(videoImg.className == "bi bi-camera-video-fill") {
-				videoImg.className = "bi bi-camera-video-off-fill";
-			    
-				video.play();
-			    videoDiv.append(video);
-			    
-			  } else {
-				  videoImg.className = "bi bi-camera-video-fill";
-			    
-			  }
-		};
-		
-		
-	}
-</script>
-
 <title>CarMing</title>
 </head>
 <body>
@@ -84,58 +29,78 @@ function getMedia() {
 	<section class="features-area section_gap">
 		<div class="container">
 			<div class="row" style="margin-top: 20px;">
-				<!-- Local Video Area -->
-				<div class="col-lg-8">
+				<div class="col-lg-6">
 					<div class="row"
-						data-masonry="{&quot;percentPosition&quot;: true }"
-						style="position: relative; height: 1094.09px;">
-						<div class="col-sm-6 col-lg-4 mb-4"
-							style="position: absolute; left: 0%; top: 0px;">
+						data-masonry="{&quot;percentPosition&quot;: true }">
+						<div class="col-sm-6 col-lg-4 mb-4">
 							<img src="resources/camLive/img/video-call-01.jpeg"
 								class="card-img-top">
 						</div>
-						<div class="col-sm-6 col-lg-4 mb-4"
-							style="position: absolute; left: 50%; top: 0px;">
+						<div class="col-sm-6 col-lg-4 mb-4">
 							<img src="resources/camLive/img/video-call-02.jpeg"
-								class="card-img-top" style="height: 150px">
+								class="card-img-top">
 						</div>
-						<div class="col-sm-6 col-lg-4 mb-4"
-							style="position: absolute; left: 50%; top: 200.771px;">
+						<div class="col-sm-6 col-lg-4 mb-4">
 							<img src="resources/camLive/img/video-call-03.jpeg"
 								class="card-img-top">
 						</div>
-
-						<div class="col-sm-6 col-lg-4 mb-4"
-							style="position: absolute; left: 0%; top: 359.286px;">
+						<div class="col-sm-6 col-lg-4 mb-4">
 							<img src="resources/camLive/img/video-call-04.jpeg"
+								class="card-img-top" style="height: 255px;">
+						</div>
+						<div class="col-sm-6 col-lg-4 mb-4">
+							<img src="resources/camLive/img/video-call-05.jpeg"
 								class="card-img-top">
 						</div>
-						<div class="col-sm-6 col-lg-4 mb-4" id="localVideo"
-							style="position: absolute; left: 0%; top: 528.078px;">
-							<img id="change" src="resources/camLive/img/video-call-05.jpeg"
-								class="card-img-top">
-						</div>
-						<div class="col-sm-6 col-lg-4 mb-4"
-							style="position: absolute; left: 50%; top: 599.38px;">
+						<div class="col-sm-6 col-lg-4 mb-4">
 							<img src="resources/camLive/img/video-call-06.jpeg"
-								class="card-img-top" style="height: 160px;">
+								class="card-img-top">
 						</div>
-						<div class="col-sm-6 col-lg-4 mb-4"
-							style="position: absolute; left: 0%; top: 703.354px;">
+						<div class="col-sm-6 col-lg-4 mb-4">
 							<img src="resources/camLive/img/video-call-07.jpeg"
+								class="card-img-top">
+						</div>
+						<div class="col-sm-6 col-lg-4 mb-4">
+							<img src="resources/camLive/img/video-call-08.jpeg"
+								class="card-img-top">
+						</div>
+						<div class="col-sm-6 col-lg-4 mb-4">
+							<img src="resources/camLive/img/video-call-09.jpeg"
+								class="card-img-top">
+						</div>
+						<div class="col-sm-6 col-lg-4 mb-4">
+							<img src="resources/camLive/img/video-call-10.jpeg"
 								class="card-img-top">
 						</div>
 					</div>
 				</div>
 
 				<!-- CamMeet description Area -->
-				<div class="col-lg-4 shadow p-3 mb-4 bg-white rounded">
-					<h1>언택트 캠핑하자!</h1>
-					<p>There are advances being made in science and technology
-						everyday, and a good example of this is the</p>
-					<button type="button" class="genric-btn primary circle" onclick="getMedia();">
-						<i id="videoImg" class="bi bi-camera-video-fill" style="font-size: 20px;"></i>
-              		</button>
+				<div class="col-lg-6 shadow mb-4 bg-white rounded"
+					style="text-align: center;">
+					<h1 style="padding-top: 100px; font-weight: bold; font-size: 40px;">
+						CAMPING MEET</h1>
+					<p>캠핑의 즐거움을 화상통화로 함께 즐겨보세요 :)</p>
+
+					<div class="d-flex flex-row" style="margin-top: 100px">
+						<input class="form-control" placeholder="camping meet code "
+							style="text-align: center"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'camping meet code '" required="">
+
+						<button class="click-btn btn btn-warning" type="button">
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+						</button>
+
+						<div style="position: absolute; left: -5000px;">
+							<input name="b_36c4fd991d266f23781ded980_aefe40901a"
+								tabindex="-1" value="" type="text">
+						</div>
+					</div>
+
+					<div class="d-flex flex-row" style="margin-top: 20px; padding-bottom: 100px;">
+						<button type="button" class="btn btn-outline-warning" style="width: 100%">new meeting</button>
+					</div>
 				</div>
 			</div>
 		</div>
