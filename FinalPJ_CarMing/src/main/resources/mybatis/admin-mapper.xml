@@ -3,9 +3,85 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- 
+
+
 <mapper namespace="admin">
+
+
+	<select id="select" resultType="admMemberDto">
+		SELECT * FROM MEMBER
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM MEMBER
+		WHERE MEMNO=#{memNo}
+
+	</delete>
+	
+	<select id="selectRent" resultType="admRentDto">
+		SELECT
+		C.*,
+		M.MEMNICK,
+		RS.STATENAME,
+		P.PNAME,
+		PC.PCATEGORYNAME,
+		PY.PAYNO,
+		PY.TOTALPRICE
+		FROM CART C
+		JOIN MEMBER M
+		ON C.MEMNO = M.MEMNO
+		JOIN RENTSTATE RS
+		ON C.STATENO = RS.STATENO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PCATEGORY PC
+		ON C.PCATEGORYNO = PC.PCATEGORYNO
+		JOIN PAY PY
+		ON C.CARTNO = PY.CARTNO
+	</select>
+	<select id="selectOneRent" parameterType="int" resultType="admRentDto">
+		SELECT
+		C.*,
+		M.MEMNICK,
+		RS.STATENAME,
+		P.PNAME,
+		PC.PCATEGORYNAME,
+		PY.PAYNO,
+		PY.TOTALPRICE
+		FROM CART C
+		JOIN MEMBER M
+		ON C.MEMNO = M.MEMNO
+		JOIN RENTSTATE RS
+		ON C.STATENO = RS.STATENO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PCATEGORY PC
+		ON C.PCATEGORYNO = PC.PCATEGORYNO
+		JOIN PAY PY
+		ON C.CARTNO = PY.CARTNO
+		WHERE C.CARTNO = #{cartNo}
+	
+	</select>
+	
+	<update id="returnRent" parameterType="int">
+	UPDATE CART
+	SET STATENO = 5
+	WHERE CARTNO = #{cartNo}
+	</update>
+
+</mapper>
+
+
+
+
+
+
+
+
 <!-- <resultMap type="AdmMemberDto" id="memtMap">
 		<result property="reportNo" column="REPORTNO"/>
  		<result property="reportWriter" column="REPORTWRITER"/>
@@ -22,9 +98,7 @@
 </resultMap> -->
 
 
-	<select id="select" resultType= "admMemDto">
-	SELECT * FROM MEMBER
-	</select> 
+	
 	<!-- 
 	<select id="selectOne" parameterType="int" resultMap= "reportMap">
 	SELECT
@@ -67,19 +141,3 @@
 			
 	</foreach>
 	</insert> -->
- 
-<!-- 	<delete id="deleteReport" parameterType="int">
-	DELETE FROM REPORTLIST WHERE MEMNO=#{memNo}
-
-	DELETE t1,t2,t3 FROM table1 as t1
-	JOIN table2 as t2 ON t2.ID = t1.ID
-	JOIN table3 as t3 ON t3.ID = t1.ID
-	
-	</delete> -->
- 	<delete id="delete" parameterType="int">	
- 	DELETE FROM MEMBER 
- 	WHERE MEMNO=#{memNo}
-
- 	</delete>
- 
- </mapper>

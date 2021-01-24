@@ -40,8 +40,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 			out.println("<script>alert('로그인 이후 사용하실 수 있습니다.'); location.href='loginform.do'; </script>");
 			out.flush();
 		}
-		
+	
 		return false;
+		
 	}
 
 	@Override
@@ -57,5 +58,5 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// TODO Auto-generated method stub
 		logger.info("[interceptor]: afterCompletion");
 	}
-
+	
 }

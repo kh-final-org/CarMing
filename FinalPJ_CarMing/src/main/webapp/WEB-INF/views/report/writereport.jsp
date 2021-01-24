@@ -117,7 +117,7 @@
 
 	<!------ Include the above in your HEAD tag ---------->
 	
-	<form:form  action="writereport.do?targetNo=1&targetTypeNo=1" method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
+	<form:form  action="writereport.do?targetNo=${target.targetNo}&targetTypeNo=${target.targetTypeNo }" method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
 	<div class="container contact">
 		<div class="row">
 				<div class="col-md-3">
@@ -134,7 +134,7 @@
 								닉네임:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="writerNickname"
-									value="이예슬" readonly="readonly" name="reportWriter">
+									value="${login.memnick}" readonly="readonly" name="reportWriter">
 							</div>
 						</div>
 						

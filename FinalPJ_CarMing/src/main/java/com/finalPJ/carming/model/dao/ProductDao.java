@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.finalPJ.carming.model.dto.Pagination;
 import com.finalPJ.carming.model.dto.ProductDto;
+import com.finalPJ.carming.model.dto.boardDto;
 
 public interface ProductDao {
 	

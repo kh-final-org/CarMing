@@ -21,8 +21,7 @@
 <!-- Site Title -->
 <title>카밍 정보 메인</title>
 
-
-<script>
+<!-- <script>
 /* 	article = document.getElementsByTagName("article");
 	var x = article.style.display;
 	console.log(x);
@@ -47,10 +46,11 @@ function myFunction() {
         	
         } else {
             article[i].style.display = "none";
-            var x = article[i].style.display;
+            var x =  article[i].style.display;
         	
             }
-		}if(x === "none"){
+	}
+ 		}if(x === "none"){
 			 console.log(x);
 			 
 			 var para = document.createElement("p");
@@ -60,15 +60,70 @@ function myFunction() {
 				mydiv.style.textAlign = "center";
 				mydiv.style.fontSize = "30px";
 				mydiv.appendChild(para);
-		}
-    
-   
-    	
-    
-  
 	}
+     
+   
+</script>  -->
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue, article;
+    input = document.getElementById("input");
+    filter = input.value
+
+    article = document.getElementsByTagName("article");
+    
+    for(i=0; i<article.length; i++){
+        a = document.getElementsByClassName("name")[i];
+        txtValue = a.textContent || a.innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        	article[i].style.display = "";
+        } else {
+            x = article[i].style.display = "none";
+        }
+	}
+}
 </script>
 
+<!-- kakao share -->
+<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript">
+   function sendLinkCustom() {
+          Kakao.init("ec2908c95e9e6b6c236066424e7e8fa2");
+          Kakao.Link.sendCustom({
+              templateId: 44747
+          });
+      }
+</script>
+<script>   
+   try {
+         function sendLinkDefault(tipURL , tipFile) {
+         Kakao.init('ec2908c95e9e6b6c236066424e7e8fa2')
+         Kakao.Link.sendDefault({
+                objectType: 'feed',
+                content: {
+                  title: 'Camping Talk',
+                  description: '#캠핑 꿀팁',
+                  imageUrl: 'https://www.5gcamp.com/' + tipFile,
+                  link: {
+                       mobileWebUrl: 'https://www.5gcamp.com' + tipURL,
+                       webUrl: 'https://www.5gcamp.com' + tipURL,
+                  },
+                },
+                buttons: [{
+                    title: '게시글 보러가기',
+                    link: {
+                      mobileWebUrl: 'https://www.5gcamp.com' + tipURL,
+                      webUrl: 'https://www.5gcamp.com' + tipURL,
+                    },
+               }],
+            })
+         }; window.kakaoDemoCallback && window.kakaoDemoCallback() }
+   catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
+
+   
+</script>
 
 
 </head>
@@ -161,7 +216,8 @@ function myFunction() {
 										</div>
 
 										<ul class="blog_meta list">
-											<li><a href="#">${list.views }<i class="lnr lnr-eye"></i></a></li>
+											<li>${list.views }<i class="lnr lnr-eye"></i></li>
+											<li>카카오 공유하기 &nbsp;<a id="kakao-link-btn" onClick="sendLinkDefault('${list.tipURL}','${list.tipFile }');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png" style="height:25px; width: 25px"></a><li>
 										</ul>
 									</div>
 								</div>
@@ -206,7 +262,8 @@ function myFunction() {
 					</div>
 				</div>
 				<div class="col-lg-4">
-					<div class="blog_right_sidebar">
+					<div class="blog_right_sidebar"
+						style=" background-color: white; border: 0px;">
 						<aside class="single_sidebar_widget search_widget">
 							<div class="input-group">
 								<input type="text" class="form-control" id="input"
