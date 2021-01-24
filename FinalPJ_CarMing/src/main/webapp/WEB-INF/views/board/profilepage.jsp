@@ -68,7 +68,7 @@
 			<div class="user-id">${dto.brdwriter }</div>
 		</div>
 		<div class="profilepage-message">
-			<a href="privateform.do">
+			<a href="privateform.do?memno=${dto.memno }">
 				<img class="user-message" src="./resources/img/message.png">
 				<span class="user-message-text">&nbsp;1:1 채팅</span>
 			</a>

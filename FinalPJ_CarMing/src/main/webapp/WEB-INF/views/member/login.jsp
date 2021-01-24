@@ -14,10 +14,7 @@
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="resources/js/login.js"></script>
-	<!--  
 	<style type="text/css">
-	    .sign{padding-top: 55px; color: #5f5f5f; font-size: 2.2em;}   
-	    
 		.un {
 		    width: 76%;
 		    color: #5f5f5f;
@@ -35,7 +32,6 @@
 		    text-align: center;
 		    font-family: 'Ubuntu', sans-serif;
 	    }
-	    
 	    
 	    .pass {
 		    width: 76%;
@@ -74,25 +70,12 @@
 	        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 	    }
 	    
-	    .forgot {
-	        color: gray;
-	        padding-top: 10px;
-	        font-size: 1.15em;
-	    }
-	    
-	    .signup-btn {
-	        color: gray;
-	        font-size: 0.8em;
-	    }
-	    
-	    form.form1 {
-	        padding-top: 30px;
-	    }
-		    
+	    .sign{padding-top: 55px; color: #5f5f5f; font-size: 2.2em;}   
+	    .forgot {color: gray; padding-top: 10px; font-size: 1.15em;}
+	    .signup-btn {color: gray; font-size: 0.8em;}
+	    form.form1 {padding-top: 30px;}
 	    input::placeholder{color: silver;}
-	    
 	</style>
-	-->
 
 
 </head>

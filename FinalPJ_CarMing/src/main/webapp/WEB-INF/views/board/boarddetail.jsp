@@ -164,7 +164,7 @@
 			<div class="board-comment-header-1">
 				<div class="board-comment-head"><strong>댓글</strong></div>
 				<c:forEach items="${comment }" var="comment" varStatus="status">
-					<div class="board-comment-count"><b>${status.end }</b></div>
+					<div class="board-comment-count"><b>${status.count }</b></div>
 				</c:forEach>
 			</div>
 			<div class="board-comment-header-2">
