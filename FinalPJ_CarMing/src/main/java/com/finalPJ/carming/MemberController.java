@@ -60,6 +60,12 @@ public class MemberController {
 			
 		}
 		
+		System.out.println("---------------------확인");
+		System.out.println(res.getMemno());
+		System.out.println(res.getMemid());
+		System.out.println(res.getMempw());
+		System.out.println(res.getMembirth());
+		System.out.println("-----------------------");
 		Map<String, Boolean> map = new HashMap<String,Boolean>();
 		map.put("check", check);
 		 

@@ -22,8 +22,7 @@ $(function(){
 				dataType : "json",
 				success:function(msg){
 					if(msg.check==true){
-						location.href="res.do";
-						history.back();
+						location.href="home.do";
 					}else{
 						alert("아이디 혹은 비밀번호가 틀렸습니다.");
 					}

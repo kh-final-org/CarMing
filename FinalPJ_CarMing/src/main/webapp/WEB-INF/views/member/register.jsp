@@ -29,7 +29,7 @@ h4{
 <body>
 
 	<section id="header">
-		<%@include file ="../common/header_register.jsp" %>
+		<%@include file ="../common/header.jsp" %>
 	</section>
 	
 	<section id="content">
@@ -59,18 +59,6 @@ h4{
 	
 	</section>
 
-
-
-
-
-
-
-
-	<script type="text/javascript">
-	
-	}
-	
-	</script>
  	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
