@@ -1,3 +1,4 @@
+
 package com.finalPJ.carming;
 
 import java.text.DateFormat;
@@ -29,27 +30,5 @@ public class HomeController {
 		
 		return "common/header_main";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

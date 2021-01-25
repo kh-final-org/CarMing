@@ -12,6 +12,8 @@
 		<result property="survey4" column="SURVEY4"/>
 		<result property="survey5" column="SURVEY5"/>
 	</resultMap>
+	
+	
 
 	<select id="selectList" resultMap="surveyMap">
 		SELECT MEMNO, SURVEY1, SURVEY2, SURVEY3, SURVEY4, SURVEY5
@@ -26,10 +28,47 @@
 	
 	
 	<!-- gender who people campingCategory place -->	
-	<insert id="insert" parameterType="surveyDto">
+	<!-- <insert id="insert" parameterType="surveyDto">
    		INSERT INTO SURVEY
    		VALUES(#{memno}, #{survey1}, #{survey2}, #{survey3}, #{survey4}, #{survey5})
+    </insert> -->
+	<insert id="insert" parameterType="surveyDto">
+   		MERGE INTO SURVEY
+		USING DUAL
+		   ON (MEMNO = #{memno})
+		WHEN MATCHED THEN
+		    UPDATE SET
+		    	SURVEY1 = #{survey1},
+				SURVEY2 = #{survey2},
+				SURVEY3 = #{survey3},
+				SURVEY4 = #{survey4},
+				SURVEY5 = #{survey5}
+		WHEN NOT MATCHED THEN
+		    INSERT (MEMNO, SURVEY1, SURVEY2, SURVEY3, SURVEY4, SURVEY5) 
+		    VALUES (#{memno}, #{survey1}, #{survey2}, #{survey3}, #{survey4}, #{survey5})
     </insert>
+    
+    <select id="sameFriendOne" parameterType="surveyDto" resultType="int">
+		SELECT memno
+		FROM ( 
+			SELECT s.memno
+	        FROM survey s, member m
+            WHERE survey1 = #{survey1} and survey2 = #{survey2} and survey3 = #{survey3} and survey4 = #{survey4} and survey5 = #{survey5}
+    							and s.memno = m.memno and m.memchk = 'Y' and not s.memno in (#{memno})
+		            ORDER BY dbms_random.value )
+		WHERE rownum = 1
+	</select>
+	
+    
+    <select id="sameFriendList" parameterType="surveyDto" resultMap="surveyMap">
+		SELECT s.memno
+		FROM survey s, member m
+		WHERE survey1 = #{survey1} and survey2 = #{survey2} and survey3 = #{survey3} and survey4 = #{survey4} and survey5 = #{survey5}
+		    and s.memno = m.memno and m.memchk = 'Y' and not s.memno in (#{memno})
+		ORDER BY s.memno
+	</select>
+	
+	
    
     
 	

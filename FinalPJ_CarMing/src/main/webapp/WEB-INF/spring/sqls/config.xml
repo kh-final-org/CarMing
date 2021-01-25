@@ -19,7 +19,7 @@
 		<typeAlias type="com.finalPJ.carming.model.dto.bcommentDto" alias="bcommentDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.dmDto" alias="dmDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.mapLocationDto" alias="mapLocationDto"/>	
-		<typeAlias type="com.finalPJ.carming.survey.dto.SurveyDto" alias="SurveyDto" />
+		<typeAlias type="com.finalPJ.carming.model.dto.SurveyDto" alias="SurveyDto" />
 	</typeAliases>
 	
 	<mappers>
