@@ -1,4 +1,4 @@
-package com.finalPJ.carming.survey.dto;
+package com.finalPJ.carming.model.dto;
 
 public class SurveyDto {
 	private int memno;

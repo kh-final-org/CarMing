@@ -1,12 +1,12 @@
-package com.finalPJ.carming.survey.biz;
+package com.finalPJ.carming.model.biz;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.finalPJ.carming.survey.dao.SurveyDao;
-import com.finalPJ.carming.survey.dto.SurveyDto;
+import com.finalPJ.carming.model.dao.SurveyDao;
+import com.finalPJ.carming.model.dto.SurveyDto;
 
 @Service
 public class SurveyBizImpl implements SurveyBiz {
@@ -33,10 +33,15 @@ public class SurveyBizImpl implements SurveyBiz {
 	}
 
 	@Override
-	public SurveyDto update(SurveyDto dto) {
+	public List<SurveyDto> sameFriendList(SurveyDto dto) {
 
-		return dao.update(dto);
+		return dao.sameFriendList(dto);
 	}
 
+	@Override
+	public int sameFriendOne(SurveyDto dto) {
+
+		return dao.sameFreindOne(dto);
+	}
 	
 }

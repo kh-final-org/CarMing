@@ -1,4 +1,4 @@
-package com.finalPJ.carming.survey.dao;
+package com.finalPJ.carming.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.finalPJ.carming.survey.dto.SurveyDto;
+import com.finalPJ.carming.model.dto.SurveyDto;
 
 //Dao니까 @Repository를 달아주자.
 @Repository
@@ -25,6 +25,7 @@ public class SurveyDaoImpl implements SurveyDao {
 		
 		try {					// ??? 뭐지 이건.
 			list = sqlSession.selectList(NAMESPACE + "selectList");
+			System.out.println("list.size() : " +list.size());
 		} catch (Exception e) {
 			System.out.println("[error] : select list");
 			e.printStackTrace();
@@ -63,8 +64,34 @@ public class SurveyDaoImpl implements SurveyDao {
 	}
 
 	@Override
-	public SurveyDto update(SurveyDto dto) {
-		return null;
+	public List<SurveyDto> sameFriendList(SurveyDto dto) {
+		// 결과를 담을 친구 리스트 생성
+		List<SurveyDto> list = new ArrayList<SurveyDto>();
+		
+		try {					
+			list = sqlSession.selectList(NAMESPACE + "sameFriendList", dto);
+			System.out.println("list.size() : " + list.size());
+		} catch (Exception e) {
+			System.out.println("[error] : sameFriendList");
+			e.printStackTrace();
+		}
+				
+		return list;
+	}
+
+	@Override
+	public int sameFreindOne(SurveyDto dto) {
+		// 결과를 담을 친구 번호 생성
+		int res = 0;
+		
+		try {					
+			res = sqlSession.selectOne(NAMESPACE + "sameFriendOne", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : sameFriendOne");
+			e.printStackTrace();
+		}
+				
+		return res;
 	}
 
 }
