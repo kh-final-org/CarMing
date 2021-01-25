@@ -29,7 +29,7 @@
 		    border: 2px solid rgba(0, 0, 0, 0.02);
 		    margin-bottom: 8px;
 		    margin-left: 46px;
-		    text-align: center;
+		    text-align: left;
 		    font-family: 'Ubuntu', sans-serif;
 	    }
 	    
@@ -47,7 +47,7 @@
 		    border: 2px solid rgba(0, 0, 0, 0.02);
 		    margin-bottom: 50px;
 		    margin-left: 46px;
-		    text-align: center;
+		    text-align: left;
 		    margin-bottom: 27px;
 		    font-family: 'Ubuntu', sans-serif;
 	    }
@@ -100,8 +100,8 @@
 	<div class="main">
 		<p class="sign" align="center">CarMing</p>
 		<form class="form1">
-			<input class="un " type="text" align="center" placeholder="User Id" id="memid">
-			<input class="pass" type="password" align="center" placeholder="User Password" id="mempw">
+			<input class="un " type="text" align="center" placeholder="아이디" id="memid">
+			<input class="pass" type="password" align="center" placeholder="비밀번호" id="mempw">
 			<input type="button" value="로그인" class="submit" align="center" onclick="login();">
 			<div class="forgot" align="center"><a href="registerform.do" class="signup-btn">회원가입</a></div>
 		</form>        
