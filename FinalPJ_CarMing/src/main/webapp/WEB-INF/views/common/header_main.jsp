@@ -81,7 +81,7 @@
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">카테고리</a></li>
 									<li class="nav-item"><a class="nav-link" href="productdetail.do" style="font-size: 15px;">상품 보기</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.do" style="font-size: 15px;">장바구니</a></li>
+									<li class="nav-item"><a class="nav-link" href="cartlist.do" style="font-size: 15px;">장바구니</a></li>
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>

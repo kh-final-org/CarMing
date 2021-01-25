@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="rentreview">
+	<select id="selectList" resultType="rentReviewDto">
+		SELECT *
+		FROM REVIEW
+		ORDER BY REVIEWNO
+	</select>
+	
+	<insert id="insertreview" parameterType="rentReviewDto">
+		INSERT INTO
+		REVIEW
+		VALUES(REVIEW_SEQ.NEXTVAL, #{pNo}, #{reviewContext}, SYSDATE, #{reviewWriter}, #{reviewStar})
+	</insert>
+	
+	<select id="countreview" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM REVIEW
+		]]>
+	</select>
+	
+	<delete id="deletereview" parameterType="int">
+		DELETE
+		FROM
+		WHERE REVIEWNO = #{reviewNo}
+	</delete>
+</mapper>
