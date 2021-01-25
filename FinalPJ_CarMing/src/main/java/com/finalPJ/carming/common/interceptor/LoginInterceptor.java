@@ -20,7 +20,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 		logger.info("[interceptor]: preHandle");
 		
 		//로그인이 필요없는 기능들을 조건에 추가바람
-
 		if(		request.getRequestURI().contains("/productlist.do")	 	||				
 				request.getRequestURI().contains("/cart.do") 			||
 				request.getRequestURI().contains("/productinsert.do") 	||
@@ -37,10 +36,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 				request.getRequestURI().contains("/pay.do")				||
 				request.getRequestURI().contains("/cartlist.do")		||
 				request.getRequestURI().contains("/cartdelete.do")		||
+				request.getRequestURI().contains("/camMeet.do") 		||
+				
 				request.getSession().getAttribute("login")!=null) {
 			
 			return true;
-						
 		}
 		
 		

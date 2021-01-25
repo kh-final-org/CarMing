@@ -40,11 +40,11 @@
 		@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 		@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');
 		@font-face {
-    font-family: 'Cafe24Ohsquare';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+		    font-family: 'Cafe24Ohsquare';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
 	</style>
 </head>
 <body>
@@ -54,7 +54,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href=""><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
+					<a class="navbar-brand logo_h" href="home.do"><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -102,7 +102,7 @@
 								 aria-expanded="false" style="font-size: 15px;" >우리 서로 캠LIVE</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 LIVE</a></li>
-									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 MEET</a></li>
+									<li class="nav-item"><a class="nav-link" href="camMeet.do" style="font-size: 15px;">캠핑 MEET</a></li>
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
@@ -115,7 +115,7 @@
 							</li>
 							<li class="nav-item">
 								<a href="#"> <!-- 장바구니 -->
-								<span class="bi bi-cart2" style="font-size: 20px"></span></a>
+								<span class="bi bi-cart2" style="font-size: 18px"></span></a>
 							</li>
 							<li class="nav-item">
 								<a href="logout.do"> <!-- 로그인/로그아웃 || 아이콘 상태 변하도록 구현 필요-->
