@@ -100,7 +100,7 @@
 	<div class="main">
 		<p class="sign" align="center">CarMing</p>
 		<form class="form1">
-			<input class="un " type="text" align="center" placeholder="아이디" id="memid">
+			<input class="un " type="text" align="center" placeholder="이메일" id="memid">
 			<input class="pass" type="password" align="center" placeholder="비밀번호" id="mempw">
 			<input type="button" value="로그인" class="submit" align="center" onclick="login();">
 			<div class="forgot" align="center"><a href="registerform.do" class="signup-btn">회원가입</a></div>
