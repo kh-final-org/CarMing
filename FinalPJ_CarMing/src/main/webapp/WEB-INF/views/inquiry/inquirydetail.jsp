@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +59,7 @@
 <body>
 
 	<!-- Start Header Area -->
-	<%@include file="../tipAndRecipe/header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 	<br>
 	<!-- Start Banner Area -->
@@ -139,7 +140,8 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="category">작성일</label>
 						<div class="col-sm-10">
-							<p class="form-control" id="category">${list.inquiryDate}</p>
+							<p class="form-control" id="category"><fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${list.inquiryDate}" /></p>	
 						</div>
 					</div>
 

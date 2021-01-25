@@ -29,26 +29,35 @@
 <meta name="keywords" content="">
 <!-- meta character set -->
 <meta charset="UTF-8">
-<!-- CSS ============================================= -->
-<link rel="stylesheet" href="css/linearicons.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/themify-icons.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/owl.carousel.css">
-<link rel="stylesheet" href="css/nice-select.css">
-<link rel="stylesheet" href="css/nouislider.min.css">
-<link rel="stylesheet" href="css/ion.rangeSlider.css" />
-<link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
-<link rel="stylesheet" href="css/main.css">
+
 <link rel="stylesheet" href="resources/css/list.css">
 
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue, list;
+    input = document.getElementById("input");
+    filter = input.value
 
+    list = document.getElementsByClassName("gaadiex-list-item");
+    
+    for(i=0; i<list.length; i++){
+        a = document.getElementsByClassName("category")[i];
+        txtValue = a.textContent || a.innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        	list[i].style.display = "";
+        } else {
+        	list[i].style.display = "none";
+        }
+	}
+}
+</script>
 </head>
 
 <body>
 
 	<!-- Start Header Area -->
-	<%@include file="../tipAndRecipe/header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 	<br>
 	<!-- Start Banner Area -->
@@ -76,6 +85,22 @@
 		</div>
 	</section>
 	<!-- End Banner Area -->
+	<div class="blog_right_sidebar"
+		style=" height:10%; float: right; background-color: white; border: 0px;">
+		<aside class="single_sidebar_widget search_widget">
+			<div  class="input-group">
+				<input style="  padding:10%;" type="text" id="input" onkeyup="myFunction()"
+					class="form-control" placeholder="카테고리 검색하기"
+					onfocus="this.placeholder = ''"
+					onblur="this.placeholder = '카테고리 검색하기'"> <span
+					class="input-group-btn">
+					<button class="btn btn-default" type="button">
+						<i class="lnr lnr-magnifier"></i>
+					</button>
+				</span>
+			</div>
+		</aside>
+	</div>
 	<!-- 목록 부분 -->
 	<div class="container">
 		<div class="row">
@@ -99,7 +124,7 @@
 								내용: ${fn:substring(TextValue,0,10)}</a></h4>
 								
 								
-								<p>카테고리: ${list.categoryName}</p>
+								<p class="category">카테고리: ${list.categoryName}</p>
 								
 								<p>작성날짜:<fmt:formatDate pattern = "yyyy-MM-dd" 
          						value = "${list.inquiryDate}" /></p>			
@@ -119,22 +144,5 @@
 	<%@include file="../../views/common/footer.jsp"%>
 	<!-- End footer Area -->
 
-	<script src="js/vendor/jquery-2.2.4.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-		crossorigin="anonymous"></script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/jquery.sticky.js"></script>
-	<script src="js/nouislider.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<!--gmaps Js-->
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="js/gmaps.min.js"></script>
-	<script src="js/main.js"></script>
 </body>
 </html>

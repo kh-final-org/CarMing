@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
     
 <!DOCTYPE html>
 <html>
@@ -10,8 +11,8 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <style type="text/css">
-	.card-container{margin: 0px 200px; padding-bottom: 50px;}
-	
+	.card-container{width: 100%;}
+
 	.card-head-first{float: left;}
 	.card-head-second{float: left; margin-left: 610px;}
 	.card-head-third{float: right; margin-right: 10px;}
@@ -29,22 +30,56 @@
 	#dropdown-category{width: 140px; text-align: left; border-color: silver;}
 	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;} 
 	
-	/**********************************************
-	.navi li a:hover{background-color: #fff5e9;} 
-	***********************************************
-	진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
-</style>
+	#paging-container{margin: 50px 0px 20px 0px;}
 	
-
+	/* 진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
+</style>
+<script type="text/javascript">
+	function myFunction() {
+	    var selectbox, filter, a, txtValue, list;
+	    selectbox = document.getElementById("selectbox");
+	    filter = selectbox.value
+	
+	    list = document.getElementsByClassName("card-body");
+	    
+	    for(i=0; i<list.length; i++){
+	        a = document.getElementsByClassName("category")[i];
+	        txtValue = a.textContent;
+	        
+	        if (txtValue == filter) {
+	        	list[i].style.display = "";
+	        } else {
+	        	list[i].style.display = "none";
+	        }
+		}
+	}
+</script>
 	
 </head>
 <body>
 <!-- Start Header Area -->
 <%@include file="../common/header.jsp"%>
 <!-- End Header Area -->
-<main role="main" style="padding-top: 50px; padding-bottom: 50px;">
 
-<!-- start of container -->
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+   <div class="container">
+      <div
+         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+         <div class="col-first">
+            <h1>The stars in the night sky</h1>
+            <nav class="d-flex align-items-center">
+               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+               <a href="boardmainform.do">Talk</a>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End Banner Area -->
+<main role="main" style="padding: 50px 200px; ">
+
+<!-- Start Container Area -->
 <div class="card-container">
 	<div class="card-head">
 		<div class="card-head-first">
@@ -57,27 +92,14 @@
 		
 		<div class="card-head-third" style="width: 140px;">
 			<div class="dropdown-selectbox">
-		  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-					<option value="generalCamping" selected>일반 캠핑</option>
-				    <option value="caravan">카라반</option>
-				    <option value="glamping">글램핑</option>
-				    <option value="carCamping">차박</option>
-				    <option value="myOwnCamping">나만의 캠핑</option>
+		  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+					<option value="일반 캠핑" selected>일반 캠핑</option>
+				    <option value="카라반">카라반</option>
+				    <option value="글램핑">글램핑</option>
+				    <option value="차박">차박</option>
+				    <option value="나만의 캠핑">나만의 캠핑</option>
 			  	</select>
 			</div>
-			
-			<!-- 
-			<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdown-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;&nbsp;카테고리&emsp;</button>
-			<div class="dropdown-menu">
-				<ul class="navi">
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">일반 캠핑</a></li>
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">카라반</a></li>
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">글램핑</a></li>
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">차박</a></li>
-					<li><a class="dropdown-item" href="#.do?bcategoryno=${dto.bcategoryno }">나만의 캠핑</a></li>
-				</ul>
-			</div>
-			 -->
 		</div>
 	</div>
 	<br><br><br><br>
@@ -92,63 +114,78 @@
 		<div class="card-body" style="padding: 0px">
 			<!-- 프로필 사진/아이디 -->
 			<div class="board-profile">
-				<a href="profileform.do"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
+				<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
 				<span style="font-size:1.2em;">&nbsp;${dto.brdwriter}</span>
 			</div>	
 			<!-- 사용자가 업로드한 이미지 -->
 			<div class="board-uploadimg">
 				<a href="boarddetailform.do?brdno=${dto.brdno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
 				<div class="board-count">조회수 ${dto.brdcount}</div>
+				<div class="category"> ${dto.bcategoryname }</div>
 			</div>
 		</div>
 	</c:forEach>
 </div>
-<!-- end of container -->
-</main>	
+<!-- End Container Area -->
+
+<!-- 여백을 주기 위해 임시로 만들어 놓음 -->
+<table class="table table-hover"></table>
+
+<!-- Start Paging Area -->
+<div class="container ml-auto" id="paging-container" align="center">
+	<nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
 	
-<!-- start paging 
-<div class="card-bottom">
-	<tr>
-		<td colspan="5">
-			<!-- 처음 페이지로 이동: 현재 페이지가 1보다 크면 	[<<] 하이퍼 링크를 화면에 출력 -->
-		<!-- 	<c:if test="${map.boardPager.curBlock > 1}">
-				<a href="javascript:list('1')">[&laquo;]</a>-->
-		<!-- 	</c:if>
-			<!-- 이전페이지 블록으로 이동: 현재 페이지 블럭이 1보다 크면 [<] 하이퍼링크를 화면에 출력 -->
-		<!-- 	<c:if test="${map.boardPager.curBlock > 1}">
-				<a href="javascript:list('1')">[&lt;]</a>
+			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
+			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
+			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.')}"></c:set>
+		
+			<!-- 이전 버튼 -->
+			<c:if test="${startNum > 1 }">
+				<li class="page-item">
+					<a class="page-link text-warning" href="?command=userBoard&page=${startNum - 1 }&boardwriter=${board_writer}" aria-label="Previous">
+		 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+			    	</a>
+			   	</li>
+			</c:if>		
+		
+			<c:if test="${startNum <= 1 }">
+				<li class="page-item">
+					<a class="page-link text-warning" aria-label="Previous">
+		 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+		    		</a>
+			   	</li>
 			</c:if>
 		
-			<!-- **하나의 블럭 시작 페이지부터 끝 페이지까지 반복문 실행 -->
-		<!-- 	<c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
-				<!-- 현재페이지이면 하이퍼링크 제거 -->
-		<!-- 		<c:choose>
-					<c:when test="${num == map.boardPager.curPage}">
-						<span style="color: red">${num}</span>&nbsp;
-					</c:when>
-					<c:otherwise>
-						<a href="javascript:list('${num}')">${num}</a>&nbsp;
-					</c:otherwise>
-				</c:choose>
+			<c:forEach var="i" begin="0" end="4">
+				<c:if test="${(startNum + i ) <= lastNum }"></c:if>
+				<li class="page-item"><a class="page-link text-warning" href="?command=userBoard&page=${startNum + i }&boardwriter=${board_writer}">${startNum + i }</a></li>
 			</c:forEach>
-			
-			<!-- 다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [>]하이퍼링크를 화면에 출력 -->
-		<!-- 	<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
-				<a href="javascript:list('${map.boardPager.nextPage}')">[&gt;]</a>
-			</c:if>
-				
-			<!-- 끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [>>]하이퍼링크를 화면에 출력 -->
-		<!-- 	<c:if test="${map.boardPager.curPage <= map.baordPager.totPage}">
-				<a href="javascript:list('${map.boardPager.totPage}')">[&raquo;]</a>
-			</c:if>
-		</td>
-	</tr>
+		  			
+		  	<!-- 다음 버튼 -->
+		  	<c:if test="${startNum + 4 < lastNum }">
+			    <li class="page-item">
+			    	<a class="page-link text-warning" href="?command=userBoard&page=${startNum + i }&boardwriter=${board_writer}" aria-label="Next">
+			    		<span aria-hidden="true">&raquo;</span>
+			      	</a>
+			   	</li>
+		  	</c:if>
+		  	
+		  	<c:if test="${startNum + 4 >= lastNum }">
+			    <li class="page-item">
+			    	<a class="page-link text-warning" aria-label="Next">
+			    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+			      	</a>
+			   	</li>
+		  	</c:if>	
+	  				
+		</ul>
+	</nav>
 </div>
-<!-- end paging -->	
+<!-- End Paging Area  -->
 
-	
-<!-- start footer Area -->
-<!-- end footer Area -->
 
+
+</main>	
 </body>
 </html>

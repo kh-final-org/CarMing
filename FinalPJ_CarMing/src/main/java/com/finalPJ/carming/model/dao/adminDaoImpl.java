@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.finalPJ.carming.model.dto.AdmMemberDto;
+import com.finalPJ.carming.model.dto.AdmRentDto;
+import com.finalPJ.carming.model.dto.InquiryDto;
 
 
 
@@ -88,6 +90,48 @@ public class adminDaoImpl implements adminDao{
 			e.printStackTrace();
 		}
 		
+		return res;
+	}
+
+	@Override
+	public List<AdmRentDto> RentList() {
+		List<AdmRentDto> list = new ArrayList<AdmRentDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"selectRent");
+		} catch (Exception e) {
+			System.out.println("[error]:selectRent");
+			e.printStackTrace();
+		}
+		
+	return list;
+	}
+
+	@Override
+	public AdmRentDto selectOneRent(int cartNo) {
+		AdmRentDto list = null;
+		
+		try {
+			list = sqlSession.selectOne(NAMESPACE+"selectOneRent", cartNo);
+		} catch (Exception e) {
+			System.out.println("[error]: select one");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int returnRent(int cartNo) {
+		int res = 0;
+		 try {
+			res = sqlSession.insert(NAMESPACE+"returnRent", cartNo);
+			
+		} catch (Exception e) {
+			System.out.println("[error]: returnRent");
+			e.printStackTrace();
+		}
+		 
 		return res;
 	}
 	

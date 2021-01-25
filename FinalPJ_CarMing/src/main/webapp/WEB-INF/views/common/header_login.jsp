@@ -29,16 +29,17 @@
 	<link rel="stylesheet" href="resources/css/nouislider.min.css">
 	<link rel="stylesheet" href="resources/css/bootstrap.css">
 	<link rel="stylesheet" href="resources/css/main.css">
-	<link rel="stylesheet" href="resources/scss/theme/_blog.scss">
+	
+	
 </head>
 <body>
 <!-- Start Header Area -->
 	<header class="header_area sticky-header">
 		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
+			<nav class="navbar navbar-expand-lg navbar-light main_box" style="height: 100px;">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href=""><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
+					<a class="navbar-brand logo_h" href="#"><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -50,16 +51,8 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">핑구추천</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" style="font-size : 15px;">캠핑렌트</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item active"><a class="nav-link" href="home.do">카테고리</a></li>
-									<li class="nav-item"><a class="nav-link" href="productdetail.do">상품 보기</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.jsp">장바구니</a></li>
-								</ul>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑토크</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑렌트</a></li>
+							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">우리서로 캠Live</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠플레이스</a></li>
 							
@@ -67,32 +60,17 @@
 							<!-- 
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">캠핑렌트</a>
+								 aria-expanded="false">캠핑 렌트</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item active"><a class="nav-link" href="category.html">카테고리</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">상품 보기</a></li>
-									<li class="nav-item"><a class="nav-link" href="checkout.html">장바구니</a></li>
+									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
 								</ul>
-							</li> -->
-
+							</li>
+							-->
 						</ul>
 						
 						<ul class="nav navbar-nav navbar-right">
-						<!--nav navbar-nav navbar-right  -->
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false"><span class="lnr lnr-user"></span></a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="">마이페이지</a></li>
-									<li class="nav-item"><a class="nav-link" href="">주문/결제 내역</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false"><span class="ti-bag"></span></a>
-							</li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
+							<li class="nav-item"><a href="#" class="user"><span class="lnr lnr-user"></span></a></li>
+							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>
@@ -114,16 +92,11 @@
 	<!-- End Header Area -->
 	
 	<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb">
+	<section class="banner-area organic-breadcrumb" style="height: 310px;">
 		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" style="padding: 105px 0px;">
 				<div class="col-first">
-					<h1>제품 등록</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.html">홈<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">캠핑 렌트<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">제품 등록</a>
-					</nav>
+					<h1>The stars in the night sky</h1>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,12 @@
 	<link rel="stylesheet" href="resources/css/nouislider.min.css">
 	<link rel="stylesheet" href="resources/css/bootstrap.css">
 	<link rel="stylesheet" href="resources/css/main.css">
-	
+	<!-- bootstrap icon -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<style type="text/css">
+		@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+	</style>
+	<!-- banner text -->
 	<style type="text/css">
 		@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 		@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');
@@ -40,18 +46,15 @@
     font-style: normal;
 }
 	</style>
-
-
-
 </head>
 <body>
-	<!-- Start Header Area -->
+<!-- Start Header Area -->
 	<header class="header_area sticky-header">
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="#"><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
+					<a class="navbar-brand logo_h" href=""><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -62,29 +65,68 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">핑구추천</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠핑렌트</a></li>
-							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">우리서로 캠Live</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 15px;">캠플레이스</a></li>
-							
-							<!-- 드롭다운 메뉴 -->
-							<!-- 
+
+
+							<c:if test="${login.memcode == 1}">
+									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
+									<li class="nav-item submenu dropdown"><a href="#"
+										class="nav-link dropdown-toggle" data-toggle="dropdown"
+										role="button" aria-haspopup="true" aria-expanded="false"
+										style="font-size: 15px;">관리자</a>
+										<ul class="dropdown-menu">
+											<li class="nav-item"><a class="nav-link"
+												href="memberlist.do" style="font-size: 15px;">회원목록</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="inquirylist.do" style="font-size: 15px;">문의목록</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="reportlist.do" style="font-size: 15px;">신고목록</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="adminRentList.do" style="font-size: 15px;">렌탈목록</a></li>
+										</ul></li>
+									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
+							</c:if> 
+
+							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">캠핑 렌트</a>
+								 aria-expanded="false" style="font-size : 15px;">캠핑렌트</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+									<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">카테고리</a></li>
+									<li class="nav-item"><a class="nav-link" href="productdetail.do" style="font-size: 15px;">상품 보기</a></li>
+									<li class="nav-item"><a class="nav-link" href="cartlist.do" style="font-size: 15px;">장바구니</a></li>
 								</ul>
 							</li>
-							-->
+							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false" style="font-size: 15px;" >우리 서로 캠LIVE</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 LIVE</a></li>
+									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 MEET</a></li>
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
 						</ul>
 						
-						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="#" class="user"><span class="lnr lnr-user"></span></a></li>
-							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+						<ul class="nav navbar-nav navbar-right ml-auto">
+							<li class="nav-item" style="padding-left:0; margin-left:0">
+								<a href="mypage.do"> <!-- 마이페이지 -->        				
+								<span class="bi bi-person" style="font-size: 20px"></span></a>
+							</li>
 							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+								<a href="#"> <!-- 장바구니 -->
+								<span class="bi bi-cart2" style="font-size: 20px"></span></a>
+							</li>
+							<li class="nav-item">
+								<a href="logout.do"> <!-- 로그인/로그아웃 || 아이콘 상태 변하도록 구현 필요-->
+								<span class="bi bi-box-arrow-in-right" style="font-size: 20px"></span>
+								<!-- 로그아웃 아이콘 -->
+								<!-- <span class="bi bi-box-arrow-left" style="font-size: 20px"></span> -->
+								</a>
+							</li>
+							<!-- 검색 -->
+							<li class="nav-item">
+								<button class="search"><span class="bi bi-search" id="search"></span></button>
 							</li>
 						</ul>
 					</div>
@@ -108,7 +150,6 @@
 		<div class="container">
 			<div class="row fullscreen align-items-center justify-content-start">
 				<div class="col-lg-12">
-					<!-- single-slide -->
 					<div class="align-items-center" style="padding-top: 100px; text-align: center;">
 						<div class="banner-content">
 							<h1 style="font-family: 'Cafe24Ohsquare'; color: white; letter-spacing: 3px;">

@@ -7,7 +7,7 @@ import com.finalPJ.carming.model.dto.bcommentDto;
 public interface bcommentBiz {
 
 	//01. 댓글 목록
-	public List<bcommentDto> selectList();
+	public List<bcommentDto> selectList(int brdno);
 	//02. 댓글 추가
 	public int insert(bcommentDto dto);
 	//03. 댓글 삭제

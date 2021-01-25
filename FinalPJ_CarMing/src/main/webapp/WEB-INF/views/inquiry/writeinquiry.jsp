@@ -23,17 +23,6 @@
 <meta charset="UTF-8">
 
 
-<!--
-		CSS
-		============================================= -->
-<link rel="stylesheet" href="resources/css/linearicons.css">
-<link rel="stylesheet" href="resources/css/owl.carousel.css">
-<link rel="stylesheet" href="resources/css/themify-icons.css">
-<link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<link rel="stylesheet" href="resources/css/nice-select.css">
-<link rel="stylesheet" href="resources/css/nouislider.min.css">
-<link rel="stylesheet" href="resources/css/bootstrap.css">
-<link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/contactus.css">
 
 <script
@@ -95,7 +84,7 @@
 <body>
 
 	<!-- Start Header Area -->
-	<%@include file="../tipAndRecipe/header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 	<br>
 	<!-- Start Banner Area -->
@@ -127,7 +116,7 @@
 
 	<!------ Include the above in your HEAD tag ---------->
 	
-	<form:form  method="POST" enctype="multipart/form-data"  modelAttribute="InquiryDto" action="writeinquiry.do" >
+	<form:form  method="POST" enctype="multipart/form-data"  modelAttribute="InquiryDto" action="writeinquiry.do?memNo=${login.memno}" >
 	<div class="container contact">
 		<div class="row">
 				<div class="col-md-3">
@@ -144,7 +133,7 @@
 								닉네임:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="memNick"
-									value="이예슬" readonly="readonly" name="memNick">
+									value="${login.memnick }" readonly="readonly" name="memNick">
 							</div>
 						</div>
 						<div class="form-group">
@@ -168,7 +157,7 @@
 					<div class="form-group">
 							<label class="control-label col-sm-2" for="input_img">첨부
 								이미지:</label>
-							<div class="col-sm-10">
+							<div class="col-sm-10" >
 
 								<input type="file" id="input_img" name="inquiryFile"
 									value="파일"> <form:errors path="inquiryFile"/><img id="img"

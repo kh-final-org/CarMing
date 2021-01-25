@@ -96,9 +96,9 @@
 					</div>
 					<div class="sorting mr-auto">
 						<select>
-							<option value="1">Show 6</option>
-							<option value="1">Show 9</option>
-							<option value="1">Show 12</option>
+							<option value="1" onclick="">Show 6</option>
+							<option value="1" onclick="">Show 9</option>
+							<option value="1" onclick="">Show 12</option>
 						</select>
 					</div>
 					<div class="sorting mr-auto" style="float: right;">
@@ -145,7 +145,7 @@
 											</a>
 											<a href="productdetail.do?pNo=${productDto.pNo }" class="social-info">
 												<span class="lnr lnr-move"></span>
-												<p class="hover-text">상세보기</p>
+												<p class="hover-text">상세보기</p> 	 	 	 	 	 	 	 	 	 	 	
 											</a>
 										</div>
 									</div>

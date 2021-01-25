@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,34 +21,9 @@
 <meta charset="UTF-8">
 
 
-
-<!--
-		CSS
-		============================================= -->
-<link rel="stylesheet" href="resources/css/linearicons.css">
-<link rel="stylesheet" href="resources/css/owl.carousel.css">
-<link rel="stylesheet" href="resources/css/themify-icons.css">
-<link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<link rel="stylesheet" href="resources/css/nice-select.css">
-<link rel="stylesheet" href="resources/css/nouislider.min.css">
-<link rel="stylesheet" href="resources/css/bootstrap.css">
-<link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/contactus.css">
 
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script> -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-	integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	crossorigin="anonymous"></script>
-<script src="resources/js/vendor/bootstrap.min.js"></script>
-<script src="resources/js/jquery.ajaxchimp.min.js"></script>
-<script src="resources/js/jquery.nice-select.min.js"></script>
-<script src="resources/js/jquery.sticky.js"></script>
-<script src="resources/js/nouislider.min.js"></script>
-<script src="resources/js/jquery.magnific-popup.min.js"></script>
-<script src="resources/js/owl.carousel.min.js"></script>
+
 <!--gmaps Js-->
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
@@ -58,7 +34,7 @@
 <body>
 
 	<!-- Start Header Area -->
-	<%@include file="../tipAndRecipe/header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 	<br>
 	<!-- Start Banner Area -->
@@ -79,7 +55,7 @@
 				<div class="button-group-area mt-40" style="padding-bottom: 5em">
 					<a href="tipAndRecipeMain.do"
 						class="genric-btn danger-border e-large"><strong>목록으로</strong></a>
-					<a href="writeinquiryform.do"
+					<a href="returnRent.do?cartNo=${list.cartNo}"
 						class="genric-btn danger-border e-large"><strong>반납완료</strong></a>
 				</div>
 			</div>
@@ -105,62 +81,64 @@
 							<label class="control-label col-sm-2" for="nickname"> 사용자
 								닉네임:</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="nickname">이예슬</p>
+								<p class="form-control" id="nickname">${list.memNick }</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="category">
 								카테고리: </label>
 							<div class="col-sm-10">
-								<p class="form-control" id="category">캠프</p>
+								<p class="form-control" id="category">${list.pCategoryName}</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="product"> 상품명:
 							</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="product">의자</p>
+								<p class="form-control" id="product">${list.pName }</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="paycode"> 결제 번호:
 							</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="paycode">#1234</p>
+								<p class="form-control" id="paycode">#${list.payNo }</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="price"> 상품 가격:
 							</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="price">10000원</p>
+								<p class="form-control" id="price">${list.totalPrice}원</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="amount"> 상품 수량:
 							</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="price">1</p>
+								<p class="form-control" id="price">${list.cAmount}</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="comment">렌트 시작일:</label>
 							<div class="col-sm-10">
-								<input type="date" class="form-control" readonly="readonly"
-									id="date">
+								<p class="form-control" id="startDate">
+								<fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${list.startDate}"/></p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="comment">렌트 종료일:</label>
 							<div class="col-sm-10">
-								<input type="date" class="form-control" readonly="readonly"
-									id="date">
+								<p class="form-control" id="endDate">
+								<fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${list.endDate}"/></p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="state"> 렌탈현황:</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="price">렌트중</p>
+								<p class="form-control" id="price">${list.stateName }</p>
 							</div>
 						</div>
 					</div>

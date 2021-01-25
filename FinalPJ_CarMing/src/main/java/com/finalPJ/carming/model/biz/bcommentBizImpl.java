@@ -16,8 +16,8 @@ public class bcommentBizImpl implements bcommentBiz {
 	
 	//01. 댓글 목록
 	@Override
-	public List<bcommentDto> selectList() {
-		return dao.selectList();
+	public List<bcommentDto> selectList(int brdno) {
+		return dao.selectList(brdno);
 	}
 	
 	//02. 댓글 추가
