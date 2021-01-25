@@ -136,7 +136,7 @@
 		<!-- 프로필 사진/아이디/위치/날짜 -->
 		<div class="card-body-1">
 			<div class="board-profile">
-				<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
+				<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
 				<span class="board-usernick">&nbsp;${dto.brdwriter }</span>
 			</div>	
 			<div class="board-location">

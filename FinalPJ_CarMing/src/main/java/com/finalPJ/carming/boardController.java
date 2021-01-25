@@ -1,7 +1,8 @@
 package com.finalPJ.carming;
 
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.finalPJ.carming.model.biz.bcommentBiz;
 import com.finalPJ.carming.model.biz.boardBiz;
+import com.finalPJ.carming.model.dto.MemberDto;
 import com.finalPJ.carming.model.dto.boardDto;
 
 @Controller
@@ -24,12 +26,18 @@ public class boardController {
 	@Autowired
 	private bcommentBiz cbiz;
 	
+	HttpSession session;
+	String sessionNick = null;	//session 값 저장
+	
 	//캠핑토크 메인 화면
 	@RequestMapping(value = "/boardmainform.do")
-	public String boardMain(Model model) {
+	public String boardMain(HttpSession session, Model model, String memnick) {
 		
 		logger.info("[BOARD SELECT LIST]");
 		model.addAttribute("list", biz.selectList());
+		
+		//MemberDto mem = (MemberDto)session.getAttribute("login");
+		//System.out.println("sessionNick의 값: " + mem.getMemnick());
 	   
 	   return "board/boardmain";
 	}
@@ -75,10 +83,16 @@ public class boardController {
 	
 	//프로필 페이지
 	@RequestMapping(value = "/profileform.do")
-	public String profilePage(Model model, int memno) {
+	public String profilePage(HttpServletRequest request, Model model, int memno, String memnick) {
 		logger.info("[PROFILE PAGE]");
 		model.addAttribute("list", biz.userBoardList(memno));
 		
+		session = request.getSession();
+		session.setAttribute("memnick", memnick);	//변수이름
+		
+		sessionNick = memnick;
+		System.out.println("sessionNick의 값: " + sessionNick);
+	   
 		return "board/profilepage";
 	}
 	

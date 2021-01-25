@@ -4,7 +4,6 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page import="com.finalPJ.carming.model.dto.MemberDto" %>  
     
 <!DOCTYPE html>
 <html>
@@ -66,7 +65,7 @@
 	<div class="card-profile">
 		<div class="profilepage-profile">
 			<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">
-			<div class="user-id">${dto.brdwriter }</div>
+			<div class="user-id">${memnick }</div>
 		</div>
 		<div class="profilepage-message">
 			<a href="privateform.do?memno=${dto.memno }">
@@ -100,44 +99,6 @@
 
 <!-- 여백을 주기 위해 임시로 만들어 놓음 -->
 <table class="table table-hover"></table>
-
-<!-- Start Paging Area -->
-<div class="container ml-auto" id="paging-container" align="center">
-	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center">
-			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"/>
-			<c:set var="startNum" value="${page - (page-1) % 5}"/>
-			<c:set var="lastNum" value="15"/>
-			
-			<!-- 이전 버튼 -->
-			<div>
-			  	<c:if test="${startNum > 1}">
-			    	<a href="?page=${startNum - 1 }" class="page-link text-warning" aria-label="Next">&laquo;</a>
-			  	</c:if>
-			  	<c:if test="${startNum <= 1 }">
-			    	<span class="page-link text-warning" onclick="alert('이전 페이지가 없습니다.');" style="margin:50px;">&laquo;</span>
-		  		</c:if>
-		  	</div>
-			
-			<!-- 페이징 목록 -->
-			<c:forEach var="i" begin="0" end="4">
-				<li class="page-item"><a class="page-link text-warning" href="?memno=${dto.memno }&page=${startNum + i }">${startNum + i }</a></li>
-			</c:forEach>
-		  			
-		  	<!-- 다음 버튼 -->
-		  	<div>
-			  	<c:if test="${startNum + 5 < lastNum }">
-			    	<a href="?page=${startNum + 5 }" class="page-link text-warning" aria-label="Next">&raquo;</a>
-			  	</c:if>
-			  	<c:if test="${startNum + 5 >= lastNum }">
-			    	<span id="dd" aria-label="Next" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
-		  		</c:if>
-		  	</div>
-		  	
-		</ul>
-	</nav>
-</div>
-<!-- End Paging Area  -->
 
 </main>
 </body>

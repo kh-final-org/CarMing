@@ -37,14 +37,13 @@
 <script type="text/javascript">
 	function myFunction() {
 	    var selectbox, filter, a, txtValue, list;
-	    selectbox = document.getElementById("selectbox");
-	    filter = selectbox.value
-	
-	    list = document.getElementsByClassName("card-body");
+	    selectbox = document.getElementById("selectbox");		//selectbox
+	    filter = selectbox.value								//selectbox value값 filter에 담기
+	    list = document.getElementsByClassName("card-body");	//card-body(게시글이 담기는 영역)를 list에 담기
 	    
 	    for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("category")[i];
-	        txtValue = a.textContent;
+	        a = document.getElementsByClassName("category")[i];	//dto.bcategoryname를 a에 담기
+	        txtValue = a.textContent;							//dto.bcategoryname의 텍스트 값을 txtValue에 담기
 	        
 	        if (txtValue == filter) {
 	        	list[i].style.display = "";
@@ -53,6 +52,14 @@
 	        }
 		}
 	}
+</script>
+
+
+<script>
+	function myFunction() {
+  		var x = document.getElementById("mySelect").value;
+  		document.getElementById("demo").innerHTML = "You selected: " + x;
+}
 </script>
 	
 </head>
@@ -114,7 +121,7 @@
 		<div class="card-body" style="padding: 0px">
 			<!-- 프로필 사진/아이디 -->
 			<div class="board-profile">
-				<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
+				<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
 				<span class="board-usernick">&nbsp;${dto.brdwriter}</span>
 			</div>	
 			<!-- 사용자가 업로드한 이미지 -->
