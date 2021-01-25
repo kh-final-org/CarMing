@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.finalPJ.carming.model.dao.adminDao;
 import com.finalPJ.carming.model.dto.AdmMemberDto;
+import com.finalPJ.carming.model.dto.AdmRentDto;
 
 
 
@@ -39,16 +40,26 @@ public class adminBizImpl implements adminBiz{
 		return null;
 	}
 
-	@Override
-	public int insert(AdmMemberDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	@Transactional
 	@Override
 	public int delete(int memNo) {
 		return dao.delete(memNo);
+	}
+
+	@Override
+	public List<AdmRentDto> RentList() {
+		return dao.RentList();
+	}
+
+	@Override
+	public AdmRentDto selectOneRent(int cartNo) {
+		return dao.selectOneRent(cartNo);
+	}
+
+	@Override
+	public int returnRent(int cartNo) {
+		return dao.returnRent(cartNo);
 	}
 	
 

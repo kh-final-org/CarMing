@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,18 +23,35 @@
 
 
 <link rel="stylesheet" href="resources/css/adminList.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
 <script>
-$(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
-});
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue, tbody;
+    input = document.getElementById("input");
+    filter = input.value
+
+    tbody = document.getElementsByTagName("tbody");
+    
+    for(i=0; i<tbody.length; i++){
+        a = document.getElementsByClassName("cartNo")[i];
+        txtValue = a.textContent || a.innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        	tbody[i].style.display = "";
+        } else {
+        	tbody[i].style.display = "none";
+        }
+	}
+}
 </script>
 </head>
 <body>
-<!-- Start Header Area -->
+	<!-- Start Header Area -->
 	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 	<br>
@@ -62,12 +81,15 @@ $(document).ready(function(){
 	</section>
 	<!-- End Banner Area -->
 
-	<div class="blog_right_sidebar" style="width: 30%; float: right; background-color: white; border: 0px;">
+	<div class="blog_right_sidebar"
+		style="width: 30%; float: right; background-color: white; border: 0px;">
 		<aside class="single_sidebar_widget search_widget">
-			 <div class="input-group">
-				<input type="text" class="form-control" placeholder="상품 검색하기"
-					onfocus="this.placeholder = ''" onblur="this.placeholder = '상품 검색하기'">
-				<span class="input-group-btn">
+			<div class="input-group">
+				<input type="text" id="input" onkeyup="myFunction()"
+					class="form-control" placeholder="상품 검색하기"
+					onfocus="this.placeholder = ''"
+					onblur="this.placeholder = '상품 검색하기'"> <span
+					class="input-group-btn">
 					<button class="btn btn-default" type="button">
 						<i class="lnr lnr-magnifier"></i>
 					</button>
@@ -77,67 +99,56 @@ $(document).ready(function(){
 	</div>
 
 	<div class="container-xl">
-    <div class="table-responsive">
-            <table class="table table-striped table-hover" style="text-align: center;">
-                <thead>
-                    <tr>
-                        <th>NO.</th>			
-                        <th>닉네임</th>
-                        <th>카테고리</th>
-                        <th>결제번호</th>
-                        <th>렌트 시작날짜</th>
-                        <th>렌트 종료날짜</th>
-                        <th>렌탈현황</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="adminRentDetail.do">1</a></td>
-                        <td><a href="#"><img src="resources/img/tipandrecipe/honey.jpg" class="avatar" alt="Avatar"> camlove</a></td>
-                        <td>캠핑용품</td>                        
-                        <td>#12345</td>
-                        <td>2020/12/30</td>
-                        <td>2020/12/31</td>
-                        <td><span class="status text-warning">&bull;</span> 렌트중</td>
-                    </tr>
-                   <tr>
-                        <td><a href="adminRentDetail.do">2</a></td>
-                        <td><a href="#"><img src="resources/img/tipandrecipe/honey.jpg" class="avatar" alt="Avatar"> camlove</a></td>
-                        <td>캠핑용품</td>                        
-                        <td>#12345</td>
-                        <td>2020/12/30</td>
-                        <td>2020/12/31</td>
-                        <td><span class="status text-warning">&bull;</span> 렌트중</td>
-                    </tr>
-                   <tr>
-                        <td><a href="adminRentDetail.do">3</a></td>
-                        <td><a href="#"><img src="resources/img/tipandrecipe/honey.jpg" class="avatar" alt="Avatar"> camlove</a></td>
-                        <td>캠핑용품</td>                        
-                        <td>#12345</td>
-                        <td>2020/12/30</td>
-                        <td>2020/12/31</td>
-                        <td><span class="status text-danger">&bull;</span> 연체</td>
-                    </tr>
-                    <tr>
-                        <td><a href="adminRentDetail.do">4</a></td>
-                        <td><a href="#"><img src="resources/img/tipandrecipe/honey.jpg" class="avatar" alt="Avatar"> camlove</a></td>
-                        <td>캠핑용품</td>                        
-                        <td>#12345</td>
-                        <td>2020/12/30</td>
-                        <td>2020/12/31</td>
-                        <td><span class="status text-success">&bull;</span> 반납 </td>
-                    </tr>
-                    <tr>
-                        <td><a href="adminRentDetail.do">5</a></td>
-                        <td><a href="#"><img src="resources/img/tipandrecipe/honey.jpg" class="avatar" alt="Avatar"> camlove</a></td>
-                        <td>캠핑용품</td>                        
-                        <td>#12345</td>
-                        <td>2020/12/30</td>
-                        <td>2020/12/31</td>
-                        <td><span class="status text-warning">&bull;</span> 렌트중</td>
-                    </tr>
-                </tbody>
-            </table>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover"
+				style="text-align: center;" width="100%">
+				<col style="width: 10%">
+				<col style="width: 15%">
+				<col style="width: 20%">
+				<col style="width: 5%">
+				<col style="width: 15%">
+				<col style="width: 15%">
+				<col style="width: 20%">
+				<thead>
+					<tr>
+						<th>NO.</th>
+						<th>닉네임</th>
+						<th>카테고리</th>
+						<th>결제번호</th>
+						<th>렌트 시작날짜</th>
+						<th>렌트 종료날짜</th>
+						<th>렌탈현황</th>
+					</tr>
+				</thead>
+				<c:forEach var="list" items="${list}">
+					<tbody>
+						<tr>
+							<td class="cartNo" ><a href="adminRentDetail.do?cartNo=${list.cartNo}">${list.cartNo}</a></td>
+							<td><a href="#"><img
+									src="resources/img/tipandrecipe/honey.jpg" class="avatar"
+									alt="Avatar">${list.memNick }</a></td>
+							<td>${list.pCategoryName }</td>
+							<td>#${list.payNo }</td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${list.startDate}" /></td>
+
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${list.endDate}" /></td>
+							<td><c:set var="status" value="${list.stateNo}" /> <c:choose>
+									<c:when test="${ status == 3}">
+										<span class="status text-warning">&bull;</span>
+									</c:when>
+									<c:when test="${ status == 5}">
+										<span class="status text-success">&bull;</span>
+									</c:when>
+									<c:when test="${ status == 6}">
+										<span class="status text-danger">&bull;</span>
+									</c:when>
+								</c:choose> ${list.stateName }</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</table>
 			<div class="clearfix">
 				<div class="hint-text" style="margin-left: 2%;">
 					Showing <b>5</b> out of <b>25</b> entries
@@ -161,10 +172,10 @@ $(document).ready(function(){
 				</ul>
 			</div>
 		</div>
-    </div>
+	</div>
 
-		<!-- start footer Area -->
-		<%@include file="../../views/common/footer.jsp"%>
-		<!-- End footer Area -->
-	</body>
+	<!-- start footer Area -->
+	<%@include file="../../views/common/footer.jsp"%>
+	<!-- End footer Area -->
+</body>
 </html>

@@ -7,6 +7,7 @@
   <configuration>
 
 	<typeAliases>
+		<typeAlias type="com.finalPJ.carming.model.dto.AdmRentDto" alias="admRentDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.AdmMemberDto" alias="admMemberDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.MemberDto" alias="memberDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.RecipeDto" alias="recipeDto"/>	
@@ -35,9 +36,9 @@
 		<mapper resource="/mybatis/admin-mapper.xml" />
 		<mapper resource="/mybatis/product-mapper.xml"/>
 		<mapper resource="/mybatis/board-mapper.xml" />
-	<!-- <mapper resource="/mybatis/bcomment-mapper.xml" />
-		<mapper resource="/mybatis/dm-mapper.xml" />
-		<mapper resource="/mybatis/mapLocation-mapper.xml" /> -->
+		<mapper resource="/mybatis/bcomment-mapper.xml" />
+<!-- 	<mapper resource="/mybatis/dm-mapper.xml" />
+		<mapper resource="/mybatis/mapLocation-mapper.xml" />  -->
 		<mapper resource="/mybatis/survey-mapper.xml" />
 		<mapper resource="/mybatis/rentreview-mapper.xml"/>
 		<mapper resource="/mybatis/cart-mapper.xml"/>

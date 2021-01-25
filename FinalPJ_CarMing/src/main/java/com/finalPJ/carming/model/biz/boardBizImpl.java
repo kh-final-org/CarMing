@@ -32,7 +32,7 @@ public class boardBizImpl implements boardBiz{
 		dao.viewCount(brdno);
 		return dao.selectOne(brdno);
 	}
-
+	
 	//03. 게시글 작성
 	@Override
 	public int insert(boardDto dto) {
@@ -50,10 +50,23 @@ public class boardBizImpl implements boardBiz{
 	public int delete(int brdno) {
 		return dao.delete(brdno);
 	}
-	
+
 	//06. 게시글 조회수
 	@Override
 	public void viewCount(int brdno) {
 	}
+
+	//07. 사용자 프로필 페이지 목록
+	@Override
+	public List<boardDto> userBoardList(int memno) {
+		return dao.userBoardList(memno);
+	}
+
+	
+	
+	
+	
+	
+
 
 }

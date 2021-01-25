@@ -113,6 +113,7 @@ private InquiryFileValidator fileValidator;
 		inquiry.setFilename(name);
 		inquiry.setInquiryContent(dto.getInquiryContent());
 		inquiry.setCategoryNo(dto.getCategoryNo());
+		inquiry.setMemNo(dto.getMemNo());
 				
 		
 		int res = biz.insert(inquiry);

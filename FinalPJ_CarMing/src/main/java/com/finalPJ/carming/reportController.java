@@ -44,7 +44,8 @@ private ReportFileValidator fileValidator;
 	}
 	
 	@RequestMapping(value = "/writereportform.do")
-	public String writeReportForm() {
+	public String writeReportForm(ReportDto rdto, Model model) {
+		model.addAttribute("target", rdto);
 		logger.info("[writereport]");
 		return "report/writereport";
 	}

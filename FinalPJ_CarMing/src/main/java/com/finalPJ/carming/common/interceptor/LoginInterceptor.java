@@ -20,6 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		logger.info("[interceptor]: preHandle");
 		
 		//로그인이 필요없는 기능들을 조건에 추가바람
+
 		if(		request.getRequestURI().contains("/productlist.do")	 	||				
 				request.getRequestURI().contains("/cart.do") 			||
 				request.getRequestURI().contains("/productinsert.do") 	||
@@ -49,8 +50,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 			out.println("<script>alert('로그인 이후 사용하실 수 있습니다.'); location.href='loginform.do'; </script>");
 			out.flush();
 		}
-		
+	
 		return false;
+		
 	}
 
 	@Override
@@ -66,5 +68,5 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// TODO Auto-generated method stub
 		logger.info("[interceptor]: afterCompletion");
 	}
-
+	
 }
