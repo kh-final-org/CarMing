@@ -3,8 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>CarMing</title>
+	<meta charset="UTF-8">
+    <script src="https://192.168.35.179:3000/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<title>CarMing</title>
 </head>
 <body>
 	<%@include file="../common/header.jsp"%>
@@ -83,12 +85,12 @@
 					<p>캠핑의 즐거움을 화상통화로 함께 즐겨보세요 :)</p>
 
 					<div class="d-flex flex-row" style="margin-top: 100px">
-						<input class="form-control" placeholder="camping meet code "
+						<input id="inputUrl" class="form-control" placeholder="camping meet code"
 							style="text-align: center"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'camping meet code '" required="">
+							onblur="this.placeholder = 'camping meet code '">
 
-						<button class="click-btn btn btn-warning" type="button">
+						<button id="enter" class="click-btn btn btn-warning" type="button">
 							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 						</button>
 
@@ -99,7 +101,7 @@
 					</div>
 
 					<div class="d-flex flex-row" style="margin-top: 20px; padding-bottom: 100px;">
-						<button type="button" class="btn btn-outline-warning" style="width: 100%">new meeting</button>
+						<button type="button" id="new" class="btn btn-outline-warning" style="width: 100%">new meeting</button>
 					</div>
 				</div>
 			</div>
@@ -107,6 +109,7 @@
 	</section>
 
 	<%@include file="../common/footer.jsp"%>
+	<script src="resources/camLive/camMeet.js"></script>
 	<!-- 이미지 정렬을 위한 CDN -->
 	<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 </body>
