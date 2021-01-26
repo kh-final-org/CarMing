@@ -18,13 +18,12 @@
 	.card-head-third{float: right; margin-right: 10px;}
 	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
 	
+	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
+	.board-usernick{font-size: 1.2em; font-weight: bold;}
 	.uploadimg{width: 360px; height: 360px; border-radius: 10px; transform: scale(1.00); transition: transform .3s;}
 	.uploadimg:hover{transform: scale(1.03); transition: transform .3s;}
 	.board-uploadimg{overflow: hidden; border-radius: 10px;}
-	
-	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
 	.board-profile{margin: 0px 0px 8px 8px;}	
-	.board-usernick{font-size: 1.2em; font-weight: bold;}
 	.board-count{width: 360px; font-size: 0.8em; text-align: right; margin: 3px 0px 0px 0px;}
 	
 	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;}
@@ -35,17 +34,16 @@
 	/* 진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
 <script type="text/javascript">
-	function myFunction() {
-	    var selectbox, filter, a, txtValue, list;
-	    selectbox = document.getElementById("selectbox");		//selectbox
-	    filter = selectbox.value								//selectbox value값 filter에 담기
-	    list = document.getElementsByClassName("card-body");	//card-body(게시글이 담기는 영역)를 list에 담기
-	    
-	    for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("category")[i];	//dto.bcategoryname를 a에 담기
-	        txtValue = a.textContent;							//dto.bcategoryname의 텍스트 값을 txtValue에 담기
+	function myFunction(str) {
+		var x, list, a, txtValue;
+		x = document.getElementById("selectbox").value;			//selectbox value값 x에 담기
+		list = document.getElementsByClassName("card-body");
+		
+		 for(i=0; i<list.length; i++){
+	        a = document.getElementsByClassName("category")[i];	//dto.bcategoryno를 a에 담기
+	        txtValue = a.textContent;							//dto.bcategoryno의 텍스트 값을 txtValue에 담기
 	        
-	        if (txtValue == filter) {
+	        if (x == txtValue) {								//(selectbox value값 == dto.bcategoryno 값)
 	        	list[i].style.display = "";
 	        } else {
 	        	list[i].style.display = "none";
@@ -54,14 +52,6 @@
 	}
 </script>
 
-
-<script>
-	function myFunction() {
-  		var x = document.getElementById("mySelect").value;
-  		document.getElementById("demo").innerHTML = "You selected: " + x;
-}
-</script>
-	
 </head>
 <body>
 <!-- Start Header Area -->
@@ -99,12 +89,12 @@
 		
 		<div class="card-head-third" style="width: 140px;">
 			<div class="dropdown-selectbox">
-		  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-					<option value="일반 캠핑" selected>일반 캠핑</option>
-				    <option value="카라반">카라반</option>
-				    <option value="글램핑">글램핑</option>
-				    <option value="차박">차박</option>
-				    <option value="나만의 캠핑">나만의 캠핑</option>
+		  		<select onchange="myFunction(this.value)" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+					<option value="1" selected>일반 캠핑</option>
+				    <option value="2">카라반</option>
+				    <option value="3">글램핑</option>
+				    <option value="4">차박</option>
+				    <option value="5">나만의 캠핑</option>
 			  	</select>
 			</div>
 		</div>

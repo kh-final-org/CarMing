@@ -27,7 +27,7 @@
 	
 	.card-body-3{margin: 10px 0px 30px 50px; position: relative;}
 	.board-content{float: left; position: absolute; left: 0; width: 70%;}
-	.board-count{float: left; text-align: right; position: absolute; left: 320px; width: 20%; font-size: 0.85em;} 
+	.board-count{float: left; text-align: right; position: absolute; left: 326px; width: 20%; font-size: 0.85em;} 
 	.board-report{float: right; text-align: right; position: absolute; right: 0; width: 10%; font-size: 0.85em;}
 	#board-report-target{color: silver;}
 	#report{border: none; background-color: white;}	 	
@@ -36,12 +36,11 @@
 	.board-comment-head{float: left; font-size:1.2em;}
 	.board-comment-count{float: right; margin-left: 15px; font-size: 1.2em;}
 	.board-comment-header-2{float: right;}
-	.board-share{float: left; margin-right: 10px; cursor: pointer;}
-	.share-kakaotalk{width: 25px; height: 25px;}
+	.board-share{float: right; margin-right: 10px; cursor: pointer; margin-left: 5px;  margin-right: -0.5px;}
+	.share-kakaotalk{width: 20px; height: 100%;}
 	.board-modify{float: left; margin-left: 0px 10px;}
-	.board-delete{float: right; margin-left: 1px; margin-right: 2px;}
-	#board-modify-text{color: gray;}
-	#board-delete-text{color: gray;}
+	.board-delete{float: left; margin-left: 1px; margin-right: 5px;}
+	#board-option-btn{color: gray; background:#fff; border: 0; padding: 0; cursor: pointer; outline: none;}
 	
 	.card-body-5{margin: 10px 0px;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
@@ -56,6 +55,7 @@
 	.commentuser-comment{float: right; margin: 11px 5px 11px 20px;}
 	.commentuser-second{float: right; margin: 10px 0px; font-size: 0.85em;}
 	.comment-time{float: left; text-align: right;}
+	.comment-delete{float: right;  margin-right: 2px;}
 	.comment-report{float: right;}
 	.board-delete-comment{color: #5f5f5f;}
 	
@@ -99,6 +99,14 @@
 	catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
 </script>
 
+<script>
+	function boardDel(brdno){
+		var chk = confirm("삭제된 글은 복구가 불가능합니다.\n게시글을 삭제하시겠습니까?")
+		if(chk){
+			location.href='boarddelete.do?brdno='+${dto.brdno };
+		}
+	}
+</script>
 
 </head>
 <body>
@@ -168,15 +176,17 @@
 				</c:forEach>
 			</div>
 			<div class="board-comment-header-2">
+				<c:if test="${login.memnick == dto.brdwriter }">
+					<div class="board-modify">
+						<input type="button" value="수정" id="board-option-btn">
+					</div>
+					<div class="board-delete">&nbsp;&#124;
+						<input type="button" onclick="boardDel(${dto.brdno})" value="삭제" id="board-option-btn">
+					</div>&#124;
+				</c:if>
 				<div class="board-share">
 					<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
 				</div>
-				<div class="board-modify">&#124;&nbsp;&nbsp;수정</div>
-				<c:if test="${login.memnick == dto.brdwriter }">
-					<div class="board-delete">&nbsp;&#124;
-						<a href="boarddelete.do?brdno=${dto.brdno }" onclick="#" id="board-delete-text">&nbsp;삭제</a>
-					</div>
-				</c:if>
 			</div>
 		</div><br>
 	
@@ -214,7 +224,8 @@
 						<a href="writereportform.do?targetNo=${comment.comno }&targetTypeNo=2" class="board-report-target2" id="board-report-target">신고</a>
 					</div>
 					<c:if test="${login.memnick == comment.comwriter }">
-						<div class="board-delete">
+						<div class="comment-delete">
+							<!-- <input type="button" onclick="commentDel('${comment.comno}')" value="삭제" id="board-option-btn"> -->
 							<a href="deletbcomment.do?comno=${comment.comno }&brdno=${dto.brdno }" class="board-delete-comment">삭제</a>&nbsp;&middot;
 						</div>
 					</c:if>
