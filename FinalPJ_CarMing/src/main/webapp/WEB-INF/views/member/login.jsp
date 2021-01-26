@@ -16,25 +16,26 @@
 	<script src="resources/js/login.js"></script>
 	<style type="text/css">
 		body {background-color: #fff; font-family: 'Ubuntu', sans-serif;}
-	    
-    	.main {background-color: #fff; width: 400px; height: 450px; margin: 7em auto;border-radius: 1.5em;box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);}
+    	.main {background-color: #fff; width: 400px; height: 450px; margin: 7em auto; border-radius: 1.5em; box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);}
     	
-		.userid {width: 76%; color: #5f5f5f; font-size: 14px; letter-spacing: 1px; background: rgba(136, 126, 126, 0.04);padding: 10px 20px;
-			border: none;border-radius: 8px;outline: none;box-sizing: border-box;border: 2px solid rgba(0, 0, 0, 0.02);
-			margin-bottom: 8px; margin-left: 46px; text-align: left; font-family: 'Ubuntu', sans-serif;}
+	    .loginform-logo{padding-top: 55px;}   
+	    .login-logo{width: 150px; height: 100%; margin-right: 10px;}
 
-	    .userpass {width: 76%;color: #5f5f5f;font-size: 14px;letter-spacing: 1px;background: rgba(136, 126, 126, 0.04);padding: 10px 20px;border: none;border-radius: 8px;
-			   outline: none; box-sizing: border-box; border: 2px solid rgba(0, 0, 0, 0.02); margin-bottom: 0 0 50px 46px; text-align: left;font-family: 'Ubuntu', sans-serif;}
+		.input-user-idpw {width: 76%; color: #5f5f5f; font-size: 14px; letter-spacing: 1px; background: rgba(136, 126, 126, 0.04); padding: 10px 15px;
+				 border: none; border-radius: 8px; outline: none; box-sizing: border-box; border: 2px solid rgba(0, 0, 0, 0.02);
+				 margin-bottom: 8px; margin-left: 46px; text-align: left; font-family: 'Ubuntu', sans-serif;}
+	    .userid:focus, .userpass:focus {border: 2px solid rgba(0, 0, 0, 0.18) !important;}
 	    
 	    .login-btn {cursor: pointer; color: #5f5f5f !important; background: #ffe6be; width: 300px; border: 0; border-radius: 8px; padding: 10px 40px;
-				 font-weight: bold; margin-left: 12%; font-size: 1.1em; box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04); outline: none;}
-	    
-	    .loginform-logo{padding-top: 55px; color: #5f5f5f; font-size: 2.2em;}   
-	    .forgot {color: gray; padding-top: 10px; font-size: 1.15em;}
+				 	font-weight: bold; margin-left: 12%; font-size: 1.1em; box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04); outline: none;}
+	    .signup{padding-top: 10px;}
 	    .signup-btn {color: gray; font-size: 0.8em;}
-	    .login-logo{width: 150px; height: 100%; margin-right: 10px;}
+	    a {text-decoration:none; } 
 	    form.form1 {padding-top: 30px;}
 	    input::placeholder{color: silver;}
+	    
+		@media (max-width: 600px) {.main {border-radius: 0px;}
+    
 	</style>
 
 
@@ -48,10 +49,10 @@
 			<a href="home.do"><img class="login-logo" src="./resources/img/logo.png"></a>
 		</div>
 		<form class="form1">
-			<input class="userid " type="text" align="center" placeholder="이메일" id="memid">
-			<input class="userpass" type="password" align="center" placeholder="비밀번호" id="mempw">
+			<input class="input-user-idpw" type="text" align="center" placeholder="이메일" id="memid">
+			<input class="input-user-idpw" type="password" align="center" placeholder="비밀번호" id="mempw">
 			<input type="button" value="로그인" class="login-btn" align="center" onclick="login();">
-			<div class="forgot" align="center"><a href="registerform.do" class="signup-btn">회원가입</a></div>
+			<div class="signup" align="center"><a href="registerform.do" class="signup-btn">회원가입</a></div>
 		</form>        
    	</div>
 </section>
