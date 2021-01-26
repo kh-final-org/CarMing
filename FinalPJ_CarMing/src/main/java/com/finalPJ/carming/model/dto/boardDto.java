@@ -13,7 +13,7 @@ public class boardDto {
 	private Date brddate;			//게시글 작성 날짜
 	private String brdprivate;		//나만보기 체크 여부
 	private int memno;				//memno
-	private String bcategoryname;
+	private String bcategoryname;	//categoryname
 
 	public boardDto() {
 		super();

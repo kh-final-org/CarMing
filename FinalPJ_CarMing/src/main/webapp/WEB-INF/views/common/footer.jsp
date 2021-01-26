@@ -32,7 +32,7 @@
 </head>
 <body>
 	<!-- start footer Area -->
-	<footer class="footer-area section_gap_top_75" style="padding-top: 0">
+	<footer class="footer-area section_gap_top_75" style="padding-top: 0; background: #fafafa;">
 		<div
 			class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
 			<p class="footer-text m-0">
@@ -41,9 +41,10 @@
 					document.write(new Date().getFullYear());
 				</script>
 				All rights reserved | CarMing is made with 
-				<i class="fa fa-heart-o"aria-hidden="true"></i> 
-				by 
-				<a href="https://github.com/kh-final-org/CarMing" target="_blank">캠핑에 미치다</a>
+				<i class="fa fa-heart-o"aria-hidden="true" style="color: gray;"></i>&nbsp;by 
+				<a href="https://github.com/kh-final-org/CarMing" target="_blank" style="color: #5f5f5f; font-size: 1.1em;">
+					<strong>캠핑에 미치다</strong>
+				</a>
 			</p>
 		</div>
 	</footer>

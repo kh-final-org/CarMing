@@ -14,8 +14,8 @@
 	.card-container{width: 100%;}
 
 	.card-head-first{float: left;}
-	.card-head-second{float: left; margin-left: 610px;}
-	.card-head-third{float: right; margin-right: 10px;}
+	.card-head-second{float: left; margin-left: 605px;}
+	.card-head-third{position: absolute; top: 406px; right: 205px; float: right; margin-right: 10px;}
 	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
 	
 	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
@@ -27,30 +27,53 @@
 	.board-count{width: 360px; font-size: 0.8em; text-align: right; margin: 3px 0px 0px 0px;}
 	
 	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;}
+	.upload-btn{width: 140px; padding: 8px 0 10px; line-height: 20px; border: 0; border-radius: 4px;
+				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
+	.icon{margin-left: 5px; width: 12px; height: 12px;}
 	.current{padding-left: 5px;}
+	#popout-layout{position: absolute; z-index: 10; margin-top: 8px; padding: 10px 20px; border-radius: 5px;  background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
+	.content-item-icon{float: left;}
+	.content-item-content{float: right; color: gray;}
+	.content-item-content-title{font-weight: bold; font-size: 1em; margin-top: 5px;}
+	.content-item-content-subtitle{font-size: 0.8em; margin-top: -5px; margin-bottom: 5px;}
+	.upload-icon-photo{width: 25px; height: 25px; opacity: 0.35; margin-top: 12px; margin-right: 12px;}
+	.upload-icon-video{width: 25px; height: 25px; opacity: 0.35; margin-top: 28px; margin-right: 12px;}
 	 
 	#paging-container{margin: 50px 0px 20px 0px;}
 	
 	/* 진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
+
 <script type="text/javascript">
 	function myFunction(str) {
 		var x, list, a, txtValue;
 		x = document.getElementById("selectbox").value;			//selectbox value값 x에 담기
-		list = document.getElementsByClassName("card-body");
+		list = document.getElementsByClassName("card-body");	//게시글이 담겨지는 곳을 list에 담기
 		
 		 for(i=0; i<list.length; i++){
 	        a = document.getElementsByClassName("category")[i];	//dto.bcategoryno를 a에 담기
 	        txtValue = a.textContent;							//dto.bcategoryno의 텍스트 값을 txtValue에 담기
 	        
 	        if (x == txtValue) {								//(selectbox value값 == dto.bcategoryno 값)
-	        	list[i].style.display = "";
+	        	list[i].style.display = "";						//값이 같으면 select
 	        } else {
-	        	list[i].style.display = "none";
+	        	list[i].style.display = "none";					//값이 다르면 none
 	        }
 		}
 	}
 </script>
+
+<script>
+	function popoutFunction() {
+		var x = document.getElementById("upload-popout");
+			if (x.style.display == "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			} 
+		}  
+</script>
+
 
 </head>
 <body>
@@ -84,44 +107,80 @@
 		</div>
 		
 		<div class="card-head-second">
-			<button type="button" class="btn btn-light" onclick="location.href='boardinsertform.do'" id="button-boardinsert">+ 게시글 쓰기</button>
-		</div>
+			<!--
+			<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdown-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;&nbsp;카테고리&emsp;</button>
+			<div class="dropdown-menu">
+				<ul class="navi">
+					<li><a class="dropdown-item" href="#">사진 올리기</a></li>
+					<li><a class="dropdown-item" href="#">영상 올리기</a></li>
+				</ul>
+			</div>-->
+			<button class="upload-btn" type="button" onclick="popoutFunction()">게시글쓰기
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" width="1em" height="1em">
+					<path fill="currentColor" fill-rule="evenodd" d="M 2.87 4 L 1.33 5.5 L 8 12 l 6.67 -6.5 L 13.13 4 L 8 9 Z" />
+				</svg>
+			</button>
+			
+			<div class="upload-popout" id="upload-popout">
+				<div class="popout popout--prepared popout--axis-1 popout--dir-0 popout--cross-dir-1" id="popout-layout" data-popout="true">
+					<div class="animated-popout-dropdown-content-active">
+						<div class="upload-dropdown-content">
+							<a class="upload-dropdown-content-item" href="boardinsertform_p.do?brdwriter=${dto.brdwriter }">
+								<div class="content-item-icon"><img class="upload-icon-photo" src="./resources/img/photo.png"></div>
+								<div class="content-item-content">	
+									<div class="content-item-content-title">사진 올리기</div>
+									<div class="content-item-content-subtitle">캠핑 사진을 공유해주세요.</div>
+								</div>
+							</a><br>
+							<a class="upload-dropdown-content-item" href="boardinsertform_v.do?brdwriter=${dto.brdwriter }">
+								<div class="content-item-icon"><img class="upload-icon-video" src="./resources/img/videocam.png"></div>
+								<div class="content-item-content">
+									<div class="content-item-content-title">영상 올리기</div>
+									<div class="content-item-content-subtitle">캠핑 영상을 공유해주세요.</div>
+								</div>
+							</a>					
+						</div>
+					</div>
+				</div>
+			</div>
+			
 		
-		<div class="card-head-third" style="width: 140px;">
-			<div class="dropdown-selectbox">
-		  		<select onchange="myFunction(this.value)" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-					<option value="1" selected>일반 캠핑</option>
-				    <option value="2">카라반</option>
-				    <option value="3">글램핑</option>
-				    <option value="4">차박</option>
-				    <option value="5">나만의 캠핑</option>
-			  	</select>
+			<div class="card-head-third" style="width: 140px;">
+				<div class="dropdown-selectbox">
+			  		<select onchange="myFunction(this.value)" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+						<option value="1" selected>일반 캠핑</option>
+					    <option value="2">카라반</option>
+					    <option value="3">글램핑</option>
+					    <option value="4">차박</option>
+					    <option value="5">나만의 캠핑</option>
+				  	</select>
+				</div>
 			</div>
 		</div>
+		<br><br><br><br>
+	
+		<!-- 게시글이 없을 경우 -->
+		<c:if test="${empty list }">
+				<p>작성된 게시글이 없습니다.</p>
+		</c:if>
+		
+		<!-- 게시글이 있을 경우 -->
+		<c:forEach items="${list }" var="dto">
+			<div class="card-body" style="padding: 0px">
+				<!-- 프로필 사진/아이디 -->
+				<div class="board-profile">
+					<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
+					<span class="board-usernick">&nbsp;${dto.brdwriter}</span>
+				</div>	
+				<!-- 사용자가 업로드한 이미지 -->
+				<div class="board-uploadimg">
+					<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
+					<div class="board-count">조회수 ${dto.brdcount}</div>
+					<div class="category"> ${dto.bcategoryname }</div>
+				</div>
+			</div>
+		</c:forEach>
 	</div>
-	<br><br><br><br>
-	
-	<!-- 게시글이 없을 경우 -->
-	<c:if test="${empty list }">
-			<p>작성된 게시글이 없습니다.</p>
-	</c:if>
-	
-	<!-- 게시글이 있을 경우 -->
-	<c:forEach items="${list }" var="dto">
-		<div class="card-body" style="padding: 0px">
-			<!-- 프로필 사진/아이디 -->
-			<div class="board-profile">
-				<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
-				<span class="board-usernick">&nbsp;${dto.brdwriter}</span>
-			</div>	
-			<!-- 사용자가 업로드한 이미지 -->
-			<div class="board-uploadimg">
-				<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
-				<div class="board-count">조회수 ${dto.brdcount}</div>
-				<div class="category"> ${dto.bcategoryname }</div>
-			</div>
-		</div>
-	</c:forEach>
 </div>
 <!-- End Container Area -->
 
@@ -165,9 +224,11 @@
 	</nav>
 </div>
 <!-- End Paging Area  -->
-
-
-
 </main>	
+
+
+<!-- start Footer Area -->
+<%@include file="../../views/common/footer.jsp"%>
+<!-- End Footer Area -->
 </body>
 </html>

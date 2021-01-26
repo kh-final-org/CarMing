@@ -65,7 +65,7 @@
 	<div class="card-profile">
 		<div class="profilepage-profile">
 			<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">
-			<div class="user-id">${memnick }</div>
+			<div class="user-id"><strong>${login.memnick}</strong></div>
 		</div>
 		<div class="profilepage-message">
 			<a href="privateform.do?memno=${dto.memno }">
@@ -99,7 +99,11 @@
 
 <!-- 여백을 주기 위해 임시로 만들어 놓음 -->
 <table class="table table-hover"></table>
-
 </main>
+
+<!-- start Footer Area -->
+<%@include file="../../views/common/footer.jsp"%>
+<!-- End Footer Area -->
+
 </body>
 </html>

@@ -82,7 +82,7 @@
 		<div class="card-chatscreen">
 			<div class="chat-opponent">
 				<img class="opponent-profile" src="./resources/img/profile.png">
-				<span style="font-size:1.2em;">&nbsp;user10</span>
+				<span style="font-size:1.2em;">&nbsp;<strong>${login.memnick }</strong></span>
 			</div>
 			
 			<div class="chat-talk"></div>

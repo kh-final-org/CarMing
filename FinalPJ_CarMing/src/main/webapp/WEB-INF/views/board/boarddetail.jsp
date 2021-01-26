@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>       
+<%@ page import = "com.finalPJ.carming.model.dto.bcommentDto" %> 
       
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
 <style type="text/css">
 	.card-first{float: left; margin: 100px 50px 100px 50px;}
 	.card-second{float: left; width: 500px;}
-	.card-third{float: right; margin: 100px 80px;}
+	.card-third{float: right; margin: 100px 90px;}
 	
 	.next-left{width: 40px; height: 40px; margin: 160px 0px 0px 150px; padding: 0px;}
 	.next-right{width: 40px; height: 40px; margin: 160px 100px 0px 0px; padding: 0px;}	
@@ -225,7 +226,9 @@
 					</div>
 					<c:if test="${login.memnick == comment.comwriter }">
 						<div class="comment-delete">
-							<!-- <input type="button" onclick="commentDel('${comment.comno}')" value="삭제" id="board-option-btn"> -->
+							<!-- 
+							<input type="button" onclick="commentDel('${comment.comno}')" value="삭제" id="board-option-btn">
+							 -->
 							<a href="deletbcomment.do?comno=${comment.comno }&brdno=${dto.brdno }" class="board-delete-comment">삭제</a>&nbsp;&middot;
 						</div>
 					</c:if>
@@ -246,7 +249,11 @@
 	
 </div>
 <!-- End Container Area -->
-
 </main>
+
+
+<!-- start Footer Area -->
+<%@include file="../../views/common/footer.jsp"%>
+<!-- End Footer Area -->
 </body>
 </html>

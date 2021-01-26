@@ -33,7 +33,7 @@ public class boardBizImpl implements boardBiz{
 		return dao.selectOne(brdno);
 	}
 	
-	//03. 게시글 작성
+	//03. 게시글(사진) 작성
 	@Override
 	public int insert(boardDto dto) {
 		return dao.insert(dto);

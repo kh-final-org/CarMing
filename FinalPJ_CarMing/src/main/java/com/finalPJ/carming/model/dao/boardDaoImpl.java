@@ -43,7 +43,7 @@ public class boardDaoImpl implements boardDao{
 		return dto;
 	}
 	
-	//03. 게시글 추가
+	//03. 게시글(사진) 추가
 	@Override
 	public int insert(boardDto dto) {
 		int res = 0;
