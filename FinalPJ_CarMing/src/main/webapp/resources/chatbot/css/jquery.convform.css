@@ -94,13 +94,15 @@ form.convFormDynamic textarea.userInputDynamic {
     outline: none;
     font-size: 0.5rem;
     float: left;
-    width: calc(100% - 100px);
+    /* width: calc(100% - 100px); */
+    width: 217px;
     line-height: 1.3em;
     min-height: 1.7em;
     max-height: 10rem;
     display: block;
     max-width: 88%;
-    margin-right: 2.5%;
+    /* margin-right: 2.5%; */
+    margin-right: 5px;
 }
 
 
@@ -181,7 +183,11 @@ textarea.userInputDynamic.error {
 
 textarea.userInputDynamic {
     border-radius: 3px;
-    margin: 7px 10px;
+    /* margin: 7px 10px; */
+    margin-top: 13px;
+    margin-left: 13px;
+    margin-bottom: 7px;
+    margin-right: 5px;
 }
 
 div.conv-form-wrapper div#messages {
@@ -303,6 +309,7 @@ form.convFormDynamic button.submit {
     padding: 3px;
     float: left;
     margin: 14px;
+    margin-left: 10px;
     cursor: pointer;
     border-radius: 8px;
     font-size: 0.5rem;

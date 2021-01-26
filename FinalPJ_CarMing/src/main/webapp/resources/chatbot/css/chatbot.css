@@ -27,7 +27,7 @@
 	display: none !important;
 }
 .conv-form-wrapper textarea{
-	height: 30px;
+	height: 34px;
 	overflow: hidden;
 	resize: none;
 }
@@ -40,9 +40,9 @@
     content: '';
     position: absolute;
     padding: 20px;
-    width: 290px;
+    width: 330px;
     display: block;
-    height: 40px;
+    height: 80px;
     top: 0;
     left: 0;
     z-index: 2; 

@@ -37,4 +37,10 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.insert(dto);
 	}
 
+	@Override
+	public MemberDto selectOne(int res) {
+		
+		return dao.selectOne(res);
+	}
+
 }

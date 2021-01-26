@@ -8,4 +8,6 @@ public interface MemberDao {
 	
 	public MemberDto login(MemberDto dto);
 	public int insert(MemberDto dto);
+	
+	public MemberDto selectOne(int res);
 }

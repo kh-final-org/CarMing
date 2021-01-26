@@ -15,14 +15,6 @@ $(function(){
    
 function submit() {
 	alert("submit 함수 실행");   
-  /*var memberid = $("#memberid").val().trim(); // trim() : 양 쪽 공백 제거.
-  var memberpw = $("#memberpw").val().trim();
-  console.log(memberid + "/" + memberpw);
-  
-  var loginVal = {
-		  "memberid" : memberid,
-		  "memberpw" : memberpw
-		   };*/
 
  	var survey1 = $("select[name=survey1]").val();
 	var survey2 = $("select[name=survey2]").val();
@@ -31,6 +23,7 @@ function submit() {
 	var survey5 = $("select[name=survey5]").val();
 	console.log(survey1 + "/" + survey2 + "/" + survey3 + "/" + survey4 + "/" + survey5 + "/");
 	
+	// JSON 형식으로 설문조사 결과 저장.
 	var surveyVal = {
 		"survey1" : survey1,
 		"survey2" : survey2,
@@ -39,6 +32,7 @@ function submit() {
 		"survey5" : survey5
 	};
 	
+	// INSERT || UPDATE
 	$.ajax({
 		 type:"post",
 		 url:"insertAjax.do",
@@ -50,24 +44,23 @@ function submit() {
 			alert("ajax success");
 
 			 if(msg.check==true) {
-				 //location.href="list.do";
 				alert("msg.check==true");
 				
-				// select 호출.
+				// select [same]
 				if(survey2 == "same") {
 					alert("survey2 == same");
 					//location.href="sameFriendList.do";
 					
 					$.ajax({
 						type:"post",
-						//url:"sameFriendList.do",
 						url:"sameFriendOne.do",
 						data:JSON.stringify(surveyVal),
 						contentType:"application/json",
 						dataType:"json",
 						
-						success:function(msg) {
-							alert("same select success");		
+						success:function(data) {
+							alert("same select success");
+							//alert("data.check : " + data.no);
 						},
 						
 						error:function() {
@@ -89,7 +82,7 @@ function submit() {
 			 
 		 },
 		 error:function() {
-			 alert("통신 실패");
+			 alert("통신 실패???");
 		 }
 		  
 	  });

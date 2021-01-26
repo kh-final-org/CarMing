@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.finalPJ.carming.model.biz.MemberBiz;
 import com.finalPJ.carming.model.biz.SurveyBiz;
+import com.finalPJ.carming.model.dto.MemberDto;
 import com.finalPJ.carming.model.dto.SurveyDto;
 
 /**
@@ -30,7 +32,9 @@ public class ChatbotController {
 	private static final Logger logger = LoggerFactory.getLogger(ChatbotController.class);
 	
 	@Autowired
-	private SurveyBiz biz;
+	private SurveyBiz surveyBiz;
+	@Autowired
+	private MemberBiz memberBiz;
 	
 	// 임시 세션(제거)
 	HttpSession session;
@@ -53,7 +57,7 @@ public class ChatbotController {
 		logger.info("[SELECT LIST]");
 		
 		// model에 list라는 이름으로 biz.selectList()의 결과 값을 담아주자. 
-		model.addAttribute("list", biz.selectList());
+		model.addAttribute("list", surveyBiz.selectList());
 		
 		return "chatbot/mvclist";
 	}
@@ -63,7 +67,7 @@ public class ChatbotController {
 		
 		logger.info("[SELECT ONE]");
 		
-		model.addAttribute("dto", biz.selectOne((Integer)session.getAttribute("memno")));
+		model.addAttribute("dto", surveyBiz.selectOne((Integer)session.getAttribute("memno")));
 		
 		return "chatbot/mvcdetail";
 	}
@@ -83,7 +87,7 @@ public class ChatbotController {
 		
 		System.out.println("dto.toString : " + dto.toString());
 		
-		int res = biz.insert(dto);
+		int res = surveyBiz.insert(dto);
 		
 		if(res > 0) {
 			return "redirect:surveyList.do";
@@ -138,11 +142,13 @@ public class ChatbotController {
 		 */
 		logger.info("[INSERT AJAX]");
 		
+		// 받아온 설문조사(SurveyDto)에 session번호 추가.
 		dto.setMemno((Integer)session.getAttribute("memno"));
 		
 		System.out.println("dto.toString : " + dto.toString());
 		
-		int res = biz.insert(dto);
+		// insert || update
+		int res = surveyBiz.insert(dto);
 		
 		boolean check = false;
 		if(res > 0) {
@@ -154,6 +160,7 @@ public class ChatbotController {
 		
 		// check 값을 넘겨주자.
 		return map;
+//		return "redirect:sameFriendOne.do";
 	}
 	
 	// [동성] 나에 맞는 친구들의 설문조사 리스트 가져오기
@@ -172,7 +179,7 @@ public class ChatbotController {
 		
 		boolean check = false;
 		
-		List<SurveyDto> list = biz.sameFriendList(dto);
+		List<SurveyDto> list = surveyBiz.sameFriendList(dto);
 		
 		System.out.println("list.size : " + list.size());
 		
@@ -187,7 +194,6 @@ public class ChatbotController {
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("check", check);
 		
-//		return "chatbot/mvclist";
 		return map;
 	}
 	
@@ -218,20 +224,38 @@ public class ChatbotController {
 		// model에 list라는 이름으로 biz.sameFriendList()의 결과 값을 담아주자. 
 		// model.addAttribute("list", biz.sameFriendList(dto));
 		
-		boolean check = false;
+		Boolean check = false;
 		
-		int res = biz.sameFriendOne(dto);
-		
+		int res = surveyBiz.sameFriendOne(dto);
 		System.out.println("선택된 친구번호는 : " + res);
+		//model.addAttribute("friendNo", biz.sameFriendOne(dto));
+		
+		
+		MemberDto friendDto = memberBiz.selectOne(res);
+		System.out.println("선택된 친구의 프로필사진 : " + friendDto.getMemfile());
+		System.out.println("선택된 친구의 닉네임 : " + friendDto.getMemnick());
+		
+		String gender;
+		if(friendDto.getMemgender() == 1) {
+			gender = "남";
+		} else {
+			gender = "여";
+		}
+		System.out.println("선택된 친구의 성별 : " + gender);
 		
 		if(res > 0) {
 			check = true;
+			
+			
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("check", check);
+		map.put("test", false);
+//		map.put("no", res);
 		
-//			return "chatbot/mvclist";
+		
+
 		return map;
 	}
 	

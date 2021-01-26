@@ -41,5 +41,19 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return res;
 	}
+
+	@Override
+	public MemberDto selectOne(int res) {
+		
+		MemberDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", res);
+		} catch (Exception e) {
+			System.out.println("[error] : selectOne");
+			e.printStackTrace();
+		}
+		return dto;
+	}
 	
 }
