@@ -36,33 +36,31 @@
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
     #button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
 
-    .check input{display: none;}
-    .check span{cursor: pointer; isplay: inline-block; vertical-align: middle; margin-left: 3px;}    
-    .check .icon{display: inline-block; width: 20px; height: 20px; background-color: transparent;
-                 border: 2px solid silver; border-radius: 3px; position: relative; cursor: pointer;}
-    .check .icon::before, .check .icon::after {content: ''; display: inline-block; width: 1.7px; height: 0px; 
-    		                                   background-color: #fff; position: absolute; transform-origin: left top; border-radius: 2px;}
-    .check .icon::before {top: 7px; left: 1.5px; transform: rotate(-45deg);}
-    .check .icon::after {top: 12.5px; left: 7px; transform: rotate(-135deg);}
-    .check input:checked ~ .icon{background-color: orange; border-color: orange;}
-    .check input:checked ~ .icon::before{height: 7px; transition: all 0.12s ease;}
-    .check input:checked ~ .icon::after{height: 11px; transition: all 0.12s ease 0.12s;}
-   
-    .location-open{color: gray;}
-    .popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
-            text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
-    .popup:target{opacity: 1;}
-    .popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 158%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
-    .popup:target + .popup-dim{opacity: 1; z-index: 2;} 
-    .popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
-    .location-cancel{position: absolute; top: 10px; right: 15px;}
-   
-    .popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
-    #map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
-    .searchimg{width: 20px; height: 20px; opacity: 50%;}
-    #button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
-    #location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
-    #clickLatlng{text-align: center; margin-top: -5px;}
+	.checkbox input{display: none;}
+	.checkbox span{display: inline-block;vertical-align: middle;cursor: pointer;}
+	.checkbox .icon{position: relative;width: 20px;height: 20px;border: 2px solid silver;border-radius: 3px;transition: background 0.1s ease;}
+	.checkbox .icon::after{content: ''; position: absolute;top: 0px; left: 4px; width: 6px; height: 11px; border-right: 2px solid #fff;
+						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
+	.checkbox .text{margin-left: 5px;}
+	.checkbox input:checked ~ .icon{border-color: transparent;background: orange;}
+	.checkbox input:checked ~ .icon::after{opacity: 1;transform: rotate(45deg) scale(1);}
+	  
+	.location-open{color: gray;}
+	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
+	        text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
+	.popup:target{opacity: 1;}
+	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 158%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
+	.popup:target + .popup-dim{opacity: 1; z-index: 2;} 
+	.popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
+	.location-cancel{position: absolute; top: 10px; right: 15px;}
+  
+	.popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
+	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
+	.searchimg{width: 20px; height: 20px; opacity: 50%;}
+	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
+	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
+	#clickLatlng{text-align: center; margin-top: -5px;}
+    
 </style>
 
 <script>
@@ -75,7 +73,6 @@
 			} 
 		}  
 </script>
-
 
 
 </head>
@@ -224,12 +221,12 @@
 				
 				<!-- Checkbox -->
 				<div class="body-checklist">
-					<label class="check">
+					<label class="checkbox">
 						<input type="checkbox" id="chkcarplace" value="chkcarplace">
 						<span class="icon"></span>
 						<span class="text">차박 명소 등록하기</span>
 					</label>&emsp;&emsp;
-					<label class="check">
+					<label class="checkbox">
 						<input type="checkbox" id="chkprivate" value="chkprivate">
 						<span class="icon"></span>
 						<span class="text">나만 보기</span>

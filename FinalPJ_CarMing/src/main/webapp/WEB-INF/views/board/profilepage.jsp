@@ -22,8 +22,9 @@
 	.user-message-text{font-size:1.2em; color: silver;}
 	
 	.card-board{float: right; width: 65.5%; height: 100%;}
-	.boardlistup{float: left; width: 33.3%}
 	.card-boardtext{font-size:1.8em; margin-bottom: 17px;color: #5f5f5f;}
+	.boardlistup{float: left; width: 33.3%}
+	.boardlistup-frame{position: relative; width: 235px; height: 235px; overflow: hidden; border-radius: 5px;}
 	.boardlist-img{width: 235px; height: 235px; border-radius: 5px; transform: scale(1.00);	transition: transform .2s;}
 	.boardlist-img:hover{transform: scale(1.02); transition: transform .2s;}
 	.boardlistup{overflow: hidden; border-radius: 5px; margin-bottom: 10px;}
@@ -65,7 +66,7 @@
 	<div class="card-profile">
 		<div class="profilepage-profile">
 			<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">
-			<div class="user-id"><strong>${login.memnick}</strong></div>
+			<div class="user-id"><strong>${dto.memnick}</strong></div>
 		</div>
 		<div class="profilepage-message">
 			<a href="privateform.do?memno=${dto.memno }">
@@ -87,9 +88,11 @@
 		<c:forEach items="${list }" var="dto">
 			<div class="card-boardlist">
 				<div class="boardlistup" id="board-photo">
-					<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
-						<img class="boardlist-img" src="./resources/img/boardUpload/${dto.brdfile }">
-					</a>
+					<div class="boardlistup-frame">
+						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
+							<img class="boardlist-img" src="./resources/img/boardUpload/${dto.brdfile }">
+						</a>
+					</div>
 				</div>
 			</div>
 		</c:forEach>

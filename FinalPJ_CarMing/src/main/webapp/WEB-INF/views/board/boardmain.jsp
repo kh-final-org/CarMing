@@ -20,9 +20,9 @@
 	
 	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
 	.board-usernick{font-size: 1.2em; font-weight: bold;}
-	.uploadimg{width: 360px; height: 360px; border-radius: 10px; transform: scale(1.00); transition: transform .3s;}
-	.uploadimg:hover{transform: scale(1.03); transition: transform .3s;}
-	.board-uploadimg{overflow: hidden; border-radius: 10px;}
+	.uploadimg{width: 360px; height: 360px; transform: scale(1.00); transition: transform .3s; border-radius: 10px;}
+	.uploadimg:hover{transform: scale(1.03); transition: transform .3s; border-radius: 10px;}
+	.board-uploadimg-frame{position: relative; width: 360px; height: 360px; overflow: hidden; border-radius: 10px;}
 	.board-profile{margin: 0px 0px 8px 8px;}	
 	.board-count{width: 360px; font-size: 0.8em; text-align: right; margin: 3px 0px 0px 0px;}
 	
@@ -31,13 +31,13 @@
 				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
 	.icon{margin-left: 5px; width: 12px; height: 12px;}
 	.current{padding-left: 5px;}
-	#popout-layout{position: absolute; z-index: 10; margin-top: 8px; padding: 10px 20px; border-radius: 5px;  background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
+	#popout-layout{position: absolute; z-index: 1000; margin-top: 8px; padding: 10px 20px; border-radius: 5px;  background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
 	.content-item-icon{float: left;}
 	.content-item-content{float: right; color: gray;}
 	.content-item-content-title{font-weight: bold; font-size: 1em; margin-top: 5px;}
 	.content-item-content-subtitle{font-size: 0.8em; margin-top: -5px; margin-bottom: 5px;}
-	.upload-icon-photo{width: 25px; height: 25px; opacity: 0.35; margin-top: 12px; margin-right: 12px;}
-	.upload-icon-video{width: 25px; height: 25px; opacity: 0.35; margin-top: 28px; margin-right: 12px;}
+	.upload-icon-photo{width: 25px; height: 25px; opacity: 0.3; margin-top: 12px; margin-right: 12px;}
+	.upload-icon-video{width: 25px; height: 25px; opacity: 0.3; margin-top: 28px; margin-right: 12px;}
 	 
 	#paging-container{margin: 50px 0px 20px 0px;}
 	
@@ -107,21 +107,13 @@
 		</div>
 		
 		<div class="card-head-second">
-			<!--
-			<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdown-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;&nbsp;카테고리&emsp;</button>
-			<div class="dropdown-menu">
-				<ul class="navi">
-					<li><a class="dropdown-item" href="#">사진 올리기</a></li>
-					<li><a class="dropdown-item" href="#">영상 올리기</a></li>
-				</ul>
-			</div>-->
 			<button class="upload-btn" type="button" onclick="popoutFunction()">게시글쓰기
 				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" width="1em" height="1em">
 					<path fill="currentColor" fill-rule="evenodd" d="M 2.87 4 L 1.33 5.5 L 8 12 l 6.67 -6.5 L 13.13 4 L 8 9 Z" />
 				</svg>
 			</button>
 			
-			<div class="upload-popout" id="upload-popout">
+			<div class="scale-up-top" id="upload-popout">
 				<div class="popout popout--prepared popout--axis-1 popout--dir-0 popout--cross-dir-1" id="popout-layout" data-popout="true">
 					<div class="animated-popout-dropdown-content-active">
 						<div class="upload-dropdown-content">
@@ -174,9 +166,11 @@
 				</div>	
 				<!-- 사용자가 업로드한 이미지 -->
 				<div class="board-uploadimg">
-					<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
+					<div class="board-uploadimg-frame">
+						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
+					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>
-					<div class="category"> ${dto.bcategoryname }</div>
+					<div class="category"> ${dto.bcategoryno }</div>
 				</div>
 			</div>
 		</c:forEach>

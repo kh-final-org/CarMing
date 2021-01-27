@@ -32,7 +32,7 @@
 </head>
 <body>
 	<!-- start footer Area -->
-	<footer class="footer-area section_gap_top_75" style="padding-top: 0; background: #fafafa;">
+	<footer class="footer-area section_gap_top_75" style="padding-top: 0; background: #f5f5f5;">
 		<div
 			class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
 			<p class="footer-text m-0">

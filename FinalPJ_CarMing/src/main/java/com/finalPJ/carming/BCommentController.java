@@ -36,7 +36,7 @@ public class BCommentController {
     }
 	
 	//댓글 삭제
-	@RequestMapping("/deletbcomment.do")
+	@RequestMapping("/deletebcomment.do")
 	public String deletecomment(int comno, int brdno, RedirectAttributes redirect) {
 	
 		int res = cbiz.delete(comno);
