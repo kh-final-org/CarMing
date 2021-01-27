@@ -42,7 +42,7 @@ $(document).ready(function(){
 */	
 	
 	/* **************************************************************************************** */
-	$("allCheck").click(function(){
+	$("#allCheck").click(function(){
 		/* 전체선택 클릭 시 */
 		var chk = $("allCheck").prop("checked");
 		
@@ -69,6 +69,7 @@ $(document).ready(function(){
 			$("input[class='chBox']:checked").each(function(){
 				checkArr.push($(this).attr("data-cartNo"));
 			});
+			
 			
 			$.ajax({
 				url: "cartdelete.do",

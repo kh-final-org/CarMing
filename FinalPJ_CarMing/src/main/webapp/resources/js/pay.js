@@ -1,5 +1,5 @@
- var width = 500;	//팝업의 너비
-        var height = 600;	//팝업의 높이
+var width = 500;	//팝업의 너비
+var height = 600;	//팝업의 높이
         function sample4_execDaumPostcode() {
             new daum.Postcode({
                 width: width,
@@ -68,20 +68,21 @@
             }
            
         }
-    $(document).ready(function(){
-		/* 배송 메모 select에서 직접 입력 클릭 시 배송 메모 영역 생성 */
-        $("#custom_memo").change(function(){
-            var custom_option = $("#custom_memo option:selected").val();
-            if(custom_option == 6){
-                $("#custom_memo_area").show();
-            } else{
+window.onload = function() {
+	alert("뭐가 문제지?");
+	};
+	
+	/* 배송 메모 select에서 직접 입력 클릭 시 배송 메모 영역 생성 */
+   /* $("#custom_memo").change(function(){
+    	var custom_option = $("#custom_memo option:selected").val();
+        if(custom_option == 6){
+        		$("#custom_memo_area").show();
+        	} else{
                 $("#custom_memo_area").hide();
             }
-        });
-
-		/* 배송지 변경 클릭 시 우편번호찾기 버튼 생성*/
-
-		$("#change_addr").click(function(){
+        });*/
+	/*$('#change_addr', '#pay_go').click(function(){
+		if($(this).hasClass('#change_addr')){
 			var confirm_val = confirm("배송지를 변경하시겠습니까?");
 			
 			if(confirm_val){
@@ -90,5 +91,24 @@
 			} else{
 				$("#addr_btn").hide();
 			}
-		});
-    });
+		} 
+		if($(this).hasClass('#pay_go')){
+			alert("요기다");
+		}
+	});*/
+		/* 결제 수단 체크 시 버튼 생성 */
+/*		$("#pay_go").click(function(){
+			alert("뭐가 문제지?");
+			var pay_option = $("#pay_option option:selected").val();
+			
+			if(pay_option == 'kakaopay'){
+				$.ajax({
+					url:'pay.do',
+					type: 'post',
+					data: {"pg" : pay_option}
+				});
+			}
+			
+		});*/
+   
+

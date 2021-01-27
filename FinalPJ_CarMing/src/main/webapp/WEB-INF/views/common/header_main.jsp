@@ -87,15 +87,8 @@
 							</c:if> 
 
 							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" style="font-size : 15px;">캠핑렌트</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">카테고리</a></li>
-									<li class="nav-item"><a class="nav-link" href="productdetail.do" style="font-size: 15px;">상품 보기</a></li>
-									<li class="nav-item"><a class="nav-link" href="cartlist.do" style="font-size: 15px;">장바구니</a></li>
-								</ul>
-							</li>
+							<!-- 네비바 캠핑렌트 드롭다운 제거 후 코드 수정 -->
+							<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">캠핑렌트</a></li>
 							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
 							<li class="nav-item"><a class="nav-link" href="camMeet.do" style="font-size: 15px;">우리 서로 캠LIVE</a></li>
 							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
@@ -103,12 +96,12 @@
 						
 						<ul class="nav navbar-nav navbar-right ml-auto">
 							<li class="nav-item" style="padding-left:0; margin-left:0">
-								<a href="mypage.do"> <!-- 마이페이지 -->        				
+								<a href="ordernpay.do"> <!-- 마이페이지 -->        				
 								<span class="bi bi-person" style="font-size: 20px"></span></a>
 							</li>
 							<li class="nav-item">
-								<a href="#"> <!-- 장바구니 -->
-								<span class="bi bi-cart2" style="font-size: 18px"></span></a>
+								<a href="cartlist.do"> <!-- 장바구니 -->
+								<span class="bi bi-cart2" style="font-size: 20px"></span></a>
 							</li>
 							<li class="nav-item">
 								<a href="logout.do"> <!-- 로그인/로그아웃 || 아이콘 상태 변하도록 구현 필요-->
