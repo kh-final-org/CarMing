@@ -1,2 +1,4 @@
 ﻿FinalPJ_CarMing/target
 webRTC/node_modules
+*.pem
+FinalPJ_CarMing/src/main/resources/mybatis/db.properties

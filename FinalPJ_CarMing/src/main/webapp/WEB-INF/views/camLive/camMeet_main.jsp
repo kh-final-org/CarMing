@@ -19,7 +19,7 @@
 					<h1>우리서로 캠LIVE</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">캠핑 MEET</a>
+						<a href="category.html">camping live</a>
 					</nav>
 				</div>
 			</div>
@@ -81,14 +81,14 @@
 				<div class="col-lg-6 shadow mb-4 bg-white rounded"
 					style="text-align: center;">
 					<h1 style="padding-top: 100px; font-weight: bold; font-size: 40px;">
-						CAMPING MEET</h1>
+						CAMPING LIVE</h1>
 					<p>캠핑의 즐거움을 화상통화로 함께 즐겨보세요 :)</p>
 
 					<div class="d-flex flex-row" style="margin-top: 100px">
 						<input id="inputUrl" class="form-control" placeholder="camping meet code"
 							style="text-align: center"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'camping meet code '">
+							onblur="this.placeholder = 'camping live code '">
 
 						<button id="enter" class="click-btn btn btn-warning" type="button">
 							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>

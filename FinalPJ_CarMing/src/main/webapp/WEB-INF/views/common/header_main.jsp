@@ -97,14 +97,7 @@
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" style="font-size: 15px;" >우리 서로 캠LIVE</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 LIVE</a></li>
-									<li class="nav-item"><a class="nav-link" href="camMeet.do" style="font-size: 15px;">캠핑 MEET</a></li>
-								</ul>
-							</li>
+							<li class="nav-item"><a class="nav-link" href="camMeet.do" style="font-size: 15px;">우리 서로 캠LIVE</a></li>
 							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
 						</ul>
 						
