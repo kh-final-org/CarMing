@@ -157,7 +157,7 @@
 		<!-- 사용자가 업로드한 이미지 -->
 		<div class="card-body-2">
 			<div class="board-uploadimg">
-				<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile }">
+				<img class="uploadimg" src="./resources/video/${dto.brdthumbfile }">
 			</div>
 		</div>
 		

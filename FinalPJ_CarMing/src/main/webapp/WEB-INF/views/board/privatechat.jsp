@@ -23,7 +23,7 @@
 	.chat-notread{width: 23px; height: 23px; margin: 1px 0px 0px 40px; border-radius: 15px; background-color: orange; text-align: center; color: white;}
 
 	.card-chatscreen{float: left; width: 700px; height: 500px; margin-left: 0px; border-radius: 0px 10px 10px 0px;}
-	.user-profile{width: 50px; height: 50px;}
+	.user-profile{width: 50px; height: 50px; border-radius: 5em;}
 	.chat-opponent{width: 700px; border-radius: 0px 10px 0px 0px; border-bottom: 1px solid silver;}
 	.chat-input{width: 700px;}
 	.sendimg{width: 20px; height: 20px; opacity: 50%;}
@@ -82,7 +82,7 @@
 		<div class="card-chatscreen">
 			<div class="chat-opponent">
 				<img class="opponent-profile" src="./resources/img/profile.png">
-				<span style="font-size:1.2em;">&nbsp;user10</span>
+				<span style="font-size:1.2em;">&nbsp;<strong>${login.memnick }</strong></span>
 			</div>
 			
 			<div class="chat-talk"></div>
