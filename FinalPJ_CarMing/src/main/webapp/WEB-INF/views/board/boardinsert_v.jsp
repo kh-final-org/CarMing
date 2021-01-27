@@ -48,7 +48,7 @@
             text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
     .popup:target{opacity: 1;}
     .popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 158%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
-    .popup:target + .popup-dim{opacity: 1; z-index: 2;} /*위치등록 아이콘 클릭 했을 시 */   
+    .popup:target + .popup-dim{opacity: 1; z-index: 2;}  
     .popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
     .location-cancel{position: absolute; top: 10px; right: 15px;}
 	   

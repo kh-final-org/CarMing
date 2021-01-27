@@ -29,7 +29,6 @@
 	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;}
 	.upload-btn{width: 140px; padding: 8px 0 10px; line-height: 20px; border: 0; border-radius: 4px;
 				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
-	.icon{margin-left: 5px; width: 12px; height: 12px;}
 	.current{padding-left: 5px;}
 	#popout-layout{position: absolute; z-index: 1000; margin-top: 8px; padding: 10px 20px; border-radius: 5px;  background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
 	.content-item-icon{float: left;}
@@ -107,11 +106,7 @@
 		</div>
 		
 		<div class="card-head-second">
-			<button class="upload-btn" type="button" onclick="popoutFunction()">게시글쓰기
-				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" width="1em" height="1em">
-					<path fill="currentColor" fill-rule="evenodd" d="M 2.87 4 L 1.33 5.5 L 8 12 l 6.67 -6.5 L 13.13 4 L 8 9 Z" />
-				</svg>
-			</button>
+			<button class="upload-btn" type="button" onclick="popoutFunction()">+&nbsp;&nbsp;게시글쓰기</button>
 			
 			<div class="scale-up-top" id="upload-popout">
 				<div class="popout popout--prepared popout--axis-1 popout--dir-0 popout--cross-dir-1" id="popout-layout" data-popout="true">

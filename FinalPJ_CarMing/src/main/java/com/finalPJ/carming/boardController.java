@@ -104,7 +104,7 @@ public class boardController {
 
 	//프로필 페이지
 	@RequestMapping(value = "/profileform.do")
-	public String profilePage(Model model, int memno, String memnick) {
+	public String profilePage(Model model, int memno) {
 		logger.info("[PROFILE PAGE]");
 		model.addAttribute("list", biz.userBoardList(memno));
 	   

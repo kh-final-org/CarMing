@@ -19,7 +19,7 @@
 	#file{display: none;}
 	.uploadfile-btn{float: left; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; border-radius: 20px; 
 					text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9;}
-	.uploadfile-icon-btn{margin-top: 100px;}
+	.uploadfile-icon-btn{margin-top: 110px;}
 	   
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
@@ -34,7 +34,7 @@
     .body-checklist{margin: 10px 0px;}   
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
-    #button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
 
 	.checkbox input{display: none;}
 	.checkbox span{display: inline-block;vertical-align: middle;cursor: pointer;}
@@ -74,6 +74,31 @@
 		}  
 </script>
 
+<script type="text/javascript">
+
+	// 업로드 이미지 미리보기 처리	
+	var selfile;
+	window.onload = function () {
+		$("#input_img").on("change", handleImgFileSelect);
+	}
+	
+	function handleImgFileSelect(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		filesArr.forEach(function(f) {
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$(".uploadimg").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
+</script>
+
+
 
 </head>
 <body onload="location.href='#location-popup'">
@@ -105,14 +130,17 @@
 		</div>
 		
 		<div class="card-body">
-		
-			<!-- Start Photo/Video upload Area -->
+			<!-- Start Photo/Video upload Area-->
 			<div class="card-body-left">
+				
+				<form action="upload" id="uploadForm" method="post" enctype="multipart/form-data">
+					<input type="file" name="file" id="file">			
+				</form>
+				
 				<div class="uploadfile-btn" onclick="onclick=document.all.file.click()">
-					<input type="file" name="file" id="file">
 					<div class="uploadfile-icon-btn">
 						<img class="camera-logo" src="./resources/img/camera.png"><br>
-						<span class="logo-bottom-context">사진 올리기<br>(최대 5장까지)</span>
+						<span class="logo-bottom-context">사진 올리기</span>
 					</div>
 				</div>
 			</div>
