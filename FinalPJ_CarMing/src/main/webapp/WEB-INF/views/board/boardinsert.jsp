@@ -73,6 +73,55 @@
 		}  
 </script>
 
+<!-- <script type="text/javascript">
+	function myFunction() {
+	    var selectbox, filter, a, txtValue, list;
+	    selectbox = document.getElementById("selectbox");
+	    filter = selectbox.value
+	
+	    list = document.getElementsByClassName("check");
+	    
+	    for(i=0; i<list.length; i++){
+	        a = document.getElementsByClassName("text")[i];
+	        txtValue = a.textContent || a.innerText;
+	        
+	        
+	        if (txtValue.indexOf(filter) > -1) {
+	        	list[i].style.display = "";
+	        	
+	        } else {
+	        	list[i].style.display = "none";
+	        }
+		}
+	}
+</script> -->
+
+ <script type="text/javascript">
+
+ function YnCheck(obj) {
+
+    var checked = obj.checked;
+
+    if(checked){
+
+    	var value = obj.value = "Y";
+        var Y = document.createTextNode(value);
+	    document.getElementById("my").appendChild(Y);	
+
+    }else{
+
+    	var value = obj.value = "N";
+       var N = document.createTextNode(value);
+	    document.getElementById("my").appendChild(N);	
+
+    }
+
+ };
+
+ </script>
+
+
+
 
 </head>
 <body onload="location.href='#location-popup'">
@@ -119,12 +168,12 @@
 				<!-- Category -->
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
-				  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-							<option value="1" selected>일반 캠핑</option>
-						    <option value="2">카라반</option>
-						    <option value="3">글램핑</option>
-						    <option value="4">차박</option>
-						    <option value="5">나만의 캠핑</option>
+				  		<select  class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+							<option value="일반 캠핑" selected>일반 캠핑</option>
+						    <option value="카라반">카라반</option>
+						    <option value="글램핑">글램핑</option>
+						    <option value="차박">차박</option>
+						    <option value="나만의 캠핑">나만의 캠핑</option>
 					  	</select>
 					</div>
 				</div>			
@@ -197,11 +246,21 @@
 									    var resultDiv = document.getElementById('clickLatlng'); 
 									    resultDiv.innerHTML = lat+":"+lng;
 									    
+									    
+									    
+									    var lat = document.createTextNode(lat); 
+									      
+									    document.getElementById("lat").appendChild(lat);		
+									    
+    
+									    var lang = document.createTextNode(lng);
+									    document.getElementById("long").appendChild(lang);		
+									    
 									});
 								</script>
 													
 								<div class="location-finish">
-									<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
+									<a class="btn btn-light" onclick="myFunction()" id="location-finish-btn" href="#a">등록하기</a>
 								</div>
 								<div class="location-cancel">
 									 <a onclick="myFunction()" id="close" href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>
@@ -218,15 +277,18 @@
 				<!-- Checkbox -->
 				<div class="body-checklist">
 					<label class="check">
-						<input type="checkbox" id="chkcarplace" value="chkcarplace">
+						<input type="checkbox" id="chkcarplace" value="chkcarplace"onchange="YnCheck(this);">
 						<span class="icon"></span>
 						<span class="text">차박 명소 등록하기</span>
 					</label>&emsp;&emsp;
 					<label class="check">
-						<input type="checkbox" id="chkprivate" value="chkprivate">
+						<input type="checkbox" id="chkprivate" value="chkprivate" onchange="YnCheck(this);">
 						<span class="icon"></span>
 						<span class="text">나만 보기</span>
-					</label>
+						<span id="my"></span>
+					</label>				
+					<div > 위도: <span id="lat" ></span>, 경도: <span id="long"></span></div>
+					
 				</div>
 			</div>
 			<!-- End Upload Contents Area -->
@@ -235,7 +297,7 @@
 		<div class="card-body-bottom">
 			<button type="submit" class="btn btn-light" id="button-boardupload">올리기</button>
 		</div>
-	
+	 
 	
 	</div>
 </form>
