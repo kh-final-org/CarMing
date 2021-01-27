@@ -11,28 +11,31 @@
 <title>CarMing</title>
 <style type="text/css">
 	.card-container{margin: 50px 190px 50px 220px;}
-	.card-body{padding: 0px;}
-	
-	.card-body-left{float: left; width: 530px; height: 400px; margin: 0px 0px 0px -20px; 
-	            text-align: center; background-color: #fff5e9; border-radius: 20px;}
-	.card-context{margin: 100px; font-size: 1.2em;}          
-	.camera-logo{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
-	.logo-bottom-context{color: gray;}    
-   
-	.card-body-right{float: right; width: 530px; height: 450px;}
-	.current{padding-left: 5px;}
-	.body-content{margin-top: 55px; font-size: 1.2em;}
-	textarea {padding: 10px 14px;}
-	textarea::placeholder{color: silver;}
-	.location-logo{width: 25px;height: 25px;}
-	.body-location{margin: 10px 0px;}
-	.body-location-left{float: left; width: 77%;}
-	.body-location-right{float: right; width: 21.5%; margin-right: 0;}
-	.location-logo-text{display: inline-block; vertical-align: middle;}
-	.body-checklist{margin: 10px 0px;}   
-   
+    .card-body{padding: 0px;}
+   	
+   	.card-body-left{margin-right: 10px;}
+   	.camera-logo{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
+   	.logo-bottom-context{color: gray;}    
+	#file{display: none;}
+	.uploadfile-btn{float: left; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; border-radius: 20px; 
+					text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9;}
+	.uploadfile-icon-btn{margin-top: 110px;}
+	   
+    .card-body-right{float: right; width: 530px; height: 450px;}
+    .current{padding-left: 5px;}
+    .body-content{margin-top: 55px; font-size: 1.2em;}
+    textarea {padding: 10px 14px;}
+    textarea::placeholder{color: silver;}
+    .location-logo{width: 25px;height: 25px;}
+    .body-location{margin: 8px 0px;}
+    .body-location-left{float: left; width: 77%;}
+    .body-location-right{float: right; width: 21.5%; margin-right: 0;}
+    .location-logo-text{display: inline-block; vertical-align: middle;}
+    .body-checklist{margin: 8px 0px;}   
+    .latlong-input-value{margin-top: 10px;}
+	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
-    #button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
 
 	.checkbox input{display: none;}
 	.checkbox span{display: inline-block;vertical-align: middle;cursor: pointer;}
@@ -42,22 +45,22 @@
 	.checkbox .text{margin-left: 5px;}
 	.checkbox input:checked ~ .icon{border-color: transparent;background: orange;}
 	.checkbox input:checked ~ .icon::after{opacity: 1;transform: rotate(45deg) scale(1);}
-   
-    .location-open{color: gray;}
-    .popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
-            text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
-    .popup:target{opacity: 1;}
-    .popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 158%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
-    .popup:target + .popup-dim{opacity: 1; z-index: 2;}  
-    .popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
-    .location-cancel{position: absolute; top: 10px; right: 15px;}
-	   
-    .popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
-    #map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
-    .searchimg{width: 20px; height: 20px; opacity: 50%;}
-    #button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
-    #location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
-    #clickLatlng{text-align: center; margin-top: -5px;}
+	  
+	.location-open{color: gray;}
+	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
+	        text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
+	.popup:target{opacity: 1;}
+	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 158%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
+	.popup:target + .popup-dim{opacity: 1; z-index: 2;} 
+	.popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
+	.location-cancel{position: absolute; top: 10px; right: 15px;}
+  
+	.popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
+	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
+	.searchimg{width: 20px; height: 20px; opacity: 50%;}
+	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
+	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
+	#clickLatlng{text-align: center; margin-top: -5px;}
 
 </style>
 
@@ -72,6 +75,48 @@
 		}  
 </script>
 
+<!-- 
+<script type="text/javascript">
+	function myFunction() {
+	    var selectbox, filter, a, txtValue, list;
+	    selectbox = document.getElementById("selectbox");
+	    filter = selectbox.value
+	
+	    list = document.getElementsByClassName("check");
+	    
+	    for(i=0; i<list.length; i++){
+	        a = document.getElementsByClassName("text")[i];
+	        txtValue = a.textContent || a.innerText;
+	        
+	        
+	        if (txtValue.indexOf(filter) > -1) {
+	        	list[i].style.display = "";
+	        	
+	        } else {
+	        	list[i].style.display = "none";
+	        }
+		}
+	}
+</script> -->
+
+<script type="text/javascript">
+	function YnCheck(obj) {
+	    var checked = obj.checked;
+	
+	    if(checked){
+	    	var value = obj.value = "Y";
+	        var Y = document.createTextNode(value);
+		    document.getElementById("my").appendChild(Y);	
+	
+	    }else{
+	    	var value = obj.value = "N";
+	       	var N = document.createTextNode(value);
+		    document.getElementById("my").appendChild(N);	
+	    }
+	 };
+ </script>
+
+
 
 </head>
 <body onload="location.href='#location-popup'">
@@ -82,8 +127,7 @@
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
    <div class="container">
-      <div
-         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
          <div class="col-first">
             <h1>The stars in the night sky</h1>
             <nav class="d-flex align-items-center">
@@ -96,7 +140,7 @@
 </section>
 <!-- End Banner Area -->
 
-<form action="boardinsertres.do" method="post">
+<form action="boardinsertres.do?brdno=${dto.brdno }&brdwriter=${brdwriter }" method="post">
 	<div class="card-container">
 		<div class="card-head">
 			<h2 style="color: #5f5f5f;">게시글 작성하기</h2>
@@ -105,10 +149,14 @@
 		<div class="card-body">
 			<!-- Start Photo/Video upload Area -->
 			<div class="card-body-left">
-				<div class="card-context">
-					<img class="camera-logo" src="./resources/img/videofilm.png"><br>
+				<form action="upload" id="uploadForm" method="post" enctype="multipart/form-data">
+					<input type="file" name="file" id="file">			
+				</form>
+				<div class="uploadfile-btn" onclick="onclick=document.all.file.click()">
+					<div class="uploadfile-icon-btn">
+						<img class="camera-logo" src="./resources/img/videofilm.png"><br>
 						<span class="logo-bottom-context">동영상 올리기<br>(썸네일)</span>
-
+					</div>
 				</div>
 			</div>
 			<!-- End Photo/Video Upload Area -->
@@ -130,7 +178,7 @@
 				
 				<!-- Textarea -->
 				<div class="body-content">
-				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required"></textarea>
+				   	<textarea rows="9" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required"></textarea>
 				</div>
 				
 				<!-- Location Upload -->
@@ -194,13 +242,19 @@
 									    var lng = latlng.getLng();
 									    
 									    var resultDiv = document.getElementById('clickLatlng'); 
-									    resultDiv.innerHTML = lat+":"+lng;
+									    resultDiv.innerHTML = lat + " / " + lng;
+									    
+									    var lat = document.createTextNode(lat); 
+									    document.getElementById("lat").appendChild(lat);		
+									    
+									    var lang = document.createTextNode(lng);
+									    document.getElementById("long").appendChild(lang);		
 									    
 									});
 								</script>
 													
 								<div class="location-finish">
-									<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
+									<a class="btn btn-light" onclick="myFunction()" id="location-finish-btn" href="#a">등록하기</a>
 								</div>
 								<div class="location-cancel">
 									 <a onclick="myFunction()" id="close" href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>
@@ -214,17 +268,23 @@
 					</div>
 				</div><br>
 				
+				<div class="latlong-input-value">
+					<span><strong>위도 : </strong></span><span id="lat"></span>&#44;
+					<span><strong>경도 : </strong></span><span id="long"></span>
+				</div>
+				
 				<!-- Checkbox -->
 				<div class="body-checklist">
-					<label class="checkbox">
-						<input type="checkbox" id="chkcarplace" value="chkcarplace">
-						<span class="icon"></span>
-						<span class="text">차박 명소 등록하기</span>
-					</label>&emsp;&emsp;
 					<label class="checkbox">
 						<input type="checkbox" id="chkprivate" value="chkprivate">
 						<span class="icon"></span>
 						<span class="text">나만 보기</span>
+						<span id="my"></span>
+					</label>&emsp;&emsp;
+					<label class="checkbox">
+						<input type="checkbox" id="chkcarplace" value="chkcarplace">
+						<span class="icon"></span>
+						<span class="text">차박 명소 등록하기</span>
 					</label>
 				</div>
 			</div>
@@ -234,7 +294,6 @@
 		<div class="card-body-bottom">
 			<button type="submit" class="btn btn-light" id="button-boardupload">올리기</button>
 		</div>
-	
 	
 	</div>
 </form>

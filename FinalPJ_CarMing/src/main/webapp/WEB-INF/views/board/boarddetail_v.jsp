@@ -226,8 +226,9 @@
 					</div>
 					<c:if test="${login.memnick == comment.comwriter }">
 						<div class="comment-delete">
+							<!-- 
 							<input type="button" onclick="commentDel(${comment.comno})" value="삭제" id="board-option-btn">
-							
+						 	-->
 							<a href="deletebcomment.do?comno=${comment.comno }&brdno=${dto.brdno }" class="board-delete-comment">삭제</a>&nbsp;&middot;
 						</div>
 					</c:if>

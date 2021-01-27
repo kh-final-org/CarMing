@@ -33,11 +33,11 @@ public class boardController {
 	}
 	
 	//게시글쓰기(사진) 페이지로 이동
-	@RequestMapping(value = "/boardinsertform_p.do")
+	@RequestMapping(value = "/boardinsertform.do")
 	public String boardInsert(boardDto dto) {
 	   logger.info("[BOARD INSERT FORM]");
 	   
-	   return "board/boardinsert_p";
+	   return "board/boardinsert";
 	}
 	
 	//게시글쓰기(사진) insert

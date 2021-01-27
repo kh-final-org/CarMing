@@ -44,19 +44,21 @@
 </style>
 
 <script type="text/javascript">
-	function myFunction(str) {
-		var x, list, a, txtValue;
-		x = document.getElementById("selectbox").value;			//selectbox value값 x에 담기
-		list = document.getElementsByClassName("card-body");	//게시글이 담겨지는 곳을 list에 담기
-		
-		 for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("category")[i];	//dto.bcategoryno를 a에 담기
-	        txtValue = a.textContent;							//dto.bcategoryno의 텍스트 값을 txtValue에 담기
+	function myFunction() {
+	    var selectbox, filter, a, txtValue, list;
+	    selectbox = document.getElementById("selectbox");
+	    filter = selectbox.value
+	
+	    list = document.getElementsByClassName("card-body");
+	    
+	    for(i=0; i<list.length; i++){
+	        a = document.getElementsByClassName("category")[i];
+	        txtValue = a.textContent || a.innerText;
 	        
-	        if (x == txtValue) {								//(selectbox value값 == dto.bcategoryno 값)
-	        	list[i].style.display = "";						//값이 같으면 select
+	        if (txtValue.indexOf(filter) > -1) {
+	        	list[i].style.display = "";
 	        } else {
-	        	list[i].style.display = "none";					//값이 다르면 none
+	        	list[i].style.display = "none";					
 	        }
 		}
 	}
@@ -112,7 +114,7 @@
 				<div class="popout popout--prepared popout--axis-1 popout--dir-0 popout--cross-dir-1" id="popout-layout" data-popout="true">
 					<div class="animated-popout-dropdown-content-active">
 						<div class="upload-dropdown-content">
-							<a class="upload-dropdown-content-item" href="boardinsertform_p.do?brdwriter=${dto.brdwriter }">
+							<a class="upload-dropdown-content-item" href="boardinsertform.do?brdwriter=${dto.brdwriter }">
 								<div class="content-item-icon"><img class="upload-icon-photo" src="./resources/img/photo.png"></div>
 								<div class="content-item-content">	
 									<div class="content-item-content-title">사진 올리기</div>
@@ -134,7 +136,7 @@
 		
 			<div class="card-head-third" style="width: 140px;">
 				<div class="dropdown-selectbox">
-			  		<select onchange="myFunction(this.value)" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+			  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
 						<option value="1" selected>일반 캠핑</option>
 					    <option value="2">카라반</option>
 					    <option value="3">글램핑</option>
@@ -165,7 +167,7 @@
 						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
 					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>
-					<div class="category"> ${dto.bcategoryno }</div>
+					<div class="category" style="display: none;"> ${dto.bcategoryno }</div>
 				</div>
 			</div>
 		</c:forEach>
