@@ -36,7 +36,9 @@
 						<a href="category.html">마이페이지<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">카테고리</a><br><br>
 					</nav>
-					<a href="insertform.do" style="a:hover{color:white; text-decoration: none;}">제품 등록</a>
+					<c:if test="${login.memcode ==  1}">
+						<a href="insertform.do" style="a:hover{color:white; text-decoration: none;}">제품 등록</a>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -101,10 +103,12 @@
 							<option value="1" onclick="">Show 12</option>
 						</select>
 					</div>
-					<div class="sorting mr-auto" style="float: right;">
-							<input type="checkbox" name="allCheck" id="allCheck"/><label for="allCheck">모두 선택</label>
-							<input type="button" class="selectDelete_btn" value="선택 삭제">
-					</div>
+					<c:if test="${login.memcode == 1}">
+						<div class="sorting mr-auto" style="float: right;">
+								<input type="checkbox" name="allCheck" id="allCheck"/><label for="allCheck">모두 선택</label>
+								<input type="button" class="selectDelete_btn" value="선택 삭제">
+						</div>
+					</c:if>
 				</div>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
@@ -119,10 +123,12 @@
         						<c:forEach var="productDto" items="${productlist}">
 		      						<div class="col-lg-4 col-md-6">
 										<div class="single-product">
-										<input type="checkbox" name="chBox" class="chBox" data-pNo="${productDto.pNo }">
-										<div class="delete_btn" style="float: right;">
-											<button type="button" class="delete_btn" data-pNo="${productDto.pNo }">삭제</button>
-										</div>
+										<c:if test="${login.memcode == 1 }">
+											<input type="checkbox" name="chBox" class="chBox" data-pNo="${productDto.pNo }">
+											<div class="delete_btn" style="float: right;">
+												<button type="button" class="delete_btn" data-pNo="${productDto.pNo }">삭제</button>
+											</div>
+										</c:if>
 										<img class="img-fluid" src="storage/${productDto.pFile}" alt="">
 											<div class="product-details">
 											<h6>${productDto.pName }</h6>

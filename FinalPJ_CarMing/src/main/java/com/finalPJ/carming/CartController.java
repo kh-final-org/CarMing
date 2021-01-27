@@ -62,12 +62,11 @@ public class CartController {
 		return result;
 	}
 	
+
 	@RequestMapping("/cartlist.do")
 	public String cartlist(HttpSession session, Model model) {
 		logger.info("[CART LIST]");
-		
-		MemberDto member = (MemberDto)session.getAttribute("member");
-		
+
 		List<CartListDto> cartList = biz.cartList();
 		
 		model.addAttribute("cartlist", cartList);
@@ -76,7 +75,7 @@ public class CartController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/cartdelete.do", method = RequestMethod.POST)
+	@RequestMapping(value="/cartdelete.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public int cartdelete(@RequestParam(value="chBox[]") List<String> chArr, CartDto cdto) throws Exception{
 		logger.info("[CART DELETE]");
 		System.out.println("여기까지 못온듯?");
@@ -90,7 +89,7 @@ public class CartController {
 			biz.deleteCart(cdto);
 		}
 		
-		result = 2;
+		result = 1;
 		
 		return result;
 	}
