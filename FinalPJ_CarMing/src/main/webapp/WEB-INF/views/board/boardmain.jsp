@@ -57,9 +57,8 @@
 	        
 	        if (txtValue.indexOf(filter) > -1) {
 	        	list[i].style.display = "";
-	        	
 	        } else {
-	        	list[i].style.display = "none";					//값이 다르면 none
+	        	list[i].style.display = "none";					
 	        }
 		}
 	}
@@ -115,7 +114,7 @@
 				<div class="popout popout--prepared popout--axis-1 popout--dir-0 popout--cross-dir-1" id="popout-layout" data-popout="true">
 					<div class="animated-popout-dropdown-content-active">
 						<div class="upload-dropdown-content">
-							<a class="upload-dropdown-content-item" href="boardinsertform_p.do?brdwriter=${dto.brdwriter }">
+							<a class="upload-dropdown-content-item" href="boardinsertform.do?brdwriter=${dto.brdwriter }">
 								<div class="content-item-icon"><img class="upload-icon-photo" src="./resources/img/photo.png"></div>
 								<div class="content-item-content">	
 									<div class="content-item-content-title">사진 올리기</div>
@@ -135,15 +134,16 @@
 			</div>
 			
 		
-		<div class="card-head-third" style="width: 140px;">
-			<div class="dropdown-selectbox">
-		  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-					<option value="1" selected>일반 캠핑</option>
-				    <option value="2">카라반</option>
-				    <option value="3">글램핑</option>
-				    <option value="4">차박</option>
-				    <option value="5">나만의 캠핑</option>
-			  	</select>
+			<div class="card-head-third" style="width: 140px;">
+				<div class="dropdown-selectbox">
+			  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+						<option value="1" selected>일반 캠핑</option>
+					    <option value="2">카라반</option>
+					    <option value="3">글램핑</option>
+					    <option value="4">차박</option>
+					    <option value="5">나만의 캠핑</option>
+				  	</select>
+				</div>
 			</div>
 		</div>
 		<br><br><br><br>
@@ -167,7 +167,7 @@
 						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
 					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>
-					<div class="category"  style="display: none"> ${dto.bcategoryno }</div>
+					<div class="category" style="display: none;"> ${dto.bcategoryno }</div>
 				</div>
 			</div>
 		</c:forEach>

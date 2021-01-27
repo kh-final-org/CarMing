@@ -27,11 +27,12 @@
     textarea {padding: 10px 14px;}
     textarea::placeholder{color: silver;}
     .location-logo{width: 25px;height: 25px;}
-    .body-location{margin: 10px 0px;}
+    .body-location{margin: 8px 0px;}
     .body-location-left{float: left; width: 77%;}
     .body-location-right{float: right; width: 21.5%; margin-right: 0;}
     .location-logo-text{display: inline-block; vertical-align: middle;}
-    .body-checklist{margin: 10px 0px;}   
+    .body-checklist{margin: 8px 0px;}   
+    .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
    	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
@@ -74,6 +75,7 @@
 		}  
 </script>
 
+<!-- 
 <script type="text/javascript">
 
 	// 업로드 이미지 미리보기 처리	
@@ -96,7 +98,48 @@
 			reader.readAsDataURL(f);
 		});
 	}
-</script>
+</script> -->
+
+<!-- 
+<script type="text/javascript">
+	function myFunction() {
+	    var selectbox, filter, a, txtValue, list;
+	    selectbox = document.getElementById("selectbox");
+	    filter = selectbox.value
+	
+	    list = document.getElementsByClassName("check");
+	    
+	    for(i=0; i<list.length; i++){
+	        a = document.getElementsByClassName("text")[i];
+	        txtValue = a.textContent || a.innerText;
+	        
+	        
+	        if (txtValue.indexOf(filter) > -1) {
+	        	list[i].style.display = "";
+	        	
+	        } else {
+	        	list[i].style.display = "none";
+	        }
+		}
+	}
+</script> -->
+
+<script type="text/javascript">
+	function YnCheck(obj) {
+	    var checked = obj.checked;
+	
+	    if(checked){
+	    	var value = obj.value = "Y";
+	        var Y = document.createTextNode(value);
+		    document.getElementById("my").appendChild(Y);	
+	
+	    }else{
+	    	var value = obj.value = "N";
+	       	var N = document.createTextNode(value);
+		    document.getElementById("my").appendChild(N);	
+	    }
+	 };
+ </script>
 
 
 
@@ -109,8 +152,7 @@
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
    <div class="container">
-      <div
-         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
          <div class="col-first">
             <h1>The stars in the night sky</h1>
             <nav class="d-flex align-items-center">
@@ -132,11 +174,9 @@
 		<div class="card-body">
 			<!-- Start Photo/Video upload Area-->
 			<div class="card-body-left">
-				
 				<form action="upload" id="uploadForm" method="post" enctype="multipart/form-data">
 					<input type="file" name="file" id="file">			
 				</form>
-				
 				<div class="uploadfile-btn" onclick="onclick=document.all.file.click()">
 					<div class="uploadfile-icon-btn">
 						<img class="camera-logo" src="./resources/img/camera.png"><br>
@@ -163,7 +203,7 @@
 				
 				<!-- Textarea -->
 				<div class="body-content">
-				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required"></textarea>
+				   	<textarea rows="9" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required"></textarea>
 				</div>
 				
 				<!-- Location Upload -->
@@ -220,20 +260,23 @@
 									    // 마커 위치를 클릭한 위치로 옮깁니다
 									    marker.setPosition(latlng);
 									    
-									    var message = '위도 : ' + latlng.getLat() + ' , ';
-									    message += '경도 : ' + latlng.getLng();
-									    
 									    var lat = latlng.getLat();
 									    var lng = latlng.getLng();
 									    
 									    var resultDiv = document.getElementById('clickLatlng'); 
-									    resultDiv.innerHTML = lat+":"+lng;
+									    resultDiv.innerHTML = lat + " / " + lng;
+									    
+									    var lat = document.createTextNode(lat); 
+									    document.getElementById("lat").appendChild(lat);		
+									    
+									    var lang = document.createTextNode(lng);
+									    document.getElementById("long").appendChild(lang);		
 									    
 									});
 								</script>
 													
 								<div class="location-finish">
-									<button type="submit" class="btn btn-light" onclick="#" id="location-finish-btn">등록하기</button>
+									<a class="btn btn-light" onclick="myFunction()" id="location-finish-btn" href="#a">등록하기</a>
 								</div>
 								<div class="location-cancel">
 									 <a onclick="myFunction()" id="close" href="#a"><img class="popup-cancel" src="./resources/img/cancel.png"></a>
@@ -247,17 +290,23 @@
 					</div>
 				</div><br>
 				
+				<div class="latlong-input-value">
+					<span><strong>위도 : </strong></span><span id="lat"></span>&#44;
+					<span><strong>경도 : </strong></span><span id="long"></span>
+				</div>
+				
 				<!-- Checkbox -->
 				<div class="body-checklist">
-					<label class="checkbox">
-						<input type="checkbox" id="chkcarplace" value="chkcarplace">
-						<span class="icon"></span>
-						<span class="text">차박 명소 등록하기</span>
-					</label>&emsp;&emsp;
 					<label class="checkbox">
 						<input type="checkbox" id="chkprivate" value="chkprivate">
 						<span class="icon"></span>
 						<span class="text">나만 보기</span>
+						<span id="my"></span>
+					</label>&emsp;&emsp;
+					<label class="checkbox">
+						<input type="checkbox" id="chkcarplace" value="chkcarplace">
+						<span class="icon"></span>
+						<span class="text">차박 명소 등록하기</span>
 					</label>
 				</div>
 			</div>
