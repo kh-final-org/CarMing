@@ -44,10 +44,11 @@
 	    
 	    for(i=0; i<list.length; i++){
 	        a = document.getElementsByClassName("category")[i];
-	        txtValue = a.textContent;
+	        txtValue = a.textContent || a.innerText;
 	        
-	        if (txtValue == filter) {
+	        if (txtValue.indexOf(filter) > -1) {
 	        	list[i].style.display = "";
+	        	
 	        } else {
 	        	list[i].style.display = "none";
 	        }
@@ -93,11 +94,11 @@
 		<div class="card-head-third" style="width: 140px;">
 			<div class="dropdown-selectbox">
 		  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-					<option value="일반 캠핑" selected>일반 캠핑</option>
-				    <option value="카라반">카라반</option>
-				    <option value="글램핑">글램핑</option>
-				    <option value="차박">차박</option>
-				    <option value="나만의 캠핑">나만의 캠핑</option>
+					<option value="1" selected>일반 캠핑</option>
+				    <option value="2">카라반</option>
+				    <option value="3">글램핑</option>
+				    <option value="4">차박</option>
+				    <option value="5">나만의 캠핑</option>
 			  	</select>
 			</div>
 		</div>
@@ -121,7 +122,7 @@
 			<div class="board-uploadimg">
 				<a href="boarddetailform.do?brdno=${dto.brdno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
 				<div class="board-count">조회수 ${dto.brdcount}</div>
-				<div class="category"> ${dto.bcategoryname }</div>
+				<div class="category" style="display: none"> 1</div>
 			</div>
 		</div>
 	</c:forEach>
