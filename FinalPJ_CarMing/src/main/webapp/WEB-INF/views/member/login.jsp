@@ -21,9 +21,9 @@
 
 <body>
 
-	<section id="header">
-		<%@include file ="../common/header.jsp" %>
-	</section>
+
+	<%@include file ="../common/header.jsp" %>
+
 		<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb" style="height: 310px;">
 		<div class="container">
@@ -47,6 +47,6 @@
 	           
     	</div>
 	</section>
-
+	<%@include file ="../common/footer.jsp" %>
 </body>
 </html>
