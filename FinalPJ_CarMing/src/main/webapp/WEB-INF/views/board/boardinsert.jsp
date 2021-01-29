@@ -141,7 +141,7 @@
 	}
 </script>
 
-<!--  -->
+<!-- 나만보기 체크여부 -->
 <script type="text/javascript">
 	function YnCheck(obj) {
 	    var checked = obj.checked;
@@ -238,7 +238,7 @@
 					<div class="body-location-right">
 						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-							<a onclick="popupFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
+							<a onclick="myFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
 
 							<!-- Start Location-Popup -->
 							<div class="popup" id="location-popup">
@@ -320,7 +320,7 @@
 				<div class="body-checklist">
 					<div class="chkprivate-box">
 						<label class="checkbox">
-							<input type="checkbox" id="chkprivate" value="chkprivate">
+							<input type="checkbox" id="chkprivate" value="chkprivate" onclick="YnCheck(this)">
 							<span class="icon"></span>
 							<span class="text">나만 보기</span>
 							<span id="my"></span>

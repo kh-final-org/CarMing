@@ -88,7 +88,7 @@
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
          <div class="col-first">
             <h1>The stars in the night sky</h1>
-            <nav class="d-flex align-items-center">
+         	<nav class="d-flex align-items-center">
                <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
                <a href="boardmainform.do">Talk</a>
             </nav>

@@ -145,9 +145,10 @@
 			</div>
 		</div>
 		
-		<!-- 사용자가 업로드한 이미지 -->
+		<!-- 사용자가 업로드한 동영상 -->
 		<div class="card-body-2">
 			<div class="board-uploadimg">
+			<!-- <video src="sample/video/video1.mp4" controls="controls" width="" height=""></video>-->
 				<img class="uploadimg" src="./resources/video/${dto.brdthumbfile }">
 			</div>
 		</div>

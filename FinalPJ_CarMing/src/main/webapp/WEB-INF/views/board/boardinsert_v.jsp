@@ -72,7 +72,7 @@
 
 </style>
 
-<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="resources/js/main.js"></script>
 
 <!-- location-popup -->
@@ -224,7 +224,7 @@
 					<div class="body-location-right">
 						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-							<a onclick="popupFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
+							<a onclick="myFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
 
 							<!-- Start Location-Popup -->
 							<div class="popup" id="location-popup">
