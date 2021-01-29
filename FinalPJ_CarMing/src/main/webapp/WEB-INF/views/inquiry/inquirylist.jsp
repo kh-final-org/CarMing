@@ -55,19 +55,37 @@ function myFunction() {
 </head>
 
 <body>
-
 	<!-- Start Header Area -->
-	<%@include file="../../views/common/header.jsp"%>
-	<!-- End Header Area -->
-	<br>
+<%@include file="../common/header.jsp"%>
+<!-- End Header Area -->
+
 	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+	   <div class="container">
+	      <div
+	         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	         <div class="col-first">
+	            <h1>The stars in the night sky</h1>
+	            <nav class="d-flex align-items-center">
+	               <a href="index.html">문의 사항<span class="lnr lnr-arrow-right"></span></a>
+	               <a href="boardmainform.do">목록</a>
+	            </nav>
+	         </div>
+	      </div>
+	   </div>
+	</section>
+	<!-- End Banner Area -->
+
+
+
+	<!-- Start Banner Area
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
 			<div
 				class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
 				
-					<h1>문의 사항</h1>
+					<h1>문의 사항ㅇㅇㅇ</h1>
 					<nav class="d-flex align-items-center">
 						<a href="tipAndRecipeMain.do">문의사항<span
 							class="lnr lnr-arrow-right"></span></a> <a href="category.html">목록</a>

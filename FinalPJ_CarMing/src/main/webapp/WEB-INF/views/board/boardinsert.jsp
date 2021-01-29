@@ -14,13 +14,15 @@
     .card-body{padding: 0px;}
    	
    	.card-body-left{margin-right: 10px;}
-   	.camera-logo{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
+   	.camera-icon{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
    	.logo-bottom-context{color: gray;}    
-	#file{display: none;}
+	#input-file{display: none;}
 	.uploadfile-btn{float: left; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; border-radius: 20px; 
-					text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9;}
+					text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9; }
 	.uploadfile-icon-btn{margin-top: 110px;}
-	   
+/*	.uploadfile-wrap{position:absolute; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; 
+					 border-radius: 20px; cursor: pointer; display: hidden; }	*/
+
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
     .body-content{margin-top: 55px; font-size: 1.2em;}
@@ -37,10 +39,12 @@
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
    	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
 
+	.chkprivate-box{float: left;}
+	.chkcarplace-box{float: left; margin-left: 5px;}
 	.checkbox input{display: none;}
 	.checkbox span{display: inline-block;vertical-align: middle;cursor: pointer;}
-	.checkbox .icon{position: relative;width: 20px;height: 20px;border: 2px solid silver;border-radius: 3px;transition: background 0.1s ease;}
-	.checkbox .icon::after{content: ''; position: absolute;top: 0px; left: 4px; width: 6px; height: 11px; border-right: 2px solid #fff;
+	.checkbox .icon{position: relative;width: 20px; height: 20px;border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
+	.checkbox .icon::after{content: ''; position: absolute;top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
 						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
 	.checkbox .text{margin-left: 5px;}
 	.checkbox input:checked ~ .icon{border-color: transparent;background: orange;}
@@ -64,6 +68,10 @@
     
 </style>
 
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script src="resources/js/main.js"></script>
+
+<!-- location-popup -->
 <script>
 	function myFunction() {
 		var x = document.getElementById("location-popup");
@@ -75,42 +83,51 @@
 		}  
 </script>
 
-<!-- 
+<!-- 사진 업로드(미리보기) -->
 <script type="text/javascript">
+	var sel_file;
+	$(document).ready(function() {
+		$("uploadfile-input-btn").on("change", handleImgFileSelect);
+	});
 
-	// 업로드 이미지 미리보기 처리	
-	var selfile;
-	window.onload = function () {
-		$("#input_img").on("change", handleImgFileSelect);
-	}
-	
 	function handleImgFileSelect(e) {
+		$("#uploadimg").empty(); 
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
-		
+
 		filesArr.forEach(function(f) {
+			if (!f.type.match("image.*")) {
+				alert("확장자는 이미지 확장자만 가능합니다.");
+				return;
+			}
 			sel_file = f;
-			
+
 			var reader = new FileReader();
 			reader.onload = function(e) {
-				$(".uploadimg").attr("src", e.target.result);
+				$("#uploadimg").attr("src", e.target.result);
+				$("#uploadimg").attr("width", "90%");
+				$("#uploadimg").attr("height", "440px");
 			}
 			reader.readAsDataURL(f);
-		});
+		})
 	}
-</script> -->
 
-<!-- 
+	function resetInputFile() {
+		$("#img").empty();
+	}
+</script>
+
+<!-- 카테고리 차박이 아닐 경우 '차박 체크박스' 숨기기 -->
 <script type="text/javascript">
-	function myFunction() {
+	function carPlaceChk() {
 	    var selectbox, filter, a, txtValue, list;
 	    selectbox = document.getElementById("selectbox");
 	    filter = selectbox.value
 	
-	    list = document.getElementsByClassName("check");
+	    list = document.getElementsByClassName("chkcarplace-box");
 	    
 	    for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("text")[i];
+	        a = document.getElementsByClassName("chkcarplace-box")[i];
 	        txtValue = a.textContent || a.innerText;
 	        
 	        
@@ -122,8 +139,9 @@
 	        }
 		}
 	}
-</script> -->
+</script>
 
+<!--  -->
 <script type="text/javascript">
 	function YnCheck(obj) {
 	    var checked = obj.checked;
@@ -139,8 +157,7 @@
 		    document.getElementById("my").appendChild(N);	
 	    }
 	 };
- </script>
-
+</script>
 
 
 </head>
@@ -174,15 +191,19 @@
 		<div class="card-body">
 			<!-- Start Photo/Video upload Area-->
 			<div class="card-body-left">
-				<form action="upload" id="uploadForm" method="post" enctype="multipart/form-data">
-					<input type="file" name="file" id="file">			
-				</form>
-				<div class="uploadfile-btn" onclick="onclick=document.all.file.click()">
+				<!-- 사용자가 업로드한 이미지 (미리보기)-->
+				<div class="uploadfile-wrap">
+	  				<img class="uploadimg" id="uploadimg">
+	  			</div>
+				<!-- 이미지 업로드 버튼 -->
+				<div class="uploadfile-btn" id="uploadfile-input-btn" onclick="onclick=document.all.file.click()">
 					<div class="uploadfile-icon-btn">
-						<img class="camera-logo" src="./resources/img/camera.png"><br>
+						<input type="file" id="input-file" name="file" accept="image/*">			
+						<img class="camera-icon" src="./resources/img/camera.png"><br>
 						<span class="logo-bottom-context">사진 올리기</span>
 					</div>
 				</div>
+				
 			</div>
 			<!-- End Photo/Video Upload Area -->
 			
@@ -191,7 +212,7 @@
 				<!-- Category -->
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
-				  		<select class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
 							<option value="1" selected>일반 캠핑</option>
 						    <option value="2">카라반</option>
 						    <option value="3">글램핑</option>
@@ -217,7 +238,7 @@
 					<div class="body-location-right">
 						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-							<a onclick="myFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
+							<a onclick="popupFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
 
 							<!-- Start Location-Popup -->
 							<div class="popup" id="location-popup">
@@ -297,17 +318,22 @@
 				
 				<!-- Checkbox -->
 				<div class="body-checklist">
-					<label class="checkbox">
-						<input type="checkbox" id="chkprivate" value="chkprivate">
-						<span class="icon"></span>
-						<span class="text">나만 보기</span>
-						<span id="my"></span>
-					</label>&emsp;&emsp;
-					<label class="checkbox">
-						<input type="checkbox" id="chkcarplace" value="chkcarplace">
-						<span class="icon"></span>
-						<span class="text">차박 명소 등록하기</span>
-					</label>
+					<div class="chkprivate-box">
+						<label class="checkbox">
+							<input type="checkbox" id="chkprivate" value="chkprivate">
+							<span class="icon"></span>
+							<span class="text">나만 보기</span>
+							<span id="my"></span>
+						</label>&emsp;&emsp;
+					</div>
+					<div class="chkcarplace-box">
+						<label class="checkbox">
+							<input type="checkbox" id="chkcarplace" value="chkcarplace">
+							<span class="icon"></span>
+							<span class="text">차박 명소 등록하기</span>
+							<span style="display: none;">4</span>
+						</label>
+					</div>
 				</div>
 			</div>
 			<!-- End Upload Contents Area -->

@@ -17,9 +17,6 @@
 	.card-second{float: left; width: 500px;}
 	.card-third{float: right; margin: 100px 90px;}
 	
-	.next-left{width: 40px; height: 40px; margin: 160px 0px 0px 150px; padding: 0px;}
-	.next-right{width: 40px; height: 40px; margin: 160px 100px 0px 0px; padding: 0px;}	
-	
 	.user-profile{width: 50px; height: 50px; margin-right: 10px; border-radius: 5em;}
 	.board-profile{float: left; margin: 5px 50px;}
 	.board-location{float: right; text-align: right; margin: 10px 0px 5px 0px; }
@@ -118,8 +115,7 @@
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
    <div class="container">
-      <div
-         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
          <div class="col-first">
             <h1>The stars in the night sky</h1>
             <nav class="d-flex align-items-center">
@@ -135,11 +131,6 @@
 
 <!-- Start Container Area -->
 <div class="card-container">
-	<!-- Left Arrow -->
-	<div class="card-first">
-		<img class="next-left" src="./resources/img/left.png">
-	</div>
-	
 	<!-- Start BoardDetil Area -->
 	<div class="card-second">
 		<!-- 프로필 사진/아이디/위치/날짜 -->
@@ -238,15 +229,8 @@
 	</div>
 	<!-- End BoardDetil Area -->
 		
-	<!-- Right Arrow -->
-	<div class="card-third">
-		<img class="next-right" src="./resources/img/right.png"> 
-	</div>
-	
 	<!-- 여백을 주기 위해 임시로 만들어 놓음 -->
 	<table class="table table-hover"></table>
-	
-	
 </div>
 <!-- End Container Area -->
 </main>
