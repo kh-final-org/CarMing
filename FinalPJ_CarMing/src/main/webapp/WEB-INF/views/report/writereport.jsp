@@ -28,15 +28,15 @@
 
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 0; border-radius: 4px; border: 1px solid #ebebeb;
-				font-size: 1.1em; text-align: center; color: #5f5f5f; background: #fff5e9; cursor: pointer;}
+	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 0; border-radius: 4px; border: 1px solid #e2e2e2;
+				font-size: 1.1em; text-align: center; color: #5f5f5f; background: #fff5e9; cursor: pointer; }
 	.banner-btn:hover{background: #ffe6be;}
 	
-	#container-contact{margin: 50px 250px 50px 350px;}
-	.col-md-9{padding: 1.5% 5% 0;border-top-right-radius: 0.5rem;border-bottom-right-radius: 0.5rem;}
+	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 15px silver;}
+	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;border: 1px solid #e2e2e2; background: #fff5e9;}
 	
 	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin-left: 25%; margin-top: -23%;z-index: 1;}
+	#pingu-img{width: 100px; height: 100%; margin-left: 25%; margin-top: -24%;z-index: 1;}
 	#pingu-siren{margin-left: 32.5%; z-index: 10;}
 	.contact-info h3{margin-bottom: 5%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
 	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; opacity: 0.8;}
@@ -45,27 +45,26 @@
 	#report-name{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em;}
 	#writerNickname{float: right; width: 450px; margin-right: 10px;}
 	.form-group-reportname-form{float: left; margin-bottom: 15px; width:100%;}
-		
 	#report-date{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em;}
 	#date{float: right; width: 450px; margin-right: 150px;}	
-	
 	.form-group-category-form{float: left; margin-bottom: 15px; width: 100%;}
 	.report-category{display: inline-block; float: left; margin-left: 15px; width: 10%; font-size: 1.2em; margin-left: 15px;}
 	.report-category-wrap{float: left; width: 72%; margin-left: 60px;}
 	#categorySelect{ width:100px;}
 	textarea {padding: 10px 14px;}
     textarea::placeholder{color: silver; font-size: 1.1em;}
-		
 	#report-text{font-size: 1.2em; margin-bottom: 10px;}	
-		
 	#report-photo{font-size: 1.2em; margin-bottom: 10px;}	
-	#input_img{position:absolute; bottom: -40px; float: left; margin-top: 10px; }	
-	#img{width: 590px; margin-left: 1.5px; margin-bottom: 50px;} 	
-		
-   	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0; border-radius: 10px; 
-   						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; }
-		
-		
+	.report-file{display: inline-block; font-size: 1.2em; margin-bottom: 10px; margin-left: 15px;}
+	.uploadimg {width: 350px; height: 350px; border-radius: 10px;}
+	.img_wrap {width: 350px; height: 350px; margin-top: 20px; }
+	.img_wrap img {max-width: 100%; max-height: 95%;}
+	.center-block {display: block; margin-left: auto; margin-right: auto;}	
+	.upload-img-form{position: relative; width: 590px; border: 1px solid #e2e2e2; margin-left: 15px; 
+					 border-radius: 10px; margin-bottom: 60px; background: #fff;}
+   	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
+   	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
+   						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
 </style>
 
 
@@ -156,7 +155,7 @@
 
 	<!------ Include the above in your HEAD tag ---------->
 	<form:form  action="writereport.do?targetNo=${target.targetNo}&targetTypeNo=${target.targetTypeNo }" method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
-	<div class="container-contact" id="container-contact">
+	<div class="container-contact">
 		<div class="row">
 				<div class="col-md-3">
 					<div class="contact-info">
@@ -207,28 +206,22 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="content" id="report-text">신고 내용</label>
 							<div class="col-sm-10">
-							   	<textarea rows="3" cols="75" id="content" name="reportContent" placeholder="신고 내용을 입력해주세요." style="resize: none;" required="required"></textarea>
+							   	<textarea rows="3" cols="75" id="content" name="reportContent" placeholder="신고 내용을 입력해주세요." 
+							   			  style="resize: none;" required="required"></textarea>
 							</div>	
 						</div>
 						
 						<!-- 사진 업로드 -->
-						<div class="center-block">
-							<label class="control-label col-sm-2" for="input_img" id="report-photo">첨부이미지</label>
-							<div class="col-sm-10">
-								<input type="file" id="input_img" name="reportFile" accept="image/*" value="파일"> 
-								<img id="img" class=" form-control" style="height: 350px;">
+						<div class="report-file"><strong>첨부 파일</strong></div>
+						<div class="upload-img-form">
+							<div class="img_wrap center-block">
+								<img id="img" src="">
+				  			</div>
+							<div class="upload-img-content">
+								<input type="file" class="custom-file-input" id="input_img" name="upfile" accept="image/*">
+								<label class="custom-file-label" for="input_img" ></label>
 							</div>
 						</div>
-						<!-- 
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="input_img">첨부이미지:</label>
-							<div class="col-sm-10">
-								<input type="file" id="input_img" name="reportFile"
-									accept="image/*" value="파일"> 
-								<img id="img" class=" form-control" style="height: 440px;">
-							</div>
-						</div>
-						 -->
 	
 						<div class="report-submit-form">
 							<button type="submit" class="btn btn-light" id="button-boardupload">보내기</button>
