@@ -20,12 +20,14 @@
 					border-radius: 20px; text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9;}
 	.uploadfile-icon-btn{margin-top: 110px;}
 	.uploadfile-img{position: absolute; top: 362px; margin-left: -20px;}
-	.uploadfile-img input[type="file"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }
-	.uploadfile-img label { display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; line-height: normal; vertical-align: middle; text-align:center; 
-							background: #fdfdfd; color:#5f5f5f; cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em; }
+	.uploadfile-img input[type="file"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+										 overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+	.uploadfile-img label { display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; 
+							line-height: normal; vertical-align: middle; text-align:center; background: #fdfdfd; color:#5f5f5f; 
+							cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em;}
 	.uploadfile-img .upload-name { display: inline-block; padding: .5em .75em; font-size: inherit; font-family: inherit; line-height: normal; 
-								   vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; border-radius: .25em; 
-								   -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+								   vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; 
+								   border-radius: .25em; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
 
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
@@ -41,7 +43,8 @@
     .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
-   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; 
+   						font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
 
 	.chkprivate-box{float: left;}
 	.chkcarplace-box{float: left; margin-left: 5px;}
@@ -129,7 +132,7 @@
 	}
 </script>
 
-<!--  -->
+<!-- 나만보기 체크여부 -->
 <script type="text/javascript">
 	function YnCheck(obj) {
 	    var checked = obj.checked;
@@ -233,9 +236,12 @@
 								<div id="map"></div>
 								<div class="location-search">
 									<div class="input-group mb-3" >
-										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." 
+											   aria-label="Recipient's username" aria-describedby="button-addon2">
 										<div class="input-group-append">
-									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="searchimg" src="./resources/img/search.png"></button>
+									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+									    		<img class="searchimg" src="./resources/img/search.png">
+									    	</button>
 									  	</div>
 									</div>	
 								</div>
@@ -281,7 +287,6 @@
 									    
 									    var lang = document.createTextNode(lng);
 									    document.getElementById("long").appendChild(lang);		
-									    
 									});
 								</script>
 													
@@ -309,7 +314,7 @@
 				<div class="body-checklist">
 					<div class="chkprivate-box">
 						<label class="checkbox">
-							<input type="checkbox" id="chkprivate" value="chkprivate">
+							<input type="checkbox" id="chkprivate" value="chkprivate" onclick="YnCheck(this)">
 							<span class="icon"></span>
 							<span class="text">나만 보기</span>
 							<span id="my"></span>

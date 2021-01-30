@@ -136,7 +136,9 @@
 		<!-- 프로필 사진/아이디/위치/날짜 -->
 		<div class="card-body-1">
 			<div class="board-profile">
-				<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }"><img class="user-profile" src="./resources/img/profile.png"></a>&nbsp; 
+				<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }">
+					<img class="user-profile" src="./resources/img/profile.png">
+				</a>&nbsp; 
 				<span class="board-usernick">&nbsp;${dto.brdwriter }</span>
 			</div>	
 			<div class="board-location">
@@ -156,7 +158,9 @@
 		<div class="card-body-3">
 			<div class="board-content">${dto.brdcontent }</div>
 			<div class="board-count">조회수 ${dto.brdcount }</div>
-			<div class="board-report">&nbsp;&middot;&nbsp;<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1" id="board-report-target">신고</a></div>
+			<div class="board-report">&nbsp;&middot;&nbsp;
+				<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1" id="board-report-target">신고</a>
+			</div>
 		</div><br><br>
 		
 		<!-- 게시글 전체 댓글 수/카카오톡 공유/수정/삭제 -->
@@ -177,7 +181,9 @@
 					</div>&#124;
 				</c:if>
 				<div class="board-share">
-					<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
+					<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');">
+						<img class="share-kakaotalk" src="./resources/img/kakaotalk.png">
+					</a>
 				</div>
 			</div>
 		</div><br>
@@ -190,9 +196,12 @@
 				</div>	
 				<div class="board-input-comment">
 					<div class="input-group mb-3" >
-						<input type="text" class="form-control" name="comcontext" placeholder="댓글을 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" required="required">
+						<input type="text" class="form-control" name="comcontext" placeholder="댓글을 입력해 주세요." 
+							   aria-label="Recipient's username" aria-describedby="button-addon2" required="required">
 						<div class="input-group-append">
-					    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="sendimg" src="./resources/img/send.png"></button>
+					    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+					    		<img class="sendimg" src="./resources/img/send.png">
+					    	</button>
 					  	</div>
 					</div>	
 				</div>
@@ -218,8 +227,7 @@
 					<c:if test="${login.memnick == comment.comwriter }">
 						<div class="comment-delete">
 							<!-- 
-							<input type="button" onclick="commentDel(${comment.comno})" value="삭제" id="board-option-btn">
-						 	-->
+							<input type="button" onclick="commentDel(${comment.comno})" value="삭제" id="board-option-btn">-->
 							<a href="deletebcomment.do?comno=${comment.comno }&brdno=${dto.brdno }" class="board-delete-comment">삭제</a>&nbsp;&middot;
 						</div>
 					</c:if>

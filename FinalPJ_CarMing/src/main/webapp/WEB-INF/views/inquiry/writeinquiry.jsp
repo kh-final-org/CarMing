@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing | 문의 사항 작성</title>
+<title>CarMing | 문의하기</title>
 <!-- Mobile Specific Meta -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,28 +23,28 @@
 <meta charset="UTF-8">
 
 
-<link rel="stylesheet" href="resources/css/contactus.css">
+<link rel="stylesheet" href="resources/css/writeinquiry.css">
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
 	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color:#fff; background: transparent; opacity:0.9; cursor: pointer;}
 	.banner-btn:hover{background: #fff; color: #5f5f5f;}
 	
-	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 15px silver;}
-	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;border: 1px solid #e2e2e2; background: #fff5e9;}
+	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
 	
 	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin-left: 25%; margin-top: -22%;z-index: 1;}
-	#pingu-qna{margin-left: 32.5%; z-index: 10;}
+	#pingu-img{width: 100px; height: 100%; margin: -16% 0 8% 25%; z-index: 1;}
+	#pingu-qna{width: 80px; height: 100%; margin: -7% 0 7% 30.5%; z-index: 10;}
 	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
 	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
 	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
 	
+	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;border: 1px solid #e2e2e2; background: #fff5e9;}
 	.contact-form{width: 750px; height: 100%;}
-	#user-nickname{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em;}
+	#user-nickname{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em; font-weight: bold;}
 	#nickname{float: right; width: 450px; margin-right: 10px;}
 	.form-group-inquiry-form{float: left; margin-bottom: 15px; width:100%;}
-	#inquiry-date{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em;}
+	#inquiry-date{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em; font-weight: bold;}
 	#date{float: right; width: 450px; margin-right: 150px;}	
 	.form-group-category-form{float: left; margin-bottom: 15px; width: 100%;}
 	.inquiry-category{display: inline-block; float: left; margin-left: 15px; width: 10%; font-size: 1.2em; margin-left: 15px;}
@@ -53,7 +53,7 @@
 	.current{font-size: 1.1em;}
 	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
     textarea::placeholder{color: silver; font-size: 1.1em;}
-	#inquiry-text{font-size: 1.2em; margin-bottom: 10px;}	
+	#inquiry-text{font-size: 1.2em; margin-bottom: 10px; font-weight: bold;}	
 	.inquiry-file{display: inline-block; font-size: 1.2em; margin-bottom: 10px; margin-left: 15px;}
 	.uploadimg {width: 350px; height: 350px; border-radius: 10px;}
 	.img_wrap {width: 350px; height: 350px; margin-top: 20px; }
@@ -68,13 +68,11 @@
 
 
 
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script> -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-	integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+		crossorigin="anonymous"></script>
 <script src="resources/js/vendor/bootstrap.min.js"></script>
 <script src="resources/js/jquery.ajaxchimp.min.js"></script>
 <script src="resources/js/jquery.nice-select.min.js"></script>
@@ -83,10 +81,10 @@
 <script src="resources/js/jquery.magnific-popup.min.js"></script>
 <script src="resources/js/owl.carousel.min.js"></script>
 <!--gmaps Js-->
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="resources/js/gmaps.min.js"></script>
-<script src="resources/js/main.js"></script>
+<!-- ★★★위 스크립트로 상단바 위치가 깨짐★★★
+<script src="resources/js/main.js"></script>-->
 
 <script type="text/javascript">
 	var sel_file;
@@ -144,14 +142,13 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의 작성하기</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
 	         </div>
 		  </div>
 		</div>
 	</section>
 	<!-- End Banner Area -->
-
 
 	<!------ Include the above in your HEAD tag ---------->
 	<form:form  method="POST" enctype="multipart/form-data" modelAttribute="InquiryDto" action="writeinquiry.do?memNo=${login.memno}" >

@@ -37,7 +37,8 @@
     .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
-   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; 
+   						font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
 
 	.chkprivate-box{float: left;}
 	.chkcarplace-box{float: left; margin-left: 5px;}
@@ -247,9 +248,12 @@
 								<div id="map"></div>
 								<div class="location-search">
 									<div class="input-group mb-3" >
-										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." 
+											   aria-label="Recipient's username" aria-describedby="button-addon2">
 										<div class="input-group-append">
-									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="searchimg" src="./resources/img/search.png"></button>
+									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+									    		<img class="searchimg" src="./resources/img/search.png">
+									    	</button>
 									  	</div>
 									</div>	
 								</div>
@@ -292,7 +296,6 @@
 									    
 									    var lang = document.createTextNode(lng);
 									    document.getElementById("long").appendChild(lang);		
-									    
 									});
 								</script>
 													

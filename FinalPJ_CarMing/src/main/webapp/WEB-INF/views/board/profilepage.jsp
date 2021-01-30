@@ -13,7 +13,8 @@
 <style type="text/css">
 	.card-container{width: 100%;}
 
-	.card-profile{float: left; width: 27%; height: 400px; margin-right: 80px; margin-top: 40px; border-radius: 10px; box-shadow: 10px 10px 30px silver;}	
+	.card-profile{float: left; width: 27%; height: 400px; margin-right: 80px; margin-top: 40px; 
+				  border-radius: 10px; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.14);}	
 	.profilepage-profile{margin: 70px 63px 25px 63px;}	
 	.user-profile{width: 170px; height: 170px; border-radius: 5em;}
 	.user-id{font-size:1.6em; margin: 15px 38px 10px 38px; width: 100px; text-align: center;}

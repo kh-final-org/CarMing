@@ -7,18 +7,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의 목록</title>
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>CarMing | 문의  목록</title>
+<!-- ★★★위 스크립트로 상단바 위치가 깨짐★★★
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 <!-- Mobile Specific Meta -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Favicon-->
 <link rel="shortcut icon" href="img/fav.png">
 <!-- Author Meta -->
@@ -31,6 +28,29 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="resources/css/list.css">
+<style type="text/css">
+	#banner-text-2{position: absolute; top: 255px; right: 245px;}
+	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+				font-size: 1.1em; text-align: center; color:#fff; background: transparent; opacity:0.9; cursor: pointer;}
+	.banner-btn:hover{background: #fff; color: #5f5f5f;}
+	
+	.card-container{padding: 50px 200px;}
+	.card {position: relative; width: 80%; margin-left: auto; margin-right: auto;}
+
+	div.blog_right_sidebar{float: right; width: 22%; margin-bottom: -1.5%; margin-right: 7.5%; border: 0; background: #fff; }
+	.btn.btn-default{margin-top: -3%; margin-right: -3%;}
+	
+	.gaadiex-list {border-radius: 10px; list-style-type: none; margin: 0; padding: 0;}
+	.gaadiex-list-title > h2{float:left; width: 25%; margin: 2.5% 0 0 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
+	.gaadiex-list>.gaadiex-list-item {padding: 0 20px;}
+	.gaadiex-list-item {width: 45%; float:left; margin-left: 2%;}
+	.gaadiex-list-item-img > img {float: left; width: 100px; height: 100px; margin: 30px 50px 8px 0; border-radius: 50%;}
+	.gaadiex-list-item-text {margin-top: 50px; color: gray; margin-left: 160px;}
+	.gaadiex-list-item-text a{color: gray;}
+	.gaadiex-list-item-text a:hover{color: #ffba00; color: gray;}
+	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: #5f5f5f;}
+</style>
+
 
 <script>
 function myFunction() {
@@ -56,105 +76,81 @@ function myFunction() {
 
 <body>
 	<!-- Start Header Area -->
-<%@include file="../common/header.jsp"%>
-<!-- End Header Area -->
-
+	<%@include file="../../views/common/header.jsp"%>
+	<!-- End Header Area -->
+	
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div
-	         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-	         <div class="col-first">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="index.html">문의 사항<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="boardmainform.do">목록</a>
+	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
+	               <a href="writereportform.do">신고하기</a>
 	            </nav>
 	         </div>
 	      </div>
-	   </div>
-	</section>
-	<!-- End Banner Area -->
-
-
-
-	<!-- Start Banner Area
-	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div
-				class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-				
-					<h1>문의 사항ㅇㅇㅇ</h1>
-					<nav class="d-flex align-items-center">
-						<a href="tipAndRecipeMain.do">문의사항<span
-							class="lnr lnr-arrow-right"></span></a> <a href="category.html">목록</a>
-					</nav>
-				</div>
-			</div>
-			<div class="section-top-border text-right">
-				<div class="button-group-area mt-40" style="padding-bottom: 5em">
-					<a href="tipAndRecipeMain.do"
-						class="genric-btn danger-border e-large">목록으로</a>
-					<a href="writeinquiryform.do"
-						class="genric-btn danger-border e-large">새 글 작성하기</a>
-				</div>
-			</div>
+		  <div class="section-top-border text-right" id="banner-text-2">
+	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의 작성하기</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
+	         </div>
+		  </div>
 		</div>
 	</section>
 	<!-- End Banner Area -->
-	<div class="blog_right_sidebar"
-		style=" height:10%; float: right; background-color: white; border: 0px;">
-		<aside class="single_sidebar_widget search_widget">
-			<div  class="input-group">
-				<input style="  padding:10%;" type="text" id="input" onkeyup="myFunction()"
-					class="form-control" placeholder="카테고리 검색하기"
-					onfocus="this.placeholder = ''"
-					onblur="this.placeholder = '카테고리 검색하기'"> <span
-					class="input-group-btn">
-					<button class="btn btn-default" type="button">
-						<i class="lnr lnr-magnifier"></i>
-					</button>
-				</span>
-			</div>
-		</aside>
-	</div>
-	<!-- 목록 부분 -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="card">
-
-					<div class="gaadiex-list" style="padding-bottom: 3%; margin-bottom: 3%">
-						<c:forEach var = "list" items="${list}">
-						<div class="gaadiex-list-item">
-							<img class="gaadiex-list-item-img"
-								src="resources/img/tipandrecipe/honey.jpg"
-								alt="List user">
-							<div class="gaadiex-list-item-text">
-								<h3 style="color: orange">
-									<a href="#">회원 닉네임: ${list.memNick }</a>
-								</h3>
-								
-								<h4><a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">
-								
-								<c:set var="TextValue" value="${list.inquiryContent }"/> 
-								내용: ${fn:substring(TextValue,0,10)}</a></h4>
-								
-								
-								<p class="category">카테고리: ${list.categoryName}</p>
-								
-								<p>작성날짜:<fmt:formatDate pattern = "yyyy-MM-dd" 
-         						value = "${list.inquiryDate}" /></p>			
-							</div>
+	
+	<!-- Start Container Area -->
+	<div class="card-container">
+		<div class="gaadiex-list-title">
+			<h2>INQUIRY LIST</h2>
+		</div>
+		<!-- 카테고리 검색 -->
+		<div class="blog_right_sidebar">
+			<aside class="single_sidebar_widget search_widget">
+				<div  class="input-group">
+					<input type="text" id="input" onkeyup="myFunction()"
+						class="form-control" placeholder="카테고리 검색하기" 
+						onfocus="this.placeholder = ''"
+						onblur="this.placeholder = '카테고리 검색하기'" 
+						style="padding: 12%; font-size: 1.15em; border-radius: 5px; margin-top: -7%;"> 
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<i class="lnr lnr-magnifier"></i>
+						</button>
+					</span>
+				</div>
+			</aside>
+		</div>
+		
+		<!-- 목록 -->
+		<div class="card">
+			<div class="gaadiex-list" style="padding-bottom: 3%; margin-bottom: 3%">
+				<c:forEach var = "list" items="${list}">
+				<div class="gaadiex-list-item">
+					<div class="gaadiex-list-item-img">
+						<img class="list-item-img" src="resources/img/profile.png" alt="List user">
+					</div>
+					<div class="gaadiex-list-item-text">
+						<h4><a href="#">닉네임&nbsp;&#124;&nbsp;${list.memNick }</a></h4>
+						
+						<div>
+							<a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">
+							<c:set var="TextValue" value="${list.inquiryContent }"/> 
+								내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,10)}
+							</a>
 						</div>
-						</c:forEach>
+						
+						<div class="category">카테고리&nbsp;&#124;&nbsp;${list.categoryName}</div>
+						<div>작성 날짜&nbsp;&#124;&nbsp;<fmt:formatDate pattern = "yyyy-MM-dd" value = "${list.inquiryDate}"/></div>		
 					</div>
 				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
-	<!-- 목록 종료 -->
+	<!-- End Container Area -->
 	
 
 	<!-- start footer Area -->
