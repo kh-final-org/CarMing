@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 캠핑토크 상세 페이지</title>
 <style type="text/css">
 	.card-first{float: left; margin: 100px 50px 100px 50px;}
 	.card-second{float: left; width: 500px;}

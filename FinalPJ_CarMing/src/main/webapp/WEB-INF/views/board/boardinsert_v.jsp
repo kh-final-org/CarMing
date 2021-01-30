@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 캠핑토크 동영상 올리기</title>
 <style type="text/css">
 	.card-container{margin: 50px 190px 50px 220px;}
     .card-body{padding: 0px;}
@@ -30,7 +30,7 @@
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
     .body-content{margin-top: 55px; font-size: 1.2em;}
-    textarea {padding: 10px 14px;}
+    textarea {padding: 10px 14px; border: 1px solid silver; border-radius: 5px;}
     textarea::placeholder{color: silver;}
     .location-logo{width: 25px;height: 25px;}
     .body-location{margin: 8px 0px;}

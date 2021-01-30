@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 캠핑토크 DM채팅</title>
 <style type="text/css">
 	.card-container{margin: 50px 200px; padding: 0px; width: 1100px; height: 500px; border-radius: 10px; box-shadow: 10px 10px 30px silver;}
 	.card-wrap{width: 100%;height: 550px;}	

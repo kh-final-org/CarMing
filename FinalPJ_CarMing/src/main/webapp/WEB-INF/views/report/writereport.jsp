@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 신고하기</title>
 <!-- Mobile Specific Meta -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,11 +25,10 @@
 
 
 <link rel="stylesheet" href="resources/css/contactus.css">
-
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
 	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 0; border-radius: 4px; border: 1px solid #e2e2e2;
-				font-size: 1.1em; text-align: center; color: #5f5f5f; background: #fff5e9; cursor: pointer; }
+				font-size: 1.1em; text-align: center; color: #5f5f5f; background: #fff5e9; opacity:0.8; cursor: pointer;}
 	.banner-btn:hover{background: #ffe6be;}
 	
 	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 15px silver;}
@@ -44,24 +43,23 @@
 	.contact-form{width: 750px; height: 100%;}
 	#report-name{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em;}
 	#writerNickname{float: right; width: 450px; margin-right: 10px;}
-	.form-group-reportname-form{float: left; margin-bottom: 15px; width:100%;}
+	.form-group-report-form{float: left; margin-bottom: 15px; width:100%;}
 	#report-date{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em;}
 	#date{float: right; width: 450px; margin-right: 150px;}	
 	.form-group-category-form{float: left; margin-bottom: 15px; width: 100%;}
 	.report-category{display: inline-block; float: left; margin-left: 15px; width: 10%; font-size: 1.2em; margin-left: 15px;}
 	.report-category-wrap{float: left; width: 72%; margin-left: 60px;}
-	#categorySelect{ width:100px;}
-	textarea {padding: 10px 14px;}
+	#categoryno{ width:100px;}
+	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
     textarea::placeholder{color: silver; font-size: 1.1em;}
 	#report-text{font-size: 1.2em; margin-bottom: 10px;}	
-	#report-photo{font-size: 1.2em; margin-bottom: 10px;}	
 	.report-file{display: inline-block; font-size: 1.2em; margin-bottom: 10px; margin-left: 15px;}
 	.uploadimg {width: 350px; height: 350px; border-radius: 10px;}
 	.img_wrap {width: 350px; height: 350px; margin-top: 20px; }
 	.img_wrap img {max-width: 100%; max-height: 95%;}
 	.center-block {display: block; margin-left: auto; margin-right: auto;}	
 	.upload-img-form{position: relative; width: 590px; border: 1px solid #e2e2e2; margin-left: 15px; 
-					 border-radius: 10px; margin-bottom: 60px; background: #fff;}
+					 border-radius: 5px; margin-bottom: 60px; background: #fff;}
    	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
    	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
    						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
@@ -127,7 +125,7 @@
 <body>
 
 	<!-- Start Header Area -->
-	<%@include file="../common/header.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->
@@ -137,99 +135,97 @@
 	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="boardmainform.do">신고하기</a>
+	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
+	               <a href="writereportform.do">신고하기</a>
 	            </nav>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">목록으로</button>
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">새 글 작성하기</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
 	         </div>
 		  </div>
 		</div>
 	</section>
 	<!-- End Banner Area -->
 
-
 	<!------ Include the above in your HEAD tag ---------->
 	<form:form  action="writereport.do?targetNo=${target.targetNo}&targetTypeNo=${target.targetTypeNo }" method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
 	<div class="container-contact">
 		<div class="row">
-				<div class="col-md-3">
-					<div class="contact-info">
-						<img id="pingu-siren" src="./resources/img/siren.png">
-						<img id="pingu-img" src="resources/img/logo_chatbot.png" alt="image" /><br>
-						<h3>신고하기</h3>
-						<h5>핑구에게 알려주세요</h5>
-					</div>
+			<div class="col-md-3">
+				<div class="contact-info">
+					<img id="pingu-siren" src="./resources/img/siren.png">
+					<img id="pingu-img" src="resources/img/logo_chatbot.png" alt="image" /><br>
+					<h3>신고하기</h3>
+					<h5>핑구에게 알려주세요</h5>
 				</div>
+			</div>
 
-				<div class="col-md-9">
-					<div class="contact-form">
-						<!-- 제보자 닉네임 -->
-						<div class="form-group-reportname-form">
-							<label class="control-label col-sm-2" id="report-name"for="writerNickname">제보자 닉네임</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="writerNickname"
-									value="${login.memnick}" readonly="readonly" name="reportWriter">
-							</div>
+			<div class="col-md-9">
+				<div class="contact-form">
+					<!-- 제보자 닉네임 -->
+					<div class="form-group-report-form">
+						<label class="control-label col-sm-2" id="report-name"for="writerNickname">제보자 닉네임</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="writerNickname"
+								   value="${login.memnick}" readonly="readonly" name="reportWriter">
 						</div>
-						
-						<!-- 작성일 -->
-						<div class="form-group-reportname-form">
-							<label class="control-label col-sm-2" id="report-date"for="writerNickname">신고 작성일</label>
-							<div class="repot-date-form">
-								<c:set var="now" value="<%=new java.util.Date()%>" />
-								<input type="date" class="form-control" id="date"
-									value=<fmt:formatDate pattern = "yyyy-MM-dd" 
-	         						value = "${now}" />
-									readonly="readonly" >
-							</div>
+					</div>
+					
+					<!-- 작성일 -->
+					<div class="form-group-report-form">
+						<label class="control-label col-sm-2" id="report-date" for="date">신고 작성일</label>
+						<div class="repot-date-form">
+							<c:set var="now" value="<%=new java.util.Date()%>" />
+							<input type="date" class="form-control" id="date"
+								value=<fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${now}" /> readonly="readonly" >
 						</div>
-						
-						<!-- 카테고리 -->
-						<div class="form-group-category-form">
-							<span class="report-category"><strong>카테고리</strong></span>
-							<div class="report-category-wrap">
-								<select class="col-sm-10" id="categorySelect" name="categoryNo">
-									<option selected disabled>신고 유형</option>
-									<option value="1">지나친 광고성 게시물</option>
-									<option value="2">욕설/비방이 심함</option>
-									<option value="3">기타</option>
-								</select>
-							</div>
+					</div>
+					
+					<!-- 카테고리 -->
+					<div class="form-group-category-form">
+						<span class="report-category"><strong>카테고리</strong></span>
+						<div class="report-category-wrap">
+							<select class="col-sm-10" id="categoryno" name="categoryno">
+								<option selected disabled>신고 유형</option>
+								<option value="1">지나친 광고성 게시물</option>
+								<option value="2">욕설/비방이 심함</option>
+								<option value="3">기타</option>
+							</select>
 						</div>
-						
-						<!-- 신고내용 -->
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="content" id="report-text">신고 내용</label>
-							<div class="col-sm-10">
-							   	<textarea rows="3" cols="75" id="content" name="reportContent" placeholder="신고 내용을 입력해주세요." 
-							   			  style="resize: none;" required="required"></textarea>
-							</div>	
+					</div>
+					
+					<!-- 신고내용 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="content" id="report-text">신고 내용</label>
+						<div class="col-sm-10">
+						   	<textarea rows="3" cols="75" id="content" name="reportContent" placeholder="신고 내용을 입력해주세요." 
+						   			  style="resize: none;" required="required"></textarea>
+						</div>	
+					</div>
+					
+					<!-- 사진 업로드 -->
+					<div class="report-file"><strong>첨부 파일</strong></div>
+					<div class="upload-img-form">
+						<div class="img_wrap center-block">
+							<img id="img" src="">
+			  			</div>
+						<div class="upload-img-content">
+							<input type="file" class="custom-file-input" id="input_img" name="upfile" accept="image/*">
+							<label class="custom-file-label" for="input_img" ></label>
 						</div>
-						
-						<!-- 사진 업로드 -->
-						<div class="report-file"><strong>첨부 파일</strong></div>
-						<div class="upload-img-form">
-							<div class="img_wrap center-block">
-								<img id="img" src="">
-				  			</div>
-							<div class="upload-img-content">
-								<input type="file" class="custom-file-input" id="input_img" name="upfile" accept="image/*">
-								<label class="custom-file-label" for="input_img" ></label>
-							</div>
-						</div>
-	
-						<div class="report-submit-form">
-							<button type="submit" class="btn btn-light" id="button-boardupload">보내기</button>
-						</div>
+					</div>
+
+					<div class="report-submit-form">
+						<button type="submit" class="btn btn-light" id="button-boardupload">보내기</button>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</form:form>
 
 	<!-- start footer Area -->

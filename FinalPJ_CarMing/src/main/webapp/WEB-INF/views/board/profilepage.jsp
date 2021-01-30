@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 캠핑토크 프로필 페이지</title>
 <style type="text/css">
 	.card-container{width: 100%;}
 
