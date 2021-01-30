@@ -42,13 +42,13 @@
 	.chkprivate-box{float: left;}
 	.chkcarplace-box{float: left; margin-left: 5px;}
 	.checkbox input{display: none;}
-	.checkbox span{display: inline-block;vertical-align: middle;cursor: pointer;}
-	.checkbox .icon{position: relative;width: 20px; height: 20px;border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
-	.checkbox .icon::after{content: ''; position: absolute;top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
+	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
+	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
+	.checkbox .icon::after{content: ''; position: absolute; top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
 						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
 	.checkbox .text{margin-left: 5px;}
-	.checkbox input:checked ~ .icon{border-color: transparent;background: orange;}
-	.checkbox input:checked ~ .icon::after{opacity: 1;transform: rotate(45deg) scale(1);}
+	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
+	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
 	  
 	.location-open{color: gray;}
 	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;

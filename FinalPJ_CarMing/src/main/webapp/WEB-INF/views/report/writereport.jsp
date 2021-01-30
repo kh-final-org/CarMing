@@ -27,19 +27,20 @@
 <link rel="stylesheet" href="resources/css/contactus.css">
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 0; border-radius: 4px; border: 1px solid #e2e2e2;
-				font-size: 1.1em; text-align: center; color: #5f5f5f; background: #fff5e9; opacity:0.8; cursor: pointer;}
-	.banner-btn:hover{background: #ffe6be;}
+	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+				font-size: 1.1em; text-align: center; color:#fff; background: transparent; opacity:0.9; cursor: pointer;}
+	.banner-btn:hover{background: #fff; color: #5f5f5f;}
 	
 	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 15px silver;}
-	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;border: 1px solid #e2e2e2; background: #fff5e9;}
 	
 	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
 	#pingu-img{width: 100px; height: 100%; margin-left: 25%; margin-top: -24%;z-index: 1;}
 	#pingu-siren{margin-left: 32.5%; z-index: 10;}
-	.contact-info h3{margin-bottom: 5%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
-	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; opacity: 0.8;}
+	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
+	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
+	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
 	
+	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem; border: 1px solid #e2e2e2; background: #fff5e9; opacity: }
 	.contact-form{width: 750px; height: 100%;}
 	#report-name{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em;}
 	#writerNickname{float: right; width: 450px; margin-right: 10px;}
@@ -50,6 +51,7 @@
 	.report-category{display: inline-block; float: left; margin-left: 15px; width: 10%; font-size: 1.2em; margin-left: 15px;}
 	.report-category-wrap{float: left; width: 72%; margin-left: 60px;}
 	#categoryno{ width:100px;}
+	.current{font-size: 1.1em;}
 	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
     textarea::placeholder{color: silver; font-size: 1.1em;}
 	#report-text{font-size: 1.2em; margin-bottom: 10px;}	
@@ -57,7 +59,7 @@
 	.uploadimg {width: 350px; height: 350px; border-radius: 10px;}
 	.img_wrap {width: 350px; height: 350px; margin-top: 20px; }
 	.img_wrap img {max-width: 100%; max-height: 95%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto;}	
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 135px;}	
 	.upload-img-form{position: relative; width: 590px; border: 1px solid #e2e2e2; margin-left: 15px; 
 					 border-radius: 5px; margin-bottom: 60px; background: #fff;}
    	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
@@ -160,6 +162,7 @@
 					<img id="pingu-img" src="resources/img/logo_chatbot.png" alt="image" /><br>
 					<h3>신고하기</h3>
 					<h5>핑구에게 알려주세요</h5>
+					<h6>여러분의 제보로 더 깨끗한<br>서비스를 만들어가도록<br>노력하겠습니다</h6>
 				</div>
 			</div>
 
