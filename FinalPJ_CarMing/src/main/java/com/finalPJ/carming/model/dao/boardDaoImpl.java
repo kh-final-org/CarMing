@@ -71,7 +71,9 @@ public class boardDaoImpl implements boardDao{
 		try {
 			res = sqlSession.delete(NAMESPACE+"delete",brdno);
 		} catch (Exception e) {
+
 			System.out.println("[error : board_delete]");
+
 			e.printStackTrace();
 		}
 		return res;
@@ -96,7 +98,9 @@ public class boardDaoImpl implements boardDao{
 		try {
 			list = sqlSession.selectList(NAMESPACE+"userBoardList", memno);
 		} catch (Exception e) {
+
 			System.out.println("[error : board_userBoardList]");
+
 			e.printStackTrace();
 		}
 		return list;

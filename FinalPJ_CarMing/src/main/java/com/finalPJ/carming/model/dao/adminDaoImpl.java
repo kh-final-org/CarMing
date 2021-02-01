@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.finalPJ.carming.model.dto.AdmMemberDto;
 import com.finalPJ.carming.model.dto.AdmRentDto;
-
+import com.finalPJ.carming.model.dto.InquiryDto;
 
 
 @Repository

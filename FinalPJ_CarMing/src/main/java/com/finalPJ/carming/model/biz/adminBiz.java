@@ -6,6 +6,7 @@ import java.util.List;
 import com.finalPJ.carming.model.dto.AdmMemberDto;
 import com.finalPJ.carming.model.dto.AdmRentDto;
 
+
 public interface adminBiz {
 	public int insertList(ArrayList<AdmMemberDto> list);
 	public AdmMemberDto selectOne(int memNo);
@@ -13,6 +14,7 @@ public interface adminBiz {
 	public List<AdmRentDto> RentList();
 	public AdmRentDto selectOneRent(int cartNo);
 	public int returnRent(int cartNo);
+
 	
 	/* member select */
 	public List<AdmMemberDto> getMemList();
@@ -22,4 +24,5 @@ public interface adminBiz {
 	/* member count */
 	public int getMemCount();
 	public int getMemCount(String search);
+
 }

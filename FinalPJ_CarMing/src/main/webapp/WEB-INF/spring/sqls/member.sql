@@ -69,5 +69,9 @@ VALUES(MEMSEQ.NEXTVAL, '펭귄', 'user1', 'pass1', '홍길동', '06234', '서울
 
 UPDATE MEMBER SET MEMCODE = 1 WHERE MEMNO = 3;
 
+update MEMBER 
+set MEMPW = '$2a$10$mM6DnQoxoBFj0yKndlZH1.yDdutzxnASUHkW/YvaWOGKPdgpMyG/6', MEMCODE = 1 
+WHERE MEMNO = 2;
 
+update MEMBER SET MEMFILE = 'resources/img/logo.png' where MEMID = 'dbqud1gh@naver.com'
 

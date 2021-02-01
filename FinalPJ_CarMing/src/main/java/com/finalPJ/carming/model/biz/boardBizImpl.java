@@ -32,8 +32,9 @@ public class boardBizImpl implements boardBiz{
 		dao.viewCount(brdno);
 		return dao.selectOne(brdno);
 	}
-	
+
 	//03. 게시글(사진) 작성
+
 	@Override
 	public int insert(boardDto dto) {
 		return dao.insert(dto);

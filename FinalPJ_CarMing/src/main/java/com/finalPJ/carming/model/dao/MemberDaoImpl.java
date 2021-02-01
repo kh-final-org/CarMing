@@ -41,5 +41,47 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return res;
 	}
+
+	@Override
+	public MemberDto selectOne(String id) {
+		MemberDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectOne", id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("[error] : Member/SelectOne");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int update(MemberDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"update", dto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("[error] : Member/update");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int deleteUser(String memid) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"deleteUser", memid);
+		} catch (Exception e) {
+			System.out.println("[error] : Member/deleteUser");
+			e.printStackTrace();
+		}
+		return res;
+	}
 	
 }
