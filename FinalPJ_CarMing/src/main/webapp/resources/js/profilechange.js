@@ -1,124 +1,65 @@
 //가입항목 확인용 변수
 var regist_chk = true;
-
 $(document).ready(function(){
 	
 	
-	var memid_input = $('input[name=memid]');
-	var mempw_input = $('input[name=mempw]');
-	var mempwchk_input = $('input[name=mempwchk');
-	var memname_input = $('input[name=memname]');
-	var memnick_input = $('input[name=memnick]');
 	var membirth_input = $('input[name=membirth]');
-	
-	
 	
 	//생일입력창 max 년월일 입력
 	membirth_input.prop('max', function(){
         return new Date().toJSON().split('T')[0];
     });
 	
-	//생일입력창 현재 년월일 읿력
-	membirth_input.prop('value', function(){
-        return new Date().toJSON().split('T')[0];
-    });
-	
-	// 정규식
-	var email_regul = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-	var pass_regul = /^(?=.*[0-9])(?=.*[a-zA-Z]).{6,13}$/;
-	var name_regul = /^[가-힝a-zA-Z]{2,}$/;
-	
-	//실시간 이메일 형식 검사
-	memid_input.keyup(function(){
-		if(check(email_regul, memid_input)){
-			$('#memid_error').hide();
-		}else{
-			$('#memid_error').show();
-		}
-	});
-	
-	//실시간 비밀번호 형식 검사
-	mempw_input.keyup(function(){
-		if(check(pass_regul, mempw_input)){
-			$('#mempw_error').hide();
-		}else{
-			$('#mempw_error').show();
-			$('#mempwchk_error').show();
-		}
-	});
-	
-	//실시간 비밀번호 확인 검사
-	mempwchk_input.keyup(function(){
-		if(mempw_input.val() != mempwchk_input.val()){
-			$('#mempwchk_error').show();
-			regist_chk = false;
-		}else{
-			$('#mempwchk_error').hide();
-			regist_chk = true;
-		}
-	});
-	
-	//실시간 이름 형식 검사
-	memname_input.keyup(function(){
-		if(check(name_regul, memname_input)){
-			$('#memname_error').hide();
-		} else {
-			$('#memname_error').show();
-		}
-		
-	});
-	
-	//네이버에서 가져온 정보라면 기본 체크를 true로 지정
-	if(memid_input.prop("readonly")){
-		regist_chk = true;
-	}
 
+	
 	
 });
 
 //가입항목에 빈칸인 칸이 있으면 경고창을 띄우고 해당 칸에 에러를 보여준뒤 false 리턴
-function regist_empty() {
+function empty_change() {
 	
-	var memid_input = $('input[name=memid]');
-	var mempw_input = $('input[name=mempw]');
-	var mempwchk_input = $('input[name=mempwchk');
-	var memname_input = $('input[name=memname]');
+
 	var memnick_input = $('input[name=memnick]');
 	var memzip_input = $('input[name=memzip]');
 	var memphone_input = $('input[name=memphone]');
 	var membirth_input = $('input[name=membirth]');
-	//로드 문제 때문에 성별 값은 미리 집어넣는걸로
 	
 	if(
-			memid_input.val().trim()=="" || 
-			mempw_input.val().trim()=="" ||
-			mempwchk_input.val().trim()=="" ||
-			memname_input.val().trim()=="" ||
 			memnick_input.val().trim()=="" ||
 			memzip_input.val().trim()=="" ||
-			memphone_input.val().trim()=="" ||
-			$('input[name=memgender]:checked').val()==null){
+			memphone_input.val().trim()==""){
 		
 		regist_chk = false;
-		alert("가입항목을 제대로 입력해주세요");
+		alert("수정사항에 빈 칸을 채워주세요.");
+	}
+	
+	if ($('input[name=memchk_c]').is(":checked")) {
+	    $('input[name=memchk]').val('Y');
+	} else {
+	    $('input[name=memchk]').val('N');
 	}
 	
 	return regist_chk;
 }; // end submit()
 
 
-//정규식과 해당 태그를 입력받아 검사
-function check(regul, content){
-    if (regul.test(content.val()) && (content.val().search(/\s/) == -1)) {
-    	regist_chk = true;
-        return true;
-    }else{
-    	regist_chk = false;
-    	return false;
-    }
+
+
+function setPhoto(input){
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+		$('#thumbnail').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+
 }
 
 
+
+
+출처: https://whitelife.tistory.com/229 [White Life Story]
 
 //다음api 주소팝업창
 function sample6_execDaumPostcode() {
@@ -167,3 +108,4 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+

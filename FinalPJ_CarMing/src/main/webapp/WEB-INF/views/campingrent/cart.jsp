@@ -1,19 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@
-	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
-%>
- 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="resources/js/cartlist.js"></script>
+<script type="text/javascript"></script>
+	
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -34,7 +28,6 @@
 	</section>
 	<!-- End Banner Area -->
 	<!--================Cart Area =================-->
-	<form action="cartlist.do" method="post">
     <section class="cart_area">
         <div class="container">
             <div class="cart_inner">
@@ -42,7 +35,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                            	<th scope="col"><input type="checkbox" name="allCheck" id="allCheck"></th>
+                            	<th scope="col"><input type="checkbox"></th>
                             	<th scope="col" style="width:100px;">전체 선택</th>
                                 <th scope="col">상품</th>
                                 <th scope="col">렌트 대여일</th>
@@ -52,38 +45,31 @@
                                 <th scope="col">총합</th>
                             </tr>
                         </thead>
-                        <c:set var="sum" value="0"></c:set>
-                        <c:set var="allsum" value="0"></c:set>
-                        <c:forEach var="cartListDto" items="${cartlist}">
                         <tbody>
                             <tr>
-                            	<td><input type="checkbox" name="chBox" class="chBox" data-cartNo="${cartListDto.cartNo }"></td>
+                            	<td><input type="checkbox"></td>
                                 <td colspan="2">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img style="width:152px; height:102px;" src="storage/${cartListDto.pFile }" alt="">
+                                            <img style="width:152px; height:102px;" src="resources/img/tent.jpg" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <p>${cartListDto.pName } </p>
+                                            <p>Minimalistic shop for multipurpose use 	 	 	 	 	 	 	 </p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                	<!-- <input type="date" id="sdatePicker"> -->
-                                	<fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>
-                                	<input type="hidden" id="startDate" value="${cartListDto.startDate}">
+                                	<input type="date">
                                 </td>
                                 <td>
-                              		<!-- <input type="date" id="edatePicker"> -->
-                              		<fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>
-                                	<input type="hidden" id="endDate" value="${cartListDto.endDate}">
+                                	<input type="date">
                                 </td>
                                 <td>
-                                    <h5 id="pPrice">${cartListDto.pPrice }</h5>
+                                    <h5>$360.00</h5>
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="text" name="cAmount" id="sst" maxlength="12" value="${cartListDto.cAmount }" title="Quantity:"
+                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
                                             class="input-text qty">
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                             class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
@@ -92,16 +78,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                   <c:set var="sum" value="${(cartListDto.pPrice*cartListDto.cAmount) }"></c:set>
-                                   <c:set var="allsum" value="${sum+(cartListDto.pPrice*cartListDto.cAmount)}"/>
-                                   <h5><fmt:formatNumber value="${sum }" pattern="###,###,###"/></h5>
+                                    <h5>$720.00</h5>
                                 </td>
                             </tr>
-                         	</c:forEach>
+                         
                             <tr class="bottom_button">
                                 <td colspan="3">
-	                                <a class="gray_btn" id="selectDelete_btn">선택 삭제</a>
-	                                <!-- <input type="button" id="selectDelete_btn" value="선택 삭제"> -->
+                                    <a class="gray_btn" href="onclick=allDelete();">전체 삭제</a>
+                                    <a class="gray_btn" href="onclick=oneDelete();">선택 삭제</a>
                                 </td>
                                 <td>
                                 </td>
@@ -126,10 +110,10 @@
 
                                 </td>
                                 <td>
-                                    <h5>총 금액</h5>
+                                    <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <span><fmt:formatNumber value="${allsum}" pattern="###,###,###"/>원</span>
+                                    <h5>$2160.00</h5>
                                 </td>
                             </tr>
                             <tr class="out_button_area">
@@ -144,7 +128,7 @@
 								<td></td>
                                 <td>                         	
                             		<div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="productlist.do">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                        <a class="gray_btn" href="#">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                         <a class="primary-btn" href="pay.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                     </div>      
                                 </td>
@@ -156,7 +140,6 @@
             </div>
         </div>
     </section>
-    </form>
     <!--================End Cart Area =================-->
 	<%@ include file="../common/footer.jsp" %>
 </body>

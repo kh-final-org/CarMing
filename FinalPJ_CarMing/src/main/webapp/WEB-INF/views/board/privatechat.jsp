@@ -40,20 +40,20 @@
 <!-- End Header Area -->
 
 <!-- Start Banner Area -->
-   <section class="banner-area organic-breadcrumb">
-      <div class="container">
-         <div
-            class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-            <div class="col-first">
-               <h1>Camping Talk</h1>
-               <nav class="d-flex align-items-center">
-                  <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                  <a href="boardmainform.do">Talk</a>
-               </nav>
-            </div>
+<section class="banner-area organic-breadcrumb">
+   <div class="container">
+      <div
+         class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+         <div class="col-first">
+            <h1>The stars in the night sky</h1>
+            <nav class="d-flex align-items-center">
+               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+               <a href="boardmainform.do">Talk</a>
+            </nav>
          </div>
       </div>
-   </section>
+   </div>
+</section>
 <!-- End Banner Area -->
 
 <!-- Start Container Area -->
@@ -101,7 +101,9 @@
 
 </div>
 <!-- End Container Area -->
-
+<!-- Start Footer Area -->
+<%@ include file="../common/footer.jsp" %>
+<!-- End Footer Area -->
 
 </body>
 </html>

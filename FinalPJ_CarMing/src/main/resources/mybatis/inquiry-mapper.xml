@@ -46,7 +46,7 @@
 	
 	<insert id="insert" parameterType="InquiryDto" >
 		INSERT INTO INQUIRYLIST
-		VALUES(SEQINQUIRY.NEXTVAL,(SELECT MEMNO FROM MEMBER WHERE MEMNO=3), #{filename},#{inquiryContent}, SYSDATE,#{categoryNo})
+		VALUES(SEQINQUIRY.NEXTVAL,(SELECT MEMNO FROM MEMBER WHERE MEMNO=#{memNo}), #{filename},#{inquiryContent}, SYSDATE,#{categoryNo})
 	</insert>
 	 
 	

@@ -1,11 +1,9 @@
-$(function(){
-		$('#loginChk').hide();
-	});
-	
-	function login(){
+function ajaxlogin(){
 		var memid= $("#memid").val().trim();
 		var mempw= $("#mempw").val().trim();
 		console.log(memid+"/"+mempw);
+		
+
 		
 		var loginVal = {
 				"memid":memid,
@@ -22,14 +20,15 @@ $(function(){
 				dataType : "json",
 				success:function(msg){
 					if(msg.check==true){
-						location.href="res.do";
-						history.back();
+						alert("로그인 성공!");		
+						location.href="home.do";
 					}else{
 						alert("아이디 혹은 비밀번호가 틀렸습니다.");
 					}
 				},
 				error:function(){
-					alert("통신 실패");
+					console.error("로그인 아약스 통신관련 오류 or 비밀번호 오류");
+					alert("아이디 혹은 비밀번호가 틀렸습니다.");
 				}
 
 		});

@@ -17,11 +17,11 @@ public class bcommentDaoImpl implements bcommentDao {
 	
 	//01. 댓글 목록
 	@Override
-	public List<bcommentDto> selectList() {
+	public List<bcommentDto> selectList(int brdno) {
 		List<bcommentDto> list = new ArrayList<bcommentDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList");
+			list = sqlSession.selectList(NAMESPACE+"selectList",brdno);
 		} catch (Exception e) {
 			System.out.println("[error : comment_selectList]");
 			e.printStackTrace();

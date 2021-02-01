@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,28 +50,29 @@ h4{
 	
 	
 	<section id="content">
-	<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="col-lg-12">
-            <h4>이용약관</h4>
-            <div class="panel-body" style="border: 1px solid #ccc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <br>
-        <h4>개인정보</h4>
-        <div class="panel-body" style="border: 1px solid #ccc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <br/>	
-            <div class="form-group">
-                <label class="checkbox-inline">
-                    <input type="checkbox" name="agree" value="true">동의합니다.
-                </label>
+	<form  class="form-horizontal" action="deleteuser.do" method="post" onsubmit="delete_empty();">
+         <div class="form-group">
+         <h3>정말로 카밍에서 탈퇴하시겠습니까?</h3>
+         <c:if test="${logintype eq 'normal'}">
+            <div class="col-sm-3 control-label">
+                <label for="memid">비밀번호 입력</label>
             </div>
-            <button type="button" class="btn btn-default" onclick="law_check()">다음 단계</button>
-	    </div>
-	</div>
-	</div>
+            <div class="col-sm-6">
+               <input type="password" class="form-control" name="mempw" id="mempw">
+               <c:if test="${not empty missmatch}">
+               <span id="mempwchk_error" class="chk_error">${missmatch}</span>
+               </c:if>
+            </div>
+          </c:if>
+           </div>
+           
+         <div class="form-group" >
+            <div class="col-sm-12  text-center">
+            <input type="submit" value="탈퇴" class="btn btn-success" onclick="return delete_empty()"/>
+            <input type="button" value="취소" class="btn btn-warning" onclick="location.href='home.do'"/>
+            </div>
+         </div>
+      </form>
 
 	
 	</section>
@@ -87,6 +90,6 @@ h4{
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="resources/js/gmaps.min.js"></script>
 	<script src="resources/js/main.js"></script>
-	<script src="resources/js/register.js"></script>
+	<script src="resources/js/deleteuser.js"></script>
 </body>
 </html>

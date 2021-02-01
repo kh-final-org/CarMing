@@ -43,6 +43,45 @@ function myFunction() {
 }
 </script>
 
+<!-- kakao share -->
+<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript">
+   function sendLinkCustom() {
+          Kakao.init("ec2908c95e9e6b6c236066424e7e8fa2");
+          Kakao.Link.sendCustom({
+              templateId: 44747
+          });
+      }
+</script>
+<script>   
+   try {
+         function sendLinkDefault(recipepURL , recipeFile) {
+         Kakao.init('ec2908c95e9e6b6c236066424e7e8fa2')
+         Kakao.Link.sendDefault({
+                objectType: 'feed',
+                content: {
+                  title: 'Camping Talk',
+                  description: '#추천 레시피',
+                  imageUrl: recipeFile,
+                  link: {
+                       mobileWebUrl: 'https://www.10000recipe.com' + recipepURL,
+                       webUrl: 'https://www.10000recipe.com' + recipepURL,
+                  },
+                },
+                buttons: [{
+                    title: '게시글 보러가기',
+                    link: {
+                      mobileWebUrl: 'https://www.10000recipe.com' + recipepURL,
+                      webUrl: 'https://www.10000recipe.com' + recipepURL,
+                    },
+               }],
+            })
+         }; window.kakaoDemoCallback && window.kakaoDemoCallback() }
+   catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
+
+   
+</script>
+
 
 </head>
 
@@ -137,6 +176,7 @@ function myFunction() {
 												href="https://www.10000recipe.com${list.recipeWriterURL }">${list.recipeWriter }<i
 													class="lnr lnr-user"></i></a></li>
 											<li><a href="#">${list.views }<i class="lnr lnr-eye"></i></a></li>
+											<li>카카오 공유하기 &nbsp;<a id="kakao-link-btn" onClick="sendLinkDefault('${list.recipeURL}','${list.recipeFile}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png" style="height:25px; width: 25px"></a><li>
 										</ul>
 									</div>
 								</div>
