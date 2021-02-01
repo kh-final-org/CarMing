@@ -41,26 +41,31 @@
 
 </head>
 <body>
+	<%@include file ="../common/header.jsp" %>
 
-<main role="main" style="padding: 30px 570px; position: fixed; ">
-<section id="content">
-	<div class="main">
-		<div class="loginform-logo" align="center">
-			<a href="home.do"><img class="login-logo" src="./resources/img/logo.png"></a>
+		<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb" style="height: 310px;">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" style="padding: 105px 0px;">
+				<div class="col-first">
+					<h1>The stars in the night sky</h1>
+				</div>
+			</div>
 		</div>
-		<form class="form1">
-			<input class="input-user-idpw" type="text" align="center" placeholder="이메일" id="memid">
-			<input class="input-user-idpw" type="password" align="center" placeholder="비밀번호" id="mempw">
-			<input type="button" value="로그인" class="login-btn" align="center" onclick="login();">
-			<div class="signup" align="center"><a href="registerform.do" class="signup-btn">회원가입</a></div>
-		</form>        
-   	</div>
-</section>
-
-
-
-
-
-</main>
+	</section>
+	<!-- End Banner Area -->
+	<section id="content">
+	 	<div class="main">
+	    	<p class="sign" align="center">로그인</p>
+	    <form class="form1">
+	      <input class="un " type="text" align="center" placeholder="e-mail" id="memid">
+	      <input class="pass" type="password" align="center" placeholder="Password" id="mempw">
+	      <input type="button" value="로그인" class="submit" align="center" onclick="login();">
+	      <p class="forgot" align="center"><a href="registerform.do">회원가입</a></p>
+	    </form>        
+	           
+    	</div>
+	</section>
+	<%@include file ="../common/footer.jsp" %>
 </body>
 </html>

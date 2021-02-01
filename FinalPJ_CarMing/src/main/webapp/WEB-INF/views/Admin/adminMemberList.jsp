@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>회원목록</title>
+<title>carMing</title>
 <!-- Mobile Specific Meta -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,13 +22,16 @@
 <!-- meta character set -->
 <meta charset="UTF-8">
 
-
-<link rel="stylesheet" href="resources/css/contactus.css">
-<link rel="stylesheet" href="resources/css/adminList.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
- -->
+<link rel="stylesheet" href="resources/css/adminList.css">
 
+<style type="text/css">
+#memlist_tb:hover tbody tr:hover td {
+    background: #fff5e9;
+    color: black;
+}
+#paging-container{margin: 50px 0px 20px 0px;}
+</style>
 
 <script>
 function myFunction() {
@@ -47,18 +52,23 @@ function myFunction() {
         }
 	}
 }
+
+function formAction() {
+	var form = document.getElementById('searchForm');
+	form.action;
+	//document.getElementsByName('search')[0].value = "";
+}
 </script>
 </head>
 <body>
 	<!-- Start Header Area -->
 	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
-	<br>
-	<!-- Start Banner Area -->
+	
+	<!-- Start Banner Area 
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
-			<div
-				class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
 					<br>
 					<h1>회원관리</h1>
@@ -78,9 +88,24 @@ function myFunction() {
 			</div>
 		</div>
 	</section>
+	End Banner Area -->
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>ADMIN</h1>
+					<nav class="d-flex align-items-center">
+						<a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="tipAndRecipeMain.do">회원관리</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
 	<!-- End Banner Area -->
 
-	<div class="blog_right_sidebar"
+	<!-- <div class="blog_right_sidebar"
 		style="width: 30%; float: right; background-color: white; border: 0px;">
 		<aside class="single_sidebar_widget search_widget">
 			<div class="input-group">
@@ -94,11 +119,11 @@ function myFunction() {
 				</span>
 			</div>
 		</aside>
-	</div>
+	</div> -->
 
-	<div class="container-xl">
+	<div class="container">
 		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<table id="memlist_tb" class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th>NO.</th>
@@ -117,12 +142,17 @@ function myFunction() {
 					<tr>
 						<td class="memNo">${list.memNo}</td>
 						<td><a href="memdetail.do?memNo=${list.memNo }"><img
-								src="resources/img/tipandrecipe/honey.jpg" class="avatar"
+								src="resources/img/profile.png" class="avatar"
 								alt="Avatar"></a></td>
 						<td><a href="memdetail.do?memNo=${list.memNo }">${list.memName}</a></td>
 						<td>${list.memNick}</td>
-						<td>${list.memBirth}</td>
-						<td>${list.memAddr}</td>
+						<!-- date format -->
+						<fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value = "${list.memBirth }" />
+						<fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd" value="${dateFmt }" /> 
+						<td>
+							<c:out value="${dateTempParse }" />
+						</td>
+						<td>${list.memId}</td>
 						<td>${list.memPhone}</td>
 						<td><c:set var="gen" value="${list.memGender }" />
 
@@ -138,32 +168,67 @@ function myFunction() {
 				</tbody>
 				</c:forEach>
 			</table>
-			<div class="clearfix">
-				<div class="hint-text">
-					Showing <b>5</b> out of <b>25</b> entries
-				</div>
-				<nav class="blog-pagination justify-content-center d-flex">
-					<ul class="pagination">
-						<li class="page-item"><a href="#" class="page-link"
-							aria-label="Previous"> <span aria-hidden="true"> <span
-									class="lnr lnr-chevron-left"></span>
-							</span>
-						</a></li>
-						<li class="page-item"><a href="#" class="page-link">01</a></li>
-						<li class="page-item active"><a href="#" class="page-link">02</a></li>
-						<li class="page-item"><a href="#" class="page-link">03</a></li>
-						<li class="page-item"><a href="#" class="page-link">04</a></li>
-						<li class="page-item"><a href="#" class="page-link">09</a></li>
-						<li class="page-item"><a href="#" class="page-link"
-							aria-label="Next"> <span aria-hidden="true"> <span
-									class="lnr lnr-chevron-right"></span>
-							</span>
-						</a></li>
+			
+			<!-- ==================================================================================================
+				================================================ paging ================================================ -->
+			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
+			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
+			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.')}"></c:set>
+			<!-- 현재 페이지 -->
+			<div class="hint-text">
+					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
+			</div>
+			<!-- paging 버튼  -->
+			<div class="container ml-auto" id="paging-container" align="center">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center" style="border-left: 0px;">
+						<!-- 이전 버튼 -->
+						<c:if test="${startNum > 1 }">
+							<li class="page-item">
+								<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
+					 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+						    	</a>
+						   	</li>
+						</c:if>		
+					
+						<c:if test="${startNum <= 1 }">
+							<li class="page-item">
+								<a class="page-link text-warning" aria-label="Previous">
+					 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+					    		</a>
+						   	</li>
+						</c:if>
+					
+						<c:forEach var="i" begin="0" end="4">
+							<c:if test="${(startNum + i ) <= lastNum }">
+							<!-- 현재 페이지 style 변경 -->
+							<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
+							</c:if>
+						</c:forEach>
+					  			
+					  	<!-- 다음 버튼 -->
+					  	<c:if test="${startNum + 4 < lastNum }">
+						    <li class="page-item">
+						    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
+						    		<span aria-hidden="true">&raquo;</span>
+						      	</a>
+						   	</li>
+					  	</c:if>
+					  	
+					  	<c:if test="${startNum + 4 >= lastNum }">
+						    <li class="page-item">
+						    	<a class="page-link text-warning" aria-label="Next">
+						    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+						      	</a>
+						   	</li>
+					  	</c:if>	
 					</ul>
 				</nav>
 			</div>
+			<!-- ==================================================================================================
+				================================================ paging ================================================ -->
+			</div>
 		</div>
-	</div>
 
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>

@@ -16,7 +16,6 @@ public class AdmMemberDto {
 	
 	public AdmMemberDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public AdmMemberDto(int memNo, String memNick, String memId, String memPw, String memName, String memAddr,
