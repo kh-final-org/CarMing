@@ -1,5 +1,7 @@
 package com.finalPJ.carming.model.dto;
 
+import java.util.Date;
+
 public class AdmMemberDto {
 	private int memNo;
 	private String memNick;
@@ -8,7 +10,7 @@ public class AdmMemberDto {
 	private String memName;
 	private String memAddr;
 	private String memPhone;
-	private String memBirth;
+	private Date memBirth;
 	private int memGender;
 	private char memChk;
 	private int memCode;
@@ -19,7 +21,7 @@ public class AdmMemberDto {
 	}
 
 	public AdmMemberDto(int memNo, String memNick, String memId, String memPw, String memName, String memAddr,
-			String memPhone, String memBirth, int memGender, char memChk, int memCode, String memFile) {
+			String memPhone, Date memBirth, int memGender, char memChk, int memCode, String memFile) {
 		super();
 		this.memNo = memNo;
 		this.memNick = memNick;
@@ -91,11 +93,11 @@ public class AdmMemberDto {
 		this.memPhone = memPhone;
 	}
 
-	public String getMemBirth() {
+	public Date getMemBirth() {
 		return memBirth;
 	}
 
-	public void setMemBirth(String memBirth) {
+	public void setMemBirth(Date memBirth) {
 		this.memBirth = memBirth;
 	}
 
@@ -140,5 +142,4 @@ public class AdmMemberDto {
 	}
 	
 	
-
 }

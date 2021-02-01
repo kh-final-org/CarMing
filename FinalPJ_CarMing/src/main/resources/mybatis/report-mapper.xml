@@ -21,8 +21,24 @@
  		<result property="targetTypeName" column="TARGETNAME"/>
 </resultMap>
 
+<resultMap type="ReportDto" id="reportMapCom">
+		<result property="reportNo" column="REPORTNO"/>
+ 		<result property="reportWriter" column="REPORTWRITER"/>
+ 		<result property="memNo" column="MEMNO"/>
+ 		<result property="reportFileName" column="REPORTFILENAME"/>
+ 		<result property="reportContent" column="REPORTCONTENT"/>
+ 		<result property="reportDate" column="REPORTDATE"/>
+ 		<result property="categoryNo" column="CATEGORYNO"/>
+ 		<result property="categoryName" column="CATEGORYNAME"/>
+ 		<result property="targetNo" column="BRDNO"/>
+ 		<result property="targetWriter" column="COMWRITER"/>
+ 		<result property="targetTypeNo" column="TARGETTYPE"/>
+ 		<result property="targetTypeName" column="TARGETNAME"/>
+</resultMap>
 
-	<select id="select" resultType= "reportDto">
+
+
+	<select id="select" resultType="ReportDto">
 	SELECT
 	REPORTLIST.*,     
 	REPORTCATEGORY.CATEGORYNAME
@@ -45,18 +61,42 @@
 	JOIN REPORTCATEGORY
 	ON REPORTLIST.CATEGORYNO = REPORTCATEGORY.CATEGORYNO
 	JOIN TARGETCATEGORY
-	ON REPORTLIST.TARGETTYPE = TARGETCATEGORY.TARGETNO
+	ON REPORTLIST.TARGETTYPENO = TARGETCATEGORY.TARGETNO
 	JOIN BOARD
 	ON REPORTLIST.TARGETNO = BOARD.BRDNO
 	WHERE REPORTNO = #{reportNo}
 	
 	</select>
 	
+	<select id="selectOneCom" parameterType="int" resultMap ="reportMapCom">
+	SELECT
+	REPORTLIST.*,
+	REPORTCATEGORY.CATEGORYNAME,
+	TARGETCATEGORY.TARGETNAME,
+	BCOMMENT.COMWRITER,
+	BCOMMENT.BRDNO
+	FROM REPORTLIST
+	JOIN MEMBER
+	ON REPORTLIST.MEMNO = MEMBER.MEMNO
+	JOIN REPORTCATEGORY
+	ON REPORTLIST.CATEGORYNO = REPORTCATEGORY.CATEGORYNO
+	JOIN TARGETCATEGORY
+	ON REPORTLIST.TARGETTYPENO = TARGETCATEGORY.TARGETNO
+	JOIN BCOMMENT
+	ON REPORTLIST.TARGETNO = BCOMMENT.COMNO 
+	WHERE REPORTNO = #{reportNo}	
+	</select>
+	
 	<insert id="insert" parameterType="ReportDto" >
 		INSERT INTO REPORTLIST
-		VALUES(SEQREPORT.NEXTVAL,(SELECT MEMNICK FROM MEMBER WHERE MEMNO=3),(SELECT MEMNO FROM MEMBER WHERE MEMNO=3), #{reportFileName},#{reportContent},DEFAULT,#{categoryNo},#{targetNo},#{targetTypeNo})
+		VALUES(SEQREPORT.NEXTVAL,(SELECT MEMNICK FROM MEMBER WHERE MEMNO=#{memNo}),(SELECT MEMNO FROM MEMBER WHERE MEMNO=#{memNo}), #{reportFileName},#{reportContent},DEFAULT,#{categoryNo},#{targetNo},#{targetTypeNo})
 	</insert>
 	 
+	<delete id="delete" parameterType="int">
+		DELETE FROM REPORTLIST
+		WHERE REPORTNO = #{reportNo}
+	</delete>
+	
 	
 	<insert id="insertList" parameterType="java.util.List">
 		

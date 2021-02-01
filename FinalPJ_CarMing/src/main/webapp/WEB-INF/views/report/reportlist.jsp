@@ -115,10 +115,10 @@ function myFunction() {
 								alt="List user"><%-- ${list.reportFileName } --%>
 							<div class="gaadiex-list-item-text">
 								<h3 style="color: orange">
-									<a href="#">제보자 닉네임:${list.reportWriter}</a>
+									<a href="profileform.do?memno=${list.memNo }">제보자 닉네임:${list.reportWriter}</a>
 								</h3>
 								
-								<h4><a href="reportdetail.do?reportNo=${list.reportNo }" id="content">
+								<h4><a href="reportdetail.do?reportNo=${list.reportNo}&targetTypeNo=${list.targetTypeNo}" id="content">
 								
 								<c:set var="TextValue" value="${list.reportContent }"/> 
 								내용: ${fn:substring(TextValue,0,10)}</a></h4>

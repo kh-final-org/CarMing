@@ -28,7 +28,6 @@
 
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script> -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
 	integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
@@ -117,7 +116,7 @@
 
 	<!------ Include the above in your HEAD tag ---------->
 	
-	<form:form  action="writereport.do?targetNo=${target.targetNo}&targetTypeNo=${target.targetTypeNo }" method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
+	<form:form  action="writereport.do?targetNo=${target.targetNo}&memNo=${login.memno}" method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
 	<div class="container contact">
 		<div class="row">
 				<div class="col-md-3">
@@ -141,12 +140,25 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="category"> 카테고리:
 							</label> <br> <select class="col-sm-10" id="category" name="categoryNo">
-								<option selected>Open this select menu</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<option selected="selected">카테고리를 선택해 주세요</option> 
+								<option value="1">물품정보</option>
+								<option value="2">거래금지품목</option>
+								<option value="3">언어폭력</option>
+								<option value="4">기타사유</option>
 							</select> <br>
 						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="category"> 카테고리:
+							</label> <br> <select class="col-sm-10" id="category" name="targetTypeNo">
+								<c:choose>
+								<c:when test="${target.targetTypeNo == 1}"><option value="1">게시글</option></c:when>
+								<c:when test="${target.targetTypeNo == 2}"><option value="2">댓글</option></c:when>
+								<c:when  test="${target.targetTypeNo == 3}"><option value="3">회원</option></c:when>
+								</c:choose>
+							</select> <br>
+						</div>
+						
 						<br>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="content" style="">신고
