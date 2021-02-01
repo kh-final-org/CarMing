@@ -133,7 +133,7 @@ function myFunction() {
 								alt="List user">
 							<div class="gaadiex-list-item-text">
 								<h3 style="color: orange">
-									<a href="#">회원 닉네임: ${list.memNick }</a>
+									<a href="profileform.do?memno=${list.memNo }">회원 닉네임: ${list.memNick }</a>
 								</h3>
 								
 								<h4><a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">

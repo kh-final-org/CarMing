@@ -179,6 +179,7 @@
 				<div class="board-share">
 					<a id="kakao-link-btn" onClick="sendLinkDefault('${dto.brdno}');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png"></a>
 				</div>
+				
 			</div>
 		</div><br>
 	

@@ -56,9 +56,6 @@
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
 
-		/* if (files.name == null) {
-		   resetInputFile();
-		} */
 		filesArr.forEach(function(f) {
 			if (!f.type.match("image.*")) {
 				alert("확장자는 이미지 확장자만 가능합니다.");
@@ -76,9 +73,7 @@
 		})
 	}
 
-	function resetInputFile() {
-		$("#img").empty();
-	}
+
 </script>
 </head>
 <body>

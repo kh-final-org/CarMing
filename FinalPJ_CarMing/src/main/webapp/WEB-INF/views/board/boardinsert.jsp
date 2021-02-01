@@ -16,7 +16,7 @@
    	.card-body-left{margin-right: 10px;}
    	.camera-icon{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
    	.logo-bottom-context{color: gray;}    
-	#input-file{display: none;}
+
 	.uploadfile-btn{float: left; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; border-radius: 20px; 
 					text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9; }
 	.uploadfile-icon-btn{margin-top: 110px;}
@@ -84,14 +84,14 @@
 </script>
 
 <!-- 사진 업로드(미리보기) -->
-<script type="text/javascript">
+ <script type="text/javascript">
 	var sel_file;
 	$(document).ready(function() {
 		$("uploadfile-input-btn").on("change", handleImgFileSelect);
 	});
 
 	function handleImgFileSelect(e) {
-		$("#uploadimg").empty(); 
+		$(".uploadfile-icon-btn").empty(); 
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
 
@@ -104,9 +104,9 @@
 
 			var reader = new FileReader();
 			reader.onload = function(e) {
-				$("#uploadimg").attr("src", e.target.result);
-				$("#uploadimg").attr("width", "90%");
-				$("#uploadimg").attr("height", "440px");
+				$(".uploadfile-icon-btn").attr("src", e.target.result);
+				$(".uploadfile-icon-btn").attr("width", "90%");
+				$(".uploadfile-icon-btn").attr("height", "440px");
 			}
 			reader.readAsDataURL(f);
 		})
@@ -115,7 +115,50 @@
 	function resetInputFile() {
 		$("#img").empty();
 	}
+</script> 
+
+<!--  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	
+	function YnCheck(obj) {
+		$("#my").empty();
+	    var checked = obj.checked;
+	
+	    if(checked){
+	    	var value = obj.value = "Y";
+	        var Y = document.createTextNode(value);
+		    document.getElementById("my").appendChild(Y);	
+	
+	    }else{
+	    	var value = obj.value = "N";
+	       	var N = document.createTextNode(value);
+		    document.getElementById("my").appendChild(N);	
+	    }
+	 };
 </script>
+
+<script type="text/javascript">
+	
+	
+	function YnCheck2(obj) {
+		$("#car").empty();
+	    var checked = obj.checked;
+	
+	    if(checked){
+	    	var value = obj.value = "Y";
+	        var Y = document.createTextNode(value);
+		    document.getElementById("car").appendChild(Y);	
+	
+	    }else{
+	    	var value = obj.value = "N";
+	       	var N = document.createTextNode(value);
+		    document.getElementById("car").appendChild(N);	
+	    }
+	 };
+</script>
+
 
 <!-- 카테고리 차박이 아닐 경우 '차박 체크박스' 숨기기 -->
 <script type="text/javascript">
@@ -141,23 +184,7 @@
 	}
 </script>
 
-<!--  -->
-<script type="text/javascript">
-	function YnCheck(obj) {
-	    var checked = obj.checked;
-	
-	    if(checked){
-	    	var value = obj.value = "Y";
-	        var Y = document.createTextNode(value);
-		    document.getElementById("my").appendChild(Y);	
-	
-	    }else{
-	    	var value = obj.value = "N";
-	       	var N = document.createTextNode(value);
-		    document.getElementById("my").appendChild(N);	
-	    }
-	 };
-</script>
+
 
 
 </head>
@@ -182,7 +209,7 @@
 </section>
 <!-- End Banner Area -->
 
-<form action="boardinsertres.do?brdno=${dto.brdno }&brdwriter=${brdwriter }" method="post">
+<form action="boardinsertres.do?brdwriter=${login.memnick }" method="post">
 	<div class="card-container">
 		<div class="card-head">
 			<h2 style="color: #5f5f5f;">게시글 작성하기</h2>
@@ -196,7 +223,7 @@
 	  				<img class="uploadimg" id="uploadimg">
 	  			</div>
 				<!-- 이미지 업로드 버튼 -->
-				<div class="uploadfile-btn" id="uploadfile-input-btn" onclick="onclick=document.all.file.click()">
+				<div class="uploadfile-btn" id="uploadfile-input-btn" onclick="onclick=document.all.file.click()" >
 					<div class="uploadfile-icon-btn">
 						<input type="file" id="input-file" name="file" accept="image/*">			
 						<img class="camera-icon" src="./resources/img/camera.png"><br>
@@ -212,7 +239,7 @@
 				<!-- Category -->
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
-				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon" name="bcategoryno">
 							<option value="1" selected>일반 캠핑</option>
 						    <option value="2">카라반</option>
 						    <option value="3">글램핑</option>
@@ -224,7 +251,7 @@
 				
 				<!-- Textarea -->
 				<div class="body-content">
-				   	<textarea rows="9" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required"></textarea>
+				   	<textarea rows="9" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required" name="brdcontent"></textarea>
 				</div>
 				
 				<!-- Location Upload -->
@@ -238,7 +265,7 @@
 					<div class="body-location-right">
 						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-							<a onclick="popupFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
+							<a onclick="myFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
 
 							<!-- Start Location-Popup -->
 							<div class="popup" id="location-popup">
@@ -320,18 +347,19 @@
 				<div class="body-checklist">
 					<div class="chkprivate-box">
 						<label class="checkbox">
-							<input type="checkbox" id="chkprivate" value="chkprivate">
+							<input type="checkbox" id="chkprivate" value="chkprivate" onclick="YnCheck(this)">
 							<span class="icon"></span>
 							<span class="text">나만 보기</span>
-							<span id="my"></span>
+							<span id="my" name="brdprivate">N</span>
 						</label>&emsp;&emsp;
 					</div>
 					<div class="chkcarplace-box">
 						<label class="checkbox">
-							<input type="checkbox" id="chkcarplace" value="chkcarplace">
+							<input type="checkbox" id="chkcarplace" value="chkcarplace" onclick="YnCheck2(this)">
 							<span class="icon"></span>
 							<span class="text">차박 명소 등록하기</span>
 							<span style="display: none;">4</span>
+							<span id="car">N</span>
 						</label>
 					</div>
 				</div>

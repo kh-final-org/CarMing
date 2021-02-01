@@ -130,8 +130,12 @@
 </script>
 
 <!--  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+	
+	
 	function YnCheck(obj) {
+		$("#my").empty();
 	    var checked = obj.checked;
 	
 	    if(checked){
@@ -143,6 +147,26 @@
 	    	var value = obj.value = "N";
 	       	var N = document.createTextNode(value);
 		    document.getElementById("my").appendChild(N);	
+	    }
+	 };
+</script>
+
+<script type="text/javascript">
+	
+	
+	function YnCheck2(obj) {
+		$("#car").empty();
+	    var checked = obj.checked;
+	
+	    if(checked){
+	    	var value = obj.value = "Y";
+	        var Y = document.createTextNode(value);
+		    document.getElementById("car").appendChild(Y);	
+	
+	    }else{
+	    	var value = obj.value = "N";
+	       	var N = document.createTextNode(value);
+		    document.getElementById("car").appendChild(N);	
 	    }
 	 };
 </script>
@@ -224,7 +248,7 @@
 					<div class="body-location-right">
 						<div class="location-logo-text">
 							<img class="location-logo" src="./resources/img/precision.png">&nbsp;
-							<a onclick="popupFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
+							<a onclick="myFunction()" id="location" href="#location-popup" class="location-open">위치 등록</a>
 
 							<!-- Start Location-Popup -->
 							<div class="popup" id="location-popup">
@@ -309,18 +333,19 @@
 				<div class="body-checklist">
 					<div class="chkprivate-box">
 						<label class="checkbox">
-							<input type="checkbox" id="chkprivate" value="chkprivate">
+							<input type="checkbox" id="chkprivate" value="chkprivate" onclick="YnCheck(this)">
 							<span class="icon"></span>
 							<span class="text">나만 보기</span>
-							<span id="my"></span>
+							<span id="my">N</span>
 						</label>&emsp;&emsp;
 					</div>
 					<div class="chkcarplace-box">
 						<label class="checkbox">
-							<input type="checkbox" id="chkcarplace" value="chkcarplace">
+							<input type="checkbox" id="chkcarplace" value="chkcarplace" onclick="YnCheck2(this)">
 							<span class="icon"></span>
 							<span class="text">차박 명소 등록하기</span>
 							<span style="display: none;">4</span>
+							<span id="car">N</span>
 						</label>
 					</div>
 				</div>
