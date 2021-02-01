@@ -212,8 +212,8 @@
 							</select>
 						</div>
 					</div>
-					
-		
+						
+						<!--★ 추가된 부분 ★-->
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="category"> 카테고리:
 							</label> <br> <select class="col-sm-10" id="categoryno" name="targetTypeNo">

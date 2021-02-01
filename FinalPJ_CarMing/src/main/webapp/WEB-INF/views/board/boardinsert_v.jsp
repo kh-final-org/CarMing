@@ -211,7 +211,7 @@
 				<div class="uploadfile-img">
 					<input class="upload-name" value="파일 선택" disabled="disabled" style="width: 420px;">
 					<label for="thumbnail-img">썸네일 사진</label>
-					<input type="file" id="thumbnail-img" class="upload-hidden" accept="image/*">
+					<input type="file" id="thumbnail-img" class="upload-hidden" name="brdfile" accept="image/*">
 				</div>
 				<div class="uploadfile-btn">
 					<div class="uploadfile-icon-btn">

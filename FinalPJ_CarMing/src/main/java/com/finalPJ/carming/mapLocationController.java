@@ -24,6 +24,7 @@ import com.finalPJ.carming.model.biz.mapLocationBiz;
 import com.finalPJ.carming.model.dto.boardDto;
 import com.finalPJ.carming.model.dto.mapLocationDto;
 import com.finalPJ.carming.validate.ReportFileValidator;
+import com.finalPJ.carming.validate.boardFileValidator;
 
 @Controller
 public class mapLocationController {
@@ -33,67 +34,16 @@ public class mapLocationController {
 	private mapLocationBiz mbiz;
 	
 	@Autowired
-	private ReportFileValidator fileValidator;
+	private boardFileValidator fileValidator;
 	
 	
 	//게시글쓰기(사진) insert
 	@RequestMapping(value = "/boardinsertres.do")
-	public String boardInsertRes(Model model, mapLocationDto dto, HttpServletRequest request,
+	public String boardInsertRes(Model model, boardDto dto, HttpServletRequest request,	//boardDto에 모두 담기
 								 RedirectAttributes redirect, BindingResult result) {
 		logger.info("[BOARD PHOTO INSERT RES]");
-		fileValidator.validate(dto, result);
-/*
-		String name = file.getOriginalFilename();
 		
-		InputStream inputStream = null;
-		OutputStream outputStream = null;
 		
-		try {
-			inputStream = file.getInputStream();
-			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/report");
-			
-			System.out.println("업로드 될 실제 경로: "+path);
-			
-			File storage = new File(path);
-			if(!storage.exists()) {
-				storage.mkdir();
-			}
-			
-			File newFile = new File(path + "/" + name);
-			if(!newFile.exists()) {
-				newFile.createNewFile();
-			}
-			
-			outputStream = new FileOutputStream(newFile);
-			
-			int read = 0;
-			byte[] b = new byte[(int)file.getSize()];
-			
-			while((read=inputStream.read(b)) !=-1) {
-				outputStream.write(b,0,read);
-			}
-			
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				inputStream.close();
-				outputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		 
-		int res = mbiz.insert(dto);
-		  if(res>0){
-			  redirect.addAttribute("brdno", dto.getBrdno());
-			  return "redirect:boardinsertform.do";
-		  }else {
-			  redirect.addAttribute("brdno", dto.getBrdno());
-			  return "redirect:boardinsertform.do";
-		  }*/
 		return null;
 	}
 	
@@ -103,16 +53,7 @@ public class mapLocationController {
 	public String boardInsertVideoRes(Model model, mapLocationDto dto, RedirectAttributes redirect) {
 		logger.info("[BOARD VIDEO INSERT RES]");
 		
-		
-		int res = mbiz.insert(dto);
-		  if(res>0){
-			  redirect.addAttribute("brdno", dto.getBrdno());
-			  return "redirect:boardinsertform_v.do";
-		  }else {
-			  redirect.addAttribute("brdno", dto.getBrdno());
-			  return "redirect:boardinsertform_v.do";
-		  }
-		
+		return null;
 	}
 	
 	

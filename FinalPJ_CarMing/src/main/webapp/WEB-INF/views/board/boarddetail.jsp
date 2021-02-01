@@ -208,7 +208,7 @@
 		</form:form>
 		
 		<!-- 댓글 -->
-		<c:forEach var="comment" items="${comment }">
+		<c:forEach var="comment" items="${comment }">	<!-- boardConroller에 comment 있음 -->
 			<div class="card-body-6">
 				<div class="commentuser-first">
 					<div class="board-profile-commentuser">

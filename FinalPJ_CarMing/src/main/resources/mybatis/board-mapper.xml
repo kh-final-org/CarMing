@@ -8,7 +8,7 @@
 		<result property="brdno" column="BRDNO"/>
 		<result property="bcategoryno" column="BCATEGORYNO"/>
 		<result property="brdwriter" column="BRDWRITER"/>
-		<result property="brdfile" column="BRDFILE"/>
+		<result property="brdfilename" column="BRDFILE"/>
 		<result property="brdthumbfile" column="BRDTHUMBFILE"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
 		<result property="brdcount" column="BRDCOUNT"/>
@@ -45,7 +45,11 @@
 	
 	<!-- 03. 게시글 작성 -->
 	<insert id="insertBoard" parameterType="boardDto">
-	
+		
+		
+		
+		
+		
   	</insert>	
 	
 	<!-- 04. 게시글 수정 -->

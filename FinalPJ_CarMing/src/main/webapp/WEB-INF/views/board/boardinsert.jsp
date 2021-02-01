@@ -208,7 +208,6 @@
    </div>
 </section>
 <!-- End Banner Area -->
-
 <form:form action="boardinsertres.do?brdno=${dto.brdno }&memno=${dto.memno }" 
 		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
@@ -226,7 +225,7 @@
 				<!-- 이미지 업로드 버튼 -->
 				<div class="uploadfile-btn" id="uploadfile-input-btn" onclick="onclick=document.all.file.click()" >
 					<div class="uploadfile-icon-btn">
-						<input type="file" id="input-file" name="file" accept="image/*">			
+						<input type="file" id="input-file" name="brdfile" accept="image/*">			
 						<img class="camera-icon" src="./resources/img/camera.png"><br>
 						<span class="logo-bottom-context">사진 올리기</span>
 					</div>
@@ -259,7 +258,8 @@
 				<div class="body-location" >
 					<div class="body-location-left">
 						<span class="location-logo-text">
-							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장
+							<img class="location-logo" src="./resources/img/placeholder.png" >&nbsp;
+							<input type="text" name="mapname" value="서울시 카밍캠핑장"><!-- 임시 -->
 						</span>
 					</div>
 					

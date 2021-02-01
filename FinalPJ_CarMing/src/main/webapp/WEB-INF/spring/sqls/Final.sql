@@ -21,7 +21,7 @@ CREATE TABLE MEMBER(
    MEMCHK VARCHAR2(1) DEFAULT 'N' NOT NULL,
    MEMCODE NUMBER DEFAULT '2' NOT NULL,
    MEMFILE VARCHAR2(2000)
-)
+);
 
 ALTER TABLE MEMBER 
 ADD CONSTRAINT MEMGENDER_CHK CHECK (MEMGENDER IN (1, 2));
@@ -30,13 +30,14 @@ ALTER TABLE MEMBER ADD CONSTRAINT MEMCODE_CHK CHECK (MEMGENDER IN (1, 2));
 
 SELECT * FROM MEMBER;
 
+UPDATE MEMBER SET MEMCODE=1 WHERE MEMNO=2;
 DELETE FROM MEMBER WHERE MEMNO=3;
 
 INSERT INTO MEMBER (MEMNO, MEMNICK, MEMID, MEMPW, MEMNAME, MEMZIP, MEMADDR, MEMADDR2, MEMPHONE, MEMBIRTH, MEMGENDER, MEMCHK) 
-VALUES(MEMSEQ.NEXTVAL, '펭귄', 'user1', 'pass1', '홍길동', '06234', '서울특별시 강남구', '남도빌딩 4층', '01012345678', DATE '2013-02-17', '1', 'Y');
+VALUES(MEMSEQ.NEXTVAL, '펭귄', 'user1', 'pass1', '홍길동', '06234', '서울특별시 강남구', '남도빌딩 4층', '01012345678', DATE '2013-02-17', '2', 'Y');
 
 INSERT INTO MEMBER 
-VALUES(MEMSEQ.NEXTVAL, '관리자', 'admin1', 'adminpass1', '김유리', '54678', '경기도 화성시', '어딘가', '01078941234', DATE '2013-02-17', '2', 'N',1,NULL);
+VALUES(MEMSEQ.NEXTVAL, '관리자', 'admin1', 'adminpass1', '김유리', '54678', '경기도 화성시', '어딘가', '01078941234', DATE '2013-02-17', '1', 'N',1,NULL);
 
 ----------------------------------------------------------------------------------------------------------------------------
 /****************************************************************
