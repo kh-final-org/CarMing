@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-	<link rel="stylesheet" href="resources/scss/theme/_product.scss">
+	
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -50,7 +50,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <span>제품 이미지1(대표)</span><input type="file" class="form-control" name="prFile"><form:errors path="pFile"/>
+                                    <span>제품 이미지1(대표)</span><input type="file" class="form-control" name="prFile"><form:errors path="prFile"/>
                                 </div>
                                <%--  <div class="form-group col-lg-6 col-md-6 name">
                                     <span>제품 이미지2(대표)</span><input type="file" class="form-control" name="pFile2"><form:errors path="pFile2"/>
@@ -61,7 +61,7 @@
                                 <br>
                                 --%>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <span>제품 설명</span><input type="text" class="form-control" name="pDesc"><form:errors path="pDesc"/>
+                                    <span>제품 설명</span><input type="file" class="form-control" name="prDesc"><form:errors path="prDesc"/>
                                 </div>
                                 <br>
                                 <div class="form-group col-lg-6 col-md-6 name">
@@ -77,19 +77,5 @@
                         </form:form>
        </div>
 	<%@ include file="../common/footer.jsp" %>
-	<script src="js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/jquery.sticky.js"></script>
-    <script src="js/nouislider.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<!--gmaps Js-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="js/gmaps.min.js"></script>
-	<script src="js/main.js"></script>
 </body>
 </html>

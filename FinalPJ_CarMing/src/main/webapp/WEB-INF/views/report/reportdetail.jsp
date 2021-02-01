@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신고 내용</title>
+<title>CarMing | 신고 내용</title>
 <!-- Mobile Specific Meta -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,10 +47,10 @@
 			</div>
 			<div class="section-top-border text-right">
 				<div class="button-group-area mt-40" style="padding-bottom: 5em">
-					<a href="inquirylist.do"
+					<a href="reportlist.do"
 						class="genric-btn danger-border e-large">목록으로</a> <a
-						href="writeinquiryform.do"
-						class="genric-btn danger-border e-large">새 글 작성하기</a>
+						href="deletereport.do?reportNo=${list.reportNo}"
+						class="genric-btn danger-border e-large">삭제하기</a>
 				</div>
 			</div>
 		</div>
@@ -84,7 +84,9 @@
 							<label class="control-label col-sm-2" for="receiverNickname"> 신고대상
 								닉네임:</label>
 							<div class="col-sm-10">
-								<p class="form-control" id="receiverNickname">${list.targetWriter }</p>	
+								<p class="form-control" id="receiverNickname">				
+								<a href="boarddetailform.do?brdno=${list.targetNo}">${list.targetWriter }</a>
+								</p>	
 							</div>
 						</div>
 						
@@ -92,6 +94,12 @@
 							<label class="control-label col-sm-2" for="category"> 카테고리:
 							</label><div class="col-sm-10">
 								<p class="form-control" id="nickname">${list.categoryName }</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="category"> 신고유형:
+							</label><div class="col-sm-10">
+								<p class="form-control" id="nickname">${list.targetTypeName }</p>
 							</div>
 						</div>
 						<br>

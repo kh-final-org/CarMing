@@ -16,33 +16,31 @@ import com.finalPJ.carming.model.dto.bcommentDto;
 @Controller
 public class BCommentController {
 	private static final Logger logger = LoggerFactory.getLogger(BCommentController.class);
-
 	
 	@Autowired
 	private bcommentBiz cbiz;
 	
-
-
 	//댓글 작성 
 	@RequestMapping(value = "/writebcomment.do")
 	public String commentInsertRes(bcommentDto dto, RedirectAttributes redirect) {
-		logger.info("[commentInsertRes]");
+		logger.info("[COMMENT INSERT RES]");
 			
-		
 	int res = cbiz.insert(dto);
 	  if(res>0){
-		  redirect.addAttribute("brdno",dto.getBrdno());
-		   return "redirect:boarddetailform.do";
+		  redirect.addAttribute("brdno", dto.getBrdno());
+		  return "redirect:boarddetailform.do";
 	  }else {
-		  redirect.addAttribute("brdno",dto.getBrdno());
+		  redirect.addAttribute("brdno", dto.getBrdno());
 		  return "redirect:boarddetailform.do";
 	  }
-
-    }
+    
 	
-	@RequestMapping("/deletbcomment.do")
+	}
+	
+	//댓글 삭제
+	@RequestMapping("/deletebcomment.do")
 	public String deletecomment(int comno, int brdno, RedirectAttributes redirect) {
-	
+		logger.info("[COMMENT DELETE]");
 		
 		int res = cbiz.delete(comno);
 		  if(res>0){
@@ -52,9 +50,15 @@ public class BCommentController {
 			  redirect.addAttribute("brdno",brdno);
 			  return "redirect:boarddetailform.do";
 		  }
-
-		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

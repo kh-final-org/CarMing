@@ -40,11 +40,11 @@
 		@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 		@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');
 		@font-face {
-    font-family: 'Cafe24Ohsquare';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+		    font-family: 'Cafe24Ohsquare';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
 	</style>
 </head>
 <body>
@@ -54,7 +54,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href=""><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
+					<a class="navbar-brand logo_h" href="home.do"><img src="resources/img/logo.png" style="width: 100px; height: 78.363px;"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -87,34 +87,20 @@
 							</c:if> 
 
 							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" style="font-size : 15px;">캠핑렌트</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">카테고리</a></li>
-									<li class="nav-item"><a class="nav-link" href="productdetail.do" style="font-size: 15px;">상품 보기</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.do" style="font-size: 15px;">장바구니</a></li>
-								</ul>
-							</li>
+							<!-- 네비바 캠핑렌트 드롭다운 제거 후 코드 수정 -->
+							<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">캠핑렌트</a></li>
 							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" style="font-size: 15px;" >우리 서로 캠LIVE</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 LIVE</a></li>
-									<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠핑 MEET</a></li>
-								</ul>
-							</li>
+							<li class="nav-item"><a class="nav-link" href="camMeet.do" style="font-size: 15px;">우리 서로 캠LIVE</a></li>
 							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
 						</ul>
 						
 						<ul class="nav navbar-nav navbar-right ml-auto">
 							<li class="nav-item" style="padding-left:0; margin-left:0">
-								<a href="mypage.do"> <!-- 마이페이지 -->        				
+								<a href="ordernpay.do"> <!-- 마이페이지 -->        				
 								<span class="bi bi-person" style="font-size: 20px"></span></a>
 							</li>
 							<li class="nav-item">
-								<a href="#"> <!-- 장바구니 -->
+								<a href="cartlist.do"> <!-- 장바구니 -->
 								<span class="bi bi-cart2" style="font-size: 20px"></span></a>
 							</li>
 							<li class="nav-item">
@@ -163,6 +149,7 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
+	<%@include file="../common/footer.jsp"%>
 	
 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"

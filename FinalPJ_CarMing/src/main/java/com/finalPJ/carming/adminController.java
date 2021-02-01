@@ -1,10 +1,9 @@
 package com.finalPJ.carming;
 
 
+import java.io.Console;
 
 import org.slf4j.Logger;
-
-
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +18,6 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	
 @Autowired
 private adminBiz biz;
-
-	@RequestMapping(value = "/memberlist.do")
-	public String memberList(Model model) {
-
-		model.addAttribute("list",biz.list());
-		logger.info("[memberlist]");
-		return "Admin/adminMemberList";
-	}
 	
 	@RequestMapping("deletemem.do")
 	public String memberDetail(int memNo) {
@@ -68,8 +59,25 @@ private adminBiz biz;
 		
 	}
 	
-	
-	
+	@RequestMapping(value = "/memberlist.do")
+	public String memberlist(Model model, String page, String search) {
+		logger.info("[memberList]");
+		
+		String searchDefault = ""; // 검색이 없는 경우 기본값
+		if(search != null && !search.equals("")) { // 검색어가 있는 경우
+			searchDefault = search;
+		}
+		
+		int pageDefault = 1; // 페이지 선택이 없는 경우 기본값
+		if(page != null && !page.equals("")) {	// 페이지를 선택한 경우
+			pageDefault = Integer.parseInt(page);
+		}
+		
+		model.addAttribute("list", biz.getMemList(searchDefault, pageDefault));
+		model.addAttribute("count", biz.getMemCount(searchDefault));
+
+		return "Admin/adminMemberList";
+	}
 }
 	
 	

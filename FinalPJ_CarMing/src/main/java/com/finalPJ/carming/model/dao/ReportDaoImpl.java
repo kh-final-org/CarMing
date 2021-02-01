@@ -63,6 +63,48 @@ public class ReportDaoImpl implements ReportDao{
 		 
 		return res;
 	}
+
+	@Override
+	public int delete(int reportNo) {
+		int res = 0;
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete",reportNo);
+		} catch (Exception e) {
+			System.out.println("[error]: delete");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public ReportDto selectOneCom(int reportNo) {
+ReportDto list = null;
+		
+		try {
+			list = sqlSession.selectOne(NAMESPACE+"selectOneCom", reportNo);
+		} catch (Exception e) {
+			System.out.println("[error]: select oneCom");
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return list;
+	}
+
+	@Override
+	public ReportDto selectOneMem(int reportNo) {
+ReportDto list = null;
+		
+		try {
+			list = sqlSession.selectOne(NAMESPACE+"selectOneMem", reportNo);
+		} catch (Exception e) {
+			System.out.println("[error]: select oneMem");
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 
 

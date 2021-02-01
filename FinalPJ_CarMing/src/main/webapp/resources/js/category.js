@@ -19,7 +19,7 @@ $(document).ready(function(){
 	
 	
 	/*삭제 기능 구현(ajax로)*/
-	$(".selectDelete_btn").click(function(){
+	$("#selectDelete_btn").click(function(){
 		var confirm_val = confirm("정말 삭제하시겠습니까?");
 		
 		if(confirm_val){
@@ -59,8 +59,8 @@ $(document).ready(function(){
 				data: {chbox : checkArr},
 				success: function(result){
 					if(result == 1){
-						alert("제품삭제에 성공하였습니다!")
-						location.href = "category.jsp";
+						alert("제품삭제에 성공하였습니다!");
+						location.href = "productlist.do";
 					} else{
 						alert("삭제 실패");
 						location.href = "productlist.do";

@@ -41,4 +41,22 @@ public class ReportBizImpl implements ReportBiz{
 		return dao.insert(dto);
 	}
 
+	@Override
+	public int delete(int reportNo) {
+		// TODO Auto-generated method stub
+		return dao.delete(reportNo);
+	}
+
+	@Override
+	public ReportDto selectOneCom(int reportNo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneCom(reportNo);
+	}
+
+	@Override
+	public ReportDto selectOneMem(int reportNo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneMem(reportNo);
+	}
+
 }

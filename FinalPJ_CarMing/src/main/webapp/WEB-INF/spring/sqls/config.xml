@@ -16,6 +16,9 @@
 		<typeAlias type="com.finalPJ.carming.model.dto.ReportDto" alias="reportDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.AdmMemberDto" alias="admMemDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.ProductDto" alias="productDto"/>
+		<typeAlias type="com.finalPJ.carming.model.dto.RentReviewDto" alias="rentReviewDto"/>
+		<typeAlias type="com.finalPJ.carming.model.dto.CartDto" alias="cartDto"/>
+		<typeAlias type="com.finalPJ.carming.model.dto.CartListDto" alias="cartListDto"/>
 		<typeAlias type="com.finalPJ.carming.model.dto.Pagination" alias="pagination"/>
 		<typeAlias type="com.finalPJ.carming.model.dto.boardDto" alias="boardDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.bcommentDto" alias="bcommentDto"/>	
@@ -32,11 +35,13 @@
 		<mapper resource="/mybatis/report-mapper.xml" />
 		<mapper resource="/mybatis/admin-mapper.xml" />
 		<mapper resource="/mybatis/product-mapper.xml"/>
-		<mapper resource="/mybatis/board-mapper.xml" />
+		<mapper resource="/mybatis/board-mapper.xml" /> 
 		<mapper resource="/mybatis/bcomment-mapper.xml" />
 <!-- 	<mapper resource="/mybatis/dm-mapper.xml" />
 		<mapper resource="/mybatis/mapLocation-mapper.xml" />  -->
 		<mapper resource="/mybatis/survey-mapper.xml" />
+		<mapper resource="/mybatis/rentreview-mapper.xml"/>
+		<mapper resource="/mybatis/cart-mapper.xml"/>
 	</mappers>
 
 </configuration>

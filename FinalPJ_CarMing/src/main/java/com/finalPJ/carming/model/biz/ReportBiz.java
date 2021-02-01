@@ -13,4 +13,7 @@ public interface ReportBiz {
 	public int insertList(ArrayList<ReportDto> list);
 	public ReportDto selectOne(int reportNo);
 	public int insert(ReportDto dto);
+	public int delete(int reportNo);
+	public ReportDto selectOneCom(int reportNo);
+	public ReportDto selectOneMem(int reportNo);
 }

@@ -19,29 +19,23 @@
 
 
 	<select id="select" resultMap= "inquiryMap">
-	SELECT
-	MEMBER.MEMNICK,
-	INQUIRYLIST.*,     
-	INQUIRYCATEGORY.CATEGORYNAME
-	FROM INQUIRYLIST
-	JOIN MEMBER
-	ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
-	JOIN INQUIRYCATEGORY
-	ON INQUIRYLIST.CATEGORYNO = INQUIRYCATEGORY.CATEGORYNO
+		SELECT MEMBER.MEMNICK, INQUIRYLIST.*, INQUIRYCATEGORY.CATEGORYNAME
+		FROM INQUIRYLIST
+		JOIN MEMBER
+		ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
+		JOIN INQUIRYCATEGORY
+		ON INQUIRYLIST.CATEGORYNO = INQUIRYCATEGORY.CATEGORYNO
 	</select> 
 	
 	<select id="selectOne" parameterType="int" resultMap= "inquiryMap">
-	SELECT
-	MEMBER.MEMNICK,
-	INQUIRYLIST.*,     
-	INQUIRYCATEGORY.CATEGORYNAME
-	FROM INQUIRYLIST
-	
-	JOIN MEMBER
-	ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
-	JOIN INQUIRYCATEGORY
-	ON INQUIRYLIST.CATEGORYNO = INQUIRYCATEGORY.CATEGORYNO
-	WHERE INQUIRYNO = #{inquiryNo}
+		SELECT MEMBER.MEMNICK,INQUIRYLIST.*, INQUIRYCATEGORY.CATEGORYNAME
+		FROM INQUIRYLIST
+		
+		JOIN MEMBER
+		ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
+		JOIN INQUIRYCATEGORY
+		ON INQUIRYLIST.CATEGORYNO = INQUIRYCATEGORY.CATEGORYNO
+		WHERE INQUIRYNO = #{inquiryNo}
 	</select>
 	
 	<insert id="insert" parameterType="InquiryDto" >
@@ -51,20 +45,19 @@
 	 
 	
 	<insert id="insertList" parameterType="java.util.List">
-		
-	INSERT ALL 
-	<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
-		  INTO RECIPE VALUES
-		  (
-			#{item.recipeFile}
-			, #{item.recipeTitle}
-			, #{item.recipeWriter}
-			, #{item.recipeWriterURL}
-			, DEFAULT
-			, #{item.recipeURL}
-			)
-			
-	</foreach>
+		INSERT ALL 
+		<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
+			  INTO RECIPE VALUES
+			  (
+				#{item.recipeFile}
+				, #{item.recipeTitle}
+				, #{item.recipeWriter}
+				, #{item.recipeWriterURL}
+				, DEFAULT
+				, #{item.recipeURL}
+			   )
+				
+		</foreach>
 	</insert>
  
  

@@ -5,14 +5,10 @@ import java.util.List;
 import com.finalPJ.carming.model.dto.AdmMemberDto;
 import com.finalPJ.carming.model.dto.AdmRentDto;
 
-
-
-
 public interface adminDao {
 	
 	String NAMESPACE = "admin.";
 	
-	public List<AdmMemberDto> list();
 	public AdmMemberDto selectOne(int memNo);
 	public int insert(AdmMemberDto dto);
 	public int delete(int memNo);
@@ -20,5 +16,8 @@ public interface adminDao {
 	public List<AdmRentDto> RentList();
 	public AdmRentDto selectOneRent(int cartNo);
 	public int returnRent(int cartNo);
-
+	
+	/* 검색, 페이징을 포함한 member select */
+	public List<AdmMemberDto> getMemList(String search, int page);
+	public int getMemCount(String search);
 }

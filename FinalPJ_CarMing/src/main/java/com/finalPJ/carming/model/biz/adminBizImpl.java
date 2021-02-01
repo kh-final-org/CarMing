@@ -1,7 +1,6 @@
 package com.finalPJ.carming.model.biz;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,6 @@ import com.finalPJ.carming.model.dao.adminDao;
 import com.finalPJ.carming.model.dto.AdmMemberDto;
 import com.finalPJ.carming.model.dto.AdmRentDto;
 
-
-
-
-
-
 @Service
 public class adminBizImpl implements adminBiz{
 	
@@ -24,19 +18,12 @@ public class adminBizImpl implements adminBiz{
 	private adminDao dao;
 
 	@Override
-	public List<AdmMemberDto> list() {
-		return dao.list();
-	}
-
-	@Override
 	public int insertList(ArrayList<AdmMemberDto> list) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public AdmMemberDto selectOne(int inquiryNo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -62,5 +49,30 @@ public class adminBizImpl implements adminBiz{
 		return dao.returnRent(cartNo);
 	}
 	
+	/* 페이징 처리를 위한 select member list */
+	@Override
+	public List<AdmMemberDto> getMemList() { 
+		return getMemList("", 1);
+	}
 
+	@Override
+	public List<AdmMemberDto> getMemList(int page) {
+		return getMemList("", page);
+	}
+
+	@Override
+	public List<AdmMemberDto> getMemList(String search, int page) {
+		return dao.getMemList(search, page);
+	}
+	
+	/* 현재 페이지 구하기 위함 */
+	@Override
+	public int getMemCount() {
+		return dao.getMemCount(""); 
+	}
+
+	@Override
+	public int getMemCount(String search) {
+		return dao.getMemCount(search);
+	}
 }
