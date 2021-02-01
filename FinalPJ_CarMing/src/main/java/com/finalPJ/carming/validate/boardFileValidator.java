@@ -17,11 +17,11 @@ public class boardFileValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		boardDto file = (boardDto)target;
-		if(file.getBrdfile().getSize() == 0) {
-			errors.rejectValue("reportFile", "fileNPE", "Please select a file");
-			
-			
-		}
+//		if(file.getBrdfile().getSize() == 0) {
+//			errors.rejectValue("reportFile", "fileNPE", "Please select a file");
+//			
+//			
+//		}
 		
 	}
 

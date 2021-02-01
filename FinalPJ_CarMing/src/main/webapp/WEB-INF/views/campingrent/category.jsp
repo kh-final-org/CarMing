@@ -36,9 +36,7 @@
 						<a href="category.html">마이페이지<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">카테고리</a><br><br>
 					</nav>
-					<c:if test="${login.memcode ==  1}">
 						<a href="insertform.do" style="a:hover{color:white; text-decoration: none;}">제품 등록</a>
-					</c:if>
 				</div>
 			</div>
 		</div>

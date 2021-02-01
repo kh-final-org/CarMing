@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
+<<<<<<< HEAD
 	<link rel="stylesheet" href="resources/css/login.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,6 +21,16 @@
     	
 	    .loginform-logo{padding-top: 55px;}   
 	    .login-logo{width: 150px; height: 100%; margin-right: 10px;}
+=======
+  <link rel="stylesheet" href="resources/css/login.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+
+
+</head>
+>>>>>>> FinalPj_yoo_3
 
 		.input-user-idpw {width: 75%; color: #5f5f5f; font-size: 14px; letter-spacing: 1px; background: rgba(136, 126, 126, 0.04); padding: 10px 15px;
 				 border: none; border-radius: 5px; outline: none; box-sizing: border-box; border: 2px solid rgba(0, 0, 0, 0.02);
@@ -42,6 +53,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 	<%@include file ="../common/header.jsp" %>
 
 		<!-- Start Banner Area -->
@@ -56,14 +68,49 @@
 	</section>
 	<!-- End Banner Area -->
 	<!-- <section id="content">
+=======
+	<section id="header">
+		<%@include file ="../common/header.jsp" %>
+	</section>
+	<!-- Start Banner Area -->
+
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div
+				class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>로그인</h1>
+				</div>
+			</div>
+			<!-- <div class="section-top-border text-right">
+				<div class="button-group-area mt-40" style="padding-bottom: 5em">
+					<a href="recipeWriteForm.do" class="genric-btn primary e-large"
+						style="font-weight: bold; background-color: rgb(202, 82, 38);">새
+						글 작성하기</a>
+				</div>
+			</div> -->
+		</div>
+	</section>
+	<section id="content">
+>>>>>>> FinalPj_yoo_3
 	 	<div class="main">
 	    	<p class="sign" align="center">로그인</p>
 	    <form class="form1">
 	      <input class="un " type="text" align="center" placeholder="e-mail" id="memid">
 	      <input class="pass" type="password" align="center" placeholder="Password" id="mempw">
+<<<<<<< HEAD
 	      <input type="button" value="로그인" class="submit" align="center" onclick="login();">
 	      <p class="forgot" align="center"><a href="registerform.do">회원가입</a></p>
 	    </form>        
+=======
+	      <input type="button" value="로그인" class="submit" align="center" onclick="ajaxlogin();">
+	      <!-- 네이버 로그인 창으로 이동 -->
+			<div id="naver_id_login" style="text-align:center"><a href="${url}">
+			<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+			<br>		
+	      <p class="forgot" align="center"><a href="registerform.do">회원가입</a></p>
+	    </form>      
+>>>>>>> FinalPj_yoo_3
 	           
     	</div>
 	</section> -->
@@ -81,6 +128,14 @@
 		   	</div>
 		</section>
 	
+<<<<<<< HEAD
 	<%@include file ="../common/footer.jsp" %>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="resources/js/login.js?ver=1"></script>
+	
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+
+>>>>>>> FinalPj_yoo_3
 </body>
 </html>
