@@ -27,8 +27,12 @@
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
 	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
-				font-size: 1.1em; text-align: center; color:#fff; background: transparent; opacity:0.9; cursor: pointer;}
-	.banner-btn:hover{background: #fff; color: #5f5f5f;}
+				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
+				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
+	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
+	.banner-btn::before{content: ""; position: absolute; left:0; width:100%; height: 0%; background: #fff5e9; z-index: -1; 
+						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
+	.banner-btn:hover::before{height: 180%;}
 	
 	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
 	
@@ -143,7 +147,7 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의 작성하기</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
 	         </div>
 		  </div>

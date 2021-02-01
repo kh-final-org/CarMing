@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing | 캠핑토크 상세 페이지</title>
+<title>CarMing | 캠핑토크 - 게시글 상세 페이지</title>
 <style type="text/css">
 	.card-first{float: left; margin: 100px 50px 100px 50px;}
 	.card-second{float: left; width: 500px;}
@@ -158,7 +158,7 @@
 		<div class="card-body-3">
 			<div class="board-content">${dto.brdcontent }</div>
 			<div class="board-count">조회수 ${dto.brdcount }</div>
-			<div class="board-report">&nbsp;&middot;&nbsp;
+			<div class="board-report">&nbsp;&nbsp;&middot;
 				<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1" id="board-report-target">신고</a>
 			</div>
 		</div><br><br>
@@ -167,9 +167,7 @@
 		<div class="card-body-4">
 			<div class="board-comment-header-1">
 				<div class="board-comment-head"><strong>댓글</strong></div>
-				<c:forEach items="${comment }" var="comment" varStatus="status">
-					<div class="board-comment-count"><b>${status.count }</b></div>
-				</c:forEach>
+				<div class="board-comment-count"><b>${countComment}</b></div>
 			</div>
 			<div class="board-comment-header-2">
 				<c:if test="${login.memnick == dto.brdwriter }">

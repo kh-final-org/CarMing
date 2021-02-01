@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing | 캠핑토크 동영상 올리기</title>
+<title>CarMing | 캠핑토크 - 동영상 올리기</title>
 <style type="text/css">
 	.card-container{margin: 50px 190px 50px 220px;}
     .card-body{padding: 0px;}
@@ -173,7 +173,8 @@
 </section>
 <!-- End Banner Area -->
 
-<form action="boardinsertres.do?brdno=${dto.brdno }&brdwriter=${brdwriter }" method="post">
+<form:form action="boardinsertres_v.do?brdno=${dto.brdno }&memno=${dto.memno }" 
+		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
 		<div class="card-head">
 			<h2 style="color: #5f5f5f;">게시글 작성하기</h2>
@@ -338,7 +339,7 @@
 		</div>
 	
 	</div>
-</form>
+</form:form>
 <!-- Start Footer Area -->
 <%@ include file="../common/footer.jsp" %>
 <!-- End Footer Area -->

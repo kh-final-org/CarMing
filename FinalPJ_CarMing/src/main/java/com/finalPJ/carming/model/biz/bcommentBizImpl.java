@@ -32,6 +32,17 @@ public class bcommentBizImpl implements bcommentBiz {
 		return dao.delete(comno);
 	}
 
+	//04. 댓글 전체 갯수
+	@Override
+	public int countComment(bcommentDto dto) {
+		return dao.countComment(dto);
+	}
+
 	
 	
 }
+
+
+
+
+

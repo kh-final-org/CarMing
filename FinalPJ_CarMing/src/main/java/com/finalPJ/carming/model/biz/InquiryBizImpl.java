@@ -27,13 +27,11 @@ public class InquiryBizImpl implements InquiryBiz{
 
 	@Override
 	public int insertList(ArrayList<InquiryDto> list) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public InquiryDto selectOne(int inquiryNo) {
-		// TODO Auto-generated method stub
 		return dao.selectOne(inquiryNo);
 	}
 

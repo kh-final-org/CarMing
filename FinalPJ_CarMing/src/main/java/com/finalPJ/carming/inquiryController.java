@@ -94,19 +94,15 @@ private InquiryFileValidator fileValidator;
 				outputStream.write(b,0,read);
 			}
 			
-			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
 				inputStream.close();
 				outputStream.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 		
 		InquiryDto inquiry = new InquiryDto();

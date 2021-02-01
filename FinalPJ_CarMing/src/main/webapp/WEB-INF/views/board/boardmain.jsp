@@ -16,8 +16,8 @@
 	.card-head-first{float: left;}
 	.card-head-second{float: left; margin-left: 605px;}
 	.card-head-third{position: absolute; top: 406px; right: 205px; float: right; margin-right: 10px;}
-	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
 	
+	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
 	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
 	.board-usernick{font-size: 1.2em; font-weight: bold;}
 	.uploadimg{width: 360px; height: 360px; transform: scale(1.00); transition: transform .3s; border-radius: 10px;}
@@ -41,7 +41,7 @@
 	 
 	#paging-container{margin: 50px 0px 20px 0px;}
 	
-	/* 진회색: #5f5f5f, 연회색:#e2e2e2, 주황색: #ffba00, 
+	/* 진회색: #5f5f5f, 연회색:#e2e2e2, 주황색: #ff9b00, 
 	       쨍한 노랑: #ffba00;  진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
 
