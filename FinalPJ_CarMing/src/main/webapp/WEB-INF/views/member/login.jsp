@@ -41,6 +41,7 @@
 
 </head>
 <body>
+
 	<%@include file ="../common/header.jsp" %>
 
 		<!-- Start Banner Area -->
@@ -54,7 +55,7 @@
 		</div>
 	</section>
 	<!-- End Banner Area -->
-	<section id="content">
+	<!-- <section id="content">
 	 	<div class="main">
 	    	<p class="sign" align="center">로그인</p>
 	    <form class="form1">
@@ -65,7 +66,21 @@
 	    </form>        
 	           
     	</div>
-	</section>
+	</section> -->
+		<section id="content">
+			<div class="main">
+				<div class="loginform-logo" align="center">
+					<a href="home.do"><img class="login-logo" src="./resources/img/logo.png"></a>
+				</div>
+				<form class="form1">
+					<input class="input-user-idpw" type="text" align="center" placeholder="이메일" id="memid">
+					<input class="input-user-idpw" type="password" align="center" placeholder="비밀번호" id="mempw">
+					<input type="button" value="로그인" class="login-btn" align="center" onclick="login();">
+					<div class="signup" align="center"><a href="registerform.do" class="signup-btn">회원가입</a></div>
+				</form>        
+		   	</div>
+		</section>
+	
 	<%@include file ="../common/footer.jsp" %>
 </body>
 </html>
