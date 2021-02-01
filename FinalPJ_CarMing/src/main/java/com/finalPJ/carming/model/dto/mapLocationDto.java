@@ -7,18 +7,23 @@ public class mapLocationDto {
 	private String maplatitude;		//위도	
 	private String maplongtitude;	//경도		
 	private String carmapchk;		//차박명소 등록 체크 동의(Y:동의/N:비동의)
+	private int memno;				//회원번호
+	private int brdno;				//캠핑토크 게시글 번호
 	
 	public mapLocationDto() {
 		super();
 	}
 
-	public mapLocationDto(int mapno, String mapname, String maplatitude, String maplongtitude, String carmapchk) {
+	public mapLocationDto(int mapno, String mapname, String maplatitude, String maplongtitude, String carmapchk,
+			int memno, int brdno) {
 		super();
 		this.mapno = mapno;
 		this.mapname = mapname;
 		this.maplatitude = maplatitude;
 		this.maplongtitude = maplongtitude;
 		this.carmapchk = carmapchk;
+		this.memno = memno;
+		this.brdno = brdno;
 	}
 
 	public int getMapno() {
@@ -51,11 +56,19 @@ public class mapLocationDto {
 	public void setCarmapchk(String carmapchk) {
 		this.carmapchk = carmapchk;
 	}
-	
+	public int getMemno() {
+		return memno;
+	}
+	public void setMemno(int memno) {
+		this.memno = memno;
+	}
+	public int getBrdno() {
+		return brdno;
+	}
+	public void setBrdno(int brdno) {
+		this.brdno = brdno;
+	}
 
-	
-	
-	
 	
 	
 	

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 캠핑토크 - 동영상 올리기</title>
 <style type="text/css">
 	.card-container{margin: 50px 190px 50px 220px;}
     .card-body{padding: 0px;}
@@ -20,17 +20,19 @@
 					border-radius: 20px; text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9;}
 	.uploadfile-icon-btn{margin-top: 110px;}
 	.uploadfile-img{position: absolute; top: 362px; margin-left: -20px;}
-	.uploadfile-img input[type="file"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }
-	.uploadfile-img label { display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; line-height: normal; vertical-align: middle; text-align:center; 
-							background: #fdfdfd; color:#5f5f5f; cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em; }
+	.uploadfile-img input[type="file"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+										 overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+	.uploadfile-img label { display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; 
+							line-height: normal; vertical-align: middle; text-align:center; background: #fdfdfd; color:#5f5f5f; 
+							cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em;}
 	.uploadfile-img .upload-name { display: inline-block; padding: .5em .75em; font-size: inherit; font-family: inherit; line-height: normal; 
-								   vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; border-radius: .25em; 
-								   -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+								   vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; 
+								   border-radius: .25em; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
 
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
     .body-content{margin-top: 55px; font-size: 1.2em;}
-    textarea {padding: 10px 14px;}
+    textarea {padding: 10px 14px; border: 1px solid silver; border-radius: 5px;}
     textarea::placeholder{color: silver;}
     .location-logo{width: 25px;height: 25px;}
     .body-location{margin: 8px 0px;}
@@ -41,7 +43,8 @@
     .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
-   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; 
+   						font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
 
 	.chkprivate-box{float: left;}
 	.chkcarplace-box{float: left; margin-left: 5px;}
@@ -72,7 +75,7 @@
 
 </style>
 
-<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="resources/js/main.js"></script>
 
 <!-- location-popup -->
@@ -131,6 +134,7 @@
 
 <!--  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 나만보기 체크여부 -->
 <script type="text/javascript">
 	
 	
@@ -194,7 +198,8 @@
 </section>
 <!-- End Banner Area -->
 
-<form action="boardinsertres.do?brdno=${dto.brdno }&brdwriter=${brdwriter }" method="post">
+<form:form action="boardinsertres_v.do?brdno=${dto.brdno }&memno=${dto.memno }" 
+		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
 		<div class="card-head">
 			<h2 style="color: #5f5f5f;">게시글 작성하기</h2>
@@ -257,9 +262,12 @@
 								<div id="map"></div>
 								<div class="location-search">
 									<div class="input-group mb-3" >
-										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." 
+											   aria-label="Recipient's username" aria-describedby="button-addon2">
 										<div class="input-group-append">
-									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="searchimg" src="./resources/img/search.png"></button>
+									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+									    		<img class="searchimg" src="./resources/img/search.png">
+									    	</button>
 									  	</div>
 									</div>	
 								</div>
@@ -305,7 +313,6 @@
 									    
 									    var lang = document.createTextNode(lng);
 									    document.getElementById("long").appendChild(lang);		
-									    
 									});
 								</script>
 													
@@ -358,7 +365,7 @@
 		</div>
 	
 	</div>
-</form>
+</form:form>
 <!-- Start Footer Area -->
 <%@ include file="../common/footer.jsp" %>
 <!-- End Footer Area -->

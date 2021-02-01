@@ -19,7 +19,7 @@
 <!-- meta character set -->
 <meta charset="UTF-8">
 <!-- Site Title -->
-<title>카밍 정보 메인</title>
+<title>CarMing | 캠핑 추천 - 카밍 꿀팁</title>
 
 <!-- <script>
 /* 	article = document.getElementsByTagName("article");
@@ -129,33 +129,23 @@ function myFunction() {
 </head>
 
 <body>
-
 	<!-- Start Header Area -->
 	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->
-	
 	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div
-				class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>핑구 추천</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="tipAndRecipeMain.do">꿀팁</a>
-					</nav>
-				</div>
-			</div>
-			<!-- <div class="section-top-border text-right">
-				<div class="button-group-area mt-40" style="padding-bottom: 5em">
-					<a href="recipeWriteForm.do" class="genric-btn primary e-large"
-						style="font-weight: bold; background-color: rgb(202, 82, 38);">새
-						글 작성하기</a>
-				</div>
-			</div> -->
-		</div>
+	   <div class="container">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	         <div class="col-first">
+	            <h1>The stars in the night sky</h1>
+	         	<nav class="d-flex align-items-center">
+	               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+	               <a href="tipAndRecipeMain.do">Recipe</a>
+	            </nav>
+	         </div>
+	      </div>
+	   </div>
 	</section>
 	<!-- End Banner Area -->
 

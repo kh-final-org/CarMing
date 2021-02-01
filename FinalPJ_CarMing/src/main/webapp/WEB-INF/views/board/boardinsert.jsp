@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 캠핑토크 - 사진 올리기</title>
 <style type="text/css">
 	.card-container{margin: 50px 190px 50px 220px;}
     .card-body{padding: 0px;}
@@ -26,7 +26,7 @@
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
     .body-content{margin-top: 55px; font-size: 1.2em;}
-    textarea {padding: 10px 14px;}
+    textarea {padding: 10px 14px; border: 1px solid silver; border-radius: 5px;}
     textarea::placeholder{color: silver;}
     .location-logo{width: 25px;height: 25px;}
     .body-location{margin: 8px 0px;}
@@ -37,18 +37,19 @@
     .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
-   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; 
+   						font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
 
 	.chkprivate-box{float: left;}
 	.chkcarplace-box{float: left; margin-left: 5px;}
 	.checkbox input{display: none;}
-	.checkbox span{display: inline-block;vertical-align: middle;cursor: pointer;}
-	.checkbox .icon{position: relative;width: 20px; height: 20px;border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
-	.checkbox .icon::after{content: ''; position: absolute;top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
+	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
+	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
+	.checkbox .icon::after{content: ''; position: absolute; top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
 						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
 	.checkbox .text{margin-left: 5px;}
-	.checkbox input:checked ~ .icon{border-color: transparent;background: orange;}
-	.checkbox input:checked ~ .icon::after{opacity: 1;transform: rotate(45deg) scale(1);}
+	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
+	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
 	  
 	.location-open{color: gray;}
 	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
@@ -186,7 +187,6 @@
 
 
 
-
 </head>
 <body onload="location.href='#location-popup'">
 <!-- Start Header Area -->
@@ -209,7 +209,8 @@
 </section>
 <!-- End Banner Area -->
 
-<form action="boardinsertres.do?brdwriter=${login.memnick }" method="post">
+<form:form action="boardinsertres.do?brdno=${dto.brdno }&memno=${dto.memno }" 
+		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
 		<div class="card-head">
 			<h2 style="color: #5f5f5f;">게시글 작성하기</h2>
@@ -274,9 +275,12 @@
 								<div id="map"></div>
 								<div class="location-search">
 									<div class="input-group mb-3" >
-										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." 
+											   aria-label="Recipient's username" aria-describedby="button-addon2">
 										<div class="input-group-append">
-									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2"><img class="searchimg" src="./resources/img/search.png"></button>
+									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+									    		<img class="searchimg" src="./resources/img/search.png">
+									    	</button>
 									  	</div>
 									</div>	
 								</div>
@@ -319,7 +323,6 @@
 									    
 									    var lang = document.createTextNode(lng);
 									    document.getElementById("long").appendChild(lang);		
-									    
 									});
 								</script>
 													
@@ -372,7 +375,7 @@
 		</div>
 	
 	</div>
-</form>
+</form:form>
 <!-- Start Footer Area -->
 <%@ include file="../common/footer.jsp" %>
 <!-- End Footer Area -->

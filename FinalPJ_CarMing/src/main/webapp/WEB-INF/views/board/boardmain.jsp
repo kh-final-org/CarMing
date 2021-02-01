@@ -9,15 +9,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 캠핑토크</title>
 <style type="text/css">
 	.card-container{width: 100%;}
 
 	.card-head-first{float: left;}
 	.card-head-second{float: left; margin-left: 605px;}
 	.card-head-third{position: absolute; top: 406px; right: 205px; float: right; margin-right: 10px;}
-	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
 	
+	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
 	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
 	.board-usernick{font-size: 1.2em; font-weight: bold;}
 	.uploadimg{width: 360px; height: 360px; transform: scale(1.00); transition: transform .3s; border-radius: 10px;}
@@ -30,7 +30,8 @@
 	.upload-btn{width: 140px; padding: 8px 0 10px; line-height: 20px; border: 0; border-radius: 4px;
 				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
 	.current{padding-left: 5px;}
-	#popout-layout{position: absolute; z-index: 1000; margin-top: 8px; padding: 10px 20px; border-radius: 5px;  background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
+	#popout-layout{position: absolute; z-index: 1000; margin-top: 8px; padding: 10px 20px; 
+				   border-radius: 5px; background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
 	.content-item-icon{float: left;}
 	.content-item-content{float: right; color: gray;}
 	.content-item-content-title{font-weight: bold; font-size: 1em; margin-top: 5px;}
@@ -40,7 +41,8 @@
 	 
 	#paging-container{margin: 50px 0px 20px 0px;}
 	
-	/* 진회색: #5f5f5f, 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
+	/* 진회색: #5f5f5f, 연회색:#e2e2e2, 주황색: #ff9b00, 
+	       쨍한 노랑: #ffba00;  진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
 
 <script type="text/javascript">
@@ -88,7 +90,7 @@
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
          <div class="col-first">
             <h1>The stars in the night sky</h1>
-            <nav class="d-flex align-items-center">
+         	<nav class="d-flex align-items-center">
                <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
                <a href="boardmainform.do">Talk</a>
             </nav>
@@ -103,7 +105,7 @@
 <div class="card-container">
 	<div class="card-head">
 		<div class="card-head-first">
-			<h2 style="color: #5f5f5f;  font-family:'Malgun Gothic';">CAMPING TALK</h2>
+			<h2 style="color: #5f5f5f; font-family:'Malgun Gothic';">CAMPING TALK</h2>
 		</div>
 		
 		<div class="card-head-second">
@@ -157,13 +159,17 @@
 			<div class="card-body" style="padding: 0px">
 				<!-- 프로필 사진/아이디 -->
 				<div class="board-profile">
-					<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }"><img class="user-profile" src="./resources/img/profile.png" alt="profile-photo"></a>&nbsp; 
+					<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }">
+						<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">
+					</a>&nbsp; 
 					<span class="board-usernick">&nbsp;${dto.brdwriter}</span>
 				</div>	
 				<!-- 사용자가 업로드한 이미지 -->
 				<div class="board-uploadimg">
 					<div class="board-uploadimg-frame">
-						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }"><img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}"></a><br>
+						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }">
+							<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}">
+						</a><br>
 					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>
 					<div class="category" style="display: none;"> ${dto.bcategoryno }</div>
