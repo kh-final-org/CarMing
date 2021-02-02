@@ -41,6 +41,7 @@ public class SurveyDaoImpl implements SurveyDao {
 		
 		try {
 			dto = sqlSession.selectOne(NAMESPACE+"selectOne", memno);
+			System.out.println("DaoImpl.selectOne()");
 		} catch (Exception e) {
 			System.out.println("[error] : select one");
 			e.printStackTrace();
@@ -80,18 +81,29 @@ public class SurveyDaoImpl implements SurveyDao {
 	}
 
 	@Override
-	public int sameFreindOne(SurveyDto dto) {
+	public int FriendOne(SurveyDto dto) {
 		// 결과를 담을 친구 번호 생성
 		int res = 0;
 		
 		try {					
-			res = sqlSession.selectOne(NAMESPACE + "sameFriendOne", dto);
+			if(sqlSession.selectOne(NAMESPACE + "FriendOne", dto) != null) {
+				res = sqlSession.selectOne(NAMESPACE + "FriendOne", dto);
+				System.out.println("null이 아니다.");
+			} else {
+				res = 0;
+				System.out.println("null이다.");
+			}
+			
 		} catch (Exception e) {
-			System.out.println("[error] : sameFriendOne");
+			System.out.println("[error] : FriendOne");
 			e.printStackTrace();
 		}
-				
 		return res;
 	}
 
 }
+
+
+
+
+

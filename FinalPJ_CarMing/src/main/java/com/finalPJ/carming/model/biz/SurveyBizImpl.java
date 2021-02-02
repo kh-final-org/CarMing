@@ -39,9 +39,9 @@ public class SurveyBizImpl implements SurveyBiz {
 	}
 
 	@Override
-	public int sameFriendOne(SurveyDto dto) {
+	public int FriendOne(SurveyDto dto) {
 
-		return dao.sameFreindOne(dto);
+		return dao.FriendOne(dto);
 	}
 	
 }

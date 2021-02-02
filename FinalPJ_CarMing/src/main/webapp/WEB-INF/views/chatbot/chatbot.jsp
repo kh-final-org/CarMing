@@ -1,3 +1,4 @@
+<%@page import="com.finalPJ.carming.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -10,12 +11,14 @@
 <!-- JSTL -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="resources/chatbot/css/chatbot.css">
 <!-- KARMA의 BUTTON 가져와서 사용하기 위해서 링크 -->
 <link rel="stylesheet" type="text/css" href="resources/chatbot/css/button.css">
 <link rel="stylesheet" type="text/css" href="resources/chatbot/css/jquery.convform.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="resources/chatbot/css/chatbot.css">
+
 <style type="text/css">
 @font-face {
     font-family: 'TmoneyRoundWindRegular';
@@ -38,15 +41,18 @@ body {
 <body style="background: #dedede;">
 <%
 
-	int no;
+	MemberDto login;
 	
-	if(session.getAttribute("memno") != null) {
-		no = (Integer)session.getAttribute("memno");
-		System.out.println("Session의 no : " + no);
+	if(session.getAttribute("login") != null) {
+		login = (MemberDto)session.getAttribute("login");
+		System.out.println("Session의 no : " + login.getMemno());
 	}
 	
 %> 
-	<h1>HI, Ping Gu</h1>
+
+	<ol id="list"> <li>첫 번째 아이템</li> <li>두 번째 아이템</li> </ol>
+		
+	<h1 id="hiPingGu">HI, Ping Gu</h1>
 	
 	<h1><a href="userLogin.do">login</a></h1>
 	<h1><a href="userLogin.do?memno=1">login?memno=1</a></h1>
@@ -59,30 +65,37 @@ body {
 	
 	
 	<!-- 프로필 링크 -->
-	<div class="card" style="width: 18rem;">
-	  <img class="card-img-top profileImage" src="resources/chatbot/img/profile.jpg" alt="Card image cap">
-	  <div class="card-body">
-	    <h5 class="card-title">닉네임</h5>
-	    <p class="card-text">설명</p>
-	    <a href="#" class="btn btn-primary">프로필로 이동하기</a>
-	  </div>
+	<div class="cardProfile">
+		<div class="d-flex position-relative">
+			<img src="resources/chatbot/img/profile.jpg" class="flex-shrink-0 me-3 cardImage" alt="...">
+		  
+		  	<div>
+		    	<h5 class="mt-0 cardNickname">닉네임</h5>
+		    	<p class="cardGender" style="font-size: 10px;">성별</p>
+		  	</div>
+		</div>
+    	<a href="#" class="btn btn-primary cardLink" style="width: 5rem; font-size: 10px;">프로필 보기</a>
 	</div>
-	
 	
 <!-- Session에 값이 있으면  / 값이 없으면
 	챗봇 기능 사용 가능 / 로그인해야 한다고만 띄우기.
  -->	
-<c:set var="no" value= "${memno }" />
+<c:set var="no" value= "${login.getMemno() }" />
 
+<br>
 <c:choose>
     <c:when test="${empty no}">
         	로그인해주세요~
     </c:when>
     <c:otherwise>
         	<c:out value="${no}"></c:out>번 회원입니다!!!!!!
+        	<script>
+				var memno = ${no};
+			</script>
     </c:otherwise>
 </c:choose>
-	
+
+
 	
 	
 <!-- ChatBot -->
@@ -99,8 +112,6 @@ body {
 			<form action="" method="GET" class="hidden" target="param">
 			<!-- <form action="insertres.do" method="GET" class="hidden"> -->
 				
-				<c:set var="no" value= "${memno }" />
-
 				<c:choose>
 				    <c:when test="${empty no}">
 						<select name="category" onchange="if(this.value) location.href=(this.value);" data-conv-question="' CarMing ' 챗봇 서비스 핑구에요!서비스 이용을 위해 먼저 로그인 해주세요!">
@@ -114,13 +125,13 @@ body {
 							<!-- 선택지 -->
 							<option value="friendFind">캠핑 친구 찾기</option>
 							<option value="QNA">Q & A</option>
-							<option value="customerService">상담원 연결하기</option>
+							<option value="customerService">상담원 연결하기</option>							
 						</select>
 						
 						<!-- 대답1--> 
 						<div data-conv-fork="category">
 							<!-- 캠핑친구찾기 선택시 -->
-							<div data-conv-case="friendFind">
+							<div id="friendFind" data-conv-case="friendFind">
 								<select name="survey1" data-conv-question="PingGu와 함께 친구를 찾아봐요 !! 1. 본인의 성별은 무엇입니까!?">
 									<option value="male">남자</option>
 									<option value="female">여자</option>
@@ -152,22 +163,21 @@ body {
 								</select>
 								
 								<!-- 제출하시겠습니까? -->
-								<select name="x" data-conv-question="제출하시겠습니까 ?" onchange="submit()" >
+								<select id="vvs" name="a" data-conv-question="제출하시겠습니까 ?" onchange="submit()" >
 									<!-- 제출 버튼 -->
 									<option value="jechool">제출</option>
 								</select>
 								
+								<!-- <select name="b" data-conv-question="예시">
+									<option id="ex" value="abc">ex</option>
+								</select> -->
 								
-								<select name="b" data-conv-question="친구의 프로필 소개">
-									<option value="friend"><%= request.getAttribute("friendNo") %></option>
-								</select>
-								
-								
-								
-								<!-- 추천 친구의 프로필. 
-								<c:set var="friendNo" value="a"/>
-								<c:if test="a">
-								</c:if>-->
+								<!-- <select name="aaaa" data-conv-question="친구의 프로필을 소개합니다 :)">
+									<option value="abc">
+										
+									</option>
+									<option value="def">친구 다시 찾기</option>
+								</select> -->
 								
 							</div>
 							

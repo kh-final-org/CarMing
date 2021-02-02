@@ -42,6 +42,8 @@ public class ChatbotController {
 	// session 값 저장하기
 	int sessionNo = 0;
 	
+	//MemberDto login = (MemberDto)session.getAttribute("login");
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -82,6 +84,8 @@ public class ChatbotController {
 		// survey 값이 있으면 update
 		
 		logger.info("[INSERT RES]");
+		
+		dto.setMemno(((MemberDto)session.getAttribute("login")).getMemno());
 		
 		dto.setMemno((Integer)session.getAttribute("memno"));
 		
@@ -128,8 +132,6 @@ public class ChatbotController {
         
 		session.invalidate();
         
-//        System.out.println("session의 값 : " + session.getAttribute("memno"));
-        
         return "chatbot/chatbot";
     }
 	
@@ -143,7 +145,7 @@ public class ChatbotController {
 		logger.info("[INSERT AJAX]");
 		
 		// 받아온 설문조사(SurveyDto)에 session번호 추가.
-		dto.setMemno((Integer)session.getAttribute("memno"));
+		// dto.setMemno((Integer)session.getAttribute("memno"));
 		
 		System.out.println("dto.toString : " + dto.toString());
 		
@@ -163,101 +165,44 @@ public class ChatbotController {
 //		return "redirect:sameFriendOne.do";
 	}
 	
-	// [동성] 나에 맞는 친구들의 설문조사 리스트 가져오기
-	@RequestMapping(value = "/sameFriendList.do", method=RequestMethod.POST)
+	
+	// [동성] 나에 맞는 친구들 중 한명의 설문조사 가져오기
+	@RequestMapping(value = "/FriendOne.do", method=RequestMethod.POST)
 	@ResponseBody //@ResponseBody 추가.
-//	public String sameFriendList(Model model, @RequestBody SurveyDto dto) {
-	public Map<String, Boolean> sameFriendList(Model model, @RequestBody SurveyDto dto) {
-		logger.info("[SELECT SAME FRIEND LIST]");
-		
-		logger.info(dto.toString());
-		dto.setMemno((Integer)session.getAttribute("memno"));
-		logger.info(dto.toString());
-		
-		// model에 list라는 이름으로 biz.sameFriendList()의 결과 값을 담아주자. 
-		// model.addAttribute("list", biz.sameFriendList(dto));
-		
-		boolean check = false;
-		
-		List<SurveyDto> list = surveyBiz.sameFriendList(dto);
-		
-		System.out.println("list.size : " + list.size());
-		
-		for(int i=0; i<list.size(); i++) {
-			System.out.print(list.get(i) + " / ");
-		}
-		
-		if(list.size() > 0) {
-			check = true;
-		}
-		
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		map.put("check", check);
-		
-		return map;
-	}
-	
-	
-	@RequestMapping(value = "/otherfriendList.do")
-	public String otherfriendList(Model model) {
-		logger.info("[SELECT OTHER FRIEND LIST]");
-		
-		// model에 list라는 이름으로 biz.selectList()의 결과 값을 담아주자. 
-//			model.addAttribute("list", biz.otherFriendList());
-		
-		return "chatbot/mvclist";
-	}
-	
-	
-	
-	// [동성] 나에 맞는 친구들의 설문조사 리스트 가져오기
-	@RequestMapping(value = "/sameFriendOne.do", method=RequestMethod.POST)
-	@ResponseBody //@ResponseBody 추가.
-//		public String sameFriendList(Model model, @RequestBody SurveyDto dto) {
-	public Map<String, Boolean> sameFriendOne(Model model, @RequestBody SurveyDto dto) {
-		logger.info("[SELECT SAME FRIEND ONE]");
-		
-		logger.info(dto.toString());
-		dto.setMemno((Integer)session.getAttribute("memno"));
-		logger.info(dto.toString());
-		
-		// model에 list라는 이름으로 biz.sameFriendList()의 결과 값을 담아주자. 
-		// model.addAttribute("list", biz.sameFriendList(dto));
+	public Map<String, String> FriendOne(Model model, @RequestBody SurveyDto dto) {
+		logger.info("[SELECT FRIEND ONE]");
 		
 		Boolean check = false;
 		
-		int res = surveyBiz.sameFriendOne(dto);
+		int res = surveyBiz.FriendOne(dto);
 		System.out.println("선택된 친구번호는 : " + res);
-		//model.addAttribute("friendNo", biz.sameFriendOne(dto));
-		
 		
 		MemberDto friendDto = memberBiz.selectOne(res);
-		System.out.println("선택된 친구의 프로필사진 : " + friendDto.getMemfile());
-		System.out.println("선택된 친구의 닉네임 : " + friendDto.getMemnick());
 		
 		String gender;
-		if(friendDto.getMemgender() == 1) {
+		
+		if(dto.getSurvey1() == "female") {
 			gender = "남";
 		} else {
 			gender = "여";
 		}
+		
+		System.out.println("선택된 친구의 프로필사진 : " + friendDto.getMemfile());
+		System.out.println("선택된 친구의 닉네임 : " + friendDto.getMemnick());
 		System.out.println("선택된 친구의 성별 : " + gender);
 		
 		if(res > 0) {
 			check = true;
-			
-			
 		}
 		
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		map.put("check", check);
-		map.put("test", false);
-//		map.put("no", res);
+		Map<String, String> map = new HashMap<String, String>();
 		
-		
+		map.put("friendNo", Integer.toString(res));
+		map.put("friendFile", friendDto.getMemfile());
+		map.put("friendNick", friendDto.getMemnick());
+		map.put("friendGender", gender);
 
 		return map;
 	}
-	
 	
 }
