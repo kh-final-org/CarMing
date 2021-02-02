@@ -23,7 +23,6 @@
 <meta charset="UTF-8">
 
 
-<link rel="stylesheet" href="resources/css/writeinquiry.css">
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
 	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
@@ -44,15 +43,15 @@
 	
 	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;border: 1px solid #e2e2e2; background: #fff5e9;}
 	.contact-form{width: 750px; height: 100%;}
-	#user-nickname{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em; font-weight: bold;}
+	#user-nickname{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#nickname{float: right; width: 450px; margin-right: 10px;}
 	.form-group-inquiry-form{float: left; margin-bottom: 15px; width:100%;}
-	#inquiry-date{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em; font-weight: bold;}
+	#inquiry-date{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#date{float: right; width: 450px; margin-right: 150px;}	
 	.form-group-category-form{float: left; margin-bottom: 15px; width: 100%;}
-	.inquiry-category{display: inline-block; float: left; margin-left: 15px; width: 10%; font-size: 1.2em; margin-left: 15px;}
+	.inquiry-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em;}
 	.inquiry-category-wrap{float: left; width: 72%; margin-left: 60px;}
-	#categoryno{ width:100px;}
+	#categoryno{width:100px;}
 	.current{font-size: 1.1em;}
 	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
     textarea::placeholder{color: silver; font-size: 1.1em;}
@@ -67,6 +66,7 @@
    	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
    	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
    						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
+
 </style>
 
 
@@ -121,7 +121,6 @@
 </script>
 </head>
 <body>
-
 	<!-- Start Header Area -->
 	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->

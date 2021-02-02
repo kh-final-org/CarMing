@@ -14,14 +14,29 @@
     .card-body{padding: 0px;}
    	
    	.card-body-left{margin-right: 10px;}
-   	.camera-icon{margin-top: 5px; width: 120px; height: 120px; opacity: 25%;}
-   	.logo-bottom-context{color: gray;}    
 
-	.uploadfile-btn{float: left; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; border-radius: 20px; 
-					text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9; }
-	.uploadfile-icon-btn{margin-top: 110px;}
-/*	.uploadfile-wrap{position:absolute; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; 
-					 border-radius: 20px; cursor: pointer; display: hidden; }	*/
+/* 	.uploadfile-btn{float: left; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; border-radius: 20px;  */
+/* 					text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9; } */
+
+	.uploadimg {width: 350px; height: 350px; border-radius: 10px;}
+	.img_wrap {width: 350px; height: 350px; margin-top: 20px; }
+	.img_wrap img {max-width: 100%; max-height: 95%;}
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 135px;}	
+	.upload-img-form{position: relative; width: 590px; border: 1px solid #e2e2e2; margin-left: 15px; 
+					 border-radius: 5px; margin-bottom: 60px; background: #fff;}
+   	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
+   	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
+   						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
+   						
+   						
+	.uploadfile-img input[type="file"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+										 overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+	.uploadfile-img label { display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; 
+							line-height: normal; vertical-align: middle; text-align:center; background: #fdfdfd; color:#5f5f5f; 
+							cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em;}
+	.uploadfile-img .upload-name { display: inline-block; padding: .5em .75em; font-size: inherit; font-family: inherit; line-height: normal; 
+								   vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; 
+								   border-radius: .25em; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
 
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
@@ -85,17 +100,20 @@
 </script>
 
 <!-- 사진 업로드(미리보기) -->
- <script type="text/javascript">
+<script type="text/javascript">
 	var sel_file;
 	$(document).ready(function() {
-		$("uploadfile-input-btn").on("change", handleImgFileSelect);
+		$("#input_img").on("change", handleImgFileSelect);
 	});
 
 	function handleImgFileSelect(e) {
-		$(".uploadfile-icon-btn").empty(); 
+		$("#img").empty(); //remove는 태그 자체를 지운다 
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
 
+		/* if (files.name == null) {
+		   resetInputFile();
+		} */
 		filesArr.forEach(function(f) {
 			if (!f.type.match("image.*")) {
 				alert("확장자는 이미지 확장자만 가능합니다.");
@@ -105,9 +123,9 @@
 
 			var reader = new FileReader();
 			reader.onload = function(e) {
-				$(".uploadfile-icon-btn").attr("src", e.target.result);
-				$(".uploadfile-icon-btn").attr("width", "90%");
-				$(".uploadfile-icon-btn").attr("height", "440px");
+				$("#img").attr("src", e.target.result);
+				$("#img").attr("width", "90%");
+				$("#img").attr("height", "440px");
 			}
 			reader.readAsDataURL(f);
 		})
@@ -116,46 +134,60 @@
 	function resetInputFile() {
 		$("#img").empty();
 	}
-</script> 
+</script>
 
-<!--  -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-	
-	
 	function YnCheck(obj) {
 		$("#my").empty();
 	    var checked = obj.checked;
 	
 	    if(checked){
 	    	var value = obj.value = "Y";
-	        var Y = document.createTextNode(value);
+    	    var Y = document.createElement("input");
+		    Y.setAttribute("name", "brdprivate");
+		    Y.setAttribute("type", "text");
+		    Y.setAttribute("value", value);
+		    
 		    document.getElementById("my").appendChild(Y);	
 	
 	    }else{
 	    	var value = obj.value = "N";
-	       	var N = document.createTextNode(value);
+	       	var N = document.createElement("input");
+	       	N.setAttribute("name", "brdprivate");
+		    N.setAttribute("type", "text");
+		    N.setAttribute("value", value);
+		    
 		    document.getElementById("my").appendChild(N);	
 	    }
+	    
 	 };
 </script>
 
 <script type="text/javascript">
-	
-	
 	function YnCheck2(obj) {
 		$("#car").empty();
 	    var checked = obj.checked;
 	
 	    if(checked){
 	    	var value = obj.value = "Y";
-	        var Y = document.createTextNode(value);
+	        var Y = document.createElement("input");
+		    Y.setAttribute("name", "carmapchk");
+		    Y.setAttribute("type", "text");
+		    Y.setAttribute("value", value);
+		    
 		    document.getElementById("car").appendChild(Y);	
-	
+		    
 	    }else{
 	    	var value = obj.value = "N";
-	       	var N = document.createTextNode(value);
+	    	var N = document.createElement("input");
+	       	N.setAttribute("name", "carmapchk");
+		    N.setAttribute("type", "text");
+		    N.setAttribute("value", value);
+		    
 		    document.getElementById("car").appendChild(N);	
+	       	
 	    }
 	 };
 </script>
@@ -187,6 +219,8 @@
 
 
 
+
+
 </head>
 <body onload="location.href='#location-popup'">
 <!-- Start Header Area -->
@@ -208,7 +242,7 @@
    </div>
 </section>
 <!-- End Banner Area -->
-<form:form action="boardinsertres.do?brdno=${dto.brdno }&memno=${dto.memno }" 
+<form:form action="boardinsertres.do?memno=${login.memno }" 
 		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
 		<div class="card-head">
@@ -218,19 +252,20 @@
 		<div class="card-body">
 			<!-- Start Photo/Video upload Area-->
 			<div class="card-body-left">
-				<!-- 사용자가 업로드한 이미지 (미리보기)-->
-				<div class="uploadfile-wrap">
-	  				<img class="uploadimg" id="uploadimg">
-	  			</div>
-				<!-- 이미지 업로드 버튼 -->
-				<div class="uploadfile-btn" id="uploadfile-input-btn" onclick="onclick=document.all.file.click()" >
-					<div class="uploadfile-icon-btn">
-						<input type="file" id="input-file" name="brdfile" accept="image/*">			
-						<img class="camera-icon" src="./resources/img/camera.png"><br>
-						<span class="logo-bottom-context">사진 올리기</span>
-					</div>
+				<!-- 사진 업로드 -->
+				<div class="upload-img-form">
+					<input type="file" name="brdfile">
 				</div>
-				
+			
+<!-- 				<div class="upload-img-form"> -->
+<!-- 					<div class="img_wrap center-block"> -->
+<!-- 						<img id="img" src=""> -->
+<!-- 		  			</div> -->
+<!-- 					<div class="upload-img-content"> -->
+<!-- 						<input type="file" class="custom-file-input" id="input_img" name="upfile" accept="image/*"> -->
+<!-- 						<label class="custom-file-label" for="input_img" ></label> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 			</div>
 			<!-- End Photo/Video Upload Area -->
 			
@@ -275,10 +310,10 @@
 								<div id="map"></div>
 								<div class="location-search">
 									<div class="input-group mb-3" >
-										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." 
+										<input type="search" class="form-control" id="searchlocation" placeholder="주소를  검색해 주세요." 
 											   aria-label="Recipient's username" aria-describedby="button-addon2">
 										<div class="input-group-append">
-									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="searchlocation()">
 									    		<img class="searchimg" src="./resources/img/search.png">
 									    	</button>
 									  	</div>
@@ -303,9 +338,36 @@
 									// 지도에 마커를 표시합니다
 									marker.setMap(map);
 									
+									
+									
+									function searchlocation(){
+										
+										var inputloction = document.getElementById("searchlocation").value;
+										// 주소-좌표 변환 객체를 생성합니다
+										var geocoder = new kakao.maps.services.Geocoder();
+										
+										// 주소로 좌표를 검색합니다
+										geocoder.addressSearch(inputloction, function(result, status) {
+
+										    // 정상적으로 검색이 완료됐으면 
+										     if (status === kakao.maps.services.Status.OK) {
+
+										        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+										        // 결과값으로 받은 위치를 마커로 표시합니다
+										        var marker = new kakao.maps.Marker({
+										            map: map,
+										            position: coords
+										        });
+										     }
+										}	
+									
+									
+									
+									
 									// 지도에 클릭 이벤트를 등록합니다
 									// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-									kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+// 									kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
 									    
 									    // 클릭한 위도, 경도 정보를 가져옵니다 
 									    var latlng = mouseEvent.latLng; 
@@ -318,12 +380,25 @@
 									    var resultDiv = document.getElementById('clickLatlng'); 
 									    resultDiv.innerHTML = lat + " / " + lng;
 									    
-									    var lat = document.createTextNode(lat); 
-									    document.getElementById("lat").appendChild(lat);		
+									    $("#lat").empty();
+									    $("#lang").empty();
 									    
-									    var lang = document.createTextNode(lng);
-									    document.getElementById("long").appendChild(lang);		
-									});
+									    var lati = document.createElement("input");
+									    lati.setAttribute("name", "maplatitude");
+									    lati.setAttribute("type", "text");
+									    lati.setAttribute("value", lat);
+									    
+									    document.getElementById("lat").appendChild(lati);		
+									    
+									    
+									    var lang = document.createElement("input");
+									    lang.setAttribute("name", "maplongtitude");
+									    lang.setAttribute("type", "text");
+									    lang.setAttribute("value", lng);
+									    
+									    document.getElementById("lang").appendChild(lang);	
+									    
+									};
 								</script>
 													
 								<div class="location-finish">
@@ -343,7 +418,7 @@
 				
 				<div class="latlong-input-value">
 					<span><strong>위도 : </strong></span><span id="lat"></span>&#44;
-					<span><strong>경도 : </strong></span><span id="long"></span>
+					<span><strong>경도 : </strong></span><span id="lang"></span>
 				</div>
 				
 				<!-- Checkbox -->
@@ -353,7 +428,7 @@
 							<input type="checkbox" id="chkprivate" value="chkprivate" onclick="YnCheck(this)">
 							<span class="icon"></span>
 							<span class="text">나만 보기</span>
-							<span id="my" name="brdprivate">N</span>
+							<span id="my" name="brdprivate"><input type="text" value="N" name="brdprivate"></span>
 						</label>&emsp;&emsp;
 					</div>
 					<div class="chkcarplace-box">
@@ -362,7 +437,7 @@
 							<span class="icon"></span>
 							<span class="text">차박 명소 등록하기</span>
 							<span style="display: none;">4</span>
-							<span id="car">N</span>
+							<span id="car"><input type="text" value="N" name="carmapchk"></span>
 						</label>
 					</div>
 				</div>

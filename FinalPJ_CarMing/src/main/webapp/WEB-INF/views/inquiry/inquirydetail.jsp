@@ -40,15 +40,15 @@
 
 	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;border: 1px solid #e2e2e2; background: #fff5e9;}
 	.contact-form{width: 750px; height: 100%;}
-	#user-nickname{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em; font-weight: bold;}
+	#user-nickname{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#nickname{float: right; width: 450px; margin-right: 10px;}
 	.form-group-inquiry-form{float: left; margin-bottom: 15px; width:100%;}
-	#inquiry-date{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em; font-weight: bold;}
+	#inquiry-date{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#date{float: right; width: 450px; margin-right: 150px;}	
-	.form-group-category-form{float: left; margin-bottom: 15px; width: 100%;}
-	.inquiry-category{display: inline-block; float: left; margin-left: 15px; width: 10%; font-size: 1.2em; margin-left: 15px;}
+	.form-group-category-form{float: left; margin-bottom: 20px; width: 100%;}
+	.inquiry-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em; }
 	.inquiry-category-wrap{float: left; width: 72%; margin-left: 60px;}
-	#category{ width:450px;}
+	#category{width:450px;}
 	.current{font-size: 1.1em;}
 	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px; font-size: 1.1em; color: gray; }
 	#inquiry-text{font-size: 1.2em; margin-bottom: 10px; font-weight: bold;}	

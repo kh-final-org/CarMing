@@ -44,12 +44,13 @@
 	</select>
 	
 	<!-- 03. 게시글 작성 -->
-	<insert id="insertBoard" parameterType="boardDto">
-		
-		
-		
-		
-		
+	<insert id="insert" parameterType="boardDto">
+		INSERT ALL 
+	   	INTO BOARD VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno},(SELECT MEMNICK FROM MEMBER WHERE MEMNO = #{memno}), #{brdfilename},
+	   					  DEFAULT, #{brdcontent}, 0, SYSDATE, #{brdprivate}, #{memno} )
+	   
+	   	INTO MAPLOCATION VALUES(MAPNOSEQ.NEXTVAL, #{mapname}, #{maplatitude}, #{maplongtitude}, #{carmapchk}, #{memno} )
+	  	SELECT * FROM SYS.DUAL
   	</insert>	
 	
 	<!-- 04. 게시글 수정 -->

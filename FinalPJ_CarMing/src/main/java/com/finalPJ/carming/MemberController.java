@@ -132,6 +132,11 @@ public class MemberController {
 	public String memberInsert(MemberDto dto) {
 		int res = 0;
 		
+//		if(dto.getMemchk() == null) {
+//			dto.setMemchk("N");
+//		}
+//		System.out.println(dto.getMemchk().toString());
+		
 		System.out.println(dto.getMempw());
 		dto.setMempw(passwordEncoder.encode(dto.getMempw()));
 		System.out.println(dto.getMempw());

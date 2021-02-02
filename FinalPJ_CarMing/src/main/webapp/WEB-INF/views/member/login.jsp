@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-<!--<link rel="stylesheet" href="resources/css/login.css"> -->
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
@@ -21,20 +20,23 @@
 	    .loginform-logo{padding-top: 40px;}   
 	    .login-logo{width: 150px; height: 100%; margin-right: 10px;}
 
-		.input-user-idpw {width: 75%; color: #5f5f5f; font-size: 14px; letter-spacing: 1px; background: rgba(136, 126, 126, 0.04); padding: 10px 15px;
-				 border: none; border-radius: 5px; outline: none; box-sizing: border-box; border: 2px solid rgba(0, 0, 0, 0.02);
-				 margin-bottom: 8px; margin-left: 46px; text-align: left; font-family: 'Ubuntu', sans-serif;}
+		.input-user-idpw {width: 75%; color: #5f5f5f; font-size: 14px; letter-spacing: 1px; padding: 10px 15px; background: #fff;
+				 		  border: none; border-radius: 5px; outline: none; box-sizing: border-box; border: 1px solid rgba(0, 0, 0, 0.1);
+						  margin-bottom: 8px; margin-left: 46px; text-align: left; font-family: 'Ubuntu', sans-serif;}
 	    .userid:focus, .userpass:focus {border: 2px solid rgba(0, 0, 0, 0.18) !important;}
+	    #memid:hover{background: #fafafa; transition: 0.2s;}
+	    #mempw:hover{background: #fafafa; transition: 0.2s;}
 	    
 	    .login-btn {cursor: pointer; color: #5f5f5f !important; background: #ffe6be; width: 300px; border: 0; border-radius: 5px; padding: 10px 40px;
 				 	font-weight: bold; margin-top: 15px; margin-left: 12%; font-size: 1.1em; box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04); outline: none;}
+	    .login-btn:hover {background: #ffdb9f; transition: 0.2s;}
 	    .signup{padding-top: 10px; margin-bottom: 25px;}
 	    .signup-btn {color: gray; font-size: 0.85em; font-weight: bold;}
 	    a {text-decoration:none; } 
 	    form.form1 {padding-top: 30px;}
 	    input::placeholder{color: silver;}
 	    
-	    .naver_login_text{color: gray; font-size: 0.8em; margin-bottom: 5px;}
+	    .naver_login_text{color: gray; font-size: 0.75em; margin-bottom: 8px;}
 	    
 		@media (max-width: 600px) {.main {border-radius: 0px;}
     
