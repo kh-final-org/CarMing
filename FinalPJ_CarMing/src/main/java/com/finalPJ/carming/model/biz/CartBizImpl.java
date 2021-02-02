@@ -29,4 +29,9 @@ public class CartBizImpl implements CartBiz{
 		dao.deleteCart(cart);
 	}
 
+	@Override
+	public List<CartListDto> rentperiod(List<CartListDto> cartList) {
+		return dao.rentperiod(cartList);
+	}
+
 }

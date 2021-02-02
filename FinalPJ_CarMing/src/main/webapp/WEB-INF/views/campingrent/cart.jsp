@@ -12,8 +12,22 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="resources/js/cartlist.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="resources/js/cartlist.js?ver=5"></script>
+<style type="text/css">
+	.cart_empty_img{
+		text-align: center;
+    	width: 35%;
+	}
+
+	.cart_empty_text{
+		text-align: center;
+		margin-bottom: 20%;
+	}
+	.cart_empty_button{
+		margin-top: 5%;
+	}
+</style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -35,6 +49,19 @@
 	</section>
 	<!-- End Banner Area -->
 	<!--================Cart Area =================-->
+	<c:choose>
+	<c:when test="${empty cartlist}">
+		<div class="cart_empty_img">
+			<img src="resources/img/cart.png"><br>
+		</div>
+		<div class="cart_empty_text">
+			<h1>"장바구니가 비어 있습니다."</h1>
+			<div class="cart_empty_button">
+				<button type="button" onclick="location.href='productlist.do';">상품 담기</button>
+			</div>
+		</div>
+	</c:when>
+	<c:otherwise>
     <section class="cart_area">
         <div class="container">
             <div class="cart_inner">
@@ -54,6 +81,10 @@
                         </thead>
                         <c:set var="sum" value="0"></c:set>
                         <c:forEach var="cartListDto" items="${cartlist}">
+                        	<fmt:formatDate var="sDate" value="${cartListDto.startDate}" pattern="yyyyMMdd"/>
+                           	<fmt:formatDate var="eDate" value="${cartListDto.endDate}" pattern="yyyyMMdd"/>
+		                    <fmt:parseNumber var="itDate" value="${sDate / (1000*60*60*24)}" integerOnly="true" scope="request"/>
+		                    <fmt:parseNumber var="isDate" value="${eDate / (1000*60*60*24)}" integerOnly="true" scope="request"/>
                         <tbody>
                             <tr>
                             	<td><input type="checkbox" name="chBox" class="chBox" data-cartNo="${cartListDto.cartNo }"></td>
@@ -74,7 +105,7 @@
                                 </td>
                                 <td>
                               		<!-- <input type="date" id="edatePicker"> -->
-                              		<fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>
+                              		<fmt:formatDate value="${cartListDto.endDate }" pattern="yyyy-MM-dd"/>
                                 	<input type="hidden" id="endDate" value="${cartListDto.endDate}">
                                 </td>
                                 <td>
@@ -91,8 +122,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                   <c:set var="sum" value="${sum+(cartListDto.pPrice*cartListDto.cAmount) }"/>
-                                   <h5><fmt:formatNumber value="${cartListDto.pPrice*cartListDto.cAmount }" pattern="###,###,###"/></h5>
+                                   <c:set var="sum" value="${sum+(cartListDto.pPrice*cartListDto.cAmount*(eDate-sDate)) }"/>
+                                   <h5><fmt:formatNumber value="${cartListDto.pPrice*cartListDto.cAmount*(eDate-sDate) }" pattern="###,###,###"/></h5>
                                 </td>
                             </tr>
 							</c:forEach>
@@ -139,11 +170,11 @@
                                 </td>
 								<td></td>
 								<td></td>
-                                <td style="text-align: center;">                         	
-                            		<div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="productlist.do">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                        <a class="primary-btn" href="payinfo.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                    </div>      
+                                <td style="text-align: center;"> 
+		                            <div class="checkout_btn_inner d-flex align-items-center">
+			                            <a class="gray_btn" href="productlist.do">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			                            <a class="primary-btn" href="payinfo.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		                            </div>
                                 </td>
 
                             </tr>
@@ -153,6 +184,8 @@
             </div>
         </div>
     </section>
+    </c:otherwise>
+    </c:choose>
     </form>
     <!--================End Cart Area =================-->
 	<%@ include file="../common/footer.jsp" %>

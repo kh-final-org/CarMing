@@ -75,7 +75,7 @@ public class CartController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/cartdelete.do", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value="/cartdelete.do", method = RequestMethod.POST)
 	public int cartdelete(@RequestParam(value="chBox[]") List<String> chArr, CartDto cdto) throws Exception{
 		logger.info("[CART DELETE]");
 		System.out.println("여기까지 못온듯?");

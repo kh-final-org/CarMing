@@ -1,27 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CarMing</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
-			$(function(){
-							alert("여기에는 왔음?");
-							IMP.init('imp83374605');
+			$(function(){	
+							IMP.init('imp14511841');
 							IMP.request_pay({
-							    pg : ${pg},
+							    pg : 'inicis',
 							    pay_method : 'card',
 							    merchant_uid : 'CarMing' + new Date().getTime(),
-							    name : '주문명:'+'',
-							    amount : 14000,
-							    buyer_email : 'iamport@siot.do',
-							    buyer_name : '구매자이름',
-							    buyer_tel : '010-1234-5678',
-							    buyer_addr : '서울특별시 강남구 삼성동',
-							    buyer_postcode : '123-456'
+							    name : '주문명:'+${cartListDto.pName},
+							    amount : ${payDto.totalPrice},
+							    buyer_email : ${login.memid},
+							    buyer_name : ${login.memname},
+							    buyer_tel : ${login.memphone},
+							    buyer_addr : ${login.memaddr},
+							    buyer_postcode : ${payDto.addr}
 							}, function(rsp) {
 							    if ( rsp.success ) {
 							    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
@@ -54,12 +54,21 @@
 							        msg += '에러내용 : ' + rsp.error_msg;
 							        
 							        alert(msg);
+							        location.href = "payinfo.do";
 							    }
 							    
 								$.ajax({
-									url: "payresult.do",
+									url: "payresultform.do",
 									type: "POST",
-									data: {"amount": 14000}
+									data: {"amount": 14000},
+									success: function(result){
+										if(result==1){
+											location.href="payresult.do";
+										}
+									},
+									error: function(){
+										location.href="payinfo.do";
+									}
 								});		
 							});
 			});

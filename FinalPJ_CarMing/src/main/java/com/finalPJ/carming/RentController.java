@@ -117,7 +117,6 @@ public class RentController {
 			dto.setpFile(name);
 			dto.setpDesc(name2);
 			dto.setpPath(path);
-			
 			File storage = new File(path);
 			// storage 폴더가 없을 경우 storage 폴더을 만들어줌
 			if(!storage.exists()) {
@@ -137,7 +136,7 @@ public class RentController {
 				newFile.createNewFile();
 			}
 			
-			File newFile2 = new File(path+"/"+name2);
+			File newFile2 = new File(path2+"/"+name2);
 			
 			if(!newFile2.exists()) {
 				newFile2.createNewFile();
@@ -158,7 +157,7 @@ public class RentController {
 			while((read=inputStream.read(b)) != -1) {
 				outputStream.write(b,0,read);
 			}
-			while((read2=inputStream2.read(b)) != -1) {
+			while((read2=inputStream2.read(b2)) != -1) {
 				outputStream2.write(b2,0,read2);
 			}
 			
@@ -198,14 +197,14 @@ public class RentController {
 		int cntReview = 0;
 		cntReview = rbiz.countReview(rdto);
 		System.out.println("리뷰 갯수: "+cntReview);
-		
+
 		//리뷰 갯수 객체 담아 보내기 
 		model.addAttribute("countreview", cntReview);
 		//제품 상세정보 객체 담아 보내기
 		model.addAttribute("productdto", biz.selectOne(pNo));
 		//전체 리뷰 객체에 담아 보내기
 		model.addAttribute("reviewlist", reviewlist);
-		
+		System.out.println(reviewlist);
 		return "campingrent/productdetail";
 	}
 	
@@ -222,10 +221,11 @@ public class RentController {
 //		List<ProductDto> list = biz.selectAll(pag);
 		List<ProductDto> list = biz.selectAll();
 
+		System.out.println(list);
 		
 		model.addAttribute("productlist", list);
 		model.addAttribute("pageMaker", pageMaker);
-		
+
 		
 		return "campingrent/category";
 	}

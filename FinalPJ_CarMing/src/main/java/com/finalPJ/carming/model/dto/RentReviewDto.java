@@ -25,12 +25,11 @@ public class RentReviewDto {
 		this.reviewStar = reviewStar;
 	}
 
-	
-	public int getReviewNo() {
+	public int getreviewNo() {
 		return reviewNo;
 	}
 
-	public void setReviewNo(int reviewNo) {
+	public void setreviewNo(int reviewNo) {
 		this.reviewNo = reviewNo;
 	}
 
@@ -42,35 +41,35 @@ public class RentReviewDto {
 		this.pNo = pNo;
 	}
 
-	public String getReviewContext() {
+	public String getreviewContext() {
 		return reviewContext;
 	}
 
-	public void setReviewContext(String reviewContext) {
+	public void setreviewContext(String reviewContext) {
 		this.reviewContext = reviewContext;
 	}
 
-	public Date getReviewDate() {
+	public Date getreviewDate() {
 		return reviewDate;
 	}
 
-	public void setReviewDate(Date reviewDate) {
+	public void setreviewDate(Date reviewDate) {
 		this.reviewDate = reviewDate;
 	}
 
-	public String getReviewWriter() {
+	public String getreviewWriter() {
 		return reviewWriter;
 	}
 
-	public void setReviewWriter(String reviewWriter) {
+	public void setreviewWriter(String reviewWriter) {
 		this.reviewWriter = reviewWriter;
 	}
 
-	public int getReviewStar() {
+	public int getreviewStar() {
 		return reviewStar;
 	}
 
-	public void setReviewStar(int reviewStar) {
+	public void setreviewStar(int reviewStar) {
 		this.reviewStar = reviewStar;
 	}
 
@@ -80,4 +79,6 @@ public class RentReviewDto {
 				+ ", reviewDate=" + reviewDate + ", reviewWriter=" + reviewWriter + ", reviewStar=" + reviewStar + "]";
 	}
 
+	
+	
 }

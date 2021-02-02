@@ -161,19 +161,81 @@ function mark(star){
 				</ul>
 				<div class="tab-content" id="myTabContent" style="text-align:center;">
 					<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-						<img class="product_description" src="storage/${productdto.pDesc}">
+						<img class="product_description" src="storage2/${productdto.pDesc}">
 					</div>
 					<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 					</div>
 					<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
 						<div class="row">
 							<div class="col-lg-6">
+									<c:choose>
+									<c:when test="${empty reviewlist}">
+										<h3>등록되어 있는 리뷰가 존재하지 않습니다. <br>
+										리뷰를 남겨주세요.</h3>
+									</c:when>
+									<c:otherwise>
+
+										<c:forEach var="rentReviewDtos" items="${reviewlist}">
+											<div class="review_list">
+												<div class="review_item">
+													<div class="media">
+														<div class="media-body">
+															<c:if test="${login.memid == rentReviewDtos.reviewWriter || login.memcode == 1}">
+																<a href="deletereview.do?reviewNo=${rentReviewDtos.reviewNo }">
+																	<img src="resources/img/trash.svg">
+																</a>
+															</c:if>
+															<div class="d-flex">
+																<img src="resources/img/logo.png" alt="" style="width:70px; height:70px;">
+															</div>				
+															<div class="media-body">
+																<h4>${rentReviewDtos.reviewWriter }</h4>
+																<span>
+																	<c:if test="${rentReviewDtos.reviewStar == 1 }">
+																		<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
+																	</c:if>
+																	<c:if test="${rentReviewDtos.reviewStar == 2 }">
+																		<img style="width:15px; height:15px;" id="simage1" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage2" src="resources/img/star.png">
+																	</c:if>
+																	<c:if test="${rentReviewDtos.reviewStar == 3 }">
+																		<img style="width:15px; height:15px;" id="simage1" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage2" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage3" src="resources/img/star.png">
+																	</c:if>
+																	<c:if test="${rentReviewDtos.reviewStar == 4 }">
+																		<img style="width:15px; height:15px;" id="simage1" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage2" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage3" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage4" src="resources/img/star.png">
+																	</c:if>
+																	<c:if test="${rentReviewDtos.reviewStar == 5 }">
+																		<img style="width:15px; height:15px;" id="simage1" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage2" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage3" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage4" src="resources/img/star.png">
+																		<img style="width:15px; height:15px;" id="simage5" src="resources/img/star.png">
+																	</c:if>
+																</span>
+															</div>
+														</div>
+													</div>
+													<p>${rentReviewDtos.reviewContext }</p>
+												</div>
+											</div>
+											<c:set var="reviewSum" value="${reviewSum+rentReviewDtos.reviewStar}" />
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>   
 								<div class="row total_rate" style="text-align: center;">
 									<div class="col-6">
 										<div class="box_total">
+										<c:set var="reviewSum" value="${reviewSum }" />
+										<c:set var="reviewAvg" value="${reviewSum/countreview }"/>
+										<fmt:formatNumber var="reviewAvg" value="${reviewAvg }" pattern="0.0"/>
 											<h5>평균 평점</h5>
-											<h4>4.0</h4>
-											<h6>리뷰 갯수 : (${countreview}개)</h6>
+											<h4>${reviewAvg }</h4>
+											<h6>리뷰 갯수 : (${countreview}개) </h6>
 										</div>
 									</div>
 									<!-- <div class="col-6">
@@ -194,63 +256,13 @@ function mark(star){
 										</div>
 									</div> -->
 								</div>
-									<br>
-								<c:choose>
-									<c:when test="${empty reviewlist}">
-										<h3>등록되어 있는 리뷰가 존재하지 않습니다. <br>
-										리뷰를 남겨주세요.</h3>
-									</c:when>
-									<c:otherwise>
-										<c:forEach var="rentReviewDto" items="${reviewlist} ">
-											<div class="review_list">
-												<div class="review_item">
-													<div class="media">
-														<div class="media-body">
-															<a href="deletereview.do?reviewNo=${reviewlist.reviewNo}">
-																<img src="resources/img/trash.svg">
-															</a>				
-															<h4>${reviewlist.reviewWriter }</h4>
-															<span>
-																<c:if test="${reviewlist.reviewStar == 1 }">
-																	<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
-																</c:if>
-																<c:if test="${reviewlist.reviewStar == 2 }">
-																	<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image2" src="resources/img/star.png">
-																</c:if>
-																<c:if test="${reviewlist.reviewStar == 3 }">
-																	<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image2" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image3" src="resources/img/star.png">
-																</c:if>
-																<c:if test="${reviewlist.reviewStar == 4 }">
-																	<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image2" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image3" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image4" src="resources/img/star.png">
-																</c:if>
-																<c:if test="${reviewlist.reviewStar == 5 }">
-																	<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image2" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image3" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image4" src="resources/img/star.png">
-																	<img style="width:15px; height:15px;" id="image5" src="resources/img/star.png">
-																</c:if>
-															</span>
-														</div>
-													</div>
-													<p>${reviewlist.reviewContext }</p>
-												</div>
-											</div>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-							</div>
+							</div> 
 							
 							<div class="col-lg-6">
 								<div class="review_box">
 									<h4>리뷰 남기기</h4>
-									<span>Your Rating:</span>
+									<span>평점 남기기:</span>
+									<c:set var="reviewAvg" value="${reviewSum/countreview }"/>
 									<div id="rating">
 										<span>
 											<img style="width:15px; height:15px;" id="image1" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)" src="resources/img/nonstar.png">
@@ -263,7 +275,7 @@ function mark(star){
 									<br>
 										<div class="col-md-12">
 											<div class="form-group">
-												<input type="text" class="form-control" value="" id="name" name="reviewWriter" placeholder="아이디 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = '아이디 입력'">
+												<input type="text" class="form-control" value="${login.memid}" id="name" name="reviewWriter" placeholder="아이디 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = '아이디 입력'">
 											</div>
 										</div>
 										<div class="col-md-12">

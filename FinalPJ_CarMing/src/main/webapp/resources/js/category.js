@@ -19,7 +19,7 @@ $(document).ready(function(){
 	
 	
 	/*삭제 기능 구현(ajax로)*/
-	$("#selectDelete_btn").click(function(){
+	$(".selectDelete_btn").click(function(){
 		var confirm_val = confirm("정말 삭제하시겠습니까?");
 		
 		if(confirm_val){
@@ -70,6 +70,76 @@ $(document).ready(function(){
 		}
 	});
 	
+	/* 카테고리별 게시물 보여주기 */
+	//1. 텐트 / 타프
+	$("#tent").click(function(){
+		var pCategoryNo = $(".pCategoryNo");
+		var data_pCategoryNo = $(this).attr("data-pCategoryNo");		
+		console.log("카테고리 번호: "+pCategoryNo.val());
+		console.log("data-카테고리번호: "+data_pCategoryNo);
+		
+		var product_div = $(".col-lg-4 col-md-6");
+		console.log(product_div[0]);
+		for(i=0; i<product_div.length; i++){
+			cNo = pCategoryNo[i].val();
+			alert(cNo);
+			if(cNo == data_pCategoryNo){
+				product_div[i].style.display = "";
+			} else{
+				product_div[i].style.display = "none";
+			}
+		}
+	});
+	/*
+	//2. 메트 / 침낭
+	$("#bag").click(function(){
+		alert("매트 ");		
+	});
+	//3. 코펠 / 버너 / 취사
+	$("#pot").click(function(){
+		alert("코펠");		
+	});
+	//4. 의자 / 테이블
+	$("#chair").click(function(){
+		alert("의자");		
+	});
+	//5. 화로대 / BBQ
+	$("#bbq").click(function(){
+		alert("화로대");		
+	});
+	*/
+	
+	
+
+	
 });
+	
+	/* 카카오톡 공유하기 api */
+ 	function sendLink(pNo) {
+	Kakao.init('8078df641ea1c47f0e710ebba7a5f5e7'); // 초기화
+    Kakao.Link.sendDefault({
+	
+        objectType: 'feed',
+        content: {
+            title: document.title,
+            description: "캠핑 렌트 사이트 : CarMing",
+            imageUrl: "resources/img/tent(buffalo).jpg",
+            link: {
+                mobileWebUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo,
+                webUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo
+            },
+        },
+        buttons: [
+            {
+                title: '상품 보기',
+                link: {
+                    mobileWebUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo,
+                    webUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo,
+                },
+            }
+        ],
+    })
+}
+
 
 

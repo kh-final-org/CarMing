@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -15,6 +16,7 @@
 				<div class="col-lg-4">
 					<div class="details_item">
 						<h4>주문 정보</h4>
+						<h3>${login.memname }님의 주문 내역은 다음과 같습니다.</h3>
 						<ul class="list">
 							<li><a href="#"><span>주문 번호</span> : 60235</a></li>
 							<li><a href="#"><span>제품명</span> : 60235</a></li>
@@ -25,6 +27,10 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div style="text-align: center;">
+			<button type="button">주문 내역 보기</button>
+			<button type="button">홈으로</button>
 		</div>
 	</section>
 	<%@ include file="../common/footer.jsp" %>

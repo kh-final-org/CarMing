@@ -53,4 +53,10 @@
 		FROM PRODUCT
 		WHERE PNO = #{pNo}
 	</delete>
+	
+	<update id="changeAmount">
+		UPDATE PRODUCT
+		SET PAMOUNT = PAMOUNT - #{pAmount}
+		WHERE PNO = #{pNo}
+	</update>
 </mapper>

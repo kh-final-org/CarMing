@@ -29,33 +29,40 @@ public class RentReivewController {
 	private RentReviewDto rdto;
 	
 	@RequestMapping(value = "/insertreview.do")
-	public void insertreview(HttpServletRequest request, HttpServletResponse response, RentReviewDto rdto) throws IOException {
+	public void insertreview(Model model, HttpServletRequest request, HttpServletResponse response, RentReviewDto rdto) throws IOException {
 		logger.info("[REVIEW INSERT]");
 		
 		int pNo = Integer.parseInt(request.getParameter("pNo"));
 		int reviewStar = Integer.parseInt(request.getParameter("reviewStar"));
 		System.out.println("상품 번호: "+pNo);
 		System.out.println("별 개수: "+reviewStar);
-		System.out.println("reviewWrite: "+rdto.getReviewWriter());
+		System.out.println("reviewWrite: "+rdto.getreviewWriter());
 		rdto.setpNo(pNo);
-		rdto.setReviewStar(reviewStar);
+		rdto.setreviewStar(reviewStar);
 		
 		int insertRes = biz.insertReview(rdto);
 		
+		//인코딩 설정
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
 		if(insertRes > 0) {
+			System.out.println("뭐든 수발");
 			PrintWriter out = response.getWriter();
 			out.println("<script>"
 					+"alert('리뷰가 등록되었습니다.');"
-					+"location.href='productdetail.do?pNo='"
+					+"location.href='productdetail.do?pNo="
 					+rdto.getpNo()
+					+"'"
 					+ "</script>");
 			out.flush();
 		} else {
 			PrintWriter out = response.getWriter();
 			out.println("<script>"
 					+"alert('리뷰 등록에 실패하였습니다.');"
-					+"location.href='productdetail.do?pNo='"
+					+"location.href='productdetail.do?pNo="
 					+rdto.getpNo()
+					+"'"
 					+ "</script>");
 			out.flush();
 		}
@@ -66,21 +73,27 @@ public class RentReivewController {
 		logger.info("[REVIEW DELETE");
 		
 		int deleteres = biz.deleteReview(reviewNo);
-
+		
+		//인코딩 설정
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
 		if(deleteres > 0) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>"
 					+"alert('해당 리뷰글이 삭제되었습니다.');"
-					+"location.href='productdetail.do?pNo='"
+					+"location.href='productdetail.do?pNo="
 					+rdto.getpNo()
+					+"'"
 					+ "</script>");
 			out.flush();
 		} else {
 			PrintWriter out = response.getWriter();
 			out.println("<script>"
 					+"alert('리뷰삭제에 실패하였습니다.');"
-					+"location.href='productdetail.do?pNo='"
+					+"location.href='productdetail.do?pNo="
 					+rdto.getpNo()
+					+"'"
 					+ "</script>");
 			out.flush();
 		}

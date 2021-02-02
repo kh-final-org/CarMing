@@ -1,13 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@
+	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
+ %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
+
 	<link rel="stylesheet" href="resources/scss/theme/_product.scss">
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="resources/js/pay.js?ver=8"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		/* 배송지 변경 클릭 시 우편번호찾기 버튼 생성*/
+	    $("#change_addr").click(function(){
+	       var confirm_val = confirm("배송지를 변경하시겠습니까?");
+	       
+	       if(confirm_val){
+	          $("#addr_btn").show();
+	          return false;
+	       } else{
+	          $("#addr_btn").hide();
+	       }
+	    });
+	});
+	</script>
 </head>
 
 <body>
@@ -51,7 +74,7 @@
                                     <input type="text" class="form-control" id="sample4_postcode" name="name" value="${login.memzip }" placeholder="우편번호" style="width: 35%;"><br>
                                     <input type="text" class="form-control" id="sample4_roadAddress" name="roadaddr" value="${login.memaddr }" placeholder="도로명주소"><br>
                                     <span id="guide" style="color: $999; display: none;"></span>
-                                    <input type="text" class="form-control" id="sample4_detailAddress" value="${login.memaddr2 }" placeholder="상세주소"><br>
+                                    <input type="text" class="form-control" id="sample4_detailAddress" value="${login.memaddr}&nbsp;${login.memaddr2 }" placeholder="상세주소"><br>
                                 </div>
                             </div>
                             <div class="col-md-6 form-group p_star">
@@ -102,7 +125,7 @@
                                     <div>
                                         <select class="country_select" id="pay_option">
                                             <option value="method">결제 방법을 선택해주세요.</option>
-                                            <option value="cart">카드</option>
+                                            <option value="inicis">카드</option>
                                             <option value="kakaopay">카카오페이</option>
                                         </select>
                                     </div>
@@ -112,18 +135,28 @@
                     <div class="col-lg-4">
                         <div class="order_box">
                             <h2>결제 내역</h2>
-                            <ul class="list">
-
-                            	<%-- <c:forEach var="cartListDto" items="${cartlist}"> --%>
-	                                <li><a href="#">Product <span>대여기간           총합</span></a></li>
-	                                <li><a href="#">${cartlist.pName } <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-	                                <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-	                                <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-	                            <%-- </c:forEach> --%>
-                            </ul>
-                            <ul class="list list_2">
-                                <li><a href="#">총 금액<span>$2160.00</span></a></li>
-                            </ul>
+                           	<ul class="list">
+                            <c:set var="sum" value="0" />
+                            <c:forEach var="cartlistDto" items="${cartlist}">
+                            		<fmt:formatDate var="sDate" value="${cartlistDto.startDate}" pattern="yyyyMMdd"/>
+                            		<fmt:formatDate var="eDate" value="${cartlistDto.endDate}" pattern="yyyyMMdd"/>
+		                          	<fmt:parseNumber var="itDate" value="${sDate / (1000*60*60*24)}" integerOnly="true" scope="request"/>
+		                            <fmt:parseNumber var="isDate" value="${eDate / (1000*60*60*24)}" integerOnly="true" scope="request"/>
+		                            <li><a href="#">상품명 <span>${cartlistDto.pName }</span></a></li>
+		                            <li><a href="#">수량 <span>${cartlistDto.cAmount }개</span></a></li>
+		                            <li><a href="#">가격<span class="last">${cartlistDto.cAmount*cartlistDto.pPrice }원</span></a></li>
+		                            <li><a href="#">대여 기간<span>${eDate-sDate}일</span></a></li>
+									<hr>
+									<c:set var="sum" value="${sum+(cartlistDto.pPrice*cartlistDto.cAmount*(eDate-sDate)) }"/>
+									<li class="licartNo" style="display: hidden;">
+										<input type="hidden" class="cartNo" data-cartNo="${cartlistDto.cartNo }" value="${cartlistDto.cartNo }">
+									</li>
+							</c:forEach>
+							</ul>
+							<h2>결제 금액</h2>
+							<ul class="list">
+                                <li><a href="#">총 금액<span class="last"><fmt:formatNumber value="${sum }" pattern="###,###,###"/>원</span></a></li>
+                           	</ul>
                             <div class="payment_item">
                                 <div class="create_account">
                                     <input type="checkbox" id="f-option4" name="selector" onclick="agree_btn(this);">
@@ -140,9 +173,11 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" id="totalPrice" value="${sum }">
+		<input type="hidden" id="pNo" value="${cartListDto.pNo }">
     </section>
     <!--================End Checkout Area =================-->
 	<%@ include file="../common/footer.jsp" %>
-	<script src="resources/js/pay.js"></script>
+
 </body>
 </html>

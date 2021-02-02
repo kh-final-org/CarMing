@@ -1,3 +1,4 @@
+  //다음 도로명 주소 
 var width = 500;	//팝업의 너비
 var height = 600;	//팝업의 높이
 	function sample4_execDaumPostcode() {
@@ -71,6 +72,17 @@ var height = 600;	//팝업의 높이
 
 // 소현 노트북에서 잘됨
 window.onload = function() {
+	/* 배송 메모 select에서 직접 입력 클릭 시 배송 메모 영역 생성 */
+   		$("#custom_memo").change(function(){
+    	var custom_option = $("#custom_memo option:selected").val();
+
+        if(custom_option == 6){
+        		$("#custom_memo_area").show();
+        	} else{
+                $("#custom_memo_area").hide();
+            }
+        });
+
 	/* 배송지 변경 클릭 시 우편번호찾기 버튼 생성*/
       $("#change_addr").click(function(){
          var confirm_val = confirm("배송지를 변경하시겠습니까?");
@@ -78,36 +90,101 @@ window.onload = function() {
          if(confirm_val){
             $("#addr_btn").show();
             return false;
-         } else{
+         } else{ss
             $("#addr_btn").hide();
          }
       });
-		/* 결제 수단 체크 시 버튼 생성 */
+
+	/* 결제 수단 체크 시 버튼 생성 */
 		$("#pay_go").click(function(){
-			alert("뭐가 문제지?");
+			
+			var cNoArr = new Array();
+			
+			$(".licartNo").each(function(){
+				cNoArr.push($(this).children().attr("data-cartNo"));
+			});
+			console.log("카트번호"+cNoArr);
+			var addr = $("#sample4_detailAddress").val();
+			console.log("주소: "+addr);
+			var totalPrice = $("#totalPrice").val();
+			console.log("가격: "+totalPrice);
 			var pay_option = $("#pay_option option:selected").val();
 			
-			if(pay_option == 'kakaopay'){
-				$.ajax({
-					url:'pay.do',
-					type: 'post',
-					data: {"pg" : pay_option}
-				});
+			var dto = {
+				"pay_option": pay_option,
+				"cNoArr": cNoArr,
+				"totalPrice": totalPrice,
+				"addr": addr
+			}
+			/* 약간동의 체크안할 시 알림창  */
+			if($("#f-option4").is(':checked') == false){
+				alert("모든 약관에 동의하셔야 결제를 진행할 수 있습니다.");
+				return;
+			} else if(pay_option == 'method'){
+				alert("결제 수단을 선택해주세요.");
+				return;				
+			} else if(custom_memo == 1){
+				alert("배송 메모를 선택해주세요.");
+				return;
+			} else {
+					alert("pay_option: "+pay_option);
+					
+					if(pay_option == 'kakaopay'){
+						$.ajax({
+							url:'kakaopay.do',
+							type: 'post',
+							data: dto,
+							success: function(result){
+								if(result==1){
+									toKakaopay(dto);
+									window.location.href = "campingrent/cart.jsp"
+								}
+							},
+							error: function(){
+								location.href="payinfo.do";
+							}
+						});
+					}
+			
+					if(pay_option == 'inicis'){
+						$.ajax({
+							url: 'inicispay.do',
+							type: 'post',
+							data: {
+								"pay_option": pay_option,
+								"cNoArr": cNoArr,
+								"totalPrice": totalPrice,
+								"addr": addr
+							},
+							success: function(result){
+								if(result==1){
+									location.href="inicis.do";
+								}
+							},
+							error: function(){
+								location.href="payinfo.do";
+							}
+						});
+					}
+			
 			}
 			
+		
 		});
 	
 };
-	
-	/* 배송 메모 select에서 직접 입력 클릭 시 배송 메모 영역 생성 */
-   /* $("#custom_memo").change(function(){
-    	var custom_option = $("#custom_memo option:selected").val();
-        if(custom_option == 6){
-        		$("#custom_memo_area").show();
-        	} else{
-                $("#custom_memo_area").hide();
-            }
-        });*/
+
+function toKakaopay(dto){
+	alert(dto);
+	$.ajax({				
+		url: 'kakao.do',
+		type: 'post',
+		data: dto,
+		success: function(){
+			alert("카카오페이지 전환 성공");
+		}
+	});
+}
 	/*$('#change_addr', '#pay_go').click(function(){
 		if($(this).hasClass('#change_addr')){
 			var confirm_val = confirm("배송지를 변경하시겠습니까?");

@@ -10,19 +10,10 @@
 <head>
 <meta charset="EUC-KR">
 <title>CarMing</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="resources/js/category.js?ver=4"></script>
 </head>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-
-	/* <!-- 제품 등록 알림창 코드-->
-	var insertResult = '${msg}';
-	
-	if(insertResult == '성공'){
-		alert("제품이 등록되었습니다!");
-	} else{
-		alert("제품이 등록되지 않았습니다. 다시 등록해주세요.");
-	} */
-</script>
 <body>
 	<%@include file="../common/header.jsp" %>
 	<!-- Start Banner Area -->
@@ -50,19 +41,22 @@
 				<div class="sidebar-categories"> 	
 					<div class="head">렌트 카테고리</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+						<li class="main-nav-list"><a id="all_category" data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								 class="lnr lnr-arrow-right"></span>전체<span class="number"></span></a>
+						</li>
+						<li class="main-nav-list"><a id="tent" data-toggle="collapse" data-pCategoryNo="1" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								 class="lnr lnr-arrow-right"></span>텐트 / 타프<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span
+						<li class="main-nav-list"><a id="bag" data-toggle="collapse" data-pCategoryNo="2" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span
 								 class="lnr lnr-arrow-right"></span>매트 / 침낭<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#beauttyProduct" aria-expanded="false" aria-controls="beauttyProduct"><span
+						<li class="main-nav-list"><a id="pot" data-toggle="collapse" data-pCategoryNo="3" href="#beauttyProduct" aria-expanded="false" aria-controls="beauttyProduct"><span
 								 class="lnr lnr-arrow-right"></span>코펠 / 버너 / 취사<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#healthProduct" aria-expanded="false" aria-controls="healthProduct"><span
+						<li class="main-nav-list"><a id="chair" data-toggle="collapse" data-pCategoryNo="4" href="#healthProduct" aria-expanded="false" aria-controls="healthProduct"><span
 								 class="lnr lnr-arrow-right"></span>체어 / 테이블<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#homeAppliance" aria-expanded="false" aria-controls="homeAppliance"><span
+						<li class="main-nav-list"><a id="bbq" data-toggle="collapse" data-pCategoryNo="5" href="#homeAppliance" aria-expanded="false" aria-controls="homeAppliance"><span
 								 class="lnr lnr-arrow-right"></span>화로대 / BBQ<span class="number"></span></a>
 						</li>
 					</ul>
@@ -121,6 +115,7 @@
         					</c:when>
         					<c:otherwise>
         						<c:forEach var="productDto" items="${productlist}">
+        						<input type="hidden" class="pCategoryNo" value="${productDto.pCategoryNo }">
 		      						<div class="col-lg-4 col-md-6">
 										<div class="single-product">
 										<c:if test="${login.memcode == 1 }">
@@ -128,8 +123,9 @@
 											<div class="delete_btn" style="float: right;">
 												<button type="button" class="delete_btn" data-pNo="${productDto.pNo }">삭제</button>
 											</div>
+											
 										</c:if>
-										<img class="img-fluid" src="storage/${productDto.pFile}" alt="">
+										<img class="img-fluid" src="storage/${productDto.pFile}" alt="" style="width: 255px; height: 200px;">
 											<div class="product-details">
 											<h6>${productDto.pName }</h6>
 												<div class="price">
@@ -137,18 +133,14 @@
 												</div>
 												<h6 style="font-size: 20px;">수량: ${productDto.pAmount }</h6>
 										<div class="prd-bottom">
-											<a href="" class="social-info">
-												<span class="ti-bag"></span>
-												<p class="hover-text">장바구니에 추가하기</p>
-											</a>
-											<a href="" class="social-info">
-												<span class="lnr lnr-heart"></span>
-												<p class="hover-text">찜하기</p>
-											</a>
-											<a href="" class="social-info">
+											<a href="javascript:sendLink(${productDto.pNo })" class="social-info">
 												<span class="lnr lnr-sync"></span>
-												<p class="hover-text">공유하기</p>
-											</a>
+												<p class="hover-text">카카오톡 공유하기</p>
+											</a> 
+ 											<!--<div class="social-info">
+											  <a href="javascript:sendLink()"><img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width: 30px; height: 30px;"/></a>
+											  <p class="hover-text">카카오톡 공유하기</p>
+											</div> -->
 											<a href="productdetail.do?pNo=${productDto.pNo }" class="social-info">
 												<span class="lnr lnr-move"></span>
 												<p class="hover-text">상세보기</p> 	 	 	 	 	 	 	 	 	 	 	

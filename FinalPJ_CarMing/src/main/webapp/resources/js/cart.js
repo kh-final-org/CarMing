@@ -34,4 +34,26 @@ $(document).ready(function(){
 			}
 		});		
 	});
+	
+	/* 카테고리별 게시물 보여주기 */
+	//1. 텐트 / 타프
+	$("#tent").click(function(){
+		
+		var pCategoryNo = $(".pCategoryNo");
+		var data_pCategoryNo = $(this).attr("data-pCategoryNo");		
+		console.log("카테고리 번호: "+pCategoryNo);
+		console.log("data-카테고리번호: "+data_pCategoryNo);
+		
+		var product_div = $(".col-lg-4 col-md-6");
+		
+		for(i=0; i<product_div.length; i++){
+			cNo = pCategoryNo[i].val();
+			alert(cNo);
+			if(cNo == data_pCategoryNo){
+				product_div[i].style.display = "";
+			} else{
+				product_div[i].style.display = "none";
+			}
+		}
+	});
 });

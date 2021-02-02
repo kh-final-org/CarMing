@@ -25,7 +25,7 @@
 	
 	<delete id="deletereview" parameterType="int">
 		DELETE
-		FROM
+		FROM REVIEW
 		WHERE REVIEWNO = #{reviewNo}
 	</delete>
 </mapper>

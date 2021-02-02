@@ -75,14 +75,6 @@ public class ProductDto {
 		this.pFile = pFile;
 	}
 
-	public int getpAmount() {
-		return pAmount;
-	}
-
-	public void setpAmount(int pAmount) {
-		this.pAmount = pAmount;
-	}
-
 	public String getpPath() {
 		return pPath;
 	}
@@ -90,5 +82,15 @@ public class ProductDto {
 	public void setpPath(String pPath) {
 		this.pPath = pPath;
 	}
+
+	public int getpAmount() {
+		return pAmount;
+	}
+
+	public void setpAmount(int pAmount) {
+		this.pAmount = pAmount;
+	}
+	
+	
 	
 }

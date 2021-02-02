@@ -44,7 +44,7 @@ $(document).ready(function(){
 	/* **************************************************************************************** */
 	$("#allCheck").click(function(){
 		/* 전체선택 클릭 시 */
-		var chk = $("allCheck").prop("checked");
+		var chk = $("#allCheck").prop("checked");
 		
 		if(chk){
 			$(".chBox").prop("checked", true);
@@ -70,12 +70,14 @@ $(document).ready(function(){
 				checkArr.push($(this).attr("data-cartNo"));
 			});
 			
+			alert(checkArr);
 			
 			$.ajax({
 				url: "cartdelete.do",
 				type: "post",
-				data: {chbox : checkArr},
+				data: {chBox : checkArr},
 				success: function(result){
+					alert("성공은 했나?");
 					if(result == 1){
 						alert("해당 항목이 삭제되었습니다.");
 						location.href = "cartlist.do";

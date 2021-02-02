@@ -10,4 +10,5 @@ public interface CartDao {
 	public List<CartListDto> cartList();
 	public void insertCart(CartDto cart);
 	public void deleteCart(CartDto cart);
+	public List<CartListDto> rentperiod(List<CartListDto> cartList);
 }

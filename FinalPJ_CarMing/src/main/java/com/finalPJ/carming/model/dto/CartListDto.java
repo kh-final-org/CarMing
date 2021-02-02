@@ -2,11 +2,15 @@ package com.finalPJ.carming.model.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class CartListDto {
 	//CartDto VO
 	private int cartNo;
 	private int cAmount;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date startDate;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date endDate;
 	private int memNo;
 	private int pNo;
@@ -125,6 +129,5 @@ public class CartListDto {
 	public void setpFile(String pFile) {
 		this.pFile = pFile;
 	}
-	
 	
 }

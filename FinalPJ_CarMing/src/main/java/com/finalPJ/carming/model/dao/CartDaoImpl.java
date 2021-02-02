@@ -50,4 +50,17 @@ public class CartDaoImpl implements CartDao {
 		}
 	}
 
+	@Override
+	public List<CartListDto> rentperiod(List<CartListDto> cartList) {
+		List<CartListDto> list = new ArrayList<CartListDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"rentperiod", cartList);
+		} catch (Exception e) {
+			System.out.println("[ERROR: RENT PERIOD]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }
