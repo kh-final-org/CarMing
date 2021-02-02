@@ -5,8 +5,18 @@
 
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
-
 <head>
+<meta charset="UTF-8">
+<title>CarMing | 캠핑 추천  - 카밍 레시피</title>
+<style type="text/css">
+	.container-form{width: 100%;}
+	
+	.categories_post{float: left; width: 50%;}
+
+
+</style>
+
+
 <!-- Mobile Specific Meta -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,8 +30,7 @@
 <meta name="keywords" content="">
 <!-- meta character set -->
 <meta charset="UTF-8">
-<!-- Site Title -->
-<title>카밍 정보 메인</title>
+
 <script>
 function myFunction() {
     var input, filter, ul, li, a, i, txtValue, article;
@@ -78,8 +87,6 @@ function myFunction() {
             })
          }; window.kakaoDemoCallback && window.kakaoDemoCallback() }
    catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
-
-   
 </script>
 
 
@@ -91,68 +98,55 @@ function myFunction() {
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->
-
 	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div
-				class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>핑구 추천</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="tipAndRecipeMain.do">레시피</a>
-					</nav>
-				</div>
-			</div>
-			<!-- <div class="section-top-border text-right">
-				<div class="button-group-area mt-40" style="padding-bottom: 5em">
-					<a href="recipeWriteForm.do" class="genric-btn primary e-large"
-						style="font-weight: bold; background-color: rgb(202, 82, 38);">새
-						글 작성하기</a>
-				</div>
-			</div> -->
-		</div>
+	   <div class="container">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	         <div class="col-first">
+	            <h1>The stars in the night sky</h1>
+	         	<nav class="d-flex align-items-center">
+	               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+	               <a href="tipAndRecipeMain.do">Recipe</a>
+	            </nav>
+	         </div>
+	      </div>
+	   </div>
 	</section>
 	<!-- End Banner Area -->
+	<main role="main" style="padding: 50px 200px; ">
 
-	<!--================Blog Categorie Area =================-->
-	<section class="blog_categorie_area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="categories_post">
-						<img src="resources/img/tipandrecipe/fire.jpg"
-							style="width: 400px; height: 300px;" alt="post">
-						<div class="categories_details">
-							<div class="categories_text">
-								<a href="recipeCrawling.do">
-									<h5>카밍 레시피</h5>
-								</a>
-								<div class="border_line"></div>
-								<p>카밍이 추천하는 맛있는 요리</p>
-							</div>
-						</div>
+	<!-- Start Category Area -->
+	<div class="card-container">
+	
+		<div class="container-form">
+			<div class="categories_post">
+				<img src="resources/img/tipandrecipe/fire.jpg"
+					style="width: 200px; height: 150px;" alt="post">
+				<div class="categories_details">
+					<div class="categories_text">
+						<a href="recipeCrawling.do">
+							<h5>카밍 레시피</h5>
+						</a>
+						<div class="border_line"></div>
+						<p>카밍이 추천하는 맛있는 요리</p>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<div class="categories_post">
-						<img src="resources/img/tipandrecipe/honey.jpg"
-							style="width: 400px; height: 300px;" alt="post">
-						<div class="categories_details">
-							<div class="categories_text">
-								<a href="TipCrawling.do">
-									<h5>카밍 꿀팁</h5>
-								</a>
-								<div class="border_line"></div>
-								<p>캠핑에 꼭 필요한 정보들</p>
-							</div>
-						</div>
+			</div>
+		
+			<div class="categories_post">
+				<img src="resources/img/tipandrecipe/honey.jpg"
+					style="width: 200px; height: 150px;" alt="post">
+				<div class="categories_details">
+					<div class="categories_text">
+						<a href="TipCrawling.do">
+							<h5>카밍 꿀팁</h5>
+						</a>
+						<div class="border_line"></div>
+						<p>캠핑에 꼭 필요한 유용한 정보들</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<!--================Blog Categorie Area =================-->
+	<!-- End Category Area -->
 
 	<!--================Blog Area =================-->
 	<section class="blog_area">
@@ -287,6 +281,11 @@ function myFunction() {
 		</div>
 	</section>
 	<!--================Blog Area =================-->
+
+
+	</div>
+	</main>
+
 
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>

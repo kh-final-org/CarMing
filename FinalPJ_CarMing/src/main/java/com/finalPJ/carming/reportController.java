@@ -112,8 +112,8 @@ private ReportFileValidator fileValidator;
 		report.setReportContent(dto.getReportContent());
 		report.setCategoryNo(dto.getCategoryNo());
 		report.setTargetNo(dto.getTargetNo());
-		report.setTargetTypeNo(dto.getTargetNo());
-
+		report.setTargetTypeNo(dto.getTargetTypeNo());
+		report.setMemNo(dto.getMemNo());
 				
 		
 		int res = biz.insert(report);
@@ -126,13 +126,35 @@ private ReportFileValidator fileValidator;
 	
 	
 	@RequestMapping(value = "/reportdetail.do")
-	public String reportDetail(Model model, int reportNo) {
+	public String reportDetail(Model model, int reportNo, int targetTypeNo) {
 		
 
 		logger.info("[reportDetail]");
+		
+		if(targetTypeNo == 1) {
 		model.addAttribute("list",biz.selectOne(reportNo));
 		return "report/reportdetail";
+		}else if(targetTypeNo == 2) {
+		model.addAttribute("list", biz.selectOneCom(reportNo));	
+		return "report/reportdetail";
+		}
+		
+		System.out.println(model.toString());
+		return "report/reportdetail";
+		
+		
+		
+		
 	}
 	
-	
+	@RequestMapping("/deletereport.do")
+	public String deleteReport(int reportNo) {
+		logger.info("[Delete]");
+		int res = biz.delete(reportNo);
+		if(res>0) {
+			return "redirect:reportlist.do";
+		}else {
+			return "redirect:reportlist.do";
+		}
+	}
 }

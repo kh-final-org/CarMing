@@ -29,8 +29,24 @@ h4{
 <body>
 
 	<section id="header">
-		<%@include file ="../common/header_register.jsp" %>
+
+		<%@include file="../../views/common/header.jsp"%>
 	</section>
+	
+	<!-- Start Banner Area -->
+
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div
+				class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>회원가입</h1>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	
 	
 	<section id="content">
 	<div class="panel panel-default">
@@ -59,18 +75,6 @@ h4{
 	
 	</section>
 
-
-
-
-
-
-
-
-	<script type="text/javascript">
-	
-	}
-	
-	</script>
  	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>

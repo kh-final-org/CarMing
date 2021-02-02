@@ -8,4 +8,7 @@ public interface MemberDao {
 	
 	public MemberDto login(MemberDto dto);
 	public int insert(MemberDto dto);
+	public MemberDto selectOne(String id);
+	public int update(MemberDto dto);
+	public int deleteUser(String memid);
 }

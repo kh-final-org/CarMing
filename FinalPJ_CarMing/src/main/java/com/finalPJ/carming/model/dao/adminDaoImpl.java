@@ -1,8 +1,9 @@
 package com.finalPJ.carming.model.dao;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +14,11 @@ import com.finalPJ.carming.model.dto.AdmRentDto;
 import com.finalPJ.carming.model.dto.InquiryDto;
 
 
-
-
 @Repository
 public class adminDaoImpl implements adminDao{
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-
-	@Override
-	public List<AdmMemberDto> list() {
-		List<AdmMemberDto> list = new ArrayList<AdmMemberDto>();
-		
-			try {
-				list = sqlSession.selectList(NAMESPACE+"select");
-			} catch (Exception e) {
-				System.out.println("[error]:select");
-				e.printStackTrace();
-			}
-			
-		return list;
-	}
 
 	@Override
 	public AdmMemberDto selectOne(int memNo) {
@@ -45,10 +30,7 @@ public class adminDaoImpl implements adminDao{
 			System.out.println("[error]: select one");
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+
 		return list;
 	}
 
@@ -134,7 +116,38 @@ public class adminDaoImpl implements adminDao{
 		 
 		return res;
 	}
+
+	@Override
+	public List<AdmMemberDto> getMemList(String search, int page) {
+		List<AdmMemberDto> list = new ArrayList<AdmMemberDto>();
+		
+		// 검색어, 페이지 맵에 저장
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("page", Integer.toString(page));
 	
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectMemList", map);
+		} catch (Exception e) {
+			System.out.println("[error]:selectMemList");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 
-
+	@Override
+	public int getMemCount(String search) {
+		
+		int res = 0;
+		 try {
+			res = sqlSession.selectOne(NAMESPACE + "selectMemCnt", search);
+			
+		} catch (Exception e) {
+			System.out.println("[error]: selectMemCnt");
+			e.printStackTrace();
+		}
+		 
+		return res;
+	}
 }

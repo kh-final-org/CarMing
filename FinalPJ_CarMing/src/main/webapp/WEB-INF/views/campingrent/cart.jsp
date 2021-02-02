@@ -18,6 +18,7 @@
 <body>
 	<%@ include file="../common/header.jsp" %>
 	<!-- Start Banner Area -->
+	<form action="cartdelete.do" method="get">
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
@@ -34,7 +35,6 @@
 	</section>
 	<!-- End Banner Area -->
 	<!--================Cart Area =================-->
-	<form action="cartlist.do" method="post">
     <section class="cart_area">
         <div class="container">
             <div class="cart_inner">
@@ -53,7 +53,6 @@
                             </tr>
                         </thead>
                         <c:set var="sum" value="0"></c:set>
-                        <c:set var="allsum" value="0"></c:set>
                         <c:forEach var="cartListDto" items="${cartlist}">
                         <tbody>
                             <tr>
@@ -92,18 +91,19 @@
                                     </div>
                                 </td>
                                 <td>
-                                   <c:set var="sum" value="${(cartListDto.pPrice*cartListDto.cAmount) }"></c:set>
-                                   <c:set var="allsum" value="${sum+(cartListDto.pPrice*cartListDto.cAmount)}"/>
-                                   <h5><fmt:formatNumber value="${sum }" pattern="###,###,###"/></h5>
+                                   <c:set var="sum" value="${sum+(cartListDto.pPrice*cartListDto.cAmount) }"/>
+                                   <h5><fmt:formatNumber value="${cartListDto.pPrice*cartListDto.cAmount }" pattern="###,###,###"/></h5>
                                 </td>
                             </tr>
-                         	</c:forEach>
+							</c:forEach>
+
                             <tr class="bottom_button">
                                 <td colspan="3">
-	                                <a class="gray_btn" id="selectDelete_btn">선택 삭제</a>
-	                                <!-- <input type="button" id="selectDelete_btn" value="선택 삭제"> -->
+	                                <a class="gray_btn" id="selectDelete_btn">선택 삭제</a> 
+
                                 </td>
                                 <td>
+
                                 </td>
                                 <td></td>
                                 <td></td>
@@ -122,14 +122,11 @@
                                 </td>
                                 <td></td>
                                 <td></td>
-                                <td>
-
+                                <td style="text-align: right;">
+									<h5>총 금액</h5>
                                 </td>
-                                <td>
-                                    <h5>총 금액</h5>
-                                </td>
-                                <td>
-                                    <span><fmt:formatNumber value="${allsum}" pattern="###,###,###"/>원</span>
+                                <td colspan="2" style="text-align: right;">
+                                   <fmt:formatNumber value="${sum}" pattern="###,###,###"/><span>원</span>
                                 </td>
                             </tr>
                             <tr class="out_button_area">
@@ -142,10 +139,10 @@
                                 </td>
 								<td></td>
 								<td></td>
-                                <td>                         	
+                                <td style="text-align: center;">                         	
                             		<div class="checkout_btn_inner d-flex align-items-center">
                                         <a class="gray_btn" href="productlist.do">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                        <a class="primary-btn" href="pay.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                        <a class="primary-btn" href="payinfo.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                     </div>      
                                 </td>
 

@@ -42,8 +42,7 @@ public class BCommentController {
 	
 	@RequestMapping("/deletbcomment.do")
 	public String deletecomment(int comno, int brdno, RedirectAttributes redirect) {
-	
-		
+
 		int res = cbiz.delete(comno);
 		  if(res>0){
 			  redirect.addAttribute("brdno",brdno);
@@ -53,8 +52,9 @@ public class BCommentController {
 			  return "redirect:boarddetailform.do";
 		  }
 
-		
 	}
-	
-	
 }
+	
+	
+	
+	

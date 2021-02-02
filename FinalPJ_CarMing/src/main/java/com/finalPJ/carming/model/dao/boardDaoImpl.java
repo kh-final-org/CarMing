@@ -23,7 +23,7 @@ public class boardDaoImpl implements boardDao{
 		try {
 			list = sqlSession.selectList(NAMESPACE+"selectList");
 		} catch (Exception e) {
-			System.out.println("[error : selectList]");
+			System.out.println("[error : board_selectList]");
 			e.printStackTrace();
 		}
 		return list;
@@ -37,13 +37,13 @@ public class boardDaoImpl implements boardDao{
 		try {
 			dto = sqlSession.selectOne(NAMESPACE+"selectOne", brdno);
 		} catch (Exception e) {
-			System.out.println("[error : selectOne]");
+			System.out.println("[error : board_selectOne]");
 			e.printStackTrace();
 		}
 		return dto;
 	}
 	
-	//03. 게시글 작성
+	//03. 게시글(사진) 추가
 	@Override
 	public int insert(boardDto dto) {
 		int res = 0;
@@ -51,7 +51,7 @@ public class boardDaoImpl implements boardDao{
 		try {
 			res = sqlSession.insert(NAMESPACE+"insert", dto);
 		} catch (Exception e) {
-			System.out.println("[error : insert]");
+			System.out.println("[error : board_insert]");
 			e.printStackTrace();
 		}
 		return res;
@@ -71,7 +71,9 @@ public class boardDaoImpl implements boardDao{
 		try {
 			res = sqlSession.delete(NAMESPACE+"delete",brdno);
 		} catch (Exception e) {
-			System.out.println("[error : delete]");
+
+			System.out.println("[error : board_delete]");
+
 			e.printStackTrace();
 		}
 		return res;
@@ -83,7 +85,7 @@ public class boardDaoImpl implements boardDao{
 		try {
 			sqlSession.update(NAMESPACE+"viewCount", brdno);
 		} catch (Exception e) {
-			System.out.println("[error : viewCount]");
+			System.out.println("[error : board_viewCount]");
 			e.printStackTrace();
 		}
 	}
@@ -96,6 +98,9 @@ public class boardDaoImpl implements boardDao{
 		try {
 			list = sqlSession.selectList(NAMESPACE+"userBoardList", memno);
 		} catch (Exception e) {
+
+			System.out.println("[error : board_userBoardList]");
+
 			e.printStackTrace();
 		}
 		return list;
