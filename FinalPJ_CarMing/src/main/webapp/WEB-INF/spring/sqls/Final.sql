@@ -2,8 +2,8 @@
                       MEMBER
 *****************************************************************/	
 
-DROP TABLE MEMBER;
-DROP SEQUENCE MEMSEQ;
+DROP TABLE MEMBER CASCADE CONSTRAINTS;;
+DROP SEQUENCE MEMSEQ ;
 
 CREATE SEQUENCE MEMSEQ;
 CREATE TABLE MEMBER(
