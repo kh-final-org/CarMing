@@ -8,6 +8,7 @@
 </head>
 <body>
 	<jsp:forward page="home.do"></jsp:forward>
+	<!-- 21.2.3 버전 -->
 </body>
 </html>
 
