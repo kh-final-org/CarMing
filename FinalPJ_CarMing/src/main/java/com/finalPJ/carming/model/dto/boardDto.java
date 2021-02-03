@@ -18,7 +18,7 @@ public class boardDto {
 	private String brdprivate;		//나만보기 체크 여부
 	private int memno;				//memno
 	private String memnick;			//memnick(db랑 같지 않아도 됨)
-
+	
 	
 	public boardDto() {
 		super();

@@ -2,7 +2,7 @@
                       MEMBER
 *****************************************************************/	
 
-DROP TABLE MEMBER;
+DROP TABLE MEMBER  cascade constraints;
 DROP SEQUENCE MEMSEQ;
 
 CREATE SEQUENCE MEMSEQ;
@@ -86,7 +86,7 @@ SELECT
 	ON INQUIRYLIST.CATEGORYNO = INQUIRYCATEGORY.CATEGORYNO
 	WHERE INQUIRYNO = 8;		
 		
-
+SELECT * FROM BOARD
 /****************************************************************
                      --캠핑 토크 카테고리(BCATEGORY)
 *****************************************************************/	
