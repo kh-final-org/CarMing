@@ -107,7 +107,7 @@ function myFunction() {
 	<!-- Start Container Area -->
 	<div class="card-container">
 		<div class="gaadiex-list-title">
-			<h2>REOPORT LIST</h2>
+			<h2>REPORT LIST</h2>
 		</div>
 		
 		<!-- 카테고리 검색 -->

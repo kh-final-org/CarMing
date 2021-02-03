@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<!-- 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -30,9 +30,9 @@
 	    .login-btn {cursor: pointer; color: #5f5f5f !important; background: #ffe6be; width: 300px; border: 0; border-radius: 5px; padding: 10px 40px;
 				 	font-weight: bold; margin-top: 15px; margin-left: 12%; font-size: 1.1em; box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04); outline: none;}
 	    .login-btn:hover {background: #ffdb9f; transition: 0.2s;}
-	    .signup{padding-top: 10px; margin-bottom: 25px;}
-	    .signup-btn {color: gray; font-size: 0.85em; font-weight: bold;}
-	    a {text-decoration:none; } 
+	    .signup{padding-top: 10px; margin-bottom: 27px;}
+	    .signup > a {color: gray; font-size: 0.85em; font-weight: bold;}
+	    a {text-decoration: none; } 
 	    form.form1 {padding-top: 30px;}
 	    input::placeholder{color: silver;}
 	    

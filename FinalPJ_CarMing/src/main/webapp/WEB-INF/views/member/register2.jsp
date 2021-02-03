@@ -24,7 +24,6 @@
 	<section id="header">
 		<%@include file ="../common/header.jsp" %>
 	</section>
-	
 
 	<section id="content">
 		<div class="row">

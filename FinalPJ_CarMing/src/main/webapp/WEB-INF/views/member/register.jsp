@@ -28,7 +28,7 @@
 	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
 	
 	.checkbox-form{margin-bottom: 20px; font-size: 0.9em;}
-	.agree-btn{width: 300px; padding: 10px 0 10px; line-height: 25px;  border: 0; border-radius: 4px;
+	.agree-btn{width: 300px; padding: 10px 0 10px; line-height: 25px;  border: 0; border-radius: 4px; outline: none;
 				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
 	.agree-btn:hover{background: #ffdb9f; transition: 0.2s;}
 	.agree-btn > span{font-size: 0.95em; font-weight: bold;}
@@ -46,7 +46,7 @@
 		            <h4>CarMing 이용약관 동의</h4>
 		            <div class="content-panel" id="panel">
 			            <div class="content-panel-text">
-			            	<strong>여러분을 환영합니다.</strong><br>&nbsp;CarMing 서비스 및 제품(이하 '서비스')를 이용해 주셔서 감사합니다.
+			            	<strong>여러분을 환영합니다.</strong><br>CarMing 서비스 및 제품(이하 '서비스')를 이용해 주셔서 감사합니다.
 			                                   본 약관은 다양한 CarMing 서비스의 이용과 관련하여 아울러 여러분의  CarMing 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
 			                CarMing 서비스를 이용하실 경우 여러분은 본 약관 및 관련 운영 정책을 확인하거나 동의하게 되므로, 잠시 시간을 내시어 주의 깊게 살펴봐 주시기 바랍니다.
 			            </div><br>
@@ -58,15 +58,15 @@
 		        	<h4>개인정보 수집 및 위치정보 이용 동의</h4>
 			        <div class="content-panel">
 			        	<div class="content-panel-text">
-			            	&nbsp;개인정보 보호법에 따라 CarMing에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및<br>이용기간,
+			            	개인정보 보호법에 따라 CarMing에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및<br>이용기간,
 			            	동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드립니다.<br>
 			            	<strong>1. 수집하는 개인정보</strong><br>
-			            	&nbsp;회원가입 시점에 CarMing이 이용자로부터 수집하는 개인정보는 아래와 같습니다.<br>
+			            	회원가입 시점에 CarMing이 이용자로부터 수집하는 개인정보는 아래와 같습니다.<br>
 			            	회원 가입 시에 ‘아이디, 비밀번호, 이름, 생년월일, 성별, 휴대전화번호’를 필수항목으로 수집합니다.<br>
 			            	<strong>2. 수집한 개인정보의 이용</strong><br>
-			            	&nbsp;CarMing은 회원관리, 서비스 개발・제공 및 향상, 안전한 인터넷 이용환경 구축 등 아래의 목적으로만 개인정보를 이용합니다.<br>
+			            	CarMing은 회원관리, 서비스 개발・제공 및 향상, 안전한 인터넷 이용환경 구축 등 아래의 목적으로만 개인정보를 이용합니다.<br>
 			            	<strong>3. 개인정보 수집 및 이용 동의를 거부할 권리</strong><br>
-			            	&nbsp;이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보,<br> 
+			            	이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보,<br> 
 			            	즉, 필수 항목에 대한 수집 및 이용 동의를 거부하실 경우, 회원가입이 어려울 수 있습니다.
 			            	<br><br>그리고 위치정보 이용약관에 동의하시면, 위치를 활용한 정보 등을 포함하는 CarMing 위치기반 서비스를 이용할 수 있습니다.
 			            </div>

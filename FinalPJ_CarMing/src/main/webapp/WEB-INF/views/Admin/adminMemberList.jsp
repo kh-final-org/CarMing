@@ -9,10 +9,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>carMing</title>
+<title>CarMing | 회원 목록</title>
 <!-- Mobile Specific Meta -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Favicon-->
 <link rel="shortcut icon" href="resources/img/fav.png">
 <!-- Author Meta -->
@@ -25,15 +24,56 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="resources/css/adminList.css">
+<!-- <link rel="stylesheet" href="resources/css/adminList.css"> -->
 
 <style type="text/css">
-#memlist_tb:hover tbody tr:hover td {
-    background: #fff5e9;
-    color: black;
-}
-#paging-container{margin: 50px 0px 20px 0px;}
+	.container{padding-top: 50px;}
+	#memlist_tb{width:100%; }
+	#memlist_tb:hover tbody tr:hover td {background: #fff5e9; transition: 0.2s; }
+	#paging-container{margin: 50px 0px 20px 0px;}
+	
+	.gaadiex-list-title > h2{float:left; width: 25%; margin-top: 1%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
+	
+	
+	
+	/* 아직 수정 안함*/
+	.table-responsive {margin: 30px 0;}
+	.table-wrapper {min-width: 1000px;background: #fff;padding: 20px 25px;border-radius: 3px;box-shadow: 0 1px 1px rgba(0,0,0,.05);}
+	.table-title {padding-bottom: 15px;background: #299be4;color: #fff;padding: 16px 30px;margin: -20px -25px 10px;border-radius: 3px 3px 0 0;}
+	.table-title h2 {margin: 5px 0 0;font-size: 24px;}
+	.table-title .btn {color: #566787;float: right;font-size: 13px;background: #fff;border: none;min-width: 50px;
+					   border-radius: 2px;border: none;outline: none !important;margin-left: 10px;}
+	.table-title .btn:hover, .table-title .btn:focus {color: #566787;background: #f2f2f2;}
+	.table-title .btn i {float: left;font-size: 21px;margin-right: 5px;}
+	.table-title .btn span {float: left;margin-top: 2px;}
+	table.table tr th, table.table tr td {border-color: #e9e9e9;padding: 12px 15px;vertical-align: middle;}
+	table.table tr th:first-child {width: 60px;}
+	table.table tr th:last-child {width: 100px;}
+	table.table-striped tbody tr:nth-of-type(odd) {background-color: #fcfcfc;}
+	table.table-striped.table-hover tbody tr:hover {background: #f5f5f5;}
+	table.table-striped.table-hover tbody tr td{text-align: center;}
+
+	table.table-striped.table-hover thead tr th{text-align: center;}
+	
+	table.table th i {font-size: 13px;margin: 0 5px;cursor: pointer;}	
+	table.table td:last-child i {opacity: 0.9;font-size: 22px;margin: 0 5px;}
+	table.table td a {font-weight: bold;color: #566787;display: inline-block;text-decoration: none;}
+	table.table td a:hover {color: #2196F3;}
+	table.table td a.settings {color: #2196F3;}
+	table.table td a.delete {color: #F44336;}
+	table.table td i {font-size: 19px;}
+	table.table .avatar {border-radius: 50%;vertical-align: middle;margin-right: 10px; }
+	.avatar {width: 5em;height: 5em;}
+	.status {font-size: 30px;margin: 2px 2px 0 0;display: inline-block;vertical-align: middle;line-height: 10px;}
+	.text-success {color: #10c469;}
+	.text-info {color: #62c9e8;}
+	.text-warning {color: #FFC107;}
+	.text-danger {color: #ff5b5b;}
+	.hint-text {float: left;margin-top: 10px;font-size: 13px;}
+		
+	
 </style>
+
 
 <script>
 function myFunction() {
@@ -67,43 +107,19 @@ function formAction() {
 	<%@include file="../../views/common/header.jsp"%>
 	<!-- End Header Area -->
 	
-	<!-- Start Banner Area 
-	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<br>
-					<h1>회원관리</h1>
-					<nav class="d-flex align-items-center">
-						<a href="tipAndRecipeMain.do">회원관리<span
-							class="lnr lnr-arrow-right"></span></a> <a href="category.html">목록</a>
-					</nav>
-				</div>
-			</div>
-			<div class="section-top-border text-right">
-				<div class="button-group-area mt-40" style="padding-bottom: 5em">
-					<a href="tipAndRecipeMain.do"
-						class="genric-btn danger-border e-large">목록으로</a> <a
-						href="writeinquiryform.do"
-						class="genric-btn danger-border e-large">새 글 작성하기</a>
-				</div>
-			</div>
-		</div>
-	</section>
-	End Banner Area -->
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>ADMIN</h1>
-					<nav class="d-flex align-items-center">
-						<a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="tipAndRecipeMain.do">회원관리</a>
-					</nav>
-				</div>
-			</div>
-		</div>
+	   <div class="container">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	         <div class="col-first">
+	            <h1>The stars in the night sky</h1>
+	         	<nav class="d-flex align-items-center">
+	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
+	               <a href="tipAndRecipeMain.do">회원관리</a>
+	            </nav>
+	         </div>
+	      </div>
+	   </div>
 	</section>
 	<!-- End Banner Area -->
 
@@ -123,13 +139,28 @@ function formAction() {
 		</aside>
 	</div> -->
 
+	<!-- Start Container Area -->	
 	<div class="container">
+		<div class="gaadiex-list-title">
+			<h2>MEMBER LIST</h2>
+		</div>
+	
 		<div class="table-responsive">
 			<table id="memlist_tb" class="table table-striped table-hover">
+				<col style="width: 5%">
+				<col style="width: 10%">
+				<col style="width: 7%">
+				<col style="width: 8%">
+				<col style="width: 20%">
+				<col style="width: 15%">
+				<col style="width: 15%">
+				<col style="width: 5%">
+				<col style="width: 10%">
+				<col style="width: 5%">
 				<thead>
 					<tr>
 						<th>NO.</th>
-						<th></th>
+						<th>프로필 사진</th>
 						<th>이름</th>
 						<th>닉네임</th>
 						<th>생년월일</th>
@@ -137,6 +168,7 @@ function formAction() {
 						<th>핸드폰</th>
 						<th>성별</th>
 						<th>회원삭제</th>
+						<th></th>
 					</tr>
 				</thead>
 				<c:forEach var="list" items="${list }">
@@ -144,9 +176,14 @@ function formAction() {
 					<tr>
 						<td class="memNo">${list.memNo}</td>
 
-						<td><a href="memdetail.do?memNo=${list.memNo }"><img
-								src="resources/img/profile.png" class="avatar"alt="Avatar"></a></td>
-						<td><a href="profileform.do?memno=${list.memNo}">${list.memName}</a></td>
+						<td>
+							<a href="memdetail.do?memNo=${list.memNo }">
+								<img src="resources/img/profile.png" class="avatar"alt="Avatar">
+							</a>
+						</td>
+						<td>
+							<a href="profileform.do?memno=${list.memNo}">${list.memName}</a>
+						</td>
 						<td>${list.memNick}</td>
 
 						<!-- date format -->
@@ -176,6 +213,7 @@ function formAction() {
 				</tbody>
 				</c:forEach>
 			</table>
+			
 			
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
