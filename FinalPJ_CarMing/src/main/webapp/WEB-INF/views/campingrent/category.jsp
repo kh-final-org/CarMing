@@ -27,9 +27,7 @@
 						<a href="category.html">마이페이지<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">카테고리</a><br><br>
 					</nav>
-					<c:if test="${login.memcode ==  1}">
 						<a href="insertform.do" style="a:hover{color:white; text-decoration: none;}">제품 등록</a>
-					</c:if>
 				</div>
 			</div>
 		</div>
@@ -92,9 +90,9 @@
 					</div>
 					<div class="sorting mr-auto">
 						<select>
-							<option value="1" onclick="">Show 6</option>
-							<option value="1" onclick="">Show 9</option>
-							<option value="1" onclick="">Show 12</option>
+							<option value="1">Show 6</option>
+							<option value="1">Show 9</option>
+							<option value="1">Show 12</option>
 						</select>
 					</div>
 					<c:if test="${login.memcode == 1}">
@@ -143,7 +141,7 @@
 											</div> -->
 											<a href="productdetail.do?pNo=${productDto.pNo }" class="social-info">
 												<span class="lnr lnr-move"></span>
-												<p class="hover-text">상세보기</p> 	 	 	 	 	 	 	 	 	 	 	
+												<p class="hover-text">상세보기</p>
 											</a>
 										</div>
 									</div>

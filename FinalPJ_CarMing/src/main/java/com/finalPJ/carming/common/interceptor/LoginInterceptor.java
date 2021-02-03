@@ -20,26 +20,15 @@ public class LoginInterceptor implements HandlerInterceptor {
 		logger.info("[interceptor]: preHandle");
 		
 		//로그인이 필요없는 기능들을 조건에 추가바람
-		if(		request.getRequestURI().contains("/productlist.do")	 	||				
-				request.getRequestURI().contains("/cart.do") 			||
-				request.getRequestURI().contains("/productinsert.do") 	||
-				request.getRequestURI().contains("/insertform.do") 		||
-				request.getRequestURI().contains("/loginform.do") 		||
-				request.getRequestURI().contains("/home.do") 			||
-				request.getRequestURI().contains("/boardmainform.do") 	||
-				request.getRequestURI().contains("/registerform.do") 	||
-				request.getRequestURI().contains("/registerform2.do") 	||
-				request.getRequestURI().contains("/productdelete.do") 	||
-				request.getRequestURI().contains("/productdetail.do") 	||
-				request.getRequestURI().contains("/ajaxlogin.do") 		||
-				request.getRequestURI().contains("/insertreview.do") 	||
-				request.getRequestURI().contains("/pay.do")				||
-				request.getRequestURI().contains("/cartlist.do")		||
-				request.getRequestURI().contains("/cartdelete.do")		||
-				request.getRequestURI().contains("/camMeet.do") 		||
-				
-				request.getSession().getAttribute("login")!=null) {
-			
+		if(		request.getRequestURI().contains("/loginform.do") ||
+				request.getRequestURI().contains("/home.do") ||
+				request.getRequestURI().contains("/boardmainform.do") ||
+				request.getSession().getAttribute("login")!=null ||
+				request.getRequestURI().contains("/registerform.do") ||
+				request.getRequestURI().contains("/registerform2.do") ||
+				request.getRequestURI().contains("/regist.do") ||
+				request.getRequestURI().contains("/ajaxlogin.do")){
+
 			return true;
 		}
 		

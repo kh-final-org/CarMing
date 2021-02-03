@@ -8,13 +8,14 @@
 		<result property="brdno" column="BRDNO"/>
 		<result property="bcategoryno" column="BCATEGORYNO"/>
 		<result property="brdwriter" column="BRDWRITER"/>
-		<result property="brdfile" column="BRDFILE"/>
+		<result property="brdfilename" column="BRDFILE"/>
+		<result property="brdthumbfile" column="BRDTHUMBFILE"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
 		<result property="brdcount" column="BRDCOUNT"/>
 		<result property="brddate" column="BRDDATE"/>
 		<result property="brdprivate" column="BRDPRIVATE"/>
 		<result property="memno" column="MEMNO"/>
-		<result property="bcategoryname" column="BCATEGORYNAME"/>
+		<result property="memnick" column="MEMNICK"/>
 	</resultMap>
 	
 	<!-- 01. 게시글 전체 목록 -->
@@ -43,8 +44,13 @@
 	</select>
 	
 	<!-- 03. 게시글 작성 -->
-	<insert id="insertBoard" parameterType="boardDto">
-	
+	<insert id="insert" parameterType="boardDto">
+		INSERT ALL 
+	   	INTO BOARD VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno},(SELECT MEMNICK FROM MEMBER WHERE MEMNO = #{memno}), #{brdfilename},
+	   					  DEFAULT, #{brdcontent}, 0, SYSDATE, #{brdprivate}, #{memno} )
+	   
+	   	INTO MAPLOCATION VALUES(MAPNOSEQ.NEXTVAL, #{mapname}, #{maplatitude}, #{maplongtitude}, #{carmapchk}, #{memno} )
+	  	SELECT * FROM SYS.DUAL
   	</insert>	
 	
 	<!-- 04. 게시글 수정 -->
@@ -67,10 +73,12 @@
 	
 	<!-- 07. 사용자 프로필 페이지 목록 -->
   	<select id="userBoardList" resultMap="boardMap" parameterType="int">
-  		SELECT B.*
-		FROM BOARD B, MEMBER M
-		WHERE B.BRDWRITER = M.MEMNICK AND B.BRDPRIVATE='N' AND M.MEMNO = #{memno}
-		ORDER BY BRDDATE DESC
+  		SELECT B.*, M.MEMNICK
+  		FROM BOARD B
+  		JOIN MEMBER M
+  		ON B.BRDWRITER = M.MEMNICK
+  		WHERE M.MEMNO = #{memno} AND B.BRDPRIVATE='N'
+  		ORDER BY BRDDATE DESC
   	</select>
 	
 	

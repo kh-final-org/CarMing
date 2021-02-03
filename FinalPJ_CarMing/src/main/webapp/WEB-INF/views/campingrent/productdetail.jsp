@@ -12,7 +12,6 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 var locked = 0;
 
@@ -59,12 +58,10 @@ function mark(star){
     document.getElementById("starvalue").value = star;
 }
 </script>
-<script src="resources/js/cart.js"></script>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
 	<!-- Start Banner Area -->
-	<form action="cart.do" method="post">
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
@@ -82,19 +79,20 @@ function mark(star){
 	<!-- End Banner Area -->
 	
 	<!--================Single Product Area =================-->
+	<form method="post">
 		<div class="product_image_area">
 			<div class="container">
 				<div class="row s_product_inner">
 					<div class="col-lg-6">
 						<div class="s_Product_carousel">
 							<div class="single-prd-item">
-								<img class="img-fluid" src="storage/${productdto.pFile }" alt="">
+								<img class="img-fluid" src="storage/${productDto.pFile }" alt="">
 							</div>
 							<div class="single-prd-item">
-								<img class="img-fluid" src="storage/${productdto.pDesc }" alt="">
+								<img class="img-fluid" src="storage/${productDto.pFile }" alt="">
 							</div>
 							<div class="single-prd-item">
-								<img class="img-fluid" src="storage/${productdto.pFile }" alt="">
+								<img class="img-fluid" src="storage/${productDto.pFile }" alt="">
 							</div>
 						</div>
 					</div>
@@ -110,26 +108,18 @@ function mark(star){
 									<c:when test="${productdto.pCategoryNo == 4}"><li><a class="active"><span>카테고리</span> : 텐트 / 체어 / 테이블</a></li></c:when>
 									<c:when test="${productdto.pCategoryNo == 5}"><li><a class="active"><span>카테고리</span> : 화로대 / BBQ</a></li></c:when>
 								</c:choose>
-								<li>
-									<span>재고: ${productdto.pAmount }</span>
-								</li>
-								<li>
-									<span>렌트시작일: </span><input type="date" name="startDate" id="startDate">
-								</li>
-								<li>
-									<span>렌트반납일: </span><input type="date" name="endDate" id="endDate">
-								</li>
+								<li><a href="#"><span>재고</span> : ${productdto.pAmount }</a></li>
 							</ul>
 							<div class="product_count">
 								<label for="qty">수량:</label>
-								<input type="text" name="cAmount" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+								<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 								<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 								 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
 								<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
 								 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 							</div>
 							<div class="card_area d-flex align-items-center">
-								<a class="primary-btn" id="insertCart_btn">장바구니에 담기</a>
+								<a class="primary-btn" href="cart.do?pNo=${productdto.pNo}">장바구니에 담기</a>
 								<a class="primary-btn" href="productlist.do">목록</a>
 							</div>
 						</div>
@@ -141,13 +131,7 @@ function mark(star){
 		<!--================End Single Product Area =================-->
 	
 		<!--================Product Description Area =================-->
-		<form action="insertreview.do" method="post">
-		<input type="hidden" id="starvalue" name="reviewStar" >
-		<input type="hidden" name="pNo" id="pNo" value="${productdto.pNo }">
-		<input type="hidden" name="pFile" id="pFile" value="${productdto.pFile }">
-		<input type="hidden" name="pPrice" id="pPrice" value="${productdto.pPrice }">
-		<input type="hidden" name="pName" id="pName" value="${productdto.pName }">
-		<input type="hidden" name="pAmount" id="pAmount" value="${productdto.pAmount }">
+		<form>
 		<section class="product_description_area">
 			<div class="container">
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -164,6 +148,57 @@ function mark(star){
 						<img class="product_description" src="storage2/${productdto.pDesc}">
 					</div>
 					<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="comment_list">
+									<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-1.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<h5>12th Feb, 2018 at 05:56 pm</h5>
+												<a class="reply_btn" href="#">Reply</a>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+									<div class="review_item reply">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-2.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<h5>12th Feb, 2018 at 05:56 pm</h5>
+												<a class="reply_btn" href="#">Reply</a>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+									<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img src="img/product/review-3.png" alt="">
+											</div>
+											<div class="media-body">
+												<h4>Blake Ruiz</h4>
+												<h5>12th Feb, 2018 at 05:56 pm</h5>
+												<a class="reply_btn" href="#">Reply</a>
+											</div>
+										</div>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+											commodo</p>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
 						<div class="row">
@@ -238,7 +273,7 @@ function mark(star){
 											<h6>리뷰 갯수 : (${countreview}개) </h6>
 										</div>
 									</div>
-									<!-- <div class="col-6">
+									<div class="col-6">
 										<div class="rating_list">
 											<h3>별점 갯수</h3>
 											<ul class="list">
@@ -254,10 +289,9 @@ function mark(star){
 														 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
 											</ul>
 										</div>
-									</div> -->
+									</div>
 								</div>
 							</div> 
-							
 							<div class="col-lg-6">
 								<div class="review_box">
 									<h4>리뷰 남기기</h4>
@@ -270,6 +304,7 @@ function mark(star){
 											<img style="width:15px; height:15px;" id="image3" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)" src="resources/img/nonstar.png">
 											<img style="width:15px; height:15px;" id="image4" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)" src="resources/img/nonstar.png">
 											<img style="width:15px; height:15px;" id="image5" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)" src="resources/img/nonstar.png">
+											<input type="hidden" id="starvalue" name="star">
 										</span>
 									</div>
 									<br>
@@ -280,7 +315,7 @@ function mark(star){
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<textarea class="form-control" name="reviewContext" id="message" rows="1" placeholder="리뷰를 남겨주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '리뷰를 남겨주세요.'"></textarea>
+												<textarea class="form-control" name="message" id="message" rows="1" placeholder="리뷰를 남겨주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '리뷰를 남겨주세요.'"></textarea>
 											</div>
 										</div>
 										<div class="col-md-12 text-right">
@@ -297,6 +332,19 @@ function mark(star){
 	<!--================End Product Description Area =================-->
 
 	<%@ include file="../common/footer.jsp" %>
-
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	 crossorigin="anonymous"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/jquery.sticky.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="js/gmaps.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

@@ -2,126 +2,217 @@ package com.finalPJ.carming.model.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class boardDto {
 	
 	private int brdno;				//게시글 번호
 	private int bcategoryno;		//카테고리 번호 참조
 	private String brdwriter;		//게시글 작성자
-	private String brdfile;			//파일명
+	private MultipartFile brdfile;	//파일명
+	private String brdfilename;		//실제 파일명
+	private String brdthumbfile;	//파일 썸네일 이미지
 	private String brdcontent;		//게시글 내용
 	private int brdcount;			//게시글 조회 수
 	private Date brddate;			//게시글 작성 날짜
 	private String brdprivate;		//나만보기 체크 여부
+	private String carmapchk;		//차박명소 등록 체크 동의(Y:동의/N:비동의)
 	private int memno;				//memno
-	private String bcategoryname;
+	private String memnick;			//memnick(db랑 같지 않아도 됨)
+	private String mapname;			//map-위치명
+	private String maplatitude;		//위도	
+	private String maplongtitude;	//경도	
+
 
 	public boardDto() {
 		super();
 	}
 
-	public boardDto(int brdno, String brdwriter, String brdfile, String brdcontent, int brdcount, Date brddate,
-			String brdprivate, int memno, int bcategoryno, String bcategoryname) {
+	public boardDto(int brdno, int bcategoryno, String brdwriter, MultipartFile brdfile, String brdfilename,
+			String brdthumbfile, String brdcontent, int brdcount, Date brddate, String brdprivate, String carmapchk,
+			int memno, String memnick, String mapname, String maplatitude, String maplongtitude) {
 		super();
 		this.brdno = brdno;
+		this.bcategoryno = bcategoryno;
 		this.brdwriter = brdwriter;
 		this.brdfile = brdfile;
+		this.brdfilename = brdfilename;
+		this.brdthumbfile = brdthumbfile;
 		this.brdcontent = brdcontent;
 		this.brdcount = brdcount;
 		this.brddate = brddate;
 		this.brdprivate = brdprivate;
+		this.carmapchk = carmapchk;
 		this.memno = memno;
-		this.bcategoryno = bcategoryno;
-		this.bcategoryname = bcategoryname;
+		this.memnick = memnick;
+		this.mapname = mapname;
+		this.maplatitude = maplatitude;
+		this.maplongtitude = maplongtitude;
 	}
+
+
+
+
 
 	public int getBrdno() {
 		return brdno;
 	}
 
+
 	public void setBrdno(int brdno) {
 		this.brdno = brdno;
 	}
 
-	public String getBrdwriter() {
-		return brdwriter;
-	}
-
-	public void setBrdwriter(String brdwriter) {
-		this.brdwriter = brdwriter;
-	}
-
-	public String getBrdfile() {
-		return brdfile;
-	}
-
-	public void setBrdfile(String brdfile) {
-		this.brdfile = brdfile;
-	}
-
-	public String getBrdcontent() {
-		return brdcontent;
-	}
-
-	public void setBrdcontent(String brdcontent) {
-		this.brdcontent = brdcontent;
-	}
-
-	public int getBrdcount() {
-		return brdcount;
-	}
-
-	public void setBrdcount(int brdcount) {
-		this.brdcount = brdcount;
-	}
-
-	public Date getBrddate() {
-		return brddate;
-	}
-
-	public void setBrddate(Date brddate) {
-		this.brddate = brddate;
-	}
-
-	public String getBrdprivate() {
-		return brdprivate;
-	}
-
-	public void setBrdprivate(String brdprivate) {
-		this.brdprivate = brdprivate;
-	}
-
-	public int getMemno() {
-		return memno;
-	}
-
-	public void setMemno(int memno) {
-		this.memno = memno;
-	}
 
 	public int getBcategoryno() {
 		return bcategoryno;
 	}
 
+
 	public void setBcategoryno(int bcategoryno) {
 		this.bcategoryno = bcategoryno;
 	}
 
-	public String getBcategoryname() {
-		return bcategoryname;
-	}
 
-	public void setBcategoryname(String bcategoryname) {
-		this.bcategoryname = bcategoryname;
+	public String getBrdwriter() {
+		return brdwriter;
 	}
 
 
+	public void setBrdwriter(String brdwriter) {
+		this.brdwriter = brdwriter;
+	}
 
-	
-	
-	
-	
-	
-	
+
+	public MultipartFile getBrdfile() {
+		return brdfile;
+	}
+
+
+	public void setBrdfile(MultipartFile brdfile) {
+		this.brdfile = brdfile;
+	}
+
+
+	public String getBrdfilename() {
+		return brdfilename;
+	}
+
+
+	public void setBrdfilename(String brdfilename) {
+		this.brdfilename = brdfilename;
+	}
+
+
+	public String getBrdthumbfile() {
+		return brdthumbfile;
+	}
+
+
+	public void setBrdthumbfile(String brdthumbfile) {
+		this.brdthumbfile = brdthumbfile;
+	}
+
+
+	public String getBrdcontent() {
+		return brdcontent;
+	}
+
+
+	public void setBrdcontent(String brdcontent) {
+		this.brdcontent = brdcontent;
+	}
+
+
+	public int getBrdcount() {
+		return brdcount;
+	}
+
+
+	public void setBrdcount(int brdcount) {
+		this.brdcount = brdcount;
+	}
+
+
+	public Date getBrddate() {
+		return brddate;
+	}
+
+
+	public void setBrddate(Date brddate) {
+		this.brddate = brddate;
+	}
+
+
+	public String getBrdprivate() {
+		return brdprivate;
+	}
+
+
+	public void setBrdprivate(String brdprivate) {
+		this.brdprivate = brdprivate;
+	}
+
+
+	public String getCarmapchk() {
+		return carmapchk;
+	}
+
+
+	public void setCarmapchk(String carmapchk) {
+		this.carmapchk = carmapchk;
+	}
+
+
+	public int getMemno() {
+		return memno;
+	}
+
+
+	public void setMemno(int memno) {
+		this.memno = memno;
+	}
+
+
+	public String getMemnick() {
+		return memnick;
+	}
+
+
+	public void setMemnick(String memnick) {
+		this.memnick = memnick;
+	}
+
+
+	public String getMapname() {
+		return mapname;
+	}
+
+
+	public void setMapname(String mapname) {
+		this.mapname = mapname;
+	}
+
+
+	public String getMaplatitude() {
+		return maplatitude;
+	}
+
+
+	public void setMaplatitude(String maplatitude) {
+		this.maplatitude = maplatitude;
+	}
+
+
+	public String getMaplongtitude() {
+		return maplongtitude;
+	}
+
+
+	public void setMaplongtitude(String maplongtitude) {
+		this.maplongtitude = maplongtitude;
+	}
+
 	
 	
 }

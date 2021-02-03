@@ -18,12 +18,7 @@ public class InquiryDto {
 	
 	public InquiryDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-
-	
-
 
 	public InquiryDto(int inquiryNo, String memNick, int memNo, MultipartFile inquiryFile, String path, String filename,
 			String inquiryContent, Date inquiryDate, int categoryNo, String categoryName) {
@@ -39,9 +34,6 @@ public class InquiryDto {
 		this.categoryNo = categoryNo;
 		this.categoryName = categoryName;
 	}
-
-
-
 
 
 	public InquiryDto( String filename, String inquiryContent, int categoryNo) {

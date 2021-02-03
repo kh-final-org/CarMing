@@ -1,8 +1,9 @@
 package com.finalPJ.carming;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,11 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.finalPJ.carming.survey.biz.SurveyBiz;
-import com.finalPJ.carming.survey.dto.SurveyDto;
+import com.finalPJ.carming.model.biz.SurveyBiz;
+import com.finalPJ.carming.model.dto.SurveyDto;
 
 /**
  * Handles requests for the application home page.
@@ -39,12 +42,12 @@ public class ChatbotController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/chatbot.do", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-
+	public String chatbot(Locale locale, Model model) {
+		
 		return "chatbot/chatbot";
 	}
 	
-//	@RequestMapping(value = "/surveyList.do", method = RequestMethod.GET)
+	// 전체 List
 	@RequestMapping(value = "/surveyList.do")
 	public String list(Model model) {
 		logger.info("[SELECT LIST]");
@@ -56,11 +59,11 @@ public class ChatbotController {
 	}
 	
 	@RequestMapping("/surveyOne.do")
-	public String detail(Model model, int memno) {
+	public String detail(Model model) {
 		
 		logger.info("[SELECT ONE]");
 		
-		model.addAttribute("dto", biz.selectOne(memno));
+		model.addAttribute("dto", biz.selectOne((Integer)session.getAttribute("memno")));
 		
 		return "chatbot/mvcdetail";
 	}
@@ -68,9 +71,15 @@ public class ChatbotController {
 	@RequestMapping("/insertres.do")
 	public String insertRes(SurveyDto dto) {
 		
+		// select로 먼저 확인.
+		
+		// survey 값이 없으면 insert 
+		
+		// survey 값이 있으면 update
+		
 		logger.info("[INSERT RES]");
 		
-		dto.setMemno(sessionNo);
+		dto.setMemno((Integer)session.getAttribute("memno"));
 		
 		System.out.println("dto.toString : " + dto.toString());
 		
@@ -120,10 +129,111 @@ public class ChatbotController {
         return "chatbot/chatbot";
     }
 	
+	@RequestMapping(value="/insertAjax.do", method=RequestMethod.POST)
+	@ResponseBody //@ResponseBody 추가.						// @RequestBody 추가.
+	public Map<String, Boolean> insertAjax(@RequestBody SurveyDto dto) {
+		/*
+		 * @ResponseBody : 응답시 java 객체를 response 객체에 binding
+		 * @RequestBody : 요청시 request객체로 넘어오는 데이터를 java 객체로
+		 */
+		logger.info("[INSERT AJAX]");
+		
+		dto.setMemno((Integer)session.getAttribute("memno"));
+		
+		System.out.println("dto.toString : " + dto.toString());
+		
+		int res = biz.insert(dto);
+		
+		boolean check = false;
+		if(res > 0) {
+			check = true;
+		}
+		
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		map.put("check", check);
+		
+		// check 값을 넘겨주자.
+		return map;
+	}
+	
+	// [동성] 나에 맞는 친구들의 설문조사 리스트 가져오기
+	@RequestMapping(value = "/sameFriendList.do", method=RequestMethod.POST)
+	@ResponseBody //@ResponseBody 추가.
+//	public String sameFriendList(Model model, @RequestBody SurveyDto dto) {
+	public Map<String, Boolean> sameFriendList(Model model, @RequestBody SurveyDto dto) {
+		logger.info("[SELECT SAME FRIEND LIST]");
+		
+		logger.info(dto.toString());
+		dto.setMemno((Integer)session.getAttribute("memno"));
+		logger.info(dto.toString());
+		
+		// model에 list라는 이름으로 biz.sameFriendList()의 결과 값을 담아주자. 
+		// model.addAttribute("list", biz.sameFriendList(dto));
+		
+		boolean check = false;
+		
+		List<SurveyDto> list = biz.sameFriendList(dto);
+		
+		System.out.println("list.size : " + list.size());
+		
+		for(int i=0; i<list.size(); i++) {
+			System.out.print(list.get(i) + " / ");
+		}
+		
+		if(list.size() > 0) {
+			check = true;
+		}
+		
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		map.put("check", check);
+		
+//		return "chatbot/mvclist";
+		return map;
+	}
+	
+	
+	@RequestMapping(value = "/otherfriendList.do")
+	public String otherfriendList(Model model) {
+		logger.info("[SELECT OTHER FRIEND LIST]");
+		
+		// model에 list라는 이름으로 biz.selectList()의 결과 값을 담아주자. 
+//			model.addAttribute("list", biz.otherFriendList());
+		
+		return "chatbot/mvclist";
+	}
 	
 	
 	
-	
+	// [동성] 나에 맞는 친구들의 설문조사 리스트 가져오기
+	@RequestMapping(value = "/sameFriendOne.do", method=RequestMethod.POST)
+	@ResponseBody //@ResponseBody 추가.
+//		public String sameFriendList(Model model, @RequestBody SurveyDto dto) {
+	public Map<String, Boolean> sameFriendOne(Model model, @RequestBody SurveyDto dto) {
+		logger.info("[SELECT SAME FRIEND ONE]");
+		
+		logger.info(dto.toString());
+		dto.setMemno((Integer)session.getAttribute("memno"));
+		logger.info(dto.toString());
+		
+		// model에 list라는 이름으로 biz.sameFriendList()의 결과 값을 담아주자. 
+		// model.addAttribute("list", biz.sameFriendList(dto));
+		
+		boolean check = false;
+		
+		int res = biz.sameFriendOne(dto);
+		
+		System.out.println("선택된 친구번호는 : " + res);
+		
+		if(res > 0) {
+			check = true;
+		}
+		
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		map.put("check", check);
+		
+//			return "chatbot/mvclist";
+		return map;
+	}
 	
 	
 }

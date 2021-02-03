@@ -25,7 +25,7 @@
 		<typeAlias type="com.finalPJ.carming.model.dto.bcommentDto" alias="bcommentDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.dmDto" alias="dmDto"/>	
 		<typeAlias type="com.finalPJ.carming.model.dto.mapLocationDto" alias="mapLocationDto"/>	
-		<typeAlias type="com.finalPJ.carming.survey.dto.SurveyDto" alias="SurveyDto" />
+		<typeAlias type="com.finalPJ.carming.model.dto.SurveyDto" alias="SurveyDto" />
 	</typeAliases>
 	
 	<mappers>
@@ -36,7 +36,7 @@
 		<mapper resource="/mybatis/report-mapper.xml" />
 		<mapper resource="/mybatis/admin-mapper.xml" />
 		<mapper resource="/mybatis/product-mapper.xml"/>
-		<mapper resource="/mybatis/board-mapper.xml" />
+		<mapper resource="/mybatis/board-mapper.xml" /> 
 		<mapper resource="/mybatis/bcomment-mapper.xml" />
 <!-- 	<mapper resource="/mybatis/dm-mapper.xml" />
 		<mapper resource="/mybatis/mapLocation-mapper.xml" />  -->

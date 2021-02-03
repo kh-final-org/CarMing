@@ -57,6 +57,19 @@ public class bcommentDaoImpl implements bcommentDao {
 		return res;
 	}
 
+	@Override
+	public int countComment(bcommentDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"countComment",dto);
+		} catch (Exception e) {
+			System.out.println("[error : comment_count]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 
 	
 	

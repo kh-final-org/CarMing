@@ -10,7 +10,7 @@
 	<table board="1">
 		<tr>
 			<th>WRITER</th>
-			<td>${dto.memno }</td>
+			<td>${dto.memno }번 회원</td>
 		</tr>
 		<tr>
 			<th>SURVEY1</th>
@@ -18,7 +18,19 @@
 		</tr>
 		<tr>
 			<th>SURVEY2</th>
-			<td><textarea rows="10" cols="60" readonly="readonly">${dto.survey2 }</textarea></td>
+			<td>${dto.survey2 }</td>
+		</tr>
+		<tr>
+			<th>SURVEY3</th>
+			<td>${dto.survey3 }</td>
+		</tr>
+		<tr>
+			<th>SURVEY4</th>
+			<td>${dto.survey4 }</td>
+		</tr>
+		<tr>
+			<th>SURVEY5</th>
+			<td>${dto.survey5 }</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">

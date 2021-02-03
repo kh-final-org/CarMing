@@ -56,7 +56,6 @@
 						id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
 
-						<c:if test="${login.memcode == 1}">
 									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
 									<li class="nav-item submenu dropdown"><a href="#"
 										class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -73,7 +72,7 @@
 												href="adminRentList.do" style="font-size: 15px;">렌탈목록</a></li>
 										</ul></li>
 									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
-							</c:if>
+
 							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
 							<!-- 네비바 캠핑렌트 드롭다운 제거 후 코드 수정 -->
 							<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">캠핑렌트</a></li>
@@ -111,8 +110,10 @@
 		</div>
 		<div class="search_input" id="search_input_box">
 			<div class="container">
-				<form class="d-flex justify-content-between">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
+				<form class="d-flex justify-content-between" id="searchForm" onSubmit="formAction();">
+					<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
+					<input type="hidden" name="page" value="${page}">
+					<input type="text" class="form-control" id="search_input" placeholder="Search Here" name="search" value="${param.search }">
 					<button type="submit" class="btn"></button>
 					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
 				</form>

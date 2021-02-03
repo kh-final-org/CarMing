@@ -71,6 +71,7 @@
 					<div class="my-desc">
 						<input type="button" value="프로필 수정" onclick="" style="background: #ffba00; border: none; color: white;">
 						<button type="button" onclick="location.href='ordernpay.do'">주문 및 결제 내역</button>
+
 					</div>
 				</div>
 

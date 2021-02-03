@@ -9,12 +9,29 @@
 		SELECT *
 		FROM MEMBER
 		WHERE MEMID = #{memid }
-		AND MEMPW = #{mempw } 
 	</select>
 	
-	<insert id="insert" parameterType="memberDto">
+	<select id="selectOne" parameterType="String" resultType="MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMID = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="MemberDto">
 		INSERT INTO MEMBER(MEMNO, MEMNICK, MEMID, MEMPW, MEMNAME, MEMZIP, MEMADDR, MEMADDR2, MEMPHONE, MEMBIRTH, MEMGENDER, MEMCHK) 
 		VALUES(MEMSEQ.NEXTVAL, #{memnick}, #{memid}, #{mempw}, #{memname}, #{memzip}, #{memaddr}, #{memaddr2}, #{memphone}, #{membirth}, #{memgender}, #{memchk})
 	</insert>
+	
+	<update id="update" parameterType="MemberDto">
+		UPDATE MEMBER
+		SET MEMNICK = #{memnick}, MEMZIP = #{memzip}, MEMADDR = #{memaddr}, MEMADDR2 = #{memaddr2},
+		 MEMPHONE = #{memphone}, MEMBIRTH = #{membirth}, MEMGENDER = #{memgender}, MEMCHK = #{memchk}, MEMFILE = #{memfile}
+		WHERE MEMID = #{memid}
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM MEMBER
+		WHERE MEMID = #{memid}
+	</delete>
 
 </mapper>
