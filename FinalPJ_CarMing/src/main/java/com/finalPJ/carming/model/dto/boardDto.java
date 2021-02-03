@@ -213,21 +213,6 @@ public class boardDto {
 		this.maplongtitude = maplongtitude;
 	}
 
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

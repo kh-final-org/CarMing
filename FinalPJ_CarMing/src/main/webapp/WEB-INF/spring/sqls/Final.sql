@@ -5,6 +5,7 @@
 DROP TABLE MEMBER CASCADE CONSTRAINTS;
 DROP SEQUENCE MEMSEQ ;
 
+
 CREATE SEQUENCE MEMSEQ;
 CREATE TABLE MEMBER(
    MEMNO NUMBER PRIMARY KEY,
@@ -87,7 +88,7 @@ SELECT
 	ON INQUIRYLIST.CATEGORYNO = INQUIRYCATEGORY.CATEGORYNO
 	WHERE INQUIRYNO = 8;		
 		
-
+SELECT * FROM BOARD
 /****************************************************************
                      --캠핑 토크 카테고리(BCATEGORY)
 *****************************************************************/	

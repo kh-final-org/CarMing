@@ -187,7 +187,7 @@ function formAction() {
 						<td>${list.memNick}</td>
 
 						<!-- date format -->
- 						<%-- <fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value = "${list.memBirth }" />
+						<%-- <fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value = "${list.memBirth }" />
 						<fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd" value="${dateFmt }" />
 						<td>
 						<c:out value="${dateTempParse }" /> 
@@ -197,6 +197,7 @@ function formAction() {
 
 						<%-- <td><fmt:formatDate pattern = "yyyy-MM-dd" 
          						value = "${list.memBirth}"/></td> --%>
+
 						<td>${list.memAddr}</td>
 						<td>${list.memPhone}</td>
 						<td><c:set var="gen" value="${list.memGender }" />
