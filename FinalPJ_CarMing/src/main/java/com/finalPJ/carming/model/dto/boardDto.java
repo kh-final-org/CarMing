@@ -213,6 +213,15 @@ public class boardDto {
 		this.maplongtitude = maplongtitude;
 	}
 
+	@Override
+	public String toString() {
+		return "boardDto [brdno=" + brdno + ", bcategoryno=" + bcategoryno + ", brdwriter=" + brdwriter + ", brdfile="
+				+ brdfile + ", brdfilename=" + brdfilename + ", brdthumbfile=" + brdthumbfile + ", brdcontent="
+				+ brdcontent + ", brdcount=" + brdcount + ", brddate=" + brddate + ", brdprivate=" + brdprivate
+				+ ", carmapchk=" + carmapchk + ", memno=" + memno + ", memnick=" + memnick + ", mapname=" + mapname
+				+ ", maplatitude=" + maplatitude + ", maplongtitude=" + maplongtitude + "]";
+	}
+
 	
 	
 }

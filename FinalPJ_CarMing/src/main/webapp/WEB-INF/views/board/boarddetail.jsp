@@ -150,7 +150,7 @@
 		<!-- 사용자가 업로드한 이미지 -->
 		<div class="card-body-2">
 			<div class="board-uploadimg">
-				<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile }">
+				<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
 			</div>
 		</div>
 		
@@ -212,7 +212,7 @@
 			<div class="card-body-6">
 				<div class="commentuser-first">
 					<div class="board-profile-commentuser">
-						<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" ></a>
+						<a href="profileform.do?memno=1"><img class="user-profile" src="./resources/img/profile.png" ></a>
 						<span><strong>${comment.comwriter }</strong></span>
 					</div>
 					<div class="commentuser-comment">${comment.comcontext }</div>

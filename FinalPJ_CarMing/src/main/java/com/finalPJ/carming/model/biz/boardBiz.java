@@ -2,6 +2,7 @@ package com.finalPJ.carming.model.biz;
 
 import java.util.List;
 
+import com.finalPJ.carming.model.dto.MemberDto;
 import com.finalPJ.carming.model.dto.boardDto;
 
 public interface boardBiz {
@@ -20,7 +21,7 @@ public interface boardBiz {
 	public void viewCount(int brdno);
 	//07. 사용자 프로필 페이지 목록
 	public List<boardDto> userBoardList(int memno);
-		
+	public MemberDto profilemem(int memno);
 	
 	
 }

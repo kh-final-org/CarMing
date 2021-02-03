@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.finalPJ.carming.model.dto.MemberDto;
 import com.finalPJ.carming.model.dto.boardDto;
 
 @Repository
@@ -45,11 +46,24 @@ public class boardDaoImpl implements boardDao{
 	
 	//03. 게시글(사진) 추가
 	@Override
-	public int insert(boardDto dto) {
+	public int insertBRD(boardDto dto) {
 		int res = 0;
 		
 		try {
-			res = sqlSession.insert(NAMESPACE+"insert", dto);
+			res = sqlSession.insert(NAMESPACE+"insertBRD", dto);
+		} catch (Exception e) {
+			System.out.println("[error : board_insert]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	@Override
+	public int insertMAP(boardDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"insertMAP", dto);
 		} catch (Exception e) {
 			System.out.println("[error : board_insert]");
 			e.printStackTrace();
@@ -105,6 +119,20 @@ public class boardDaoImpl implements boardDao{
 		}
 		return list;
 	}
+
+	@Override
+	public MemberDto profilemem(int memno) {
+		MemberDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"profilemem", memno);
+		} catch (Exception e) {
+			System.out.println("[error : profilemem]");
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
 	
 	
 	

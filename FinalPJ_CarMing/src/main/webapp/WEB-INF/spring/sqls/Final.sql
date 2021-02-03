@@ -54,7 +54,8 @@ CREATE TABLE BOARD(
     BCATEGORYNO NUMBER NOT NULL,                                    				--카테고리 번호 참조
     BRDWRITER VARCHAR2(100) NOT NULL,                              			 		--게시글 작성자 (Session이용)
     BRDFILE VARCHAR2(2000) NOT NULL,                                				--파일명
-    BRDCONTENT LONG NOT NULL,                                       				--게시글 내용    
+    BRDTHUMBFILE VARCHAR2(2000) DEFAULT 0 NOT NULL,                                	--파일 썸네일 이미지
+    BRDCONTENT VARCHAR2(2000) NOT NULL,                                       		--게시글 내용    
     BRDCOUNT NUMBER NOT NULL,                                       				--게시글 조회수
     BRDDATE DATE NOT NULL,                                          				--게시글 작성 날짜
     BRDPRIVATE VARCHAR2(1) CHECK(BRDPRIVATE IN('Y','N')) NOT NULL,  				--나만보기 체크 여부(Y:체크/N:체크x)
@@ -62,6 +63,8 @@ CREATE TABLE BOARD(
     FOREIGN KEY (BCATEGORYNO) REFERENCES BCATEGORY(BCATEGORYNO) ON DELETE CASCADE,
     FOREIGN KEY (MEMNO) REFERENCES MEMBER(MEMNO) ON DELETE CASCADE
 );
+
+SELECT * FROM BOARD;
 INSERT INTO BOARD
 VALUES(BRDNOSEQ.NEXTVAL, 5, (SELECT MEMNICK FROM MEMBER WHERE MEMNO=1),'mycamp18.JPG','게시글 내용2',0,SYSDATE,'N',(SELECT MEMNO FROM MEMBER WHERE MEMNO=1));
 INSERT INTO BOARD
@@ -128,7 +131,7 @@ CREATE TABLE MAPLOCATION(
     MAPLONGTITUDE VARCHAR2(1000) NOT NULL,                          --경도
     CARMAPCHK VARCHAR2(1) CHECK(CARMAPCHK IN('Y','N')) NOT NULL,    --차박명소 등록 체크 동의(Y:동의/N:비동의)
     MEMNO NUMBER NOT NULL,                                          --회원번호 (Session이용)
-    BRDNO NUMBER NOT NULL,                                          --캠핑토크 게시글 번호
+    BRDNO NUMBER NOT NULL,
     FOREIGN KEY (MEMNO) REFERENCES MEMBER(MEMNO) ON DELETE CASCADE,
     FOREIGN KEY (BRDNO) REFERENCES BOARD(BRDNO) ON DELETE CASCADE
 );

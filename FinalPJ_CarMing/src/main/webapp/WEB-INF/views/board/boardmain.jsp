@@ -157,7 +157,7 @@
 		</c:if>
 		
 		<!-- 게시글이 있을 경우 -->
-		<c:forEach items="${list }" var="dto">
+		<c:forEach items="${list}" var="dto">
 			<div class="card-body" style="padding: 0px">
 				<!-- 프로필 사진/아이디 -->
 				<div class="board-profile">
