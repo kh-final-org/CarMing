@@ -45,7 +45,7 @@ public class boardController {
 		
 		logger.info("[BOARD SELECT LIST]");
 		model.addAttribute("list", biz.selectList());
-		
+
 	   return "board/boardmain";
 	}
 	
@@ -111,24 +111,7 @@ public class boardController {
 			}
 		}
 		
-		boardDto bdto = new boardDto();
-		//mapper의 insert부분 모두
-		bdto.setBcategoryno(dto.getBcategoryno());
-		bdto.setBrdfilename(dto.getBrdfilename());
-		bdto.setBrdcontent(dto.getBrdcontent());
-		bdto.setBrdprivate(dto.getBrdprivate());
-		bdto.setMemno(dto.getMemno());
-			      
-		System.out.println("------------------");
-		System.out.println(dto.getBrdfilename());
-      
-		
-		
-		
-		
-		
-		
-		
+		dto.setBrdfilename(name);
 		
 		int res = biz.insert(dto);
 		if(res>0) {
@@ -173,13 +156,13 @@ public class boardController {
 		logger.info("[BOARD SELECT ONE / DETAIL]");
 		model.addAttribute("dto", biz.selectOne(brdno));
 		model.addAttribute("comment",cbiz.selectList(brdno));
-		
-		int cntComment = 0;
-		cntComment = cbiz.countComment(dto);
-		System.out.println("댓글 갯수: "+cntComment);
+		System.out.println(model.toString());
+//		int cntComment = 0;
+//		cntComment = cbiz.countComment(dto);
+//		System.out.println("댓글 갯수: "+cntComment);
 		
 		//리뷰 갯수 객체 담아 보내기 
-		model.addAttribute("countreview", cntComment);
+//		model.addAttribute("countreview", cntComment);
 		
 		return "board/boarddetail";
 	}
@@ -188,8 +171,9 @@ public class boardController {
 	@RequestMapping(value = "/profileform.do")
 	public String profilePage(Model model, int memno) {
 		logger.info("[PROFILE PAGE]");
+		model.addAttribute("mem",biz.profilemem(memno));
 		model.addAttribute("list", biz.userBoardList(memno));
-	   
+		System.out.println(model.toString());
 		return "board/profilepage";
 	}
 	

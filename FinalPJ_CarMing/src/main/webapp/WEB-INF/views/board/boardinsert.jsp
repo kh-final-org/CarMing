@@ -138,7 +138,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
+ <script type="text/javascript">
 	function YnCheck(obj) {
 		$("#my").empty();
 	    var checked = obj.checked;
@@ -163,7 +163,7 @@
 	    }
 	    
 	 };
-</script>
+</script> 
 
 <script type="text/javascript">
 	function YnCheck2(obj) {
@@ -410,18 +410,21 @@
 										       var place2 = place.place_name;
 										       
 										       $("#place").empty();
-										        										        
+										        	
+										     
 										        var plc = document.createElement("input");
-											    lati.setAttribute("name", "mapname");
-											    lati.setAttribute("type", "text");
-											    lati.setAttribute("value", place2);
+											    plc.setAttribute("name", "mapname");
+											    plc.setAttribute("type", "text");
+											    plc.readOnly= true;
+											    plc.setAttribute("value", place2); 
+											    plc.setAttribute("style","border:0px");
 										        
 										        document.getElementById("place").appendChild(plc);
 										         
-										        $("#lat").empty();
+										     	 $("#lat").empty();
 										        var lati = document.createElement("input");
 											    lati.setAttribute("name", "maplatitude");
-											    lati.setAttribute("type", "text");
+											    lati.setAttribute("type", "hidden");
 											    lati.setAttribute("value", lat);
 												document.getElementById("lat").appendChild(lati);
 												
@@ -429,7 +432,7 @@
 
 												 var lang = document.createElement("input");
 												 lang.setAttribute("name", "maplongtitude");
-												 lang.setAttribute("type", "text");
+												 lang.setAttribute("type", "hidden");
 												 lang.setAttribute("value", lng);
 												document.getElementById("lang").appendChild(lang); 
 										        
@@ -453,8 +456,8 @@
 				</div><br>
 				
 				<div class="latlong-input-value">
-					<span><strong>위도 : </strong></span><span id="lat"></span>&#44;
-					<span><strong>경도 : </strong></span><span id="lang"></span>
+					<span style="display: none"><strong>위도 : </strong></span><span id="lat"></span>
+					<span style="display: none"><strong>경도 : </strong></span><span id="lang"></span>
 				</div>
 				
 				<!-- Checkbox -->
@@ -464,14 +467,14 @@
 							<input type="checkbox" id="chkprivate" value="chkprivate" onclick="YnCheck(this)">
 							<span class="icon"></span>
 							<span class="text">나만 보기</span>
-							<span id="my" name="brdprivate"><input type="text" value="N" name="brdprivate"></span>
+							<span id="my" ><input type="text" value="N" name="brdprivate"></span>
 						</label>&emsp;&emsp;
 					</div>
-					<div class="chkcarplace-box">
+					<div class="chkcarplace-box" style="display: none">
 						<label class="checkbox">
 							<input type="checkbox" id="chkcarplace" value="chkcarplace" onclick="YnCheck2(this)">
 							<span class="icon"></span>
-							<span class="text">차박 명소 등록하기</span>
+							<span class="text" >차박 명소 등록하기</span>
 							<span style="display: none;">4</span>
 							<span id="car"><input type="text" value="N" name="carmapchk"></span>
 						</label>
