@@ -21,7 +21,7 @@
 	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
 	.board-usernick{font-size: 1.2em; font-weight: bold;}
 	.uploadimg{width: 360px; height: 360px; transform: scale(1.00); transition: transform .3s; border-radius: 10px;}
-	.uploadimg:hover{transform: scale(1.03); transition: transform .3s; border-radius: 10px;}
+	.uploadimg:hover{transform: scale(1.03); transition: transform 0.3s; border-radius: 10px;}
 	.board-uploadimg-frame{position: relative; width: 360px; height: 360px; overflow: hidden; border-radius: 10px;}
 	.board-profile{margin: 0px 0px 8px 8px;}	
 	.board-count{width: 360px; font-size: 0.8em; text-align: right; margin: 3px 0px 0px 0px;}
@@ -29,9 +29,11 @@
 	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;}
 	.upload-btn{width: 140px; padding: 8px 0 10px; line-height: 20px; border: 0; border-radius: 4px;
 				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
+	.upload-btn:hover{background: #ffdb9f; transition: 0.2s;}
 	.current{padding-left: 5px;}
 	#popout-layout{position: absolute; z-index: 1000; margin-top: 8px; padding: 10px 20px; 
 				   border-radius: 5px; background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
+	.nice-select:hover{background: rgba(136, 126, 126, 0.04); transition: 0.2s;}
 	.content-item-icon{float: left;}
 	.content-item-content{float: right; color: gray;}
 	.content-item-content-title{font-weight: bold; font-size: 1em; margin-top: 5px;}
@@ -41,8 +43,8 @@
 	 
 	#paging-container{margin: 50px 0px 20px 0px;}
 	
-	/* 진회색: #5f5f5f, 연회색:#e2e2e2, 주황색: #ff9b00, 
-	       쨍한 노랑: #ffba00;  진노랑: #ffe6be, 연노랑: #fff5e9 */ 
+	/* 진회색: #5f5f5f, 연연회색:#e2e2e2, 흰색 위 hover: #fafafa,
+	       주황색: #ff9b00, 쨍한 노랑: #ffba00; 진진노랑(hover): #ffdb9f; 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
 
 <script type="text/javascript">
@@ -91,7 +93,7 @@
          <div class="col-first">
             <h1>The stars in the night sky</h1>
          	<nav class="d-flex align-items-center">
-               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
                <a href="boardmainform.do">Talk</a>
             </nav>
          </div>
@@ -109,7 +111,7 @@
 		</div>
 		
 		<div class="card-head-second">
-			<button class="upload-btn" type="button" onclick="popoutFunction()">+&nbsp;&nbsp;게시글쓰기</button>
+			<button type="button" class="upload-btn" onclick="popoutFunction()">+&nbsp;&nbsp;게시글쓰기</button>
 			
 			<div class="scale-up-top" id="upload-popout">
 				<div class="popout popout--prepared popout--axis-1 popout--dir-0 popout--cross-dir-1" id="popout-layout" data-popout="true">
@@ -168,7 +170,7 @@
 				<div class="board-uploadimg">
 					<div class="board-uploadimg-frame">
 						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }">
-							<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile}">
+							<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
 						</a><br>
 					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>

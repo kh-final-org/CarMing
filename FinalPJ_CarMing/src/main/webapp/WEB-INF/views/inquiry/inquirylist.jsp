@@ -13,7 +13,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
 <!-- Mobile Specific Meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Favicon-->
@@ -27,7 +26,6 @@
 <!-- meta character set -->
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="resources/css/list.css">
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
 	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
@@ -45,14 +43,15 @@
 	.btn.btn-default{margin-top: -6%; margin-right: -3%;}
 	
 	.gaadiex-list {border-radius: 10px; list-style-type: none; margin: 0; padding: 0;}
-	.gaadiex-list-title > h2{float:left; width: 25%; margin: 1.3% 0 0 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
-	.gaadiex-list>.gaadiex-list-item {padding: 0 20px;}
+	.gaadiex-list-title > h2{float:left; width: 25%; margin: 1% 0 0 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
+	.gaadiex-list>.gaadiex-list-item {padding: 0 35px;}
 	.gaadiex-list-item {width: 45%; float:left; margin-left: 2%;}
-	.gaadiex-list-item-img > img {float: left; width: 100px; height: 100px; margin: 30px 50px 8px 0; border-radius: 50%;}
+	.gaadiex-list-item-img > img {float: left; width: 100px; height: 100px; margin: 50px 30px 8px 30px; border-radius: 50%;}
 	.gaadiex-list-item-text {margin-top: 50px; color: gray; margin-left: 160px;}
 	.gaadiex-list-item-text a{color: gray;}
 	.gaadiex-list-item-text a:hover{color: #ffba00; color: gray;}
 	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: #5f5f5f;}
+	.list-item-text-ck:hover{border-radius: 2px; background: #fff5e9; transition: 0.2s;}
 </style>
 
 
@@ -110,15 +109,16 @@ function myFunction() {
 		<div class="gaadiex-list-title">
 			<h2>INQUIRY LIST</h2>
 		</div>
+		
 		<!-- 카테고리 검색 -->
 		<div class="blog_right_sidebar">
 			<aside class="single_sidebar_widget search_widget">
-				<div  class="input-group">
+				<div class="input-group">
 					<input type="text" id="input" onkeyup="myFunction()"
-						class="form-control" placeholder="카테고리 검색하기" 
-						onfocus="this.placeholder = ''"
-						onblur="this.placeholder = '카테고리 검색하기'" 
-						style="padding: 12%; font-size: 1.15em; border-radius: 5px; margin-top: -15%;"> 
+						   class="form-control" placeholder="카테고리 검색하기" 
+						   onfocus="this.placeholder = ''"
+						   onblur="this.placeholder = '카테고리 검색하기'" 
+						   style="padding: 12%; font-size: 1.15em; border-radius: 5px; margin-top: -15%;"> 
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button">
 							<i class="lnr lnr-magnifier"></i>
@@ -139,10 +139,10 @@ function myFunction() {
 					<div class="gaadiex-list-item-text">
 						<h4><a href="#">닉네임&nbsp;&#124;&nbsp;${list.memNick }</a></h4>
 						
-						<div>
+						<div class="gaadiex-list-item-text-ck">
 							<a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">
 							<c:set var="TextValue" value="${list.inquiryContent }"/> 
-								문의 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,10)}
+								<span class="list-item-text-ck">문의 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,10)}</span>
 							</a>
 						</div>
 						
@@ -155,10 +155,8 @@ function myFunction() {
 		</div>
 	</div>
 	<!-- End Container Area -->
-	
 
 	<!-- start footer Area -->
-
 	<%@include file="../../views/common/footer.jsp"%>
 	<!-- End footer Area -->
 

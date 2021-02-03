@@ -23,15 +23,6 @@
 <meta charset="UTF-8">
 
 
-
-
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-	integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="resources/css/writereport.css">
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
 	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
@@ -53,14 +44,16 @@
 	
 	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem; border: 1px solid #e2e2e2; background: #fff5e9;}
 	.contact-form{width: 750px; height: 100%;}
-	#report-name{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em; font-weight: bold;}
+	#report-name{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#writerNickname{float: right; width: 450px; margin-right: 10px;}
 	.form-group-report-form{float: left; margin-bottom: 15px; width:100%;}
-	#report-date{float: left; width: 150px; padding: 0; margin-left: 15px; font-size: 1.2em; font-weight: bold;}
+	#report-date{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#date{float: right; width: 450px; margin-right: 150px;}	
 	.form-group-category-form{float: left; margin-bottom: 15px; width: 100%;}
-	.report-category{display: inline-block; float: left; margin-left: 15px; width: 10%; font-size: 1.2em; margin-left: 15px;}
+	.report-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em; mar}
 	.report-category-wrap{float: left; width: 72%; margin-left: 60px;}
+	.report-target-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em;}
+	.form-group-target-category-form{float: left; margin-bottom: 20px; width: 100%;}
 	#categoryno{ width:100px;}
 	.current{font-size: 1.1em;}
 	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
@@ -95,6 +88,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="resources/js/gmaps.min.js"></script>
  
+<!-- ★★★위 스크립트로 상단바 위치가 깨짐★★★
+<script src="resources/js/main.js"></script>-->
  
 
 <script type="text/javascript">
@@ -147,14 +142,14 @@
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
 	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="writereportform.do">신고하기</a>
+	               <a href="writeinquiryform.do">문의하기</a>
 	            </nav>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writereportform.do'">신고하기</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='reportlist.do'">신고 목록</button>
 	         </div>
 		  </div>
 		</div>
@@ -162,9 +157,9 @@
 	<!-- End Banner Area -->
 
 	<!------ Include the above in your HEAD tag ---------->
-	
-	<form:form  action="writereport.do?targetNo=${target.targetNo}&memNo=${login.memno}" method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
-	<div class="container contact">
+	<form:form action="writereport.do?targetNo=${target.targetNo}&targetTypeNo=${target.targetTypeNo }" 
+				method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
+	<div class="container-contact">
 		<div class="row">
 			<div class="col-md-3">
 				<div class="contact-info">
@@ -174,58 +169,57 @@
 					<h5>핑구에게 알려주세요</h5>
 					<h6>여러분의 제보로 더 깨끗한<br>서비스를 만들어가도록<br>노력하겠습니다</h6>
 				</div>
-				<div class="col-md-9">
-					<div class="contact-form">
-						<div class="form-group">
-						<!-- 제보자 닉네임 -->
-							<label class="control-label col-sm-2" id="report-name" for="writerNickname">
-							 제보자 닉네임:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="writerNickname"
-									value="${login.memnick}" readonly="readonly" name="reportWriter">
-							</div>
-						</div>
-							
-							<!-- 작성일 -->
-							<div class="form-group-report-form">
-								<label class="control-label col-sm-2" id="report-date"
-									for="date">신고 작성일</label>
-								<div class="repot-date-form">
-									<c:set var="now" value="<%=new java.util.Date()%>" />
-									<input type="date" class="form-control" id="date"
-										value=<fmt:formatDate pattern = "yyyy-MM-dd" 
-         						value = "${now}" />
-										readonly="readonly"> 
-								</div>
-							</div>
+			</div>
 
-						
-							<!-- 카테고리 -->
-					<div class="form-group-category-form">
-						<span class="report-category"><strong>카테고리</strong></span>
-						<div class="report-category-wrap">
-							<select class="col-sm-10" id="categoryno" name="categoryNo">
-								<option selected disabled>신고 유형</option>
-								<option value="1">지나친 광고성 게시물</option>
-								<option value="2">욕설/비방이 심함</option>
-								<option value="3">기타</option>
-							</select>
+			<div class="col-md-9">
+				<div class="contact-form">
+					<!-- 제보자 닉네임 -->
+					<div class="form-group-report-form">
+						<label class="control-label col-sm-2" id="report-name"for="writerNickname">제보자 닉네임</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="writerNickname"
+								   value="${login.memnick}" readonly="readonly" name="reportWriter">
 						</div>
 					</div>
-						
-						<!--★ 추가된 부분 ★-->
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="category"> 카테고리:
-							</label> <br> <select class="col-sm-10" id="categoryno" name="targetTypeNo">
+					
+					<!-- 작성일 -->
+					<div class="form-group-report-form">
+						<label class="control-label col-sm-2" id="report-date" for="date">신고 작성일</label>
+						<div class="repot-date-form">
+							<c:set var="now" value="<%=new java.util.Date()%>" />
+							<input type="date" class="form-control" id="date"
+								value=<fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${now}" /> readonly="readonly" >
+						</div>
+					</div>
+					
+					<!-- 신고 대상 -->
+					<div class="form-group-category-form">
+						<span class="report-category"><strong>신고 대상</strong></span>
+						<div class="report-category-wrap">
+							<select class="col-sm-10" id="target" name="targetTypeNo">
 								<c:choose>
 								<c:when test="${target.targetTypeNo == 1}"><option value="1">게시글</option></c:when>
 								<c:when test="${target.targetTypeNo == 2}"><option value="2">댓글</option></c:when>
 								<c:when  test="${target.targetTypeNo == 3}"><option value="3">회원</option></c:when>
 								</c:choose>
-							</select> <br>
+							</select>
 						</div>
-						
-						<!-- 신고내용 -->
+					</div>
+					
+					<!-- 신고 유형 -->
+					<div class="form-group-target-category-form">
+						<span class="report-target-category"><strong>신고 유형</strong></span>
+						<div class="report-category-wrap">
+							<select class="col-sm-10" id="categoryno" name="categoryno">
+								<option value="1" selected>지나친 광고성 게시물</option>
+								<option value="2">욕설/비방이 심함</option>
+								<option value="3">기타</option>
+							</select>
+						</div>
+					</div>
+					
+					<!-- 신고내용 -->
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="content" id="report-text">신고 내용</label>
 						<div class="col-sm-10">
@@ -233,7 +227,7 @@
 						   			  style="resize: none;" required="required"></textarea>
 						</div>	
 					</div>
-
+					
 					<!-- 사진 업로드 -->
 					<div class="report-file"><strong>첨부 파일</strong></div>
 					<div class="upload-img-form">
@@ -252,7 +246,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 	</form:form>
 

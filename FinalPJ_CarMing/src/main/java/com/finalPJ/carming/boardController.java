@@ -57,77 +57,86 @@ public class boardController {
 	   return "board/boardinsert";
 	}
 	
-//	//게시글쓰기(사진) insert
-//	@RequestMapping(value = "/boardinsertres.do")
-//	public String boardInsertRes(Model model, boardDto dto, HttpServletRequest request, BindingResult result ) {
-//		logger.info("[BOARD INSERT RES]");
-//		FileValidator.validate(dto, result);
-//		if(result.hasErrors()) {
-//			return "board/boardinsert";
-//		}
-//		
-//		MultipartFile file = dto.getBrdfile();
-//		String name = file.getOriginalFilename();
-//		
-//		InputStream inputStream = null;
-//		OutputStream outputStream = null;
-//		
-//		
-//		try {
-//			inputStream = file.getInputStream();
-//			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/board");
-//		
-//			System.out.println("업로드 될 실제 경로: "+ path);
-//			
-//			File storage = new File(path);
-//			if(!storage.exists()) {
-//				storage.mkdir();
-//			}
-//			
-//			
-//			File newFile = new File(path +"/"+name);
-//			if(!newFile.exists()) {
-//				newFile.createNewFile();
-//			}
-//			
-//			outputStream = new FileOutputStream(newFile);
-//			
-//			int read = 0;
-//			byte[] b = new byte[(int)file.getSize()];
-//			
-//			while((read=inputStream.read(b)) != -1) {
-//				outputStream.write(b,0,read);
-//			}
-//			
-//		
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}finally {
-//			try {
-//				inputStream.close();
-//				outputStream.close();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//		boardDto board = new boardDto();
-//		board.setBrdfilename(name);
-//		board.setBrdcontent(dto.getBrdcontent());
-//		board.setBrdno(dto.getBrdno());
-//		board.setMemno(dto.getMemno());
-//		
-//		
-//		
-//		
-//		
-//		int res = biz.insert(board);
-//		if(res>0) {
-//			return "redirect:boardmainform.do";
-//		}else {
-//			return "redirect:writereportform.do";
-//		}
-//	}
+	//게시글쓰기(사진) insert
+	@RequestMapping(value = "/boardinsertres.do")
+	public String boardInsertRes(Model model, boardDto dto, HttpServletRequest request, BindingResult result ) {
+		logger.info("[BOARD INSERT RES]");
+		FileValidator.validate(dto, result);
+		if(result.hasErrors()) {
+			return "board/boardinsert";
+		}
+		
+		MultipartFile file = dto.getBrdfile();
+		String name = file.getOriginalFilename();
+		
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		
+		
+		try {
+			inputStream = file.getInputStream();
+			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/board");
+		
+			System.out.println("업로드 될 실제 경로: "+ path);
+			
+			File storage = new File(path);
+			if(!storage.exists()) {
+				storage.mkdir();
+			}
+			
+			
+			File newFile = new File(path +"/"+name);
+			if(!newFile.exists()) {
+				newFile.createNewFile();
+			}
+			
+			outputStream = new FileOutputStream(newFile);
+			
+			int read = 0;
+			byte[] b = new byte[(int)file.getSize()];
+			
+			while((read=inputStream.read(b)) != -1) {
+				outputStream.write(b,0,read);
+			}
+			
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				inputStream.close();
+				outputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		boardDto bdto = new boardDto();
+		//mapper의 insert부분 모두
+		bdto.setBcategoryno(dto.getBcategoryno());
+		bdto.setBrdfilename(dto.getBrdfilename());
+		bdto.setBrdcontent(dto.getBrdcontent());
+		bdto.setBrdprivate(dto.getBrdprivate());
+		bdto.setMemno(dto.getMemno());
+			      
+		System.out.println("------------------");
+		System.out.println(dto.getBrdfilename());
+      
+		
+		
+		
+		
+		
+		
+		
+		
+		int res = biz.insert(dto);
+		if(res>0) {
+			return "redirect:boardmainform.do";
+		}else {
+			return "redirect:boardinsertform.do";
+		}
+	}
 	
 	
 	//게시글쓰기(영상) 올리기 페이지로 이동
