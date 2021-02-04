@@ -13,13 +13,11 @@
 	.card-container{margin: 50px 190px 50px 220px;}
     .card-body{padding: 0px;}
    	
-   	.card-body-left{position: relative; margin-right: 10px;}
+   	.card-body-left{position: relative; float: left; width: 530px; background: orange; height: 350px; margin: 0 10px 0 -20px;}
    	.video-icon{margin-top: -8px; width: 120px; height: 120px; opacity: 25%;}
    	.logo-bottom-context{color: gray;}    
-	.uploadfile-btn{position: relative; float: left; width: 530px; height: 350px; margin-left: -20px; margin-right: 10px; 
-					border-radius: 20px; text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9;}
 	.uploadfile-icon-btn{margin-top: 110px;}
-	.uploadfile-img{position: absolute; top: 362px; margin-left: -20px;}
+	.uploadfile-img{position: absolute; top: 362px; width: 550px;}
 	.uploadfile-img input[type="file"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
 										overflow: hidden; clip:rect(0,0,0,0); border: 0; }
 	.uploadfile-img label {display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; 
@@ -28,7 +26,7 @@
 	.uploadfile-img .upload-name {display: inline-block; padding: .5em .75em; font-size: inherit; font-family: inherit; line-height: normal; 
 								  vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; 
 								  border-radius: .25em; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
-
+	
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
     .body-content{margin-top: 55px; font-size: 1.2em;}
@@ -39,7 +37,7 @@
     .body-location-left{float: left; width: 77%;}
     .body-location-right{float: right; width: 21.5%; margin-right: 0;}
     .location-logo-text{display: inline-block; vertical-align: middle;}
-    .body-checklist{margin: 8px 0px;}   
+    .body-checklist{margin: 15px 0px;}   
     .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
@@ -54,7 +52,7 @@
 	.checkbox .icon::after{content: ''; position: absolute;top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
 						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
 	.checkbox .text{margin-left: 5px;}
-	.checkbox input:checked ~ .icon{border-color: transparent;background: orange;}
+	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
 	.checkbox input:checked ~ .icon::after{opacity: 1;transform: rotate(45deg) scale(1);}
 	  
 	.location-open{color: gray;}
@@ -212,7 +210,7 @@
 <!-- End Banner Area -->
 
 <!-- Start Container Area -->
-<form:form action="boardinsertres_v.do?brdno=${dto.brdno }&memno=${dto.memno }" 
+<form:form action="boardinsertres_v.do?&memno=${dto.memno }" 
 		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
 		<div class="card-head">
@@ -220,28 +218,26 @@
 		</div>
 		
 		<div class="card-body">
-			<!-- Start Photo/Video upload Area -->
+			<!-- Image/Video Upload-->
 			<div class="card-body-left">
 				<div class="uploadfile-img">
 					<input class="upload-name" value="파일 선택" disabled="disabled" style="width: 420px;">
 					<label for="thumbnail-img">썸네일 사진</label>
-					<input type="file" id="thumbnail-img" class="upload-hidden" name="brdfile" accept="image/*">
+					<input type="file" id="thumbnail-img" class="upload-hidden" name="brdfilename" accept="image/*">
 				</div>
-				<div class="uploadfile-btn">
-					<div class="uploadfile-icon-btn">
-						<img class="video-icon" src="./resources/img/videofilm.png"><br>
-						<span class="logo-bottom-context">동영상 올리기</span>
-					</div>
+				<div class="uploadfile-video">
+					<input type="file" id="video-file" class="upload-hidden" name="brdvideo" accept="video/*">
+<!-- 					<video name="brdthumbfile" controls="controls" height="350" width="530"></video> -->
 				</div>
 			</div>
-			<!-- End Photo/Video Upload Area -->
 			
 			<!-- Start Upload Contents Area -->
 			<div class="card-body-right">
 				<!-- Category -->
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
-				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" 
+				  				aria-label="Example select with button addon" name="bcategoryno">
 							<option value="1" selected>일반 캠핑</option>
 						    <option value="2">카라반</option>
 						    <option value="3">글램핑</option>
@@ -253,14 +249,14 @@
 				
 				<!-- Textarea -->
 				<div class="body-content">
-				   	<textarea rows="9" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required"></textarea>
+				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." name="brdcontent" style="resize: none;" required="required"></textarea>
 				</div>
 				
 				<!-- Location Upload -->
 				<div class="body-location" >
 					<div class="body-location-left">
 						<span class="location-logo-text">
-							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;서울특별시 카밍캠핑장
+							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;<span id=place></span>
 						</span>
 					</div>
 					
@@ -276,59 +272,129 @@
 								<div id="map"></div>
 								<div class="location-search">
 									<div class="input-group mb-3" >
-										<input type="search" class="form-control" placeholder="주소를  검색해 주세요." 
-											   aria-label="Recipient's username" aria-describedby="button-addon2">
-										<div class="input-group-append">
-									    	<button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+											<input type="search" id="keyword" class="form-control" placeholder="키워드를 검색해 주세요." 
+											       aria-label="Recipient's username" aria-describedby="button-addon2" >
+											<div class="input-group-append">
+									    	<button class="btn btn-outline-secondary" type="button" onclick="searchPlaces();" id="button-addon2" >
 									    		<img class="searchimg" src="./resources/img/search.png">
 									    	</button>
 									  	</div>
 									</div>	
-								</div>
+								</div> 
 								<div id="clickLatlng"></div>
-								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2"></script>
-								<script>
-									var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-									    mapOption = { 
-									        center: new kakao.maps.LatLng(37.739010, 127.200003), // 지도의 중심좌표
-									        level: 3 // 지도의 확대 레벨
-									    };
-									
-									var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-									
-									// 지도를 클릭한 위치에 표출할 마커입니다
-									var marker = new kakao.maps.Marker({ 
-									    // 지도 중심좌표에 마커를 생성합니다 
-									    position: map.getCenter() 
-									}); 
-									// 지도에 마커를 표시합니다
-									marker.setMap(map);
-									
-									// 지도에 클릭 이벤트를 등록합니다
-									// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-									kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-									    
-									    // 클릭한 위도, 경도 정보를 가져옵니다 
-									    var latlng = mouseEvent.latLng; 
-									    // 마커 위치를 클릭한 위치로 옮깁니다
-									    marker.setPosition(latlng);
-									    
-									    var message = '위도 : ' + latlng.getLat() + ' , ';
-									    message += '경도 : ' + latlng.getLng();
-									    
-									    var lat = latlng.getLat();
-									    var lng = latlng.getLng();
-									    
-									    var resultDiv = document.getElementById('clickLatlng'); 
-									    resultDiv.innerHTML = lat + " / " + lng;
-									    
-									    var lat = document.createTextNode(lat); 
-									    document.getElementById("lat").appendChild(lat);		
-									    
-									    var lang = document.createTextNode(lng);
-									    document.getElementById("long").appendChild(lang);		
-									});
-								</script>
+									<script type="text/javascript"
+											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>
+									<script>
+										// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+										var infowindow = new kakao.maps.InfoWindow(
+												{zIndex : 1});
+
+										var mapContainer = document
+												.getElementById('map'), // 지도를 표시할 div 
+										mapOption = {
+											center : new kakao.maps.LatLng(
+													37.566826, 126.9786567), // 지도의 중심좌표
+											level : 3
+										// 지도의 확대 레벨
+										};
+
+										// 지도를 생성합니다    
+										var map = new kakao.maps.Map(
+												mapContainer, mapOption);
+										function searchPlaces() {
+
+											var keyword = document
+													.getElementById('keyword').value;
+
+											if (!keyword.replace(/^\s+|\s+$/g,
+													'')) {
+												alert('키워드를 입력해주세요!');
+												return false;
+											}
+
+											// 장소 검색 객체를 생성합니다
+											var ps = new kakao.maps.services.Places();
+
+											// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+											ps.keywordSearch(keyword,
+													placesSearchCB);
+										}
+
+										// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+										function placesSearchCB(data, status,
+												 pagination) {
+											if (status === kakao.maps.services.Status.OK) {
+
+												// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+												// LatLngBounds 객체에 좌표를 추가합니다
+												var bounds = new kakao.maps.LatLngBounds();
+
+												for (var i = 0; i < data.length; i++) {
+													displayMarker(data[i]);
+													bounds.extend(new kakao.maps.LatLng(data[i].y,data[i].x));
+												}
+
+												// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+												map.setBounds(bounds);
+											}
+										}
+
+										// 지도에 마커를 표시하는 함수입니다
+										function displayMarker(place) {
+
+											// 마커를 생성하고 지도에 표시합니다
+											var marker = new kakao.maps.Marker(
+													{
+														map : map,
+														position : new kakao.maps.LatLng(place.y,place.x)
+													});
+
+												// 마커에 클릭이벤트를 등록합니다
+											    kakao.maps.event.addListener(marker, 'click', function() {
+										        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+										        infowindow.setContent('<div style="padding:5px; font-size:12px;">' + place.place_name + '</div>');
+										        infowindow.open(map, marker); 
+										        // 클릭한 위도, 경도 정보를 가져옵니다 
+										        var latlng =  new kakao.maps.LatLng(place.y,place.x);
+										        
+										        // 마커 위치를 클릭한 위치로 옮깁니다
+										        marker.setPosition(latlng);
+										        
+										        var message = '[위도] ' + latlng.getLat() + ' / ';
+										        message += '[경도] ' + latlng.getLng();
+										       
+										        var lat = latlng.getLat();
+										        var lng = latlng.getLng();
+										        var place2 = place.place_name;
+										       
+										        $("#place").empty();
+										     
+										        var plc = document.createElement("input");
+											    plc.setAttribute("name", "mapname");
+											    plc.setAttribute("type", "text");
+											    plc.readOnly= true;
+											    plc.setAttribute("value", place2); 
+											    plc.setAttribute("style","border:0px; outline: none;");
+										        
+										        document.getElementById("place").appendChild(plc);
+										         
+										     	$("#lat").empty();
+										        var lati = document.createElement("input");
+											    lati.setAttribute("name", "maplatitude");
+											    lati.setAttribute("type", "hidden");
+											    lati.setAttribute("value", lat);
+												document.getElementById("lat").appendChild(lati);
+												
+												$("#lang").empty();
+
+												var lang = document.createElement("input");
+												lang.setAttribute("name", "maplongtitude");
+												lang.setAttribute("type", "hidden");
+												lang.setAttribute("value", lng);
+												document.getElementById("lang").appendChild(lang); 
+										    });
+										}
+									</script>
 													
 								<div class="location-finish">
 									<a class="btn btn-light" onclick="myFunction()" id="location-finish-btn" href="#a">등록하기</a>
@@ -346,8 +412,8 @@
 				</div><br>
 				
 				<div class="latlong-input-value">
-					<span><strong>위도 : </strong></span><span id="lat"></span>&#44;
-					<span><strong>경도 : </strong></span><span id="long"></span>
+					<span style="display: none"><strong>위도 : </strong></span><span id="lat"></span>
+					<span style="display: none"><strong>경도 : </strong></span><span id="lang"></span>
 				</div>
 				
 				<!-- Checkbox -->
@@ -357,7 +423,7 @@
 							<input type="checkbox" id="chkprivate" value="chkprivate" onclick="YnCheck(this)">
 							<span class="icon"></span>
 							<span class="text">나만 보기</span>
-							<span id="my">N</span>
+							<span id="my" ><input type="text" value="N" name="brdprivate"></span>
 						</label>&emsp;&emsp;
 					</div>
 					<div class="chkcarplace-box">
@@ -366,7 +432,7 @@
 							<span class="icon"></span>
 							<span class="text">차박 명소 등록하기</span>
 							<span style="display: none;">4</span>
-							<span id="car">N</span>
+							<span id="car"><input type="text" value="N" name="carmapchk"></span>
 						</label>
 					</div>
 				</div>

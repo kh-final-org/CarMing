@@ -16,11 +16,11 @@
    	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 0 10px 0 -20px;}
 	
 	.uploadimg {width: 350px; height: 350px;}
-	.img_wrap {width: 300px; height: 300px; margin-top: 20px;}
+	.img_wrap {width: 330px; height: 300px; margin-top: 20px;}
 	.img_wrap img {max-width: 100%; max-height: 100%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 135px;}	
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 115px;}	
 	.upload-img-form{position: relative; width: 530px; height: 350px; border: 1px solid #e2e2e2;
-					 border-radius: 10px; margin-bottom: 30px; background: #fff; margin-bottom: -10px;}
+					 border-radius: 10px; margin-bottom: 15px; background: #fff; margin-bottom: -10px;}
    	.upload-img-content{position: absolute; margin-top: 35px; width: 530px;}
 
     .card-body-right{float: right; width: 530px; height: 450px;}
@@ -177,7 +177,6 @@
 	 };
 </script>
 
-
 <!-- 카테고리 차박이 아닐 경우 '차박 체크박스' 숨기기 -->
 <script type="text/javascript">
 	function carPlaceChk() {
@@ -234,7 +233,7 @@
 		</div>
 		
 		<div class="card-body">
-			<!-- 사진 업로드(미리보기)-->
+			<!-- Image Upload-->
 			<div class="card-body-left">
 				<div class="upload-img-form">
 					<div class="img_wrap center-block">
@@ -247,7 +246,6 @@
 				</div>
 			</div>
 			
-			<!-- Start Upload Contents Area -->
 			<div class="card-body-right">
 				<!-- Category -->
 				<div class="body-category" style="width: 500px;">
@@ -265,7 +263,7 @@
 				
 				<!-- Textarea -->
 				<div class="body-content">
-				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required" name="brdcontent"></textarea>
+				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." name="brdcontent" style="resize: none;" required="required"></textarea>
 				</div>
 				
 				<!-- Location Upload -->
@@ -289,7 +287,7 @@
 								<div class="location-search">
 									<div class="input-group mb-3" >
 											<input type="search" id="keyword" class="form-control" placeholder="키워드를 검색해 주세요." 
-											   aria-label="Recipient's username" aria-describedby="button-addon2" >
+											       aria-label="Recipient's username" aria-describedby="button-addon2" >
 											<div class="input-group-append">
 									    	<button class="btn btn-outline-secondary" type="button" onclick="searchPlaces();" id="button-addon2" >
 									    		<img class="searchimg" src="./resources/img/search.png">
@@ -298,9 +296,8 @@
 									</div>	
 								</div> 
 								<div id="clickLatlng"></div>
-								
 									<script type="text/javascript"
-										src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>
+											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>
 									<script>
 										// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 										var infowindow = new kakao.maps.InfoWindow(
@@ -339,7 +336,7 @@
 
 										// 키워드 검색 완료 시 호출되는 콜백함수 입니다
 										function placesSearchCB(data, status,
-												pagination) {
+												 pagination) {
 											if (status === kakao.maps.services.Status.OK) {
 
 												// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -366,10 +363,10 @@
 														position : new kakao.maps.LatLng(place.y,place.x)
 													});
 
-											 // 마커에 클릭이벤트를 등록합니다
-										    kakao.maps.event.addListener(marker, 'click', function() {
+												// 마커에 클릭이벤트를 등록합니다
+											    kakao.maps.event.addListener(marker, 'click', function() {
 										        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-										        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+										        infowindow.setContent('<div style="padding:5px; font-size:12px;">' + place.place_name + '</div>');
 										        infowindow.open(map, marker); 
 										        // 클릭한 위도, 경도 정보를 가져옵니다 
 										        var latlng =  new kakao.maps.LatLng(place.y,place.x);
@@ -377,8 +374,8 @@
 										        // 마커 위치를 클릭한 위치로 옮깁니다
 										        marker.setPosition(latlng);
 										        
-										        var message = '위도는 ' + latlng.getLat() + ' 이고, ';
-										        message += '경도는 ' + latlng.getLng() + ' 입니다';
+										        var message = '[위도] ' + latlng.getLat() + ' / ';
+										        message += '[경도] ' + latlng.getLng();
 										        
 										        var resultDiv = document.getElementById('clickLatlng'); 
 										        resultDiv.innerHTML = message;
@@ -394,7 +391,7 @@
 											    plc.setAttribute("type", "text");
 											    plc.readOnly= true;
 											    plc.setAttribute("value", place2); 
-											    plc.setAttribute("style","border:0px");
+											    plc.setAttribute("style","border:0px; outline: none;");
 										        
 										        document.getElementById("place").appendChild(plc);
 										         

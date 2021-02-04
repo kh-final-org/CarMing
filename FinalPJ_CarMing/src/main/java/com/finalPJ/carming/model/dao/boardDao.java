@@ -28,7 +28,9 @@ public interface boardDao {
 	public List<boardDto> userBoardList(int memno);
 	//08. 사용자 프로필, 사용자 정보
 	public MemberDto profilemem(int memno);
-	
+	//09. 게시글(영상) 추가
+	public int insertBRD_v(boardDto dto);
+	public int insertMAP_v(boardDto dto);
 	
 	
 	

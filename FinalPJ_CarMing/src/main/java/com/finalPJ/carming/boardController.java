@@ -31,10 +31,8 @@ public class boardController {
 	
 	@Autowired
 	private boardBiz biz;
-	
 	@Autowired
 	private bcommentBiz cbiz;
-	
 	@Autowired
 	private boardFileValidator FileValidator;
 	
@@ -72,7 +70,6 @@ public class boardController {
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 		
-		
 		try {
 			inputStream = file.getInputStream();
 			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/board");
@@ -83,7 +80,6 @@ public class boardController {
 			if(!storage.exists()) {
 				storage.mkdir();
 			}
-			
 			
 			File newFile = new File(path +"/"+name);
 			if(!newFile.exists()) {
@@ -98,7 +94,6 @@ public class boardController {
 			while((read=inputStream.read(b)) != -1) {
 				outputStream.write(b,0,read);
 			}
-			
 		
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -121,7 +116,6 @@ public class boardController {
 		}
 	}
 	
-	
 	//게시글쓰기(영상) 올리기 페이지로 이동
 	@RequestMapping(value = "/boardinsertform_v.do")
 	public String boardWriteVideo() {
@@ -129,6 +123,70 @@ public class boardController {
 		
 		return "board/boardinsert_v";
 	}
+	
+	//게시글쓰기(영상) insert
+		@RequestMapping(value = "/boardinsertres_v.do")
+		public String boardInsertRes_v(Model model, boardDto dto, HttpServletRequest request, BindingResult result ) {
+			logger.info("[BOARD INSERT VIDEO RES]");
+			FileValidator.validate(dto, result);
+			if(result.hasErrors()) {
+				return "board/boardinsert_v";
+			}
+			
+			MultipartFile file = dto.getBrdfile();
+			MultipartFile vfile = dto.getBrdvideo();
+			String name = file.getOriginalFilename();
+			String vname = vfile.getOriginalFilename();
+			
+			InputStream inputStream = null;
+			OutputStream outputStream = null;
+			
+			try {
+				inputStream = file.getInputStream();
+				String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/board");
+			
+				System.out.println("업로드 될 실제 경로: "+ path);
+				
+				File storage = new File(path);
+				if(!storage.exists()) {
+					storage.mkdir();
+				}
+				
+				File newFile = new File(path +"/"+name);
+				if(!newFile.exists()) {
+					newFile.createNewFile();
+				}
+				
+				outputStream = new FileOutputStream(newFile);
+				
+				int read = 0;
+				byte[] b = new byte[(int)file.getSize()];
+				
+				while((read=inputStream.read(b)) != -1) {
+					outputStream.write(b,0,read);
+				}
+			
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					inputStream.close();
+					outputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			dto.setBrdfilename(name);	//썸네일 사진
+			dto.setBrdvideoname(vname);	//동영상
+			
+			int res = biz.insert(dto);
+			if(res>0) {
+				return "redirect:boardmainform.do";
+			}else {
+				return "redirect:boardinsertform_v.do";
+			}
+		}
 	
 	//게시글 수정 
 	@RequestMapping(value ="/boardupdateform.do")

@@ -9,7 +9,7 @@
 		<result property="bcategoryno" column="BCATEGORYNO"/>
 		<result property="brdwriter" column="BRDWRITER"/>
 		<result property="brdfilename" column="BRDFILE"/>
-		<result property="brdthumbfile" column="BRDTHUMBFILE"/>
+		<result property="brdvideo" column="BRDVIDEO"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
 		<result property="brdcount" column="BRDCOUNT"/>
 		<result property="brddate" column="BRDDATE"/>
@@ -30,16 +30,14 @@
 	
 	<!-- 02. 게시글 상세보기 -->
 	<select id="selectOne" parameterType="int" resultMap="boardMap">
-
 		SELECT DISTINCT B.*, MP.MAPNAME
 		FROM BOARD B
 		JOIN MAPLOCATION MP
 		ON B.MEMNO = MP.MEMNO
 		WHERE B.BRDNO = #{brdno}
-
 	</select>
 	
-	<!-- 03. 게시글 작성 -->
+	<!-- 03. 게시글(사진) 추가 -->
 	<insert id="insertBRD" parameterType="boardDto">
 		INSERT 
 	   	INTO BOARD 
@@ -82,13 +80,25 @@
   		ORDER BY BRDDATE DESC
   	</select>
 	
-	
+	<!-- 08. 사용자 프로필, 사용자 정보 -->
 	<select id="profilemem" resultType="MemberDto" parameterType="int">
 		SELECT * FROM MEMBER
 	</select>
 	
-	
-	
+	<!-- 09. 게시글(영상) 추가 -->
+	<insert id="insertBRD_v" parameterType="boardDto">
+		INSERT 
+	   	INTO BOARD 
+	   	VALUES(BRDNOSEQ.NEXTVAL, #{bcategoryno},(SELECT MEMNICK FROM MEMBER WHERE MEMNO = #{memno}), #{brdfilename},
+			   #{brdvideoname}, #{brdcontent}, 0, SYSDATE, #{brdprivate}, #{memno})
+	</insert>   
+	   
+	 <insert id="insertMAP_v">
+	 	INSERT 
+	   	INTO MAPLOCATION 
+	   	VALUES(MAPNOSEQ.NEXTVAL, #{mapname}, #{maplatitude}, #{maplongtitude}, #{carmapchk}, #{memno},
+	   		  (SELECT BRDNO FROM (SELECT * FROM BOARD ORDER BY BRDDATE DESC) WHERE ROWNUM=1))
+  	</insert>	
 	
 	
 	
