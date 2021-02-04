@@ -52,7 +52,7 @@ public class boardDaoImpl implements boardDao{
 		try {
 			res = sqlSession.insert(NAMESPACE+"insertBRD", dto);
 		} catch (Exception e) {
-			System.out.println("[error : board_insert]");
+			System.out.println("[error : board_insertbrd]");
 			e.printStackTrace();
 		}
 		return res;
@@ -65,7 +65,7 @@ public class boardDaoImpl implements boardDao{
 		try {
 			res = sqlSession.insert(NAMESPACE+"insertMAP", dto);
 		} catch (Exception e) {
-			System.out.println("[error : board_insert]");
+			System.out.println("[error : board_insertmap]");
 			e.printStackTrace();
 		}
 		return res;
@@ -134,6 +134,7 @@ public class boardDaoImpl implements boardDao{
 		return list;
 	}
 
+	//08. 사용자 프로필, 사용자 정보
 	@Override
 	public MemberDto profilemem(int memno) {
 		MemberDto dto = null;
@@ -145,6 +146,33 @@ public class boardDaoImpl implements boardDao{
 			e.printStackTrace();
 		}
 		return dto;
+	}
+	
+	//09. 게시글(영상) 추가
+	@Override
+	public int insertBRD_v(boardDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"insertBRD_v", dto);
+		} catch (Exception e) {
+			System.out.println("[error : board_insertbrd_v]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int insertMAP_v(boardDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"insertMAP_v", dto);
+		} catch (Exception e) {
+			System.out.println("[error : board_insertmap_V]");
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	

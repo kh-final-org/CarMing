@@ -34,7 +34,7 @@ public class boardBizImpl implements boardBiz{
 		return dao.selectOne(brdno);
 	}
 
-	//03. 게시글(사진) 작성
+	//03. 게시글(사진) 추가
 	@Transactional
 	@Override
 	public int insert(boardDto dto) {
@@ -66,12 +66,23 @@ public class boardBizImpl implements boardBiz{
 	public List<boardDto> userBoardList(int memno) {
 		return dao.userBoardList(memno);
 	}
-
+	
+	//08. 사용자 프로필, 사용자 정보
 	@Override
 	public MemberDto profilemem(int memno) {
-		// TODO Auto-generated method stub
 		return dao.profilemem(memno);
 	}
+
+	//09. 게시글(영상) 추가
+	@Transactional
+	@Override
+	public int insert_v(boardDto dto) {
+		 dao.insertBRD_v(dto);
+		 return dao.insertMAP_v(dto);
+	}
+
+
+
 
 	
 	

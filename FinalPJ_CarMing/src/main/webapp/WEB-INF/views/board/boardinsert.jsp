@@ -13,30 +13,15 @@
 	.card-container{margin: 50px 190px 50px 220px;}
     .card-body{padding: 0px;}
    	
-   	.card-body-left{margin-right: 10px;}
-
-/* 	.uploadfile-btn{float: left; width: 530px; height: 400px; margin-left: -20px; margin-right: 10px; border-radius: 20px;  */
-/* 					text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9; } */
-
-	.uploadimg {width: 350px; height: 350px; border-radius: 10px;}
-	.img_wrap {width: 350px; height: 350px; margin-top: 20px; }
-	.img_wrap img {max-width: 100%; max-height: 95%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 135px;}	
-	.upload-img-form{position: relative; width: 590px; border: 1px solid #e2e2e2; margin-left: 15px; 
-					 border-radius: 5px; margin-bottom: 60px; background: #fff;}
-   	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
-   	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
-   						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
-   						
-   						
-	.uploadfile-img input[type="file"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
-										 overflow: hidden; clip:rect(0,0,0,0); border: 0; }
-	.uploadfile-img label { display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; 
-							line-height: normal; vertical-align: middle; text-align:center; background: #fdfdfd; color:#5f5f5f; 
-							cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em;}
-	.uploadfile-img .upload-name { display: inline-block; padding: .5em .75em; font-size: inherit; font-family: inherit; line-height: normal; 
-								   vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; 
-								   border-radius: .25em; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+   	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 0 10px 0 -20px;}
+	
+	.uploadimg {width: 350px; height: 350px;}
+	.img_wrap {width: 330px; height: 300px; margin-top: 20px;}
+	.img_wrap img {max-width: 100%; max-height: 100%;}
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 115px;}	
+	.upload-img-form{position: relative; width: 530px; height: 350px; border: 1px solid #e2e2e2;
+					 border-radius: 10px; margin-bottom: 15px; background: #fff; margin-bottom: -10px;}
+   	.upload-img-content{position: absolute; margin-top: 35px; width: 530px;}
 
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
@@ -48,7 +33,7 @@
     .body-location-left{float: left; width: 77%;}
     .body-location-right{float: right; width: 21.5%; margin-right: 0;}
     .location-logo-text{display: inline-block; vertical-align: middle;}
-    .body-checklist{margin: 8px 0px;}   
+    .body-checklist{margin: 15px 2px 0px;}   
     .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
@@ -81,11 +66,11 @@
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
 	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
 	#clickLatlng{text-align: center; margin-top: -5px;}
-    
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-<script src="resources/js/main.js"></script>
+<!-- <script src="resources/js/main.js"></script> -->
 
 <!-- location-popup -->
 <script>
@@ -136,9 +121,8 @@
 	}
 </script>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script type="text/javascript">
+<!-- 나만보기 체크여부 -->
+<script type="text/javascript">
 	function YnCheck(obj) {
 		$("#my").empty();
 	    var checked = obj.checked;
@@ -165,6 +149,7 @@
 	 };
 </script> 
 
+<!-- 차박명소 등록 체크여부 -->
 <script type="text/javascript">
 	function YnCheck2(obj) {
 		$("#car").empty();
@@ -192,7 +177,6 @@
 	 };
 </script>
 
-
 <!-- 카테고리 차박이 아닐 경우 '차박 체크박스' 숨기기 -->
 <script type="text/javascript">
 	function carPlaceChk() {
@@ -218,9 +202,6 @@
 </script>
 
 
-
-
-
 </head>
 <body onload="location.href='#location-popup'">
 <!-- Start Header Area -->
@@ -235,13 +216,15 @@
             <h1>The stars in the night sky</h1>
             <nav class="d-flex align-items-center">
                <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-               <a href="boardmainform.do">Talk</a>
+               <a href="boardmainform.do">캠핑토크</a>
             </nav>
          </div>
       </div>
    </div>
 </section>
 <!-- End Banner Area -->
+
+<!-- Start Container Area -->
 <form:form action="boardinsertres.do?memno=${login.memno }" 
 		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
@@ -250,31 +233,25 @@
 		</div>
 		
 		<div class="card-body">
-			<!-- Start Photo/Video upload Area-->
+			<!-- Image Upload-->
 			<div class="card-body-left">
-				<!-- 사진 업로드 -->
 				<div class="upload-img-form">
-					<input type="file" name="brdfile">
+					<div class="img_wrap center-block">
+						<img id="img" src="">
+		  			</div>
+					<div class="upload-img-content">
+						<label class="custom-file-label" for="input_img"></label>
+						<input type="file" class="custom-file-input" id="input_img" name="brdfile" accept="image/*">
+					</div>
 				</div>
-			
-<!-- 				<div class="upload-img-form"> -->
-<!-- 					<div class="img_wrap center-block"> -->
-<!-- 						<img id="img" src=""> -->
-<!-- 		  			</div> -->
-<!-- 					<div class="upload-img-content"> -->
-<!-- 						<input type="file" class="custom-file-input" id="input_img" name="upfile" accept="image/*"> -->
-<!-- 						<label class="custom-file-label" for="input_img" ></label> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
 			</div>
-			<!-- End Photo/Video Upload Area -->
 			
-			<!-- Start Upload Contents Area -->
 			<div class="card-body-right">
 				<!-- Category -->
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
-				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon" name="bcategoryno">
+				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" 
+				  				aria-label="Example select with button addon" name="bcategoryno">
 							<option value="1" selected>일반 캠핑</option>
 						    <option value="2">카라반</option>
 						    <option value="3">글램핑</option>
@@ -286,14 +263,13 @@
 				
 				<!-- Textarea -->
 				<div class="body-content">
-				   	<textarea rows="9" cols="52" placeholder="게시글 내용을 입력해 주세요." style="resize: none;" required="required" name="brdcontent"></textarea>
+				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." name="brdcontent" style="resize: none;" required="required"></textarea>
 				</div>
 				
 				<!-- Location Upload -->
 				<div class="body-location" >
 					<div class="body-location-left">
 						<span class="location-logo-text">
-
 							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;<span id=place></span>
 						</span>
 					</div>
@@ -311,7 +287,7 @@
 								<div class="location-search">
 									<div class="input-group mb-3" >
 											<input type="search" id="keyword" class="form-control" placeholder="키워드를 검색해 주세요." 
-											   aria-label="Recipient's username" aria-describedby="button-addon2" >
+											       aria-label="Recipient's username" aria-describedby="button-addon2" >
 											<div class="input-group-append">
 									    	<button class="btn btn-outline-secondary" type="button" onclick="searchPlaces();" id="button-addon2" >
 									    		<img class="searchimg" src="./resources/img/search.png">
@@ -319,9 +295,8 @@
 									  	</div>
 									</div>	
 								</div> 
-
 									<script type="text/javascript"
-										src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>
+											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>
 									<script>
 										// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 										var infowindow = new kakao.maps.InfoWindow(
@@ -360,7 +335,7 @@
 
 										// 키워드 검색 완료 시 호출되는 콜백함수 입니다
 										function placesSearchCB(data, status,
-												pagination) {
+												 pagination) {
 											if (status === kakao.maps.services.Status.OK) {
 
 												// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -387,10 +362,10 @@
 														position : new kakao.maps.LatLng(place.y,place.x)
 													});
 
-											 // 마커에 클릭이벤트를 등록합니다
-										    kakao.maps.event.addListener(marker, 'click', function() {
+												// 마커에 클릭이벤트를 등록합니다
+											    kakao.maps.event.addListener(marker, 'click', function() {
 										        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-										        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+										        infowindow.setContent('<div style="padding:5px; font-size:12px;">' + place.place_name + '</div>');
 										        infowindow.open(map, marker); 
 										        // 클릭한 위도, 경도 정보를 가져옵니다 
 										        var latlng =  new kakao.maps.LatLng(place.y,place.x);
@@ -398,12 +373,12 @@
 										        // 마커 위치를 클릭한 위치로 옮깁니다
 										        marker.setPosition(latlng);
 										        
+
 										        var lat = latlng.getLat();
 										        var lng = latlng.getLng();
-										       var place2 = place.place_name;
+										        var place2 = place.place_name;
 										       
-										       $("#place").empty();
-										        	
+										        $("#place").empty();
 										     
 										        var plc = document.createElement("input");
 											    plc.setAttribute("name", "mapname");
@@ -411,24 +386,24 @@
 											    plc.readOnly= true;
 											    plc.setAttribute("value", place2); 
 											    plc.setAttribute("style","border:0px; outline:none;");
+
 										        
 										        document.getElementById("place").appendChild(plc);
 										         
-										     	 $("#lat").empty();
+										     	$("#lat").empty();
 										        var lati = document.createElement("input");
 											    lati.setAttribute("name", "maplatitude");
 											    lati.setAttribute("type", "hidden");
 											    lati.setAttribute("value", lat);
 												document.getElementById("lat").appendChild(lati);
 												
-												 $("#lang").empty();
+												$("#lang").empty();
 
-												 var lang = document.createElement("input");
-												 lang.setAttribute("name", "maplongtitude");
-												 lang.setAttribute("type", "hidden");
-												 lang.setAttribute("value", lng);
+												var lang = document.createElement("input");
+												lang.setAttribute("name", "maplongtitude");
+												lang.setAttribute("type", "hidden");
+												lang.setAttribute("value", lng);
 												document.getElementById("lang").appendChild(lang); 
-										        
 										    });
 										}
 									</script>
@@ -480,9 +455,10 @@
 		<div class="card-body-bottom">
 			<button type="submit" class="btn btn-light" id="button-boardupload">올리기</button>
 		</div>
-	
 	</div>
 </form:form>
+<!-- End Container Area -->
+
 <!-- Start Footer Area -->
 <%@ include file="../common/footer.jsp" %>
 <!-- End Footer Area -->
