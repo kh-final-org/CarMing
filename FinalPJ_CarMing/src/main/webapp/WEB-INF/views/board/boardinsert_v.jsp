@@ -20,14 +20,14 @@
 					border-radius: 20px; text-align: center; font-size: 1.2em; cursor: pointer; background-color: #fff5e9;}
 	.uploadfile-icon-btn{margin-top: 110px;}
 	.uploadfile-img{position: absolute; top: 362px; margin-left: -20px;}
-	.uploadfile-img input[type="file"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
-										 overflow: hidden; clip:rect(0,0,0,0); border: 0; }
-	.uploadfile-img label { display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; 
-							line-height: normal; vertical-align: middle; text-align:center; background: #fdfdfd; color:#5f5f5f; 
-							cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em;}
-	.uploadfile-img .upload-name { display: inline-block; padding: .5em .75em; font-size: inherit; font-family: inherit; line-height: normal; 
-								   vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; 
-								   border-radius: .25em; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+	.uploadfile-img input[type="file"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+										overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+	.uploadfile-img label {display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; 
+						   line-height: normal; vertical-align: middle; text-align:center; background: #fdfdfd; color:#5f5f5f; 
+						   cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em;}
+	.uploadfile-img .upload-name {display: inline-block; padding: .5em .75em; font-size: inherit; font-family: inherit; line-height: normal; 
+								  vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; 
+								  border-radius: .25em; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
 
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
@@ -72,11 +72,11 @@
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
 	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
 	#clickLatlng{text-align: center; margin-top: -5px;}
-
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="resources/js/main.js"></script>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<!-- <script src="resources/js/main.js"></script> -->
 
 <!-- location-popup -->
 <script>
@@ -108,6 +108,62 @@
 	});
 </script>
 
+<!-- 나만보기 체크여부 -->
+<script type="text/javascript">
+	function YnCheck(obj) {
+		$("#my").empty();
+	    var checked = obj.checked;
+	
+	    if(checked){
+	    	var value = obj.value = "Y";
+    	    var Y = document.createElement("input");
+		    Y.setAttribute("name", "brdprivate");
+		    Y.setAttribute("type", "text");
+		    Y.setAttribute("value", value);
+		    
+		    document.getElementById("my").appendChild(Y);	
+	
+	    }else{
+	    	var value = obj.value = "N";
+	       	var N = document.createElement("input");
+	       	N.setAttribute("name", "brdprivate");
+		    N.setAttribute("type", "text");
+		    N.setAttribute("value", value);
+		    
+		    document.getElementById("my").appendChild(N);	
+	    }
+	    
+	 };
+</script> 
+
+<!-- 차박명소 등록 체크여부 -->
+<script type="text/javascript">
+	function YnCheck2(obj) {
+		$("#car").empty();
+	    var checked = obj.checked;
+	
+	    if(checked){
+	    	var value = obj.value = "Y";
+	        var Y = document.createElement("input");
+		    Y.setAttribute("name", "carmapchk");
+		    Y.setAttribute("type", "text");
+		    Y.setAttribute("value", value);
+		    
+		    document.getElementById("car").appendChild(Y);	
+		    
+	    }else{
+	    	var value = obj.value = "N";
+	    	var N = document.createElement("input");
+	       	N.setAttribute("name", "carmapchk");
+		    N.setAttribute("type", "text");
+		    N.setAttribute("value", value);
+		    
+		    document.getElementById("car").appendChild(N);	
+	       	
+	    }
+	 };
+</script>
+
 <!-- 카테고리 차박이 아닐 경우 '차박 체크박스' 숨기기 -->
 <script type="text/javascript">
 	function carPlaceChk() {
@@ -132,49 +188,6 @@
 	}
 </script>
 
-<!--  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 나만보기 체크여부 -->
-<script type="text/javascript">
-	
-	
-	function YnCheck(obj) {
-		$("#my").empty();
-	    var checked = obj.checked;
-	
-	    if(checked){
-	    	var value = obj.value = "Y";
-	        var Y = document.createTextNode(value);
-		    document.getElementById("my").appendChild(Y);	
-	
-	    }else{
-	    	var value = obj.value = "N";
-	       	var N = document.createTextNode(value);
-		    document.getElementById("my").appendChild(N);	
-	    }
-	 };
-</script>
-
-<script type="text/javascript">
-	
-	
-	function YnCheck2(obj) {
-		$("#car").empty();
-	    var checked = obj.checked;
-	
-	    if(checked){
-	    	var value = obj.value = "Y";
-	        var Y = document.createTextNode(value);
-		    document.getElementById("car").appendChild(Y);	
-	
-	    }else{
-	    	var value = obj.value = "N";
-	       	var N = document.createTextNode(value);
-		    document.getElementById("car").appendChild(N);	
-	    }
-	 };
-</script>
-
 
 </head>
 <body onload="location.href='#location-popup'">
@@ -190,7 +203,7 @@
             <h1>The stars in the night sky</h1>
             <nav class="d-flex align-items-center">
                <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-               <a href="boardmainform.do">Talk</a>
+               <a href="boardmainform.do">캠핑토크</a>
             </nav>
          </div>
       </div>
@@ -198,6 +211,7 @@
 </section>
 <!-- End Banner Area -->
 
+<!-- Start Container Area -->
 <form:form action="boardinsertres_v.do?brdno=${dto.brdno }&memno=${dto.memno }" 
 		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
@@ -363,9 +377,10 @@
 		<div class="card-body-bottom">
 			<button type="submit" class="btn btn-light" id="button-boardupload">올리기</button>
 		</div>
-	
 	</div>
 </form:form>
+<!-- End Container Area -->
+
 <!-- Start Footer Area -->
 <%@ include file="../common/footer.jsp" %>
 <!-- End Footer Area -->
