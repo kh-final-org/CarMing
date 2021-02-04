@@ -9,7 +9,7 @@
 		<result property="bcategoryno" column="BCATEGORYNO"/>
 		<result property="brdwriter" column="BRDWRITER"/>
 		<result property="brdfilename" column="BRDFILE"/>
-		<result property="brdvideo" column="BRDVIDEO"/>
+		<result property="brdvideoname" column="BRDVIDEO"/>
 		<result property="brdcontent" column="BRDCONTENT"/>
 		<result property="brdcount" column="BRDCOUNT"/>
 		<result property="brddate" column="BRDDATE"/>

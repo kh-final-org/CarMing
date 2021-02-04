@@ -54,7 +54,7 @@ CREATE TABLE BOARD(
     BCATEGORYNO NUMBER NOT NULL,                                    				--카테고리 번호 참조
     BRDWRITER VARCHAR2(100) NOT NULL,                              			 		--게시글 작성자 (Session이용)
     BRDFILE VARCHAR2(2000) NOT NULL,                                				--파일명
-    BRDVIDEO VARCHAR2(2000) DEFAULT 0 NOT NULL,                                		--동영상
+    BRDVIDEO VARCHAR2(2000) DEFAULT 'N' NOT NULL,                                		--동영상
     BRDCONTENT VARCHAR2(2000) NOT NULL,                                       		--게시글 내용    
     BRDCOUNT NUMBER NOT NULL,                                       				--게시글 조회수
     BRDDATE DATE NOT NULL,                                          				--게시글 작성 날짜

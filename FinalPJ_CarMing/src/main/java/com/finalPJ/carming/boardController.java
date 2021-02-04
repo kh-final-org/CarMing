@@ -107,7 +107,7 @@ public class boardController {
 		}
 		
 		dto.setBrdfilename(name);
-		
+		System.out.println(dto.toString());
 		int res = biz.insert(dto);
 		if(res>0) {
 			return "redirect:boardmainform.do";
@@ -128,6 +128,7 @@ public class boardController {
 		@RequestMapping(value = "/boardinsertres_v.do")
 		public String boardInsertRes_v(Model model, boardDto dto, HttpServletRequest request, BindingResult result ) {
 			logger.info("[BOARD INSERT VIDEO RES]");
+			System.out.println(dto.toString());
 			FileValidator.validate(dto, result);
 			if(result.hasErrors()) {
 				return "board/boardinsert_v";
@@ -139,10 +140,13 @@ public class boardController {
 			String vname = vfile.getOriginalFilename();
 			
 			InputStream inputStream = null;
+			InputStream inputStream2 = null;
 			OutputStream outputStream = null;
-			
+			OutputStream outputStream2 = null;
 			try {
 				inputStream = file.getInputStream();
+				inputStream2 = vfile.getInputStream();
+				
 				String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/board");
 			
 				System.out.println("업로드 될 실제 경로: "+ path);
@@ -152,12 +156,21 @@ public class boardController {
 					storage.mkdir();
 				}
 				
+				
 				File newFile = new File(path +"/"+name);
 				if(!newFile.exists()) {
 					newFile.createNewFile();
 				}
 				
+				File newFile2 = new File(path +"/"+vname);
+				if(!newFile2.exists()) {
+					newFile2.createNewFile();
+				}
+				
+				
+				
 				outputStream = new FileOutputStream(newFile);
+				outputStream2 = new FileOutputStream(newFile2);
 				
 				int read = 0;
 				byte[] b = new byte[(int)file.getSize()];
@@ -166,12 +179,20 @@ public class boardController {
 					outputStream.write(b,0,read);
 				}
 			
+				int read2 = 0;
+				byte[] b2 = new byte[(int)vfile.getSize()];
+				
+				while((read2=inputStream2.read(b2)) != -1) {
+					outputStream2.write(b2,0,read2);
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}finally {
 				try {
 					inputStream.close();
 					outputStream.close();
+					inputStream2.close();
+					outputStream2.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -180,7 +201,7 @@ public class boardController {
 			dto.setBrdfilename(name);	//썸네일 사진
 			dto.setBrdvideoname(vname);	//동영상
 			
-			int res = biz.insert(dto);
+			int res = biz.insert_v(dto);
 			if(res>0) {
 				return "redirect:boardmainform.do";
 			}else {
@@ -204,17 +225,23 @@ public class boardController {
 		if(res>0) {
 			return "redirect:boardmainform.do";
 		}else {
-			return "redirect:boardinsertform_v.do";
+			return "redirect:boardmainform.do";
 		}
 	}
 
-	//게시글 상세 페이지로 이동
+	//게시글 사진 상세 페이지로 이동
 	@RequestMapping(value = "/boarddetailform.do")
 	public String boardDetail(Model model, int brdno, bcommentDto dto ) {
 		logger.info("[BOARD SELECT ONE / DETAIL]");
+		
 		model.addAttribute("dto", biz.selectOne(brdno));
+		logger.info(model.toString());
 		model.addAttribute("comment",cbiz.selectList(brdno));
 		System.out.println(model.toString());
+		
+
+		
+		
 //		int cntComment = 0;
 //		cntComment = cbiz.countComment(dto);
 //		System.out.println("댓글 갯수: "+cntComment);
@@ -224,6 +251,29 @@ public class boardController {
 		
 		return "board/boarddetail";
 	}
+	
+	//게시글 상세 페이지로 이동
+		@RequestMapping(value = "/boarddetailform_v.do")
+		public String boardDetail_v(Model model, int brdno, bcommentDto dto ) {
+			logger.info("[BOARD SELECT ONE / DETAIL]");
+			
+			model.addAttribute("dto", biz.selectOne(brdno));
+			model.addAttribute("comment",cbiz.selectList(brdno));
+			logger.info(model.toString());
+			System.out.println(model.toString());
+			
+
+			
+			
+//			int cntComment = 0;
+//			cntComment = cbiz.countComment(dto);
+//			System.out.println("댓글 갯수: "+cntComment);
+			
+			//리뷰 갯수 객체 담아 보내기 
+//			model.addAttribute("countreview", cntComment);
+			
+			return "board/boarddetail_v";
+		}
 
 	//프로필 페이지
 	@RequestMapping(value = "/profileform.do")

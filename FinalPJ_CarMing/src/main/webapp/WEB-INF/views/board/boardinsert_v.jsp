@@ -210,7 +210,7 @@
 <!-- End Banner Area -->
 
 <!-- Start Container Area -->
-<form:form action="boardinsertres_v.do?&memno=${dto.memno }" 
+<form:form action="boardinsertres_v.do?&memno=${login.memno }" 
 		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" >
 	<div class="card-container">
 		<div class="card-head">
@@ -223,7 +223,7 @@
 				<div class="uploadfile-img">
 					<input class="upload-name" value="파일 선택" disabled="disabled" style="width: 420px;">
 					<label for="thumbnail-img">썸네일 사진</label>
-					<input type="file" id="thumbnail-img" class="upload-hidden" name="brdfilename" accept="image/*">
+					<input type="file" id="thumbnail-img" class="upload-hidden" name="brdfile" accept="image/*">
 				</div>
 				<div class="uploadfile-video">
 					<input type="file" id="video-file" class="upload-hidden" name="brdvideo" accept="video/*">

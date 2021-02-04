@@ -148,12 +148,12 @@
 		</div>
 		
 		<!-- 사용자가 업로드한 동영상 -->
-		<div class="card-body-2">
-			<div class="board-uploadimg">
-			<!-- <video src="sample/video/video1.mp4" controls="controls" width="" height=""></video>-->
-				<img class="uploadimg" src="./resources/video/${dto.brdthumbfile }">
-			</div>
-		</div>
+		   <!-- 사용자가 업로드한 동영상 -->
+	      <div class="card-body-2">
+	         <div class="board-uploadimg">
+	            <video src="resources/img/board/${dto.brdvideoname }" controls="controls" width="500" height="400"></video>
+	         </div>
+	      </div>
 		
 		<!-- 게시글 내용/조회수/신고 -->
 		<div class="card-body-3">

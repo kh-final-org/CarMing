@@ -169,9 +169,21 @@
 				<!-- 사용자가 업로드한 이미지 -->
 				<div class="board-uploadimg">
 					<div class="board-uploadimg-frame">
-						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }">
+						<c:choose>
+							<c:when test="${dto.brdvideoname eq 'N' }">
+							<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }">
 							<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
-						</a><br>
+							</a><br>
+							</c:when>
+							<c:when test="${dto.brdvideoname ne 'N' }">
+							<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
+							<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+							</a><br>
+							</c:when>
+						</c:choose>
+					
+						
+							
 					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>
 					<div class="category" style="display: none;"> ${dto.bcategoryno }</div>
