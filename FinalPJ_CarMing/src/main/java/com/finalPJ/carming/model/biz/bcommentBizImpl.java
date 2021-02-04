@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.finalPJ.carming.model.dao.bcommentDao;
 import com.finalPJ.carming.model.dto.bcommentDto;
@@ -27,9 +28,11 @@ public class bcommentBizImpl implements bcommentBiz {
 	}
 
 	//03. 댓글 삭제
+	@Transactional
 	@Override
 	public int delete(int comno) {
-		return dao.delete(comno);
+		dao.delete(comno);
+		return dao.deleteRep(comno);
 	}
 
 	//04. 댓글 전체 갯수

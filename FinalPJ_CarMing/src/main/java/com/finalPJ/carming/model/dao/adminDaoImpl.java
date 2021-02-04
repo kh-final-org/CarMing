@@ -61,7 +61,19 @@ public class adminDaoImpl implements adminDao{
 		
 		return res;
 	}
-
+	
+	@Override
+	public int deleteRep(int memNo) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"deleteRep",memNo);
+		} catch (Exception e) {
+			System.out.println("[error]: deleteRep");
+			e.printStackTrace();
+		}
+		return res;
+	}
 	@Override
 	public int deleteList(int memNo) {
 		int res = 0;
@@ -150,4 +162,6 @@ public class adminDaoImpl implements adminDao{
 		 
 		return res;
 	}
+
+	
 }

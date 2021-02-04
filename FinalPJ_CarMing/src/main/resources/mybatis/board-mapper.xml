@@ -64,7 +64,11 @@
 		DELETE FROM BOARD
 		WHERE BRDNO = #{brdno}
   	</delete>
-	
+  	
+	 <delete id="deleteRep" parameterType="int">
+  		DELETE REPORTLIST 
+		WHERE TARGETNO=#{brdno} AND TARGETTYPENO =1
+  	</delete>
 	<!-- 06. 게시글 조회수 -->
 	<update id="viewCount" parameterType="int">
 		UPDATE BOARD 

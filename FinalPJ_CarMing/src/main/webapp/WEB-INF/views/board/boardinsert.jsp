@@ -319,8 +319,7 @@
 									  	</div>
 									</div>	
 								</div> 
-								<div id="clickLatlng"></div>
-								
+
 									<script type="text/javascript"
 										src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>
 									<script>
@@ -399,12 +398,6 @@
 										        // 마커 위치를 클릭한 위치로 옮깁니다
 										        marker.setPosition(latlng);
 										        
-										        var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-										        message += '경도는 ' + latlng.getLng() + ' 입니다';
-										        
-										        var resultDiv = document.getElementById('clickLatlng'); 
-										        resultDiv.innerHTML = message;
-										        
 										        var lat = latlng.getLat();
 										        var lng = latlng.getLng();
 										       var place2 = place.place_name;
@@ -417,7 +410,7 @@
 											    plc.setAttribute("type", "text");
 											    plc.readOnly= true;
 											    plc.setAttribute("value", place2); 
-											    plc.setAttribute("style","border:0px");
+											    plc.setAttribute("style","border:0px; outline:none;");
 										        
 										        document.getElementById("place").appendChild(plc);
 										         

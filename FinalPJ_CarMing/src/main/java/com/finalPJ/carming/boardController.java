@@ -185,12 +185,5 @@ public class boardController {
 		return "board/privatechat";
 	}
 	
-
-	
-	
-	
-	
-	
-	
 	
 }

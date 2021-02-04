@@ -74,7 +74,7 @@
 				<img class="user-message" src="./resources/img/message.png">
 				<span class="user-message-text">&nbsp;1:1 채팅</span>
 			</a>&nbsp;&middot;&nbsp;
-			<a href="writereportform.do?targetNo=${comment.comno }&targetTypeNo=3" class="board-report-target3" id="member-report-target">신고</a>
+			<a href="writereportform.do?targetNo=${mem.memno }&targetTypeNo=3" class="board-report-target3" id="member-report-target">신고</a>
 		</div>
 	</div>
 	

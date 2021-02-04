@@ -12,6 +12,14 @@
 		WHERE MEMNO=#{memNo}
 	</delete>
 	
+	 <delete id="deleteRep" parameterType="int">
+  		DELETE REPORTLIST 
+		WHERE TARGETNO=#{memNo} AND TARGETTYPENO =3
+  	</delete>
+  
+	
+	
+	
 	<select id="selectRent" resultType="admRentDto">
 		SELECT
 		C.*,
@@ -35,6 +43,7 @@
 		JOIN PAY PY
 		ON C.CARTNO = PY.CARTNO
 	</select>
+	
 	<select id="selectOneRent" parameterType="int" resultType="admRentDto">
 		SELECT
 		C.*,

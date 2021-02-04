@@ -40,4 +40,9 @@ public class InquiryBizImpl implements InquiryBiz{
 		return dao.insert(dto);
 	}
 
+	@Override
+	public int deleteInquiry(int inquiryNo) {
+		return dao.deleteInquiry(inquiryNo);
+	}
+
 }

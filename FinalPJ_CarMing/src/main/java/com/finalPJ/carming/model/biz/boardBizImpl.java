@@ -49,9 +49,11 @@ public class boardBizImpl implements boardBiz{
 	}
 
 	//05. 게시글 삭제
+	@Transactional
 	@Override
 	public int delete(int brdno) {
-		return dao.delete(brdno);
+		dao.delete(brdno);
+		return dao.deleteRep(brdno);
 	}
 
 	//06. 게시글 조회수

@@ -55,7 +55,7 @@ private ReportFileValidator fileValidator;
 			BindingResult result ) {
 		
 		logger.info("[INSERT RES]");
-		System.out.println(dto.toString());
+		
 		fileValidator.validate(dto, result);
 		if(result.hasErrors()) {
 			return "inquiry/writeinquiry";
@@ -107,16 +107,11 @@ private ReportFileValidator fileValidator;
 			
 		}
 		
-		ReportDto report = new ReportDto();
-		report.setReportFileName(name);
-		report.setReportContent(dto.getReportContent());
-		report.setCategoryNo(dto.getCategoryNo());
-		report.setTargetNo(dto.getTargetNo());
-		report.setTargetTypeNo(dto.getTargetTypeNo());
-		report.setMemNo(dto.getMemNo());
-				
 		
-		int res = biz.insert(report);
+		dto.setReportFileName(name);
+		System.out.println(dto.toString());			
+		
+		int res = biz.insert(dto);
 		if(res>0) {
 			return "redirect:reportlist.do";
 		}else {
@@ -134,16 +129,17 @@ private ReportFileValidator fileValidator;
 		if(targetTypeNo == 1) {
 		model.addAttribute("list",biz.selectOne(reportNo));
 		return "report/reportdetail";
+		
 		}else if(targetTypeNo == 2) {
 		model.addAttribute("list", biz.selectOneCom(reportNo));	
 		return "report/reportdetail";
-		}
 		
-		System.out.println(model.toString());
+		}else if(targetTypeNo == 3) {
+		model.addAttribute("list",biz.selectOneMem(reportNo));
 		return "report/reportdetail";
-		
-		
-		
+		}else {
+			return "redirect:reportlist.do";
+		}
 		
 	}
 	

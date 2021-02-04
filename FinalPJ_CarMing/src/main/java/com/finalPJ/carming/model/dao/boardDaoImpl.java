@@ -92,6 +92,20 @@ public class boardDaoImpl implements boardDao{
 		}
 		return res;
 	}
+	
+	@Override
+	public int deleteRep(int brdno) {
+		int res = 0;
+		try {
+			res = sqlSession.delete(NAMESPACE+"deleteRep",brdno);
+		} catch (Exception e) {
+
+			System.out.println("[error : board_deleteRep]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 
 	//06. 게시글 조회수
 	@Override
@@ -133,12 +147,6 @@ public class boardDaoImpl implements boardDao{
 		return dto;
 	}
 
-	
-	
-	
-	
-	
-	
 	
 	
 	

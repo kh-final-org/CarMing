@@ -70,6 +70,20 @@ public class bcommentDaoImpl implements bcommentDao {
 		return res;
 	}
 
+	@Override
+	public int deleteRep(int comno) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"deleteRep",comno);
+		} catch (Exception e) {
+			System.out.println("[error : comment_deleteRep]");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 
 	
 	

@@ -14,6 +14,7 @@ public interface bcommentDao {
 	public int insert(bcommentDto dto);
 	//03. 댓글 삭제
 	public int delete(int comno);
+	public int deleteRep(int comno);
 	//04. 댓글 전체 갯수
 	public int countComment(bcommentDto dto);
 	
