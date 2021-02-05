@@ -42,7 +42,7 @@ public class boardBizImpl implements boardBiz{
 		return dao.insertMAP(dto);
 	}
 
-	//04. 게시글 수정
+	//04. 게시글(사진) 수정
 	@Override
 	public int update(boardDto dto) {
 		return dao.update(dto);

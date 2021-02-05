@@ -282,7 +282,8 @@
 					<div class="dropdown-selectbox">
 				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" 
 				  				aria-label="Example select with button addon" name="bcategoryno">
-							<option value="1" selected>일반 캠핑</option>
+							<option value="0" selected disabled>카테고리(필수)</option>
+							<option value="1">일반 캠핑</option>
 						    <option value="2">카라반</option>
 						    <option value="3">글램핑</option>
 						    <option value="4">차박</option>

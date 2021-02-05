@@ -13,7 +13,7 @@ public interface boardBiz {
 	public boardDto selectOne(int brdno);
 	//03. 게시글(사진) 추가
 	public int insert(boardDto dto);
-	//04. 게시글 수정
+	//04. 게시글(사진) 수정
 	public int update(boardDto dto);
 	//05. 게시글 삭제
 	public int delete(int brdno);

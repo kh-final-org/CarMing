@@ -7,6 +7,16 @@
 <meta charset="UTF-8">
 <title>CarMing | 회원가입</title>
 
+<!-- CSS -->
+<link rel="stylesheet" href="resources/css/linearicons.css">
+<link rel="stylesheet" href="resources/css/owl.carousel.css">
+<link rel="stylesheet" href="resources/css/themify-icons.css">
+<link rel="stylesheet" href="resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/nice-select.css">
+<link rel="stylesheet" href="resources/css/nouislider.min.css">
+<link rel="stylesheet" href="resources/css/bootstrap.css">
+<link rel="stylesheet" href="resources/css/main.css">
+
 <style type="text/css">
 	#content{margin-top: 150px;}
 
@@ -20,14 +30,8 @@
 </style>
 </head>
 <body>
-
-	<section id="header">
-		<%@include file ="../common/header.jsp" %>
-	</section>
-
 	<section id="content">
 		<div class="row">
-	     
 		    <div class="col-xs-12 col-sm-12">
 		    <h2>&nbsp;</h2> 
 		    <h2 class="text-center">회원가입</h2>

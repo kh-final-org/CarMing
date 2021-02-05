@@ -71,7 +71,7 @@ public class boardDaoImpl implements boardDao{
 		return res;
 	}
 	
-	//04. 게시글 수정
+	//04. 게시글(사진) 수정
 	@Override
 	public int update(boardDto dto) {
 		int res = 0;
@@ -79,7 +79,7 @@ public class boardDaoImpl implements boardDao{
 		try {
 			res = sqlSession.update(NAMESPACE+"update", dto);
 		} catch (Exception e) {
-			System.out.println("[error : update]");
+			System.out.println("[error : board_update]");
 			e.printStackTrace();
 		}
 		return res;
