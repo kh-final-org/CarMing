@@ -15,13 +15,13 @@
    	
    	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 0 10px 0 -20px;}
 	
-	.uploadimg {width: 350px; height: 350px;}
-	.img_wrap {width: 330px; height: 300px; margin-top: 20px;}
+	.uploadimg {width: 360px; height: 360px;}
+	.img_wrap {width: 340px; height: 310px; margin-top: 18px;}
 	.img_wrap img {max-width: 100%; max-height: 100%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 115px;}	
-	.upload-img-form{position: relative; width: 530px; height: 350px; border: 1px solid #e2e2e2;
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 110px;}	
+	.upload-img-form{position: relative; width: 530px; height: 347px; border: 1px solid #e2e2e2;
 					 border-radius: 10px; margin-bottom: 15px; background: #fff; margin-bottom: -10px;}
-   	.upload-img-content{position: absolute; margin-top: 35px; width: 530px;}
+   	.upload-img-content{position: absolute; margin-top: 30px; width: 530px;}
 
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
@@ -37,8 +37,9 @@
     .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
-   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; 
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; outline: none;
    						font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload:hover{background: #ffdb9f; transition: 0.2s; border: 0;}
 
 	.chkprivate-box{float: left;}
 	.chkcarplace-box{float: left; margin-left: 5px;}
@@ -64,7 +65,8 @@
 	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
 	.searchimg{width: 20px; height: 20px; opacity: 50%;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
-	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
+	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px; outline: none;}
+	#location-finish-btn:hover{background-color: #ffdb9f;}
 	#clickLatlng{text-align: center; margin-top: -5px;}
 </style>
 
@@ -270,7 +272,7 @@
 				<div class="body-location" >
 					<div class="body-location-left">
 						<span class="location-logo-text">
-							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;<span id=place></span>
+							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;<span id="place"></span>
 						</span>
 					</div>
 					

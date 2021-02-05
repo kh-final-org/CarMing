@@ -143,6 +143,7 @@ public class boardController {
 			InputStream inputStream2 = null;
 			OutputStream outputStream = null;
 			OutputStream outputStream2 = null;
+			
 			try {
 				inputStream = file.getInputStream();
 				inputStream2 = vfile.getInputStream();
@@ -156,7 +157,6 @@ public class boardController {
 					storage.mkdir();
 				}
 				
-				
 				File newFile = new File(path +"/"+name);
 				if(!newFile.exists()) {
 					newFile.createNewFile();
@@ -166,8 +166,6 @@ public class boardController {
 				if(!newFile2.exists()) {
 					newFile2.createNewFile();
 				}
-				
-				
 				
 				outputStream = new FileOutputStream(newFile);
 				outputStream2 = new FileOutputStream(newFile2);
@@ -205,7 +203,7 @@ public class boardController {
 			if(res>0) {
 				return "redirect:boardmainform.do";
 			}else {
-				return "redirect:boardinsertform_v.do";
+				return "redirect:boardmainform..do";
 			}
 		}
 	
@@ -229,17 +227,15 @@ public class boardController {
 		}
 	}
 
-	//게시글 사진 상세 페이지로 이동
+	//게시글 (사진) 상세 페이지로 이동
 	@RequestMapping(value = "/boarddetailform.do")
 	public String boardDetail(Model model, int brdno, bcommentDto dto ) {
 		logger.info("[BOARD SELECT ONE / DETAIL]");
 		
 		model.addAttribute("dto", biz.selectOne(brdno));
-		logger.info(model.toString());
 		model.addAttribute("comment",cbiz.selectList(brdno));
+		logger.info(model.toString());
 		System.out.println(model.toString());
-		
-
 		
 		
 //		int cntComment = 0;
@@ -252,10 +248,10 @@ public class boardController {
 		return "board/boarddetail";
 	}
 	
-	//게시글 상세 페이지로 이동
+	//게시글(영상) 상세 페이지로 이동
 		@RequestMapping(value = "/boarddetailform_v.do")
 		public String boardDetail_v(Model model, int brdno, bcommentDto dto ) {
-			logger.info("[BOARD SELECT ONE / DETAIL]");
+			logger.info("[BOARD SELECT ONE_VIDEO / DETAIL]");
 			
 			model.addAttribute("dto", biz.selectOne(brdno));
 			model.addAttribute("comment",cbiz.selectList(brdno));
@@ -263,8 +259,6 @@ public class boardController {
 			System.out.println(model.toString());
 			
 
-			
-			
 //			int cntComment = 0;
 //			cntComment = cbiz.countComment(dto);
 //			System.out.println("댓글 갯수: "+cntComment);

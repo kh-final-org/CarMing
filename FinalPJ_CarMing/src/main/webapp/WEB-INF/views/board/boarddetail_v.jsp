@@ -22,6 +22,7 @@
 	.board-location{float: right; text-align: right; margin: 10px 0px 5px 0px; }
 	.board-usernick{display: inline-block; font-size: 1.2em; margin-left: -10px; font-weight: bold;}
 	.uploadimg{width: 450px; height: 450px; margin: 0px 50px;}
+	.board-uploadvideo{margin-left: 50px;}
 	
 	.card-body-3{margin: 10px 0px 30px 50px; position: relative;}
 	.board-content{float: left; position: absolute; left: 0; width: 70%;}
@@ -127,7 +128,7 @@
    </div>
 </section>
 <!-- End Banner Area -->
-<main role="main" style="padding: 50px 200px; ">
+<main role="main" style="padding: 50px 0px 50px 490px; ">
 
 <!-- Start Container Area -->
 <div class="card-container">
@@ -149,8 +150,8 @@
 		
 		<!-- 사용자가 업로드한 동영상 -->
 		<div class="card-body-2">
-			<div class="board-uploadimg">
-				<video src="resources/img/board/${dto.brdvideoname }" controls="controls" width="500" height="400"></video>
+			<div class="board-uploadvideo">
+				<video src="resources/img/board/${dto.brdvideoname }" controls="controls" width="450" height="450"></video>
 			</div>
 		</div>
 		

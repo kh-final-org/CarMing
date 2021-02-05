@@ -170,28 +170,8 @@ function myFunction() {
 					</tbody>
 				</c:forEach>
 			</table>
-			<div class="clearfix">
-				<div class="hint-text" style="margin-left: 2%;">
-					Showing <b>5</b> out of <b>25</b> entries
-				</div>
-				<ul class="pagination">
-					<li class="page-item"><a href="#" class="page-link"
-						aria-label="Previous"> <span aria-hidden="true"> <span
-								class="lnr lnr-chevron-left"></span>
-						</span>
-					</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link"
-						aria-label="Next"> <span aria-hidden="true"> <span
-								class="lnr lnr-chevron-right"></span>
-						</span>
-					</a></li>
-				</ul>
-			</div>
+
+
 		</div>
 	</div>
 	<!-- End Container Area -->

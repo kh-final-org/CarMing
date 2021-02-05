@@ -36,6 +36,7 @@
 	.nice-select:hover{background: rgba(136, 126, 126, 0.04); transition: 0.2s;}
 	.content-item-icon{float: left;}
 	.content-item-content{float: right; color: gray;}
+	
 	.content-item-content-title{font-weight: bold; font-size: 1em; margin-top: 5px;}
 	.content-item-content-subtitle{font-size: 0.8em; margin-top: -5px; margin-bottom: 5px;}
 	.upload-icon-photo{width: 25px; height: 25px; opacity: 0.3; margin-top: 12px; margin-right: 12px;}
@@ -171,19 +172,16 @@
 					<div class="board-uploadimg-frame">
 						<c:choose>
 							<c:when test="${dto.brdvideoname eq 'N' }">
-							<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }">
-							<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
-							</a><br>
+								<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }">
+									<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+								</a><br>
 							</c:when>
 							<c:when test="${dto.brdvideoname ne 'N' }">
-							<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
-							<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
-							</a><br>
+								<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
+									<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+								</a><br>
 							</c:when>
 						</c:choose>
-					
-						
-							
 					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>
 					<div class="category" style="display: none;"> ${dto.bcategoryno }</div>

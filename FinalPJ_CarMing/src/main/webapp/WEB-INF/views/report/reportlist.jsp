@@ -51,7 +51,7 @@
 	.gaadiex-list-item-text a{color: gray;}
 	.gaadiex-list-item-text a:hover{color: #ffba00; color: gray;}
 	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: #5f5f5f;}
-	.list-item-text-ck:hover{border-radius: 2px; background: rgba(136, 126, 126, 0.1); transition: 0.2s;}
+	.list-item-text-ck:hover{border-radius: 2px; background: #fff5e9; transition: 0.2s;}
 </style>
 
 

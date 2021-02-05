@@ -13,19 +13,16 @@
 	.card-container{margin: 50px 190px 50px 220px;}
     .card-body{padding: 0px;}
    	
-   	.card-body-left{position: relative; float: left; width: 530px; background: orange; height: 350px; margin: 0 10px 0 -20px;}
+   	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 0 10px 0 -20px;}
+   	.uploadimg {width: 310px; height: 310px;}
+	.img_wrap {width: 300px; height: 280px; margin-top: 10px;}
+	.img_wrap img {max-width: 100%; max-height: 100%;}
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 130px;}	
+	.upload-img-form{position: relative; width: 530px; height: 300px; border: 1px solid #e2e2e2;
+					 border-radius: 10px; margin-bottom: 15px; background: #fff; margin-bottom: -10px;}
+   	.upload-img-content{position: absolute; margin-top: 18px; width: 530px;}
+   	.upload-video-content{position: absolute; margin: 65px 0 0 1px; width: 530px;}
    	.video-icon{margin-top: -8px; width: 120px; height: 120px; opacity: 25%;}
-   	.logo-bottom-context{color: gray;}    
-	.uploadfile-icon-btn{margin-top: 110px;}
-	.uploadfile-img{position: absolute; top: 362px; width: 550px;}
-	.uploadfile-img input[type="file"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
-										overflow: hidden; clip:rect(0,0,0,0); border: 0; }
-	.uploadfile-img label {display: inline-block; padding: .5em .75em; width: 107px; color: #999; font-size: inherit; 
-						   line-height: normal; vertical-align: middle; text-align:center; background: #fdfdfd; color:#5f5f5f; 
-						   cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em;}
-	.uploadfile-img .upload-name {display: inline-block; padding: .5em .75em; font-size: inherit; font-family: inherit; line-height: normal; 
-								  vertical-align: middle; background-color: #f5f5f5; border: 1px solid silver; border-bottom-color: #e2e2e2; 
-								  border-radius: .25em; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
 	
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
@@ -41,8 +38,10 @@
     .latlong-input-value{margin-top: 10px;}
 	  
     .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
-   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; 
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; outline: none;
    						font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload:hover{background: #ffdb9f; transition: 0.2s; border: 0;}
+   						
 
 	.chkprivate-box{float: left;}
 	.chkcarplace-box{float: left; margin-left: 5px;}
@@ -68,7 +67,8 @@
 	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
 	.searchimg{width: 20px; height: 20px; opacity: 50%;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
-	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px;}
+	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px; outline: none;}
+	#location-finish-btn:hover{background-color: #ffdb9f;}
 	#clickLatlng{text-align: center; margin-top: -5px;}
 </style>
 
@@ -88,10 +88,47 @@
 		}  
 </script>
 
-<!-- 업로드한 파일명 추출 -->
+<!-- 사진 업로드(미리보기) -->
+<script type="text/javascript">
+	var sel_file;
+	$(document).ready(function() {
+		$("#input_img").on("change", handleImgFileSelect);
+	});
+
+	function handleImgFileSelect(e) {
+		$("#img").empty(); //remove는 태그 자체를 지운다 
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+
+		/* if (files.name == null) {
+		   resetInputFile();
+		} */
+		filesArr.forEach(function(f) {
+			if (!f.type.match("image.*")) {
+				alert("확장자는 이미지 확장자만 가능합니다.");
+				return;
+			}
+			sel_file = f;
+
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#img").attr("src", e.target.result);
+				$("#img").attr("width", "90%");
+				$("#img").attr("height", "440px");
+			}
+			reader.readAsDataURL(f);
+		})
+	}
+
+	function resetInputFile() {
+		$("#img").empty();
+	}
+</script>
+
+<!-- 업로드한 파일명 추출 
 <script type="text/javascript">
 	$(document).ready(function(){ 
-		var fileTarget = $('.uploadfile-img .upload-hidden');
+		var fileTarget = $('.upload-video-content .custom-file-input');
 		
 		fileTarget.on('change', function(){ // 값이 변경되면 
 			if(window.FileReader){ // modern browser 
@@ -101,10 +138,10 @@
 			} 
 		
 			// 추출한 파일명 삽입
-			$(this).siblings('.upload-name').val(filename); 
+			$(this).siblings('.custom-file-input').val(filename); 
 		}); 
 	});
-</script>
+</script> -->
 
 <!-- 나만보기 체크여부 -->
 <script type="text/javascript">
@@ -220,14 +257,21 @@
 		<div class="card-body">
 			<!-- Image/Video Upload-->
 			<div class="card-body-left">
-				<div class="uploadfile-img">
-					<input class="upload-name" value="파일 선택" disabled="disabled" style="width: 420px;">
-					<label for="thumbnail-img">썸네일 사진</label>
-					<input type="file" id="thumbnail-img" class="upload-hidden" name="brdfile" accept="image/*">
+				<div class="upload-img-form">
+					<div class="img_wrap center-block">
+						<img id="img" src="">
+		  			</div>
+					<div class="upload-img-content">
+						<label class="custom-file-label" for="input_img"></label>
+						<input type="file" class="custom-file-input" id="input_img" name="brdfile" accept="image/*">
+					</div>
 				</div>
-				<div class="uploadfile-video">
-					<input type="file" id="video-file" class="upload-hidden" name="brdvideo" accept="video/*">
-<!-- 					<video name="brdthumbfile" controls="controls" height="350" width="530"></video> -->
+			
+				<div class="upload-video-form">
+					<div class="upload-video-content">
+						<label class="custom-file-label" for="video-file"></label>
+						<input type="file" class="custom-file-input" id="video-file" name="brdvideo" accept="video/*">
+					</div>
 				</div>
 			</div>
 			
@@ -256,7 +300,7 @@
 				<div class="body-location" >
 					<div class="body-location-left">
 						<span class="location-logo-text">
-							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;<span id=place></span>
+							<img class="location-logo" src="./resources/img/placeholder.png">&nbsp;<span id="place"></span>
 						</span>
 					</div>
 					
