@@ -168,9 +168,7 @@
 		<div class="card-body-4">
 			<div class="board-comment-header-1">
 				<div class="board-comment-head"><strong>댓글</strong></div>
-				<c:forEach items="${comment }" var="comment" varStatus="status">
-					<div class="board-comment-count"><b>${status.count }</b></div>
-				</c:forEach>
+				<div class="board-comment-count"><b>${dto.comcount}</b></div>
 			</div>
 			<div class="board-comment-header-2">
 				<c:if test="${login.memnick == dto.brdwriter }">
@@ -190,7 +188,7 @@
 		</div><br>
 	
 		<!-- 게시글에 댓글 입력하는 부분 -->
-		<form:form action="writebcomment.do?memno=${login.memno }&brdno=${dto.brdno }" method="post">
+		<form:form action="writebcommentv.do?memno=${login.memno }&brdno=${dto.brdno }" method="post">
 			<div class="card-body-5">
 				<div class="board-profile-comment">
 					<img class="user-profile" src="./resources/img/profile.png">

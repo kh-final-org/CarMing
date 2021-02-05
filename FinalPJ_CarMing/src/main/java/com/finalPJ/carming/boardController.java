@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
@@ -238,13 +242,6 @@ public class boardController {
 		System.out.println(model.toString());
 		
 		
-//		int cntComment = 0;
-//		cntComment = cbiz.countComment(dto);
-//		System.out.println("댓글 갯수: "+cntComment);
-		
-		//리뷰 갯수 객체 담아 보내기 
-//		model.addAttribute("countreview", cntComment);
-		
 		return "board/boarddetail";
 	}
 	
@@ -257,14 +254,6 @@ public class boardController {
 			model.addAttribute("comment",cbiz.selectList(brdno));
 			logger.info(model.toString());
 			System.out.println(model.toString());
-			
-
-//			int cntComment = 0;
-//			cntComment = cbiz.countComment(dto);
-//			System.out.println("댓글 갯수: "+cntComment);
-			
-			//리뷰 갯수 객체 담아 보내기 
-//			model.addAttribute("countreview", cntComment);
 			
 			return "board/boarddetail_v";
 		}
@@ -286,6 +275,33 @@ public class boardController {
 		
 		return "board/privatechat";
 	}
+	
+	
+	//게시글(사진) 수정하기
+	   @RequestMapping(value ="/boardupdateRes.do")
+	   @ResponseBody
+	   public Map<String, Boolean> boardUpdateRes(@RequestBody boardDto dto) {
+	      logger.info("[UPDATE RES]");
+	      boolean check = false;
+	      int res = biz.update(dto);
+	      
+	      if(res>0) {
+	    	  check = true;
+	    	  Map<String, Boolean> map = new HashMap<String,Boolean>();
+	    	  map.put("check", check);
+	    	  System.out.println(map);
+	    	  return map;
+	      }
+	      else {
+	    	  check = false;
+	    	  Map<String, Boolean> map = new HashMap<String,Boolean>();
+	    	  map.put("check", check);
+	    	  System.out.println(map);
+	    	  return map;
+	      }
+	      
+	   }
+	
 	
 	
 }

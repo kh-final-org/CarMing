@@ -58,7 +58,6 @@
 	.board-delete-comment{color: #5f5f5f;}
 	
 </style>
-
 <!-- kakao share -->
 <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
@@ -105,7 +104,73 @@
 		}
 	}
 </script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+function update(brdno){
+	var content =  document.getElementById("update2").value;
+					
+	console.log(content);
+	
+	var value = {
+		"brdno"	: brdno,
+		"brdcontent" : content
+	};
+	console.log(value);
+	
+	if(content == null|| content=="" ){
+		alert("내용을 입력해 주세요.");
+	}else{
+		$.ajax({
+			type:"post",
+			url : "boardupdateRes.do",
+			data : JSON.stringify(value),
+			contentType : "application/json",
+			dataType : "json",
+			success:function(msg){
+				if(msg.check==true){
+					location.href="boarddetailform.do?brdno="+brdno;
+				}else{
+					alert("수정 실패");
+				}
+			},
+			error:function(){
+				console.error("게시글 수정 실패");
+				alert("통신에러");
+			}
 
+	});
+	}
+}
+
+</script>
+<!-- 나만보기 체크여부 -->
+<script type="text/javascript">
+	function updateform() {
+    	var value = document.getElementById("update").textContent;
+		$("#update").empty();
+    	
+   	    var Y = document.createElement("textarea");
+	    Y.setAttribute("name", "brdcontent");
+	    Y.setAttribute("id","update2")
+	   	Y.value += value;
+
+	    document.getElementById("update").appendChild(Y);	
+	    
+	    $("#updatebutton").empty();
+	    
+	    var button = document.createElement("input");
+	    button.setAttribute("onclick","update(${dto.brdno})");
+	    button.setAttribute("type","button");
+	    button.setAttribute("value","올리기");
+	    button.setAttribute("id","board-option-btn");
+	   // <input type="button" onclick="updateform()"  value="수정" id="board-option-btn">
+	    
+	   document.getElementById("updatebutton").appendChild(button);
+	    
+	    
+
+	 };
+</script> 
 </head>
 <body>
 <!-- Start Header Area -->
@@ -156,7 +221,7 @@
 		
 		<!-- 게시글 내용/조회수/신고 -->
 		<div class="card-body-3">
-			<div class="board-content">${dto.brdcontent }</div>
+			<div class="board-content" id="update">${dto.brdcontent }</div>
 			<div class="board-count">조회수 ${dto.brdcount }</div>
 			<div class="board-report">&nbsp;&nbsp;&middot;
 				<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1" id="board-report-target">신고</a>
@@ -167,12 +232,12 @@
 		<div class="card-body-4">
 			<div class="board-comment-header-1">
 				<div class="board-comment-head"><strong>댓글</strong></div>
-				<div class="board-comment-count"><b>${countComment}</b></div>
+				<div class="board-comment-count"><b>${dto.comcount}</b></div>
 			</div>
 			<div class="board-comment-header-2">
 				<c:if test="${login.memnick == dto.brdwriter }">
-					<div class="board-modify">
-						<input type="button" value="수정" id="board-option-btn">
+					<div class="board-modify" id="updatebutton">
+						<input type="button" onclick="updateform()"  value="수정" id="board-option-btn">
 					</div>
 					<div class="board-delete">&nbsp;&#124;
 						<input type="button" onclick="boardDel(${dto.brdno})" value="삭제" id="board-option-btn">
@@ -188,7 +253,7 @@
 		</div><br>
 	
 		<!-- 게시글에 댓글 입력하는 부분 -->
-		<form:form action="writebcomment.do?memno=${login.memno }&brdno=${dto.brdno }" method="post">
+		<form:form action="writebcomment.do?memno=${login.memno }&brdno=${dto.brdno}" method="post">
 			<div class="card-body-5">
 				<div class="board-profile-comment">
 					<img class="user-profile" src="./resources/img/profile.png">

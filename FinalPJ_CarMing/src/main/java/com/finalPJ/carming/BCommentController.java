@@ -40,6 +40,27 @@ public class BCommentController {
 
     }
 	
+	
+	//댓글 작성 (비디오) 
+	@RequestMapping(value = "/writebcommentv.do")
+	public String commentInsertRes_v(bcommentDto dto, RedirectAttributes redirect) {
+		logger.info("[commentInsertRes]");
+			
+		
+	int res = cbiz.insert(dto);
+	  if(res>0){
+		  redirect.addAttribute("brdno",dto.getBrdno());
+		   return "redirect:boarddetailform_v.do";
+	  }else {
+		  redirect.addAttribute("brdno",dto.getBrdno());
+		  return "redirect:boarddetailform_v.do";
+	  }
+
+    }
+	
+	
+	
+	
 	@RequestMapping("/deletebcomment.do")
 	public String deletecomment(int comno, int brdno, RedirectAttributes redirect) {
 

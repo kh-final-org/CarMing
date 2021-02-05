@@ -25,7 +25,7 @@ public interface boardBiz {
 	public MemberDto profilemem(int memno);
 	//09. 게시글(영상) 추가
 	public int insert_v(boardDto dto);
-		
+	
 		
 		
 	

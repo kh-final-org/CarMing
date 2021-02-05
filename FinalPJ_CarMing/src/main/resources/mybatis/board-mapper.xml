@@ -17,6 +17,9 @@
 		<result property="memno" column="MEMNO"/>
 		<result property="memnick" column="MEMNICK"/>
 		<result property="mapname" column="MAPNAME"/>
+		<result property="comcount" column="COUNT"/>
+		
+		
 		
 	</resultMap>
 	
@@ -30,7 +33,7 @@
 	
 	<!-- 02. 게시글 상세보기 -->
 	<select id="selectOne" parameterType="int" resultMap="boardMap">
-		SELECT DISTINCT B.*, MP.MAPNAME
+		SELECT DISTINCT (SELECT COUNT(COMNO) COUNT FROM  BCOMMENT WHERE BRDNO = #{brdno}) COUNT, B.*, MP.MAPNAME
 		FROM BOARD B
 		JOIN MAPLOCATION MP
 		ON B.MEMNO = MP.MEMNO
@@ -53,8 +56,10 @@
   	</insert>	
 	
 	<!-- 04. 게시글 수정 -->
-	<update id="" parameterType="int">
-
+	<update id="update" parameterType="boardDto">
+		  UPDATE BOARD
+    	  SET BRDCONTENT = #{brdcontent}
+     	  WHERE BRDNO = #{brdno}
 	</update>
 	
 	<!-- 05. 게시글 삭제 -->

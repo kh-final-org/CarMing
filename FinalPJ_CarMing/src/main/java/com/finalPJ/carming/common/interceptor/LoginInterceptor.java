@@ -27,6 +27,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 				request.getRequestURI().contains("/registerform.do") ||
 				request.getRequestURI().contains("/registerform2.do") ||
 				request.getRequestURI().contains("/regist.do") ||
+				request.getRequestURI().contains("/boardupdateRes.do") ||
 				request.getRequestURI().contains("/ajaxlogin.do")){
 
 			return true;
