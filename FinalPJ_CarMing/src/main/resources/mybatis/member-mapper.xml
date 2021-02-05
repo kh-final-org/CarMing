@@ -29,9 +29,16 @@
 		WHERE MEMID = #{memid}
 	</update>
 	
+	<update id="pwchange" parameterType="memberDto">
+		UPDATE MEMBER
+		SET MEMPW = #{mempw}
+		WHERE MEMID = #{memid}
+	</update>
+	
+		
 	<delete id="deleteUser" parameterType="String">
 		DELETE FROM MEMBER
 		WHERE MEMID = #{memid}
 	</delete>
-
+	
 </mapper>

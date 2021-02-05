@@ -25,5 +25,13 @@ public class mapLocationBizImpl implements mapLocationBiz{
 	public int insert(mapLocationDto dto) {
 		return dao.insert(dto);
 	}
+	
+	
+	//ex. 차박명소 조회
+	@Override
+	public List<mapLocationDto> locationlist(int memno) {
+		// TODO Auto-generated method stub
+		return dao.locationlist(memno);
+	}
 
 }
