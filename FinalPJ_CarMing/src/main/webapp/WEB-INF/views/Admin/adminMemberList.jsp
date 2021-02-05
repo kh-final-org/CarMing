@@ -146,10 +146,10 @@ function formAction() {
 				<col style="width: 10%">
 				<col style="width: 7.5%">
 				<col style="width: 7.5%">
-				<col style="width: 12%">
 				<col style="width: 15%">
 				<col style="width: 15%">
-				<col style="width: 12%">
+				<col style="width: 20%">
+				<col style="width: 15%">
 				<col style="width: 10%">
 				<col style="width: 10%">
 				<thead>
@@ -173,7 +173,7 @@ function formAction() {
 
 						<td>
 							<a href="profileform.do?memno=${list.memNo}">
-								<img src="resources/img/profile.png" class="avatar"alt="Avatar">
+								<img src="${list.memFile }" class="avatar"alt="Avatar">
 							</a>
 						</td>
 						<td>
@@ -199,8 +199,8 @@ function formAction() {
 						<td><c:set var="gen" value="${list.memGender }" />
 
 								<c:choose>
-									<c:when test="${gen == 1 }">여</c:when>
-									<c:when test="${gen == 2 }">남</c:when>
+									<c:when test="${gen == 2 }">여</c:when>
+									<c:when test="${gen == 1 }">남</c:when>
 								</c:choose> <!--    <td><span class="status text-success">&bull;</span> Active</td> -->
 						</td>
 						<td><a href="deletemem.do?memNo=${list.memNo}" class="delete" title="Delete"

@@ -19,14 +19,14 @@ public class ReportDto {
 	private String targetWriter;
 	private String targetTypeNo;
 	private String targetTypeName;
-	
+	private String memFile;
 	public ReportDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ReportDto(int reportNo, String reportWriter, int memNo, MultipartFile reportFile, String reportFileName,
 			String reportContent, String path, Date reportDate, int categoryNo, String categoryName, String targetNo,
-			String targetWriter, String targetTypeNo, String targetTypeName) {
+			String targetWriter, String targetTypeNo, String targetTypeName, String memFile) {
 		super();
 		this.reportNo = reportNo;
 		this.reportWriter = reportWriter;
@@ -42,6 +42,7 @@ public class ReportDto {
 		this.targetWriter = targetWriter;
 		this.targetTypeNo = targetTypeNo;
 		this.targetTypeName = targetTypeName;
+		this.memFile = memFile;
 	}
 	public int getReportNo() {
 		return reportNo;
@@ -127,14 +128,22 @@ public class ReportDto {
 	public void setTargetTypeName(String targetTypeName) {
 		this.targetTypeName = targetTypeName;
 	}
+	public String getMemFile() {
+		return memFile;
+	}
+	public void setMemFile(String memFile) {
+		this.memFile = memFile;
+	}
 	@Override
 	public String toString() {
 		return "ReportDto [reportNo=" + reportNo + ", reportWriter=" + reportWriter + ", memNo=" + memNo
 				+ ", reportFile=" + reportFile + ", reportFileName=" + reportFileName + ", reportContent="
 				+ reportContent + ", path=" + path + ", reportDate=" + reportDate + ", categoryNo=" + categoryNo
 				+ ", categoryName=" + categoryName + ", targetNo=" + targetNo + ", targetWriter=" + targetWriter
-				+ ", targetTypeNo=" + targetTypeNo + ", targetTypeName=" + targetTypeName + "]";
+				+ ", targetTypeNo=" + targetTypeNo + ", targetTypeName=" + targetTypeName + ", memFile=" + memFile
+				+ "]";
 	}
+	
 	
 	
 	

@@ -17,6 +17,7 @@ public class AdmRentDto {
 	private String pCategoryName;
 	private int payNo;
 	private int totalPrice;
+	private String memFile;
 	
 	public AdmRentDto() {
 		super();
@@ -25,7 +26,7 @@ public class AdmRentDto {
 
 	public AdmRentDto(int cartNo, int cAmount, Date startDate, Date endDate, int memNo, int pNo, int stateNo,
 			int pCategoryNo, String memNick, String stateName, String pName, String pCategoryName, int payNo,
-			int totalPrice) {
+			int totalPrice, String memFile) {
 		super();
 		this.cartNo = cartNo;
 		this.cAmount = cAmount;
@@ -41,6 +42,7 @@ public class AdmRentDto {
 		this.pCategoryName = pCategoryName;
 		this.payNo = payNo;
 		this.totalPrice = totalPrice;
+		this.memFile = memFile;
 	}
 
 	public int getCartNo() {
@@ -155,14 +157,24 @@ public class AdmRentDto {
 		this.totalPrice = totalPrice;
 	}
 
+	public String getMemFile() {
+		return memFile;
+	}
+
+	public void setMemFile(String memFile) {
+		this.memFile = memFile;
+	}
+
 	@Override
 	public String toString() {
 		return "AdmRentDto [cartNo=" + cartNo + ", cAmount=" + cAmount + ", startDate=" + startDate + ", endDate="
 				+ endDate + ", memNo=" + memNo + ", pNo=" + pNo + ", stateNo=" + stateNo + ", pCategoryNo="
 				+ pCategoryNo + ", memNick=" + memNick + ", stateName=" + stateName + ", pName=" + pName
-				+ ", pCategoryName=" + pCategoryName + ", payNo=" + payNo + ", totalPrice=" + totalPrice + "]";
+				+ ", pCategoryName=" + pCategoryName + ", payNo=" + payNo + ", totalPrice=" + totalPrice + ", memFile="
+				+ memFile + "]";
 	}
 
+	
 	
 	
 }

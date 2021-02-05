@@ -15,11 +15,12 @@
  		<result property="inquiryDate" column="INQUIRYDATE"/>
  		<result property="categoryNo" column="CATEGORYNO"/>
  		<result property="categoryName" column="CATEGORYNAME"/>
+ 		<result property="profilepic" column="MEMFILE"/>
 </resultMap>
 
 
 	<select id="select" resultMap= "inquiryMap">
-		SELECT MEMBER.MEMNICK, INQUIRYLIST.*, INQUIRYCATEGORY.CATEGORYNAME
+		SELECT MEMBER.MEMNICK, INQUIRYLIST.*, INQUIRYCATEGORY.CATEGORYNAME, MEMBER.MEMFILE
 		FROM INQUIRYLIST
 		JOIN MEMBER
 		ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
