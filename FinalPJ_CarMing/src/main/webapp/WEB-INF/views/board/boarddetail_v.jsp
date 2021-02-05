@@ -142,7 +142,7 @@
 				<span class="board-usernick">&nbsp;${dto.brdwriter }</span>
 			</div>	
 			<div class="board-location">
-				<div>서울특별시 카밍캠핑장</div>
+				<div>${dto.mapname }</div>
 				<div><fmt:formatDate pattern="yyyy.MM.dd" value="${dto.brddate }"/></div>
 			</div>
 		</div>
@@ -150,8 +150,7 @@
 		<!-- 사용자가 업로드한 동영상 -->
 		<div class="card-body-2">
 			<div class="board-uploadimg">
-			<!-- <video src="sample/video/video1.mp4" controls="controls" width="" height=""></video>-->
-				<img class="uploadimg" src="./resources/video/${dto.brdthumbfile }">
+				<video src="resources/img/board/${dto.brdvideoname }" controls="controls" width="500" height="400"></video>
 			</div>
 		</div>
 		

@@ -8,7 +8,7 @@ CREATE TABLE BOARD(
     BCATEGORYNO NUMBER NOT NULL,                                    				--카테고리 번호 참조
     BRDWRITER VARCHAR2(100) NOT NULL,                              			 		--게시글 작성자 (Session이용)
     BRDFILE VARCHAR2(2000) NOT NULL,                                				--파일명
-    BRDVIDEO VARCHAR2(2000) DEFAULT 0 NOT NULL,                                		--동영상
+    BRDVIDEO VARCHAR2(2000) DEFAULT 'N' NOT NULL,                                		--동영상
     BRDCONTENT VARCHAR2(2000) NOT NULL,                                       		--게시글 내용    
     BRDCOUNT NUMBER NOT NULL,                                       				--게시글 조회수
     BRDDATE DATE NOT NULL,                                          				--게시글 작성 날짜
@@ -17,6 +17,7 @@ CREATE TABLE BOARD(
     FOREIGN KEY (BCATEGORYNO) REFERENCES BCATEGORY(BCATEGORYNO) ON DELETE CASCADE,
     FOREIGN KEY (MEMNO) REFERENCES MEMBER(MEMNO) ON DELETE CASCADE
 );
+
 SELECT * FROM BOARD
 INSERT INTO BOARD
 VALUES(BRDNOSEQ.NEXTVAL, (SELECT BCATEGORYNO FROM BCATEGORY WHERE BCATEGORYNO=2), (SELECT MEMNICK FROM MEMBER WHERE MEMNO=1),'caravan9.jpg',DEFAULT,'게시글 내용1',0,SYSDATE,'Y',(SELECT MEMNO FROM MEMBER WHERE MEMNO=1));
@@ -129,7 +130,9 @@ CREATE TABLE MAPLOCATION(
     MAPLONGTITUDE VARCHAR2(1000) NOT NULL,                          --경도
     CARMAPCHK VARCHAR2(1) CHECK(CARMAPCHK IN('Y','N')) NOT NULL,    --차박명소 등록 체크 동의(Y:동의/N:비동의)
     MEMNO NUMBER NOT NULL,                                          --회원번호 (Session이용)
-    FOREIGN KEY (MEMNO) REFERENCES MEMBER(MEMNO) ON DELETE CASCADE
+    BRDNO NUMBER NOT NULL,
+    FOREIGN KEY (MEMNO) REFERENCES MEMBER(MEMNO) ON DELETE CASCADE,
+    FOREIGN KEY (BRDNO) REFERENCES BOARD(BRDNO) ON DELETE CASCADE
 );
 
 INSERT INTO MAPLOCATION 

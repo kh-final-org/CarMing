@@ -142,7 +142,7 @@
 				<span class="board-usernick">&nbsp;${dto.brdwriter }</span>
 			</div>	
 			<div class="board-location">
-				<div>서울특별시 카밍캠핑장</div>
+				<div>${dto.mapname }</div>
 				<div><fmt:formatDate pattern="yyyy.MM.dd" value="${dto.brddate }"/></div>
 			</div>
 		</div>

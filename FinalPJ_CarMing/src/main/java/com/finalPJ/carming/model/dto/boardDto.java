@@ -225,6 +225,16 @@ public class boardDto {
 	}
 
 
+	@Override
+	public String toString() {
+		return "boardDto [brdno=" + brdno + ", bcategoryno=" + bcategoryno + ", brdwriter=" + brdwriter + ", brdfile="
+				+ brdfile + ", brdfilename=" + brdfilename + ", brdvideo=" + brdvideo + ", brdvideoname=" + brdvideoname
+				+ ", brdcontent=" + brdcontent + ", brdcount=" + brdcount + ", brddate=" + brddate + ", brdprivate="
+				+ brdprivate + ", carmapchk=" + carmapchk + ", memno=" + memno + ", memnick=" + memnick + ", mapname="
+				+ mapname + ", maplatitude=" + maplatitude + ", maplongtitude=" + maplongtitude + "]";
+	}
+
+
 
 	
 
