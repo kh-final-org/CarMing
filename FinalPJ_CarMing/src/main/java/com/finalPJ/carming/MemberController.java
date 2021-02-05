@@ -132,11 +132,12 @@ public class MemberController {
 	public String memberInsert(MemberDto dto) {
 		int res = 0;
 		
-//		if(dto.getMemchk() == null) {
-//			dto.setMemchk("N");
-//		}
-//		System.out.println(dto.getMemchk().toString());
-		
+
+		if(dto.getMemchk()==null) {
+			dto.setMemchk("N");
+		}
+
+
 		System.out.println(dto.getMempw());
 		dto.setMempw(passwordEncoder.encode(dto.getMempw()));
 		System.out.println(dto.getMempw());
@@ -225,37 +226,68 @@ public class MemberController {
 	
 	//수정필요 파일업로드 부분이 안됨
 	@RequestMapping(value="/profilechange.do", method = RequestMethod.POST )
-	public String profileChange(HttpServletRequest request, HttpServletResponse response, MemberDto dto, MultipartFile mpfile) throws IOException {
+	public String profileChange(HttpServletRequest request, MemberDto dto, Model model, BindingResult result, MultipartFile photofile) throws IOException {
 		
 		logger.info("[profileChange]");
 		
-		String name = "profileimg_"+dto.getMemno();
-		String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/profileimg");
-		String filename = null;
+		String name = "profileimg_"+dto.getMemname()+".png";
 		
 		
-		File storage = new File(path);
-		if(!storage.exists()) {
-			storage.mkdir();
-		}
 		
 		
-		if(mpfile!=null) {
-		byte[] fileData = mpfile.getBytes(); 
+		String filename = photofile.getOriginalFilename();
 		
-		File newFile = new File(path, name);
-		FileCopyUtils.copy(fileData, newFile);
+		System.out.println("=================");
+		System.out.println(filename);
+		System.out.println("=================");
+		
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		
+		try {
+			inputStream = photofile.getInputStream();
+			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/profileimg");
+			
+			System.out.println("업로드 될 실제 경로: "+path);
+			
+			File storage = new File(path);
+			if(!storage.exists()) {
+				storage.mkdir();
+			}
+			
+			File newFile = new File(path + "/" + name);
 			if(!newFile.exists()) {
 				newFile.createNewFile();
 			}
-			filename = path + "/" + name;
-		
-		}else {
-			filename = path + "/" + "none.png";
+			
+			outputStream = new FileOutputStream(newFile);
+			
+			int read = 0;
+			byte[] b = new byte[(int)photofile.getSize()];
+			
+			while((read=inputStream.read(b)) !=-1) {
+				outputStream.write(b,0,read);
+			}
+			
+			//경로명과 이름으로 db에 저장
+			dto.setMemfile("resources/img/profileimg/"+name);
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				inputStream.close();
+				outputStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		
-		dto.setMemfile(filename);
 		
 		if(dto.getMemchk() == null || dto.getMemchk() == "") {
 			dto.setMemchk("N");
@@ -282,6 +314,52 @@ public class MemberController {
 			
 		}
 		
+	}
+	
+	@RequestMapping("/PWchangeform.do")
+	public String PWchangeform() {
+		logger.info("[PWchangeform]");
+		
+		return "member/passwordchange";
+	}
+	
+	@RequestMapping("/PWchange.do")
+	public String PWchange(HttpSession session, Model model, String beforemempw, String newmempw) throws IOException {
+		
+		MemberDto dto = (MemberDto)session.getAttribute("login");
+		
+		if(beforemempw.equals(dto.getMempw())) {
+			
+            model.addAttribute("msg", "이전 비밀번호와 다르게 설정하세요.");
+            model.addAttribute("url", "PWchangeform.do");
+            return "member/pagealert";
+            
+		}else {
+			if(passwordEncoder.matches(beforemempw, dto.getMempw())) {
+				int res = 0;
+				
+				dto.setMempw(passwordEncoder.encode(newmempw));
+				
+				res = biz.pwchange(dto);
+				if(res>0) {
+					System.out.println("==================");
+					System.out.println(dto.getMempw());
+					session.setAttribute("login", dto);
+					return "redirect:profilechangeform.do";
+				}else {
+					model.addAttribute("msg", "db오류 : 운영자에게 문의하십시오");
+		            model.addAttribute("url", "PWchangeform.do");
+		            return "member/pagealert";
+				}
+				
+			}else {
+				model.addAttribute("msg", "현재 비밀번호를 잘 못 입력하셨습니다.");
+	            model.addAttribute("url", "PWchangeform.do");
+	            return "member/pagealert";
+			}
+		}
+		
+
 	}
 	
 	@RequestMapping("/deleteuserform.do")

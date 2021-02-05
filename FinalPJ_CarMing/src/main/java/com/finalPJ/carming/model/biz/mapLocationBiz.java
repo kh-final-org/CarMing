@@ -10,6 +10,12 @@ public interface mapLocationBiz {
 	public List<mapLocationDto> selectList(int brdno);
 	//02. 게시글 추가
 	public int insert(mapLocationDto dto);
+	
+	
+	
+	
+	//ex.차박 명소용 값 조회
+	public List<mapLocationDto> locationlist(int memno);
 
 	
 }

@@ -89,7 +89,7 @@
 							<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">캠핑렌트</a></li>
 							<li class="nav-item"><a class="nav-link" href="boardmainform.do" style="font-size: 15px;">캠핑토크</a></li>
 							<li class="nav-item"><a class="nav-link" href="camMeet.do" style="font-size: 15px;">우리 서로 캠LIVE</a></li>
-							<li class="nav-item"><a class="nav-link" href="#" style="font-size: 15px;">캠플레이스</a></li>
+							<li class="nav-item"><a class="nav-link" href="maincamplace.do" style="font-size: 15px;">캠플레이스</a></li>
 						</ul>
 						
 						<ul class="nav navbar-nav navbar-right ml-auto">
