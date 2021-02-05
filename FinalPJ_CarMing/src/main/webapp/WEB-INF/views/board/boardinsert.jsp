@@ -203,6 +203,26 @@
 	}
 </script>
 
+<!-- insert 입력란 비어있을 때 게시글 등록x -->
+<script type="text/javascript">
+	function insert_empty() {
+		
+		var bcategoryno_input = $('input[name=bcategoryno]');
+		var brdcontent_input = $('input[name=brdcontent]');
+		var place_input = $('input[name=place]');
+		
+		if(
+			brdcontent_input.val().trim()=="" ||
+			place_input.val().trim()=="" ||
+			$('input[name=bcategory]:checked').val() == null){
+			
+			insert_chk = false;
+			alert("필수 항목을 모두 기입해주세요.");
+		}
+		
+		return insert_chk;
+	}; 
+</script>
 
 </head>
 <body onload="location.href='#location-popup'">
@@ -254,7 +274,8 @@
 					<div class="dropdown-selectbox">
 				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" 
 				  				aria-label="Example select with button addon" name="bcategoryno">
-							<option value="1" selected>일반 캠핑</option>
+							<option value="0" selected disabled>카테고리(필수)</option>
+							<option value="1" >일반 캠핑</option>
 						    <option value="2">카라반</option>
 						    <option value="3">글램핑</option>
 						    <option value="4">차박</option>
@@ -455,7 +476,7 @@
 		</div>
 		
 		<div class="card-body-bottom">
-			<button type="submit" class="btn btn-light" id="button-boardupload">올리기</button>
+			<button type="submit" class="btn btn-light" id="button-boardupload" onclick="return insert_empty()">올리기</button>
 		</div>
 	</div>
 </form:form>

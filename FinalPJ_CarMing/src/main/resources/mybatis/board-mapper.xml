@@ -52,9 +52,11 @@
 	   	(SELECT BRDNO FROM (SELECT * FROM BOARD ORDER BY BRDDATE DESC) WHERE ROWNUM=1))
   	</insert>	
 	
-	<!-- 04. 게시글 수정 -->
-	<update id="" parameterType="int">
-
+	<!-- 04. 게시글(사진) 수정 -->
+	<update id="update" parameterType="boardDto">
+		UPDATE BOARD
+		SET BRDCONTENT = #{brdcontent}
+		WHERE BRDNO = #{brdno}
 	</update>
 	
 	<!-- 05. 게시글 삭제 -->

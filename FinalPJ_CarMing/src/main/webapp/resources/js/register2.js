@@ -100,7 +100,7 @@ function regist_empty() {
 			$('input[name=memgender]:checked').val()==null){
 		
 		regist_chk = false;
-		alert("가입항목을 제대로 입력해주세요");
+		alert("필수 항목을 모두 기입해주세요.");
 	}
 	
 	return regist_chk;

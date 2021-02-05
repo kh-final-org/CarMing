@@ -81,15 +81,15 @@
 	   				description: '아웃도어 라이프 우리 모두의 캠핑',
 	   				imageUrl: 'https://postfiles.pstatic.net/MjAyMTAxMjFfNDgg/MDAxNjExMjE5MDc4MjE2.jLlgUhy3A2J847CYZ_4Sp4X5FI3S8gz_luJHphBr6ocg.czFVIO2I_A-hEsZD7ucwCMfehhtK-PWhH1QFSqbrUmog.JPEG.ghkdwjdals33/kakaoCarMing.JPG?type=w966',
 	   				link: {
-	     					mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno + '&brdfile',
-	     					webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	     					mobileWebUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno + '&brdfile',
+	     					webUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
 	   				},
 	 				},
 	 				buttons: [{
 	     				title: '게시글 보러가기',
 	     				link: {
-	       				mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
-	       				webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	       				mobileWebUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
+	       				webUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
 	     				},
 	   			}],
 				})
@@ -105,6 +105,18 @@
 		}
 	}
 </script>
+
+<script>
+	function boardUpdate(brdno){
+		var chk = confirm("게시글을 수정하시겠습니까?")
+		if(chk){
+			location.href='boardupdateform.do?brdno='+${dto.brdno };
+		}
+	}
+</script>
+
+
+
 
 </head>
 <body>
@@ -172,10 +184,10 @@
 			<div class="board-comment-header-2">
 				<c:if test="${login.memnick == dto.brdwriter }">
 					<div class="board-modify">
-						<input type="button" value="수정" id="board-option-btn">
+						<input type="button" value="수정" onclick="boardUpdate(${dto.brdno})" id="board-option-btn">
 					</div>
 					<div class="board-delete">&nbsp;&#124;
-						<input type="button" onclick="boardDel(${dto.brdno})" value="삭제" id="board-option-btn">
+						<input type="button" value="삭제" onclick="boardDel(${dto.brdno})" id="board-option-btn">
 					</div>&#124;
 				</c:if>
 				<div class="board-share">

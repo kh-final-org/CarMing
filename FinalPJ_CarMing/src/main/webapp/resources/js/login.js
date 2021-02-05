@@ -24,12 +24,12 @@ function ajaxlogin(){
 
 						location.href="home.do";
 					}else{
-						alert("아이디 혹은 비밀번호가 틀렸습니다.");
+						alert("아이디 혹은 비밀번호를 다시 확인해주세요.");
 					}
 				},
 				error:function(){
 					console.error("로그인 아약스 통신관련 오류 or 비밀번호 오류");
-					alert("아이디 혹은 비밀번호가 틀렸습니다.");
+					alert("아이디 혹은 비밀번호를 다시 확인해주세요.");
 				}
 
 		});
