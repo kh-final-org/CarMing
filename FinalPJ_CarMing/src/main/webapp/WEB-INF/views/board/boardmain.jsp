@@ -31,7 +31,7 @@
 				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
 	.upload-btn:hover{background: #ffdb9f; transition: 0.2s;}
 	.current{padding-left: 5px;}
-	#popout-layout{display: none; position: absolute; z-index: 1000; margin-top: 8px; padding: 10px 20px; 
+	#popout-layout{position: absolute; z-index: 1000; margin-top: 8px; padding: 10px 20px; 
 				   border-radius: 5px; background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
 	.nice-select:hover{background: rgba(136, 126, 126, 0.04); transition: 0.2s;}
 	.content-item-icon{float: left;}
@@ -41,8 +41,12 @@
 	.content-item-content-subtitle{font-size: 0.8em; margin-top: -5px; margin-bottom: 5px;}
 	.upload-icon-photo{width: 25px; height: 25px; opacity: 0.3; margin-top: 12px; margin-right: 12px;}
 	.upload-icon-video{width: 25px; height: 25px; opacity: 0.3; margin-top: 28px; margin-right: 12px;}
-	.upload-dropdown-content > a> .content-item-content:hover{background: #fff5e9; border-radius: 5px;}
 	 
+	.board-uploadimg-frame{display: relative;}
+	.video-thumbnail-img{position: relative;}
+	.video-icon{position: absolute; z-index: 5; top: 10px; left: 315px; cursor: pointer;}
+	.video-icon > img {width: 30px; height: 100%; opacity: 0.3;}
+	
 	#paging-container{margin: 50px 0px 20px 0px;}
 	
 	/* 진회색: #5f5f5f, 연연회색:#e2e2e2, 흰색 위 hover: #fafafa,
@@ -177,10 +181,16 @@
 									<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
 								</a><br>
 							</c:when>
+							
 							<c:when test="${dto.brdvideoname ne 'N' }">
+							<div class="video-icon">
+								<img class="user-profile" src="./resources/img/video.png">
+							</div>
+							<div class="video-thumbnail-img">
 								<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
-									<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+								<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
 								</a><br>
+							</div>
 							</c:when>
 						</c:choose>
 					</div>

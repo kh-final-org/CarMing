@@ -175,7 +175,7 @@
 				<div class="contact-form">
 					<!-- 제보자 닉네임 -->
 					<div class="form-group-report-form">
-						<label class="control-label col-sm-2" id="report-name"for="writerNickname">제보자 닉네임</label>
+						<label class="control-label col-sm-2" id="report-name" for="writerNickname">제보자 닉네임</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="writerNickname"
 								   value="${login.memnick}" readonly="readonly" name="reportWriter">

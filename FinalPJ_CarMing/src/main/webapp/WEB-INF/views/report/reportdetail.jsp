@@ -67,6 +67,11 @@
    	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
    	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
    						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
+   						
+   	.receiver-name{color: #ff9b00;}				
+   	.receiver-name:hover{color: #ff9b00;}				
+   						
+   						
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
 		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
@@ -86,16 +91,14 @@
 	<!-- End Header Area -->
 	
 	<!-- Start Banner Area -->
-	
-	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
 	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
 	         <div class="col-first" id="banner-text-1">
-	            <h1>Report  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </h1>
+	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="home.do">신고 사항<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="writeinquiryform.do">신고 내용</a>
+	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
+	               <a href="writeinquiryform.do">문의하기</a>
 	            </nav>
 	         </div>
 	      </div>
@@ -110,83 +113,81 @@
 	<!-- End Banner Area -->
 
 	<!------ Include the above in your HEAD tag ---------->
-	
 	<div class="container-contact">
 		<div class="row">
-				<div class="col-md-3">
-					<div class="contact-info">
-						<img id="pingu-confirm" src="./resources/img/siren.png">
-						<img id="pingu-img" src="resources/img/logo_chatbot.png" alt="image" /><br>
-						<h3>신고 내용</h3>
-						<h5>핑구가 확인해 드릴게요</h5>
-						<h6>고객님께서 신고하신<br>내용입니다</h6>
-					</div>
+			<div class="col-md-3">
+				<div class="contact-info">
+					<img id="pingu-confirm" src="./resources/img/confirm.png">
+					<img id="pingu-img" src="resources/img/logo_chatbot.png" alt="image" /><br>
+					<h3>신고 내용</h3>
+					<h5>핑구가 확인해 드릴게요</h5>
+					<h6>고객님께서 신고하신<br>내용입니다</h6>
 				</div>
-				<div class="col-md-9">
-					<div class="contact-form">
-						<!-- 제보자 닉네임 -->
-						<div class="form-group-report-form">
-							<label class="control-label col-sm-2"  id="user-nickname" for="writerNickname"> 제보자 닉네임:</label>
-							<div class="col-sm-10">
-								<p class="form-control" id="writerNickname">${list.reportWriter }</p>		
-							</div>
+			</div>
+			<div class="col-md-9">
+				<div class="contact-form">
+					<!-- 제보자 닉네임 -->
+					<div class="form-group-report-form">
+						<label class="control-label col-sm-2"  id="user-nickname" for="writerNickname">제보자 닉네임</label>
+						<div class="col-sm-10">
+							<p class="form-control" id="writerNickname">${list.reportWriter }</p>		
 						</div>
-						
-						<!-- 작성일 -->
-						<div class="form-group-report-form">
-						<label class="control-label col-sm-2" id="report-date" for="comment">작성일:</label>
-						<div class="repot-date-form">
-							<p class="form-control" id="date">
-								<fmt:formatDate pattern = "yyyy-MM-dd" 
-         						value = "${list.reportDate}" /></p>	
-							</div>
+					</div>
+					
+					<!-- 작성일 -->
+					<div class="form-group-report-form">
+					<label class="control-label col-sm-2" id="report-date" for="comment">작성일</label>
+					<div class="repot-date-form">
+						<p class="form-control" id="date">
+							<fmt:formatDate pattern = "yyyy-MM-dd" 
+        						value = "${list.reportDate}" /></p>	
 						</div>
-						
-						<!-- 신고 대상 -->
-						<div class="form-group-report-form">
-							<label class="control-label col-sm-2"  id="user-nickname"  for="receiverNickname"> 신고대상 닉네임:</label>
-							<div class="col-sm-10">
-								<p class="form-control" id="writerNickname">				
-								<a href="boarddetailform.do?brdno=${list.targetNo}">${list.targetWriter }</a>
-								</p>	
-							</div>
+					</div>
+					
+					<!-- 신고 대상 -->
+					<div class="form-group-report-form">
+						<label class="control-label col-sm-2"  id="user-nickname"  for="receiverNickname">신고대상 닉네임</label>
+						<div class="col-sm-10">
+							<p class="form-control" id="writerNickname">				
+								<a class="receiver-name" href="boarddetailform.do?brdno=${list.targetNo}">${list.targetWriter }</a>
+							</p>	
 						</div>
-						
-						<!-- 신고 유형 -->
-						<div class="form-group-report-form">
-							<label class="control-label col-sm-2"  id="user-nickname" for="category"> 카테고리:	</label>
-							<div class="col-sm-10">
-								<p class="form-control" id="writerNickname">${list.categoryName }</p>
-							</div>
+					</div>
+					
+					<!-- 신고 유형 -->
+					<div class="form-group-report-form">
+						<label class="control-label col-sm-2"  id="user-nickname" for="category">카테고리</label>
+						<div class="col-sm-10">
+							<p class="form-control" id="writerNickname">${list.categoryName }</p>
 						</div>
-						<!-- 신고 유형 -->
-						<div class="form-group-report-form">
-							<label class="control-label col-sm-2" id="user-nickname" > 신고유형:
-							</label>
-							<div class="col-sm-10">
-								<p class="form-control" id="writerNickname">${list.targetTypeName }</p>
-							</div>
+					</div>
+					<!-- 신고 유형 -->
+					<div class="form-group-report-form">
+						<label class="control-label col-sm-2" id="user-nickname" >신고유형</label>
+						<div class="col-sm-10">
+							<p class="form-control" id="writerNickname">${list.targetTypeName }</p>
 						</div>
-						<br><br>
-						
-						<!-- 신고내용 -->
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="content" id="report-text">신고 내용:</label>
-							<div class="col-sm-10">
-								<textarea rows="3" cols="75" id="content" name="reportContent" readonly="readonly"  style="resize: none;">${list.reportContent }</textarea>
-							</div>
+					</div>
+					<br><br>
+					
+					<!-- 신고내용 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="content" id="report-text">신고 내용</label>
+						<div class="col-sm-10">
+							<textarea rows="3" cols="75" id="content" name="reportContent" readonly="readonly"  style="resize: none;">${list.reportContent }</textarea>
 						</div>
-						
-						<div class="report-file"><strong>첨부 파일</strong></div>
-						<div class="upload-img-form">
-							<div class="img_wrap center-block">
-								<img id="img" src="resources/img/report/${list.reportFileName }">
-							</div>
+					</div>
+					
+					<div class="report-file"><strong>첨부 파일</strong></div>
+					<div class="upload-img-form">
+						<div class="img_wrap center-block">
+							<img id="img" src="resources/img/report/${list.reportFileName }">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>
 	<!-- End footer Area -->
