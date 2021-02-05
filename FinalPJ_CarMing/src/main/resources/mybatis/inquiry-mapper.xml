@@ -43,23 +43,10 @@
 		VALUES(SEQINQUIRY.NEXTVAL,(SELECT MEMNO FROM MEMBER WHERE MEMNO=#{memNo}), #{filename},#{inquiryContent}, SYSDATE,#{categoryNo})
 	</insert>
 	 
-	
-	<insert id="insertList" parameterType="java.util.List">
-		INSERT ALL 
-		<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
-			  INTO RECIPE VALUES
-			  (
-				#{item.recipeFile}
-				, #{item.recipeTitle}
-				, #{item.recipeWriter}
-				, #{item.recipeWriterURL}
-				, DEFAULT
-				, #{item.recipeURL}
-			   )
-				
-		</foreach>
-	</insert>
  
- 
+ 	<delete id="delete" parameterType="int">
+ 		DELETE FROM INQUIRYLIST
+ 		WHERE INQUIRYNO = #{inquiryNo}
+ 	</delete>
  
  </mapper>

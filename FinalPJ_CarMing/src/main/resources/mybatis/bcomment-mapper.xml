@@ -19,7 +19,10 @@
   		WHERE COMNO=#{comno}
   	</delete>
   
-  
+  <delete id="deleteRep" parameterType="int">
+  		DELETE REPORTLIST 
+		WHERE TARGETNO=#{comno} AND TARGETTYPENO =2
+  </delete>
   
   
   

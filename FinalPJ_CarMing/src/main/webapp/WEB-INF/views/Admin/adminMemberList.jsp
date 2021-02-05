@@ -149,12 +149,12 @@ function formAction() {
 			<table id="memlist_tb" class="table table-striped table-hover">
 				<col style="width: 5%">
 				<col style="width: 10%">
-				<col style="width: 7%">
+				<col style="width: 10%">
 				<col style="width: 8%">
 				<col style="width: 20%">
 				<col style="width: 15%">
 				<col style="width: 15%">
-				<col style="width: 5%">
+				<col style="width: 15%">
 				<col style="width: 10%">
 				<col style="width: 5%">
 				<thead>
@@ -165,6 +165,7 @@ function formAction() {
 						<th>닉네임</th>
 						<th>생년월일</th>
 						<th>이메일</th>
+						<th>주소</th>
 						<th>핸드폰</th>
 						<th>성별</th>
 						<th>회원삭제</th>
@@ -177,7 +178,7 @@ function formAction() {
 						<td class="memNo">${list.memNo}</td>
 
 						<td>
-							<a href="memdetail.do?memNo=${list.memNo }">
+							<a href="profileform.do?memno=${list.memNo}">
 								<img src="resources/img/profile.png" class="avatar"alt="Avatar">
 							</a>
 						</td>
@@ -192,7 +193,8 @@ function formAction() {
 						<td>
 						<c:out value="${dateTempParse }" /> 
  						</td> --%>
-						<td>${list.memBirth}</td>
+						<td><fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${list.memBirth}"/></td>
 						<td>${list.memId}</td>
 
 						<%-- <td><fmt:formatDate pattern = "yyyy-MM-dd" 

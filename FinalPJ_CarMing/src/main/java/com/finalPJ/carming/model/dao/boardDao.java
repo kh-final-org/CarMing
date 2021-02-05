@@ -22,6 +22,7 @@ public interface boardDao {
 	public int update(boardDto dto);
 	//05. 게시글 삭제
 	public int delete(int brdno);
+	public int deleteRep(int brdno);
 	//06. 게시글 조회수
 	public void viewCount(int brdno);
 	//07. 사용자 프로필 페이지 목록

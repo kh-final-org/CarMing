@@ -233,13 +233,5 @@ public class boardDto {
 				+ brdprivate + ", carmapchk=" + carmapchk + ", memno=" + memno + ", memnick=" + memnick + ", mapname="
 				+ mapname + ", maplatitude=" + maplatitude + ", maplongtitude=" + maplongtitude + "]";
 	}
-
-
-
-	
-
-	
-	
-	
 	
 }

@@ -12,4 +12,5 @@ public interface InquiryBiz {
 	public int insertList(ArrayList<InquiryDto> list);
 	public InquiryDto selectOne(int inquiryNo);
 	public int insert(InquiryDto dto);
+	public int deleteInquiry(int inquiryNo);
 }

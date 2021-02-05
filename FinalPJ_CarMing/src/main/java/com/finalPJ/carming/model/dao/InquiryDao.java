@@ -11,6 +11,6 @@ public interface InquiryDao {
 	public List<InquiryDto> list();
 	public InquiryDto selectOne(int inquiryNo);
 	public int insert(InquiryDto dto);
-	
+	public int deleteInquiry(int inquiryNo);
 
 }
