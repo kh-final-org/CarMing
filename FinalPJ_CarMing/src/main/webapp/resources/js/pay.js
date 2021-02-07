@@ -126,47 +126,15 @@ window.onload = function() {
 			} else if(custom_memo == 1){
 				alert("배송 메모를 선택해주세요.");
 				return;
-			} else {
-					alert("pay_option: "+pay_option);
-					
-					if(pay_option == 'kakaopay'){
-						$.ajax({
-							url:'kakaopay.do',
-							type: 'post',
-							data: dto,
-							success: function(result){
-								if(result==1){
-									toKakaopay(dto);
-									window.location.href = "campingrent/cart.jsp"
-								}
-							},
-							error: function(){
-								location.href="payinfo.do";
-							}
-						});
-					}
-			
-					if(pay_option == 'inicis'){
-						$.ajax({
-							url: 'inicispay.do',
-							type: 'post',
-							data: {
-								"pay_option": pay_option,
-								"cNoArr": cNoArr,
-								"totalPrice": totalPrice,
-								"addr": addr
-							},
-							success: function(result){
-								if(result==1){
-									location.href="inicis.do";
-								}
-							},
-							error: function(){
-								location.href="payinfo.do";
-							}
-						});
-					}
-			
+			} else{
+				alert("컨트롤러로 넘기기 전 알림창");
+				if(pay_option == 'kakaopay'){
+					alert("결제 수단: "+pay_option);
+					$("#formId").attr("action", "kakaopay.do").submit();
+				} else if(pay_option == 'inicis'){
+					alert("결제 수단: "+pay_option);
+					$("#formId").attr("action", "inicispay.do").submit();
+				}
 			}
 			
 		
@@ -174,7 +142,7 @@ window.onload = function() {
 	
 };
 
-function toKakaopay(dto){
+/*function toKakaopay(dto){
 	alert(dto);
 	$.ajax({				
 		url: 'kakao.do',
@@ -184,35 +152,7 @@ function toKakaopay(dto){
 			alert("카카오페이지 전환 성공");
 		}
 	});
-}
-	/*$('#change_addr', '#pay_go').click(function(){
-		if($(this).hasClass('#change_addr')){
-			var confirm_val = confirm("배송지를 변경하시겠습니까?");
-			
-			if(confirm_val){
-				$("#addr_btn").show();
-				return false;
-			} else{
-				$("#addr_btn").hide();
-			}
-		} 
-		if($(this).hasClass('#pay_go')){
-			alert("요기다");
-		}
-	});*/
-		/* 결제 수단 체크 시 버튼 생성 */
-/*		$("#pay_go").click(function(){
-			alert("뭐가 문제지?");
-			var pay_option = $("#pay_option option:selected").val();
-			
-			if(pay_option == 'kakaopay'){
-				$.ajax({
-					url:'pay.do',
-					type: 'post',
-					data: {"pg" : pay_option}
-				});
-			}
-			
-		});*/
+}*/
+
    
 

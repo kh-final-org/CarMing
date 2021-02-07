@@ -64,24 +64,24 @@
 											<td><img src="storage/${cartListDto.pFile }" width="100px;" height="100px;"></td>
 											<td>${cartListDto.pName }</td>
 											<td>${cartListDto.cAmount }</td>
-											<td><fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>~<fmt:formatDate value="${cartListDto.endDate }" pattern="yyyy-MM-dd"/></td>
+											<td><fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>&nbsp;~&nbsp;<fmt:formatDate value="${cartListDto.endDate }" pattern="yyyy-MM-dd"/></td>
 											<c:choose>
-												<c:when test="${cartListDto.stateNo == 2} ">
+												<c:when test="${cartListDto.stateNo == 2}">
 													<td>
 														결제완료
 													</td>
 												</c:when>
-												<c:when test="${cartListDto.stateNo == 3} ">
+												<c:when test="${cartListDto.stateNo == 3}">
 													<td>
 														대여중
 													</td>
 												</c:when>
-												<c:when test="${cartListDto.stateNo == 4} ">
+												<c:when test="${cartListDto.stateNo == 4}">
 													<td>
 														대여중
 													</td>
 												</c:when>
-												<c:when test="${cartListDto.stateNo == 5} ">
+												<c:when test="${cartListDto.stateNo == 5}">
 													<td>
 														대여중
 													</td>
@@ -128,7 +128,7 @@
 										</c:choose>
 										<td>${payDto.addr }</td>
 										<td><fmt:formatDate value="${payDto.payDay}" pattern="yyyy-MM-dd"/></td>
-										<td>${payDto.totalPrice }</td>
+										<td><fmt:formatNumber value="${payDto.totalPrice }" pattern="###,###,###"/>원</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>

@@ -29,6 +29,22 @@ public class RentReviewDaoImpl implements RentReviewDao{
 		
 		return list;
 	}
+	
+
+	@Override
+	public List<RentReviewDto> selectList(int pNo) {
+		List<RentReviewDto> list = new ArrayList<RentReviewDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"pselectList", pNo);
+		} catch (Exception e) {
+			System.out.println("[ERROR: SELECT REVIEWLIST]");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 
 	@Override
 	public int insertReivew(RentReviewDto dto) {
@@ -72,5 +88,20 @@ public class RentReviewDaoImpl implements RentReviewDao{
 		
 		return res;
 	}
-	
+
+
+	@Override
+	public int countReview(int pNo) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"pcountreview", pNo);
+		} catch (Exception e) {
+			System.out.println("[ERROR: REVIEW COUNT]");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 }

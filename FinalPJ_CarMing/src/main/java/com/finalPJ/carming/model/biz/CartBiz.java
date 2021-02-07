@@ -10,4 +10,7 @@ public interface CartBiz {
 	public void insertCart(CartDto cart);
 	public void deleteCart(CartDto cart);
 	public List<CartListDto> rentperiod(List<CartListDto> cartList);
+	public int countProduct(int payNo);
+	public String pName(int payNo);
+	public void updateCart(int cartNo);
 }
