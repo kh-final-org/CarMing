@@ -113,7 +113,7 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='deleteinquiry.do?inquiryNo=${list.inquiryNo}'">삭제 하기</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
 	         </div>
 		  </div>
@@ -122,7 +122,6 @@
 	<!-- End Banner Area -->
 	
 	<!-- Start Container Area -->
-	<form action="writeinquiry.do" method="POST">
 		<div class="container-contact">
 			<div class="row">
 				<div class="col-md-3">
@@ -141,8 +140,7 @@
 						<div class="form-group-inquiry-form">
 							<label class="control-label col-sm-2" id="user-nickname" for="nickname">문의자 닉네임</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="nickname"
-			   						   value="${list.memNick}" readonly="readonly">
+								<p class="form-control" id="nickname">${list.memNick}</p>
 							</div>
 						</div>
 						
@@ -150,9 +148,8 @@
 						<div class="form-group-inquiry-form">
 							<label class="control-label col-sm-2" id="inquiry-date" for="date">문의 작성일</label>
 							<div class="inquiry-date-form">
-								<input type="date" class="form-control" id="date"
-									   value=<fmt:formatDate pattern = "yyyy-MM-dd" 
-         							   value = "${list.inquiryDate}" /> readonly="readonly" >
+								<p class="form-control" id="date"><fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${list.inquiryDate}" /></p>
 							</div>
 						</div>
 						
@@ -160,8 +157,7 @@
 						<div class="form-group-category-form">
 							<label class="inquiry-category" for="category"><strong>카테고리</strong></label>
 							<div class="inquiry-category-wrap">
-								<input type="text" class="form-control" id="category"
-			   						   value="${list.categoryName }" readonly="readonly">		
+								<p class="form-control" id="category">${list.categoryName }</p>
 							</div>
 						</div>
 
@@ -181,12 +177,10 @@
 								<img id="img" src="resources/img/inquiry/${list.filename }">
 				  			</div>
 						</div>
-						
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
 	<!-- End Container Area -->
 	
 	<!-- start footer Area -->

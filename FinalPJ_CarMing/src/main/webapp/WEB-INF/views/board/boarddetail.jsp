@@ -58,7 +58,6 @@
 	.board-delete-comment{color: #5f5f5f;}
 	
 </style>
-
 <!-- kakao share -->
 <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
@@ -81,15 +80,15 @@
 	   				description: '아웃도어 라이프 우리 모두의 캠핑',
 	   				imageUrl: 'https://postfiles.pstatic.net/MjAyMTAxMjFfNDgg/MDAxNjExMjE5MDc4MjE2.jLlgUhy3A2J847CYZ_4Sp4X5FI3S8gz_luJHphBr6ocg.czFVIO2I_A-hEsZD7ucwCMfehhtK-PWhH1QFSqbrUmog.JPEG.ghkdwjdals33/kakaoCarMing.JPG?type=w966',
 	   				link: {
-	     					mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno + '&brdfile',
-	     					webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	     					mobileWebUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno + '&brdfile',
+	     					webUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
 	   				},
 	 				},
 	 				buttons: [{
 	     				title: '게시글 보러가기',
 	     				link: {
-	       				mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
-	       				webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	       				mobileWebUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
+	       				webUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
 	     				},
 	   			}],
 				})
@@ -105,6 +104,82 @@
 		}
 	}
 </script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+function update(brdno){
+	var content =  document.getElementById("update2").value;
+					
+	console.log(content);
+	
+	var value = {
+		"brdno"	: brdno,
+		"brdcontent" : content
+	};
+	console.log(value);
+	
+	if(content == null|| content=="" ){
+		alert("내용을 입력해 주세요.");
+	}else{
+		$.ajax({
+			type:"post",
+			url : "boardupdateRes.do",
+			data : JSON.stringify(value),
+			contentType : "application/json",
+			dataType : "json",
+			success:function(msg){
+				if(msg.check==true){
+					location.href="boarddetailform.do?brdno="+brdno;
+				}else{
+					alert("수정 실패");
+				}
+			},
+			error:function(){
+				console.error("게시글 수정 실패");
+				alert("통신에러");
+			}
+
+	});
+	}
+}
+
+</script>
+<!-- 나만보기 체크여부 -->
+<script type="text/javascript">
+	function updateform() {
+    	var value = document.getElementById("update").textContent;
+		$("#update").empty();
+    	
+   	    var Y = document.createElement("textarea");
+	    Y.setAttribute("name", "brdcontent");
+	    Y.setAttribute("id","update2")
+	   	Y.value += value;
+
+	    document.getElementById("update").appendChild(Y);	
+	    
+	    $("#updatebutton").empty();
+	    
+	    var button = document.createElement("input");
+	    button.setAttribute("onclick","update(${dto.brdno})");
+	    button.setAttribute("type","button");
+	    button.setAttribute("value","올리기");
+	    button.setAttribute("id","board-option-btn");
+	   // <input type="button" onclick="updateform()"  value="수정" id="board-option-btn">
+	    
+	   document.getElementById("updatebutton").appendChild(button);
+	    
+	 };
+</script> 
+
+<script>
+	function boardUpdate(brdno){
+		var chk = confirm("게시글을 수정하시겠습니까?")
+		if(chk){
+			location.href='boardupdateform.do?brdno='+${dto.brdno };
+		}
+	}
+</script>
+
+
 
 </head>
 <body>
@@ -142,7 +217,7 @@
 				<span class="board-usernick">&nbsp;${dto.brdwriter }</span>
 			</div>	
 			<div class="board-location">
-				<div>서울특별시 카밍캠핑장</div>
+				<div>${dto.mapname }</div>
 				<div><fmt:formatDate pattern="yyyy.MM.dd" value="${dto.brddate }"/></div>
 			</div>
 		</div>
@@ -150,13 +225,13 @@
 		<!-- 사용자가 업로드한 이미지 -->
 		<div class="card-body-2">
 			<div class="board-uploadimg">
-				<img class="uploadimg" src="./resources/img/boardUpload/${dto.brdfile }">
+				<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
 			</div>
 		</div>
 		
 		<!-- 게시글 내용/조회수/신고 -->
 		<div class="card-body-3">
-			<div class="board-content">${dto.brdcontent }</div>
+			<div class="board-content" id="update">${dto.brdcontent }</div>
 			<div class="board-count">조회수 ${dto.brdcount }</div>
 			<div class="board-report">&nbsp;&nbsp;&middot;
 				<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1" id="board-report-target">신고</a>
@@ -167,15 +242,15 @@
 		<div class="card-body-4">
 			<div class="board-comment-header-1">
 				<div class="board-comment-head"><strong>댓글</strong></div>
-				<div class="board-comment-count"><b>${countComment}</b></div>
+				<div class="board-comment-count"><b>${dto.comcount}</b></div>
 			</div>
 			<div class="board-comment-header-2">
 				<c:if test="${login.memnick == dto.brdwriter }">
 					<div class="board-modify">
-						<input type="button" value="수정" id="board-option-btn">
+						<input type="button" value="수정" onclick="boardUpdate(${dto.brdno})" id="board-option-btn">
 					</div>
 					<div class="board-delete">&nbsp;&#124;
-						<input type="button" onclick="boardDel(${dto.brdno})" value="삭제" id="board-option-btn">
+						<input type="button" value="삭제" onclick="boardDel(${dto.brdno})" id="board-option-btn">
 					</div>&#124;
 				</c:if>
 				<div class="board-share">
@@ -188,7 +263,7 @@
 		</div><br>
 	
 		<!-- 게시글에 댓글 입력하는 부분 -->
-		<form:form action="writebcomment.do?memno=${login.memno }&brdno=${dto.brdno }" method="post">
+		<form:form action="writebcomment.do?memno=${login.memno }&brdno=${dto.brdno}" method="post">
 			<div class="card-body-5">
 				<div class="board-profile-comment">
 					<img class="user-profile" src="./resources/img/profile.png">
@@ -212,7 +287,7 @@
 			<div class="card-body-6">
 				<div class="commentuser-first">
 					<div class="board-profile-commentuser">
-						<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" ></a>
+						<a href="profileform.do?memno=1"><img class="user-profile" src="./resources/img/profile.png" ></a>
 						<span><strong>${comment.comwriter }</strong></span>
 					</div>
 					<div class="commentuser-comment">${comment.comcontext }</div>

@@ -67,14 +67,14 @@
 	<div class="card-profile">
 		<div class="profilepage-profile">
 			<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">
-			<div class="user-id"><strong>${dto.memnick}</strong></div>
+			<div class="user-id"><strong></strong>${mem.memnick}</div>
 		</div>
 		<div class="profilepage-message">
-			<a href="privateform.do?memno=${dto.memno }">
+			<a href="privateform.do?memno=${mem.memno }">
 				<img class="user-message" src="./resources/img/message.png">
 				<span class="user-message-text">&nbsp;1:1 채팅</span>
 			</a>&nbsp;&middot;&nbsp;
-			<a href="writereportform.do?targetNo=${comment.comno }&targetTypeNo=3" class="board-report-target3" id="member-report-target">신고</a>
+			<a href="writereportform.do?targetNo=${mem.memno }&targetTypeNo=3" class="board-report-target3" id="member-report-target">신고</a>
 		</div>
 	</div>
 	
@@ -92,7 +92,7 @@
 				<div class="boardlistup" id="board-photo">
 					<div class="boardlistup-frame">
 						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
-							<img class="boardlist-img" src="./resources/img/boardUpload/${dto.brdfile }">
+							<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
 						</a>
 					</div>
 				</div>

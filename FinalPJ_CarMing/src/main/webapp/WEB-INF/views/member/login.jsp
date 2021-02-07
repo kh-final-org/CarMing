@@ -30,8 +30,9 @@
 	    .login-btn {cursor: pointer; color: #5f5f5f !important; background: #ffe6be; width: 300px; border: 0; border-radius: 5px; padding: 10px 40px;
 				 	font-weight: bold; margin-top: 15px; margin-left: 12%; font-size: 1.1em; box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04); outline: none;}
 	    .login-btn:hover {background: #ffdb9f; transition: 0.2s;}
-	    .signup{padding-top: 10px; margin-bottom: 27px;}
-	    .signup > a {color: gray; font-size: 0.85em; font-weight: bold;}
+	    .signup{padding-top: 10px; margin: -2px 10px 27px 0;}
+	    .signup > a > span {display: inline-block; color: gray; font-size: 0.85em; font-weight: bold;}
+	    .register-img{width: 13px; height: 12px; opacity: 0.2;}
 	    a {text-decoration: none; } 
 	    form.form1 {padding-top: 30px;}
 	    input::placeholder{color: silver;}
@@ -55,7 +56,12 @@
 					<input class="input-user-idpw" type="text" align="center" placeholder="이메일" id="memid">
 					<input class="input-user-idpw" type="password" align="center" placeholder="비밀번호" id="mempw">
 					<input type="button" value="로그인" class="login-btn" align="center" onclick="ajaxlogin();">
-					<div class="signup" align="center"><a href="registerform.do" class="signup-btn">회원가입</a></div>
+					<div class="signup" align="center">
+						<a href="registerform.do" class="signup-btn">
+							<img class="register-img" src="./resources/img/user_signup.png">
+							<span>회원가입</span>
+						</a>
+					</div>
 					<div class="naver_login_text" align="center">SNS계정으로 간편 로그인</div>
 					<!-- 네이버 로그인 창으로 이동 -->
 					<div id="naver_id_login" style="text-align: center;">

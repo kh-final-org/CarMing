@@ -17,7 +17,7 @@
  		<result property="categoryName" column="CATEGORYNAME"/>
  		<result property="targetNo" column="TARGETNO"/>
  		<result property="targetWriter" column="BRDWRITER"/>
- 		<result property="targetTypeNo" column="TARGETTYPE"/>
+ 		<result property="targetTypeNo" column="TARGETTYPENO"/>
  		<result property="targetTypeName" column="TARGETNAME"/>
 </resultMap>
 
@@ -32,16 +32,32 @@
  		<result property="categoryName" column="CATEGORYNAME"/>
  		<result property="targetNo" column="BRDNO"/>
  		<result property="targetWriter" column="COMWRITER"/>
- 		<result property="targetTypeNo" column="TARGETTYPE"/>
+ 		<result property="targetTypeNo" column="TARGETTYPENO"/>
+ 		<result property="targetTypeName" column="TARGETNAME"/>
+</resultMap>
+
+<resultMap type="ReportDto" id="reportMapMem">
+		<result property="reportNo" column="REPORTNO"/>
+ 		<result property="reportWriter" column="REPORTWRITER"/>
+ 		<result property="memNo" column="MEMNO"/>
+ 		<result property="reportFileName" column="REPORTFILENAME"/>
+ 		<result property="reportContent" column="REPORTCONTENT"/>
+ 		<result property="reportDate" column="REPORTDATE"/>
+ 		<result property="categoryNo" column="CATEGORYNO"/>
+ 		<result property="categoryName" column="CATEGORYNAME"/>
+ 		<result property="targetNo" column="TARGETNO"/>
+ 		<result property="targetWriter" column="MEMNICK"/>
+ 		<result property="targetTypeNo" column="TARGETTYPENO"/>
  		<result property="targetTypeName" column="TARGETNAME"/>
 </resultMap>
 
 
 
-	<select id="select" resultType="ReportDto">
+	<select id="select" resultType="reportDto">
 	SELECT
 	REPORTLIST.*,     
-	REPORTCATEGORY.CATEGORYNAME
+	REPORTCATEGORY.CATEGORYNAME,
+	MEMBER.MEMFILE
 	FROM REPORTLIST
 	JOIN MEMBER
 	ON REPORTLIST.MEMNO = MEMBER.MEMNO
@@ -86,6 +102,27 @@
 	ON REPORTLIST.TARGETNO = BCOMMENT.COMNO 
 	WHERE REPORTNO = #{reportNo}	
 	</select>
+	
+	<select id="selectOneMem" parameterType="int" resultMap= "reportMapMem">
+	SELECT
+	REPORTLIST.*,
+	REPORTCATEGORY.CATEGORYNAME,
+	TARGETCATEGORY.TARGETNAME,
+	MEMBER.MEMNICK
+	FROM REPORTLIST
+	JOIN MEMBER
+	ON REPORTLIST.MEMNO = MEMBER.MEMNO
+	JOIN REPORTCATEGORY
+	ON REPORTLIST.CATEGORYNO = REPORTCATEGORY.CATEGORYNO
+	JOIN TARGETCATEGORY
+	ON REPORTLIST.TARGETTYPENO = TARGETCATEGORY.TARGETNO
+	JOIN MEMBER
+	ON REPORTLIST.TARGETNO = MEMBER.MEMNO
+	WHERE REPORTNO = #{reportNo}
+	
+	</select>
+	
+	
 	
 	<insert id="insert" parameterType="ReportDto" >
 		INSERT INTO REPORTLIST

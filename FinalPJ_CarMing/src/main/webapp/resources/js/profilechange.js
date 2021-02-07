@@ -1,5 +1,8 @@
 //가입항목 확인용 변수
 var regist_chk = true;
+
+var sel_file;
+
 $(document).ready(function(){
 	
 	
@@ -10,7 +13,8 @@ $(document).ready(function(){
         return new Date().toJSON().split('T')[0];
     });
 	
-
+	//이미지 미리보기
+	$("#photofile").on("change", handleImgFileSelect);
 	
 	
 });
@@ -43,23 +47,28 @@ function empty_change() {
 }; // end submit()
 
 
+function handleImgFileSelect(e) {
+	$("#thumbnail").empty(); //empty, remove 구분! remove는 태그 자체를 지운다 오키?
+	var files = e.target.files;
+	var filesArr = Array.prototype.slice.call(files);
 
+	
+	filesArr.forEach(function(f) {
+		if (!f.type.match("image.*")) {
+			alert("확장자는 이미지 확장자만 가능합니다.");
+			return;
+		}
+		sel_file = f;
 
-function setPhoto(input){
-	if (input.files && input.files[0]) {
 		var reader = new FileReader();
 		reader.onload = function(e) {
-		$('#thumbnail').attr('src', e.target.result);
+			$("#thumbnail").attr("src", e.target.result);
+			$("#thumbnail").attr("width", "200px");
+			$("#thumbnail").attr("height", "250px");
 		}
-		reader.readAsDataURL(input.files[0]);
-	}
-
+		reader.readAsDataURL(f);
+	});
 }
-
-
-
-
-출처: https://whitelife.tistory.com/229 [White Life Story]
 
 //다음api 주소팝업창
 function sample6_execDaumPostcode() {

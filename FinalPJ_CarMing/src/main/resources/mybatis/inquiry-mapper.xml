@@ -15,11 +15,12 @@
  		<result property="inquiryDate" column="INQUIRYDATE"/>
  		<result property="categoryNo" column="CATEGORYNO"/>
  		<result property="categoryName" column="CATEGORYNAME"/>
+ 		<result property="profilepic" column="MEMFILE"/>
 </resultMap>
 
 
 	<select id="select" resultMap= "inquiryMap">
-		SELECT MEMBER.MEMNICK, INQUIRYLIST.*, INQUIRYCATEGORY.CATEGORYNAME
+		SELECT MEMBER.MEMNICK, INQUIRYLIST.*, INQUIRYCATEGORY.CATEGORYNAME, MEMBER.MEMFILE
 		FROM INQUIRYLIST
 		JOIN MEMBER
 		ON INQUIRYLIST.MEMNO = MEMBER.MEMNO
@@ -43,23 +44,10 @@
 		VALUES(SEQINQUIRY.NEXTVAL,(SELECT MEMNO FROM MEMBER WHERE MEMNO=#{memNo}), #{filename},#{inquiryContent}, SYSDATE,#{categoryNo})
 	</insert>
 	 
-	
-	<insert id="insertList" parameterType="java.util.List">
-		INSERT ALL 
-		<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
-			  INTO RECIPE VALUES
-			  (
-				#{item.recipeFile}
-				, #{item.recipeTitle}
-				, #{item.recipeWriter}
-				, #{item.recipeWriterURL}
-				, DEFAULT
-				, #{item.recipeURL}
-			   )
-				
-		</foreach>
-	</insert>
  
- 
+ 	<delete id="delete" parameterType="int">
+ 		DELETE FROM INQUIRYLIST
+ 		WHERE INQUIRYNO = #{inquiryNo}
+ 	</delete>
  
  </mapper>

@@ -50,6 +50,12 @@ public class MemberBizImpl implements MemberBiz {
 		// TODO Auto-generated method stub
 		return dao.deleteUser(memid);
 	}
+
+	@Override
+	public int pwchange(MemberDto dto) {
+		// TODO Auto-generated method stub
+		return dao.pwchange(dto);
+	}
 	
 	
 

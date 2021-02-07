@@ -187,7 +187,7 @@
 					<div class="form-group-category-form">
 						<span class="inquiry-category"><strong>카테고리</strong></span>
 						<div class="inquiry-category-wrap">
-							<select class="col-sm-10" id="categoryno" name="categoryno">
+							<select class="col-sm-10" id="categoryno" name="categoryNo">
 								<option selected disabled>문의 유형</option>
 								<option value="1">상품 및 배송</option>
 								<option value="2">교환 및 반품</option>

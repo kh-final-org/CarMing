@@ -11,14 +11,16 @@ public class boardDto {
 	private String brdwriter;		//게시글 작성자
 	private MultipartFile brdfile;	//파일명
 	private String brdfilename;		//실제 파일명
-	private String brdthumbfile;	//파일 썸네일 이미지
+	private MultipartFile brdvideo;	//동영상
+	private String brdvideoname;	//동영상 파일명
 	private String brdcontent;		//게시글 내용
 	private int brdcount;			//게시글 조회 수
 	private Date brddate;			//게시글 작성 날짜
 	private String brdprivate;		//나만보기 체크 여부
+	private int comcount; 			//댓글 갯수
 	private String carmapchk;		//차박명소 등록 체크 동의(Y:동의/N:비동의)
 	private int memno;				//memno
-	private String memnick;			//memnick(db랑 같지 않아도 됨)
+	private String memnick;			//memnick
 	private String mapname;			//map-위치명
 	private String maplatitude;		//위도	
 	private String maplongtitude;	//경도	
@@ -28,20 +30,24 @@ public class boardDto {
 		super();
 	}
 
+
 	public boardDto(int brdno, int bcategoryno, String brdwriter, MultipartFile brdfile, String brdfilename,
-			String brdthumbfile, String brdcontent, int brdcount, Date brddate, String brdprivate, String carmapchk,
-			int memno, String memnick, String mapname, String maplatitude, String maplongtitude) {
+			MultipartFile brdvideo, String brdvideoname, String brdcontent, int brdcount, Date brddate,
+			String brdprivate, int comcount, String carmapchk, int memno, String memnick, String mapname,
+			String maplatitude, String maplongtitude) {
 		super();
 		this.brdno = brdno;
 		this.bcategoryno = bcategoryno;
 		this.brdwriter = brdwriter;
 		this.brdfile = brdfile;
 		this.brdfilename = brdfilename;
-		this.brdthumbfile = brdthumbfile;
+		this.brdvideo = brdvideo;
+		this.brdvideoname = brdvideoname;
 		this.brdcontent = brdcontent;
 		this.brdcount = brdcount;
 		this.brddate = brddate;
 		this.brdprivate = brdprivate;
+		this.comcount = comcount;
 		this.carmapchk = carmapchk;
 		this.memno = memno;
 		this.memnick = memnick;
@@ -49,9 +55,6 @@ public class boardDto {
 		this.maplatitude = maplatitude;
 		this.maplongtitude = maplongtitude;
 	}
-
-
-
 
 
 	public int getBrdno() {
@@ -104,13 +107,23 @@ public class boardDto {
 	}
 
 
-	public String getBrdthumbfile() {
-		return brdthumbfile;
+	public MultipartFile getBrdvideo() {
+		return brdvideo;
 	}
 
 
-	public void setBrdthumbfile(String brdthumbfile) {
-		this.brdthumbfile = brdthumbfile;
+	public void setBrdvideo(MultipartFile brdvideo) {
+		this.brdvideo = brdvideo;
+	}
+
+
+	public String getBrdvideoname() {
+		return brdvideoname;
+	}
+
+
+	public void setBrdvideoname(String brdvideoname) {
+		this.brdvideoname = brdvideoname;
 	}
 
 
@@ -151,6 +164,16 @@ public class boardDto {
 
 	public void setBrdprivate(String brdprivate) {
 		this.brdprivate = brdprivate;
+	}
+
+
+	public int getComcount() {
+		return comcount;
+	}
+
+
+	public void setComcount(int comcount) {
+		this.comcount = comcount;
 	}
 
 
@@ -213,6 +236,17 @@ public class boardDto {
 		this.maplongtitude = maplongtitude;
 	}
 
-	
+
+	@Override
+	public String toString() {
+		return "boardDto [brdno=" + brdno + ", bcategoryno=" + bcategoryno + ", brdwriter=" + brdwriter + ", brdfile="
+				+ brdfile + ", brdfilename=" + brdfilename + ", brdvideo=" + brdvideo + ", brdvideoname=" + brdvideoname
+				+ ", brdcontent=" + brdcontent + ", brdcount=" + brdcount + ", brddate=" + brddate + ", brdprivate="
+				+ brdprivate + ", comcount=" + comcount + ", carmapchk=" + carmapchk + ", memno=" + memno + ", memnick="
+				+ memnick + ", mapname=" + mapname + ", maplatitude=" + maplatitude + ", maplongtitude=" + maplongtitude
+				+ "]";
+	}
+
+
 	
 }

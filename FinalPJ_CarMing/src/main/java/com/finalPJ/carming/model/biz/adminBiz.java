@@ -8,8 +8,6 @@ import com.finalPJ.carming.model.dto.AdmRentDto;
 
 
 public interface adminBiz {
-	public int insertList(ArrayList<AdmMemberDto> list);
-	public AdmMemberDto selectOne(int memNo);
 	public int delete(int memNo);
 	public List<AdmRentDto> RentList();
 	public AdmRentDto selectOneRent(int cartNo);

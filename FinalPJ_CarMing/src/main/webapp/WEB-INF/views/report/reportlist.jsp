@@ -51,7 +51,7 @@
 	.gaadiex-list-item-text a{color: gray;}
 	.gaadiex-list-item-text a:hover{color: #ffba00; color: gray;}
 	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: #5f5f5f;}
-	.list-item-text-ck:hover{border-radius: 2px; background: rgba(136, 126, 126, 0.1); transition: 0.2s;}
+	.list-item-text-ck:hover{border-radius: 2px; background: #fff5e9; transition: 0.2s;}
 </style>
 
 
@@ -134,7 +134,7 @@ function myFunction() {
 				<c:forEach var = "list" items="${list }">
 				<div class="gaadiex-list-item">
 					<div class="gaadiex-list-item-img">
-						<img class="gaadiex-item-img" src="resources/img/profile.png" alt="List user"><%-- ${list.reportFileName } --%>
+						<img class="gaadiex-item-img" src=${list.memFile } alt="List user"><%-- ${list.reportFileName } --%>
 					</div>
 					<div class="gaadiex-list-item-text">
 						<h4><a href="profileform.do?memno=${list.memNo }">제보자 닉네임&nbsp;&#124;&nbsp;${list.reportWriter}</a></h4>

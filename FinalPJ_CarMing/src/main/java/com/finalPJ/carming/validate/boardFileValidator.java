@@ -15,13 +15,13 @@ public class boardFileValidator implements Validator{
 	}
 
 	@Override
-	public void validate(Object target, Errors errors) {
+	public void validate(Object target, Errors errors) {	//이미지 유무 확인
 		boardDto file = (boardDto)target;
-//		if(file.getBrdfile().getSize() == 0) {
-//			errors.rejectValue("reportFile", "fileNPE", "Please select a file");
-//			
-//			
-//		}
+		if(file.getBrdfile().getSize() == 0) {
+			errors.rejectValue("reportFile", "fileNPE", "Please select a file");
+			
+			
+		}
 		
 	}
 

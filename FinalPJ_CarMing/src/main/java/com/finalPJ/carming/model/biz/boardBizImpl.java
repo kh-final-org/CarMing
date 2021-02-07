@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.finalPJ.carming.model.dao.boardDao;
+import com.finalPJ.carming.model.dto.MemberDto;
 import com.finalPJ.carming.model.dto.boardDto;
 
 @Service
@@ -33,23 +34,26 @@ public class boardBizImpl implements boardBiz{
 		return dao.selectOne(brdno);
 	}
 
-	//03. 게시글(사진) 작성
-
+	//03. 게시글(사진) 추가
+	@Transactional
 	@Override
 	public int insert(boardDto dto) {
-		return dao.insert(dto);
+		dao.insertBRD(dto);
+		return dao.insertMAP(dto);
 	}
 
-	//04. 게시글 수정
+	//04. 게시글(사진) 수정
 	@Override
 	public int update(boardDto dto) {
 		return dao.update(dto);
 	}
 
 	//05. 게시글 삭제
+	@Transactional
 	@Override
 	public int delete(int brdno) {
-		return dao.delete(brdno);
+		dao.delete(brdno);
+		return dao.deleteRep(brdno);
 	}
 
 	//06. 게시글 조회수
@@ -62,6 +66,23 @@ public class boardBizImpl implements boardBiz{
 	public List<boardDto> userBoardList(int memno) {
 		return dao.userBoardList(memno);
 	}
+	
+	//08. 사용자 프로필, 사용자 정보
+	@Override
+	public MemberDto profilemem(int memno) {
+		return dao.profilemem(memno);
+	}
+
+	//09. 게시글(영상) 추가
+	@Transactional
+	@Override
+	public int insert_v(boardDto dto) {
+		 dao.insertBRD_v(dto);
+		 return dao.insertMAP_v(dto);
+	}
+
+
+
 
 	
 	

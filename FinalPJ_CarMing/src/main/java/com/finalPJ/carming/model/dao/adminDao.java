@@ -13,6 +13,7 @@ public interface adminDao {
 	public AdmMemberDto selectOne(int memNo);
 	public int insert(AdmMemberDto dto);
 	public int delete(int memNo);
+	public int deleteRep(int memNo);
 	public int deleteList(int memNo);
 	public List<AdmRentDto> RentList();
 	public AdmRentDto selectOneRent(int cartNo);

@@ -41,22 +41,23 @@ $(document).ready(function(){
 	mempw_input.keyup(function(){
 		if(check(pass_regul, mempw_input)){
 			$('#mempw_error').hide();
+			//실시간 비밀번호 확인 검사
+			mempwchk_input.keyup(function(){
+				if(mempw_input.val() != mempwchk_input.val()){
+					$('#mempwchk_error').show();
+					regist_chk = false;
+				}else{
+					$('#mempwchk_error').hide();
+					regist_chk = true;
+				}
+			});
 		}else{
 			$('#mempw_error').show();
 			$('#mempwchk_error').show();
 		}
 	});
 	
-	//실시간 비밀번호 확인 검사
-	mempwchk_input.keyup(function(){
-		if(mempw_input.val() != mempwchk_input.val()){
-			$('#mempwchk_error').show();
-			regist_chk = false;
-		}else{
-			$('#mempwchk_error').hide();
-			regist_chk = true;
-		}
-	});
+	
 	
 	//실시간 이름 형식 검사
 	memname_input.keyup(function(){
@@ -100,7 +101,7 @@ function regist_empty() {
 			$('input[name=memgender]:checked').val()==null){
 		
 		regist_chk = false;
-		alert("가입항목을 제대로 입력해주세요");
+		alert("필수 항목을 모두 기입해주세요.");
 	}
 	
 	return regist_chk;
@@ -157,7 +158,7 @@ function sample6_execDaumPostcode() {
             }
             
             addr += extraAddr;
-                          
+     
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             $('input[name=memzip]').attr('value',data.zonecode);
             $('input[name=memaddr]').attr('value',addr);

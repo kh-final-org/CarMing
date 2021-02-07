@@ -62,6 +62,19 @@ public class InquiryDaoImpl implements InquiryDao{
 		 
 		return res;
 	}
+
+	@Override
+	public int deleteInquiry(int inquiryNo) {
+		int res = 0;
+		 
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete",inquiryNo);
+		} catch (Exception e) {
+			System.out.println("[error]: delete");
+			e.printStackTrace();
+		}
+		return res;
+	}
 	
 
 

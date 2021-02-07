@@ -34,20 +34,17 @@
 	
 	.gaadiex-list-title > h2{float:left; width: 25%; margin-top: 1%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
 	
-	
-	
-	/* 아직 수정 안함*/
 	.table-responsive {margin: 30px 0;}
-	.table-wrapper {min-width: 1000px;background: #fff;padding: 20px 25px;border-radius: 3px;box-shadow: 0 1px 1px rgba(0,0,0,.05);}
-	.table-title {padding-bottom: 15px;background: #299be4;color: #fff;padding: 16px 30px;margin: -20px -25px 10px;border-radius: 3px 3px 0 0;}
-	.table-title h2 {margin: 5px 0 0;font-size: 24px;}
-	.table-title .btn {color: #566787;float: right;font-size: 13px;background: #fff;border: none;min-width: 50px;
-					   border-radius: 2px;border: none;outline: none !important;margin-left: 10px;}
-	.table-title .btn:hover, .table-title .btn:focus {color: #566787;background: #f2f2f2;}
-	.table-title .btn i {float: left;font-size: 21px;margin-right: 5px;}
+	.table-wrapper {min-width: 1000px; background: #fff; padding: 20px 25px; border-radius: 3px; box-shadow: 0 1px 1px rgba(0,0,0,.05);}
+	.table-title {padding-bottom: 15px; background: #299be4; color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;}
+	.table-title h2 {margin: 5px 0 0; font-size: 24px;}
+	.table-title .btn {color: #566787; float: right; font-size: 13px; background: #fff; border: none; min-width: 50px;
+					   border-radius: 2px; border: none; outline: none !important;margin-left: 10px;}
+	.table-title .btn:hover, .table-title .btn:focus {color: #566787; background: #f2f2f2;}
+	.table-title .btn i {float: left;font-size: 21px; margin-right: 5px;}
 	.table-title .btn span {float: left;margin-top: 2px;}
-	table.table tr th, table.table tr td {border-color: #e9e9e9;padding: 12px 15px;vertical-align: middle;}
-	table.table tr th:first-child {width: 60px;}
+	table.table tr th, table.table tr td {border-color: #e9e9e9; padding: 12px 15px; vertical-align: middle;}
+	table.table tr th:first-child {width: 60px;} 
 	table.table tr th:last-child {width: 100px;}
 	table.table-striped tbody tr:nth-of-type(odd) {background-color: #fcfcfc;}
 	table.table-striped.table-hover tbody tr:hover {background: #f5f5f5;}
@@ -56,22 +53,20 @@
 	table.table-striped.table-hover thead tr th{text-align: center;}
 	
 	table.table th i {font-size: 13px;margin: 0 5px;cursor: pointer;}	
-	table.table td:last-child i {opacity: 0.9;font-size: 22px;margin: 0 5px;}
-	table.table td a {font-weight: bold;color: #566787;display: inline-block;text-decoration: none;}
-	table.table td a:hover {color: #2196F3;}
-	table.table td a.settings {color: #2196F3;}
-	table.table td a.delete {color: #F44336;}
+	table.table td:last-child i {opacity: 0.9; font-size: 22px; margin: 0 5px;}
+	table.table td a {font-weight: bold;color: #566787; display: inline-block; text-decoration: none;}
+	table.table td a:hover {color: #2196f3;}
+	table.table td a.settings {color: #2196f3;}
+	table.table td a.delete {color: #f44336;}
 	table.table td i {font-size: 19px;}
-	table.table .avatar {border-radius: 50%;vertical-align: middle;margin-right: 10px; }
-	.avatar {width: 5em;height: 5em;}
-	.status {font-size: 30px;margin: 2px 2px 0 0;display: inline-block;vertical-align: middle;line-height: 10px;}
+	table.table .avatar {border-radius: 50%; vertical-align: middle; margin-right: 10px; }
+	.avatar {width: 5em; height: 5em;}
+	.status {font-size: 30px; margin: 2px 2px 0 0; display: inline-block; vertical-align: middle; line-height: 10px;}
 	.text-success {color: #10c469;}
 	.text-info {color: #62c9e8;}
 	.text-warning {color: #FFC107;}
 	.text-danger {color: #ff5b5b;}
-	.hint-text {float: left;margin-top: 10px;font-size: 13px;}
-		
-	
+	.hint-text {float: left; margin-top: 10px; font-size: 13px;}
 </style>
 
 
@@ -147,16 +142,16 @@ function formAction() {
 	
 		<div class="table-responsive">
 			<table id="memlist_tb" class="table table-striped table-hover">
-				<col style="width: 5%">
+				<col style="width: 3%">
 				<col style="width: 10%">
-				<col style="width: 7%">
-				<col style="width: 8%">
+				<col style="width: 7.5%">
+				<col style="width: 7.5%">
+				<col style="width: 15%">
+				<col style="width: 15%">
 				<col style="width: 20%">
 				<col style="width: 15%">
-				<col style="width: 15%">
-				<col style="width: 5%">
 				<col style="width: 10%">
-				<col style="width: 5%">
+				<col style="width: 10%">
 				<thead>
 					<tr>
 						<th>NO.</th>
@@ -165,10 +160,10 @@ function formAction() {
 						<th>닉네임</th>
 						<th>생년월일</th>
 						<th>이메일</th>
+						<th>주소</th>
 						<th>핸드폰</th>
 						<th>성별</th>
 						<th>회원삭제</th>
-						<th></th>
 					</tr>
 				</thead>
 				<c:forEach var="list" items="${list }">
@@ -177,8 +172,8 @@ function formAction() {
 						<td class="memNo">${list.memNo}</td>
 
 						<td>
-							<a href="memdetail.do?memNo=${list.memNo }">
-								<img src="resources/img/profile.png" class="avatar"alt="Avatar">
+							<a href="profileform.do?memno=${list.memNo}">
+								<img src="${list.memFile }" class="avatar"alt="Avatar">
 							</a>
 						</td>
 						<td>
@@ -192,7 +187,8 @@ function formAction() {
 						<td>
 						<c:out value="${dateTempParse }" /> 
  						</td> --%>
-						<td>${list.memBirth}</td>
+						<td><fmt:formatDate pattern = "yyyy-MM-dd" 
+         						value = "${list.memBirth}"/></td>
 						<td>${list.memId}</td>
 
 						<%-- <td><fmt:formatDate pattern = "yyyy-MM-dd" 
@@ -203,8 +199,8 @@ function formAction() {
 						<td><c:set var="gen" value="${list.memGender }" />
 
 								<c:choose>
-									<c:when test="${gen == 1 }">여</c:when>
-									<c:when test="${gen == 2 }">남</c:when>
+									<c:when test="${gen == 2 }">여</c:when>
+									<c:when test="${gen == 1 }">남</c:when>
 								</c:choose> <!--    <td><span class="status text-success">&bull;</span> Active</td> -->
 						</td>
 						<td><a href="deletemem.do?memNo=${list.memNo}" class="delete" title="Delete"

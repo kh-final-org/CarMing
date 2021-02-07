@@ -19,6 +19,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 			throws Exception {
 		logger.info("[interceptor]: preHandle");
 		
+		
+		
 		//로그인이 필요없는 기능들을 조건에 추가바람
 		if(		request.getRequestURI().contains("/loginform.do") ||
 				request.getRequestURI().contains("/home.do") ||
@@ -27,7 +29,10 @@ public class LoginInterceptor implements HandlerInterceptor {
 				request.getRequestURI().contains("/registerform.do") ||
 				request.getRequestURI().contains("/registerform2.do") ||
 				request.getRequestURI().contains("/regist.do") ||
-				request.getRequestURI().contains("/ajaxlogin.do")){
+
+				request.getRequestURI().contains("/ajaxlogin.do") ||
+				request.getRequestURI().contains("/maincamplace.do") ||
+				request.getRequestURI().contains("/detailcamplace.do")){
 
 			return true;
 		}

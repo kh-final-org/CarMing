@@ -10,10 +10,12 @@ public class bcommentDto {
 	private String comcontext;	//댓글 내용
 	private Date comdate;		//댓글 작성 날짜
 	private int brdno; 			//캠핑토크 게시글 번호
+
 	
 	public bcommentDto() {
 		super();
 	}
+
 
 	public bcommentDto(int memno, int comno, String comwriter, String comcontext, Date comdate, int brdno) {
 		super();
@@ -25,53 +27,66 @@ public class bcommentDto {
 		this.brdno = brdno;
 	}
 
+
 	public int getMemno() {
 		return memno;
 	}
+
 
 	public void setMemno(int memno) {
 		this.memno = memno;
 	}
 
+
 	public int getComno() {
 		return comno;
 	}
+
 
 	public void setComno(int comno) {
 		this.comno = comno;
 	}
 
+
 	public String getComwriter() {
 		return comwriter;
 	}
+
 
 	public void setComwriter(String comwriter) {
 		this.comwriter = comwriter;
 	}
 
+
 	public String getComcontext() {
 		return comcontext;
 	}
+
 
 	public void setComcontext(String comcontext) {
 		this.comcontext = comcontext;
 	}
 
+
 	public Date getComdate() {
 		return comdate;
 	}
+
 
 	public void setComdate(Date comdate) {
 		this.comdate = comdate;
 	}
 
+
 	public int getBrdno() {
 		return brdno;
 	}
 
+
 	public void setBrdno(int brdno) {
 		this.brdno = brdno;
 	}
+
 
 	@Override
 	public String toString() {

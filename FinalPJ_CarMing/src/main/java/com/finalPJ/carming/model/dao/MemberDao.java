@@ -11,4 +11,5 @@ public interface MemberDao {
 	public MemberDto selectOne(String id);
 	public int update(MemberDto dto);
 	public int deleteUser(String memid);
+	public int pwchange(MemberDto dto);
 }

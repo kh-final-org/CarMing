@@ -18,21 +18,11 @@ public class adminBizImpl implements adminBiz{
 	@Autowired
 	private adminDao dao;
 
-	@Override
-	public int insertList(ArrayList<AdmMemberDto> list) {
-		return 0;
-	}
-
-	@Override
-	public AdmMemberDto selectOne(int inquiryNo) {
-		return null;
-	}
-
-	
 	@Transactional
 	@Override
 	public int delete(int memNo) {
-		return dao.delete(memNo);
+		dao.delete(memNo);
+		return dao.deleteRep(memNo);
 	}
 
 	@Override

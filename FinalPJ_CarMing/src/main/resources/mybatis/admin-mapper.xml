@@ -12,6 +12,12 @@
 		WHERE MEMNO=#{memNo}
 	</delete>
 	
+	 <delete id="deleteRep" parameterType="int">
+  		DELETE REPORTLIST 
+		WHERE TARGETNO=#{memNo} AND TARGETTYPENO =3
+  	</delete>
+	
+	
 	<select id="selectRent" resultType="admRentDto">
 		SELECT
 		C.*,
@@ -35,10 +41,12 @@
 		JOIN PAY PY
 		ON C.CARTNO = PY.CARTNO
 	</select>
+	
 	<select id="selectOneRent" parameterType="int" resultType="admRentDto">
 		SELECT
 		C.*,
 		M.MEMNICK,
+		M.MEMFILE,
 		RS.STATENAME,
 		P.PNAME,
 		PC.PCATEGORYNAME,
@@ -79,6 +87,7 @@
 		(SELECT ROWNUM AS RNUM, MEM.* 
 		FROM (SELECT * FROM MEMBER WHERE MEMNICK LIKE '%' ||  #{search} || '%' OR MEMNAME LIKE '%' ||  #{search} || '%'
 		ORDER BY MEMNO DESC) MEM)
+		
 		WHERE RNUM BETWEEN 1 + (#{page} -1) * 10 AND #{page} * 10
 	</select>
 	

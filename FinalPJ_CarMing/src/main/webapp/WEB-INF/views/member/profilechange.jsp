@@ -75,7 +75,7 @@ label{
       <div >      
         <p>&nbsp;</p>
          
-        <form  class="form-horizontal" action="profilechange.do" method="post" enctype="multipart/form-data" onsubmit="empty_change();" >
+        <form  class="form-horizontal" action="profilechange.do" method="post" enctype="multipart/form-data" modelAttribute="MemberDto" >
          <div class="form-group">
             <div class="col-sm-2 control-label">
                 <label id="memid">이메일</label>
@@ -94,7 +94,7 @@ label{
             <c:choose>
                 <c:when test="${logintype eq 'naver'}"><p>네이버계정은 비밀번호를 수정하실 수 없습니다.</c:when>
                 <c:otherwise>
-                <input type="button" onclick="" value="비밀번호 수정" class="btn btn-primary" >
+                <input type="button" onclick="location.href='PWchangeform.do'" value="비밀번호 수정" class="btn btn-primary" >
                 </c:otherwise>
                 </c:choose>
          </div>
@@ -193,10 +193,19 @@ label{
                 <label for="memfile">프로필 사진</label>
             </div>
             <div class="col-sm-6">
-                <input type="file" id="memfile" name="mpfile" onchange="setPhoto(event)"/>
-                <div class="select_img"><img id="thumbnail" src="${login.memfile}" /></div>
+                <input type="file" id="photofile" name="photofile" accept="image/*"/>
+                <c:choose>
+                	<c:when test="${not empty login.memfile }">
+                		<div class="select_img"><img id="thumbnail" src="${login.memfile}" /></div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="select_img"><img id="thumbnail" src="" /></div>
+                	</c:otherwise>
+                </c:choose>
+                
             </div>
          </div>
+         
          
           <div class="form-group">
             <div class="col-sm-2 control-label" style="max-width : fit-content">
@@ -240,7 +249,7 @@ label{
 	<script src="resources/js/gmaps.min.js"></script>
 	<script src="resources/js/main.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="resources/js/profilechange.js"></script>
+	<script src="resources/js/profilechange.js?ver=1"></script>
 
 
 </body>

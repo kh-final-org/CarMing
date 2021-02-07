@@ -157,7 +157,7 @@
 	<!-- End Banner Area -->
 
 	<!------ Include the above in your HEAD tag ---------->
-	<form:form action="writereport.do?targetNo=${target.targetNo}&targetTypeNo=${target.targetTypeNo }" 
+	<form:form action="writereport.do?targetNo=${target.targetNo}&targetTypeNo=${target.targetTypeNo}&memNo=${login.memno}" 
 				method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
 	<div class="container-contact">
 		<div class="row">
@@ -211,7 +211,7 @@
 					<div class="form-group-target-category-form">
 						<span class="report-target-category"><strong>신고 유형</strong></span>
 						<div class="report-category-wrap">
-							<select class="col-sm-10" id="categoryno" name="categoryno">
+							<select class="col-sm-10" id="categoryno" name="categoryNo">
 								<option value="1" selected>지나친 광고성 게시물</option>
 								<option value="2">욕설/비방이 심함</option>
 								<option value="3">기타</option>
@@ -235,7 +235,7 @@
 							<img id="img" src="">
 			  			</div>
 						<div class="upload-img-content">
-							<input type="file" class="custom-file-input" id="input_img" name="upfile" accept="image/*">
+							<input type="file" class="custom-file-input" id="input_img" name="reportFile" accept="image/*">
 							<label class="custom-file-label" for="input_img" ></label>
 						</div>
 					</div>
