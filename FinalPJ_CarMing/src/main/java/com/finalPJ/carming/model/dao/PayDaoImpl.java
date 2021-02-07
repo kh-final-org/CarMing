@@ -48,7 +48,7 @@ public class PayDaoImpl implements PayDao{
 			System.out.println("res:"+res);
 			
 		} catch (Exception e) {
-			System.out.println("[ERROR: PAY INSERT]");
+			System.out.println("[ERROR: PAY SEQ]");
 			e.printStackTrace();
 		}
 		return res;

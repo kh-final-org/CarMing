@@ -52,17 +52,17 @@
     <!-- End Banner Area -->
 
     <!--================Checkout Area =================-->
+    <form action="" method="post" id="formId">
     <section class="checkout_area section_gap">
         <div class="container">
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">
                         <h3>배송 정보   <a href="" id="change_addr" style="font-size: 12pt; float: right;">배송지 변경</a></h3>
-                        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                             <div class="col-md-6 form-group p_star">
                                 <label for="">받는 분</label>
                                 <div>
-                                    <input type="text" class="form-control" id="first" name="name" placeholder="이름" value="${login.memname }">
+                                    <input type="text" class="form-control" id="recname" name="recname" placeholder="이름" value="${login.memname }">
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
@@ -74,13 +74,13 @@
                                     <input type="text" class="form-control" id="sample4_postcode" name="name" value="${login.memzip }" placeholder="우편번호" style="width: 35%;"><br>
                                     <input type="text" class="form-control" id="sample4_roadAddress" name="roadaddr" value="${login.memaddr }" placeholder="도로명주소"><br>
                                     <span id="guide" style="color: $999; display: none;"></span>
-                                    <input type="text" class="form-control" id="sample4_detailAddress" value="${login.memaddr}&nbsp;${login.memaddr2 }" placeholder="상세주소"><br>
+                                    <input type="text" class="form-control" id="sample4_detailAddress" name="addr" value="${login.memaddr}&nbsp;${login.memaddr2 }" placeholder="상세주소"><br>
                                 </div>
                             </div>
                             <div class="col-md-6 form-group p_star">
                                 <label for="">휴대전화</label>
                                 <div>
-                                    <input type="text" class="form-control" id="number" name="number" placeholder="휴대전화" value="${login.memphone }">
+                                    <input type="text" class="form-control" id="recphone" name="recphone" placeholder="휴대전화" value="${login.memphone }">
                                 </div>
                             </div>
                             <div class="col-md-12 form-group p_star">
@@ -105,32 +105,31 @@
                                 <div class="col-md-12 form-group p_star">
                                     <label for="">이름</label>
                                     <div>
-                                         <input type="text" class="form-control" id="23" name="compemailany" value="${login.memname }" style="width: 48%;">
+                                         <input type="text" class="form-control" id="ordername" name="ordername" value="${login.memname }" style="width: 48%;">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <label for="">이메일</label>
                                     <div>
-                                        <input type="text" class="form-control" id="12" name="compemailany" value="${login.memid }">
+                                        <input type="text" class="form-control" id="orderemail" name="orderemail" value="${login.memid }">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <label for="">휴대전화</label>
                                     <div>
-                                        <input type="text" class="form-control" id="565" name="compemailany" value="${login.memphone }">
+                                        <input type="text" class="form-control" id="orderphone" name="orderphone" value="${login.memphone }">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <label for="">결제 수단</label>
                                     <div>
-                                        <select class="country_select" id="pay_option">
+                                        <select name="pay_method" class="country_select" id="pay_option">
                                             <option value="method">결제 방법을 선택해주세요.</option>
                                             <option value="inicis">카드</option>
                                             <option value="kakaopay">카카오페이</option>
                                         </select>
                                     </div>
                                 </div>
-                        </form>
                     </div>
                     <div class="col-lg-4">
                         <div class="order_box">
@@ -149,7 +148,7 @@
 									<hr>
 									<c:set var="sum" value="${sum+(cartlistDto.pPrice*cartlistDto.cAmount*(eDate-sDate)) }"/>
 									<li class="licartNo" style="display: hidden;">
-										<input type="hidden" class="cartNo" data-cartNo="${cartlistDto.cartNo }" value="${cartlistDto.cartNo }">
+										<input type="hidden" class="cartNo" name="cartNo" data-cartNo="${cartlistDto.cartNo }" value="${cartlistDto.cartNo }">
 									</li>
 							</c:forEach>
 							</ul>
@@ -167,15 +166,17 @@
                                 <p>개인정보 제3자 제공 및 결제대행 서비스 표준 이용약관에 동의하겠습니다. <br>본인은 만 14세 이상이고, 위 내용을 확인하였습니다.
                                 </p>
                             </div>
-                            <a class="primary-btn" id="pay_go">결제 진행하기</a>
+                            <!-- <a class="primary-btn" id="pay_go">결제 진행하기</a> -->
+                            <input type="submit" value="결제 진행하기" id="pay_go">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <input type="hidden" id="totalPrice" value="${sum }">
-		<input type="hidden" id="pNo" value="${cartListDto.pNo }">
+        <input type="hidden" name="totalPrice" value="${sum }">
+		<input type="hidden" name="pNo" value="${cartListDto.pNo }">
     </section>
+    </form>
     <!--================End Checkout Area =================-->
 	<%@ include file="../common/footer.jsp" %>
 

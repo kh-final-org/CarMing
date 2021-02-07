@@ -63,4 +63,38 @@ public class CartDaoImpl implements CartDao {
 		return list;
 	}
 
+	@Override
+	public int countProduct(int payNo) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"countproduct", payNo);
+		} catch (Exception e) {
+			System.out.println("[ERROR: COUNT PRODUCT]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	@Override
+	public String pName(int payNo) {
+		String res = null;
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"pname", payNo);
+		} catch (Exception e) {
+			System.out.println("[ERROR: SELECT PNAME]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public void updateCart(int cartNo) {
+		try {
+			sqlSession.update(NAMESPACE+"changestate", cartNo);
+		} catch (Exception e) {
+			System.out.println("[ERROR: UPDATE STATENO]");
+			e.printStackTrace();
+		}
+	}
+
 }

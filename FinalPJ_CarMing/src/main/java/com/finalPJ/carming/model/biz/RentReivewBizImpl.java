@@ -18,6 +18,11 @@ public class RentReivewBizImpl implements RentReviewBiz{
 	public List<RentReviewDto> selectList() {
 		return dao.selectList();
 	}
+	
+	@Override
+	public List<RentReviewDto> selectList(int pNo) {
+		return dao.selectList(pNo);
+	}
 
 	@Override
 	public int insertReview(RentReviewDto dto) {
@@ -32,6 +37,11 @@ public class RentReivewBizImpl implements RentReviewBiz{
 	@Override
 	public int countReview(RentReviewDto dto) {
 		return dao.countReview(dto);
+	}
+
+	@Override
+	public int countReview(int pNo) {
+		return dao.countReview(pNo);
 	}
 
 }

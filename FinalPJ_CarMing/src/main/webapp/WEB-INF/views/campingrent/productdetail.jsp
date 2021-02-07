@@ -216,7 +216,7 @@ function mark(star){
 													<div class="media">
 														<div class="media-body">
 															<c:if test="${login.memid == rentReviewDtos.reviewWriter || login.memcode == 1}">
-																<a href="deletereview.do?reviewNo=${rentReviewDtos.reviewNo }">
+																<a href="deletereview.do?reviewNo=${rentReviewDtos.reviewNo }&pNo=${productdto.pNo}" id="deletereview">
 																	<img src="resources/img/trash.svg">
 																</a>
 															</c:if>
@@ -270,7 +270,14 @@ function mark(star){
 										<fmt:formatNumber var="reviewAvg" value="${reviewAvg }" pattern="0.0"/>
 											<h5>평균 평점</h5>
 											<h4>${reviewAvg }</h4>
-											<h6>리뷰 갯수 : (${countreview}개) </h6>
+											<c:choose>
+												<c:when test="${empty reviewlist}">
+													<h6>리뷰 갯수 : 0개 </h6>
+												</c:when>
+												<c:otherwise>
+													<h6>리뷰 갯수: ${countreview }개</h6>
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 									<div class="col-6">
