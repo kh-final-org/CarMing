@@ -110,9 +110,16 @@ function mark(star){
 									<c:when test="${productdto.pCategoryNo == 4}"><li><a class="active"><span>카테고리</span> : 텐트 / 체어 / 테이블</a></li></c:when>
 									<c:when test="${productdto.pCategoryNo == 5}"><li><a class="active"><span>카테고리</span> : 화로대 / BBQ</a></li></c:when>
 								</c:choose>
-								<li>
-									<span>재고: ${productdto.pAmount }</span>
-								</li>
+								<c:if test="${productdto.pAmount != 0}">
+									<li>
+										<span>재고: ${productdto.pAmount }</span>
+									</li>
+								</c:if>
+								<c:if test="${productdto.pAmount == 0}">
+									<li>
+										<span>상품 재고가 없습니다.</span>
+									</li>
+								</c:if>
 								<li>
 									<span>렌트시작일: </span><input type="date" name="startDate" id="startDate">
 								</li>
@@ -122,15 +129,22 @@ function mark(star){
 							</ul>
 							<div class="product_count">
 								<label for="qty">수량:</label>
-								<input type="text" name="cAmount" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-								<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+								<input type="number" name="cAmount" id="sst" max="${productdto.pAmount}" value="1" title="Quantity:" class="input-text qty">
+								<!-- <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 								 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
 								<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-								 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+								 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button> -->
 							</div>
 							<div class="card_area d-flex align-items-center">
-								<a class="primary-btn" id="insertCart_btn">장바구니에 담기</a>
+								<c:if test="${productdto.pAmount != 0}">
+									<button type="button" class="primary-btn" id="insertCart_btn">장바구니에 담기</button>
+								</c:if>
+								<c:if test="${productdto.pAmount == 0}">
+							<!-- 		<button type="button" class="primary-btn" id="insertCart_btn" disabled>품절</button> -->
+									<span class="primary-btn">품절</span>
+								</c:if>
 								<a class="primary-btn" href="productlist.do">목록</a>
+								
 							</div>
 						</div>
 					</div>
