@@ -77,3 +77,7 @@ WHERE MEMNO = 2;
 
 update MEMBER SET MEMFILE = 'resources/img/logo.png' where MEMID = 'dbqud1gh@naver.com'
 
+SELECT MAPNAME, MAPLATITUDE, MAPLONGTITUDE
+FROM MAPLOCATION
+WHERE MEMNO = 4 and CARMAPCHK = 'Y'
+

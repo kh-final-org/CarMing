@@ -1,8 +1,20 @@
 //가입항목 확인용 변수
 var regist_chk = true;
 
+//이메일 인증보내기전 확인
+var email_check = false;
+
+//인증확인용 변수
+var certnum_check = false;
+
+//인증번호
+var cumkey;
+
 $(document).ready(function(){
 	
+	//인증번호창 버튼 누르기전 숨김
+	$('input[name=certnum]').hide();
+	$('#certbutton').hide();
 	
 	var memid_input = $('input[name=memid]');
 	var mempw_input = $('input[name=mempw]');
@@ -32,8 +44,10 @@ $(document).ready(function(){
 	memid_input.keyup(function(){
 		if(check(email_regul, memid_input)){
 			$('#memid_error').hide();
+			email_check = true;
 		}else{
 			$('#memid_error').show();
+			email_check = false;
 		}
 	});
 	
@@ -71,7 +85,9 @@ $(document).ready(function(){
 	
 	//네이버에서 가져온 정보라면 기본 체크를 true로 지정
 	if(memid_input.prop("readonly")){
+		certnum_check = true;
 		regist_chk = true;
+		$('#sendmail').attr('disabled', true);
 	}
 
 	
@@ -79,6 +95,10 @@ $(document).ready(function(){
 
 //가입항목에 빈칸인 칸이 있으면 경고창을 띄우고 해당 칸에 에러를 보여준뒤 false 리턴
 function regist_empty() {
+	
+	var email_regul = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	var pass_regul = /^(?=.*[0-9])(?=.*[a-zA-Z]).{6,13}$/;
+	var name_regul = /^[가-힝a-zA-Z]{2,}$/;
 	
 	var memid_input = $('input[name=memid]');
 	var mempw_input = $('input[name=mempw]');
@@ -89,6 +109,13 @@ function regist_empty() {
 	var memphone_input = $('input[name=memphone]');
 	var membirth_input = $('input[name=membirth]');
 	//로드 문제 때문에 성별 값은 미리 집어넣는걸로
+	
+	if(!certnum_check){
+		alert("메일인증이 완료되지 않았습니다.");
+		regist_chk = false;
+	}else{
+		regist_chk = true;
+	}
 	
 	if(
 			memid_input.val().trim()=="" || 
@@ -103,6 +130,17 @@ function regist_empty() {
 		regist_chk = false;
 		alert("가입항목을 제대로 입력해주세요");
 	}
+	
+	if(	check(name_regul, memname_input) &&
+		check(email_regul, memid_input) &&
+		check(pass_regul, mempw_input) &&
+		(mempw_input.val()==mempwchk_input.val())	
+	){	
+	}else{
+		regist_chk = false;
+		alert("가입항목을 제대로 입력해주세요")
+	}
+		
 	
 	return regist_chk;
 }; // end submit()
@@ -119,6 +157,60 @@ function check(regul, content){
     }
 }
 
+//이메일 인증
+function sendMail(){
+	var certnum_input = $('input[name=certnum');
+	var mail = $('input[name=memid]').val();
+	
+	
+	if(email_check){
+		
+		$.ajax({
+			type : 'post',
+			url : 'CheckMail.do',
+			data : {
+				mail:mail
+				},
+			dataType :'json',
+			success:function(msg){
+				alert("인증번호가 전송되었습니다.");
+				certnum_input.show();
+				$('#certbutton').show();
+				cumkey = msg.cumkey;
+			},
+			error:function(){
+				console.error("이메일 인증 아약스 통신관련 오류");
+				alert("이메일 정보가 잘 못 되었습니다.");
+			}
+		});
+		
+	}else{
+		alert("이메일을 제대로 입력해주세요.")
+	}
+	
+}
+
+//인증확인
+function certcf(){
+	
+	var certnum_input = $('input[name=certnum');
+	
+	console.log(cumkey);
+	
+	if(certnum_input.val()==cumkey){
+		alert("인증이 성공하였습니다.");
+		certnum_input.hide();
+		$('#certbutton').hide();
+		$('#certnum_good').show();
+		$('#sendmail').attr('disabled', true);
+		certnum_check = true;
+		
+	}else{
+		alert("인증번호가 틀렸습니다!");
+		certnum_check = false;
+	}
+	
+}
 
 
 //다음api 주소팝업창

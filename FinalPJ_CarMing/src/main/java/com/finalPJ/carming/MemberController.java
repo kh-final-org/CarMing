@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +25,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,6 +64,9 @@ public class MemberController {
 	
 	@Autowired
 	private NaverLoginBO naverLoginBO;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	private String apiResult = null;
 	
@@ -230,7 +238,7 @@ public class MemberController {
 		
 		logger.info("[profileChange]");
 		
-		String name = "profileimg_"+dto.getMemname()+".png";
+		String name = "profileimg_user"+dto.getMemno()+".png";
 		
 		
 		
@@ -240,6 +248,8 @@ public class MemberController {
 		System.out.println("=================");
 		System.out.println(filename);
 		System.out.println("=================");
+		
+
 		
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
@@ -271,10 +281,10 @@ public class MemberController {
 			
 			//경로명과 이름으로 db에 저장
 			dto.setMemfile("resources/img/profileimg/"+name);
-			
+			System.out.println(name);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("파일 저장 에러");
 			e.printStackTrace();
 		}finally {
 			try {
@@ -286,8 +296,9 @@ public class MemberController {
 			}
 			
 		}
-		
-		
+		System.out.println("---------------------");
+		System.out.println(dto.getMemchk());
+		System.out.println(dto.getMemfile());
 		
 		if(dto.getMemchk() == null || dto.getMemchk() == "") {
 			dto.setMemchk("N");
@@ -399,6 +410,32 @@ public class MemberController {
 			}
 		} 
 	}
+	
+	@RequestMapping("/CheckMail.do") // AJAX와 URL을 매핑시켜줌 
+	@ResponseBody 
+	public Map<String, String> SendMail(String mail) {
+			Random random=new Random();  //난수 생성을 위한 랜덤 클래스
+			String key="";  //인증번호 
+
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setTo(mail); //스크립트에서 보낸 메일을 받을 사용자 이메일 주소 
+			//입력 키를 위한 코드
+			for(int i =0; i<3;i++) {
+				int index=random.nextInt(25)+65; //A~Z까지 랜덤 알파벳 생성
+				key+=(char)index;
+			}
+			int numIndex=random.nextInt(9999)+1000; //4자리 랜덤 정수를 생성
+			key+=numIndex;
+			message.setSubject("Carming 회원가입을 위한 인증번호 안내메일입니다.");
+			message.setText("인증 번호 : "+key);
+			mailSender.send(message);
+			
+			Map<String, String> map = new HashMap<String,String>();
+			map.put("cumkey",key);
+			
+			return map;
+	}
+	 
 	
 
 }

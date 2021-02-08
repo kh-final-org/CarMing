@@ -52,6 +52,7 @@ public class mapLocationDaoImpl implements mapLocationDao{
 	public List<mapLocationDto> locationlist(int memno) {
 		List<mapLocationDto> list = new ArrayList<mapLocationDto>();
 		
+		System.out.println("다오");
 		 try {
 			list = sqlSession.selectList(NAMESPACE+"locationlist", memno);
 		} catch (Exception e) {
@@ -59,6 +60,9 @@ public class mapLocationDaoImpl implements mapLocationDao{
 			System.out.println("[error : mapLocation_locationlist]");
 			e.printStackTrace();
 		}
+		
+		 System.out.println(list.isEmpty());
+		 
 		return list;
 	}
 	

@@ -1,5 +1,6 @@
 package com.finalPJ.carming;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class CamplaceController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
+	@Autowired
 	private mapLocationBiz mapbiz;
 	
 	@Autowired
@@ -44,35 +46,31 @@ public class CamplaceController {
 		return "camplace/detailcamplace";
 	}
 	
-//	@RequestMapping(value="/ajaxlocation.do", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String ajaxlocation(@RequestBody int memno){
-//
-//		logger.info("[ajaxlocation]");
-//		
-//		List<mapLocationDto> mapdto = mapbiz.locationlist(memno);
-//		
-//		
-//		if(res!=null) {
-//			if(passwordEncoder.matches(dto.getMempw(), res.getMempw())) {
-//				session.setAttribute("login", res);
-//				session.setAttribute("logintype", "normal");
-//				check=true;
-//			}
-//			
-//			
-//			System.out.println("---------------------확인");
-//			System.out.println(res.getMemno());
-//			System.out.println(res.getMemid());
-//			System.out.println(res.getMempw());
-//			System.out.println(res.getMembirth());
-//			System.out.println("-----------------------");
-//		}
-//		
-//
-//		Map<String, Boolean> map = new HashMap<String,Boolean>();
-//		map.put("check", check);
-//		 
-//		return map;
-//	}
+	@RequestMapping(value="/ajaxlocation.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> ajaxlocation(@RequestBody int memno){
+
+		logger.info("[ajaxlocation]");
+
+		
+		System.out.println(memno);
+		List<mapLocationDto> mapdto = mapbiz.locationlist(memno);
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(mapdto!=null) {
+		
+			for(mapLocationDto dto : mapdto) {
+				List<Double> maploc = new ArrayList<Double>();
+				double lat = Double.parseDouble(String.format("%.6f", Double.parseDouble(dto.getMaplatitude())));
+				double longt = Double.parseDouble(String.format("%.6f", Double.parseDouble(dto.getMaplongtitude())));
+				maploc.add(lat);
+				maploc.add(longt);
+				
+				map.put(dto.getMapname(), maploc);
+			}
+		}
+
+		 
+		return map;
+	}
 }
