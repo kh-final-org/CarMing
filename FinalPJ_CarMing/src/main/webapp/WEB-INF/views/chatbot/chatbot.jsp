@@ -52,12 +52,14 @@ body {
 <!-- Session에 값이 있으면  / 값이 없으면
 	챗봇 기능 사용 가능 / 로그인해야 한다고만 띄우기.
  -->	
+
 <c:set var="no" value= "${login.getMemno() }" />
 
-<script>
-	var memno = ${no};
-</script>
-
+<c:if test="${not empty no}">
+	<script>
+		var memno = ${no};
+	</script>
+</c:if>
 
 
 <!-- ChatBot -->

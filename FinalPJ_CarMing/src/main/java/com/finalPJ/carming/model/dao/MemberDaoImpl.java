@@ -55,6 +55,20 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return res;
 	}
+	
+	@Override
+	public MemberDto selectNo(int memno) {
+		MemberDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectNo", memno);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("[error] : Member/SelectNo");
+			e.printStackTrace();
+		}
+		return res;
+	}
 
 	@Override
 	public int update(MemberDto dto) {

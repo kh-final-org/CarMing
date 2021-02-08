@@ -17,6 +17,12 @@
 		WHERE MEMID = #{id}
 	</select>
 	
+	<select id="selectNo" parameterType="int" resultType="MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMNO = #{memno}
+	</select>
+	
 	<insert id="insert" parameterType="MemberDto">
 		INSERT INTO MEMBER(MEMNO, MEMNICK, MEMID, MEMPW, MEMNAME, MEMZIP, MEMADDR, MEMADDR2, MEMPHONE, MEMBIRTH, MEMGENDER, MEMCHK) 
 		VALUES(MEMSEQ.NEXTVAL, #{memnick}, #{memid}, #{mempw}, #{memname}, #{memzip}, #{memaddr}, #{memaddr2}, #{memphone}, #{membirth}, #{memgender}, #{memchk})

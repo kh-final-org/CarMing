@@ -126,10 +126,10 @@ function profileCard(friend) {
 	
 // 친구 프로필 페이지로 이동!
 function friendProfile(friendNo) {
-	alert(friendNo + "번 친구의 페이지로 이동합니다.");
-	
 	// 유저페이지.jsp로 이동할 때 (친구번호)를 매개변수로 넘겨주자.
-	// redirect
+	// 예시) <a href="profileform.do?memno=${list.memNo}">
+	window.location.href = "profileform.do?memno="+friendNo;
+	
 }
 
 
