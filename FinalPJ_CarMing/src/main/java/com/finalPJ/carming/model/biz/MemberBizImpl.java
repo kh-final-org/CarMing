@@ -56,8 +56,4 @@ public class MemberBizImpl implements MemberBiz {
 		// TODO Auto-generated method stub
 		return dao.pwchange(dto);
 	}
-	
-	
-
-
 }

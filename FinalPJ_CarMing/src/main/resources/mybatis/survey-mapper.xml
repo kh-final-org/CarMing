@@ -13,7 +13,6 @@
 		<result property="survey5" column="SURVEY5"/>
 	</resultMap>
 	
-	
 
 	<select id="selectList" resultMap="surveyMap">
 		SELECT MEMNO, SURVEY1, SURVEY2, SURVEY3, SURVEY4, SURVEY5
@@ -48,7 +47,7 @@
 		    VALUES (#{memno}, #{survey1}, #{survey2}, #{survey3}, #{survey4}, #{survey5})
     </insert>
     
-    <select id="sameFriendOne" parameterType="surveyDto" resultType="int">
+    <select id="FriendOne" parameterType="surveyDto" resultType="int">
 		SELECT memno
 		FROM ( 
 			SELECT s.memno

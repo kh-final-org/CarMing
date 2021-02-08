@@ -15,9 +15,6 @@ public interface SurveyBiz {
 	// [동성] 설문조사 후 친구 리스트 가져오기.
 	public List<SurveyDto> sameFriendList(SurveyDto dto); 
 	
-	// [이성] 설문조사 후 친구 리스트 가져오기.
-//	public List<SurveyDto> otherFriendList();
-	
-	public int sameFriendOne(SurveyDto dto); 
+	public int FriendOne(SurveyDto dto); 
 	
 }

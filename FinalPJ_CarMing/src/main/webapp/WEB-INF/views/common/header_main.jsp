@@ -163,5 +163,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="resources/js/gmaps.min.js"></script>
 	<script src="resources/js/main.js"></script>
+	
+	<%@include file="../../views/chatbot/chatbot.jsp"%>
 </body>
 </html>

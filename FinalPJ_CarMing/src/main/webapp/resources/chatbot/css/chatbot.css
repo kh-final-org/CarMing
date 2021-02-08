@@ -27,7 +27,7 @@
 	display: none !important;
 }
 .conv-form-wrapper textarea{
-	height: 30px;
+	height: 34px;
 	overflow: hidden;
 	resize: none;
 }
@@ -40,9 +40,9 @@
     content: '';
     position: absolute;
     padding: 20px;
-    width: 290px;
+    width: 330px;
     display: block;
-    height: 40px;
+    height: 80px;
     top: 0;
     left: 0;
     z-index: 2; 
@@ -59,7 +59,49 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.profileImage {
+
+.cardProfile {
+	background: #ffffff;
+	width: 100px;
+	padding: 5px;
+	border:2px solid #ffba00;
+}
+.cardImage {
 	width: 50px;
 	height: 50px;
+	margin-right: 5px;
+	padding: 5px;
+}
+.cardNickname {
+	font-weight: bold;
+	font-size: 10px;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+.cardGender {
+	font-size: 10px;
+	margin-bottom: 0px;
+}
+.cardLink {
+	width: 5rem;
+	font-size: 10px;
+	text-align: center;
+	margin-left: 3.5px;
+	border: none;
+	color: #ffba00;
+	background: #ffffff;
+	border: 1px solid #ffba00;
+}
+.cardLink:hover {
+	color: #ffffff;
+    background: #ffba00;
+    border: 1px solid #ffba00;
+}
+#drag {
+	background: white; 
+	width: 310px;
+}
+.profileOption {
+	border: none;
 }
