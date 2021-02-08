@@ -25,7 +25,7 @@
 
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
 	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
@@ -35,8 +35,8 @@
 	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
 	
 	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin: -16% 0 8% 25%; z-index: 1;}
-	#pingu-qna{width: 80px; height: 100%; margin: -7% 0 7% 30.5%; z-index: 10;}
+	#pingu-img{width: 100px; height: 100%; margin: -16% 0 8% 23%; z-index: 1;}
+	#pingu-qna{width: 80px; height: 100%; margin: -7% 0 7% 29%; z-index: 10;}
 	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
 	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
 	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
@@ -53,6 +53,7 @@
 	.inquiry-category-wrap{float: left; width: 72%; margin-left: 60px;}
 	#categoryno{width:100px;}
 	.current{font-size: 1.1em;}
+   	li.option{width: 450px;}					
 	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
     textarea::placeholder{color: silver; font-size: 1.1em;}
 	#inquiry-text{font-size: 1.2em; margin-bottom: 10px; font-weight: bold;}	
@@ -68,7 +69,6 @@
    						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
 
 </style>
-
 
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -132,8 +132,8 @@
 	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="writereportform.do">신고하기</a>
+	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
 	            </nav>
 	         </div>
 	      </div>
@@ -185,10 +185,10 @@
 				
 					<!-- 카테고리 -->
 					<div class="form-group-category-form">
-						<span class="inquiry-category"><strong>카테고리</strong></span>
+						<span class="inquiry-category"><strong>문의 유형</strong></span>
 						<div class="inquiry-category-wrap">
 							<select class="col-sm-10" id="categoryno" name="categoryNo">
-								<option selected disabled>문의 유형</option>
+								<option value="0" selected disabled>카테고리(필수)</option>
 								<option value="1">상품 및 배송</option>
 								<option value="2">교환 및 반품</option>
 								<option value="3">기타</option>

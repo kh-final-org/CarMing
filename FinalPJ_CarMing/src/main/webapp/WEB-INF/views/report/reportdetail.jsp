@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing | 신고 내용</title>
+<title>CarMing | 신고 상세 페이지</title>
 <!-- Mobile Specific Meta -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
 <link rel="stylesheet">
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
 	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
@@ -34,8 +34,8 @@
 	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
 
 	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin: -13.5% 0 8% 25%; z-index: 1;}
-	#pingu-confirm{width: 55px; height: 100%; margin: -5% 0 16% 37%; z-index: 10;}
+	#pingu-img{width: 100px; height: 100%; margin: -13.5% 0 8% 23%; z-index: 1;}
+	#pingu-confirm{width: 55px; height: 100%; margin: -5% 0 16% 35%; z-index: 10;}
 	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
 	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
 	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
@@ -44,7 +44,8 @@
 	.contact-form{width: 750px; height: 100%;}
 	#user-nickname{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#writerNickname{float: right; width: 450px; margin-right: 10px;}
-	.form-group-report-form{float: left; margin-bottom: 15px; width:100%;}
+	.form-group-report-form{float: left; width:100%;}
+	.form-group-report-form-2{float: left; width:100%; margin-bottom: 5px;}
 	#report-date{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#date{float: right; width: 450px; margin-right: 150px;}	
 	.form-group-category-form{float: left; margin-bottom: 15px; width: 100%;}
@@ -52,6 +53,8 @@
 	.report-category-wrap{float: left; width: 72%; margin-left: 60px;}
 	.report-target-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em;}
 	.form-group-target-category-form{float: left; margin-bottom: 20px; width: 100%;}
+   	.receiver-name{color: #5f5f5f;}				
+   	.receiver-name:hover{color: #5f5f5f;}				
 	#categoryno{ width:100px;}
 	.current{font-size: 1.1em;}
 	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
@@ -67,10 +70,6 @@
    	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
    	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
    						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
-   						
-   	.receiver-name{color: #ff9b00;}				
-   	.receiver-name:hover{color: #ff9b00;}				
-   						
    						
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
@@ -97,8 +96,8 @@
 	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="writeinquiryform.do">문의하기</a>
+	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
 	            </nav>
 	         </div>
 	      </div>
@@ -128,7 +127,7 @@
 				<div class="contact-form">
 					<!-- 제보자 닉네임 -->
 					<div class="form-group-report-form">
-						<label class="control-label col-sm-2"  id="user-nickname" for="writerNickname">제보자 닉네임</label>
+						<label class="control-label col-sm-2" id="user-nickname" for="writerNickname">제보자 닉네임</label>
 						<div class="col-sm-10">
 							<p class="form-control" id="writerNickname">${list.reportWriter }</p>		
 						</div>
@@ -154,15 +153,16 @@
 						</div>
 					</div>
 					
-					<!-- 신고 유형 -->
+					<!-- 카테고리 -->
 					<div class="form-group-report-form">
 						<label class="control-label col-sm-2"  id="user-nickname" for="category">카테고리</label>
 						<div class="col-sm-10">
 							<p class="form-control" id="writerNickname">${list.categoryName }</p>
 						</div>
 					</div>
+					
 					<!-- 신고 유형 -->
-					<div class="form-group-report-form">
+					<div class="form-group-report-form-2">
 						<label class="control-label col-sm-2" id="user-nickname" >신고유형</label>
 						<div class="col-sm-10">
 							<p class="form-control" id="writerNickname">${list.targetTypeName }</p>

@@ -10,7 +10,7 @@ function ajaxlogin(){
 				"mempw":mempw
 		};
 		if(memid==null|| memid=="" ||mempw==null||mempw==""){
-			alert("아이디와 비밀번호를 제대로 입력해주세요.");
+			alert("아이디와 비밀번호를 모두 입력해주세요.");
 		}else{
 			$.ajax({
 				type:"post",
@@ -20,7 +20,7 @@ function ajaxlogin(){
 				dataType : "json",
 				success:function(msg){
 					if(msg.check==true){
-						alert("로그인 성공!");		
+						alert("CarMing에 오신 것을 환영합니다 :)");		
 
 						location.href="home.do";
 					}else{

@@ -12,7 +12,8 @@
 	.container-form{width: 100%;}
 	
 	.categories_post{float: left; width: 50%;}
-
+	
+	div.categories_details{background: transparent; }
 
 </style>
 
@@ -119,8 +120,7 @@ function myFunction() {
 	
 		<div class="container-form">
 			<div class="categories_post">
-				<img src="resources/img/tipandrecipe/fire.jpg"
-					style="width: 200px; height: 150px;" alt="post">
+				<img src="resources/img/white.JPG" style="height: 150px;" alt="post">
 				<div class="categories_details">
 					<div class="categories_text">
 						<a href="recipeCrawling.do">
@@ -133,8 +133,7 @@ function myFunction() {
 			</div>
 		
 			<div class="categories_post">
-				<img src="resources/img/tipandrecipe/honey.jpg"
-					style="width: 200px; height: 150px;" alt="post">
+				<img src="resources/img/white.JPG" style="height: 150px;" alt="post">
 				<div class="categories_details">
 					<div class="categories_text">
 						<a href="TipCrawling.do">
