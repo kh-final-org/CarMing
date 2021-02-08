@@ -197,7 +197,6 @@
     </section>
     </c:otherwise>
     </c:choose>
-    </form>
     <!--================End Cart Area =================-->
 	<%@ include file="../common/footer.jsp" %>
 </body>

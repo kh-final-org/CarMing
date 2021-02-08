@@ -162,6 +162,7 @@ function mark(star){
 		<input type="hidden" name="pPrice" id="pPrice" value="${productdto.pPrice }">
 		<input type="hidden" name="pName" id="pName" value="${productdto.pName }">
 		<input type="hidden" name="pAmount" id="pAmount" value="${productdto.pAmount }">
+		<input type="hidden" name="pCategoryNo" id="pCategoryNo" value="${productdto.pCategoryNo}">
 		<section class="product_description_area">
 			<div class="container">
 				<ul class="nav nav-tabs" id="myTab" role="tablist">

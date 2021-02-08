@@ -176,6 +176,15 @@ function update(brdno){
 	 };
 </script> 
 
+<script>
+	function boardUpdate(brdno){
+		var chk = confirm("게시글을 수정하시겠습니까?")
+		if(chk){
+			location.href='javascript:updateform()';
+		}
+	}
+</script>
+
 
 </head>
 <body>
@@ -243,7 +252,7 @@ function update(brdno){
 			<div class="board-comment-header-2">
 				<c:if test="${login.memnick == dto.brdwriter }">
 					<div class="board-modify" id="updatebutton">
-						<input type="button"  onclick="updateform()" value="수정" id="board-option-btn">
+						<input type="button"  onclick="boardUpdate(${dto.brdno})"  value="수정" id="board-option-btn">
 					</div>
 					<div class="board-delete" >&nbsp;&#124;
 						<input type="button" onclick="boardDel(${dto.brdno})" value="삭제" id="board-option-btn">
