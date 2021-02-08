@@ -228,23 +228,24 @@ function mark(star){
 									</c:otherwise>
 								</c:choose>   
 								<div class="row total_rate" style="text-align: center;">
-									<div class="col-6">
-										<div class="box_total">
-										<c:set var="reviewSum" value="${reviewSum }" />
-										<c:set var="reviewAvg" value="${reviewSum/countreview }"/>
-										<fmt:formatNumber var="reviewAvg" value="${reviewAvg }" pattern="0.0"/>
-											<h5>평균 평점</h5>
-											<h4>${reviewAvg }</h4>
-											<c:choose>
-												<c:when test="${empty reviewlist}">
-													<h6>리뷰 갯수 : 0개 </h6>
-												</c:when>
-												<c:otherwise>
-													<h6>리뷰 갯수: ${countreview }개</h6>
-												</c:otherwise>
-											</c:choose>
+									 	<div class="col-6">
+											<div class="box_total">
+											<c:set var="reviewSum" value="${reviewSum }" />
+											<c:set var="reviewAvg" value="${reviewSum/countreview }"/>
+											<fmt:formatNumber var="reviewAvg" value="${reviewAvg }" pattern="0.0"/>
+											
+												<h5>평균 평점</h5>
+												<h4>${reviewAvg }</h4>
+												<c:choose>
+													<c:when test="${empty reviewlist}">
+														<h6>리뷰 갯수 : 0개 </h6>
+													</c:when>
+													<c:otherwise>
+														<h6>리뷰 갯수: ${countreview }개</h6>
+													</c:otherwise>
+												</c:choose>
+											</div>
 										</div>
-									</div>
 									<!-- <div class="col-6">
 										<div class="rating_list">
 											<h3>별점 갯수</h3>

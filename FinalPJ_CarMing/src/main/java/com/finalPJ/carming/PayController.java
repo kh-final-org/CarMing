@@ -60,7 +60,7 @@ public class PayController {
 	
 
 	@RequestMapping(value="/kakao.do")
-	public String kakao(Model model, CartListDto cdto, PayDto pDto, MemberDto mDto, int payNo, String[] cNoArr) {
+	public String kakao(Model model, CartListDto cdto, PayDto pDto, MemberDto mDto, int payNo, String[] cNoArr /*int cSum*/) {
 		logger.info("[KAKAO PAY]");
 		
 		//파라미터로 넘어온 결제번호 확인
@@ -72,6 +72,7 @@ public class PayController {
 		model.addAttribute("countproduct", cBiz.countProduct(payNo));
 		model.addAttribute("cartListDto", cdto);
 		model.addAttribute("cNoArr", cNoArr);
+//		model.addAttribute("cSum" /*cSum*/);
 		
 		return "campingrent/kakaopay";
 	}
@@ -91,7 +92,8 @@ public class PayController {
 	}
 	
 	@RequestMapping(value="/kakaopay.do", method=RequestMethod.POST)
-	public String kakopay(String pay_method, String addr, String[] cNoArr, int totalPrice, HttpServletRequest request, RedirectAttributes rttr, PayDto pDto, CartDto cDto) {
+	public String kakopay(String pay_method, String addr, String[] cNoArr, int totalPrice,
+			/* int cSum, */ HttpServletRequest request, RedirectAttributes rttr, PayDto pDto, CartDto cDto) {
 		logger.info("[PAY INSERT]");
 		
 		//파라미터 값 확인(잘 넘어왔는지)
@@ -126,6 +128,7 @@ public class PayController {
 		//주문번호, 결제번호 데이터 넘겨주기
 		rttr.addAttribute("payNo", seq);
 		rttr.addAttribute("cNoArr", cNoArr);
+//		rttr.addAttribute("cAmount"/* ,cSum */);
 		
 		return "redirect:/kakao.do";
 	}
@@ -182,12 +185,12 @@ public class PayController {
 	}
 	
 	@RequestMapping(value="/payresult.do")
-	public String payResult(Model model, int totalPrice, String pName, String pay_method, String payDay, int payNo, String[] cNoArr) {
+	public String payResult(Model model, int totalPrice, String pName, String pay_method, String payDay, int payNo, String[] cNoArr /*int cSum*/) {
 		logger.info("[PAY_RESULT PAGE]");
 		System.out.println("가격"+totalPrice);
 		System.out.println("주문날짜:"+payDay);
 		System.out.println("주문번호: "+cNoArr[0]);
-		
+		System.out.println("주문 수량: "/*cSum*/);
 		
 		//렌트처리 상태, 장바구니 삭제
 		for(String i: cNoArr) {
@@ -195,6 +198,9 @@ public class PayController {
 			cBiz.updateCart(cartNo);
 			
 		}
+		
+		//결제완료 후 재고 갯수 감소
+		
 		
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("pName", pName);
