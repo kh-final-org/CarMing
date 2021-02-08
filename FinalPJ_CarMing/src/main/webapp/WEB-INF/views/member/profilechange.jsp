@@ -74,39 +74,7 @@
 
 </style>
 
-	<!-- 사진 업로드(미리보기) -->
-	<script type="text/javascript">
-		var sel_file;
-		$(document).ready(function() {
-			$("#input_img").on("change", handleImgFileSelect);
-		});
 	
-		function handleImgFileSelect(e) {
-			$("#img").empty();  
-			var files = e.target.files;
-			var filesArr = Array.prototype.slice.call(files);
-	
-			filesArr.forEach(function(f) {
-				if (!f.type.match("image.*")) {
-					alert("확장자는 이미지 확장자만 가능합니다.");
-					return;
-				}
-				sel_file = f;
-	
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					$("#img").attr("src", e.target.result);
-					$("#img").attr("width", "90%");
-					$("#img").attr("height", "440px");
-				}
-				reader.readAsDataURL(f);
-			})
-		}
-	
-		function resetInputFile() {
-			$("#img").empty();
-		}
-	</script>
 
 </head>
 <body>
@@ -301,7 +269,7 @@
 								<c:otherwise>
 								<img id="img" src="">
 								</c:otherwise>
-							</c:choose>>
+							</c:choose>
 				  			</div>
 							<div class="upload-img-content">
 								<label class="custom-file-label" for="input_img"></label>

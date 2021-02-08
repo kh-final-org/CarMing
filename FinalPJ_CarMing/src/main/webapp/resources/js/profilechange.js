@@ -14,7 +14,7 @@ $(document).ready(function(){
     });
 	
 	//이미지 미리보기
-	$("#photofile").on("change", handleImgFileSelect);
+	$("#input_img").on("change", handleImgFileSelect);
 	
 	
 });
@@ -42,7 +42,7 @@ function empty_change() {
 
 
 function handleImgFileSelect(e) {
-	$("#thumbnail").empty(); 
+	$("#img").empty(); 
 	var files = e.target.files;
 	var filesArr = Array.prototype.slice.call(files);
 
@@ -56,9 +56,9 @@ function handleImgFileSelect(e) {
 
 		var reader = new FileReader();
 		reader.onload = function(e) {
-			$("#thumbnail").attr("src", e.target.result);
-			$("#thumbnail").attr("width", "200px");
-			$("#thumbnail").attr("height", "250px");
+			$("#img").attr("src", e.target.result);
+			$("#img").attr("width", "200px");
+			$("#img").attr("height", "250px");
 		}
 		reader.readAsDataURL(f);
 	});
