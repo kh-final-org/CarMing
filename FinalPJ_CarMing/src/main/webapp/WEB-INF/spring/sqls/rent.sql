@@ -36,7 +36,7 @@ SELECT * FROM MEMBER;
 --[렌트 상태 테이블]--
 
 --RENTSTATE 테이블, 시퀀스 유무 확인
-DROP TABLE RENTSTATE;
+DROP TABLE RENTSTATE cascade constraint;
 DROP SEQUENCE RENTSTATE_SEQ;
 
 --RENTSTATE 테이블 시퀀스 생성
@@ -68,7 +68,7 @@ SELECT * FROM RENTSTATE;
 --[캠핑렌트 카테고리 테이블]--
 
 --PCATEGORY 테이블, 시퀀스 유무 확인 구문
-DROP TABLE PCATEGORY;
+DROP TABLE PCATEGORY cascade constraint;
 DROP SEQUENCE PCATEGORY_SEQ;
 
 --PCATEGORY 테이블, 시퀀스 생성
@@ -106,7 +106,7 @@ WHERE PCATEGORYNO = 3;
 --[캠핑렌트  상품 테이블]--
 
 --PRODUCT 테이블, 시퀀스 유무 확인 구문
-DROP TABLE PRODUCT;
+DROP TABLE PRODUCT cascade constraint;
 DROP SEQUENCE PRODUCT_SEQ;
 
 --PRODUCT 테이블, 시퀀스 생성
@@ -139,7 +139,7 @@ SELECT * FROM PRODUCT;
 --[캠핑렌트 리뷰]--
 
 --REVIEW 테이블 시퀀스 유무 확인
-DROP TABLE REVIEW;
+DROP TABLE REVIEW cascade constraint;
 DROP SEQUENCE REVIEW_SEQ;
 
 --REVIEW 테이블 시퀀스 생성
@@ -173,7 +173,7 @@ WHERE PNO = 62;
 --[캠핑렌트 장바구니]--
 
 --CART 테이블 시퀀스 유무 확인
-DROP TABLE CART;
+DROP TABLE CART cascade constraint;
 DROP SEQUENCE CART_SEQ;
 
 --CART 테이블 시퀀스 생성
@@ -202,7 +202,7 @@ SELECT * FROM CART;
 --[캠핑렌트 결제 테이블]--
 
 --PAY 테이블 시퀀스 유무 확인
-DROP TABLE PAY;
+DROP TABLE PAY cascade constraint;
 DROP SEQUENCE PAY_SEQ;
 
 --PAY 테이블 시퀀스 생성
