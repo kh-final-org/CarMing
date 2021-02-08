@@ -26,6 +26,7 @@
 	
     .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
+    li.option.selected.disabled.focus{width: 503px;}
     .body-content{margin-top: 55px; font-size: 1.2em;}
     textarea {padding: 10px 14px; border: 1px solid silver; border-radius: 5px;}
     textarea::placeholder{color: silver;}
@@ -236,9 +237,9 @@
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
          <div class="col-first">
             <h1>The stars in the night sky</h1>
-            <nav class="d-flex align-items-center">
-               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-               <a href="boardmainform.do">캠핑토크</a>
+         	<nav class="d-flex align-items-center">
+               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
             </nav>
          </div>
       </div>

@@ -42,7 +42,7 @@ function empty_change() {
 
 
 function handleImgFileSelect(e) {
-	$("#thumbnail").empty(); //empty, remove 구분! remove는 태그 자체를 지운다 오키?
+	$("#thumbnail").empty(); 
 	var files = e.target.files;
 	var filesArr = Array.prototype.slice.call(files);
 

@@ -25,7 +25,7 @@
 
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
 	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
@@ -36,8 +36,8 @@
 	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
 	
 	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin: -16% 0 8% 25%; z-index: 1;}
-	#pingu-siren{width: 80px; height: 100%; margin-left: 30.5%; z-index: 10;}
+	#pingu-img{width: 100px; height: 100%; margin: -16% 0 8% 23%; z-index: 1;}
+	#pingu-siren{width: 80px; height: 100%; margin-left: 29%; z-index: 10;}
 	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
 	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
 	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
@@ -56,6 +56,7 @@
 	.form-group-target-category-form{float: left; margin-bottom: 20px; width: 100%;}
 	#categoryno{ width:100px;}
 	.current{font-size: 1.1em;}
+   	li.option{width: 450px;}					
 	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
     textarea::placeholder{color: silver; font-size: 1.1em;}
 	#report-text{font-size: 1.2em; margin-bottom: 10px; font-weight: bold;}	
@@ -141,8 +142,8 @@
 	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="writeinquiryform.do">문의하기</a>
+	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
 	            </nav>
 	         </div>
 	      </div>
@@ -175,7 +176,7 @@
 				<div class="contact-form">
 					<!-- 제보자 닉네임 -->
 					<div class="form-group-report-form">
-						<label class="control-label col-sm-2" id="report-name"for="writerNickname">제보자 닉네임</label>
+						<label class="control-label col-sm-2" id="report-name" for="writerNickname">제보자 닉네임</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="writerNickname"
 								   value="${login.memnick}" readonly="readonly" name="reportWriter">
@@ -212,7 +213,8 @@
 						<span class="report-target-category"><strong>신고 유형</strong></span>
 						<div class="report-category-wrap">
 							<select class="col-sm-10" id="categoryno" name="categoryNo">
-								<option value="1" selected>지나친 광고성 게시물</option>
+								<option value="0" selected disabled>카테고리(필수)</option>
+								<option value="1">지나친 광고성 게시물</option>
 								<option value="2">욕설/비방이 심함</option>
 								<option value="3">기타</option>
 							</select>

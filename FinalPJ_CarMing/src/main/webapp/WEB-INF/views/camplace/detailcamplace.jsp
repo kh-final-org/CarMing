@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CarMing | 캠플레이스 - 상세 페이지</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <style type="text/css">
 
@@ -26,7 +26,6 @@
 </style>
 </head>
 <body>
-
 	<section id="header">
 		<%@include file ="../common/header.jsp" %>
 	</section>
@@ -45,27 +44,19 @@
 	
 
 <section id="content">
-	
 	<div class="campphoto">
 		<img alt="" src="" style="width:500px; height:400px">
 	</div>
 	
 	<div class="camptable">
 		<div class="camprow">
-			
 			<div class="campdata"><span class="campname">이름</span></div>
-			
 			<hr>
-			
 			<div class="campdata"><span class=" campcontent">내용</span></div>
-			
 			<hr>
-			
 			<div class="campdata"><a href="#" class="campdetail">상세보기</a></div>
 		</div>
 	</div>
-	
-	
 </section>
     
      <script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
@@ -80,7 +71,7 @@
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script> -->
 	<script src="resources/js/gmaps.min.js"></script>
-	<script src="resources/js/main.js"></script>
+<!--<script src="resources/js/main.js"></script> -->
 
 </body>
 </html>

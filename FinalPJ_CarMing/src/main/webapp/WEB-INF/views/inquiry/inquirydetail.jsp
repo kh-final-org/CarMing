@@ -22,7 +22,7 @@
 
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
 	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
@@ -32,8 +32,8 @@
 	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
 
 	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin: -13.5% 0 8% 25%; z-index: 1;}
-	#pingu-confirm{width: 55px; height: 100%; margin: -5% 0 16% 37%; z-index: 10;}
+	#pingu-img{width: 100px; height: 100%; margin: -13.5% 0 8% 23%; z-index: 1;}
+	#pingu-confirm{width: 55px; height: 100%; margin: -5% 0 16% 35%; z-index: 10;}
 	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
 	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
 	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
@@ -42,10 +42,10 @@
 	.contact-form{width: 750px; height: 100%;}
 	#user-nickname{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#nickname{float: right; width: 450px; margin-right: 10px;}
-	.form-group-inquiry-form{float: left; margin-bottom: 15px; width:100%;}
+	.form-group-inquiry-form{float: left; width:100%;}
 	#inquiry-date{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
 	#date{float: right; width: 450px; margin-right: 150px;}	
-	.form-group-category-form{float: left; margin-bottom: 20px; width: 100%;}
+	.form-group-category-form{float: left; margin-bottom: 4px; width: 100%;}
 	.inquiry-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em; }
 	.inquiry-category-wrap{float: left; width: 72%; margin-left: 60px;}
 	#category{width:450px;}
@@ -106,8 +106,8 @@
 	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="writereportform.do">신고하기</a>
+	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
 	            </nav>
 	         </div>
 	      </div>

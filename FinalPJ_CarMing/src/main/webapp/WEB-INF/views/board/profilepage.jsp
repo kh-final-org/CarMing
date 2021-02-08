@@ -24,7 +24,7 @@
 	#member-report-target{font-size: 1.2em; color: silver;}
 	
 	.card-board{float: right; width: 65.5%; height: 100%;}
-	.card-boardtext{font-size:1.8em; margin-bottom: 17px;color: #5f5f5f;}
+	.card-boardtext{font-size:1.8em; margin-bottom: 17px; color: #5f5f5f;}
 	.boardlistup{float: left; width: 33.3%}
 	.boardlistup-frame{position: relative; width: 235px; height: 235px; overflow: hidden; border-radius: 5px;}
 	.boardlist-img{width: 235px; height: 235px; border-radius: 5px; transform: scale(1.00);	transition: transform .2s;}
@@ -32,9 +32,6 @@
 	.boardlistup{overflow: hidden; border-radius: 5px; margin-bottom: 10px;}
 	
 	#board-photo{float: left;}
-	
-	#paging-container{margin: 50px 0px 20px 0px;}
-	div #dd{display: inline-block;}
 	
 </style>	
 
@@ -50,9 +47,9 @@
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
          <div class="col-first">
             <h1>The stars in the night sky</h1>
-            <nav class="d-flex align-items-center">
-               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-               <a href="boardmainform.do">Talk</a>
+         	<nav class="d-flex align-items-center">
+               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
             </nav>
          </div>
       </div>

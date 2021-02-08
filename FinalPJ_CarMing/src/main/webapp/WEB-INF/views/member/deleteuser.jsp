@@ -6,25 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CarMing</title>
 <style type="text/css">
-#content{
-	text-align: -webkit-center;
-}
-.panel-body{
-	width: 80%;
-	padding : 20px;
-}
-h4{
-	padding-left : 40px;
-	text-align : left;
-	margin:20px
-}
-.col-lg-12{
-	max-width: 80%;
-	border : 1px solid #ccc	; 
-	padding : 40px;
-}
+	#content{text-align: -webkit-center;}
+	.panel-body{width: 80%;padding : 20px;}
+	h4{padding-left : 40px;text-align : left;margin:20px}
+	.col-lg-12{max-width: 80%;border : 1px solid #ccc	; padding : 40px;}
 
 </style>
 </head>
@@ -35,7 +22,6 @@ h4{
 	</section>
 	
 	<!-- Start Banner Area -->
-
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
 			<div
@@ -44,7 +30,6 @@ h4{
 					<h1>회원가입</h1>
 				</div>
 			</div>
-
 		</div>
 	</section>
 	
@@ -79,7 +64,7 @@ h4{
 
  	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
+	 		crossorigin="anonymous"></script>
 	<script src="resources/js/vendor/bootstrap.min.js"></script>
 	<script src="resources/js/jquery.ajaxchimp.min.js"></script>
 	<script src="resources/js/jquery.nice-select.min.js"></script>
@@ -89,7 +74,7 @@ h4{
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="resources/js/gmaps.min.js"></script>
-	<script src="resources/js/main.js"></script>
+<!-- 	<script src="resources/js/main.js"></script> -->
 	<script src="resources/js/deleteuser.js"></script>
 </body>
 </html>

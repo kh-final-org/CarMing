@@ -28,7 +28,7 @@
 
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
 	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
@@ -39,18 +39,18 @@
 	.card-container{padding: 50px 200px;}
 	.card {position: relative; width: 80%; margin-left: auto; margin-right: auto;}
 
-	div.blog_right_sidebar{float: right; width: 22%; margin-bottom: -1.5%; margin-right: 7.5%; border: 0; background: #fff; }
+	div.blog_right_sidebar{float: right; width: 22%; margin-bottom: -1.5%; margin-right: 7.5%; border: 0; background: #fff;}
 	.btn.btn-default{margin-top: -6%; margin-right: -3%;}
 	
 	.gaadiex-list {border-radius: 10px; list-style-type: none; margin: 0; padding: 0;}
 	.gaadiex-list-title > h2{float:left; width: 25%; margin: 1% 0 0 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
-	.gaadiex-list>.gaadiex-list-item {padding: 0 35px;}
+	.gaadiex-list>.gaadiex-list-item {padding: 0 20px 0 25px;}
 	.gaadiex-list-item {width: 45%; float:left; margin-left: 2%;}
 	.gaadiex-list-item-img > img {float: left; width: 100px; height: 100px; margin: 50px 30px 8px 30px; border-radius: 50%;}
 	.gaadiex-list-item-text {margin-top: 50px; color: gray; margin-left: 160px;}
 	.gaadiex-list-item-text a{color: gray;}
 	.gaadiex-list-item-text a:hover{color: #ffba00; color: gray;}
-	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: #5f5f5f;}
+	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: gray;}
 	.list-item-text-ck:hover{border-radius: 2px; background: #fff5e9; transition: 0.2s;}
 </style>
 
@@ -89,8 +89,8 @@ function myFunction() {
 	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="writereportform.do">신고하기</a>
+	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
 	            </nav>
 	         </div>
 	      </div>
