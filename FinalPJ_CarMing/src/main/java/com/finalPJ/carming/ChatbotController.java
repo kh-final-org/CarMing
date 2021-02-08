@@ -177,7 +177,7 @@ public class ChatbotController {
 		int res = surveyBiz.FriendOne(dto);
 		System.out.println("선택된 친구번호는 : " + res);
 		
-		MemberDto friendDto = memberBiz.selectOne(res);
+		MemberDto friendDto = memberBiz.selectNo(res);
 		
 		String gender;
 		

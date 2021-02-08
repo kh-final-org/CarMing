@@ -9,6 +9,7 @@ public interface MemberDao {
 	public MemberDto login(MemberDto dto);
 	public int insert(MemberDto dto);
 	public MemberDto selectOne(String id);
+	public MemberDto selectNo(int memno);
 	public int update(MemberDto dto);
 	public int deleteUser(String memid);
 	public int pwchange(MemberDto dto);

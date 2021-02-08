@@ -38,6 +38,12 @@ public class MemberBizImpl implements MemberBiz {
 		
 		return dao.selectOne(id);
 	}
+	
+	@Override
+	public MemberDto selectNo(int memno) {
+		
+		return dao.selectNo(memno);
+	}
 
 	@Override
 	public int update(MemberDto dto) {
@@ -56,4 +62,6 @@ public class MemberBizImpl implements MemberBiz {
 		// TODO Auto-generated method stub
 		return dao.pwchange(dto);
 	}
+
+	
 }

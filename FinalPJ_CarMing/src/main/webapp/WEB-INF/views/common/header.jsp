@@ -138,5 +138,8 @@
 	<script src="resources/js/main.js"></script>
 	<!-- campingRent Js -->
 	<script src="resources/js/category.js"></script>
+	
+	<!-- Chatbot -->
+	<%@include file="../../views/chatbot/chatbot.jsp"%>
 </body>
 </html>
