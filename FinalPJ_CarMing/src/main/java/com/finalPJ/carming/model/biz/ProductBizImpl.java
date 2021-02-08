@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.finalPJ.carming.model.dao.ProductDao;
+import com.finalPJ.carming.model.dto.CartListDto;
 import com.finalPJ.carming.model.dto.Pagination;
 import com.finalPJ.carming.model.dto.ProductDto;
 
@@ -39,6 +40,11 @@ public class ProductBizImpl implements ProductBiz{
 	@Override
 	public int countListTotal() {
 		return dao.countListTotal();
+	}
+
+	@Override
+	public void changeAmount(CartListDto cDto) {
+		dao.changeAmount(cDto);
 	}
 	
 }

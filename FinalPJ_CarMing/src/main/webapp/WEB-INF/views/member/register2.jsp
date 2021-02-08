@@ -86,14 +86,12 @@
 			                <input type="button" id="sendmail" onclick="sendMail()" value="인증하기" class="btn btn-primary" >
 			                </c:otherwise>
 		                </c:choose>
-		                <span id="memid_error" class="chk_error">이메일 양식에 맞춰 입력해주세요</span>
-		                <p>이메일 예시 : example@gmail.com</p>
+		                <span class="chk_error" id="memid_error">이메일 주소를 다시 확인해주세요.</span>
+		                <div class="ex-text">이메일 예시 : example@gmail.com</div>
 		                <input type="text" name="certnum" id="certnum" placeholder="인증번호를 입력해주세요." style="width:200px; border:1px solid #ced4da;">
 		                <input type="button" id="certbutton" onclick="certcf()" value="인증확인">
 		                <span id="certnum_good" class="chk_error" style="color:green;">인증번호가 확인되었습니다.</span>
 		            </div>
-	                <div class="ex-text">이메일 예시 : example@gmail.com</div>
-	                <span class="chk_error" id="memid_error">이메일 주소를 다시 확인해주세요.</span>
 		         </div>   
 		          
 		         <!-- 비밀번호 -->

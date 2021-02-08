@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.finalPJ.carming.model.biz.CartBiz;
 import com.finalPJ.carming.model.biz.PayBiz;
+import com.finalPJ.carming.model.biz.ProductBiz;
 import com.finalPJ.carming.model.dto.CartDto;
 import com.finalPJ.carming.model.dto.CartListDto;
 import com.finalPJ.carming.model.dto.MemberDto;
@@ -43,6 +44,8 @@ public class PayController {
 	private CartBiz cBiz;
 	@Autowired
 	private PayBiz pBiz;
+	@Autowired
+	private ProductBiz prBiz;
 
 	@RequestMapping(value="/payinfo.do")
 	public String paydetail(Model model, CartListDto cdto) {
@@ -60,19 +63,22 @@ public class PayController {
 	
 
 	@RequestMapping(value="/kakao.do")
-	public String kakao(Model model, CartListDto cdto, PayDto pDto, MemberDto mDto, int payNo, String[] cNoArr /*int cSum*/) {
+	public String kakao(Model model, CartListDto cdto, PayDto pDto, MemberDto mDto, int payNo, String[] cNoArr, String[] cAmountArr, String[] pNoArr) {
 		logger.info("[KAKAO PAY]");
 		
 		//파라미터로 넘어온 결제번호 확인
 		System.out.println("결제 번호: "+payNo);
 		System.out.println("주문 번호:"+cNoArr[0]);
+		System.out.println("주문 수량: "+cAmountArr);
+		System.out.println("상품 번호: "+pNoArr);
 		
 		model.addAttribute("payDto", pBiz.selectOnePay(payNo));
 		model.addAttribute("pName", cBiz.pName(payNo));
 		model.addAttribute("countproduct", cBiz.countProduct(payNo));
 		model.addAttribute("cartListDto", cdto);
 		model.addAttribute("cNoArr", cNoArr);
-//		model.addAttribute("cSum" /*cSum*/);
+		model.addAttribute("cAmountArr", cAmountArr);
+		model.addAttribute("pNoArr", pNoArr);
 		
 		return "campingrent/kakaopay";
 	}
@@ -93,7 +99,7 @@ public class PayController {
 	
 	@RequestMapping(value="/kakaopay.do", method=RequestMethod.POST)
 	public String kakopay(String pay_method, String addr, String[] cNoArr, int totalPrice,
-			/* int cSum, */ HttpServletRequest request, RedirectAttributes rttr, PayDto pDto, CartDto cDto) {
+			String[] cAmountArr, String[] pNoArr, HttpServletRequest request, RedirectAttributes rttr, PayDto pDto, CartDto cDto) {
 		logger.info("[PAY INSERT]");
 		
 		//파라미터 값 확인(잘 넘어왔는지)
@@ -128,8 +134,8 @@ public class PayController {
 		//주문번호, 결제번호 데이터 넘겨주기
 		rttr.addAttribute("payNo", seq);
 		rttr.addAttribute("cNoArr", cNoArr);
-//		rttr.addAttribute("cAmount"/* ,cSum */);
-		
+		rttr.addAttribute("cAmountArr", cAmountArr);
+		rttr.addAttribute("pNoArr", pNoArr);
 		return "redirect:/kakao.do";
 	}
 	
@@ -185,22 +191,31 @@ public class PayController {
 	}
 	
 	@RequestMapping(value="/payresult.do")
-	public String payResult(Model model, int totalPrice, String pName, String pay_method, String payDay, int payNo, String[] cNoArr /*int cSum*/) {
+	public String payResult(Model model, CartListDto cDto, int totalPrice, String pName, String pay_method, String payDay, int payNo, String[] cNoArr, String[] cAmount, String[] pNo) {
 		logger.info("[PAY_RESULT PAGE]");
 		System.out.println("가격"+totalPrice);
 		System.out.println("주문날짜:"+payDay);
 		System.out.println("주문번호: "+cNoArr[0]);
-		System.out.println("주문 수량: "/*cSum*/);
+		System.out.println("주문 수량: "+cAmount);
+		System.out.println("상품 고유번호: "+pNo);
 		
-		//렌트처리 상태, 장바구니 삭제
+		//렌트처리 상태
 		for(String i: cNoArr) {
 			int cartNo = Integer.parseInt(i);
 			cBiz.updateCart(cartNo);
-			
 		}
 		
-		//결제완료 후 재고 갯수 감소
 		
+		//결제완료 후 재고 갯수 감소
+		for(String i : pNo) {
+			for(String p : cAmount) {
+				int pNos = Integer.parseInt(i);
+				cDto.setpNo(pNos);
+				int cAmounts = Integer.parseInt(p);
+				cDto.setcAmount(cAmounts);
+				prBiz.changeAmount(cDto);
+			}
+		}
 		
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("pName", pName);
@@ -209,5 +224,5 @@ public class PayController {
 		model.addAttribute("payNo", payNo);
 		
 		return "campingrent/pay_result";
-	}
+		}
 }
