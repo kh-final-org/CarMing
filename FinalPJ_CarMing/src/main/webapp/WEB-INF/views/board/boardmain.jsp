@@ -88,6 +88,8 @@
 </script>
 
 
+
+
 </head>
 <body>
 <!-- Start Header Area -->
@@ -121,7 +123,7 @@
 		<div class="card-head-second">
 			<button type="button" class="upload-btn" onclick="popoutFunction()">+&nbsp;&nbsp;게시글쓰기</button>
 			
-			<div class="scale-up-top" id="upload-popout">
+			<div class="scale-up-top" id="upload-popout" style="display: none;">
 				<div class="popout popout--prepared popout--axis-1 popout--dir-0 popout--cross-dir-1" id="popout-layout" data-popout="true">
 					<div class="animated-popout-dropdown-content-active">
 						<div class="upload-dropdown-content">

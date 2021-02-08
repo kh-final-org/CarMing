@@ -106,14 +106,15 @@ public class RentController {
 			inputStream = file.getInputStream();
 			inputStream2 = file2.getInputStream();
 			// 실제 경로 삽입 ("/~~") : 그 경로 안에 생성할 폴더 이름
-			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/storage");
-			String path2 = WebUtils.getRealPath(request.getSession().getServletContext(), "/storage2");
+			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/rent");
+			String path2 = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/rent");
 			System.out.println(path);
 			System.out.println(path2);
 			
 			dto.setpFile(name);
 			dto.setpDesc(name2);
 			dto.setpPath(path);
+			
 			File storage = new File(path);
 			File storage2 = new File(path);
 			
@@ -140,6 +141,7 @@ public class RentController {
 			outputStream2 = new FileOutputStream(newFile2);
 			
 			int read = 0;
+			int read2 = 0;
 			// 파일 크기만한 byte 길이로 저장
 			byte[] b = new byte[(int)file.getSize()];
 			byte[] b2 = new byte[(int)file2.getSize()];
@@ -150,7 +152,7 @@ public class RentController {
 			}
 
 			while((read=inputStream2.read(b2)) != -1) {
-				outputStream2.write(b2,0,read);
+				outputStream2.write(b2,0,read2);
 			}
 			
 		} catch (IOException e) {
@@ -166,7 +168,8 @@ public class RentController {
 			}
 			
 		}
-
+		
+		
 		int insertres = biz.insertProduct(dto);
 		System.out.println(insertres);
 		//제품 등록 성공 여부인지 alert창을 띄운다.
