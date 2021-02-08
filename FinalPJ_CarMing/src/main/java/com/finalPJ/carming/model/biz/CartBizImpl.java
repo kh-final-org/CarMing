@@ -49,4 +49,9 @@ public class CartBizImpl implements CartBiz{
 		dao.updateCart(cartNo);
 	}
 
+	@Override
+	public List<CartListDto> orderList() {
+		return dao.orderList();
+	}
+
 }

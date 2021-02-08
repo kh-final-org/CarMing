@@ -8,6 +8,7 @@ import com.finalPJ.carming.model.dto.CartListDto;
 public interface CartDao {
 	String NAMESPACE = "cart.";
 	public List<CartListDto> cartList();
+	public List<CartListDto> orderList();
 	public void insertCart(CartDto cart);
 	public void deleteCart(CartDto cart);
 	public List<CartListDto> rentperiod(List<CartListDto> cartList);

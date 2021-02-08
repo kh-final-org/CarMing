@@ -61,7 +61,8 @@
                                 <br>
                                 --%>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <span>제품 설명</span><input type="text" class="form-control" name="pDesc"><form:errors path="pDesc"/>
+                                    <span>제품 설명</span><input type="file" class="form-control" name="prDesc"><form:errors path="prDesc"/>
+                                    <input type="hidden" value="1">
                                 </div>
                                 <br>
                                 <div class="form-group col-lg-6 col-md-6 name">
