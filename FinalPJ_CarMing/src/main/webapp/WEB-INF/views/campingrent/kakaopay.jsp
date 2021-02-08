@@ -24,6 +24,7 @@
 							var totalPrice = $(".totalPrice").val();
 							var pay_method = $(".pay_method").val();
 							var pName = $(".pName").val();
+							var cAmount = $(".cAmount").val();
 							
 							if($(".countproduct").val() == 0 || $(".countproduct").val() == 0){
 								IMP.init('imp83374605');
@@ -85,7 +86,7 @@
 										},
 										success: function(){
 											alert("되면 되는거지");
-											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr;
+											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmount"+cAmount;
 										},
 										error: function(){
 											alert("무슨 오류임?");
@@ -174,6 +175,7 @@
 		<input type="hidden" class="payDay" value="${payDay }">
 		<input type="hidden" class="pName" value="${pName }">
 		<input type="hidden" class="addr" value="${payDto.addr }">
+		<input type="hidden" class="cAmount" value="${cSum }">
 		<input type="hidden" class="email" value="${login.memid }">
 		<input type="hidden" class="name" value="${login.memname }">
 		<input type="hidden" class="phone" value="${login.memphone }">

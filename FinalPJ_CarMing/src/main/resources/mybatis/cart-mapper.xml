@@ -58,4 +58,9 @@
 		SET STATENO = 2
 		WHERE CARTNO = #{cartNo}
 	</update>
+	
+	<update id="changestock" parameterType="int">
+		UPDATE CART
+		SET CAMOUNT = CAMOUNT - #{Ca}
+	</update>
 </mapper>

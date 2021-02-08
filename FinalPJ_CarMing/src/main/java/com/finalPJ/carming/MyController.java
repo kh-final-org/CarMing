@@ -39,6 +39,6 @@ public class MyController {
 	@RequestMapping(value = "/mypage.do")
 	public String mypage(Model model) {
 		
-		return "my/mypage";
+		return "my/mypage2";
 	}
 }

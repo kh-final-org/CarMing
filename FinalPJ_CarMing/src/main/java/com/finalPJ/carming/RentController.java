@@ -68,7 +68,7 @@ public class RentController {
 			FileUpload uploadFile, BindingResult result, ProductDto dto) throws IOException {
 		logger.info("[PRODUCT INSERT]");
 		// uploadFile : jsp 페이지에서 보내준 이미지 파일과 desc 데이터
-		fileValidator.validate(uploadFile, result);
+//		fileValidator.validate(uploadFile, result);
 		
 		// 결과 에러 시 upload로 보내기 (파일이 없을 시)
 //		if(result.hasErrors()) {
@@ -167,9 +167,6 @@ public class RentController {
 			
 		}
 
-		
-		model.addAttribute("productdto", biz.insertProduct(dto));
-		
 		int insertres = biz.insertProduct(dto);
 		System.out.println(insertres);
 		//제품 등록 성공 여부인지 alert창을 띄운다.

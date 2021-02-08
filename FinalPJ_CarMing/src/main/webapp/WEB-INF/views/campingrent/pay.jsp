@@ -136,6 +136,7 @@
                             <h2>결제 내역</h2>
                            	<ul class="list">
                             <c:set var="sum" value="0" />
+                            <c:set var="csum" value="0"/>
                             <c:forEach var="cartlistDto" items="${cartlist}">
                             		<fmt:formatDate var="sDate" value="${cartlistDto.startDate}" pattern="yyyyMMdd"/>
                             		<fmt:formatDate var="eDate" value="${cartlistDto.endDate}" pattern="yyyyMMdd"/>
@@ -147,6 +148,7 @@
 		                            <li><a href="#">대여 기간<span>${eDate-sDate}일</span></a></li>
 									<hr>
 									<c:set var="sum" value="${sum+(cartlistDto.pPrice*cartlistDto.cAmount*(eDate-sDate)) }"/>
+									<c:set var="csum" value="${csum+(cartlistDto.cAmount)}"/>
 									<li class="licartNo" style="display: hidden;">
 										<input type="hidden" class="cartNo" name="cartNo" data-cartNo="${cartlistDto.cartNo }" value="${cartlistDto.cartNo }">
 									</li>
@@ -175,6 +177,7 @@
         </div>
         <input type="hidden" name="totalPrice" value="${sum }">
 		<input type="hidden" name="pNo" value="${cartListDto.pNo }">
+		<%-- <input type="hidden" class="cSum" value="${csum }"> --%>
     </section>
     </form>
     <!--================End Checkout Area =================-->
