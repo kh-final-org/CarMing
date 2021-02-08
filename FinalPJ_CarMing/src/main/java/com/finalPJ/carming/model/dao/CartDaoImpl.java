@@ -97,4 +97,18 @@ public class CartDaoImpl implements CartDao {
 		}
 	}
 
+	@Override
+	public List<CartListDto> orderList() {
+		List<CartListDto> orderList = new ArrayList<CartListDto>();
+		
+		try {
+			orderList = sqlSession.selectList(NAMESPACE+"orderlist");
+		} catch (Exception e) {
+			System.out.println("[ERROR: ORDER LIST]");
+			e.printStackTrace();
+		}
+		return orderList;
+	}
+	
+	
 }
