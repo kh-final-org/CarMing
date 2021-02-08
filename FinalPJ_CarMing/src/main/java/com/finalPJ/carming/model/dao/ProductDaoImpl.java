@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.finalPJ.carming.model.dto.CartListDto;
 import com.finalPJ.carming.model.dto.Pagination;
 import com.finalPJ.carming.model.dto.ProductDto;
 
@@ -78,6 +79,16 @@ public class ProductDaoImpl implements ProductDao{
 			e.printStackTrace();
 		}
 		return ctn;
+	}
+
+	@Override
+	public void changeAmount(CartListDto cDto) {
+		try {
+			sqlSession.update(NAMESPACE+"changeAmount", cDto);
+		} catch (Exception e) {
+			System.out.println("[ERROR: CHANGE STOCK]");
+			e.printStackTrace();
+		}
 	}
 	
 }

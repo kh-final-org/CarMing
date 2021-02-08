@@ -27,9 +27,6 @@
 						<a href="category.html">마이페이지<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">카테고리</a><br><br>
 					</nav>
-					<c:if test="${login.memcode ==  1}">
-						<a href="insertform.do" style="a:hover{color:white; text-decoration: none;}">제품 등록</a>
-					</c:if>
 				</div>
 			</div>
 		</div>
@@ -125,13 +122,20 @@
 											</div>
 											
 										</c:if>
-										<img class="img-fluid" src="storage/${productDto.pFile}" alt="" style="width: 255px; height: 200px;">
+										<a href="productdetail.do?pNo=${productDto.pNo }">
+											<img class="img-fluid" src="storage/${productDto.pFile}" alt="" style="width: 255px; height: 200px;">
+										</a>
 											<div class="product-details">
 											<h6>${productDto.pName }</h6>
 												<div class="price">
 													<h6><fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/></h6>
 												</div>
-												<h6 style="font-size: 20px;">수량: ${productDto.pAmount }</h6>
+												<c:if test="${productDto.pAmount != 0}">
+													<h6 style="font-size: 20px;">수량: ${productDto.pAmount }</h6>
+												</c:if>
+												<c:if test="${productDto.pAmount == 0}">
+													<h6 style="font-size: 20px;">재고가 없습니다.</h6>
+												</c:if>
 										<div class="prd-bottom">
 											<a href="javascript:sendLink(${productDto.pNo })" class="social-info">
 												<span class="lnr lnr-sync"></span>
