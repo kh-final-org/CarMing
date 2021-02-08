@@ -64,11 +64,6 @@
 					<input type="radio" id="default" class="badgebox" name="campcategory" value="캠핑장" checked="checked">
 					<span class="badge">&check;</span>
 				</label>
-				<!-- 오토를 일반캠핑으로 변경? -->
-		        <label for="primary" class="btn btn-primary"><span>오토</span>
-		        	<input type="radio" id="primary" class="badgebox" name="campcategory" value="오토캠핑장">
-	        		<span class="badge">&check;</span>
-	        	</label>
 		        <label for="info" class="btn btn-info"><span>카라반</span> 
 		        	<input type="radio" id="info" class="badgebox" name="campcategory" value="카라반">
 	        		<span class="badge" >&check;</span>
