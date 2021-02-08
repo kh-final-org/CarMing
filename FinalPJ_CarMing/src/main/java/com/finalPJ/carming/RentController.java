@@ -43,23 +43,23 @@ import com.finalPJ.carming.model.dto.RentReviewDto;
 
 @Controller
 public class RentController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(RentController.class);
-	
-	@Autowired
-	private ProductBiz biz;
-	
-	@Autowired
-	private RentReviewBiz rBiz;
-	
-	private ProductDto dto;
-	
-	@Autowired
-	private FileValidator fileValidator;
-	
-	@RequestMapping(value = "/insertform.do")
-	public String productInsert(Model model) {
-		logger.info("[INSERT FORM]");
+   
+   private static final Logger logger = LoggerFactory.getLogger(RentController.class);
+   
+   @Autowired
+   private ProductBiz biz;
+   
+   @Autowired
+   private RentReviewBiz rBiz;
+   
+   private ProductDto dto;
+   
+   @Autowired
+   private FileValidator fileValidator;
+   
+   @RequestMapping(value = "/insertform.do")
+   public String productInsert(Model model) {
+      logger.info("[INSERT FORM]");
 
 		return "campingrent/insertform";
 	}
@@ -129,43 +129,44 @@ public class RentController {
 				newFile.createNewFile();
 			}
 
-			File newFile2 = new File(path2+"/"+name2);
-			
-			if(!newFile2.exists()) {
-				newFile2.createNewFile();
-			}
 
-			// 출력 통로를 열어줌
-			outputStream = new FileOutputStream(newFile);
-			outputStream2 = new FileOutputStream(newFile2);
-			
-			int read = 0;
-			// 파일 크기만한 byte 길이로 저장
-			byte[] b = new byte[(int)file.getSize()];
-			byte[] b2 = new byte[(int)file2.getSize()];
-			
-			// 파일 길이를 읽어서 read에 길이 저장 후 파일 작성(저장)
-			while((read=inputStream.read(b)) != -1) {
-				outputStream.write(b,0,read);
-			}
+         File newFile2 = new File(path2+"/"+name2);
+         
+         if(!newFile2.exists()) {
+            newFile2.createNewFile();
+         }
 
-			while((read=inputStream2.read(b2)) != -1) {
-				outputStream2.write(b2,0,read);
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				inputStream2.close();
-				inputStream.close();
-				outputStream2.close();
-				outputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		}
+         // 출력 통로를 열어줌
+         outputStream = new FileOutputStream(newFile);
+         outputStream2 = new FileOutputStream(newFile2);
+         
+         int read = 0;
+         // 파일 크기만한 byte 길이로 저장
+         byte[] b = new byte[(int)file.getSize()];
+         byte[] b2 = new byte[(int)file2.getSize()];
+         
+         // 파일 길이를 읽어서 read에 길이 저장 후 파일 작성(저장)
+         while((read=inputStream.read(b)) != -1) {
+            outputStream.write(b,0,read);
+         }
+
+         while((read=inputStream2.read(b2)) != -1) {
+            outputStream2.write(b2,0,read);
+         }
+         
+      } catch (IOException e) {
+         e.printStackTrace();
+      } finally {
+         try {
+            inputStream2.close();
+            inputStream.close();
+            outputStream2.close();
+            outputStream.close();
+         } catch (IOException e) {
+            e.printStackTrace();
+         }
+         
+      }
 
 		
 		model.addAttribute("productdto", biz.insertProduct(dto));
@@ -179,68 +180,69 @@ public class RentController {
 			return "redirect: insertform.do";
 		}
 
-	}
-	
-	@RequestMapping(value = "/productdetail.do")
-	public String productDetail(Model model, int pNo, ProductDto dto, RentReviewDto rdto) {
-		logger.info("[PRODUCT DETAIL] & [RENTREVIEW SELECTLIST]");
-		
-		//해당 상품관련 리뷰테이터만 전부 조회
-		List<RentReviewDto> reviewlist = rBiz.selectList(pNo);
-		
-		//리뷰 갯수
-		int cntReview = 0;
-		cntReview = rBiz.countReview(pNo);
-		System.out.println("리뷰 갯수: "+cntReview);
 
-		//리뷰 갯수 객체 담아 보내기 
-		model.addAttribute("countreview", cntReview);
-		//제품 상세정보 객체 담아 보내기
-		model.addAttribute("productdto", biz.selectOne(pNo));
-		//전체 리뷰 객체에 담아 보내기
-		model.addAttribute("reviewlist", reviewlist);
-		System.out.println(reviewlist);
-		
-		return "campingrent/productdetail";
-	}
-	@RequestMapping(value = "/productlist.do")
-	public String productlist(Model model, Pagination pag) throws Exception{
-		logger.info("[PRODUCT LIST]");
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setPag(pag);
-		pageMaker.setTotalCount(biz.countListTotal());
-		System.out.println("이거 1"+pageMaker.getPag());
-		System.out.println("이거2"+pageMaker.getTotalCount());
-		System.out.println("이거3"+biz.countListTotal());
-//		List<ProductDto> list = biz.selectAll(pag);
-		List<ProductDto> list = biz.selectAll();
+   }
+   
+   @RequestMapping(value = "/productdetail.do")
+   public String productDetail(Model model, int pNo, ProductDto dto, RentReviewDto rdto) {
+      logger.info("[PRODUCT DETAIL] & [RENTREVIEW SELECTLIST]");
+      
+      //해당 상품관련 리뷰테이터만 전부 조회
+      List<RentReviewDto> reviewlist = rBiz.selectList(pNo);
+      
+      //리뷰 갯수
+      int cntReview = 0;
+      cntReview = rBiz.countReview(pNo);
+      System.out.println("리뷰 갯수: "+cntReview);
 
-		System.out.println(list);
-		
-		model.addAttribute("productlist", list);
-		model.addAttribute("pageMaker", pageMaker);
+      //리뷰 갯수 객체 담아 보내기 
+      model.addAttribute("countreview", cntReview);
+      //제품 상세정보 객체 담아 보내기
+      model.addAttribute("productdto", biz.selectOne(pNo));
+      //전체 리뷰 객체에 담아 보내기
+      model.addAttribute("reviewlist", reviewlist);
+      System.out.println(reviewlist);
+      
+      return "campingrent/productdetail";
+   }
+   @RequestMapping(value = "/productlist.do")
+   public String productlist(Model model, Pagination pag) throws Exception{
+      logger.info("[PRODUCT LIST]");
+      
+      PageMaker pageMaker = new PageMaker();
+      pageMaker.setPag(pag);
+      pageMaker.setTotalCount(biz.countListTotal());
+      System.out.println("이거 1"+pageMaker.getPag());
+      System.out.println("이거2"+pageMaker.getTotalCount());
+      System.out.println("이거3"+biz.countListTotal());
+//      List<ProductDto> list = biz.selectAll(pag);
+      List<ProductDto> list = biz.selectAll();
 
-		
-		return "campingrent/category";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/productdelete.do", method = RequestMethod.POST)
-	public int productdelete(@RequestParam(value = "chbox[]") List<String> chArr, ProductDto dto) throws Exception {
-		logger.info("[PRODUCT DELETE]");
-		
-		
-		int result = 0;
-		int pNo = 0;
-		
-		for(String i : chArr) {
-			pNo = Integer.parseInt(i);
-			dto.setpNo(pNo);
-			biz.deleteProduct(dto);
-		}
-		result = 1;
-		
-		return result;
-	}
+      System.out.println(list);
+      
+      model.addAttribute("productlist", list);
+      model.addAttribute("pageMaker", pageMaker);
+
+      
+      return "campingrent/category";
+   }
+   
+   @ResponseBody
+   @RequestMapping(value = "/productdelete.do", method = RequestMethod.POST)
+   public int productdelete(@RequestParam(value = "chbox[]") List<String> chArr, ProductDto dto) throws Exception {
+      logger.info("[PRODUCT DELETE]");
+      
+      
+      int result = 0;
+      int pNo = 0;
+      
+      for(String i : chArr) {
+         pNo = Integer.parseInt(i);
+         dto.setpNo(pNo);
+         biz.deleteProduct(dto);
+      }
+      result = 1;
+      
+      return result;
+   }
 }
