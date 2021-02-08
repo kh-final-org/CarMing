@@ -3,12 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace="mapLocation">
+<mapper namespace="mapLocation">
 
 	<select id="locationlist" parameterType="int" resultType="mapLocationDto">
 		SELECT MAPNAME, MAPLATITUDE, MAPLONGTITUDE
 		FROM MAPLOCATION
-		WHERE MEMNO = #{memno }, CARMAPCHK = 'Y'
+		WHERE MEMNO = #{memno} AND CARMAPCHK = 'Y'
 	</select>
 	
 	

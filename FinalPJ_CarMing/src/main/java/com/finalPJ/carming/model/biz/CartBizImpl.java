@@ -34,4 +34,24 @@ public class CartBizImpl implements CartBiz{
 		return dao.rentperiod(cartList);
 	}
 
+	@Override
+	public int countProduct(int payNo) {
+		return dao.countProduct(payNo);
+	}
+
+	@Override
+	public String pName(int payNo) {
+		return dao.pName(payNo);
+	}
+
+	@Override
+	public void updateCart(int cartNo) {
+		dao.updateCart(cartNo);
+	}
+
+	@Override
+	public List<CartListDto> orderList() {
+		return dao.orderList();
+	}
+
 }

@@ -34,7 +34,6 @@ import com.finalPJ.carming.common.fileUpload.FileValidator;
 import com.finalPJ.carming.model.biz.PCategoryBIzImpl;
 import com.finalPJ.carming.model.biz.PCategoryBiz;
 import com.finalPJ.carming.model.biz.ProductBiz;
-import com.finalPJ.carming.model.biz.RentReivewBizImpl;
 import com.finalPJ.carming.model.biz.RentReviewBiz;
 import com.finalPJ.carming.model.dto.PCategoryDto;
 import com.finalPJ.carming.model.dto.PageMaker;
@@ -51,7 +50,7 @@ public class RentController {
 	private ProductBiz biz;
 	
 	@Autowired
-	private RentReviewBiz rbiz;
+	private RentReviewBiz rBiz;
 	
 	private ProductDto dto;
 	
@@ -69,7 +68,7 @@ public class RentController {
 			FileUpload uploadFile, BindingResult result, ProductDto dto) throws IOException {
 		logger.info("[PRODUCT INSERT]");
 		// uploadFile : jsp 페이지에서 보내준 이미지 파일과 desc 데이터
-		fileValidator.validate(uploadFile, result);
+//		fileValidator.validate(uploadFile, result);
 		
 		// 결과 에러 시 upload로 보내기 (파일이 없을 시)
 //		if(result.hasErrors()) {
@@ -78,30 +77,29 @@ public class RentController {
 //		데이터가 잘 넘어왔는지 확인
 		System.out.println("카테고리 번호:"+request.getParameter("pCategoryNo"));
 		System.out.println("제품명:"+request.getParameter("pName"));
-		System.out.println("제품설명:"+request.getParameter("pDesc"));
 		System.out.println("제품가격:"+request.getParameter("pPrice"));
 		System.out.println("수량:"+request.getParameter("pAmount"));
 		
-		/* 제품 대표이미지 파일 생성 코드 시작*/
-		MultipartFile file = uploadFile.getprFile(); //대표이미지
-		MultipartFile file2 = uploadFile.getprDesc();//제품설명이미지
+		MultipartFile file = uploadFile.getprFile();
+		MultipartFile file2 = uploadFile.getprDesc();
 		
 		String name = file.getOriginalFilename();
 		String name2 = file2.getOriginalFilename();
 		
+		
 		//보낼 파일 객체 생성 후 담기
 		FileUpload fileObj = new FileUpload();
 		FileUpload fileObj2 = new FileUpload();
-		
 		fileObj.setName(name);
 		fileObj2.setName(name2);
-	
-		System.out.println("대표 파일명: "+name);
-		System.out.println("설명 파일명: "+name2);
+		
+		//출력으로 확인
+		System.out.println(name);
+		System.out.println(name2);
 		
 		InputStream inputStream = null;
-		InputStream inputStream2 = null;
 		OutputStream outputStream = null;
+		InputStream inputStream2 = null;
 		OutputStream outputStream2 = null;
 		
 		try {
@@ -110,7 +108,6 @@ public class RentController {
 			// 실제 경로 삽입 ("/~~") : 그 경로 안에 생성할 폴더 이름
 			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/storage");
 			String path2 = WebUtils.getRealPath(request.getSession().getServletContext(), "/storage2");
-			
 			System.out.println(path);
 			System.out.println(path2);
 			
@@ -118,15 +115,11 @@ public class RentController {
 			dto.setpDesc(name2);
 			dto.setpPath(path);
 			File storage = new File(path);
+			File storage2 = new File(path);
+			
 			// storage 폴더가 없을 경우 storage 폴더을 만들어줌
 			if(!storage.exists()) {
 				storage.mkdir();
-			}
-			
-			File storage2 = new File(path2);
-			// storag2 폴더가 없을 경우 storage2 폴더를 만들어줌
-			if(!storage2.exists()) {
-				storage2.mkdir();
 			}
 			
 			File newFile = new File(path+"/"+name);
@@ -135,20 +128,18 @@ public class RentController {
 			if(!newFile.exists()) {
 				newFile.createNewFile();
 			}
-			
+
 			File newFile2 = new File(path2+"/"+name2);
 			
 			if(!newFile2.exists()) {
 				newFile2.createNewFile();
 			}
-			
+
 			// 출력 통로를 열어줌
 			outputStream = new FileOutputStream(newFile);
-			
 			outputStream2 = new FileOutputStream(newFile2);
 			
 			int read = 0;
-			int read2 = 0;
 			// 파일 크기만한 byte 길이로 저장
 			byte[] b = new byte[(int)file.getSize()];
 			byte[] b2 = new byte[(int)file2.getSize()];
@@ -157,24 +148,25 @@ public class RentController {
 			while((read=inputStream.read(b)) != -1) {
 				outputStream.write(b,0,read);
 			}
-			while((read2=inputStream2.read(b2)) != -1) {
-				outputStream2.write(b2,0,read2);
+
+			while((read=inputStream2.read(b2)) != -1) {
+				outputStream2.write(b2,0,read);
 			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			inputStream.close();
-			outputStream.close();
-			inputStream2.close();
-			outputStream2.close();
-		} 
-		/* 제품 대표이미지 파일 생성 코드 끝 */
-		
-		// 위에서 저장시킨 파일 정보들 담아서 보내기
-//		model.addAttribute("fileObj", fileObj);
-		
-		
+			try {
+				inputStream2.close();
+				inputStream.close();
+				outputStream2.close();
+				outputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+
 		int insertres = biz.insertProduct(dto);
 		System.out.println(insertres);
 		//제품 등록 성공 여부인지 alert창을 띄운다.
@@ -190,12 +182,12 @@ public class RentController {
 	public String productDetail(Model model, int pNo, ProductDto dto, RentReviewDto rdto) {
 		logger.info("[PRODUCT DETAIL] & [RENTREVIEW SELECTLIST]");
 		
-		//리뷰데이터 전부 조회
-		List<RentReviewDto> reviewlist = rbiz.selectList();
+		//해당 상품관련 리뷰테이터만 전부 조회
+		List<RentReviewDto> reviewlist = rBiz.selectList(pNo);
 		
 		//리뷰 갯수
 		int cntReview = 0;
-		cntReview = rbiz.countReview(rdto);
+		cntReview = rBiz.countReview(pNo);
 		System.out.println("리뷰 갯수: "+cntReview);
 
 		//리뷰 갯수 객체 담아 보내기 
@@ -205,9 +197,9 @@ public class RentController {
 		//전체 리뷰 객체에 담아 보내기
 		model.addAttribute("reviewlist", reviewlist);
 		System.out.println(reviewlist);
+		
 		return "campingrent/productdetail";
 	}
-	
 	@RequestMapping(value = "/productlist.do")
 	public String productlist(Model model, Pagination pag) throws Exception{
 		logger.info("[PRODUCT LIST]");
@@ -230,7 +222,7 @@ public class RentController {
 		return "campingrent/category";
 	}
 	
-	@ResponseBody 
+	@ResponseBody
 	@RequestMapping(value = "/productdelete.do", method = RequestMethod.POST)
 	public int productdelete(@RequestParam(value = "chbox[]") List<String> chArr, ProductDto dto) throws Exception {
 		logger.info("[PRODUCT DELETE]");

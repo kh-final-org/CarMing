@@ -15,13 +15,14 @@ public class InquiryDto {
 	private Date inquiryDate;
 	private int categoryNo;
 	private String categoryName;
+	private String profilepic;
 	
 	public InquiryDto() {
 		super();
 	}
 
 	public InquiryDto(int inquiryNo, String memNick, int memNo, MultipartFile inquiryFile, String path, String filename,
-			String inquiryContent, Date inquiryDate, int categoryNo, String categoryName) {
+			String inquiryContent, Date inquiryDate, int categoryNo, String categoryName, String profilepic) {
 		super();
 		this.inquiryNo = inquiryNo;
 		this.memNick = memNick;
@@ -33,23 +34,7 @@ public class InquiryDto {
 		this.inquiryDate = inquiryDate;
 		this.categoryNo = categoryNo;
 		this.categoryName = categoryName;
-	}
-
-
-	public InquiryDto( String filename, String inquiryContent, int categoryNo) {
-		super();
-		this.filename = filename;
-		this.inquiryContent = inquiryContent;
-		this.categoryNo = categoryNo;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
+		this.profilepic = profilepic;
 	}
 
 	public int getInquiryNo() {
@@ -84,6 +69,22 @@ public class InquiryDto {
 		this.inquiryFile = inquiryFile;
 	}
 
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
 	public String getInquiryContent() {
 		return inquiryContent;
 	}
@@ -108,37 +109,31 @@ public class InquiryDto {
 		this.categoryNo = categoryNo;
 	}
 
-	public String getFilename() {
-		return filename;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
-	
-	public String getPath() {
-		return path;
+	public String getProfilepic() {
+		return profilepic;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setProfilepic(String profilepic) {
+		this.profilepic = profilepic;
 	}
-
-
-
-
 
 	@Override
 	public String toString() {
 		return "InquiryDto [inquiryNo=" + inquiryNo + ", memNick=" + memNick + ", memNo=" + memNo + ", inquiryFile="
 				+ inquiryFile + ", path=" + path + ", filename=" + filename + ", inquiryContent=" + inquiryContent
 				+ ", inquiryDate=" + inquiryDate + ", categoryNo=" + categoryNo + ", categoryName=" + categoryName
-				+ "]";
+				+ ", profilepic=" + profilepic + "]";
 	}
 
-
-
+	
 	
 	
 

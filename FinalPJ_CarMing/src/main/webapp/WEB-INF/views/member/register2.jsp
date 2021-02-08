@@ -81,8 +81,16 @@
 		            <div class="col-sm-6">
 		            	<c:choose>
 			                <c:when test='${not empty email}'><input type="email" class="form-control" name="memid" id="memid" value="${email}" readonly="readonly"></c:when>
-			                <c:otherwise><input type="email" class="form-control" name="memid" id="memid"></c:otherwise>
+			                <c:otherwise>
+			                <input type="email" class="form-control" name="memid" id="memid">
+			                <input type="button" id="sendmail" onclick="sendMail()" value="인증하기" class="btn btn-primary" >
+			                </c:otherwise>
 		                </c:choose>
+		                <span id="memid_error" class="chk_error">이메일 양식에 맞춰 입력해주세요</span>
+		                <p>이메일 예시 : example@gmail.com</p>
+		                <input type="text" name="certnum" id="certnum" placeholder="인증번호를 입력해주세요." style="width:200px; border:1px solid #ced4da;">
+		                <input type="button" id="certbutton" onclick="certcf()" value="인증확인">
+		                <span id="certnum_good" class="chk_error" style="color:green;">인증번호가 확인되었습니다.</span>
 		            </div>
 	                <div class="ex-text">이메일 예시 : example@gmail.com</div>
 	                <span class="chk_error" id="memid_error">이메일 주소를 다시 확인해주세요.</span>
@@ -282,7 +290,7 @@
 <!-- 	<script src="resources/js/main.js"></script> -->
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-	<script src="resources/js/register2.js"></script>
+	<script src="resources/js/register2.js?ver=1"></script>
 
 </body>
 </html>

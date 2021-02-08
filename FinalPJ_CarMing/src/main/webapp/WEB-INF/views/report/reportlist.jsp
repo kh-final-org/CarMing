@@ -134,7 +134,7 @@ function myFunction() {
 				<c:forEach var = "list" items="${list }">
 				<div class="gaadiex-list-item">
 					<div class="gaadiex-list-item-img">
-						<img class="gaadiex-item-img" src="resources/img/profile.png" alt="List user"><%-- ${list.reportFileName } --%>
+						<img class="gaadiex-item-img" src=${list.memFile } alt="List user"><%-- ${list.reportFileName } --%>
 					</div>
 					<div class="gaadiex-list-item-text">
 						<h4><a href="profileform.do?memno=${list.memNo }">제보자 닉네임&nbsp;&#124;&nbsp;${list.reportWriter}</a></h4>

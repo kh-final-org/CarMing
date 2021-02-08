@@ -173,20 +173,19 @@ function myFunction() {
 				<c:forEach var="list" items="${list}">
 					<tbody>
 						<tr>
-							<td class="cartNo"><a href="adminRentDetail.do?cartNo=${list.cartNo}"><span>${list.cartNo}</span></a></td>
-							<td>
-								<a href="profileform.do?memno=${list.memNo}">
-									<img src="resources/img/profile.png" class="avatar" alt="profile-img">
-								 </a>
-							</td>
-							<td class="memNick"><span>${list.memNick}</span></td>
-							<td class="pCategoryName">${list.pCategoryName }</td>
-							<td class="payNo">#${list.payNo }</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.startDate}" /></td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.endDate}" /></td>
-							<td>
-								<c:set var="status" value="${list.stateNo}" /> 
-								<c:choose>
+							<td class="cartNo" ><a href="adminRentDetail.do?cartNo=${list.cartNo}">${list.cartNo}</a></td>
+							<td><a href="#"><img
+									src=${list.memfile } class="avatar"
+									alt="Avatar">${list.memNick }</a></td>
+							<td>${list.pCategoryName }</td>
+							<td>#${list.payNo }</td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${list.startDate}" /></td>
+
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${list.endDate}" /></td>
+							<td><c:set var="status" value="${list.stateNo}" /> 
+									<c:choose>
 									<c:when test="${ status == 3}">
 										<span class="status text-warning">&bull;</span>
 									</c:when>

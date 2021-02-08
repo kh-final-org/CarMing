@@ -5,48 +5,7 @@ $(document).ready(function(){
 		
 		if($('input:radio[name=campcategory]:checked').val()=="차박명소"){
 			
-			alert("차박명소");
-			
-			
-//			// 마커를 표시할 위치와 title 객체 배열입니다 
-//			var positions = [
-//			    {
-//			        title: '카카오', 
-//			        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-//			    },
-//			    {
-//			        title: '생태연못', 
-//			        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-//			    },
-//			    {
-//			        title: '텃밭', 
-//			        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-//			    },
-//			    {
-//			        title: '근린공원',
-//			        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-//			    }
-//			];
-//
-//			// 마커 이미지의 이미지 주소입니다
-//			var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-//			    
-//			for (var i = 0; i < positions.length; i ++) {
-//			    
-//			    // 마커 이미지의 이미지 크기 입니다
-//			    var imageSize = new kakao.maps.Size(24, 35); 
-//			    
-//			    // 마커 이미지를 생성합니다    
-//			    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-//			    
-//			    // 마커를 생성합니다
-//			    var marker = new kakao.maps.Marker({
-//			        map: map, // 마커를 표시할 지도
-//			        position: positions[i].latlng, // 마커를 표시할 위치
-//			        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-//			        image : markerImage // 마커 이미지 
-//			    });
-//			}
+			ajaxlocation();
 			
 		}else{
 			searchPlaces();
@@ -278,33 +237,63 @@ function removeAllChildNods(el) {
 }
 
 ////아이작스로 차박명소 값 받아오기
-//function ajaxlocation(){
-//	var memno = $("input[name=memno]").val();
-//	console.log(memno);
-//	
-//	var locParam
-//	
-//	if(memno=="" || memno==null){
-//		alert("로그인이 제대로 되어있는지 확인해 주세요.");
-//	}else{
-//		$.ajax({
-//			type:"post",
-//			url : "ajaxlocation.do",
-//			data : memno,
-//			contentType : "application/json",
-//			dataType : "json",
-//			success:function(msg){
-//				if(msg){	
-//					alert()
-//				}else{
-//					alert("아이디 혹은 비밀번호가 틀렸습니다.");
-//				}
-//			},
-//			error:function(){
-//				console.error("차박 명소 불러들어오기 통신 오류");
-//				alert("차박 명소 불러들어오기 통신 오류");
-//			}
-//
-//	});
-//}
-//}
+function ajaxlocation(){
+	var memno = $("input[name=memno]").val();
+	console.log(memno);
+	
+	var locParam
+	
+	if(memno=="" || memno==null){
+		alert("로그인이 제대로 되어있는지 확인해 주세요.");
+	}else{
+		$.ajax({
+			type:"post",
+			url : "ajaxlocation.do",
+			data : memno,
+			contentType : "application/json",
+			dataType : "json",
+			success:function(msg){
+				if(msg){
+					
+					var positions = new Array();
+					for(var key in msg){
+						console.log("맵이름:"+key+"/ 경도, 위도:"+msg[key]);
+						var obj = {
+								title: key,
+								latlng: new kakao.maps.LatLng(msg[key][1],msg[key][0])
+						};
+						positions.push(obj);
+						console.log(positions[0].latlng);
+					}
+		
+					// 마커 이미지의 이미지 주소입니다
+					var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+					    
+					for (var i = 0; i < positions.length; i ++) {
+					    
+					    // 마커 이미지의 이미지 크기 입니다
+					    var imageSize = new kakao.maps.Size(24, 35); 
+					    
+					    // 마커 이미지를 생성합니다    
+					    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+					    
+					    // 마커를 생성합니다
+					    var marker = new kakao.maps.Marker({
+					        map: map, // 마커를 표시할 지도
+					        position: positions[i].latlng, // 마커를 표시할 위치
+					        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+					        image : markerImage // 마커 이미지 
+					    });
+					}
+				}else{
+					alert("차박명소로 지정한게 없습니다.");
+				}
+			},
+			error:function(){
+				console.error("차박 명소 불러들어오기 통신 오류");
+				alert("차박 명소 불러들어오기 통신 오류");
+			}
+
+	});
+}
+}

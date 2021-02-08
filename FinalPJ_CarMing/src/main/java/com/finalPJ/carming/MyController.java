@@ -27,10 +27,10 @@ public class MyController {
 	@RequestMapping(value = "/ordernpay.do")
 	public String ordernpay(Model model) {
 		
-		List<CartListDto> cartList = cBiz.cartList();
+		List<CartListDto> orderList = cBiz.orderList();
 		List<PayDto> payList = pBiz.selectPay();
 		
-		model.addAttribute("cartList", cartList);
+		model.addAttribute("cartList", orderList);
 		model.addAttribute("payList", payList);
 		
 		return "my/ordernpay";
@@ -39,6 +39,6 @@ public class MyController {
 	@RequestMapping(value = "/mypage.do")
 	public String mypage(Model model) {
 		
-		return "my/mypage";
+		return "my/mypage2";
 	}
 }

@@ -121,7 +121,7 @@
 <!-- 	<script src="resources/js/main.js"></script> -->
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d642f0ec29fa1aa1c0907815f0c88f11&libraries=services"></script>
-	<script src="resources/js/maincamplace.js"></script>
+	<script src="resources/js/maincamplace.js?ver=1"></script>
 
 </body>
 </html>

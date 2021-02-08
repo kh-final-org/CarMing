@@ -41,18 +41,18 @@ public class RentReivewController {
 		rdto.setreviewStar(reviewStar);
 		
 		int insertRes = biz.insertReview(rdto);
-		
+		System.out.println();
 		//인코딩 설정
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
 		if(insertRes > 0) {
-			System.out.println("뭐든 수발");
 			PrintWriter out = response.getWriter();
 			out.println("<script>"
+					+"confirm('정말로 등록하시겠습니까?');"
 					+"alert('리뷰가 등록되었습니다.');"
 					+"location.href='productdetail.do?pNo="
-					+rdto.getpNo()
+					+pNo
 					+"'"
 					+ "</script>");
 			out.flush();
@@ -61,7 +61,7 @@ public class RentReivewController {
 			out.println("<script>"
 					+"alert('리뷰 등록에 실패하였습니다.');"
 					+"location.href='productdetail.do?pNo="
-					+rdto.getpNo()
+					+pNo
 					+"'"
 					+ "</script>");
 			out.flush();
@@ -73,7 +73,7 @@ public class RentReivewController {
 		logger.info("[REVIEW DELETE");
 		
 		int deleteres = biz.deleteReview(reviewNo);
-		
+		int pNo = Integer.parseInt(request.getParameter("pNo"));
 		//인코딩 설정
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -83,7 +83,7 @@ public class RentReivewController {
 			out.println("<script>"
 					+"alert('해당 리뷰글이 삭제되었습니다.');"
 					+"location.href='productdetail.do?pNo="
-					+rdto.getpNo()
+					+pNo
 					+"'"
 					+ "</script>");
 			out.flush();
@@ -92,7 +92,7 @@ public class RentReivewController {
 			out.println("<script>"
 					+"alert('리뷰삭제에 실패하였습니다.');"
 					+"location.href='productdetail.do?pNo="
-					+rdto.getpNo()
+					+pNo
 					+"'"
 					+ "</script>");
 			out.flush();

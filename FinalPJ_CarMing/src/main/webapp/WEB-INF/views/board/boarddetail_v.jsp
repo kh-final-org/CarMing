@@ -107,6 +107,76 @@
 	}
 </script>
 
+<!-- 수정하기 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+function update(brdno){
+	var content =  document.getElementById("update2").value;
+					
+	console.log(content);
+	
+	var value = {
+		"brdno"	: brdno,
+		"brdcontent" : content
+	};
+	console.log(value);
+	
+	if(content == null|| content=="" ){
+		alert("내용을 입력해 주세요.");
+	}else{
+		$.ajax({
+			type:"post",
+			url : "boardupdateRes.do",
+			data : JSON.stringify(value),
+			contentType : "application/json",
+			dataType : "json",
+			success:function(msg){
+				if(msg.check==true){
+					location.href="boarddetailform_v.do?brdno="+brdno;
+				}else{
+					alert("수정 실패");
+				}
+			},
+			error:function(){
+				console.error("게시글 수정 실패");
+				alert("통신에러");
+			}
+
+	});
+	}
+}
+
+</script>
+<!-- 수정 폼 -->
+<script type="text/javascript">
+	function updateform() {
+    	var value = document.getElementById("update").textContent;
+		$("#update").empty();
+    	
+   	    var Y = document.createElement("textarea");
+	    Y.setAttribute("name", "brdcontent");
+	    Y.setAttribute("id","update2")
+	   	Y.value += value;
+
+	    document.getElementById("update").appendChild(Y);	
+	    
+	    $("#updatebutton").empty();
+	    
+	    var button = document.createElement("input");
+	    button.setAttribute("onclick","update(${dto.brdno})");
+	    button.setAttribute("type","button");
+	    button.setAttribute("value","올리기");
+	    button.setAttribute("id","board-option-btn");
+	   // <input type="button" onclick="updateform()"  value="수정" id="board-option-btn">
+	    
+	   document.getElementById("updatebutton").appendChild(button);
+	    
+	    
+
+	 };
+</script> 
+
+
 </head>
 <body>
 <!-- Start Header Area -->
@@ -157,7 +227,7 @@
 		
 		<!-- 게시글 내용/조회수/신고 -->
 		<div class="card-body-3">
-			<div class="board-content">${dto.brdcontent }</div>
+			<div class="board-content" id="update">${dto.brdcontent }</div>
 			<div class="board-count">조회수 ${dto.brdcount }</div>
 			<div class="board-report">&nbsp;&nbsp;&middot;
 				<a href="writereportform.do?targetNo=${dto.brdno}&targetTypeNo=1" class="board-report-target1" id="board-report-target">신고</a>
@@ -172,10 +242,10 @@
 			</div>
 			<div class="board-comment-header-2">
 				<c:if test="${login.memnick == dto.brdwriter }">
-					<div class="board-modify">
-						<input type="button" value="수정" id="board-option-btn">
+					<div class="board-modify" id="updatebutton">
+						<input type="button"  onclick="updateform()" value="수정" id="board-option-btn">
 					</div>
-					<div class="board-delete">&nbsp;&#124;
+					<div class="board-delete" >&nbsp;&#124;
 						<input type="button" onclick="boardDel(${dto.brdno})" value="삭제" id="board-option-btn">
 					</div>&#124;
 				</c:if>
@@ -215,7 +285,7 @@
 						<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" ></a>
 						<span><strong>${comment.comwriter }</strong></span>
 					</div>
-					<div class="commentuser-comment">${comment.comcontext }</div>
+					<div class="commentuser-comment" id="comupdate">${comment.comcontext }</div>
 				</div>
 	
 				<div class="commentuser-second">
@@ -224,11 +294,11 @@
 						<a href="writereportform.do?targetNo=${comment.comno }&targetTypeNo=2" class="board-report-target2" id="board-report-target">신고</a>
 					</div>
 					<c:if test="${login.memnick == comment.comwriter }">
-						<div class="comment-delete">
-							<!-- 
-							<input type="button" onclick="commentDel(${comment.comno})" value="삭제" id="board-option-btn">-->
-							<a href="deletebcomment.do?comno=${comment.comno }&brdno=${dto.brdno }" class="board-delete-comment">삭제</a>&nbsp;&middot;
-						</div>
+					<div class="comment-delete">
+						<!-- 
+						<input type="button" onclick="commentDel(${comment.comno})" value="삭제" id="board-option-btn">-->
+						<a href="deletebcomment.do?comno=${comment.comno }&brdno=${dto.brdno }" class="board-delete-comment">삭제</a>&nbsp;&middot;
+					</div>
 					</c:if>
 				</div>
 			</div>
