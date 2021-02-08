@@ -294,7 +294,14 @@
 					<div class="col-sm-6">
 						<div class="upload-img-form">
 							<div class="img_wrap center-block">
+							<c:choose>
+								<c:when test="${not empty login.memfile }">
+								<img id="img" src="${login.memfile }">
+								</c:when>
+								<c:otherwise>
 								<img id="img" src="">
+								</c:otherwise>
+							</c:choose>>
 				  			</div>
 							<div class="upload-img-content">
 								<label class="custom-file-label" for="input_img"></label>
