@@ -101,6 +101,10 @@ function profileCard(friend) {
 	console.log("친구의 닉네임은 : " + friend.friendNick);
 	console.log("친구의 성별은 : " + friend.friendGender);
 	
+	$(".cardProfile").css('display','none');
+	
+	
+	
 	// 비우기.
 	$("#drag").empty();
 	
@@ -108,19 +112,18 @@ function profileCard(friend) {
 	//$("#drag").append('<div class="option" onclick="friendProfile('+friendNo+')">' + friendNo + "번 친구</div>");
 	// --> 프로필 카드로 변경하기.
 	//$("#drag").append('<a href="#" class="btn btn-primary">프로필로 이동</a>');
-	$("#drag").append('<div class="cardProfile"><div class="d-flex position-relative"><img src="resources/chatbot/img/'+friend.friendFile+'" class="flex-shrink-0 me-3 cardImage" alt="..."><div><h5 class="mt-0 cardNickname">'+friend.friendNick+'</h5><p class="cardGender" style="font-size: 10px;">'+friend.friendGender+'</p></div></div><a href="#" class="btn btn-primary cardLink" onclick="friendProfile('+friend.friendNo+')">프로필 보기</a></div>');
+	$("#drag").append('<div class="profileOption option"><div class="cardProfile"><div class="d-flex position-relative"><img src="resources/img/'+friend.friendFile+'" class="flex-shrink-0 me-3 cardImage" alt="..."><div><h5 class="mt-0 cardNickname">'+friend.friendNick+'</h5><p class="cardGender" style="font-size: 10px;">'+friend.friendGender+'</p></div></div><a href="#" class="btn btn-primary cardLink" onclick="friendProfile('+friend.friendNo+')">프로필 보기</a></div></div>');
+	//$("#drag").append('<div class="cardProfile"><div class="d-flex position-relative"><img src="resources/chatbot/img/'+friend.friendFile+'" class="flex-shrink-0 me-3 cardImage" alt="..."><div><h5 class="mt-0 cardNickname">'+friend.friendNick+'</h5><p class="cardGender" style="font-size: 10px;">'+friend.friendGender+'</p></div></div><a href="#" class="btn btn-primary cardLink" onclick="friendProfile('+friend.friendNo+')">프로필 보기</a></div>');
 	
 	$("#drag").append('<div class="option" onclick="submit()"> 친구 다시 찾기 </div>');
 	
 	// 처음으로 돌아가기.
 	$("#drag").append('<div class="option" onclick="location.reload()">처음으로 </div>');
 		 
-
-	/*$('.message from').after('<select name="b" data-conv-question="친구의 프로필 소개">' + 
-									'<option value="abc">처음문장'+'</option>' + 
-								'</select>');*/
+	//$(".typing_loader").css('display','none');
+	
 }
-
+	
 // 친구 프로필 페이지로 이동!
 function friendProfile(friendNo) {
 	alert(friendNo + "번 친구의 페이지로 이동합니다.");

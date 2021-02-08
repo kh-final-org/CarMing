@@ -227,6 +227,11 @@ div.conv-form-wrapper div.options div.option {
     border-radius: 20px;
     font-size: 0.5rem;
 }
+div.conv-form-wrapper div.options div.profileOption {
+    padding: 5px;
+    border: none;
+    margin: 0px;
+}
 div.conv-form-wrapper div.message {
     animation: slideTop 0.15s ease;
 }
@@ -296,6 +301,11 @@ div.conv-form-wrapper div.options div.option:hover {
     color: #fff;
     background: #ffba00;
     border: 1px solid transparent;
+}
+div.conv-form-wrapper div.options div.profileOption:hover {
+    color: #ffba00;
+    background: none;
+    border: none;
 }
 div.conv-form-wrapper div.options div.option.selected {
     background: #06b79a;

@@ -48,56 +48,18 @@ body {
 		System.out.println("Session의 no : " + login.getMemno());
 	}
 	
-%> 
-
-	<ol id="list"> <li>첫 번째 아이템</li> <li>두 번째 아이템</li> </ol>
-		
-	<h1 id="hiPingGu">HI, Ping Gu</h1>
-	
-	<h1><a href="userLogin.do">login</a></h1>
-	<h1><a href="userLogin.do?memno=1">login?memno=1</a></h1>
-	<h1><a href="userLogin.do?memno=2">login?memno=2</a></h1>
-	<h1><a href="userLogout.do">logout</a></h1>
-	
-	<h1><a href="surveyList.do">list</a></h1>
-	<h1><a href="surveyOne.do?">one</a></h1>
-	<h1><a href="insertres.do">insert</a></h1>
-	
-	
-	<!-- 프로필 링크 -->
-	<div class="cardProfile">
-		<div class="d-flex position-relative">
-			<img src="resources/chatbot/img/profile.jpg" class="flex-shrink-0 me-3 cardImage" alt="...">
-		  
-		  	<div>
-		    	<h5 class="mt-0 cardNickname">닉네임</h5>
-		    	<p class="cardGender" style="font-size: 10px;">성별</p>
-		  	</div>
-		</div>
-    	<a href="#" class="btn btn-primary cardLink" style="width: 5rem; font-size: 10px;">프로필 보기</a>
-	</div>
-	
+%> 	
 <!-- Session에 값이 있으면  / 값이 없으면
 	챗봇 기능 사용 가능 / 로그인해야 한다고만 띄우기.
  -->	
 <c:set var="no" value= "${login.getMemno() }" />
 
-<br>
-<c:choose>
-    <c:when test="${empty no}">
-        	로그인해주세요~
-    </c:when>
-    <c:otherwise>
-        	<c:out value="${no}"></c:out>번 회원입니다!!!!!!
-        	<script>
-				var memno = ${no};
-			</script>
-    </c:otherwise>
-</c:choose>
+<script>
+	var memno = ${no};
+</script>
 
 
-	
-	
+
 <!-- ChatBot -->
 <div class="chat_icon">
 	<img src="resources/img/logo_chatbot.png" alt="PingGu" style="width:50px; height:50px" >
@@ -163,20 +125,14 @@ body {
 								</select>
 								
 								<!-- 제출하시겠습니까? -->
-								<select id="vvs" name="a" data-conv-question="제출하시겠습니까 ?" onchange="submit()" >
+								<select id="vvs" name="a" data-conv-question="친구를 찾았어요!" onchange="submit()" >
 									<!-- 제출 버튼 -->
-									<option value="jechool">제출</option>
+									<option value="jechool">친구 프로필 보기</option>
 								</select>
-								
-								<!-- <select name="b" data-conv-question="예시">
-									<option id="ex" value="abc">ex</option>
-								</select> -->
-								
+																
 								<!-- <select name="aaaa" data-conv-question="친구의 프로필을 소개합니다 :)">
-									<option value="abc">
-										
-									</option>
 									<option value="def">친구 다시 찾기</option>
+									<option value="abc">처음으로</option>
 								</select> -->
 								
 							</div>
