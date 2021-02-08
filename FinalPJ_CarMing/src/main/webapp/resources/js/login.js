@@ -1,7 +1,6 @@
 function ajaxlogin(){
 		var memid= $("#memid").val().trim();
 		var mempw= $("#mempw").val().trim();
-		console.log(memid+"/"+mempw);
 		
 
 		

@@ -39,7 +39,8 @@
 		<mapper resource="/mybatis/board-mapper.xml" /> 
 		<mapper resource="/mybatis/bcomment-mapper.xml" />
 <!-- 	<mapper resource="/mybatis/dm-mapper.xml" />
-		<mapper resource="/mybatis/mapLocation-mapper.xml" />  -->
+		  -->
+		<mapper resource="/mybatis/mapLocation-mapper.xml" />
 		<mapper resource="/mybatis/survey-mapper.xml" />
 		<mapper resource="/mybatis/rentreview-mapper.xml"/>
 		<mapper resource="/mybatis/cart-mapper.xml"/>

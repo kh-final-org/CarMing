@@ -75,7 +75,7 @@ label{
       <div >      
         <p>&nbsp;</p>
          
-        <form  class="form-horizontal" action="profilechange.do" method="post" enctype="multipart/form-data" modelAttribute="MemberDto" >
+        <form  class="form-horizontal" action="profilechange.do" method="post" enctype="multipart/form-data" modelAttribute="MemberDto">
          <div class="form-group">
             <div class="col-sm-2 control-label">
                 <label id="memid">이메일</label>
@@ -194,14 +194,15 @@ label{
             </div>
             <div class="col-sm-6">
                 <input type="file" id="photofile" name="photofile" accept="image/*"/>
-                <c:choose>
-                	<c:when test="${not empty login.memfile }">
+                	 <c:choose>
+                	<c:when test="${not empty login.memfile}">
                 		<div class="select_img"><img id="thumbnail" src="${login.memfile}" /></div>
                 	</c:when>
                 	<c:otherwise>
                 		<div class="select_img"><img id="thumbnail" src="" /></div>
                 	</c:otherwise>
                 </c:choose>
+               
                 
             </div>
          </div>
@@ -249,7 +250,7 @@ label{
 	<script src="resources/js/gmaps.min.js"></script>
 	<script src="resources/js/main.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="resources/js/profilechange.js?ver=1"></script>
+	<script src="resources/js/profilechange.js"></script>
 
 
 </body>

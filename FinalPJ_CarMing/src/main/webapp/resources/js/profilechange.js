@@ -37,12 +37,6 @@ function empty_change() {
 		alert("수정사항에 빈 칸을 채워주세요.");
 	}
 	
-	if ($('input[name=memchk_c]').is(":checked")) {
-	    $('input[name=memchk]').val('Y');
-	} else {
-	    $('input[name=memchk]').val('N');
-	}
-	
 	return regist_chk;
 }; // end submit()
 
