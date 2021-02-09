@@ -15,4 +15,5 @@ public interface ProductBiz {
 	public void deleteProduct(ProductDto dto);
 	public int countListTotal();
 	public void changeAmount(CartListDto cDto);
+	public int returnProduct(int cartNo);
 }

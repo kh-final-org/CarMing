@@ -59,4 +59,12 @@
 		SET PAMOUNT = PAMOUNT - #{cAmount}
 		WHERE PNO = #{pNo}
 	</update>
+	
+	<update id="return" parameterType="int">
+		UPDATE CART
+		SET STATENO = 4
+		WHERE CARTNO = #{cartNo}
+	</update>
+	
+	
 </mapper>

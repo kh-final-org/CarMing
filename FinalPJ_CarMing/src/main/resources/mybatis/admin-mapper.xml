@@ -73,6 +73,16 @@
 		WHERE CARTNO = #{cartNo}
 	</update>
 	
+	<update id="sendRent" parameterType="int">
+		UPDATE CART
+		SET STATENO = 3
+		WHERE CARTNO = #{cartNo}
+	</update>
+	
+	<delete id="deleteRent" parameterType="int">
+		DELETE FROM CART
+		WHERE CARTNO = #{cartNo}
+	</delete>
 	<!-- ===================================================================================================
 	================================================ paging ================================================ -->
 	<!-- 

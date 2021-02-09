@@ -90,5 +90,19 @@ public class ProductDaoImpl implements ProductDao{
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public int returnProduct(int cartNo) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"return", cartNo);
+		} catch (Exception e) {
+			System.out.println("[error]: returnProduct");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 	
 }

@@ -158,6 +158,7 @@ function myFunction() {
 				<col style="width: 15%">
 				<col style="width: 15%">
 				<col style="width: 10%">
+				<col style="width: 5%">
 				<thead>
 					<tr>
 						<th>NO.</th>
@@ -168,6 +169,7 @@ function myFunction() {
 						<th>렌트 시작날짜</th>
 						<th>렌트 종료날짜</th>
 						<th>렌탈현황</th>
+						<th>삭제</th>
 					</tr>
 				</thead>
 				<c:forEach var="list" items="${list}">
@@ -176,7 +178,8 @@ function myFunction() {
 							<td class="cartNo" ><a href="adminRentDetail.do?cartNo=${list.cartNo}">${list.cartNo}</a></td>
 							<td><a href="#"><img
 									<%-- src=${list.memfile }  --%>class="avatar"
-									alt="Avatar">${list.memNick }</a></td>
+									alt="Avatar"></a></td>
+							<td>${list.memNick }</td>
 							<td>${list.pCategoryName }</td>
 							<td>#${list.payNo }</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
@@ -186,8 +189,14 @@ function myFunction() {
 									value="${list.endDate}" /></td>
 							<td><c:set var="status" value="${list.stateNo}" /> 
 									<c:choose>
+									<c:when test="${ status == 2}">
+										<span class="status text-success">&bull;</span>
+									</c:when>
 									<c:when test="${ status == 3}">
 										<span class="status text-warning">&bull;</span>
+									</c:when>
+									<c:when test="${ status == 4}">
+										<span class="status text-danger">&bull;</span>
 									</c:when>
 									<c:when test="${ status == 5}">
 										<span class="status text-success">&bull;</span>
@@ -196,6 +205,10 @@ function myFunction() {
 										<span class="status text-danger">&bull;</span>
 									</c:when>
 								</c:choose> ${list.stateName }
+							</td>
+							<td>
+							<a href="deleteRent.do?cartNo=${list.cartNo}" class="delete" title="Delete"
+							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
 							</td>
 						</tr>
 					</tbody>

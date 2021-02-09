@@ -66,4 +66,16 @@ public class adminBizImpl implements adminBiz{
 	public int getMemCount(String search) {
 		return dao.getMemCount(search);
 	}
+
+	@Override
+	public int deleteRent(int cartNo) {
+		// TODO Auto-generated method stub
+		return dao.deleteRent(cartNo);
+	}
+
+	@Override
+	public int sendRent(int cartNo) {
+		// TODO Auto-generated method stub
+		return dao.sendRent(cartNo);
+	}
 }

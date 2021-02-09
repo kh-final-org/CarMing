@@ -48,6 +48,7 @@
 								<th>수량</th>
 								<th>렌트 기간</th>
 								<th>렌트 처리 상태</th>
+								<th>반납</th>
 							</tr>
 							<c:choose>
 								<c:when test="${empty cartList}">
@@ -73,20 +74,26 @@
 												</c:when>
 												<c:when test="${cartListDto.stateNo == 3}">
 													<td>
-														대여중
+														대여중(배송완료)
 													</td>
 												</c:when>
 												<c:when test="${cartListDto.stateNo == 4}">
 													<td>
-														대여중
+														반납신청
 													</td>
 												</c:when>
 												<c:when test="${cartListDto.stateNo == 5}">
 													<td>
-														대여중
+														반납완료
+													</td>
+												</c:when>
+												<c:when test="${cartListDto.stateNo == 6}">
+													<td>
+														연체
 													</td>
 												</c:when>
 											</c:choose>
+											<td><button onclick="location.href='returnProduct.do?cartNo=${cartListDto.cartNo}'">상품반납</button></td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
