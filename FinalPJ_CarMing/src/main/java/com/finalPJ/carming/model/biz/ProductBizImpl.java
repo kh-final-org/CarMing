@@ -46,5 +46,10 @@ public class ProductBizImpl implements ProductBiz{
 	public void changeAmount(CartListDto cDto) {
 		dao.changeAmount(cDto);
 	}
+
+	@Override
+	public int returnProduct(int cartNo) {
+		return dao.returnProduct(cartNo);
+	}
 	
 }

@@ -45,8 +45,23 @@ private adminBiz biz;
 		return "Admin/adminRentDetail";
 	}
 	
+	
+	@RequestMapping(value = "/sendRent.do")
+	public String sendRent( int cartNo) {
+		
+		logger.info("[admRentDetail]");
+		int res = biz.sendRent(cartNo);
+		System.out.println(cartNo);
+		if(res>0) {
+			return "redirect: adminRentList.do";
+		}else {
+			return "redirect: adminRentDetail.do";
+		}
+		
+	}
+	
 	@RequestMapping(value = "/returnRent.do")
-	public String returnRent(Model model, int cartNo) {
+	public String returnRent( int cartNo) {
 		
 		logger.info("[admRentDetail]");
 		int res = biz.returnRent(cartNo);
@@ -58,6 +73,8 @@ private adminBiz biz;
 		}
 		
 	}
+	
+	
 	
 	@RequestMapping(value = "/memberlist.do")
 	public String memberlist(Model model, String page, String search) {
@@ -77,6 +94,19 @@ private adminBiz biz;
 		model.addAttribute("count", biz.getMemCount(searchDefault));
 
 		return "Admin/adminMemberList";
+	}
+	
+	@RequestMapping("/deleteRent.do")
+	public String deleteRent(int cartNo) {
+		logger.info("[DeleteRent]");
+		
+		int res = biz.deleteRent(cartNo);
+		System.out.println(cartNo);
+		if(res>0) {
+			return "redirect: adminRentList.do";
+		}else {
+			return "redirect: adminRentDetail.do";
+		}
 	}
 }
 	

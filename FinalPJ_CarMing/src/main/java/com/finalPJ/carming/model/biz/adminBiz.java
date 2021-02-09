@@ -12,6 +12,8 @@ public interface adminBiz {
 	public List<AdmRentDto> RentList();
 	public AdmRentDto selectOneRent(int cartNo);
 	public int returnRent(int cartNo);
+	public int sendRent(int cartNo);
+	public int deleteRent(int cartNo);
 
 	
 	/* member select */

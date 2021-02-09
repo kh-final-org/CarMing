@@ -163,5 +163,34 @@ public class adminDaoImpl implements adminDao{
 		return res;
 	}
 
+	@Override
+	public int deleteRent(int cartNo) {
+
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"deleteRent", cartNo);
+		} catch (Exception e) {
+			System.out.println("[error]: selectMemCnt");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int sendRent(int cartNo) {
+		int res = 0;
+		 try {
+			res = sqlSession.insert(NAMESPACE+"sendRent", cartNo);
+			
+		} catch (Exception e) {
+			System.out.println("[error]: sendRent");
+			e.printStackTrace();
+		}
+		 
+		return res;
+	}
+
 	
 }
