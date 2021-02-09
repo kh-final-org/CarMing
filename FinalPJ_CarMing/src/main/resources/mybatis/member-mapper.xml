@@ -47,4 +47,13 @@
 		WHERE MEMID = #{memid}
 	</delete>
 	
+	<select id="countuser" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+	</select>
+	
+	<select id="selectAll" resultType="MemberDto">
+		SELECT * FROM MEMBER
+	</select>
+	
 </mapper>

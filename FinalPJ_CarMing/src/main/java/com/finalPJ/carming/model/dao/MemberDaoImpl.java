@@ -1,6 +1,8 @@
 package com.finalPJ.carming.model.dao;
 
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -106,6 +108,35 @@ public class MemberDaoImpl implements MemberDao {
 			res = sqlSession.update(NAMESPACE+"pwchange", dto);
 		} catch (Exception e) {
 			System.out.println("[error] : Member/pwchange");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	//암호화 다시 추가시 삭제
+	@Override
+	public int countuser() {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"countuser");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("[error] : Member/countuser");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public List<MemberDto> selectAll() {
+		List<MemberDto> res = null;
+		
+		try {
+			res = sqlSession.selectList(NAMESPACE+"selectAll");
+		} catch (Exception e) {
+			System.out.println("[error] : Member/selectAll");
 			e.printStackTrace();
 		}
 		return res;

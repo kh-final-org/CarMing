@@ -79,8 +79,11 @@
 						</a>
 					</div>
 					<br>
+
 				</form>        
 		   	</div>
+		   									<!-- 암호화 다시 추가시 삭제구역 -->
+		   	<input type="button" value="비밀번호 암호화" onclick="passwordenc()"/>
 		</section>
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
