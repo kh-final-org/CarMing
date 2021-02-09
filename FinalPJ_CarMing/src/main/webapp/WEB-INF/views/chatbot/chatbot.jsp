@@ -38,7 +38,7 @@ body {
 
 
 </head>
-<body style="background: #dedede;">
+<body>
 <%
 
 	MemberDto login;
@@ -88,8 +88,7 @@ body {
 						<select name="category" data-conv-question="' CarMing ' 챗봇 서비스 핑구에요! 무엇을 도와드릴까요? :)">
 							<!-- 선택지 -->
 							<option value="friendFind">캠핑 친구 찾기</option>
-							<option value="QNA">Q & A</option>
-							<option value="customerService">상담원 연결하기</option>							
+							<option value="question">문의하기</option>
 						</select>
 						
 						<!-- 대답1--> 
@@ -140,7 +139,7 @@ body {
 							</div>
 							
 							<!-- Q & A -->
-							<div data-conv-case="QNA">
+							<div data-conv-case="question">
 								<select name="QNA1" data-conv-question="' CarMing '의 챗봇 서비스 핑구입니다! 무엇을 도와드릴까요? :)">
 									<!-- 선택지 -->	
 									<option value="1">질문1</option>
@@ -149,11 +148,9 @@ body {
 								</select>				
 							</div>
 							
-							<!-- 상담원 연결하기 선택시-->
-							<div data-conv-case="customerService">
-								<input type="text" name="company_name" data-conv-question="상담원과 연결됩니다.">				
-							</div>
 						</div>
+						
+						<!-- <input type="text" name="company_name" data-conv-question="상담원과 연결됩니다."> -->			
 						
 						<!-- 제출하시겠습니까? -->
 						<!-- <select data-conv-question="제출하시겠습니까 ?">
