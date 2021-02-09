@@ -17,4 +17,5 @@ public interface ProductDao {
 	public void deleteProduct(ProductDto dto);
 	public void changeAmount(CartListDto cDto);
 	public int countListTotal();
+	public int returnProduct(int cartNo);
 }

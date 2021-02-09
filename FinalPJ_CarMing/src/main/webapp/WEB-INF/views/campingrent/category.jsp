@@ -15,46 +15,6 @@
 <script src="resources/js/category.js?ver=4"></script>
 
 <script type="text/javascript">
-	function myFunction() {
-	    var selectbox, filter, a, txtValue, list;
-	    selectbox = document.getElementById("selectbox");
-	    filter = selectbox.value
-	
-	    list = document.getElementsByClassName("card-body");
-
-	    for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("category")[i];
-	        txtValue = a.textContent || a.innerText;
-	       
-	        if (txtValue.indexOf(filter) > -1 ) {
-	        	list[i].style.display = "";
-	        } else {
-	        	list[i].style.display = "none";					
-	        }
-		}
-	}
-</script>
-<script type="text/javascript">
-	function myFunction() {
-	    var selectbox, filter, a, txtValue, list;
-	    selectbox = document.getElementById("selectbox");
-	    filter = selectbox.value
-	
-	    list = document.getElementsByClassName("card-body");
-
-	    for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("category")[i];
-	        txtValue = a.textContent || a.innerText;
-	       
-	        if (txtValue.indexOf(filter) > -1 ) {
-	        	list[i].style.display = "";
-	        } else {
-	        	list[i].style.display = "none";					
-	        }
-		}
-	}
-</script>
-<script type="text/javascript">
 	function showall() {
 	var list = document.getElementsByClassName("single-product");
 		 for(i=0; i<list.length; i++){
@@ -63,19 +23,24 @@
 	}
 </script>
 
+
 <script type="text/javascript">
 	function tent() {
 	var list = document.getElementsByClassName("single-product");
-	var value = document.getElementById("categoryNo").value	
+	
+	
 		 for(i=0; i<list.length; i++){
-			 
-				if(value == 1){
+			 var catNo = document.getElementsByClassName("pCategoryNo")[i].value;
+			
+			 console.log(catNo );
+				if(catNo == 1){
 				 list[i].style.display ="";
 				}else {
 					list[i].style.display = "none";
 				}
 			 
 		 }
+		 
 	}
 </script>
 
@@ -83,15 +48,17 @@
 <script type="text/javascript">
 	function mat() {
 	var list = document.getElementsByClassName("single-product");
-	var value = document.getElementById("categoryNo").value	
-		 for(i=0; i<list.length; i++){
-			 
-			 if(value == 2){
-				 list[i].style.display ="";
-				}else{
-					list[i].style.display = "none";
-				}
-			 
+	 
+	for(i=0; i<list.length; i++){
+		 var cartNo = document.getElementsByClassName("pCategoryNo")[i].value;
+		
+		 console.log(cartNo );
+			if(cartNo == 2){
+			 list[i].style.display ="";
+			}else {
+				list[i].style.display = "none";
+			}
+		 
 		 }
 	}
 </script>
@@ -99,15 +66,17 @@
 <script type="text/javascript">
 	function cook() {
 	var list = document.getElementsByClassName("single-product");
-	var value = document.getElementById("categoryNo").value	
-		 for(i=0; i<list.length; i++){
-			 
-			 if(value == 3){
-				 list[i].style.display ="";
-				}else{
-					list[i].style.display = "none";
-				}
-			 
+	
+	for(i=0; i<list.length; i++){
+		 var cartNo = document.getElementsByClassName("pCategoryNo")[i].value;
+		
+		 console.log(cartNo );
+			if(cartNo == 3){
+			 list[i].style.display ="";
+			}else {
+				list[i].style.display = "none";
+			}
+		 
 		 }
 	}
 </script>
@@ -115,15 +84,16 @@
 <script type="text/javascript">
 	function chair() {
 	var list = document.getElementsByClassName("single-product");
-	var value = document.getElementById("categoryNo").value	
-		 for(i=0; i<list.length; i++){
-			 
-			 if(value == 4){
-				 list[i].style.display ="";
-				}else{
-					list[i].style.display = "none";
-				}
-			 
+	for(i=0; i<list.length; i++){
+		 var cartNo = document.getElementsByClassName("pCategoryNo")[i].value;
+		
+		 console.log(cartNo );
+			if(cartNo == 4){
+			 list[i].style.display ="";
+			}else {
+				list[i].style.display = "none";
+			}
+		 
 		 }
 	}
 </script>
@@ -131,15 +101,16 @@
 <script type="text/javascript">
 	function bbq() {
 	var list = document.getElementsByClassName("single-product");
-	var value = document.getElementById("categoryNo").value	
-		 for(i=0; i<list.length; i++){
-			 
-			 if(value == 5){
-				 list[i].style.display ="";
-				}else{
-					list[i].style.display = "none";
-				}
-			 
+	for(i=0; i<list.length; i++){
+		 var cartNo = document.getElementsByClassName("pCategoryNo")[i].value;
+		
+		 console.log(cartNo );
+			if(cartNo == 5){
+			 list[i].style.display ="";
+			}else {
+				list[i].style.display = "none";
+			}
+		 
 		 }
 	}
 </script>
@@ -245,8 +216,8 @@
         					<c:otherwise>
         						<c:forEach var="productDto" items="${productlist}">
 	      						<div class="col-lg-4 col-md-6" >
-        							<input type="hidden" class="pCategoryNo" id="categoryNo" value="${productDto.pCategoryNo }">
-										<div class="single-product">
+									<div class="single-product">
+        								<input type="hidden" class="pCategoryNo" id="categoryNo" value="${productDto.pCategoryNo }">
 										<c:if test="${login.memcode == 1 }">
 											<input type="checkbox" name="chBox" class="chBox" data-pNo="${productDto.pNo }">
 											<div class="delete_btn" style="float: right;">

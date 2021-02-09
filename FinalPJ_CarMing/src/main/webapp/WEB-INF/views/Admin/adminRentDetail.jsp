@@ -26,7 +26,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="resources/js/gmaps.min.js"></script>
 <script src="resources/js/main.js"></script>
-
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
 	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
@@ -80,8 +79,10 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='sendRent.do?cartNo=${list.cartNo}'">상품 배송</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='returnRent.do?cartNo=${list.cartNo}'">반납 완료</button>
+	       	 	<br>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminRentList.do'">렌트 목록</button>
 	         </div>
 		  </div>
 		</div>

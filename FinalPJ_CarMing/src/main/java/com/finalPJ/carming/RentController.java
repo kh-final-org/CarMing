@@ -243,4 +243,19 @@ public class RentController {
 		
 		return result;
 	}
+	
+	@RequestMapping("/returnProduct.do")
+	public String returnProduct(int cartNo) {
+		int res = biz.returnProduct(cartNo);
+		
+		logger.info("[admRentDetail]");
+		
+		if(res>0) {
+			return "redirect:ordernpay.do";
+		}else {
+			return "redirect:ordernpay.do";
+		}
+		
+		
+	}
 }
