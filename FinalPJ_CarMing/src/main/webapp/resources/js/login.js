@@ -34,3 +34,10 @@ function ajaxlogin(){
 		});
 	}
 }
+
+//암호화 다시 추가시 삭제
+function passwordenc(){
+	
+	location.href="passencode.do";
+	
+}

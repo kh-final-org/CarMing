@@ -7,9 +7,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -101,8 +103,8 @@ public class MemberController {
 		boolean check = false;
 		
 		if(res!=null) {
-			//if(passwordEncoder.matches(dto.getMempw(), res.getMempw())) {
-			if(dto.getMempw().equals(res.getMempw())) {
+			if(passwordEncoder.matches(dto.getMempw(), res.getMempw())) {
+			//if(dto.getMempw().equals(res.getMempw())) {
 				session.setAttribute("login", res);
 				session.setAttribute("logintype", "normal");
 				check=true;
@@ -148,7 +150,7 @@ public class MemberController {
 
 
 		System.out.println(dto.getMempw());
-		//dto.setMempw(passwordEncoder.encode(dto.getMempw()));
+		dto.setMempw(passwordEncoder.encode(dto.getMempw()));
 		System.out.println(dto.getMempw());
 		
 		res = biz.insert(dto);
@@ -437,6 +439,38 @@ public class MemberController {
 			return map;
 	}
 	 
-	
+	//암호화 재추가시 삭제
+	@RequestMapping("/passencode.do")
+	public String PassEncode() {
+		logger.info("[memberList]");
+		
+		
+		int res = 0;
+		List<MemberDto> resdto = new ArrayList<MemberDto>();
+		
+		resdto = biz.selectAll();
+		
+		System.out.println("**************비밀번호 암호화 시작****************");
+		
+		System.out.println("==========================");
+		for(MemberDto dto : resdto) {
+			System.out.println(dto.getMemid()+" 비밀번호 암호화 처리");
+			System.out.println("전 비밀번호 : " + dto.getMempw());
+			dto.setMempw(passwordEncoder.encode(dto.getMempw()));
+			System.out.println("암호화 후 비밀번호 : "+dto.getMempw());
+			res = biz.pwchange(dto);
+			if(res==1) {
+				System.out.println(dto.getMemid()+" 비밀번호 암호화 성공");
+				System.out.println("==========================");
+			}else {
+				System.out.println("컨트롤러 이후 관련 비밀번호 암호화 실패");
+				System.out.println("==========================");
+			}
+		}
+		
+		System.out.println("**********비밀번호 암호화 끝************");
+		
+		return "member/login";
+	}
 
 }
