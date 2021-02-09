@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.finalPJ.carming.model.biz.CamplaceBiz;
 import com.finalPJ.carming.model.biz.mapLocationBiz;
 import com.finalPJ.carming.model.dto.MemberDto;
 import com.finalPJ.carming.model.dto.mapLocationDto;
@@ -28,9 +27,7 @@ public class CamplaceController {
 	
 	@Autowired
 	private mapLocationBiz mapbiz;
-	
-	@Autowired
-	private CamplaceBiz campbiz; 
+
 	
 	@RequestMapping("/maincamplace.do")
 	public String CamplaceForm() {

@@ -101,7 +101,8 @@ public class MemberController {
 		boolean check = false;
 		
 		if(res!=null) {
-			if(passwordEncoder.matches(dto.getMempw(), res.getMempw())) {
+			//if(passwordEncoder.matches(dto.getMempw(), res.getMempw())) {
+			if(dto.getMempw().equals(res.getMempw())) {
 				session.setAttribute("login", res);
 				session.setAttribute("logintype", "normal");
 				check=true;
@@ -147,7 +148,7 @@ public class MemberController {
 
 
 		System.out.println(dto.getMempw());
-		dto.setMempw(passwordEncoder.encode(dto.getMempw()));
+		//dto.setMempw(passwordEncoder.encode(dto.getMempw()));
 		System.out.println(dto.getMempw());
 		
 		res = biz.insert(dto);
