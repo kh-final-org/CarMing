@@ -62,12 +62,12 @@
 	    filter = selectbox.value
 	
 	    list = document.getElementsByClassName("card-body");
-	    
+
 	    for(i=0; i<list.length; i++){
 	        a = document.getElementsByClassName("category")[i];
 	        txtValue = a.textContent || a.innerText;
-	        
-	        if (txtValue.indexOf(filter) > -1) {
+	       
+	        if (txtValue.indexOf(filter) > -1 ) {
 	        	list[i].style.display = "";
 	        } else {
 	        	list[i].style.display = "none";					
@@ -75,7 +75,14 @@
 		}
 	}
 </script>
-
+<script type="text/javascript">
+	function showall() {
+		list = document.getElementsByClassName("card-body");
+		 for(i=0; i<list.length; i++){
+			 list[i].style.display ="";
+		 }
+	}
+</script>
 <script>
 	function popoutFunction() {
 		var x = document.getElementById("upload-popout");
@@ -148,6 +155,7 @@
 			
 		
 			<div class="card-head-third" style="width: 140px;">
+				<button onclick="showall()">전체</button>
 				<div class="dropdown-selectbox">
 			  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
 						<option value="0" selected disabled>카테고리</option>

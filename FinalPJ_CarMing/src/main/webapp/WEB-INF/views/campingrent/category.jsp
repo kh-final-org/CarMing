@@ -13,6 +13,138 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="resources/js/category.js?ver=4"></script>
+
+<script type="text/javascript">
+	function myFunction() {
+	    var selectbox, filter, a, txtValue, list;
+	    selectbox = document.getElementById("selectbox");
+	    filter = selectbox.value
+	
+	    list = document.getElementsByClassName("card-body");
+
+	    for(i=0; i<list.length; i++){
+	        a = document.getElementsByClassName("category")[i];
+	        txtValue = a.textContent || a.innerText;
+	       
+	        if (txtValue.indexOf(filter) > -1 ) {
+	        	list[i].style.display = "";
+	        } else {
+	        	list[i].style.display = "none";					
+	        }
+		}
+	}
+</script>
+<script type="text/javascript">
+	function myFunction() {
+	    var selectbox, filter, a, txtValue, list;
+	    selectbox = document.getElementById("selectbox");
+	    filter = selectbox.value
+	
+	    list = document.getElementsByClassName("card-body");
+
+	    for(i=0; i<list.length; i++){
+	        a = document.getElementsByClassName("category")[i];
+	        txtValue = a.textContent || a.innerText;
+	       
+	        if (txtValue.indexOf(filter) > -1 ) {
+	        	list[i].style.display = "";
+	        } else {
+	        	list[i].style.display = "none";					
+	        }
+		}
+	}
+</script>
+<script type="text/javascript">
+	function showall() {
+	var list = document.getElementsByClassName("single-product");
+		 for(i=0; i<list.length; i++){
+			 list[i].style.display ="block";
+		 }
+	}
+</script>
+
+<script type="text/javascript">
+	function tent() {
+	var list = document.getElementsByClassName("single-product");
+	var value = document.getElementById("categoryNo").value	
+		 for(i=0; i<list.length; i++){
+			 
+				if(value == 1){
+				 list[i].style.display ="";
+				}else {
+					list[i].style.display = "none";
+				}
+			 
+		 }
+	}
+</script>
+
+
+<script type="text/javascript">
+	function mat() {
+	var list = document.getElementsByClassName("single-product");
+	var value = document.getElementById("categoryNo").value	
+		 for(i=0; i<list.length; i++){
+			 
+			 if(value == 2){
+				 list[i].style.display ="";
+				}else{
+					list[i].style.display = "none";
+				}
+			 
+		 }
+	}
+</script>
+
+<script type="text/javascript">
+	function cook() {
+	var list = document.getElementsByClassName("single-product");
+	var value = document.getElementById("categoryNo").value	
+		 for(i=0; i<list.length; i++){
+			 
+			 if(value == 3){
+				 list[i].style.display ="";
+				}else{
+					list[i].style.display = "none";
+				}
+			 
+		 }
+	}
+</script>
+
+<script type="text/javascript">
+	function chair() {
+	var list = document.getElementsByClassName("single-product");
+	var value = document.getElementById("categoryNo").value	
+		 for(i=0; i<list.length; i++){
+			 
+			 if(value == 4){
+				 list[i].style.display ="";
+				}else{
+					list[i].style.display = "none";
+				}
+			 
+		 }
+	}
+</script>
+
+<script type="text/javascript">
+	function bbq() {
+	var list = document.getElementsByClassName("single-product");
+	var value = document.getElementById("categoryNo").value	
+		 for(i=0; i<list.length; i++){
+			 
+			 if(value == 5){
+				 list[i].style.display ="";
+				}else{
+					list[i].style.display = "none";
+				}
+			 
+		 }
+	}
+</script>
+
+
 </head>
 <body>
 	<%@include file="../common/header.jsp" %>
@@ -38,22 +170,22 @@
 				<div class="sidebar-categories"> 	
 					<div class="head">렌트 카테고리</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a id="all_category" data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+						<li class="main-nav-list"><a id="all_category" data-toggle="collapse" href="#" onclick="showall();" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								 class="lnr lnr-arrow-right"></span>전체<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="tent" data-toggle="collapse" data-pCategoryNo="1" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+						<li class="main-nav-list"><a id="tent" data-toggle="collapse" data-pCategoryNo="1" href="#" onclick="tent();" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								 class="lnr lnr-arrow-right"></span>텐트 / 타프<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="bag" data-toggle="collapse" data-pCategoryNo="2" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span
+						<li class="main-nav-list"><a id="bag" data-toggle="collapse" data-pCategoryNo="2" href="#" onclick="mat();"aria-expanded="false" aria-controls="officeProduct"><span
 								 class="lnr lnr-arrow-right"></span>매트 / 침낭<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="pot" data-toggle="collapse" data-pCategoryNo="3" href="#beauttyProduct" aria-expanded="false" aria-controls="beauttyProduct"><span
+						<li class="main-nav-list"><a id="pot" data-toggle="collapse" data-pCategoryNo="3" href="#" onclick="cook();" aria-expanded="false" aria-controls="beauttyProduct"><span
 								 class="lnr lnr-arrow-right"></span>코펠 / 버너 / 취사<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="chair" data-toggle="collapse" data-pCategoryNo="4" href="#healthProduct" aria-expanded="false" aria-controls="healthProduct"><span
+						<li class="main-nav-list"><a id="chair" data-toggle="collapse" data-pCategoryNo="4" href="#" onclick="chair();" aria-expanded="false" aria-controls="healthProduct"><span
 								 class="lnr lnr-arrow-right"></span>체어 / 테이블<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="bbq" data-toggle="collapse" data-pCategoryNo="5" href="#homeAppliance" aria-expanded="false" aria-controls="homeAppliance"><span
+						<li class="main-nav-list"><a id="bbq" data-toggle="collapse" data-pCategoryNo="5" href="#" onclick="bbq();" aria-expanded="false" aria-controls="homeAppliance"><span
 								 class="lnr lnr-arrow-right"></span>화로대 / BBQ<span class="number"></span></a>
 						</li>
 					</ul>
@@ -112,8 +244,8 @@
         					</c:when>
         					<c:otherwise>
         						<c:forEach var="productDto" items="${productlist}">
-        						<input type="hidden" class="pCategoryNo" value="${productDto.pCategoryNo }">
-		      						<div class="col-lg-4 col-md-6">
+	      						<div class="col-lg-4 col-md-6" >
+        							<input type="hidden" class="pCategoryNo" id="categoryNo" value="${productDto.pCategoryNo }">
 										<div class="single-product">
 										<c:if test="${login.memcode == 1 }">
 											<input type="checkbox" name="chBox" class="chBox" data-pNo="${productDto.pNo }">

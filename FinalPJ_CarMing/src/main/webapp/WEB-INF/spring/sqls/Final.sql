@@ -371,6 +371,38 @@ VALUES(CART_SEQ.NEXTVAL,'1',DATE '2021-01-23',DATE '2021-01-24',(SELECT MEMNO FR
 
 SELECT * FROM CART;
 
+	SELECT
+		C.*,
+		M.MEMNICK,
+		RS.STATENAME,
+		P.PNAME,
+		PC.PCATEGORYNAME,
+		PY.PAYNO,
+		PY.TOTALPRICE
+		FROM CART C
+		JOIN MEMBER M
+		ON C.MEMNO = M.MEMNO
+		JOIN RENTSTATE RS
+		ON C.STATENO = RS.STATENO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PCATEGORY PC
+		ON C.PCATEGORYNO = PC.PCATEGORYNO
+		JOIN PAY PY
+		ON C.CARTNO = PY.CARTNO
+
+		select* from member
+		select* from cart
+		select * from rentsate
+		select * from product alter
+		select * from pcategory
+		select * from pay
+
+
+
+
 UPDATE CART
 SET STATENO = 3
 WHERE CARTNO = 3

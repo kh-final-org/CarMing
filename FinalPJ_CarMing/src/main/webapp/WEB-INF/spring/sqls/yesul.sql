@@ -727,4 +727,30 @@ SELECT
 		ORDER BY MEMNO DESC) MEM)
 		
 		WHERE RNUM BETWEEN 1 + (1 -1) * 10 AND 1 * 10
+		
+		
+		
+		SELECT (SELECT COUNT(COMNO) COUNT FROM  BCOMMENT WHERE BRDNO = 33) COUNT, B.*, MP.MAPNAME
+		FROM BOARD B
+		LEFT JOIN MAPLOCATION MP
+		ON B.BRDNO = MP.BRDNO
+		WHERE B.BRDNO = 33
+		
+		select * from maplocation where brdno=33
+		select * from board
+		
+		
+		delete maplocation where brdno =32
+		
+		delete from board where brdno=32
+		
+		select * from board where brdno =33
+		
+		
+		
+		
+		
+		
+		
+		
 	

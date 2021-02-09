@@ -175,7 +175,7 @@ function myFunction() {
 						<tr>
 							<td class="cartNo" ><a href="adminRentDetail.do?cartNo=${list.cartNo}">${list.cartNo}</a></td>
 							<td><a href="#"><img
-									src=${list.memfile } class="avatar"
+									<%-- src=${list.memfile }  --%>class="avatar"
 									alt="Avatar">${list.memNick }</a></td>
 							<td>${list.pCategoryName }</td>
 							<td>#${list.payNo }</td>

@@ -33,10 +33,10 @@
 	
 	<!-- 02. 게시글 상세보기 -->
 	<select id="selectOne" parameterType="int" resultMap="boardMap">
-		SELECT DISTINCT (SELECT COUNT(COMNO) COUNT FROM  BCOMMENT WHERE BRDNO = #{brdno}) COUNT, B.*, MP.MAPNAME
+		SELECT (SELECT COUNT(COMNO) COUNT FROM  BCOMMENT WHERE BRDNO = #{brdno}) COUNT, B.*, MP.MAPNAME
 		FROM BOARD B
 		JOIN MAPLOCATION MP
-		ON B.MEMNO = MP.MEMNO
+		ON B.BRDNO = MP.BRDNO
 		WHERE B.BRDNO = #{brdno}
 	</select>
 	
