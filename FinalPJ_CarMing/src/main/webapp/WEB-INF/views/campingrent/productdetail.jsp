@@ -88,27 +88,27 @@ function mark(star){
 					<div class="col-lg-6">
 						<div class="s_Product_carousel">
 							<div class="single-prd-item">
-								<img class="img-fluid" src="storage/${productdto.pFile }" alt="">
+								<img class="img-fluid" src="resources/img/rent/${productdto.pFile }" alt="">
 							</div>
 							<div class="single-prd-item">
-								<img class="img-fluid" src="storage/${productdto.pDesc }" alt="">
+								<img class="img-fluid" src="resources/img/rent/${productdto.pFile2 }" alt="">
 							</div>
 							<div class="single-prd-item">
-								<img class="img-fluid" src="storage/${productdto.pFile }" alt="">
+								<img class="img-fluid" src="resources/img/rent/${productdto.pFile3 }" alt="">
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-5 offset-lg-1">
 						<div class="s_product_text">
 							<h3>${productdto.pName }</h3>
-							<h2><fmt:formatNumber value="${productdto.pPrice }" pattern="###,###,###"/></h2>
+							<h2><fmt:formatNumber value="${productdto.pPrice }" pattern="###,###,###"/>&nbsp;원</h2>
 							<ul class="list">
 								<c:choose>
-									<c:when test="${productdto.pCategoryNo == 1}"><li><a class="active"><span>카테고리</span> : 텐트 / 타프</a></li></c:when>
-									<c:when test="${productdto.pCategoryNo == 2}"><li><a class="active"><span>카테고리</span> : 매트 / 침낭</a></li></c:when>
-									<c:when test="${productdto.pCategoryNo == 3}"><li><a class="active"><span>카테고리</span> : 코펠 / 버너 / 취사</a></li></c:when>
-									<c:when test="${productdto.pCategoryNo == 4}"><li><a class="active"><span>카테고리</span> : 텐트 / 체어 / 테이블</a></li></c:when>
-									<c:when test="${productdto.pCategoryNo == 5}"><li><a class="active"><span>카테고리</span> : 화로대 / BBQ</a></li></c:when>
+									<c:when test="${productdto.pCategoryNo == 1}"><li><span>카테고리:</span>&nbsp;텐트 / 타프</li></c:when>
+									<c:when test="${productdto.pCategoryNo == 2}"><li><span>카테고리:</span>&nbsp;매트 / 침낭</li></c:when>
+									<c:when test="${productdto.pCategoryNo == 3}"><li><span>카테고리:</span>&nbsp;코펠 / 버너 / 취사</li></c:when>
+									<c:when test="${productdto.pCategoryNo == 4}"><li><span>카테고리:</span>&nbsp;텐트 / 체어 / 테이블</li></c:when>
+									<c:when test="${productdto.pCategoryNo == 5}"><li><span>카테고리:</span>&nbsp;화로대 / BBQ</li></c:when>
 								</c:choose>
 								<c:if test="${productdto.pAmount != 0}">
 									<li>
@@ -117,7 +117,7 @@ function mark(star){
 								</c:if>
 								<c:if test="${productdto.pAmount == 0}">
 									<li>
-										<span>상품 재고가 없습니다.</span>
+										<span>상품 재고가 없습니다.&nbsp;&nbsp;&nbsp;&nbsp;</span><button type="button"><span class="lnr lnr-arrow-right" style="">&nbsp;&nbsp;재고 추가</span></button>
 									</li>
 								</c:if>
 								<li>
@@ -137,7 +137,7 @@ function mark(star){
 							</div>
 							<div class="card_area d-flex align-items-center">
 								<c:if test="${productdto.pAmount != 0}">
-									<button type="button" class="primary-btn" id="insertCart_btn">장바구니에 담기</button>
+									<span class="primary-btn" id="insertCart_btn">장바구니에 담기</span>
 								</c:if>
 								<c:if test="${productdto.pAmount == 0}">
 							<!-- 		<button type="button" class="primary-btn" id="insertCart_btn" disabled>품절</button> -->
@@ -176,7 +176,7 @@ function mark(star){
 				</ul>
 				<div class="tab-content" id="myTabContent" style="text-align:center;">
 					<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-						<img class="product_description" src="storage2/${productdto.pDesc}">
+						<img class="product_description" src="resources/img/rent/${productdto.pDesc}">
 					</div>
 					<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 					</div>
@@ -244,22 +244,24 @@ function mark(star){
 								</c:choose>   
 								<div class="row total_rate" style="text-align: center;">
 									 	<div class="col-6">
-											<div class="box_total">
 											<c:set var="reviewSum" value="${reviewSum }" />
 											<c:set var="reviewAvg" value="${reviewSum/countreview }"/>
 											<fmt:formatNumber var="reviewAvg" value="${reviewAvg }" pattern="0.0"/>
-											
-												<h5>평균 평점</h5>
-												<h4>${reviewAvg }</h4>
-												<c:choose>
-													<c:when test="${empty reviewlist}">
-														<h6>리뷰 갯수 : 0개 </h6>
-													</c:when>
-													<c:otherwise>
+									 	    <c:if test="${empty reviewlist}">
+												<div class="box_total" style="display: none;">
+														<h5>평균 평점</h5>
+														<h4>${reviewAvg }</h4>
 														<h6>리뷰 갯수: ${countreview }개</h6>
-													</c:otherwise>
-												</c:choose>
-											</div>
+												</div>
+											</c:if>
+											<c:if test="${not empty reviewlist}">
+												<div class="box_total">
+														<h5>평균 평점</h5>
+														<h4>${reviewAvg }</h4>
+														<h6>리뷰 갯수: ${countreview }개</h6>
+												</div>
+											</c:if>
+							
 										</div>
 									<!-- <div class="col-6">
 										<div class="rating_list">
@@ -284,7 +286,7 @@ function mark(star){
 							<div class="col-lg-6">
 								<div class="review_box">
 									<h4>리뷰 남기기</h4>
-									<span>평점 남기기:</span>
+									<span>평점 남기기</span>
 									<c:set var="reviewAvg" value="${reviewSum/countreview }"/>
 									<div id="rating">
 										<span>

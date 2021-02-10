@@ -53,13 +53,13 @@
 	</select>
 	
 	<!-- 결제 번호에 담긴 상품이름 -->
-	<select id="pname" resultType="String">
+	<select id="pname" resultType="String" parameterType="payDto">
 		SELECT PNAME
 		FROM 
 			CART C INNER JOIN 
 			PAY P ON (C.CARTNO = P.CARTNO) LEFT OUTER JOIN
 			PRODUCT PR ON (C.PNO = PR.PNO)
-		WHERE PAYNO = #{payNo}
+		WHERE PAYNO = #{payNo} AND P.CARTNO = #{cartNo}
 	</select>
 	
 	<update id="changestate" parameterType="int">
@@ -70,6 +70,6 @@
 	
 	<update id="changestock" parameterType="int">
 		UPDATE CART
-		SET CAMOUNT = CAMOUNT - #{Ca}
+		SET CAMOUNT = CAMOUNT - #{cAmount}
 	</update>
 </mapper>

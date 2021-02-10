@@ -175,7 +175,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="totalPrice" value="${sum }">
+        <input type="hidden" name="totalPrice" id="totalPrice" value="${sum }">
     </section>
     </form>
     <!--================End Checkout Area =================-->

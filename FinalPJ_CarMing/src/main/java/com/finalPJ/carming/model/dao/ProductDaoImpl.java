@@ -1,6 +1,7 @@
 package com.finalPJ.carming.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,18 +19,18 @@ public class ProductDaoImpl implements ProductDao{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	@Override
-	public List<ProductDto> selectAll() {
-		List<ProductDto> productList = new ArrayList<ProductDto>();
-		
-		try {
-			productList = sqlSession.selectList(NAMESPACE+"selectAll");
-		} catch (Exception e) {
-			System.out.println("[ERROR: PRODUCT LIST]");
-			e.printStackTrace();
-		}
-		return productList;
-	}
+//	@Override
+//	public List<ProductDto> selectAll() {
+//		List<ProductDto> productList = new ArrayList<ProductDto>();
+//		
+//		try {
+//			productList = sqlSession.selectList(NAMESPACE+"selectAll");
+//		} catch (Exception e) {
+//			System.out.println("[ERROR: PRODUCT LIST]");
+//			e.printStackTrace();
+//		}
+//		return productList;
+//	}
 	
 	@Override
 	public ProductDto selectOne(int pNo) {
@@ -92,6 +93,7 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 	@Override
+
 	public int returnProduct(int cartNo) {
 		int res = 0;
 		
@@ -101,7 +103,33 @@ public class ProductDaoImpl implements ProductDao{
 			System.out.println("[error]: returnProduct");
 			e.printStackTrace();
 		}
+
+	public List<ProductDto> selectAll(String search, int page) {
+		List<ProductDto> list = new ArrayList<ProductDto>();
 		
+		//검색어, 페이지 데이터를 Map에 저장
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("page", Integer.toBinaryString(page));
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"selectAll", map);
+		} catch (Exception e) {
+			System.out.println("[ERROR: SELECT PRODUCTLIST]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int getProductCnt(String search) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectProductCnt", search);
+		} catch (Exception e) {
+			System.out.println("[ERROR: SELECT PRODUCTCNT]");
+			e.printStackTrace();
+		}
 		return res;
 	}
 	

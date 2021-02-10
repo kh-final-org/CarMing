@@ -36,7 +36,7 @@
 							var pay_method = $(".pay_method").val();
 							var pName = $(".pName").val();
 							
-							if($(".countproduct").val() == 0 || $(".countproduct").val() == 0){
+							if($(".countproduct").val() == 0){
 								IMP.init('imp83374605');
 								IMP.request_pay({
 								    pg : 'kakaopay',
@@ -96,7 +96,7 @@
 										},
 										success: function(){
 											alert("되면 되는거지");
-											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmount="+cAmount+"&pNo="+pNo;
+											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmountArr="+cAmount+"&pNoArr="+pNo;
 										},
 										error: function(){
 											alert("무슨 오류임?");
@@ -157,17 +157,18 @@
 										type: "POST",
 										data: {
 												"amount": totalPrice,
-												"name": name,
+												"name": pName,
+												"pg": pay_method,
 												"payDay": payDay,
-												"pay_method": pay_method,
 												"payNo": payNo
 										},
 										success: function(){
-												alert("payresult까지 왔나?");
+											alert("되면 되는거지");
+											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmountArr="+cAmount+"&pNoArr="+pNo;
 										},
 										error: function(){
 											alert("무슨 에러가 있긴 한데");
-											location.href="payresultform.do";
+											location.href="payinfo.do";
 										}
 									});		
 								});

@@ -101,7 +101,6 @@
 							<!-- 검색 -->
 							<li class="nav-item">
 								<button class="search"><span class="bi bi-search" id="search"></span></button>
-
 							</li>
 						</ul>
 					</div>

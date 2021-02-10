@@ -57,7 +57,7 @@
 		<!-- 사용자 프로필 -->
 		<div class="card-profile">
 			<div class="profilepage-profile">
-				<img class="user-profile" src="resources/img/profile.png" alt="profile-img">
+				<img class="user-profile" src="${login.memfile}" alt="">
 				<div class="user-id"><strong>userNick</strong></div>
 				<div class="user-email">bialeeys@naver.com</div>
 			</div>
