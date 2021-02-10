@@ -65,7 +65,12 @@ private InquiryFileValidator fileValidator;
 		}
 		
 		MultipartFile file = dto.getInquiryFile();
-		String name = file.getOriginalFilename();
+		String name = null;
+		if(dto.getInquiryFile() == null) {
+			name = "photo.png";
+		}else {
+			name = file.getOriginalFilename();
+		}
 		
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
