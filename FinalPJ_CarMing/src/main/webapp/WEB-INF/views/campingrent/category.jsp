@@ -82,9 +82,7 @@
 					<div class="sorting">
 						<select>
 							<option value="1" selected>분류 기준</option>
-							<option value="1">인기 순</option>
 							<option value="1">가격 순</option>
-							<option value="1">대여 순</option>
 						</select>
 					</div>
 					<div class="sorting mr-auto">
@@ -137,10 +135,6 @@
 													<h6 style="font-size: 20px;">재고가 없습니다.</h6>
 												</c:if>
 										<div class="prd-bottom">
-											<a href="javascript:sendLink(${productDto.pNo })" class="social-info">
-												<span class="lnr lnr-sync"></span>
-												<p class="hover-text">카카오톡 공유하기</p>
-											</a> 
  											<!--<div class="social-info">
 											  <a href="javascript:sendLink()"><img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width: 30px; height: 30px;"/></a>
 											  <p class="hover-text">카카오톡 공유하기</p>
@@ -149,6 +143,10 @@
 												<span class="lnr lnr-move"></span>
 												<p class="hover-text">상세보기</p>
 											</a>
+											<a href="javascript:sendLink(${productDto.pNo })" class="social-info">
+												<span class="lnr lnr-sync"></span>
+												<p class="hover-text">카카오톡 공유</p>
+											</a> 
 										</div>
 									</div>
 								</div>
