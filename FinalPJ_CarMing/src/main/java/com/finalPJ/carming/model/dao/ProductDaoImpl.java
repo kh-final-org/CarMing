@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -94,19 +95,22 @@ public class ProductDaoImpl implements ProductDao{
 
 	@Override
 	public List<ProductDto> selectAll(String search, int page) {
+		System.out.println("[DaoImpl] page/search : " + page + "/" + search);
 		List<ProductDto> list = new ArrayList<ProductDto>();
 		
 		//검색어, 페이지 데이터를 Map에 저장
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
-		map.put("page", Integer.toBinaryString(page));
+		map.put("page", page);
 		
+		System.out.println("[DaoImpl] map : " + map);
 		try {
 			list = sqlSession.selectList(NAMESPACE+"selectAll", map);
 		} catch (Exception e) {
 			System.out.println("[ERROR: SELECT PRODUCTLIST]");
 			e.printStackTrace();
 		}
+
 		return list;
 	}
 

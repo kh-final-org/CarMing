@@ -16,11 +16,6 @@ public class ProductBizImpl implements ProductBiz{
 	
 	@Autowired
 	private ProductDao dao;
-	
-	@Override
-	public List<ProductDto> selectAll() {
-		return dao.selectAll("", 1);
-	}
 
 	@Override
 	public ProductDto selectOne(int pNo) {
@@ -46,20 +41,10 @@ public class ProductBizImpl implements ProductBiz{
 	public void changeAmount(CartListDto cDto) {
 		dao.changeAmount(cDto);
 	}
-
-	@Override
-	public List<ProductDto> selectAll(int page) {
-		return dao.selectAll("", page);
-	}
-
+	
 	@Override
 	public List<ProductDto> selectAll(String search, int page) {
 		return dao.selectAll(search, page);
-	}
-
-	@Override
-	public int getProductCnt() {
-		return dao.getProductCnt("");
 	}
 
 	@Override

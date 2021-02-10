@@ -5,39 +5,30 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.finalPJ.carming.common.fileUpload.FileUpload;
 import com.finalPJ.carming.common.fileUpload.FileValidator;
-import com.finalPJ.carming.model.biz.PCategoryBIzImpl;
-import com.finalPJ.carming.model.biz.PCategoryBiz;
 import com.finalPJ.carming.model.biz.ProductBiz;
 import com.finalPJ.carming.model.biz.RentReviewBiz;
-import com.finalPJ.carming.model.dto.PCategoryDto;
-import com.finalPJ.carming.model.dto.PageMaker;
-import com.finalPJ.carming.model.dto.Pagination;
 import com.finalPJ.carming.model.dto.ProductDto;
 import com.finalPJ.carming.model.dto.RentReviewDto;
 
@@ -241,26 +232,15 @@ public class RentController {
 		
 		return "campingrent/productdetail";
 	}
+	
 	@RequestMapping(value = "/productlist.do")
-	public String productlist(Model model, String search, String page) throws Exception{
+	public String productlist(Model model, @RequestParam(value = "search",required = false, defaultValue = "") String search,
+			   @RequestParam(value = "page",required = false, defaultValue = "1") int page) throws Exception{
+		
 		logger.info("[PRODUCT LIST]");
 		
-		String searchDefault = ""; // 검색이 없는 경우 기본값
-		if(search != null && !search.equals("")) { // 검색어가 있는 경우
-			searchDefault = search;
-		}
-		
-		int pageDefault = 1; // 페이지 선택이 없는 경우 기본값
-		if(page != null && !page.equals("")) {	// 페이지를 선택한 경우
-			pageDefault = Integer.parseInt(page);
-		}
-		
-		
-		model.addAttribute("productlist", biz.selectAll(searchDefault, pageDefault));
-		model.addAttribute("count", biz.getProductCnt(searchDefault));
-//		model.addAttribute("productlist", list);
-
-
+		model.addAttribute("productlist", biz.selectAll(search, page));
+		model.addAttribute("count", biz.getProductCnt(search));
 		
 		return "campingrent/category";
 	}
