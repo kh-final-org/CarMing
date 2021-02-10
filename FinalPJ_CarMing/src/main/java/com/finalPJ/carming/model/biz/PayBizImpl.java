@@ -30,8 +30,8 @@ public class PayBizImpl implements PayBiz{
 	}
 
 	@Override
-	public PayDto selectOnePay(int payNo) {
-		return pdao.selectOnePay(payNo);
+	public PayDto selectOnePay(PayDto pDto) {
+		return pdao.selectOnePay(pDto);
 	}
 
 }

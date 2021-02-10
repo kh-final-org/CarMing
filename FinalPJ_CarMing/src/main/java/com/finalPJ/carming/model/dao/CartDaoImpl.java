@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.finalPJ.carming.model.dto.CartDto;
 import com.finalPJ.carming.model.dto.CartListDto;
+import com.finalPJ.carming.model.dto.PayDto;
 
 @Repository
 public class CartDaoImpl implements CartDao {
@@ -76,10 +77,10 @@ public class CartDaoImpl implements CartDao {
 	}
 	
 	@Override
-	public String pName(int payNo) {
+	public String pName(PayDto pDto) {
 		String res = null;
 		try {
-			res = sqlSession.selectOne(NAMESPACE+"pname", payNo);
+			res = sqlSession.selectOne(NAMESPACE+"pname", pDto);
 		} catch (Exception e) {
 			System.out.println("[ERROR: SELECT PNAME]");
 			e.printStackTrace();

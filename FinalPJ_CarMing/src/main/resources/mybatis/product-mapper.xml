@@ -45,7 +45,7 @@
 	 	 	 
 	<insert id="insertProduct" parameterType="productDto">
 		INSERT INTO PRODUCT
-		VALUES(PRODUCT_SEQ.NEXTVAL, #{pCategoryNo}, #{pName}, #{pPrice}, #{pDesc}, #{pFile}, #{pAmount}, #{pPath})
+		VALUES(PRODUCT_SEQ.NEXTVAL, #{pCategoryNo}, #{pName}, #{pPrice}, #{pDesc}, #{pFile}, #{pAmount}, #{pPath}, #{pFile2}, #{pFile3})
 	</insert>
 	
 	<delete id="deleteProduct" parameterType="productDto">

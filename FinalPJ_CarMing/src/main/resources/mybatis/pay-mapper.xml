@@ -9,10 +9,10 @@
 		SELECT *
 		FROM PAY
 	</select>
-	<select id="selectonepay" resultType="payDto" parameterType="int">
+	<select id="selectonepay" resultType="payDto" parameterType="payDto">
 		SELECT *
 		FROM PAY
-		WHERE PAYNO = #{payNo}
+		WHERE PAYNO = #{payNo} AND CARTNO = #{cartNo}
 	</select>
 	<insert id="insertpay" parameterType="payDto">
 		INSERT INTO 

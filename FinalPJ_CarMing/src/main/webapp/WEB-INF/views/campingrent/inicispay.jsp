@@ -13,21 +13,36 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
 			$(function(){	
+							var cNoArr=  new Array();
+							var pNo = new Array();
+							var cAmount = new Array();
+							
+							$(".licartNo").each(function(){
+								cNoArr.push($(this).children().attr("data-cartNo"));
+							});
+							alert(cNoArr);
+							$(".lipNo").each(function(){
+								pNo.push($(this).children().attr("data-pNo"));
+							});
+							alert(pNo);
+							$(".licAmount").each(function(){
+								cAmount.push($(this).children().attr("data-cAmount"));
+							});
+							alert(cAmount);
+							
 							var payDay = $(".payDay").val();
-							alert(payDay);
 							var payNo = $(".payNo").val();
 							var totalPrice = $(".totalPrice").val();
 							var pay_method = $(".pay_method").val();
 							var pName = $(".pName").val();
-							alert(pName);
 							
-							if($(".countproduct").val() == 0 || $(".countproduct").val() == 0){
+							if($(".countproduct").val() == 0){
 								IMP.init('imp14511841');
 								IMP.request_pay({
 								    pg : 'inicis',
 								    pay_method : 'card',
 								    merchant_uid : 'CarMing' + new Date().getTime(),
-								    name : $(".pName").val() + ' 외 ' + $(".countproduct").val()+'개',
+								    name : $(".pName").val(),
 								    amount : $(".totalPrice").val(),
 								    buyer_email : $(".email").val(),
 								    buyer_name : $(".name").val(),
@@ -147,10 +162,11 @@
 											"payNo": payNo
 										},
 										success: function(){
-											alert("incispay");
-											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay;
+											alert("되면 되는거지");
+											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmountArr="+cAmount+"&pNoArr="+pNo;
 										},
 										error: function(){
+											alert("에러요");
 											location.href="payinfo.do";
 										}
 									});		
@@ -169,12 +185,29 @@
 		<input type="hidden" class="payDay" value="${payDay }">
 		<input type="hidden" class="pName" value="${pName }">
 		<input type="hidden" class="addr" value="${payDto.addr }">
+		<input type="hidden" class="cAmount" value="${cSum }">
 		<input type="hidden" class="email" value="${login.memid }">
 		<input type="hidden" class="name" value="${login.memname }">
 		<input type="hidden" class="phone" value="${login.memphone }">
 		<input type="hidden" class="postcode" value="${login.memzip }">
 		<input type="hidden" class="email" value="${login.memid }">
 		<input type="hidden" class="name" value="${login.memname }">
-		<input type="hidden" class="phone" value="${login.memphone }">	
+		<input type="hidden" class="phone" value="${login.memphone }">
+		<c:forEach var="cartNo" items="${cNoArr}">
+			<li class="licartNo" style="display: hidden;">
+				<input type="hidden" class="cartNo" value="${cartNo}" data-cartNo="${cartNo }">
+			</li>
+		</c:forEach>
+		<c:forEach var="pNo" items="${pNoArr}">
+			<li class="lipNo" style="display: hidden;">
+				<input type="hidden" class="pNo" value="${pNo}" data-pNo="${pNo }">
+			</li>
+		</c:forEach>
+		<c:forEach var="cAmount" items="${cAmountArr}">
+			<li class="licAmount" style="display: hidden;">
+				<input type="hidden" class="cAmount" value="${cAmount}" data-cAmount="${cAmount }">
+			</li>
+		</c:forEach>
+		
 </body>
 </html>
