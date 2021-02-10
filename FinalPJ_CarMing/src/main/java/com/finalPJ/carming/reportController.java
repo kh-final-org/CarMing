@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.finalPJ.carming.model.biz.ReportBiz;
@@ -52,7 +53,7 @@ private ReportFileValidator fileValidator;
 	
 	@RequestMapping("/writereport.do")
 	public String insert(ReportDto dto, HttpServletRequest request, Model model,
-			BindingResult result ) {
+			BindingResult result, RedirectAttributes redirect ) {
 		
 		logger.info("[INSERT RES]");
 		
@@ -115,6 +116,7 @@ private ReportFileValidator fileValidator;
 		if(res>0) {
 			return "redirect:reportlist.do";
 		}else {
+			redirect.addAttribute("dto",dto);
 			return "redirect:writereportform.do";
 		}
 	}

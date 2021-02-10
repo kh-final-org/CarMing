@@ -1,0 +1,62 @@
+@charset "UTF-8";
+	.card-container{margin: 50px 190px 50px 220px;}
+    .card-body{padding: 0px;}
+   	
+   	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 3% 5% 0 -4%;}
+	
+	.uploadimg {width: 360px; height: 360px;}
+	.img_wrap {width: 340px; height: 310px; margin-top: 18px;}
+	.img_wrap img {max-width: 100%; max-height: 100%;}
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 110px;}	
+	.upload-img-form{position: relative; width: 530px; height: 347px; border: 1px solid #e2e2e2;
+					 border-radius: 10px; margin-bottom: 15px; background: #fff; margin-bottom: -10px;}
+   	.upload-img-content{position: absolute; margin-top: 30px; width: 530px;}
+
+    .card-body-right{float: right; width: 530px; height: 450px; margin: 3% 5% 0 -4%;}
+    .current{padding-left: 5px;}
+    li.option.selected.disabled.focus{width: 503px;}
+    .body-content{margin-top: 55px; font-size: 1.2em;}
+    textarea {padding: 10px 14px; border: 1px solid silver; border-radius: 5px;}
+    textarea::placeholder{color: silver;}
+    .location-logo{width: 25px;height: 25px;}
+    .body-location{margin: 8px 0px;}
+    .body-location-left{float: left; width: 77%;}
+    .body-location-right{float: right; width: 21.5%; margin-right: 0;}
+    .location-logo-text{display: inline-block; vertical-align: middle;}
+    .body-checklist{margin: 10% 1% 0px;}   
+    .latlong-input-value{margin-top: 10px;}
+	  
+    .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; outline: none;
+   						font-size:1.2em; margin: 10% 0px 10% 0px; cursor: pointer;}
+   	#button-boardupload:hover{background: #ffdb9f; transition: 0.2s; border: 0;}
+
+	.chkprivate-box{float: left;}
+	.chkcarplace-box{float: left; margin-left: 5px;}
+	.checkbox input{display: none;}
+	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
+	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
+	.checkbox .icon::after{content: ''; position: absolute; top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
+						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
+	.checkbox .text{margin-left: 5px;}
+	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
+	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
+	  
+	.location-open{color: gray;}
+	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
+	        text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
+	.popup:target{opacity: 1;}
+	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 158%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
+	.popup:target + .popup-dim{opacity: 1; z-index: 2;} 
+	.popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
+	.location-cancel{position: absolute; top: 10px; right: 15px;}
+  
+	.popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
+	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
+	.searchimg{width: 20px; height: 20px; opacity: 50%;}
+	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
+	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px; outline: none;}
+	#location-finish-btn:hover{background-color: #ffdb9f;}
+	#clickLatlng{text-align: center; margin-top: -5px;}
+	.board-err{float: left; width: 72%; margin-left: 3%; font-size:1.1em; color:red; padding-bottom:1%;padding-top:1%; display: none;}
+	.board-img-err{float: left; width: 72%; margin-left: -3%; margin-bottom:-1%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; display: none;}

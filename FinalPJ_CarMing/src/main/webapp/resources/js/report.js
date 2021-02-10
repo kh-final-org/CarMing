@@ -1,4 +1,3 @@
-/*이미지 미리보기*/
 	var sel_file;
 	$(document).ready(function() {
 		$("#input_img").on("change", handleImgFileSelect);
@@ -9,6 +8,9 @@
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
 
+		/* if (files.name == null) {
+		   resetInputFile();
+		} */
 		filesArr.forEach(function(f) {
 			if (!f.type.match("image.*")) {
 				alert("확장자는 이미지 확장자만 가능합니다.");
@@ -26,10 +28,16 @@
 		})
 	}
 
-/*빈공간에 작성하라는 문구*/
+	function resetInputFile() {
+		$("#img").empty();
+	}
+	
+	
+
+
 $(document).ready(function(){
 	var category = $('select[name=categoryNo]');
-	var content = $('textarea[name=inquiryContent]');	
+	var content = $('textarea[name=reportContent]');	
 	var img = $('input[type=file]');
 		
 		if(category.val() == null){
@@ -67,18 +75,17 @@ $(document).ready(function(){
 
 });	
 
-/*폼 안넘어가기*/
-function inquiry(){
+
+function report(){
 		
 		var category = $('select[name=categoryNo]').val();
-		var content = $('textarea[name=inquiryContent]');
+		var content = $('textarea[name=reportContent]');
 		var img = $('input[type=file]').val();
 		
 		
 				if(category == null ||
 				content.val().trim() == "" 	||
 				img == "" ){
-					alert(category+"/"+content.val()+"/"+img);
 					alert("모든 항목을 작성해 주세요");
 					return;
 					
@@ -89,13 +96,12 @@ function inquiry(){
 				if(category != null &&
 				content.val() != "" 	&&
 				img != null  )	{
-					alert("문의주셔서 감사합니다.");
+					alert("신고에 적극 대응하겠습니다.");
 					$("#target").submit();
 				}
 					
 	
 	
 };
-
 
 

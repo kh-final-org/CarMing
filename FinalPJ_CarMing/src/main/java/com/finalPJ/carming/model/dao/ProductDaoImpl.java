@@ -103,6 +103,8 @@ public class ProductDaoImpl implements ProductDao{
 			System.out.println("[error]: returnProduct");
 			e.printStackTrace();
 		}
+		return res;
+		}
 
 	public List<ProductDto> selectAll(String search, int page) {
 		List<ProductDto> list = new ArrayList<ProductDto>();
