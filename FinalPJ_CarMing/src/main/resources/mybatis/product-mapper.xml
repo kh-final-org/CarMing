@@ -73,9 +73,10 @@
 	<select id="selectProductCnt" resultType="int" parameterType="string">
 		SELECT COUNT(PNO) COUNT FROM
 		(SELECT ROWNUM AS RNUM, PRO.*
-		FROM (SELECT * FROM PRODUCT
-		WHERE MEMNICK LIKE '%' ||  #{search} || '%' 
-		ORDER BY PNO) PRO)
+		FROM (SELECT * 
+				FROM PRODUCT 
+				WHERE PNAME LIKE '%' ||  #{search} || '%' 
+				ORDER BY PNO) PRO)
 	</select>
 	
 	<!-- ===================================================================================================

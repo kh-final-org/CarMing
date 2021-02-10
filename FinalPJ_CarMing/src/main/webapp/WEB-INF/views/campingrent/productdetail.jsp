@@ -117,7 +117,7 @@ function mark(star){
 								</c:if>
 								<c:if test="${productdto.pAmount == 0}">
 									<li>
-										<span>상품 재고가 없습니다.</span><span class="lnr lnr-arrow-right" style="">재고 추가</span>
+										<span>상품 재고가 없습니다.&nbsp;&nbsp;&nbsp;&nbsp;</span><button type="button"><span class="lnr lnr-arrow-right" style="">&nbsp;&nbsp;재고 추가</span></button>
 									</li>
 								</c:if>
 								<li>

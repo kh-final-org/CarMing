@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>CarMing</title>
+<title>CarMing | 캠핑 렌트</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="resources/js/category.js"></script>
@@ -209,7 +209,7 @@
 						  	
 						  	<c:if test="${startNum + 4 >= lastNum }">
 							    <li class="page-item">
-							    	<a class="page-link text-warning" aria-label="Next">
+							    	<a class="page-link text-warning " aria-label="Next">
 							    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
 							      	</a>
 							   	</li>

@@ -257,7 +257,7 @@ public class RentController {
 		
 		
 		model.addAttribute("productlist", biz.selectAll(searchDefault, pageDefault));
-		model.addAttribute("productcount", biz.getProductCnt(searchDefault));
+		model.addAttribute("count", biz.getProductCnt(searchDefault));
 //		model.addAttribute("productlist", list);
 
 
