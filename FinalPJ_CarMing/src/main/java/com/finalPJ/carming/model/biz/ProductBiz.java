@@ -16,10 +16,6 @@ public interface ProductBiz {
 	public void changeAmount(CartListDto cDto);
 	
 	//검색과 페이징을 통한 SELECT
-	public List<ProductDto> selectAll();
-	public List<ProductDto> selectAll(int page);
 	public List<ProductDto> selectAll(String search, int page);
-	
-	public int getProductCnt();
 	public int getProductCnt(String search);
 }
