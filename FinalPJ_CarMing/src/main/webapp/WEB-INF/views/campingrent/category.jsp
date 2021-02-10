@@ -12,7 +12,7 @@
 <title>CarMing</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="resources/js/category.js?ver=4"></script>
+<script src="resources/js/category.js"></script>
 </head>
 <body>
 	<%@include file="../common/header.jsp" %>

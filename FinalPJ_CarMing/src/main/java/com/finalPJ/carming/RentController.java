@@ -245,7 +245,6 @@ public class RentController {
 	public String productlist(Model model, String search, String page) throws Exception{
 		logger.info("[PRODUCT LIST]");
 		
-		List<ProductDto> list = biz.selectAll();
 		String searchDefault = ""; // 검색이 없는 경우 기본값
 		if(search != null && !search.equals("")) { // 검색어가 있는 경우
 			searchDefault = search;
@@ -257,9 +256,9 @@ public class RentController {
 		}
 		
 		
-		model.addAttribute("list", biz.getMemList(searchDefault, pageDefault));
-		model.addAttribute("count", biz.getMemCount(searchDefault));
-		model.addAttribute("productlist", list);
+		model.addAttribute("productlist", biz.selectAll(searchDefault, pageDefault));
+		model.addAttribute("productcount", biz.getProductCnt(searchDefault));
+//		model.addAttribute("productlist", list);
 
 
 		

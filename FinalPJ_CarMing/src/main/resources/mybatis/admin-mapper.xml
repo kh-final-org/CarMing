@@ -72,7 +72,32 @@
 	SET STATENO = 5
 	WHERE CARTNO = #{cartNo}
 	</update>
-
+	
+	<!-- ===================================================================================================
+	================================================ paging ================================================ -->
+	<!-- 
+			RNUM BETWEEN ? AND ?
+			첫번째 ? ==> 1, 11, 21, 31 -> an = 1+(page-1)*10
+			두번째 ? ==> 10, 20, 30, 40 -> page * 10
+	 -->
+	<select id="selectMemList" resultType="admMemberDto" parameterType="hashMap">
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, MEM.* 
+		FROM (SELECT * FROM MEMBER WHERE MEMNICK LIKE '%' ||  #{search} || '%' OR MEMNAME LIKE '%' ||  #{search} || '%'
+		ORDER BY MEMNO DESC) MEM)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 10 AND #{page} * 10
+	</select>
+	
+	<select id="selectMemCnt" resultType="int" parameterType="string">
+		SELECT COUNT(MEMNO) COUNT FROM
+		(SELECT ROWNUM AS RNUM, MEM.*
+		FROM (SELECT * FROM MEMBER 
+		WHERE MEMNICK LIKE '%' ||  #{search} || '%' OR MEMNAME LIKE '%' ||  #{search} || '%' 
+		ORDER BY MEMNO) MEM)
+	</select>
+	
+	<!-- ===================================================================================================
+	================================================ paging ================================================ -->
 </mapper>
 
 

@@ -24,11 +24,11 @@
 		WHERE PNO BETWEEN #{pageStart} AND #{perPageNum}
 	</select> -->
 	
-	<select id="selectAll" resultType="productDto">
+	<!-- <select id="selectAll" resultType="productDto">
 		SELECT *
 		FROM PRODUCT
 		ORDER BY PNO
- 	</select>
+ 	</select> -->
 
 	<select id="selectOne" resultType="productDto" parameterType="int">
 		SELECT * 
@@ -59,4 +59,25 @@
 		SET PAMOUNT = PAMOUNT - #{cAmount}
 		WHERE PNO = #{pNo}
 	</update>
+	
+	<!-- ===================================================================================================
+	================================================ paging ================================================ -->
+	<select id="selectAll" resultType="productDto" parameterType="hashMap">
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, PRO.* 
+		FROM (SELECT * FROM PRODUCT WHERE PNAME LIKE '%' ||  #{search} || '%'
+		ORDER BY PNO DESC) PRO)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 10 AND #{page} * 10
+	</select>
+	
+	<select id="selectProductCnt" resultType="int" parameterType="string">
+		SELECT COUNT(PNO) COUNT FROM
+		(SELECT ROWNUM AS RNUM, PRO.*
+		FROM (SELECT * FROM PRODUCT
+		WHERE MEMNICK LIKE '%' ||  #{search} || '%' 
+		ORDER BY PNO) PRO)
+	</select>
+	
+	<!-- ===================================================================================================
+	================================================ paging ================================================ -->
 </mapper>
