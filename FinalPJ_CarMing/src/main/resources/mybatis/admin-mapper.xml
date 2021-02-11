@@ -18,8 +18,44 @@
 
 	</delete>
 	
-	<select id="selectRent" resultType="admRentDto">
-		SELECT
+	<select id="selectRent" resultType="admRentDto" parameterType="hashMap">
+		
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, REN.*
+		FROM 		
+		(SELECT
+		C.*,
+		M.MEMNICK,
+		M.MEMFILE,
+		RS.STATENAME,
+		P.PNAME,
+		PC.PCATEGORYNAME,
+		PY.PAYNO,
+		PY.TOTALPRICE
+		FROM CART C
+		JOIN MEMBER M
+		ON C.MEMNO = M.MEMNO
+		JOIN RENTSTATE RS
+		ON C.STATENO = RS.STATENO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PCATEGORY PC
+		ON C.PCATEGORYNO = PC.PCATEGORYNO
+		JOIN PAY PY
+		ON C.CARTNO = PY.CARTNO
+		WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR MEMNICK LIKE '%' ||  #{search}  || '%'
+		ORDER BY PY.PAYNO DESC) REN)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 8 AND #{page}  * 8
+			
+	</select>
+	
+	
+		<select id="selectRentCnt" resultType="int" parameterType="String">
+		
+		SELECT COUNT(CARTNO) COUNT FROM
+		(SELECT ROWNUM AS RNUM, REN.*
+		FROM 		
+		(SELECT
 		C.*,
 		M.MEMNICK,
 		RS.STATENAME,
@@ -38,7 +74,12 @@
 		ON C.PCATEGORYNO = PC.PCATEGORYNO
 		JOIN PAY PY
 		ON C.CARTNO = PY.CARTNO
+		WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR MEMNICK LIKE '%' ||  #{search}  || '%'
+		ORDER BY PY.PAYNO DESC) REN)
+			
 	</select>
+	
+	
 	<select id="selectOneRent" parameterType="int" resultType="admRentDto">
 		SELECT
 		C.*,

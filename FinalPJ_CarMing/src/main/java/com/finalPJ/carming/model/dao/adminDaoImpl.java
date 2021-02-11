@@ -88,11 +88,14 @@ public class adminDaoImpl implements adminDao{
 	}
 
 	@Override
-	public List<AdmRentDto> RentList() {
+	public List<AdmRentDto> RentList(String search, int page) {
 		List<AdmRentDto> list = new ArrayList<AdmRentDto>();
-		
+		// 검색어, 페이지 맵에 저장
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("search", search);
+		map.put("page", Integer.toString(page));
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectRent");
+			list = sqlSession.selectList(NAMESPACE+"selectRent", map);
 		} catch (Exception e) {
 			System.out.println("[error]:selectRent");
 			e.printStackTrace();
@@ -100,7 +103,24 @@ public class adminDaoImpl implements adminDao{
 		
 	return list;
 	}
+	
 
+	@Override
+	public int rentListCnt(String search) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectRentCnt",search);
+		} catch (Exception e) {
+			System.out.println("[error]:Rent Count");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	
+	
 	@Override
 	public AdmRentDto selectOneRent(int cartNo) {
 		AdmRentDto list = null;
@@ -191,6 +211,8 @@ public class adminDaoImpl implements adminDao{
 		 
 		return res;
 	}
+
+
 
 	
 }

@@ -27,9 +27,29 @@ public class adminBizImpl implements adminBiz{
 
 	@Override
 	public List<AdmRentDto> RentList() {
-		return dao.RentList();
+		return RentList("",1);
+	}
+	
+	@Override
+	public List<AdmRentDto> RentList(int page) {
+		return RentList("",page);
 	}
 
+	@Override
+	public List<AdmRentDto> RentList(String search, int page) {
+		return dao.RentList(search, page);
+	}
+
+	@Override
+	public int rentListCnt() {
+		return dao.rentListCnt("");
+	}
+
+	@Override
+	public int rentListCnt(String search) {
+		return dao.rentListCnt(search);
+	}
+	
 	@Override
 	public AdmRentDto selectOneRent(int cartNo) {
 		return dao.selectOneRent(cartNo);
@@ -78,4 +98,6 @@ public class adminBizImpl implements adminBiz{
 		// TODO Auto-generated method stub
 		return dao.sendRent(cartNo);
 	}
+
+
 }

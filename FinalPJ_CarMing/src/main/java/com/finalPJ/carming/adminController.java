@@ -31,9 +31,21 @@ private adminBiz biz;
 	}
 	
 	@RequestMapping(value = "/adminRentList.do")
-	public String adminRentList(Model model) {
+	public String adminRentList(Model model, String page, String search) {
 		
-		model.addAttribute("list",biz.RentList());
+		String searchDefault = "";
+		if(search != null && !search.equals("")) {
+			searchDefault = search;
+		}
+		
+		int pageDefault = 1;
+		if(page != null && !page.equals("")) {
+			pageDefault = Integer.parseInt(page);
+		}
+		
+		model.addAttribute("list",biz.RentList(searchDefault,pageDefault));
+		model.addAttribute("count", biz.rentListCnt(searchDefault));
+		System.out.println(model.toString());
 		logger.info("[adminRentList]");
 		return "Admin/adminRentList";
 	}

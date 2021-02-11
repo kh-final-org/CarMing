@@ -38,9 +38,22 @@ private InquiryBiz biz;
 private InquiryFileValidator fileValidator;
 
 	@RequestMapping(value = "/inquirylist.do")
-	public String inquirylist(Model model) {
+	public String inquirylist(Model model, String page, String search) {
 		
-		model.addAttribute("list",biz.list());
+		String searchDefault = ""; // 검색이 없는 경우 기본값
+		if(search != null && !search.equals("")) { // 검색어가 있는 경우
+			searchDefault = search;
+		}
+		
+		int pageDefault = 1; // 페이지 선택이 없는 경우 기본값
+		if(page != null && !page.equals("")) { // 페이지를 선택한 경우
+			pageDefault = Integer.parseInt(page);
+		}
+		
+		
+		model.addAttribute("list",biz.list(searchDefault, pageDefault));
+		model.addAttribute("count", biz.getlistCount(searchDefault));
+		
 		logger.info("[inquirylist]");
 		return "inquiry/inquirylist";
 	}

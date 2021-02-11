@@ -34,71 +34,60 @@
 	
 	
 
-
-$(document).ready(function(){
-	var category = $('select[name=categoryNo]');
-	var content = $('textarea[name=reportContent]');	
-	var img = $('input[type=file]');
-		
-		if(category.val() == null){
-				$('#emptycategory').show();
-			}
-		
-		category.change(function(){
-				$('#emptycategory').hide();
-				});
-		
-		if(content.text().trim() == ""){
-			$('#emptycontent').show();
-		}
-		if(content.text().trim() != null){
-			content.keyup(function(){
-			$('#emptycontent').hide();
-			console.log(content.text())
-			});
-		}
-		
-		if(img.val() == ""){
-			$('#emptyfile').show();
-		}
-		
-		img.change(function(){
-			$('#emptyfile').hide();
-			
-		var filename = img.val().split('\\').pop();
-        $('#filename').text(filename);
-			
-		});
-		
-	
-
-
-});	
-
-
 function report(){
 		
-		var category = $('select[name=categoryNo]').val();
-		var content = $('textarea[name=reportContent]');
-		var img = $('input[type=file]').val();
-		
-		
-				if(category == null ||
-				content.val().trim() == "" 	||
-				img == "" ){
-					alert("모든 항목을 작성해 주세요");
-					return;
-					
-					
+			var category = $('select[name=categoryNo]');
+			var content = $('textarea[name=reportContent]');	
+			var img = $('input[type=file]');
+			
+			if(category.val() == null){
+					$('#emptycategory').show();
 				}
+			
+			category.change(function(){
+					$('#emptycategory').hide();
+					});
+			
+			if(content.text().trim() == ""){
+				$('#emptycontent').show();
+			}
+			if(content.text().trim() != null){
+				content.keyup(function(){
+				$('#emptycontent').hide();
+				console.log(content.text())
+				});
+			}
+			
+			if(img.val() == ""){
+				$('#emptyfile').show();
+			}
+			
+			img.change(function(){
+				$('#emptyfile').hide();
+				
+			var filename = img.val().split('\\').pop();
+		    $('#filename').text(filename);
+				
+			});
+			
+	
+		
+			if(category.val() == null ||
+			content.val().trim() == "" 	||
+			img.val() == "" ){
+				alert("모든 항목을 작성해 주세요");
+				return;
 				
 				
-				if(category != null &&
-				content.val() != "" 	&&
-				img != null  )	{
-					alert("신고에 적극 대응하겠습니다.");
-					$("#target").submit();
-				}
+			}
+			
+			
+			if(category.val() != null &&
+			content.val() != "" 	&&
+			img.val() != null  )	{
+				alert("신고에 적극 대응하겠습니다.");
+				$("#target").submit();
+			}
 					
 	
 	

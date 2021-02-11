@@ -37,9 +37,21 @@ private ReportBiz biz;
 private ReportFileValidator fileValidator;
 
 	@RequestMapping(value = "/reportlist.do")
-	public String reportlist(Model model) {
-
-		model.addAttribute("list", biz.list());
+	public String reportlist(Model model, String page, String search) {
+		
+		String searchDefault = "";
+		if(search != null && !search.equals("")) {
+			searchDefault = search;
+		}
+		
+		int pageDefault = 1; 
+		if (page != null && !page.equals("")) {
+			pageDefault = Integer.parseInt(page);
+		}
+		
+		model.addAttribute("list", biz.list(searchDefault, pageDefault));
+		model.addAttribute("count", biz.listCnt(searchDefault));
+		
 		logger.info("[reportlist]");
 		return "report/reportlist";
 	}

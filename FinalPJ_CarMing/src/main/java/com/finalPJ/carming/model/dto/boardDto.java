@@ -8,6 +8,7 @@ public class boardDto {
 	
 	private int brdno;				//게시글 번호
 	private int bcategoryno;		//카테고리 번호 참조
+	private String categoryname;	//카테고리명
 	private String brdwriter;		//게시글 작성자
 	private MultipartFile brdfile;	//파일명
 	private String brdfilename;		//실제 파일명
@@ -31,13 +32,14 @@ public class boardDto {
 	}
 
 
-	public boardDto(int brdno, int bcategoryno, String brdwriter, MultipartFile brdfile, String brdfilename,
-			MultipartFile brdvideo, String brdvideoname, String brdcontent, int brdcount, Date brddate,
-			String brdprivate, int comcount, String carmapchk, int memno, String memnick, String mapname,
+	public boardDto(int brdno, int bcategoryno, String categoryname, String brdwriter, MultipartFile brdfile,
+			String brdfilename, MultipartFile brdvideo, String brdvideoname, String brdcontent, int brdcount,
+			Date brddate, String brdprivate, int comcount, String carmapchk, int memno, String memnick, String mapname,
 			String maplatitude, String maplongtitude) {
 		super();
 		this.brdno = brdno;
 		this.bcategoryno = bcategoryno;
+		this.categoryname = categoryname;
 		this.brdwriter = brdwriter;
 		this.brdfile = brdfile;
 		this.brdfilename = brdfilename;
@@ -74,6 +76,16 @@ public class boardDto {
 
 	public void setBcategoryno(int bcategoryno) {
 		this.bcategoryno = bcategoryno;
+	}
+
+
+	public String getCategoryname() {
+		return categoryname;
+	}
+
+
+	public void setCategoryname(String categoryname) {
+		this.categoryname = categoryname;
 	}
 
 
@@ -239,12 +251,12 @@ public class boardDto {
 
 	@Override
 	public String toString() {
-		return "boardDto [brdno=" + brdno + ", bcategoryno=" + bcategoryno + ", brdwriter=" + brdwriter + ", brdfile="
-				+ brdfile + ", brdfilename=" + brdfilename + ", brdvideo=" + brdvideo + ", brdvideoname=" + brdvideoname
-				+ ", brdcontent=" + brdcontent + ", brdcount=" + brdcount + ", brddate=" + brddate + ", brdprivate="
-				+ brdprivate + ", comcount=" + comcount + ", carmapchk=" + carmapchk + ", memno=" + memno + ", memnick="
-				+ memnick + ", mapname=" + mapname + ", maplatitude=" + maplatitude + ", maplongtitude=" + maplongtitude
-				+ "]";
+		return "boardDto [brdno=" + brdno + ", bcategoryno=" + bcategoryno + ", categoryname=" + categoryname
+				+ ", brdwriter=" + brdwriter + ", brdfile=" + brdfile + ", brdfilename=" + brdfilename + ", brdvideo="
+				+ brdvideo + ", brdvideoname=" + brdvideoname + ", brdcontent=" + brdcontent + ", brdcount=" + brdcount
+				+ ", brddate=" + brddate + ", brdprivate=" + brdprivate + ", comcount=" + comcount + ", carmapchk="
+				+ carmapchk + ", memno=" + memno + ", memnick=" + memnick + ", mapname=" + mapname + ", maplatitude="
+				+ maplatitude + ", maplongtitude=" + maplongtitude + "]";
 	}
 
 

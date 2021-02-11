@@ -15,22 +15,16 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
 <script type="text/javascript">
 var sel_file;
 $(document).ready(function() {
 	$("#input_img").on("change", handleImgFileSelect);
-	
-	/* $("#location-finish-btn").click(function(){
-
-	/* 	if(mapname.val() != ""){ */
-			/* alert(place.val());
-			$('#emptymap').hide();
-			 */
-		/* }; */
-	
-/*  });  */ 
-	
+ 
+ 		
 });
+
 function handleImgFileSelect(e) {
 	$("#img").empty(); //remove는 태그 자체를 지운다 
 	var files = e.target.files;
@@ -54,56 +48,26 @@ function handleImgFileSelect(e) {
 }
 
 
-/* $(document).ready(function(){
+ $(document).ready(function(){
 	var img = $('#input_img');
 	var category = $('select[name=bcategoryno]');
 	var content = $('textarea[name=brdcontent]');	
 	var place = $('#place');
 	var mapname = $('#mapname')
 	
-	if(img.val() == ""){
-			$('#emptyimg').show();
-			console.log(img.val())
-		}
+
+		 img.change(function(){
+		$('#emptyimg').hide();
+		console.log(img.val())
 		
-		img.change(function(){
-			$('#emptyimg').hide();
-			console.log(img.val())
-			
 		var filename = img.val().split('\\').pop();
-        $('#filename').text(filename);
-			
+	    $('#filename').text(filename); 
+	 
+	    	
 		});
-	
-		
-		if(category.val() == null){
-				$('#emptycategory').show();
-			}
-		
-		category.change(function(){
-				$('#emptycategory').hide();
-				});
-			
-		if(content.val().trim() == ""){
-			$('#emptycontent').show();
-		}
-		if(content.text().trim() != null){
-			content.keyup(function(){
-			$('#emptycontent').hide();
-			
-			});
-		}
-		
-		if(place.text().trim() == ""){
-			$('#emptymap').show();
-		} */
-		
-		 
 		
 		
-		
-		
-/* });	 */	 
+ });	 
 
 
 
@@ -114,18 +78,9 @@ function board(){
 	var content = $('textarea[name=brdcontent]');	
 	var place = $('#place');
 	var mapname = $('#mapname')
+
 	
-	
-			/* if(category.val() == null ||
-			content.val().trim() == "" 	||
-			img.val() == "" ||
-			mapname.val() == ""){
-				alert("모든 항목을 작성해 주세요");
-				return;
-				
-				
-			} */
-	
+		 
 			if(category.val() == null){
 				$('#emptycategory').show();
 				
@@ -143,60 +98,81 @@ function board(){
 			content.keyup(function(){
 			$('#emptycontent').hide();
 			
-			});
+			}); 
 			
-			if(img.val() == ""){
+			 if(img.val() == ""){
 				$('#emptyimg').show();
 			}
 			
-			img.change(function(){
-				$('#emptyimg').hide();
-				console.log(img.val())
-				
-			var filename = img.val().split('\\').pop();
-	        $('#filename').text(filename);
-	        
-	        	
-			});
+
+			 if(place.val().trim() == ""){
+					$('#emptymap').show();
+					
+				};  
+			
+				/* if(mapname.val() != ""){
+					$('#emptymap').hide();
+			        alert(mapname.val()+"mapnameval"); 
+				};   */
+			
+
+				$('#location-finish-btn').click(function(){
+					if(mapname.val() != ""){
+						$('#emptymap').hide();
+					};  
+				}); 
+			
+		/* 	
+			  $('#location-finish-btn').click(function(){
+				 if(mapname.val().trim() == ""){
+						$('#emptymap').hide();
+						$('#emptymapname').show();
+				        alert(mapname.val()+"he"); 
+				};  
+				if(mapname.val() != ""){
+					$('#emptymap').hide();
+					$('#emptymapname').hide();
+			        alert(mapname.val()+"he2"); 
+				};  
+				alert("click");
+			});   */
 			
 			
-			if(place.val() == ""){
-				$('#emptymap').show();
-				alert(place.val());
-				
-			};
 			
-			/* if(mapname.val() != null){
-				$('#emptymap').hide();
-				alert(place.text());
-				alert(mapname.val().text()+"2");
-		        alert(mapname.val()); 
-			};  */
-			
-			
-			/* if(mapname.text() !=""){
-				alert(mapname.text())
-			} */
-			
-			mapname.keyup(function(){
-				$('#emptymap').hide();
+			 mapname.keyup(function(){
+				 if(mapname.val().trim() != ""){
+						$('#emptymap').hide();
+				}; 
 			}); 
-			
+			 
+
+				
+				
+			 if(category.val() == null ||
+			content.val().trim() == "" 	||
+			img.val() == "" ||
+			mapname.val() == ""){
+				alert("모든 항목을 작성해 주세요");
+				return;
+				
+				
+			}  	
 			
 			if(category != null &&
-			content.val() != "" 	&&
+			content.val() != "" &&
 			img != null &&
-			mapname.val() != "")	{
+			mapname.val() != null )	{
 				alert("문의주셔서 감사합니다.");
 				$("#target").submit();
 			}
-				
+				 
 
 
 };
 
 
 </script>
+
 </head>
 <body onload="location.href='#location-popup'">
 <!-- Start Header Area -->
@@ -484,6 +460,7 @@ function board(){
 					<span style="display: none"><strong>경도 : </strong></span><span id="lang"></span>
 				</div>
 				<div class="board-err" id="emptymap">장소를 선택해 주세요</div>
+				<div class="board-err" id="emptymapname">장소명을 작성해 주세요</div>
 				<!-- Checkbox -->
 				<div class="body-checklist">
 					<div class="chkprivate-box">

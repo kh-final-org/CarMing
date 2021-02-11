@@ -1,63 +1,4 @@
 
-/*var sel_file;
-$(document).ready(function() {
-	$("#input_img").on("change", handleImgFileSelect);
-});
-function handleImgFileSelect(e) {
-	$("#img").empty(); //remove는 태그 자체를 지운다 
-	var files = e.target.files;
-	var filesArr = Array.prototype.slice.call(files);
-
-	filesArr.forEach(function(f) {
-		if (!f.type.match("image.*")) {
-			alert("확장자는 이미지 확장자만 가능합니다.");
-			return;
-		}
-		sel_file = f;
-
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			$("#img").attr("src", e.target.result);
-			$("#img").attr("width", "90%");
-			$("#img").attr("height", "440px");
-		}
-		reader.readAsDataURL(f);
-	})
-}*/
-
-
-function resetInputFile() {
-	$("#img").empty();
-}
-
-
-/*<!-- 나만보기 체크여부 -->*/
-
-	function YnCheck(obj) {
-		$("#my").empty();
-	    var checked = obj.checked;
-	
-	    if(checked){
-	    	var value = obj.value = "Y";
-    	    var Y = document.createElement("input");
-		    Y.setAttribute("name", "brdprivate");
-		    Y.setAttribute("type", "text");
-		    Y.setAttribute("value", value);
-		    
-		    document.getElementById("my").appendChild(Y);	
-	
-	    }else{
-	    	var value = obj.value = "N";
-	       	var N = document.createElement("input");
-	       	N.setAttribute("name", "brdprivate");
-		    N.setAttribute("type", "text");
-		    N.setAttribute("value", value);
-		    
-		    document.getElementById("my").appendChild(N);	
-	    }
-	    
-	 };
-
 
 /*<!-- 차박명소 등록 체크여부 -->*/
 	function YnCheck2(obj) {
@@ -152,7 +93,7 @@ function resetInputFile() {
 	
 
 /*폼 안넘어가기*/
-function inquiry(){
+/*function inquiry(){
 		
 		var category = $('select[name=categoryNo]').val();
 		var content = $('textarea[name=inquiryContent]');
@@ -179,7 +120,7 @@ function inquiry(){
 					
 	
 	
-};
+};*/
 
 /*지도창 지우기*/
 	function myFunction() {
