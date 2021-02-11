@@ -9,7 +9,48 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing</title>
-	<link rel="stylesheet" href="resources/scss/theme/_product.scss">
+<link rel="stylesheet" href="resources/scss/theme/_product.scss">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js">
+</script>
+<style type="text/css">
+	*, ::after, ::before {
+    	box-sizing: content-box;
+	}
+</style>
+
+<script type="text/javascript">
+	var sel_file;
+	
+	$(document).ready(function() {
+		$("#input_img").on("change", handleImgFileSelect);
+	});
+	
+	function handleImgFileSelect(e) {
+		$("#img").empty(); //remove는 태그 자체를 지운다 
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+	
+		filesArr.forEach(function(f) {
+			if (!f.type.match("image.*")) {
+				alert("확장자는 이미지 확장자만 가능합니다.");
+				return;
+			}
+			sel_file = f;
+	
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#img").attr("src", e.target.result);
+				$("#img").attr("width", "90%");
+				$("#img").attr("height", "440px");
+			}
+			reader.readAsDataURL(f);
+		})
+	}
+	
+	function resetInputFile() {
+		$("#img").empty();
+	}
+</script>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -50,7 +91,13 @@
                                 </div>
                                 <br>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <span>제품 이미지1(대표)</span><input type="file" class="form-control" name="prFile"><form:errors path="pFile"/>
+                                    <span>제품 이미지1(대표)</span><input type="file" class="form-control" id="input_img" name="prFile" accept="image/*"><form:errors path="pFile"/>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                    <span>제품 이미지2(대표)</span><input type="file" class="form-control" id="input_img2" name="prFile2" accept="image/*"><form:errors path="pFile2"/>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                    <span>제품 이미지3(대표)</span><input type="file" class="form-control" id="input_img3" name="prFile3" accept="image/*"><form:errors path="pFile3"/>
                                 </div>
                                <%--  <div class="form-group col-lg-6 col-md-6 name">
                                     <span>제품 이미지2(대표)</span><input type="file" class="form-control" name="pFile2"><form:errors path="pFile2"/>
@@ -61,7 +108,8 @@
                                 <br>
                                 --%>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <span>제품 설명</span><input type="text" class="form-control" name="pDesc"><form:errors path="pDesc"/>
+                                    <span>제품 설명</span><input type="file" class="form-control" name="prDesc"><form:errors path="prDesc"/>
+                                    <input type="hidden" value="1">
                                 </div>
                                 <br>
                                 <div class="form-group col-lg-6 col-md-6 name">
@@ -71,9 +119,15 @@
 								<div class="form-group col-lg-6 col-md-6 name">
 									<span>렌트 가능한 재고</span><input type="number" class="form-control" name="pAmount" min="1">
 								</div>
+	                            <div class="form-group col-lg-6 col-md-6 name">
+	                            	<div class="product_img">
+	                            		<img id="img" src="">
+	                            	</div>
+                            	</div>
                             </div>              
                             <input type="submit" value="등록" class="primary-btn submit_btn">
                             <input type="button" value="취소" class="primary-btn submit_btn" onclick="location.href='productlist.do'">
+
                         </form:form>
        </div>
 	<%@ include file="../common/footer.jsp" %>

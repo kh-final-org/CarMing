@@ -10,44 +10,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 장바구니</title>
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="resources/js/cartlist.js?ver=5"></script>
 <style type="text/css">
-	.cart_empty_img{
-		text-align: center;
-    	width: 35%;
-	}
-
-	.cart_empty_text{
-		text-align: center;
-		margin-bottom: 20%;
-	}
-	.cart_empty_button{
-		margin-top: 5%;
-	}
+	#banner-text-2{position: absolute; top: 255px; right: 245px;}
+	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
+				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
+	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
+	.banner-btn::before{content: ""; position: absolute; left:0; width:100%; height: 0%; background: #fff5e9; z-index: -1; 
+						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
+	.banner-btn:hover::before{height: 180%;}
+	
+	
+	
+	
+	.cart_empty_img{text-align: center; width: 35%;}
+	.cart_empty_text{text-align: center;margin-bottom: 20%;}
+	.cart_empty_button{margin-top: 5%;}
+	
+	
 </style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
+	
 	<!-- Start Banner Area -->
-	<form action="cartdelete.do" method="get">
 	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>장바구니</h1>
-					<nav class="d-flex align-items-center">
-						<a href="home.do">홈<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.do">캠핑 렌트<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">장바구니</a>
-					</nav>
-				</div>
-			</div>
+	   <div class="container">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	         <div class="col-first" id="banner-text-1">
+	            <h1>The stars in the night sky</h1>
+	            <nav class="d-flex align-items-center">
+	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
+	            </nav>
+	         </div>
+	      </div>
+		  <div class="section-top-border text-right" id="banner-text-2">
+	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='#'">캠핑렌트</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">장바구니</button>
+	         </div>
+		  </div>
 		</div>
 	</section>
 	<!-- End Banner Area -->
+
 	<!--================Cart Area =================-->
 	<c:choose>
 	<c:when test="${empty cartlist}">
@@ -186,7 +197,6 @@
     </section>
     </c:otherwise>
     </c:choose>
-    </form>
     <!--================End Cart Area =================-->
 	<%@ include file="../common/footer.jsp" %>
 </body>

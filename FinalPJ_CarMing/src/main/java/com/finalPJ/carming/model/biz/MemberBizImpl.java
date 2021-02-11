@@ -1,5 +1,7 @@
 package com.finalPJ.carming.model.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,6 +40,12 @@ public class MemberBizImpl implements MemberBiz {
 		
 		return dao.selectOne(id);
 	}
+	
+	@Override
+	public MemberDto selectNo(int memno) {
+		
+		return dao.selectNo(memno);
+	}
 
 	@Override
 	public int update(MemberDto dto) {
@@ -56,8 +64,22 @@ public class MemberBizImpl implements MemberBiz {
 		// TODO Auto-generated method stub
 		return dao.pwchange(dto);
 	}
+
+	
+	//암호화 다시 추가시 삭제
+	@Override
+	public int countuser() {
+		// TODO Auto-generated method stub
+		return dao.countuser();
+	}
+
+	@Override
+	public List<MemberDto> selectAll() {
+		// TODO Auto-generated method stub
+		return dao.selectAll();
+	}
 	
 	
 
-
+	
 }

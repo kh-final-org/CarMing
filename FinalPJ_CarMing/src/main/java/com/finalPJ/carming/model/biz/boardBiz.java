@@ -7,8 +7,7 @@ import com.finalPJ.carming.model.dto.boardDto;
 
 public interface boardBiz {
 
-	//01. 게시글 전체 목록
-	public List<boardDto> selectList();
+
 	//02. 게시글 상세보기
 	public boardDto selectOne(int brdno);
 	//03. 게시글(사진) 추가
@@ -26,7 +25,13 @@ public interface boardBiz {
 	//09. 게시글(영상) 추가
 	public int insert_v(boardDto dto);
 	
-		
-		
+	//01. 게시글 전체 목록
+	public List<boardDto> selectList();	
+	public List<boardDto> selectList(int page);	
+	public List<boardDto> selectList(String search, int page);	
+	
+	//페이징 카운트
+	public int listCnt();
+	public int listCnt(String search);
 	
 }

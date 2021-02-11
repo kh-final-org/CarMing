@@ -53,9 +53,12 @@
 
 
 
-	<select id="select" resultType="reportDto">
-	SELECT
-	REPORTLIST.*,     
+	<select id="select" resultType="reportDto" parameterType="hashMap">
+	
+	SELECT * FROM 
+	(SELECT ROWNUM AS RNUM, REP.*
+	FROM 		
+	(SELECT REPORTLIST.*,   
 	REPORTCATEGORY.CATEGORYNAME,
 	MEMBER.MEMFILE
 	FROM REPORTLIST
@@ -63,7 +66,32 @@
 	ON REPORTLIST.MEMNO = MEMBER.MEMNO
 	JOIN REPORTCATEGORY
 	ON REPORTLIST.CATEGORYNO = REPORTCATEGORY.CATEGORYNO
+	WHERE CATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR REPORTWRITER LIKE '%' ||  #{search}  || '%'
+	ORDER BY REPORTLIST.REPORTDATE DESC) REP)
+	WHERE RNUM BETWEEN 1 + (#{page} -1) * 8 AND #{page}  * 8
+
 	</select> 
+	
+	
+	
+	<select id="selectCnt" resultType="int" parameterType="String">
+	
+	SELECT COUNT(REPORTNO) COUNT FROM
+	(SELECT ROWNUM AS RNUM, REP.*
+	FROM 		
+	(SELECT REPORTLIST.*,   
+	REPORTCATEGORY.CATEGORYNAME,
+	MEMBER.MEMFILE
+	FROM REPORTLIST
+	JOIN MEMBER
+	ON REPORTLIST.MEMNO = MEMBER.MEMNO
+	JOIN REPORTCATEGORY
+	ON REPORTLIST.CATEGORYNO = REPORTCATEGORY.CATEGORYNO
+	WHERE CATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR REPORTWRITER LIKE '%' ||  #{search}  || '%'
+	ORDER BY REPORTLIST.REPORTDATE DESC) REP)
+
+	</select> 
+	
 	
 	<select id="selectOne" parameterType="int" resultMap= "reportMap">
 	SELECT

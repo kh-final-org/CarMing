@@ -1,7 +1,9 @@
 package com.finalPJ.carming.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,16 @@ public class InquiryDaoImpl implements InquiryDao{
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<InquiryDto> list() {
+	public List<InquiryDto> list(String search, int page) {
 		List<InquiryDto> list = new ArrayList<InquiryDto>();
 		
-			try {
-				list = sqlSession.selectList(NAMESPACE+"select");
+		// 검색어, 페이지 맵에 저장
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("page",Integer.toString(page));
+		
+		try {
+				list = sqlSession.selectList(NAMESPACE+"select", map);
 			} catch (Exception e) {
 				System.out.println("[error]:select");
 				e.printStackTrace();
@@ -30,6 +37,22 @@ public class InquiryDaoImpl implements InquiryDao{
 			
 		return list;
 	}
+	
+	
+	@Override
+	public int getlistCount(String search) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectCnt", search);
+		} catch (Exception e) {
+			System.out.println("[error]:select Count");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	
 
 	@Override
 	public InquiryDto selectOne(int inquiryNo) {
@@ -75,7 +98,9 @@ public class InquiryDaoImpl implements InquiryDao{
 		}
 		return res;
 	}
-	
+
+
+
 
 
 }

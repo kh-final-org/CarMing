@@ -8,6 +8,8 @@ public class ProductDto {
 	private int pPrice;
 	private String pDesc;
 	private String pFile;
+	private String pFile2;
+	private String pFile3;
 	private String pPath;
 	private int pAmount;
 	
@@ -15,7 +17,8 @@ public class ProductDto {
 		super();
 	}
 
-	public ProductDto(int pNo, int pCategoryNo, String pName, int pPrice, String pDesc, String pFile, String pPath, int pAmount) {
+	public ProductDto(int pNo, int pCategoryNo, String pName, int pPrice, String pDesc, String pFile, String pFile2,
+			String pFile3, String pPath, int pAmount) {
 		super();
 		this.pNo = pNo;
 		this.pCategoryNo = pCategoryNo;
@@ -23,9 +26,13 @@ public class ProductDto {
 		this.pPrice = pPrice;
 		this.pDesc = pDesc;
 		this.pFile = pFile;
+		this.pFile2 = pFile2;
+		this.pFile3 = pFile3;
 		this.pPath = pPath;
 		this.pAmount = pAmount;
 	}
+
+
 
 	public int getpNo() {
 		return pNo;
@@ -89,6 +96,22 @@ public class ProductDto {
 
 	public void setpAmount(int pAmount) {
 		this.pAmount = pAmount;
+	}
+
+	public String getpFile2() {
+		return pFile2;
+	}
+
+	public void setpFile2(String pFile2) {
+		this.pFile2 = pFile2;
+	}
+
+	public String getpFile3() {
+		return pFile3;
+	}
+
+	public void setpFile3(String pFile3) {
+		this.pFile3 = pFile3;
 	}
 	
 	

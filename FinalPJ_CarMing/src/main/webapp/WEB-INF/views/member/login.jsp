@@ -10,14 +10,23 @@
 <title>CarMing</title>
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="resources/js/login.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="resources/css/linearicons.css">
+	<link rel="stylesheet" href="resources/css/owl.carousel.css">
+	<link rel="stylesheet" href="resources/css/themify-icons.css">
+	<link rel="stylesheet" href="resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="resources/css/nice-select.css">
+	<link rel="stylesheet" href="resources/css/nouislider.min.css">
+	<link rel="stylesheet" href="resources/css/bootstrap.css">
+	<link rel="stylesheet" href="resources/css/main.css">
+	
 	<style type="text/css">
 		body {background-color: #fff; font-family: 'Ubuntu', sans-serif;}
     	.main {background-color: #fff; width: 400px; height: 500px; margin: 7em auto; border-radius: 1.5em; box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);}
     	
-	    .loginform-logo{padding-top: 40px;}   
+	    .loginform-logo{padding-top: 33px;}   
 	    .login-logo{width: 150px; height: 100%; margin-right: 10px;}
 
 		.input-user-idpw {width: 75%; color: #5f5f5f; font-size: 14px; letter-spacing: 1px; padding: 10px 15px; background: #fff;
@@ -30,23 +39,23 @@
 	    .login-btn {cursor: pointer; color: #5f5f5f !important; background: #ffe6be; width: 300px; border: 0; border-radius: 5px; padding: 10px 40px;
 				 	font-weight: bold; margin-top: 15px; margin-left: 12%; font-size: 1.1em; box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04); outline: none;}
 	    .login-btn:hover {background: #ffdb9f; transition: 0.2s;}
-	    .signup{padding-top: 10px; margin: -2px 10px 27px 0;}
+	    .signup{padding-top: 10px; margin: -2px 10px 20px 0;}
 	    .signup > a > span {display: inline-block; color: gray; font-size: 0.85em; font-weight: bold;}
 	    .register-img{width: 13px; height: 12px; opacity: 0.2;}
 	    a {text-decoration: none; } 
 	    form.form1 {padding-top: 30px;}
 	    input::placeholder{color: silver;}
 	    
-	    .naver_login_text{color: gray; font-size: 0.75em; margin-bottom: 8px;}
+	    .naver_login_text{color: gray; font-size: 0.75em; margin-bottom: 3px;}
 	    
-		@media (max-width: 600px) {.main {border-radius: 0px;}
+		@media (max-width: 600px) {.main {border-radius: 7px;}
     
 	</style>
 
 
 </head>
 <body>
-	<main role="main" style="padding: 5px 570px; position: fixed;">
+	<main role="main" style="padding: 30px 570px; position: fixed;">
 		<section id="content">
 			<div class="main">
 				<div class="loginform-logo" align="center">
@@ -70,8 +79,11 @@
 						</a>
 					</div>
 					<br>
+
 				</form>        
 		   	</div>
+		   									<!-- 암호화 다시 추가시 삭제구역 -->
+		   	<input type="button" value="비밀번호 암호화" onclick="passwordenc()"/>
 		</section>
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

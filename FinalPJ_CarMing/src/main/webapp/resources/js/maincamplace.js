@@ -260,22 +260,31 @@ function ajaxlocation(){
 						console.log("맵이름:"+key+"/ 경도, 위도:"+msg[key]);
 						var obj = {
 								title: key,
-								latlng: new kakao.maps.LatLng(msg[key][1],msg[key][0])
+								latlng: new kakao.maps.LatLng(msg[key][0],msg[key][1])
 						};
 						positions.push(obj);
 						console.log(positions[0].latlng);
 					}
+					var listEl = document.getElementById('placesList');
+					
+					// 검색 결과 목록에 추가된 항목들을 제거합니다
+				    removeAllChildNods(listEl);
+
+				    // 지도에 표시되고 있는 마커를 제거합니다
+				    removeMarker();
 		
 					// 마커 이미지의 이미지 주소입니다
 					var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 					    
 					for (var i = 0; i < positions.length; i ++) {
-					    
+					  
 					    // 마커 이미지의 이미지 크기 입니다
 					    var imageSize = new kakao.maps.Size(24, 35); 
 					    
 					    // 마커 이미지를 생성합니다    
 					    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+					    
+					    
 					    
 					    // 마커를 생성합니다
 					    var marker = new kakao.maps.Marker({
@@ -284,6 +293,7 @@ function ajaxlocation(){
 					        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 					        image : markerImage // 마커 이미지 
 					    });
+					    
 					}
 				}else{
 					alert("차박명소로 지정한게 없습니다.");
@@ -297,3 +307,5 @@ function ajaxlocation(){
 	});
 }
 }
+
+

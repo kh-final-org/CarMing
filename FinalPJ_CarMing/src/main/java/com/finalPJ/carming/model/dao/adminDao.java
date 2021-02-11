@@ -15,13 +15,17 @@ public interface adminDao {
 	public int delete(int memNo);
 	public int deleteRep(int memNo);
 	public int deleteList(int memNo);
-	public List<AdmRentDto> RentList();
 	public AdmRentDto selectOneRent(int cartNo);
 	public int returnRent(int cartNo);
-
+	public int sendRent(int cartNo);
+	public int deleteRent(int cartNo);
 	
 	/* 검색, 페이징을 포함한 member select */
 	public List<AdmMemberDto> getMemList(String search, int page);
 	public int getMemCount(String search);
 
+
+	/* 검색, 페이징을 포함한 rent select */
+	public List<AdmRentDto> RentList(String search, int page);
+	public int rentListCnt(String search);
 }

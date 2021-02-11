@@ -55,10 +55,9 @@ public class PayDaoImpl implements PayDao{
 	}
 
 	@Override
-	public PayDto selectOnePay(int payNo) {
-		PayDto pDto = null;
+	public PayDto selectOnePay(PayDto pDto) {
 		try {
-			pDto = sqlSession.selectOne(NAMESPACE+"selectonepay", payNo);
+			pDto = sqlSession.selectOne(NAMESPACE+"selectonepay", pDto);
 		} catch (Exception e) {
 			System.out.println("[ERROR: SELECTONE PAY]");
 			e.printStackTrace();

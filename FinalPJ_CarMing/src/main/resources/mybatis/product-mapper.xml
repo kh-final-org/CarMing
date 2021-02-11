@@ -24,11 +24,11 @@
 		WHERE PNO BETWEEN #{pageStart} AND #{perPageNum}
 	</select> -->
 	
-	<select id="selectAll" resultType="productDto">
+	<!-- <select id="selectAll" resultType="productDto">
 		SELECT *
 		FROM PRODUCT
 		ORDER BY PNO
- 	</select>
+ 	</select> -->
 
 	<select id="selectOne" resultType="productDto" parameterType="int">
 		SELECT * 
@@ -45,7 +45,7 @@
 	 	 	 
 	<insert id="insertProduct" parameterType="productDto">
 		INSERT INTO PRODUCT
-		VALUES(PRODUCT_SEQ.NEXTVAL, #{pCategoryNo}, #{pName}, #{pPrice}, #{pDesc}, #{pFile}, #{pAmount}, #{pPath})
+		VALUES(PRODUCT_SEQ.NEXTVAL, #{pCategoryNo}, #{pName}, #{pPrice}, #{pDesc}, #{pFile}, #{pAmount}, #{pPath}, #{pFile2}, #{pFile3})
 	</insert>
 	
 	<delete id="deleteProduct" parameterType="productDto">
@@ -54,9 +54,37 @@
 		WHERE PNO = #{pNo}
 	</delete>
 	
-	<update id="changeAmount">
+	<update id="changeAmount" parameterType="cartListDto">
 		UPDATE PRODUCT
-		SET PAMOUNT = PAMOUNT - #{pAmount}
+		SET PAMOUNT = PAMOUNT - #{cAmount}
 		WHERE PNO = #{pNo}
 	</update>
+	
+	<update id="return" parameterType="int">
+		UPDATE CART
+		SET STATENO = 4
+		WHERE CARTNO = #{cartNo}
+	</update>
+	
+	<!-- ===================================================================================================
+	================================================ paging ================================================ -->
+	<select id="selectAll" resultType="productDto" parameterType="hashMap">
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, PRO.* 
+		FROM (SELECT * FROM PRODUCT WHERE PNAME LIKE '%' ||  #{search} || '%'
+		ORDER BY PNO DESC) PRO)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 10 AND #{page} * 10
+	</select>
+	
+	<select id="selectProductCnt" resultType="int" parameterType="string">
+		SELECT COUNT(PNO) COUNT FROM
+		(SELECT ROWNUM AS RNUM, PRO.*
+		FROM (SELECT * 
+				FROM PRODUCT 
+				WHERE PNAME LIKE '%' ||  #{search} || '%' 
+				ORDER BY PNO) PRO)
+	</select>
+	
+	<!-- ===================================================================================================
+	================================================ paging ================================================ -->
 </mapper>

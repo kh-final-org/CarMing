@@ -1,7 +1,9 @@
 package com.finalPJ.carming.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,16 @@ public class boardDaoImpl implements boardDao{
 	
 	//01. 게시글 전체 목록
 	@Override
-	public List<boardDto> selectList() {
+	public List<boardDto> selectList(String search, int page) {
 		List<boardDto> list = new ArrayList<boardDto>();
+		// 검색어, 페이지 맵에 저장
+		Map<String,String> map = new HashMap<String,String>();
+		
+		map.put("search", search);
+		map.put("page", Integer.toString(page));
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList");
+			list = sqlSession.selectList(NAMESPACE+"selectList",map);
 		} catch (Exception e) {
 			System.out.println("[error : board_selectList]");
 			e.printStackTrace();
@@ -30,6 +37,21 @@ public class boardDaoImpl implements boardDao{
 		return list;
 	}
 
+	@Override
+	public int listCnt(String search) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectCnt",search);
+		} catch (Exception e) {
+			System.out.println("[error]:select board Count");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	
 	//02. 게시글 상세보기
 	@Override
 	public boardDto selectOne(int brdno) {
@@ -183,7 +205,7 @@ public class boardDaoImpl implements boardDao{
 		return res;
 	}
 
-	
+
 	
 	
 }

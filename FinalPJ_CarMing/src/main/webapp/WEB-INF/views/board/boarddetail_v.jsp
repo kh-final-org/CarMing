@@ -176,6 +176,15 @@ function update(brdno){
 	 };
 </script> 
 
+<script>
+	function boardUpdate(brdno){
+		var chk = confirm("게시글을 수정하시겠습니까?")
+		if(chk){
+			location.href='javascript:updateform()';
+		}
+	}
+</script>
+
 
 </head>
 <body>
@@ -189,9 +198,9 @@ function update(brdno){
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
          <div class="col-first">
             <h1>The stars in the night sky</h1>
-            <nav class="d-flex align-items-center">
-               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-               <a href="boardmainform.do">Talk</a>
+         	<nav class="d-flex align-items-center">
+               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
             </nav>
          </div>
       </div>
@@ -243,7 +252,7 @@ function update(brdno){
 			<div class="board-comment-header-2">
 				<c:if test="${login.memnick == dto.brdwriter }">
 					<div class="board-modify" id="updatebutton">
-						<input type="button"  onclick="updateform()" value="수정" id="board-option-btn">
+						<input type="button"  onclick="boardUpdate(${dto.brdno})"  value="수정" id="board-option-btn">
 					</div>
 					<div class="board-delete" >&nbsp;&#124;
 						<input type="button" onclick="boardDel(${dto.brdno})" value="삭제" id="board-option-btn">

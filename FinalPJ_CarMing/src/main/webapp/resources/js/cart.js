@@ -6,13 +6,15 @@ $(document).ready(function(){
 		var startDate = $("#startDate").val();
 		var endDate = $("#endDate").val();
 		var pNo = $("#pNo").val();
+		var pCategoryNo = $("#pCategoryNo").val();
 
 		var data = {
 					cAmount : cAmount,
 					pAmount : pAmount,
 					startDate : startDate,
 					endDate : endDate,
-					pNo : pNo
+					pNo : pNo,
+					pCategoryNo : pCategoryNo
 		};
 		
 		$.ajax({

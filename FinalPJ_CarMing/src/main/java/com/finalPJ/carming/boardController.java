@@ -43,10 +43,22 @@ public class boardController {
 	
 	//캠핑토크 메인 화면
 	@RequestMapping(value = "/boardmainform.do")
-	public String boardMain (Model model, String memnick) {
+	public String boardMain (Model model, String page, String search) {
+		
+		String searchDefault = "";
+		if(search != null && !search.equals("")) {
+			searchDefault = search;
+		}
+		
+		int pageDefault = 1;
+		if(page != null && !page.equals("")) {
+			pageDefault = Integer.parseInt(page);
+		}
 		
 		logger.info("[BOARD SELECT LIST]");
-		model.addAttribute("list", biz.selectList());
+		model.addAttribute("list", biz.selectList(searchDefault, pageDefault));
+		System.out.println(model.toString());
+		model.addAttribute("count", biz.listCnt(searchDefault));
 
 	   return "board/boardmain";
 	}

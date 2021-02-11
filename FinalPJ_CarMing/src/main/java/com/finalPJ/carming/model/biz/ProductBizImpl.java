@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.finalPJ.carming.model.dao.ProductDao;
+import com.finalPJ.carming.model.dto.CartListDto;
 import com.finalPJ.carming.model.dto.Pagination;
 import com.finalPJ.carming.model.dto.ProductDto;
 
@@ -18,7 +19,7 @@ public class ProductBizImpl implements ProductBiz{
 	
 	@Override
 	public List<ProductDto> selectAll() {
-		return dao.selectAll();
+		return dao.selectAll("", 1);
 	}
 
 	@Override
@@ -39,6 +40,34 @@ public class ProductBizImpl implements ProductBiz{
 	@Override
 	public int countListTotal() {
 		return dao.countListTotal();
+	}
+
+	@Override
+	public void changeAmount(CartListDto cDto) {
+		dao.changeAmount(cDto);
+	}
+
+	@Override
+	public int returnProduct(int cartNo) {
+		return dao.returnProduct(cartNo);
+	}
+	public List<ProductDto> selectAll(int page) {
+		return dao.selectAll("", page);
+	}
+
+	@Override
+	public List<ProductDto> selectAll(String search, int page) {
+		return dao.selectAll(search, page);
+	}
+
+	@Override
+	public int getProductCnt() {
+		return dao.getProductCnt("");
+	}
+
+	@Override
+	public int getProductCnt(String search) {
+		return dao.getProductCnt(search);
 	}
 	
 }

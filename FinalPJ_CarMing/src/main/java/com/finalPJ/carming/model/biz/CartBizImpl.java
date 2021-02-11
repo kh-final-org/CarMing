@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.finalPJ.carming.model.dao.CartDao;
 import com.finalPJ.carming.model.dto.CartDto;
 import com.finalPJ.carming.model.dto.CartListDto;
+import com.finalPJ.carming.model.dto.PayDto;
 
 @Service
 public class CartBizImpl implements CartBiz{
@@ -40,13 +41,18 @@ public class CartBizImpl implements CartBiz{
 	}
 
 	@Override
-	public String pName(int payNo) {
-		return dao.pName(payNo);
+	public String pName(PayDto pDto) {
+		return dao.pName(pDto);
 	}
 
 	@Override
 	public void updateCart(int cartNo) {
 		dao.updateCart(cartNo);
+	}
+
+	@Override
+	public List<CartListDto> orderList() {
+		return dao.orderList();
 	}
 
 }

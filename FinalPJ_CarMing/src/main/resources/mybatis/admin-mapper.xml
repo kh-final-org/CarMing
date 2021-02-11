@@ -6,20 +6,56 @@
 
 
 <mapper namespace="admin">
+
+
+	<select id="select" resultType="admMemberDto">
+		SELECT * FROM MEMBER
+	</select>
 	
 	<delete id="delete" parameterType="int">
 		DELETE FROM MEMBER
 		WHERE MEMNO=#{memNo}
+
 	</delete>
 	
-	 <delete id="deleteRep" parameterType="int">
-  		DELETE REPORTLIST 
-		WHERE TARGETNO=#{memNo} AND TARGETTYPENO =3
-  	</delete>
+	<select id="selectRent" resultType="admRentDto" parameterType="hashMap">
+		
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, REN.*
+		FROM 		
+		(SELECT
+		C.*,
+		M.MEMNICK,
+		M.MEMFILE,
+		RS.STATENAME,
+		P.PNAME,
+		PC.PCATEGORYNAME,
+		PY.PAYNO,
+		PY.TOTALPRICE
+		FROM CART C
+		JOIN MEMBER M
+		ON C.MEMNO = M.MEMNO
+		JOIN RENTSTATE RS
+		ON C.STATENO = RS.STATENO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PCATEGORY PC
+		ON C.PCATEGORYNO = PC.PCATEGORYNO
+		JOIN PAY PY
+		ON C.CARTNO = PY.CARTNO
+		WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR MEMNICK LIKE '%' ||  #{search}  || '%'
+		ORDER BY PY.PAYNO DESC) REN)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 8 AND #{page}  * 8
+			
+	</select>
 	
 	
-	<select id="selectRent" resultType="admRentDto">
-		SELECT
+		<select id="selectRentCnt" resultType="int" parameterType="String">
+		
+		SELECT COUNT(CARTNO) COUNT FROM
+		(SELECT ROWNUM AS RNUM, REN.*
+		FROM 		
+		(SELECT
 		C.*,
 		M.MEMNICK,
 		RS.STATENAME,
@@ -34,19 +70,20 @@
 		ON C.STATENO = RS.STATENO
 		JOIN PRODUCT P
 		ON C.PNO = P.PNO
-		JOIN PRODUCT P
-		ON C.PNO = P.PNO
 		JOIN PCATEGORY PC
 		ON C.PCATEGORYNO = PC.PCATEGORYNO
 		JOIN PAY PY
 		ON C.CARTNO = PY.CARTNO
+		WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR MEMNICK LIKE '%' ||  #{search}  || '%'
+		ORDER BY PY.PAYNO DESC) REN)
+			
 	</select>
+	
 	
 	<select id="selectOneRent" parameterType="int" resultType="admRentDto">
 		SELECT
 		C.*,
 		M.MEMNICK,
-		M.MEMFILE,
 		RS.STATENAME,
 		P.PNAME,
 		PC.PCATEGORYNAME,
@@ -70,12 +107,22 @@
 	</select>
 	
 	<update id="returnRent" parameterType="int">
-	UPDATE CART
-	SET STATENO = 5
-	WHERE CARTNO = #{cartNo}
+		UPDATE CART
+		SET STATENO = 5
+		WHERE CARTNO = #{cartNo}
 	</update>
 	
-	<!-- ==================================================================================================
+	<update id="sendRent" parameterType="int">
+		UPDATE CART
+		SET STATENO = 3
+		WHERE CARTNO = #{cartNo}
+	</update>
+	
+	<delete id="deleteRent" parameterType="int">
+		DELETE FROM CART
+		WHERE CARTNO = #{cartNo}
+	</delete>
+	<!-- ===================================================================================================
 	================================================ paging ================================================ -->
 	<!-- 
 			RNUM BETWEEN ? AND ?
@@ -87,7 +134,6 @@
 		(SELECT ROWNUM AS RNUM, MEM.* 
 		FROM (SELECT * FROM MEMBER WHERE MEMNICK LIKE '%' ||  #{search} || '%' OR MEMNAME LIKE '%' ||  #{search} || '%'
 		ORDER BY MEMNO DESC) MEM)
-		
 		WHERE RNUM BETWEEN 1 + (#{page} -1) * 10 AND #{page} * 10
 	</select>
 	
@@ -99,7 +145,7 @@
 		ORDER BY MEMNO) MEM)
 	</select>
 	
-	<!-- ==================================================================================================
+	<!-- ===================================================================================================
 	================================================ paging ================================================ -->
 </mapper>
 

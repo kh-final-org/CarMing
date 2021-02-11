@@ -14,18 +14,29 @@
 <script type="text/javascript">
 			$(function(){
 							var cNoArr=  new Array();
+							var pNo = new Array();
+							var cAmount = new Array();
 							
 							$(".licartNo").each(function(){
 								cNoArr.push($(this).children().attr("data-cartNo"));
 							});
 							alert(cNoArr);
+							$(".lipNo").each(function(){
+								pNo.push($(this).children().attr("data-pNo"));
+							});
+							alert(pNo);
+							$(".licAmount").each(function(){
+								cAmount.push($(this).children().attr("data-cAmount"));
+							});
+							alert(cAmount);
+							
 							var payDay = $(".payDay").val();
 							var payNo = $(".payNo").val();
 							var totalPrice = $(".totalPrice").val();
 							var pay_method = $(".pay_method").val();
 							var pName = $(".pName").val();
 							
-							if($(".countproduct").val() == 0 || $(".countproduct").val() == 0){
+							if($(".countproduct").val() == 0){
 								IMP.init('imp83374605');
 								IMP.request_pay({
 								    pg : 'kakaopay',
@@ -85,7 +96,7 @@
 										},
 										success: function(){
 											alert("되면 되는거지");
-											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr;
+											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmountArr="+cAmount+"&pNoArr="+pNo;
 										},
 										error: function(){
 											alert("무슨 오류임?");
@@ -146,17 +157,18 @@
 										type: "POST",
 										data: {
 												"amount": totalPrice,
-												"name": name,
+												"name": pName,
+												"pg": pay_method,
 												"payDay": payDay,
-												"pay_method": pay_method,
 												"payNo": payNo
 										},
 										success: function(){
-												alert("payresult까지 왔나?");
+											alert("되면 되는거지");
+											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmountArr="+cAmount+"&pNoArr="+pNo;
 										},
 										error: function(){
 											alert("무슨 에러가 있긴 한데");
-											location.href="payresultform.do";
+											location.href="payinfo.do";
 										}
 									});		
 								});
@@ -174,6 +186,7 @@
 		<input type="hidden" class="payDay" value="${payDay }">
 		<input type="hidden" class="pName" value="${pName }">
 		<input type="hidden" class="addr" value="${payDto.addr }">
+		<input type="hidden" class="cAmount" value="${cSum }">
 		<input type="hidden" class="email" value="${login.memid }">
 		<input type="hidden" class="name" value="${login.memname }">
 		<input type="hidden" class="phone" value="${login.memphone }">
@@ -186,5 +199,16 @@
 				<input type="hidden" class="cartNo" value="${cartNo}" data-cartNo="${cartNo }">
 			</li>
 		</c:forEach>
+		<c:forEach var="pNo" items="${pNoArr}">
+			<li class="lipNo" style="display: hidden;">
+				<input type="hidden" class="pNo" value="${pNo}" data-pNo="${pNo }">
+			</li>
+		</c:forEach>
+		<c:forEach var="cAmount" items="${cAmountArr}">
+			<li class="licAmount" style="display: hidden;">
+				<input type="hidden" class="cAmount" value="${cAmount}" data-cAmount="${cAmount }">
+			</li>
+		</c:forEach>
+		
 </body>
 </html>

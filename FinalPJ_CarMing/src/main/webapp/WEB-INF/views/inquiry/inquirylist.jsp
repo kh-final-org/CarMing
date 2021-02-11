@@ -28,7 +28,7 @@
 
 <style type="text/css">
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
+	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
 	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
@@ -39,18 +39,18 @@
 	.card-container{padding: 50px 200px;}
 	.card {position: relative; width: 80%; margin-left: auto; margin-right: auto;}
 
-	div.blog_right_sidebar{float: right; width: 22%; margin-bottom: -1.5%; margin-right: 7.5%; border: 0; background: #fff; }
+	div.blog_right_sidebar{float: right; width: 22%; margin-bottom: -1.5%; margin-right: 7.5%; border: 0; background: #fff;}
 	.btn.btn-default{margin-top: -6%; margin-right: -3%;}
 	
 	.gaadiex-list {border-radius: 10px; list-style-type: none; margin: 0; padding: 0;}
 	.gaadiex-list-title > h2{float:left; width: 25%; margin: 1% 0 0 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
-	.gaadiex-list>.gaadiex-list-item {padding: 0 35px;}
+	.gaadiex-list>.gaadiex-list-item {padding: 0 20px 0 25px;}
 	.gaadiex-list-item {width: 45%; float:left; margin-left: 2%;}
 	.gaadiex-list-item-img > img {float: left; width: 100px; height: 100px; margin: 50px 30px 8px 30px; border-radius: 50%;}
 	.gaadiex-list-item-text {margin-top: 50px; color: gray; margin-left: 160px;}
 	.gaadiex-list-item-text a{color: gray;}
 	.gaadiex-list-item-text a:hover{color: #ffba00; color: gray;}
-	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: #5f5f5f;}
+	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: gray;}
 	.list-item-text-ck:hover{border-radius: 2px; background: #fff5e9; transition: 0.2s;}
 </style>
 
@@ -89,8 +89,8 @@ function myFunction() {
 	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
 	            <nav class="d-flex align-items-center">
-	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="writereportform.do">신고하기</a>
+	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
 	            </nav>
 	         </div>
 	      </div>
@@ -111,7 +111,7 @@ function myFunction() {
 		</div>
 		
 		<!-- 카테고리 검색 -->
-		<div class="blog_right_sidebar">
+		<!-- <div class="blog_right_sidebar">
 			<aside class="single_sidebar_widget search_widget">
 				<div class="input-group">
 					<input type="text" id="input" onkeyup="myFunction()"
@@ -126,7 +126,7 @@ function myFunction() {
 					</span>
 				</div>
 			</aside>
-		</div>
+		</div> -->
 		
 		<!-- 문의자 목록 -->
 		<div class="card">
@@ -155,6 +155,65 @@ function myFunction() {
 		</div>
 	</div>
 	<!-- End Container Area -->
+	
+			<!-- ==================================================================================================
+				================================================ paging ================================================ -->
+			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
+			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
+			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/8), '.')}"></c:set>
+			<!-- 현재 페이지 -->
+			<div class="hint-text">
+					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
+			</div>
+			<!-- paging 버튼  -->
+			<div class="container ml-auto" id="paging-container" align="center">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center" style="border-left: 0px;">
+						<!-- 이전 버튼 -->
+						<c:if test="${startNum > 1 }">
+							<li class="page-item">
+								<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
+					 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+						    	</a>
+						   	</li>
+						</c:if>		
+					
+						<c:if test="${startNum <= 1 }">
+							<li class="page-item">
+								<a class="page-link text-warning" aria-label="Previous">
+					 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+					    		</a>
+						   	</li>
+						</c:if>
+					
+						<c:forEach var="i" begin="0" end="4">
+							<c:if test="${(startNum + i ) <= lastNum }">
+							<!-- 현재 페이지 style 변경 -->
+							<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
+							</c:if>
+						</c:forEach>
+					  			
+					  	<!-- 다음 버튼 -->
+					  	<c:if test="${startNum + 4 < lastNum }">
+						    <li class="page-item">
+						    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
+						    		<span aria-hidden="true">&raquo;</span>
+						      	</a>
+						   	</li>
+					  	</c:if>
+					  	
+					  	<c:if test="${startNum + 4 >= lastNum }">
+						    <li class="page-item">
+						    	<a class="page-link text-warning" aria-label="Next">
+						    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+						      	</a>
+						   	</li>
+					  	</c:if>	
+					</ul>
+				</nav>
+			</div>
+			<!-- ==================================================================================================
+				================================================ paging ================================================ -->
 
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>

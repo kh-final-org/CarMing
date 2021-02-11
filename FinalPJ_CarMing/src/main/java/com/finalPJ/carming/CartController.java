@@ -55,8 +55,8 @@ public class CartController {
 		
 		MemberDto member = (MemberDto)session.getAttribute("member");
 		
+		System.out.println(cart);
 		biz.insertCart(cart);
-		
 		System.out.println(result);
 		
 		return result;

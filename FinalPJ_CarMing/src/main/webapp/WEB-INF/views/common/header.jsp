@@ -56,25 +56,23 @@
 						id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
 
-							<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
-							<%-- <c:if test="${login.memcode == 1 }">  --%>
+									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
+									<li class="nav-item submenu dropdown"><a href="#"
+										class="nav-link dropdown-toggle" data-toggle="dropdown"
+										role="button" aria-haspopup="true" aria-expanded="false"
+										style="font-size: 15px;">관리자</a>
+										<ul class="dropdown-menu">
+											<li class="nav-item"><a class="nav-link"
+												href="memberlist.do" style="font-size: 15px;">회원 목록</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="adminRentList.do" style="font-size: 15px;">렌탈 목록</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="inquirylist.do" style="font-size: 15px;">문의 목록</a></li>
+											<li class="nav-item"><a class="nav-link" href="reportlist.do" style="font-size: 15px;">신고 목록</a></li>
+											<li class="nav-item"><a class="nav-link" href="insertform.do" style="font-size: 15px;">제품 등록</a></li>
+										</ul></li>
+									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
 
-								<li class="nav-item submenu dropdown"><a href="#"
-								class="nav-link dropdown-toggle" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false"
-								style="font-size: 15px;">관리자</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link"
-										href="memberlist.do" style="font-size: 15px;">회원목록</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="inquirylist.do" style="font-size: 15px;">문의목록</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="reportlist.do" style="font-size: 15px;">신고목록</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="adminRentList.do" style="font-size: 15px;">렌탈목록</a></li>
-								</ul></li>
-								<%-- </c:if> --%>
-								<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
 							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
 							<!-- 네비바 캠핑렌트 드롭다운 제거 후 코드 수정 -->
 							<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">캠핑렌트</a></li>
@@ -103,7 +101,6 @@
 							<!-- 검색 -->
 							<li class="nav-item">
 								<button class="search"><span class="bi bi-search" id="search"></span></button>
-
 							</li>
 						</ul>
 					</div>
@@ -140,5 +137,8 @@
 	<script src="resources/js/main.js"></script>
 	<!-- campingRent Js -->
 	<script src="resources/js/category.js"></script>
+	
+	<!-- Chatbot -->
+	<%@include file="../../views/chatbot/chatbot.jsp"%>
 </body>
 </html>

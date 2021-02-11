@@ -9,16 +9,34 @@
 		SELECT *
 		FROM PAY
 	</select>
-	<select id="selectonepay" resultType="payDto" parameterType="int">
+	<select id="selectonepay" resultType="payDto" parameterType="payDto">
 		SELECT *
 		FROM PAY
-		WHERE PAYNO = #{payNo}
+		WHERE PAYNO = #{payNo} AND CARTNO = #{cartNo}
 	</select>
 	<insert id="insertpay" parameterType="payDto">
+	
 		INSERT INTO 
 		PAY
 		VALUES(#{payNo}, #{cartNo}, #{method}, #{addr}, #{totalPrice}, SYSDATE)
 	</insert>
+	
+	
+<!-- 	<insert id="insertpay" parameterType="java.util.list">
+	
+		INSERT ALL
+		<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
+		INTO PAY
+		VALUES( 
+		#{payNo}
+		, #{cartNo}
+		, #{method}
+		, #{addr}
+		, #{totalPrice}
+		, SYSDATE)
+		</foreach>
+	</insert> -->
+	
 	
 	<select id="pay_currval" resultType="Integer">
 		SELECT 

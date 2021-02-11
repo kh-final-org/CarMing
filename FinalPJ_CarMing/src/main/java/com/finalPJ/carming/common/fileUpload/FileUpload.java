@@ -8,11 +8,12 @@ public class FileUpload {
 	private MultipartFile prFile2;
 	private MultipartFile prFile3;
 	private MultipartFile prDesc;
+	
 	public FileUpload() {
 		super();
 	}
 
-	public FileUpload(String name, MultipartFile prFile, MultipartFile prFile2, MultipartFile prFile3, MultipartFile prDsec) {
+	public FileUpload(String name, MultipartFile prFile, MultipartFile prFile2, MultipartFile prFile3, MultipartFile prDesc) {
 		super();
 		this.name = name;
 		this.prFile = prFile;

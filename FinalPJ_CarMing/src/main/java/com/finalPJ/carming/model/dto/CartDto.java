@@ -14,13 +14,16 @@ public class CartDto {
 	private int memNo;
 	private int pNo;
 	private int stateNo;
+	private int pCategoryNo;
  
 	
 	public CartDto() {
 		super();
 	}
-	
-	public CartDto(int cartNo, int cAmount, Date startDate, Date endDate, int memNo, int pNo, int stateNo) {
+
+
+	public CartDto(int cartNo, int cAmount, Date startDate, Date endDate, int memNo, int pNo, int stateNo,
+			int pCategoryNo) {
 		super();
 		this.cartNo = cartNo;
 		this.cAmount = cAmount;
@@ -29,63 +32,98 @@ public class CartDto {
 		this.memNo = memNo;
 		this.pNo = pNo;
 		this.stateNo = stateNo;
+		this.pCategoryNo = pCategoryNo;
 	}
+
 
 	public int getCartNo() {
 		return cartNo;
 	}
 
+
 	public void setCartNo(int cartNo) {
 		this.cartNo = cartNo;
 	}
+
 
 	public int getcAmount() {
 		return cAmount;
 	}
 
+
 	public void setcAmount(int cAmount) {
 		this.cAmount = cAmount;
 	}
+
 
 	public Date getStartDate() {
 		return startDate;
 	}
 
+
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
+
 
 	public Date getEndDate() {
 		return endDate;
 	}
 
+
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+
 
 	public int getMemNo() {
 		return memNo;
 	}
 
+
 	public void setMemNo(int memNo) {
 		this.memNo = memNo;
 	}
+
 
 	public int getpNo() {
 		return pNo;
 	}
 
+
 	public void setpNo(int pNo) {
 		this.pNo = pNo;
 	}
+
 
 	public int getStateNo() {
 		return stateNo;
 	}
 
+
 	public void setStateNo(int stateNo) {
 		this.stateNo = stateNo;
 	}
+
+
+	public int getpCategoryNo() {
+		return pCategoryNo;
+	}
+
+
+	public void setpCategoryNo(int pCategoryNo) {
+		this.pCategoryNo = pCategoryNo;
+	}
+
+
+	@Override
+	public String toString() {
+		return "CartDto [cartNo=" + cartNo + ", cAmount=" + cAmount + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", memNo=" + memNo + ", pNo=" + pNo + ", stateNo=" + stateNo + ", pCategoryNo="
+				+ pCategoryNo + "]";
+	}
+	
+	
 	
 	
 }

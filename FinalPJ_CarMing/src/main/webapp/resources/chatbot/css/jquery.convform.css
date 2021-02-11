@@ -94,13 +94,15 @@ form.convFormDynamic textarea.userInputDynamic {
     outline: none;
     font-size: 0.5rem;
     float: left;
-    width: calc(100% - 100px);
+    /* width: calc(100% - 100px); */
+    width: 217px;
     line-height: 1.3em;
     min-height: 1.7em;
     max-height: 10rem;
     display: block;
     max-width: 88%;
-    margin-right: 2.5%;
+    /* margin-right: 2.5%; */
+    margin-right: 5px;
 }
 
 
@@ -181,7 +183,11 @@ textarea.userInputDynamic.error {
 
 textarea.userInputDynamic {
     border-radius: 3px;
-    margin: 7px 10px;
+    /* margin: 7px 10px; */
+    margin-top: 13px;
+    margin-left: 13px;
+    margin-bottom: 7px;
+    margin-right: 5px;
 }
 
 div.conv-form-wrapper div#messages {
@@ -221,6 +227,11 @@ div.conv-form-wrapper div.options div.option {
     border-radius: 20px;
     font-size: 0.5rem;
 }
+div.conv-form-wrapper div.options div.profileOption {
+    padding: 5px;
+    border: none;
+    margin: 0px;
+}
 div.conv-form-wrapper div.message {
     animation: slideTop 0.15s ease;
 }
@@ -240,7 +251,7 @@ div.conv-form-wrapper  div#messages div.message {
     display: inline-block;
     padding: 3px 7px;
     margin: 5px 10px;
-    margin-left: 30px;
+    margin-left: 20px;
     border-radius: 20px;
     float: right;
     clear: both;
@@ -291,6 +302,11 @@ div.conv-form-wrapper div.options div.option:hover {
     background: #ffba00;
     border: 1px solid transparent;
 }
+div.conv-form-wrapper div.options div.profileOption:hover {
+    color: #ffba00;
+    background: none;
+    border: none;
+}
 div.conv-form-wrapper div.options div.option.selected {
     background: #06b79a;
     color: #fff;
@@ -303,6 +319,7 @@ form.convFormDynamic button.submit {
     padding: 3px;
     float: left;
     margin: 14px;
+    margin-left: 10px;
     cursor: pointer;
     border-radius: 8px;
     font-size: 0.5rem;

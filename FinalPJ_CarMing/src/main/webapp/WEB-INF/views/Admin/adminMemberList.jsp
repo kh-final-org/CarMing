@@ -31,7 +31,6 @@
 	#memlist_tb{width:100%; }
 	#memlist_tb:hover tbody tr:hover td {background: #fff5e9; transition: 0.2s; }
 	#paging-container{margin: 50px 0px 20px 0px;}
-	
 	.gaadiex-list-title > h2{float:left; width: 25%; margin-top: 1%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
 	
 	.table-responsive {margin: 30px 0;}
@@ -49,13 +48,14 @@
 	table.table-striped tbody tr:nth-of-type(odd) {background-color: #fcfcfc;}
 	table.table-striped.table-hover tbody tr:hover {background: #f5f5f5;}
 	table.table-striped.table-hover tbody tr td{text-align: center;}
+	table.table-striped.table-hover tbody tr td a img{margin: 0;}
 
 	table.table-striped.table-hover thead tr th{text-align: center;}
 	
 	table.table th i {font-size: 13px;margin: 0 5px;cursor: pointer;}	
 	table.table td:last-child i {opacity: 0.9; font-size: 22px; margin: 0 5px;}
-	table.table td a {font-weight: bold;color: #566787; display: inline-block; text-decoration: none;}
-	table.table td a:hover {color: #2196f3;}
+	table.table td span {font-weight: bold; color: #5f5f5f; display: inline-block; text-decoration: none;}
+/* 	table.table td a:hover {color: #ff9b00;} */
 	table.table td a.settings {color: #2196f3;}
 	table.table td a.delete {color: #f44336;}
 	table.table td i {font-size: 19px;}
@@ -109,8 +109,8 @@ function formAction() {
 	         <div class="col-first">
 	            <h1>The stars in the night sky</h1>
 	         	<nav class="d-flex align-items-center">
-	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="tipAndRecipeMain.do">회원관리</a>
+	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
+	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
 	            </nav>
 	         </div>
 	      </div>
@@ -141,7 +141,7 @@ function formAction() {
 		</div>
 	
 		<div class="table-responsive">
-			<table id="memlist_tb" class="table table-striped table-hover">
+			<table class="table table-striped table-hover" id="memlist_tb">
 				<col style="width: 3%">
 				<col style="width: 10%">
 				<col style="width: 7.5%">
@@ -169,17 +169,15 @@ function formAction() {
 				<c:forEach var="list" items="${list }">
 				<tbody>
 					<tr>
-						<td class="memNo">${list.memNo}</td>
+						<td class="memNo"><span>${list.memNo}</span></td>
 
 						<td>
 							<a href="profileform.do?memno=${list.memNo}">
 								<img src="${list.memFile }" class="avatar"alt="Avatar">
 							</a>
 						</td>
-						<td>
-							<a href="profileform.do?memno=${list.memNo}">${list.memName}</a>
-						</td>
-						<td>${list.memNick}</td>
+						<td class="memName"><span>${list.memName}</span></td>
+						<td class="memNick">${list.memNick}</td>
 
 						<!-- date format -->
 						<%-- <fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value = "${list.memBirth }" />

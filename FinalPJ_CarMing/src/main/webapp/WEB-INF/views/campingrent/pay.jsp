@@ -150,6 +150,8 @@
 									<li class="licartNo" style="display: hidden;">
 										<input type="hidden" class="cartNo" name="cartNo" data-cartNo="${cartlistDto.cartNo }" value="${cartlistDto.cartNo }">
 									</li>
+									<input type="hidden" name="pNoArr" value="${cartlistDto.pNo}">
+									<input type="hidden" name="cAmountArr" value="${cartlistDto.cAmount}">
 							</c:forEach>
 							</ul>
 							<h2>결제 금액</h2>
@@ -173,8 +175,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="totalPrice" value="${sum }">
-		<input type="hidden" name="pNo" value="${cartListDto.pNo }">
+        <input type="hidden" name="totalPrice" id="totalPrice" value="${sum }">
     </section>
     </form>
     <!--================End Checkout Area =================-->
