@@ -51,7 +51,8 @@ public class ProductBizImpl implements ProductBiz{
 
 	public int returnProduct(int cartNo) {
 		return dao.returnProduct(cartNo);
-
+	}
+	
 	public List<ProductDto> selectAll(int page) {
 		return dao.selectAll("", page);
 	}
