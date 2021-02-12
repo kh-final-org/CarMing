@@ -7,19 +7,62 @@
 
 <mapper namespace="admin">
 
-
+	<!-- 멤버리스트 -->
 	<select id="select" resultType="admMemberDto">
 		SELECT * FROM MEMBER
 	</select>
-	
+	<!-- 멤버 삭제 -->
 	<delete id="delete" parameterType="int">
 		DELETE FROM MEMBER
 		WHERE MEMNO=#{memNo}
 
 	</delete>
 	
-	<select id="selectRent" resultType="admRentDto">
-		SELECT
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM PRODUCT
+		WHERE PNO=#{pNo}
+
+	</delete>
+	
+	<!-- 렌트리스트 + 페이징  -->
+	<select id="selectRent" resultType="admRentDto" parameterType="hashMap">
+		
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, REN.*
+		FROM 		
+		(SELECT
+		C.*,
+		M.MEMNICK,
+		M.MEMFILE,
+		RS.STATENAME,
+		P.PNAME,
+		PC.PCATEGORYNAME,
+		PY.PAYNO,
+		PY.TOTALPRICE
+		FROM CART C
+		JOIN MEMBER M
+		ON C.MEMNO = M.MEMNO
+		JOIN RENTSTATE RS
+		ON C.STATENO = RS.STATENO
+		JOIN PRODUCT P
+		ON C.PNO = P.PNO
+		JOIN PCATEGORY PC
+		ON C.PCATEGORYNO = PC.PCATEGORYNO
+		JOIN PAY PY
+		ON C.CARTNO = PY.CARTNO
+		WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR MEMNICK LIKE '%' ||  #{search}  || '%'
+		ORDER BY PY.PAYNO DESC) REN)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 8 AND #{page}  * 8
+			
+	</select>
+	
+	<!-- 렌트리스트 + 페이징 카운트 -->
+		<select id="selectRentCnt" resultType="int" parameterType="String">
+		
+		SELECT COUNT(CARTNO) COUNT FROM
+		(SELECT ROWNUM AS RNUM, REN.*
+		FROM 		
+		(SELECT
 		C.*,
 		M.MEMNICK,
 		RS.STATENAME,
@@ -34,13 +77,16 @@
 		ON C.STATENO = RS.STATENO
 		JOIN PRODUCT P
 		ON C.PNO = P.PNO
-		JOIN PRODUCT P
-		ON C.PNO = P.PNO
 		JOIN PCATEGORY PC
 		ON C.PCATEGORYNO = PC.PCATEGORYNO
 		JOIN PAY PY
 		ON C.CARTNO = PY.CARTNO
+		WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR MEMNICK LIKE '%' ||  #{search}  || '%'
+		ORDER BY PY.PAYNO DESC) REN)
+			
 	</select>
+	
+	<!-- 렌트현황 상세 -->
 	<select id="selectOneRent" parameterType="int" resultType="admRentDto">
 		SELECT
 		C.*,
@@ -67,18 +113,21 @@
 	
 	</select>
 	
+	<!-- 렌트 반납 -->
 	<update id="returnRent" parameterType="int">
 		UPDATE CART
 		SET STATENO = 5
 		WHERE CARTNO = #{cartNo}
 	</update>
 	
+	<!-- 렌트 출고 -->
 	<update id="sendRent" parameterType="int">
 		UPDATE CART
 		SET STATENO = 3
 		WHERE CARTNO = #{cartNo}
 	</update>
 	
+	<!-- 렌트 삭제 -->
 	<delete id="deleteRent" parameterType="int">
 		DELETE FROM CART
 		WHERE CARTNO = #{cartNo}
@@ -90,6 +139,8 @@
 			첫번째 ? ==> 1, 11, 21, 31 -> an = 1+(page-1)*10
 			두번째 ? ==> 10, 20, 30, 40 -> page * 10
 	 -->
+	 
+	 <!-- 렌트리스트 + 페이징 -->
 	<select id="selectMemList" resultType="admMemberDto" parameterType="hashMap">
 		SELECT * FROM 
 		(SELECT ROWNUM AS RNUM, MEM.* 
@@ -97,7 +148,7 @@
 		ORDER BY MEMNO DESC) MEM)
 		WHERE RNUM BETWEEN 1 + (#{page} -1) * 10 AND #{page} * 10
 	</select>
-	
+	<!-- 렌트리스트 + 페이징 카운트-->
 	<select id="selectMemCnt" resultType="int" parameterType="string">
 		SELECT COUNT(MEMNO) COUNT FROM
 		(SELECT ROWNUM AS RNUM, MEM.*
@@ -105,6 +156,48 @@
 		WHERE MEMNICK LIKE '%' ||  #{search} || '%' OR MEMNAME LIKE '%' ||  #{search} || '%' 
 		ORDER BY MEMNO) MEM)
 	</select>
+	
+	
+	<!-- 제품리스트 + 페이징-->
+	<select id="selectProduct" resultType="productDto" parameterType="hashMap">
+		
+		
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, PRD.*
+		FROM 		
+		(SELECT P.*, PC.PCATEGORYNAME
+		FROM PRODUCT P 
+		JOIN PCATEGORY PC
+		ON P.PCATEGORYNO = PC.PCATEGORYNO
+		WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR PNAME LIKE '%' ||  #{search}  || '%'
+		ORDER BY P.PNO DESC) PRD)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 8 AND #{page}  * 8
+			
+	</select>
+	
+
+	<select id="selectProductCnt" resultType="int" parameterType="String">
+	
+	SELECT COUNT(PNO) COUNT FROM
+	(SELECT ROWNUM AS RNUM, PRD.*
+	FROM 		
+	(SELECT P.*, PC.PCATEGORYNAME
+	FROM PRODUCT P 
+	JOIN PCATEGORY PC
+	ON P.PCATEGORYNO = PC.PCATEGORYNO
+	WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR PNAME LIKE '%' ||  #{search}  || '%'
+	ORDER BY P.PNO DESC) PRD)
+		
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<!-- ===================================================================================================
 	================================================ paging ================================================ -->

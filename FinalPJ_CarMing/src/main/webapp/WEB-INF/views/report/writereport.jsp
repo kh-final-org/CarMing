@@ -23,56 +23,7 @@
 <meta charset="UTF-8">
 
 
-<style type="text/css">
-	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
-				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
-				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
-	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
-	.banner-btn::before{content: ""; position: absolute; left:0; width:100%; height: 0%; background: #fff5e9; z-index: -1; 
-						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
-	.banner-btn:hover::before{height: 180%;}
-	
-	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
-	
-	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin: -16% 0 8% 23%; z-index: 1;}
-	#pingu-siren{width: 80px; height: 100%; margin-left: 29%; z-index: 10;}
-	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
-	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
-	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
-	
-	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem; border: 1px solid #e2e2e2; background: #fff5e9;}
-	.contact-form{width: 750px; height: 100%;}
-	#report-name{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
-	#writerNickname{float: right; width: 450px; margin-right: 10px;}
-	.form-group-report-form{float: left; margin-bottom: 15px; width:100%;}
-	#report-date{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
-	#date{float: right; width: 450px; margin-right: 150px;}	
-	.form-group-category-form{float: left; margin-bottom: 15px; width: 100%;}
-	.report-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em; mar}
-	.report-category-wrap{float: left; width: 72%; margin-left: 60px;}
-	.report-target-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em;}
-	.form-group-target-category-form{float: left; margin-bottom: 20px; width: 100%;}
-	#categoryno{ width:100px;}
-	.current{font-size: 1.1em;}
-   	li.option{width: 450px;}					
-	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px;}
-    textarea::placeholder{color: silver; font-size: 1.1em;}
-	#report-text{font-size: 1.2em; margin-bottom: 10px; font-weight: bold;}	
-	.report-file{display: inline-block; font-size: 1.2em; margin-bottom: 10px; margin-left: 15px;}
-	.uploadimg {width: 350px; height: 350px; border-radius: 10px;}
-	.img_wrap {width: 350px; height: 350px; margin-top: 20px; }
-	.img_wrap img {max-width: 100%; max-height: 95%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 135px;}	
-	.upload-img-form{position: relative; width: 590px; border: 1px solid #e2e2e2; margin-left: 15px; 
-					 border-radius: 5px; margin-bottom: 60px; background: #fff;}
-   	.upload-img-content{position: absolute; margin-top: 15px; width: 590px;}
-   	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
-   						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
-</style>
-
-
+<link rel="stylesheet" href="resources/css/report.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
@@ -93,41 +44,7 @@
 <script src="resources/js/main.js"></script>-->
  
 
-<script type="text/javascript">
-	var sel_file;
-	$(document).ready(function() {
-		$("#input_img").on("change", handleImgFileSelect);
-	});
-
-	function handleImgFileSelect(e) {
-		$("#img").empty(); //empty, remove 구분! remove는 태그 자체를 지운다 오키?
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-
-		/* if (files.name == null) {
-		   resetInputFile();
-		} */
-		filesArr.forEach(function(f) {
-			if (!f.type.match("image.*")) {
-				alert("확장자는 이미지 확장자만 가능합니다.");
-				return;
-			}
-			sel_file = f;
-
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$("#img").attr("src", e.target.result);
-				$("#img").attr("width", "90%");
-				$("#img").attr("height", "440px");
-			}
-			reader.readAsDataURL(f);
-		})
-	}
-
-	function resetInputFile() {
-		$("#img").empty();
-	}
-</script>
+<script src=resources/js/report.js></script>
 </head>
 <body>
 
@@ -159,7 +76,7 @@
 
 	<!------ Include the above in your HEAD tag ---------->
 	<form:form action="writereport.do?targetNo=${target.targetNo}&targetTypeNo=${target.targetTypeNo}&memNo=${login.memno}" 
-				method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto"  >
+				method="POST" enctype="multipart/form-data"  modelAttribute="ReportDto" id="target" >
 	<div class="container-contact">
 		<div class="row">
 			<div class="col-md-3">
@@ -218,6 +135,7 @@
 								<option value="2">욕설/비방이 심함</option>
 								<option value="3">기타</option>
 							</select>
+						<div class="report-category-err" id=emptycategory>카테고리를 선택해 주세요</div>
 						</div>
 					</div>
 					
@@ -228,8 +146,9 @@
 						   	<textarea rows="3" cols="75" id="content" name="reportContent" placeholder="신고 내용을 입력해주세요." 
 						   			  style="resize: none;" required="required"></textarea>
 						</div>	
+						<div class="report-category-err" id=emptycontent>문의내용을 작성해 주세요</div>
 					</div>
-					
+					<br>
 					<!-- 사진 업로드 -->
 					<div class="report-file"><strong>첨부 파일</strong></div>
 					<div class="upload-img-form">
@@ -238,12 +157,13 @@
 			  			</div>
 						<div class="upload-img-content">
 							<input type="file" class="custom-file-input" id="input_img" name="reportFile" accept="image/*">
-							<label class="custom-file-label" for="input_img" ></label>
+							<label class="custom-file-label" for="input_img" id="filename"></label>
 						</div>
 					</div>
+					<div class= "report-category-err" id=emptyfile>사진을 선택해 주세요</div>
 
 					<div class="report-submit-form">
-						<button type="submit" class="btn btn-light" id="button-boardupload">보내기</button>
+						<button type="button" class="btn btn-light" id="button-boardupload" onclick="report()">보내기</button>
 					</div>
 				</div>
 			</div>

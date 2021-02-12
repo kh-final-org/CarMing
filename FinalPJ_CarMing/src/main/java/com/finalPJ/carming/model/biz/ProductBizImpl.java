@@ -46,7 +46,7 @@ public class ProductBizImpl implements ProductBiz{
 	public int returnProduct(int cartNo) {
 		return dao.returnProduct(cartNo);
 	}
-	
+
 	@Override
 	public List<ProductDto> selectAll(String search, int page, int viewNo, int pCateNo, String orderBy) {
 		return dao.selectAll(search, page, viewNo, pCateNo, orderBy);

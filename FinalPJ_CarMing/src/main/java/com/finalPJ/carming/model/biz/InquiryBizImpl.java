@@ -19,10 +19,32 @@ public class InquiryBizImpl implements InquiryBiz{
 	@Autowired
 	private InquiryDao dao;
 	
-	
+	/* 페이징 처리를 위한 select list */
 	@Override
 	public List<InquiryDto> list() {
-		return dao.list();
+		return list("",1);
+	}
+	
+	@Override
+	public List<InquiryDto> list(int page) {
+		return list("",page);
+	}
+	
+	@Override
+	public List<InquiryDto> list(String search, int page) {
+		return dao.list(search,page);
+	}
+	
+	/* 현재 페이지 구하기 위함 */
+
+	@Override
+	public int getlistCount() {
+		return dao.getlistCount("");
+	}
+
+	@Override
+	public int getlistCount(String search) {
+		return dao.getlistCount(search);
 	}
 
 	@Override
@@ -44,5 +66,6 @@ public class InquiryBizImpl implements InquiryBiz{
 	public int deleteInquiry(int inquiryNo) {
 		return dao.deleteInquiry(inquiryNo);
 	}
+
 
 }

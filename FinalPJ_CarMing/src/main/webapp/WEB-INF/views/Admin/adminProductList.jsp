@@ -153,64 +153,41 @@ function myFunction() {
 			<table class="table table-striped table-hover" id="memlist_tb" style="text-align: center; width: 100%;">
 				<col style="width: 5%">
 				<col style="width: 10%">
-				<col style="width: 7.5%">
-				<col style="width: 15%">
-				<col style="width: 8%">
-				<col style="width: 15%">
 				<col style="width: 15%">
 				<col style="width: 10%">
+				<col style="width: 7%">
+				<col style="width: 17%">
+				<col style="width: 5%">
 				<col style="width: 5%">
 				<thead>
 					<tr>
 						<th>NO.</th>
-						<th>프로필 사진</th>
-						<th>닉네임</th>
+						<th>제품명</th>
 						<th>카테고리</th>
-						<th>결제번호</th>
-						<th>렌트 시작날짜</th>
-						<th>렌트 종료날짜</th>
-						<th>렌탈현황</th>
+						<th>가격</th>
+						<th>제고현황</th>
+						<th>추가 제고물량</th>
 						<th>삭제</th>
+						<th>수정</th>
 					</tr>
 				</thead>
 				<c:forEach var="list" items="${list}">
 					<tbody>
 						<tr>
-							<td class="cartNo" ><a href="adminRentDetail.do?cartNo=${list.cartNo}">${list.cartNo}</a></td>
-							<td><a href="#"><img
-									src= "${list.memFile }" class="avatar"
-									alt="Avatar"></a></td>
-							<td>${list.memNick }</td>
+							<td class="cartNo" >${list.pNo}</td>
+							<td><a href="productdetail.do?pNo=${list.pNo}">${list.pName}</a></td>
 							<td>${list.pCategoryName }</td>
-							<td>#${list.payNo }</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${list.startDate}" /></td>
-
-							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${list.endDate}" /></td>
-							<td><c:set var="status" value="${list.stateNo}" /> 
-									<c:choose>
-									<c:when test="${ status == 2}">
-										<span class="status text-success">&bull;</span>
-									</c:when>
-									<c:when test="${ status == 3}">
-										<span class="status text-warning">&bull;</span>
-									</c:when>
-									<c:when test="${ status == 4}">
-										<span class="status text-danger">&bull;</span>
-									</c:when>
-									<c:when test="${ status == 5}">
-										<span class="status text-success">&bull;</span>
-									</c:when>
-									<c:when test="${ status == 6}">
-										<span class="status text-danger">&bull;</span>
-									</c:when>
-								</c:choose> ${list.stateName }
-							</td>
+							<td>${list.pPrice }</td>
+							<td>#${list.pAmount }</td>
+							<td><form action="addAmount.do"><input type="number" name= "pAmount" value="1" min="1" style="width:15%">
+							<button type="submit" style="text-align: center; color: green; border:none; text-decoration: none; background: none;" value="" >
+							<i class="material-icons" >&#xE147;</i></button>
+							</form></td>
 							<td>
-							<a href="deleteRent.do?cartNo=${list.cartNo}" class="delete" title="Delete"
+							<a href="deleteProduct.do?pNo=${list.pNo}" class="delete" 
 							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
 							</td>
+							<td> <a href="#" class="settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
 						</tr>
 					</tbody>
 				</c:forEach>

@@ -102,7 +102,6 @@ public class ProductDaoImpl implements ProductDao{
 			System.out.println("[error]: returnProduct");
 			e.printStackTrace();
 		}
-		
 		return res;
 	}
 	

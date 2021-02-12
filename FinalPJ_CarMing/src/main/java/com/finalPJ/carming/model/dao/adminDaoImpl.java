@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.finalPJ.carming.model.dto.AdmMemberDto;
 import com.finalPJ.carming.model.dto.AdmRentDto;
 import com.finalPJ.carming.model.dto.InquiryDto;
+import com.finalPJ.carming.model.dto.ProductDto;
 
 
 @Repository
@@ -88,11 +89,14 @@ public class adminDaoImpl implements adminDao{
 	}
 
 	@Override
-	public List<AdmRentDto> RentList() {
+	public List<AdmRentDto> RentList(String search, int page) {
 		List<AdmRentDto> list = new ArrayList<AdmRentDto>();
-		
+		// 검색어, 페이지 맵에 저장
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("search", search);
+		map.put("page", Integer.toString(page));
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectRent");
+			list = sqlSession.selectList(NAMESPACE+"selectRent", map);
 		} catch (Exception e) {
 			System.out.println("[error]:selectRent");
 			e.printStackTrace();
@@ -100,7 +104,24 @@ public class adminDaoImpl implements adminDao{
 		
 	return list;
 	}
+	
 
+	@Override
+	public int rentListCnt(String search) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectRentCnt",search);
+		} catch (Exception e) {
+			System.out.println("[error]:Rent Count");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	
+	
 	@Override
 	public AdmRentDto selectOneRent(int cartNo) {
 		AdmRentDto list = null;
@@ -191,6 +212,55 @@ public class adminDaoImpl implements adminDao{
 		 
 		return res;
 	}
+
+	@Override
+	public List<ProductDto> ProductList(String search, int page) {
+		List<ProductDto> list = new ArrayList<ProductDto>();
+		
+		// 검색어, 페이지 맵에 저장
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("page", Integer.toString(page));
+	
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectProduct", map);
+		} catch (Exception e) {
+			System.out.println("[error]:selectProduct");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int ProductCnt(String search) {
+		int res = 0;
+		 try {
+			res = sqlSession.selectOne(NAMESPACE + "selectProductCnt", search);
+			
+		} catch (Exception e) {
+			System.out.println("[error]: selectProductCnt");
+			e.printStackTrace();
+		}
+		 
+		return res;
+	}
+
+//	제품 삭제
+	@Override
+	public int deleteProduct(int pNo) {
+		int res = 0;
+		try {
+			res = sqlSession.delete(NAMESPACE+"deleteProduct",pNo);
+		} catch (Exception e) {
+			System.out.println("[error]: deleteProduct");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+
 
 	
 }

@@ -266,6 +266,15 @@ function ajaxlocation(){
 						console.log(positions[0].latlng);
 					}
 					var listEl = document.getElementById('placesList');
+					menuEl = document.getElementById('camptable'),
+				    fragment = document.createDocumentFragment(), 
+				    bounds = new kakao.maps.LatLngBounds(), 
+				    listStr = '';
+					
+					//페이징 제거
+					var paginationEl = document.getElementById('pagination');
+					//paginationEl.removeChild(paginationEl.fisrtChild);
+					removeAllChildNods(paginationEl);
 					
 					// 검색 결과 목록에 추가된 항목들을 제거합니다
 				    removeAllChildNods(listEl);
@@ -294,7 +303,49 @@ function ajaxlocation(){
 					        image : markerImage // 마커 이미지 
 					    });
 					    
-					}
+					    markers.push(marker); 
+					    
+					        var placePosition = positions[i].latlang, 
+					            itemEl = getListItemck(i, positions[i]); // 검색 결과 항목 Element를 생성합니다
+
+					        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+					        // LatLngBounds 객체에 좌표를 추가합니다
+					        //postion 좌표값전달
+					       bounds.extend(positions[i].latlng);
+
+					        // 마커와 검색결과 항목에 mouseover 했을때
+					        // 해당 장소에 인포윈도우에 장소명을 표시합니다
+					        // mouseout 했을 때는 인포윈도우를 닫습니다
+					        (function(marker, title) {
+					        	console.log("마커 : "+title);
+					            kakao.maps.event.addListener(marker, 'mouseover', function() {
+					                displayInfowindow(marker, title);
+					            });
+
+					            kakao.maps.event.addListener(marker, 'mouseout', function() {
+					                infowindow.close();
+					            });
+
+					            itemEl.onmouseover =  function () {
+					                displayInfowindow(marker,title);
+					            };
+
+					            itemEl.onmouseout =  function () {
+					                infowindow.close();
+					            };
+					        })(marker, positions[i].title);
+
+					        fragment.appendChild(itemEl);
+					    }
+
+					    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+					    listEl.appendChild(fragment);
+					    menuEl.scrollTop = 0;
+
+					    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+					    map.setBounds(bounds);
+					    
+					
 				}else{
 					alert("차박명소로 지정한게 없습니다.");
 				}
@@ -306,6 +357,22 @@ function ajaxlocation(){
 
 	});
 }
+}
+
+function getListItemck(index, places) {
+
+    var el = document.createElement('li'),
+    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+                '<div class="info">' +
+                '   <h5>' + places.title + '</h5>'
+                +'</div>';           
+
+    el.innerHTML = itemStr+"<hr>";
+    el.className = 'item';
+    
+    console.log(places.title);
+
+    return el;
 }
 
 

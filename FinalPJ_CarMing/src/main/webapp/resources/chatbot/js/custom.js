@@ -32,6 +32,7 @@ function submit() {
 		"survey4" : survey4,
 		"survey5" : survey5
 	};
+	console.log(surveyVal.memno + "/" + surveyVal.survey1 + "/" + surveyVal.survey2 + "/" + surveyVal.survey3 + "/" + surveyVal.survey4 + "/" + surveyVal.survey5 + "/");
 	
 	// INSERT || UPDATE
 	$.ajax({
@@ -44,7 +45,7 @@ function submit() {
 			//alert("insert ajax success");
 		 },
 		 error:function() {
-			 alert("통신 실패???");
+			alert("통신 에러");
 		 }
 	});
 	
@@ -59,6 +60,9 @@ function submit() {
 			surveyVal.survey1 = "male"
 		}
 	}
+	
+	console.log("찾는 동성/이성 : " + surveyVal.survey2);
+	console.log("찾는 남/녀 : " + surveyVal.survey1);
 	
 	// 친구 찾기 실행.
 	friendOne(surveyVal);
@@ -80,7 +84,7 @@ function friendOne(surveyVal) {
 			//console.log("친구의 번호는 : " + msg.friendNo);
 			//console.log("친구의 파일은 : " + msg.friendFile);
 			//console.log("친구의 닉네임은 : " + msg.friendNick);
-			//console.log("친구의 성별은 : " + msg.friendGender);
+			console.log("친구의 성별은 : " + msg.friendGender);
 			
 			// profileCard()로 친구 번호 넘겨주자.
 			//profileCard(msg.friendNo);
@@ -112,7 +116,7 @@ function profileCard(friend) {
 	//$("#drag").append('<div class="option" onclick="friendProfile('+friendNo+')">' + friendNo + "번 친구</div>");
 	// --> 프로필 카드로 변경하기.
 	//$("#drag").append('<a href="#" class="btn btn-primary">프로필로 이동</a>');
-	$("#drag").append('<div class="profileOption option"><div class="cardProfile"><div class="d-flex position-relative"><img src="resources/img/'+friend.friendFile+'" class="flex-shrink-0 me-3 cardImage" alt="..."><div><h5 class="mt-0 cardNickname">'+friend.friendNick+'</h5><p class="cardGender" style="font-size: 10px;">'+friend.friendGender+'</p></div></div><a href="#" class="btn btn-primary cardLink" onclick="friendProfile('+friend.friendNo+')">프로필 보기</a></div></div>');
+	$("#drag").append('<div class="profileOption option"><div class="cardProfile"><div class="d-flex position-relative"><img src="resources/img/'+friend.friendFile+'" class="flex-shrink-0 me-3 cardImage" alt="..."><div><h5 class="mt-0 cardNickname">'+friend.friendNick+'</h5><p class="cardGender" style="font-size: 10px;">'+friend.friendGender+'</p></div></div><a href="#" class="cardLink" onclick="friendProfile('+friend.friendNo+')">프로필 보기</a></div></div>');
 	//$("#drag").append('<div class="cardProfile"><div class="d-flex position-relative"><img src="resources/chatbot/img/'+friend.friendFile+'" class="flex-shrink-0 me-3 cardImage" alt="..."><div><h5 class="mt-0 cardNickname">'+friend.friendNick+'</h5><p class="cardGender" style="font-size: 10px;">'+friend.friendGender+'</p></div></div><a href="#" class="btn btn-primary cardLink" onclick="friendProfile('+friend.friendNo+')">프로필 보기</a></div>');
 	
 	$("#drag").append('<div class="option" onclick="submit()"> 친구 다시 찾기 </div>');

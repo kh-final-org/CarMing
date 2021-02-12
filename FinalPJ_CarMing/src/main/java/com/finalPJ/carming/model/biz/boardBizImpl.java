@@ -19,12 +19,34 @@ public class boardBizImpl implements boardBiz{
 	private int brdno;
 	
 	//01. 게시글 전체 목록
-	@Transactional(isolation = Isolation.READ_COMMITTED)
+	
 	@Override
 	public List<boardDto> selectList() {
-		dao.viewCount(brdno);
-		return dao.selectList();
+		return selectList("",1);
 	}
+	
+	@Override
+	public List<boardDto> selectList(int page) {
+		return selectList("", page);
+	}
+	
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@Override
+	public List<boardDto> selectList(String search, int page) {
+		dao.viewCount(brdno);
+		return dao.selectList(search, page);
+	}
+
+	@Override
+	public int listCnt() {
+		return dao.listCnt("");
+	}
+
+	@Override
+	public int listCnt(String search) {
+		return dao.listCnt(search);
+	}
+
 
 	//02. 게시글 상세보기
 	@Transactional(isolation = Isolation.READ_COMMITTED)
@@ -80,6 +102,7 @@ public class boardBizImpl implements boardBiz{
 		 dao.insertBRD_v(dto);
 		 return dao.insertMAP_v(dto);
 	}
+
 
 
 

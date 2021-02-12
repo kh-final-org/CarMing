@@ -208,6 +208,7 @@
 						</c:choose>
 					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>
+					<div class="board-count"> ${dto.categoryname }</div>
 					<div class="category" style="display: none;"> ${dto.bcategoryno }</div>
 				</div>
 			</div>
@@ -220,41 +221,65 @@
 <table class="table table-hover"></table>
 
 <!-- Start Paging Area -->
-<div class="container ml-auto" id="paging-container" align="center">
-	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center">
-			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"/>
-			<c:set var="startNum" value="${page - (page-1) % 5}"/>
-			<c:set var="lastNum" value="15"/>
-			
-			<!-- 이전 버튼 -->
-			<div>
-			  	<c:if test="${startNum > 1}">
-			    	<a href="?page=${startNum - 1 }" class="page-link text-warning" aria-label="Next">&laquo;</a>
-			  	</c:if>
-			  	<c:if test="${startNum <= 1 }">
-			    	<span class="page-link text-warning"  aria-label="Next" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
-		  		</c:if>
-		  	</div>
-			
-			<!-- 페이징 목록 -->
-			<c:forEach var="i" begin="0" end="4">
-				<li class="page-item"><a class="page-link text-warning" href="?page=${startNum + i }">${startNum + i }</a></li>
-			</c:forEach>
-		  			
-		  	<!-- 다음 버튼 -->
-		  	<div>
-			  	<c:if test="${startNum + 5 < lastNum }">
-			    	<a href="?page=${startNum + 5 }" class="page-link text-warning" aria-label="Next">&raquo;</a>
-			  	</c:if>
-			  	<c:if test="${startNum + 5 >= lastNum }">
-			    	<span class="page-link text-warning" aria-label="Next" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
-		  		</c:if>
-		  	</div>
-		  	
-		</ul>
-	</nav>
-</div>
+			<!-- ==================================================================================================
+				================================================ paging ================================================ -->
+			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
+			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
+			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/6), '.')}"></c:set>
+			<!-- 현재 페이지 -->
+			<div class="hint-text">
+					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
+			</div>
+			<!-- paging 버튼  -->
+			<div class="container ml-auto" id="paging-container" align="center">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center" style="border-left: 0px;">
+						<!-- 이전 버튼 -->
+						<c:if test="${startNum > 1 }">
+							<li class="page-item">
+								<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
+					 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+						    	</a>
+						   	</li>
+						</c:if>		
+					
+						<c:if test="${startNum <= 1 }">
+							<li class="page-item">
+								<a class="page-link text-warning" aria-label="Previous">
+					 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+					    		</a>
+						   	</li>
+						</c:if>
+					
+						<c:forEach var="i" begin="0" end="4">
+							<c:if test="${(startNum + i ) <= lastNum }">
+							<!-- 현재 페이지 style 변경 -->
+							<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
+							</c:if>
+						</c:forEach>
+					  			
+					  	<!-- 다음 버튼 -->
+					  	<c:if test="${startNum + 4 < lastNum }">
+						    <li class="page-item">
+						    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
+						    		<span aria-hidden="true">&raquo;</span>
+						      	</a>
+						   	</li>
+					  	</c:if>
+					  	
+					  	<c:if test="${startNum + 4 >= lastNum }">
+						    <li class="page-item">
+						    	<a class="page-link text-warning" aria-label="Next">
+						    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+						      	</a>
+						   	</li>
+					  	</c:if>	
+					</ul>
+				</nav>
+			</div>
+			<!-- ==================================================================================================
+				================================================ paging ================================================ -->
+
 <!-- End Paging Area  -->
 </main>	
 

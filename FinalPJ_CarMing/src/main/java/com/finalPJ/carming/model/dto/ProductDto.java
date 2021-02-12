@@ -4,6 +4,7 @@ package com.finalPJ.carming.model.dto;
 public class ProductDto {
 	private int pNo;
 	private int pCategoryNo;
+	private String pCategoryName;
 	private String pName;
 	private int pPrice;
 	private String pDesc;
@@ -17,11 +18,12 @@ public class ProductDto {
 		super();
 	}
 
-	public ProductDto(int pNo, int pCategoryNo, String pName, int pPrice, String pDesc, String pFile, String pFile2,
-			String pFile3, String pPath, int pAmount) {
+	public ProductDto(int pNo, int pCategoryNo, String pCategoryName, String pName, int pPrice, String pDesc,
+			String pFile, String pFile2, String pFile3, String pPath, int pAmount) {
 		super();
 		this.pNo = pNo;
 		this.pCategoryNo = pCategoryNo;
+		this.pCategoryName = pCategoryName;
 		this.pName = pName;
 		this.pPrice = pPrice;
 		this.pDesc = pDesc;
@@ -31,8 +33,6 @@ public class ProductDto {
 		this.pPath = pPath;
 		this.pAmount = pAmount;
 	}
-
-
 
 	public int getpNo() {
 		return pNo;
@@ -48,6 +48,14 @@ public class ProductDto {
 
 	public void setpCategoryNo(int pCategoryNo) {
 		this.pCategoryNo = pCategoryNo;
+	}
+
+	public String getpCategoryName() {
+		return pCategoryName;
+	}
+
+	public void setpCategoryName(String pCategoryName) {
+		this.pCategoryName = pCategoryName;
 	}
 
 	public String getpName() {
@@ -82,6 +90,22 @@ public class ProductDto {
 		this.pFile = pFile;
 	}
 
+	public String getpFile2() {
+		return pFile2;
+	}
+
+	public void setpFile2(String pFile2) {
+		this.pFile2 = pFile2;
+	}
+
+	public String getpFile3() {
+		return pFile3;
+	}
+
+	public void setpFile3(String pFile3) {
+		this.pFile3 = pFile3;
+	}
+
 	public String getpPath() {
 		return pPath;
 	}
@@ -98,21 +122,14 @@ public class ProductDto {
 		this.pAmount = pAmount;
 	}
 
-	public String getpFile2() {
-		return pFile2;
+	@Override
+	public String toString() {
+		return "ProductDto [pNo=" + pNo + ", pCategoryNo=" + pCategoryNo + ", pCategoryName=" + pCategoryName
+				+ ", pName=" + pName + ", pPrice=" + pPrice + ", pDesc=" + pDesc + ", pFile=" + pFile + ", pFile2="
+				+ pFile2 + ", pFile3=" + pFile3 + ", pPath=" + pPath + ", pAmount=" + pAmount + "]";
 	}
 
-	public void setpFile2(String pFile2) {
-		this.pFile2 = pFile2;
-	}
-
-	public String getpFile3() {
-		return pFile3;
-	}
-
-	public void setpFile3(String pFile3) {
-		this.pFile3 = pFile3;
-	}
+	
 	
 	
 	

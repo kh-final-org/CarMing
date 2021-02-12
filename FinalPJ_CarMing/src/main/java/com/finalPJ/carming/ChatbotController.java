@@ -175,13 +175,22 @@ public class ChatbotController {
 		Boolean check = false;
 		
 		int res = surveyBiz.FriendOne(dto);
+		System.out.println("FriendOne()을 넘어온 매개변수 dto에 담긴 정보 : " + dto.toString());
+		
 		System.out.println("선택된 친구번호는 : " + res);
 		
 		MemberDto friendDto = memberBiz.selectNo(res);
 		
+		
 		String gender;
 		
-		if(dto.getSurvey1() == "female") {
+		/*
+		 * System.out.println("dto.getSurvey1() : " + dto.getSurvey1());
+		 * if(dto.getSurvey1() == "male") { gender = "남"; } else { gender = "여"; }
+		 */
+		
+		System.out.println("friendDto.getMemgender() : " + friendDto.getMemgender());
+		if(friendDto.getMemgender() == 1) {
 			gender = "남";
 		} else {
 			gender = "여";
