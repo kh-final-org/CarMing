@@ -225,7 +225,7 @@
 				================================================ paging ================================================ -->
 			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
-			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/6), '.')}"></c:set>
+			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/9), '.')}"></c:set>
 			<!-- 현재 페이지 -->
 			<div class="hint-text">
 					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages

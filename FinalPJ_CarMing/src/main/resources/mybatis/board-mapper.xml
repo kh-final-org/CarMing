@@ -36,7 +36,7 @@
 	ON B.BCATEGORYNO = BC.BCATEGORYNO
 	AND BRDWRITER LIKE '%' ||  #{search}  || '%' OR BCATEGORYNAME LIKE  '%' ||  #{search}  || '%'
 	ORDER BY BRDDATE DESC) BRD WHERE BRDPRIVATE='N')
-	WHERE RNUM BETWEEN 1 + (#{page} -1) * 6 AND #{page}  * 6
+	WHERE RNUM BETWEEN 1 + (#{page} -1) * 9 AND #{page}  * 9
 	
 	</select>
 	
