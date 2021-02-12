@@ -30,6 +30,18 @@ private adminBiz biz;
 		
 	}
 	
+	@RequestMapping("deleteProduct.do")
+	public String deleteProduct(int pNo) {
+		int res = biz.deleteProduct(pNo);
+		if(res>0) {
+			return "redirect: adminProductList.do";
+		}else {
+			return "redirect: adminProductList.do";
+		}
+		
+	}
+	
+	
 	@RequestMapping(value = "/adminRentList.do")
 	public String adminRentList(Model model, String page, String search) {
 		
@@ -49,6 +61,29 @@ private adminBiz biz;
 		logger.info("[adminRentList]");
 		return "Admin/adminRentList";
 	}
+	
+	
+	@RequestMapping(value = "/adminProductList.do")
+	public String adminProductList(Model model, String page, String search) {
+		
+		String searchDefault = "";
+		if(search != null && !search.equals("")) {
+			searchDefault = search;
+		}
+		
+		int pageDefault = 1;
+		if(page != null && !page.equals("")) {
+			pageDefault = Integer.parseInt(page);
+		}
+		
+		model.addAttribute("list",biz.ProductList(searchDefault,pageDefault));
+		model.addAttribute("count", biz.ProductCnt(searchDefault));
+		System.out.println(model.toString());
+		logger.info("[adminProductList]");
+		return "Admin/adminProductList";
+	}
+	
+	
 	
 	@RequestMapping(value = "/adminRentDetail.do")
 	public String adminRentDetail(Model model, int cartNo) {

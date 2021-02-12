@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.finalPJ.carming.model.dao.adminDao;
 import com.finalPJ.carming.model.dto.AdmMemberDto;
 import com.finalPJ.carming.model.dto.AdmRentDto;
+import com.finalPJ.carming.model.dto.ProductDto;
 
 
 @Service
@@ -97,6 +98,36 @@ public class adminBizImpl implements adminBiz{
 	public int sendRent(int cartNo) {
 		// TODO Auto-generated method stub
 		return dao.sendRent(cartNo);
+	}
+
+	@Override
+	public List<ProductDto> ProductList() {
+		return ProductList("",1);
+	}
+
+	@Override
+	public List<ProductDto> ProducutList(int page) {
+		return ProductList("",page);
+	}
+
+	@Override
+	public List<ProductDto> ProductList(String search, int page) {
+		return dao.ProductList(search, page);
+	}
+
+	@Override
+	public int ProductCnt() {
+		return dao.ProductCnt("");
+	}
+
+	@Override
+	public int ProductCnt(String search) {
+		return dao.ProductCnt(search);
+	}
+
+	@Override
+	public int deleteProduct(int pNo) {
+		return dao.deleteProduct(pNo);
 	}
 
 

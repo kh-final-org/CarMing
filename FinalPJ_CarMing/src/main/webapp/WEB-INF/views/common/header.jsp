@@ -70,6 +70,7 @@
 												href="inquirylist.do" style="font-size: 15px;">문의 목록</a></li>
 											<li class="nav-item"><a class="nav-link" href="reportlist.do" style="font-size: 15px;">신고 목록</a></li>
 											<li class="nav-item"><a class="nav-link" href="insertform.do" style="font-size: 15px;">제품 등록</a></li>
+											<li class="nav-item"><a class="nav-link" href="adminProductList.do" style="font-size: 15px;">제품 목록</a></li>
 										</ul></li>
 									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
 

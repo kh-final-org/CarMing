@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.finalPJ.carming.model.dto.AdmMemberDto;
 import com.finalPJ.carming.model.dto.AdmRentDto;
+import com.finalPJ.carming.model.dto.ProductDto;
 
 
 public interface adminDao {
@@ -28,4 +29,13 @@ public interface adminDao {
 	/* 검색, 페이징을 포함한 rent select */
 	public List<AdmRentDto> RentList(String search, int page);
 	public int rentListCnt(String search);
+	
+	/* 검색, 페이징을 포함한 product select */
+	public List<ProductDto> ProductList(String search, int page);
+	public int ProductCnt(String search);
+	
+//	delete product 
+	public int deleteProduct(int pNo);
+	
+	
 }
