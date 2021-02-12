@@ -135,7 +135,29 @@
   	</insert>	
 	
 	
+	<select id="mypageList" resultMap="boardMap" parameterType = "hashMap">
 	
+	SELECT * FROM 
+	(SELECT ROWNUM AS RNUM, BRD.*
+	FROM 		
+	(SELECT * FROM BOARD 
+	WHERE MEMNO = #{memno} 
+	ORDER BY BRDDATE DESC) BRD)
+	WHERE RNUM BETWEEN 1 + (#{page} -1) * 6 AND #{page}  * 6
+	
+	</select>
+	
+		<!-- 01. 게시글 카운트 -->
+	<select id="mypageCnt" resultType="int" parameterType = "hashMap">
+	
+	SELECT COUNT(BRDNO) COUNT FROM
+	(SELECT ROWNUM AS RNUM, BRD.*
+	FROM 		
+	(SELECT * FROM BOARD 
+	WHERE MEMNO = #{memno} 
+	ORDER BY BRDDATE DESC) BRD)
+	
+	</select>
 	
 	
 

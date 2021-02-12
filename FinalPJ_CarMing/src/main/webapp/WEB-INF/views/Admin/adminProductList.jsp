@@ -120,6 +120,11 @@ function myFunction() {
 	            </nav>
 	         </div>
 	      </div>
+	      <div class="section-top-border text-right" id="banner-text-2">
+	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='insertform.do'">제품 등록</button>
+	         </div>
+		  </div>
 	   </div>
 	</section>
 	<!-- End Banner Area -->
@@ -127,26 +132,9 @@ function myFunction() {
 	<!-- Start Container Area -->	
 	<div class="card-container">
 		<div class="gaadiex-list-title">
-			<h2>RENTAL LIST</h2>
+			<h2>PRODUCT LIST</h2>
 		</div>
 		
-		<!-- 카테고리 검색 -->
-		<div class="blog_right_sidebar">
-			<aside class="single_sidebar_widget search_widget">
-				<div class="input-group">
-					<input type="text" id="input" onkeyup="myFunction()"
-						   class="form-control" placeholder="상품 검색하기"
-						   onfocus="this.placeholder = ''"
-						   onblur="this.placeholder = '상품 검색하기'"
-						   style="padding: 12%; font-size: 1.15em; border-radius: 5px; margin-top: -15%;"> 
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
-							<i class="lnr lnr-magnifier"></i>
-						</button>
-					</span>
-				</div>
-			</aside>
-		</div>
 
 		<!-- 렌탈 목록 -->
 		<div class="table-responsive">

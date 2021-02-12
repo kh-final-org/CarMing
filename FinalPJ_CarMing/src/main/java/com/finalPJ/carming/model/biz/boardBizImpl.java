@@ -103,6 +103,31 @@ public class boardBizImpl implements boardBiz{
 		 return dao.insertMAP_v(dto);
 	}
 
+	@Override
+	public List<boardDto> MypageList(int memno) {
+		return MypageList("",1,memno);
+	}
+
+	@Override
+	public List<boardDto> MypageList(int page,int memno) {
+		return MypageList("",page,memno);
+	}
+
+	@Override
+	public List<boardDto> MypageList(String search, int page, int memno) {
+		return dao.MypageList(search, page, memno);
+	}
+
+	@Override
+	public int MypageListCnt(int memno) {
+		return dao.MypageListCnt("", memno);
+	}
+
+	@Override
+	public int MypageListCnt(String search, int memno) {
+		return dao.MypageListCnt(search, memno);
+	}
+
 
 
 

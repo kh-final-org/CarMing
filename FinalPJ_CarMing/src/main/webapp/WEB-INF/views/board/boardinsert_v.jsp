@@ -282,6 +282,7 @@
 					 if(category.val() == null ||
 					content.val().trim() == "" 	||
 					img.val() == "" ||
+					vid.val() == "" ||
 					mapname.val() == ""){
 						alert("모든 항목을 작성해 주세요");
 						return;
@@ -291,7 +292,8 @@
 					
 					if(category != null &&
 					content.val() != "" &&
-					img != null &&
+					img.val() != null &&
+					vid.val() != null &&
 					mapname.val() != null )	{
 						alert("게시글이 작성 되었습니다.");
 						$("#target").submit();

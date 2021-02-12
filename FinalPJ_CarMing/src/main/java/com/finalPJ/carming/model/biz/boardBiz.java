@@ -34,4 +34,26 @@ public interface boardBiz {
 	public int listCnt();
 	public int listCnt(String search);
 	
+	
+	//01. 마이페이 전체 목록
+		public List<boardDto> MypageList(int memno);	
+		public List<boardDto> MypageList(int page, int memno);	
+		public List<boardDto> MypageList(String search, int page, int memno);	
+		
+		//페이징 카운트
+		public int MypageListCnt(int memno);
+		public int MypageListCnt(String search,int memno);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

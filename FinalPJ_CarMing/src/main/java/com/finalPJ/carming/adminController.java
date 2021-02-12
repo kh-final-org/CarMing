@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.finalPJ.carming.model.biz.InquiryBiz;
 import com.finalPJ.carming.model.biz.adminBiz;
+import com.finalPJ.carming.model.dto.boardDto;
 
 @Controller
 public class adminController {
@@ -18,10 +20,42 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	
 @Autowired
 private adminBiz biz;
-	@RequestMapping("adminpage.do")
-	public String adminpage() {
+
+@Autowired
+private InquiryBiz Ibiz;
+
+	@RequestMapping("/adminPage.do")
+	public String adminpage(Model model, String page, String search) {
+		logger.info("[adminPage]");
+
+		String searchDefault = ""; // 검색이 없는 경우 기본값
+		if(search != null && !search.equals("")) { // 검색어가 있는 경우
+			searchDefault = search;
+		}
+		
+		int pageDefault = 1; // 페이지 선택이 없는 경우 기본값
+		if(page != null && !page.equals("")) { // 페이지를 선택한 경우
+			pageDefault = Integer.parseInt(page);
+		}
+		
+		
+		model.addAttribute("list",biz.RentList(searchDefault,pageDefault));
+		model.addAttribute("count", biz.rentListCnt(searchDefault));
+		
+		logger.info("[inquirylist]");
+		
 		return "Admin/adminPage";
 	}
+	
+	/*
+	 * //게시글쓰기(사진) 페이지로 이동
+	 * 
+	 * @RequestMapping(value = "/boardinsertform.do") public String
+	 * boardInsert(boardDto dto) { logger.info("[BOARD INSERT FORM]");
+	 * 
+	 * return "board/boardinsert"; }
+	 */
+	
 	
 	@RequestMapping("deletemem.do")
 	public String memberDetail(int memNo) {

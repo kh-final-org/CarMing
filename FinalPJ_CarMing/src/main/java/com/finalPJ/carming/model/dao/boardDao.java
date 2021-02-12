@@ -35,8 +35,9 @@ public interface boardDao {
 	
 	//페이징 카운트
 	public int listCnt(String search);
-	
-	
+	//마이페이지
+	public List<boardDto> MypageList(String search, int page, int memno);	
+	public int MypageListCnt(String search,int memno);
 	
 	
 	

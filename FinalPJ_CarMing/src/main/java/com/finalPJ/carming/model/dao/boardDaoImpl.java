@@ -205,6 +205,41 @@ public class boardDaoImpl implements boardDao{
 		return res;
 	}
 
+	@Override
+	public List<boardDto> MypageList(String search, int page, int memno) {
+		List<boardDto> list = new ArrayList<boardDto>();
+		// 검색어, 페이지 맵에 저장
+		Map<String,String> map = new HashMap<String,String>();
+		
+		map.put("search", search);
+		map.put("page", Integer.toString(page));
+		map.put("memno", Integer.toString(memno));
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"mypageList",map);
+		} catch (Exception e) {
+			System.out.println("[error : mypage]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int MypageListCnt(String search, int memno) {
+		int res = 0;
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("search", search);
+		map.put("memno", Integer.toString(memno));
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"mypageCnt",map);
+		} catch (Exception e) {
+			System.out.println("[error]:mypageCnt");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 
 	
 	
