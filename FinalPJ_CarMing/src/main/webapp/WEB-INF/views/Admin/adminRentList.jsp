@@ -187,25 +187,41 @@ function myFunction() {
 									value="${list.startDate}" /></td>
 
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${list.endDate}" /></td>
-							<td><c:set var="status" value="${list.stateNo}" /> 
+									value="${list.endDate}" var="endDate"/>
+									${endDate}</td>
+							<td>
+							<jsp:useBean id="toDay" class="java.util.Date" />
+							<fmt:formatDate value='${toDay}' pattern='yyyy-MM-dd' var="nowDate"/>
+							<c:set var="status" value="${list.stateNo}" /> 
 									<c:choose>
-									<c:when test="${ status == 2}">
-										<span class="status text-success">&bull;</span>
-									</c:when>
-									<c:when test="${ status == 3}">
-										<span class="status text-warning">&bull;</span>
-									</c:when>
 									<c:when test="${ status == 4}">
 										<span class="status text-danger">&bull;</span>
+										${list.stateName }
 									</c:when>
 									<c:when test="${ status == 5}">
 										<span class="status text-success">&bull;</span>
+										${list.stateName }
 									</c:when>
+									<c:when test="${ endDate < nowDate}">
+										<span class="status text-danger">&bull;</span>
+										연체
+									</c:when>
+									<c:when test="${ status == 2}">
+										<span class="status text-success">&bull;</span>
+										${list.stateName }
+									</c:when>
+									<c:when test="${ status == 3}">
+										<span class="status text-warning">&bull;</span>
+										${list.stateName }
+									</c:when>
+									
+									
 									<c:when test="${ status == 6}">
 										<span class="status text-danger">&bull;</span>
+										${list.stateName }
 									</c:when>
-								</c:choose> ${list.stateName }
+									
+								</c:choose> 
 							</td>
 							<td>
 							<a href="deleteRent.do?cartNo=${list.cartNo}" class="delete" title="Delete"

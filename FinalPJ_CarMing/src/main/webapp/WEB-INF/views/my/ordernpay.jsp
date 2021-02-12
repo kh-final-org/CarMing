@@ -65,18 +65,10 @@
 											<td><img src="storage/${cartListDto.pFile }" width="100px;" height="100px;"></td>
 											<td>${cartListDto.pName }</td>
 											<td>${cartListDto.cAmount }</td>
-											<td><fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>&nbsp;~&nbsp;<fmt:formatDate value="${cartListDto.endDate }" pattern="yyyy-MM-dd"/></td>
+											<td><fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>&nbsp;~&nbsp;<fmt:formatDate value="${cartListDto.endDate }" pattern="yyyy-MM-dd" var="endDate" />${endDate }</td>
+											<jsp:useBean id="toDay" class="java.util.Date" />
+											<fmt:formatDate value='${toDay}' pattern='yyyy-MM-dd' var="nowDate"/>
 											<c:choose>
-												<c:when test="${cartListDto.stateNo == 2}">
-													<td>
-														결제완료
-													</td>
-												</c:when>
-												<c:when test="${cartListDto.stateNo == 3}">
-													<td>
-														대여중(배송완료)
-													</td>
-												</c:when>
 												<c:when test="${cartListDto.stateNo == 4}">
 													<td>
 														반납신청
@@ -85,6 +77,21 @@
 												<c:when test="${cartListDto.stateNo == 5}">
 													<td>
 														반납완료
+													</td>
+												</c:when>
+												<c:when test="${endDate < nowDate}">
+													<td>
+														연체
+													</td>
+												</c:when>
+												<c:when test="${cartListDto.stateNo == 2}">
+													<td>
+														결제완료
+													</td>
+												</c:when>
+												<c:when test="${cartListDto.stateNo == 3}">
+													<td>
+														대여중(배송완료)
 													</td>
 												</c:when>
 												<c:when test="${cartListDto.stateNo == 6}">
