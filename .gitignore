@@ -2,5 +2,3 @@
 webRTC/node_modules
 *.pem
 FinalPJ_CarMing/src/main/resources/mybatis/db.properties
-FinalPJ_CarMing/src/main/webapp/WEB-INF/spring/sqls/board.sql
-FinalPJ_CarMing/src/main/webapp/WEB-INF/spring/sqls/member.sql

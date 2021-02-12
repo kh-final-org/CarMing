@@ -310,6 +310,7 @@ function ajaxlocation(){
 
 					        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
 					        // LatLngBounds 객체에 좌표를 추가합니다
+					        //postion 좌표값전달
 					       bounds.extend(positions[i].latlng);
 
 					        // 마커와 검색결과 항목에 mouseover 했을때
