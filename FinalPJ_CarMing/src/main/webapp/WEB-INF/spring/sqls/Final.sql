@@ -31,8 +31,10 @@ ALTER TABLE MEMBER ADD CONSTRAINT MEMCODE_CHK CHECK (MEMGENDER IN (1, 2));
 
 SELECT * FROM MEMBER;
 
+
+
 UPDATE MEMBER SET MEMCODE=1 WHERE MEMNO=2;
-DELETE FROM MEMBER WHERE MEMNO=3;
+DELETE FROM MEMBER WHERE MEMNO=4;
 
 INSERT INTO MEMBER (MEMNO, MEMNICK, MEMID, MEMPW, MEMNAME, MEMZIP, MEMADDR, MEMADDR2, MEMPHONE, MEMBIRTH, MEMGENDER, MEMCHK) 
 VALUES(MEMSEQ.NEXTVAL, '펭귄', 'user1', 'pass1', '홍길동', '06234', '서울특별시 강남구', '남도빌딩 4층', '01012345678', DATE '2013-02-17', '2', 'Y');
@@ -218,7 +220,291 @@ CREATE TABLE DM(
 
 SELECT * FROM DM;
 
---------------캠핑렌트 DB--------------
+
+/****************************************************************
+                      CHATBOT
+*****************************************************************/	
+DROP TABLE MEMBER;
+DROP SEQUENCE MEMSEQ;
+
+CREATE SEQUENCE MEMSEQ;
+CREATE TABLE MEMBER(
+   MEMNO NUMBER PRIMARY KEY,
+   MEMNICK VARCHAR2(100) UNIQUE NOT NULL,
+   MEMID VARCHAR2(100) UNIQUE NOT NULL,
+   MEMPW VARCHAR2(100) NOT NULL,
+   MEMNAME VARCHAR2(100) NOT NULL,
+   MEMZIP VARCHAR2(100) NOT NULL,
+   MEMADDR VARCHAR2(1000) NOT NULL,
+   MEMADDR2 VARCHAR2(100),
+   MEMPHONE VARCHAR2(100) NOT NULL,
+   MEMBIRTH DATE NOT NULL,
+   MEMGENDER NUMBER NOT NULL,
+   MEMCHK VARCHAR2(1) DEFAULT 'N' NOT NULL,
+   MEMCODE NUMBER DEFAULT '2' NOT NULL,
+   MEMFILE VARCHAR2(2000)
+);
+
+ALTER TABLE MEMBER 
+ADD CONSTRAINT MEMGENDER_CHK CHECK (MEMGENDER IN (1, 2));
+ALTER TABLE MEMBER ADD CONSTRAINT MEMCHK_CHK CHECK (MEMCHK IN ('Y', 'N'));
+ALTER TABLE MEMBER ADD CONSTRAINT MEMCODE_CHK CHECK (MEMGENDER IN (1, 2));
+
+delete from member;
+select * from member;
+
+insert  into member
+values(memseq.nextval, '나나콘', 'tyu4778@gmail.com', 'qwer1234', '나찬곤', '57310', '충청남도 천안시 서북구 두정동 1663-3번지', '태정타운 401호', '010-1111-2234', '1996-12-24', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '키위', 'soso@gmail.com', 'qwer1234', '김남기', '12345', '경주시 경주로', '불국사아파트 202호', '010-1543-4234', '96/08/16', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '가로수', '3@naver.com', 'qwer1234', '김망태', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-2234-2234', '02/12/31', 1, 'N', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '홈키파', '4@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+
+insert  into member
+values(memseq.nextval, '레모나', '5@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '캠핑킹', '6@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '라비', '7@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'N', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '레이', '8@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '로빈', '9@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '록키', '10@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '지단원', '11@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'N', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '아서', '12@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '캐모마일', '13@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '아론', '14@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '카라반소', '15@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'N', 2, 'PROFILE.JPG');
+
+insert  into member
+values(memseq.nextval, '인텔코어', '16@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+
+insert  into member
+values(seqmem.nextval, '리사', 'g1@gmail.com', 'qwer1234', '나찬곤', '57310', '충청남도 천안시 서북구 두정동 1663-3번지', '태정타운 401호', '010-1111-2234', '1996-12-24', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '로제', 'g2@gmail.com', 'qwer1234', '김남기', '12345', '경주시 경주로', '불국사아파트 202호', '010-1543-4234', '96/08/16', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '지수', 'g3@naver.com', 'qwer1234', '김망태', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-2234-2234', '02/12/31', 2, 'N', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '제니', 'g4@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '캐시', 'g5@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '버디', 'g6@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '벨라', 'g7@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'N', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '조이', 'g8@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '아이린', 'g9@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '켈시', 'g10@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '키티', 'g11@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'N', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '리라', 'g12@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '리나', 'g13@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '린다', 'g14@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '로티루시', 'g15@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'N', 2, 'PROFILE.JPG');
+
+insert  into member
+values(seqmem.nextval, '롤리폴리', 'g16@naver.com', 'qwer1234', '김상사', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1434-2234', '02/12/31', 2, 'Y', 2, 'PROFILE.JPG');
+
+--insert  into member
+--values(seqmem.nextval, '이서', 'j@naver.com', 'qwer1234', '조이서', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1534-2234', '02/12/31', 1, 'N', 2, 'PROFILE.JPG');
+--
+--insert  into member
+--values(seqmem.nextval, '수근', 'a@naver.com', 'qwer1234', '이수근', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1214-2234', '02/12/31', 1, 'N', 2, 'PROFILE.JPG');
+--
+--insert  into member
+--values(seqmem.nextval, '피오', 'fio@naver.com', 'qwer1234', '표지훈', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1224-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+--
+--insert  into member
+--values(seqmem.nextval, '마이노', 'mino@naver.com', 'qwer1234', '김민호', '13579', '강원도 삼척시', '삼척경찰서 2호', '010-1224-2234', '02/12/31', 1, 'Y', 2, 'PROFILE.JPG');
+
+
+
+-- survey
+drop table survey;
+
+CREATE TABLE SURVEY(
+    MEMNO NUMBER PRIMARY KEY,
+    SURVEY1 VARCHAR2(100) NOT NULL,
+    SURVEY2 VARCHAR2(100) NOT NULL,
+    SURVEY3 VARCHAR2(100) NOT NULL,
+    SURVEY4 VARCHAR2(100) NOT NULL,
+    SURVEY5 VARCHAR2(100) NOT NULL,
+    
+    FOREIGN KEY(MEMNO) REFERENCES MEMBER(MEMNO)
+    ON DELETE CASCADE
+);
+
+-- 1.  남자 동성 -> 남자 동성
+INSERT INTO SURVEY
+VALUES(1, 'male', 'same', 'two', 'normal', 'mountain');
+
+-- Y
+INSERT INTO SURVEY
+VALUES(3, 'male', 'same', 'two', 'normal', 'mountain');
+
+-- N
+INSERT INTO SURVEY
+VALUES(4, 'male', 'same', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(5, 'male', 'same', 'two', 'normal', 'mountain');
+
+--++
+INSERT INTO SURVEY
+VALUES(10, 'male', 'same', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(11, 'male', 'same', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(12, 'male', 'same', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(13, 'male', 'same', 'two', 'normal', 'mountain');
+
+
+-- 남자 이성 -> 여자 이성
+INSERT INTO SURVEY
+VALUES(6, 'male', 'opposite', 'two', 'normal', 'mountain');
+
+-- Y
+INSERT INTO SURVEY
+VALUES(7, 'male', 'opposite', 'two', 'normal', 'mountain');
+
+-- N
+INSERT INTO SURVEY
+VALUES(8, 'male', 'opposite', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(9, 'male', 'opposite', 'two', 'normal', 'mountain');
+
+--++
+INSERT INTO SURVEY
+VALUES(14, 'male', 'opposite', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(15, 'male', 'opposite', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(16, 'male', 'opposite', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(17, 'male', 'opposite', 'two', 'normal', 'mountain');
+
+
+-- 3.여자 동성 -> 여자 동성
+INSERT INTO SURVEY
+VALUES(34, 'female', 'same', 'threefour', 'glamping', 'mountain');
+
+-- Y
+INSERT INTO SURVEY
+VALUES(35, 'female', 'same', 'threefour', 'glamping', 'mountain');
+
+-- N
+INSERT INTO SURVEY
+VALUES(36, 'female', 'same', 'threefour', 'glamping', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(37, 'female', 'same', 'threefour', 'normal', 'mountain');
+
+--++
+INSERT INTO SURVEY
+VALUES(42, 'female', 'same', 'threefour', 'glamping', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(43, 'female', 'same', 'threefour', 'glamping', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(44, 'female', 'same', 'threefour', 'glamping', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(45, 'female', 'same', 'threefour', 'normal', 'mountain');
+
+
+-- 여자 이성 -> 남자 이성
+INSERT INTO SURVEY
+VALUES(38, 'female', 'opposite', 'two', 'normal', 'mountain');
+
+-- Y
+INSERT INTO SURVEY
+VALUES(39, 'female', 'opposite', 'two', 'normal', 'mountain');
+
+-- N 
+INSERT INTO SURVEY
+VALUES(40, 'female', 'opposite', 'two', 'normal', 'mountain');
+
+
+INSERT INTO SURVEY
+VALUES(41, 'female', 'opposite', 'four', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(46, 'female', 'opposite', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(47, 'female', 'opposite', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(48, 'female', 'opposite', 'two', 'normal', 'mountain');
+
+INSERT INTO SURVEY
+VALUES(49, 'female', 'opposite', 'four', 'normal', 'mountain');
+
+select * from survey order by memno;
+
+commit;
+
+
+
+
+/****************************************************************
+                     	캠핑렌트 DB
+*****************************************************************/	
 
 --[렌트 상태 테이블]--
 
@@ -252,7 +538,10 @@ VALUES(RENTSTATE_SEQ.NEXTVAL, '반납일 초과');
 --테이블 전체 조회
 SELECT * FROM RENTSTATE;
 
---[캠핑렌트 카테고리 테이블]--
+
+/****************************************************************
+                     	[캠핑렌트 카테고리 테이블]
+*****************************************************************/	
 
 --PCATEGORY 테이블, 시퀀스 유무 확인 구문
 DROP TABLE PCATEGORY cascade constraint;
@@ -290,7 +579,10 @@ SELECT * FROM PCATEGORY;
 DELETE FROM PCATEGORY
 WHERE PCATEGORYNO = 3;
 
---[캠핑렌트  상품 테이블]--
+/****************************************************************
+					--[캠핑렌트  상품 테이블]--
+*****************************************************************/	
+
 
 --PRODUCT 테이블, 시퀀스 유무 확인 구문
 DROP TABLE PRODUCT cascade constraint;

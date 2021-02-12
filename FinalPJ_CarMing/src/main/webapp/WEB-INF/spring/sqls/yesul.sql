@@ -923,4 +923,16 @@ SELECT COUNT(BRDNO) COUNT FROM
 		ORDER BY P.PNO DESC) PRD)
 		WHERE RNUM BETWEEN 1 + (#{page} -1) * 8 AND #{page}  * 8
 		
+		
+		
+		
+		
+		SELECT * FROM MEMBER WHERE MEMNO=2
+		
+		
+		
+		
+		
+		
+		
 	

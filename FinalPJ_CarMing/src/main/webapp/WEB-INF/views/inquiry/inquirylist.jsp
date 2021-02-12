@@ -137,17 +137,20 @@ function myFunction() {
 						<img class="list-item-img" src="${list.profilepic }" alt="List user">
 					</div>
 					<div class="gaadiex-list-item-text">
-						<h4><a href="profileform.do?memno=${list.memNo }">닉네임&nbsp;&#124;&nbsp;${list.memNick }</a></h4>
+						<h4>
+						<a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">
+							<c:set var="TextValue" value="${list.inquiryContent }"/> 
+								<span class="list-item-text-ck">문의 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,8)}</span>
+							</a>
+						</h4>
 						
 						<div class="gaadiex-list-item-text-ck">
-							<a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">
-							<c:set var="TextValue" value="${list.inquiryContent }"/> 
-								<span class="list-item-text-ck">문의 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,10)}</span>
-							</a>
+							<a href="profileform.do?memno=${list.memNo }">닉네임&nbsp;&#124;&nbsp;${list.memNick }</a>
 						</div>
 						
 						<div class="category">카테고리&nbsp;&#124;&nbsp;${list.categoryName}</div>
-						<div>작성 날짜&nbsp;&#124;&nbsp;<fmt:formatDate pattern = "yyyy-MM-dd" value = "${list.inquiryDate}"/></div>		
+						<div>작성 날짜&nbsp;&#124;&nbsp;<fmt:formatDate pattern = "yyyy-MM-dd" value = "${list.inquiryDate}"/></div>	
+						<button class="banner-btn" id="golist" type="button" style="color: orange;" onclick="location.href='deleteinquiry.do?inquiryNo=${list.inquiryNo}'">삭제</button>	
 					</div>
 				</div>
 				</c:forEach>

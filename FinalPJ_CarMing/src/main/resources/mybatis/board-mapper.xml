@@ -116,7 +116,7 @@
 	
 	<!-- 08. 사용자 프로필, 사용자 정보 -->
 	<select id="profilemem" resultType="MemberDto" parameterType="int">
-		SELECT * FROM MEMBER
+		SELECT * FROM MEMBER WHERE MEMNO=#{memno}
 	</select>
 	
 	<!-- 09. 게시글(영상) 추가 -->

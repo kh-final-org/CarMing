@@ -162,7 +162,7 @@ function board(){
 			content.val() != "" &&
 			img != null &&
 			mapname.val() != null )	{
-				alert("문의주셔서 감사합니다.");
+				alert("게시글이 작성되었습니다.");
 				$("#target").submit();
 			}
 				 

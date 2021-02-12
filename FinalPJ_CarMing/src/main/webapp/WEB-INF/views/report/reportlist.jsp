@@ -95,7 +95,6 @@ function myFunction() {
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writereportform.do'">신고하기</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='reportlist.do'">신고 목록</button>
 	         </div>
 		  </div>
@@ -137,13 +136,14 @@ function myFunction() {
 						<img class="gaadiex-item-img" src=${list.memFile } alt="List user"><%-- ${list.reportFileName } --%>
 					</div>
 					<div class="gaadiex-list-item-text">
-						<h4><a href="profileform.do?memno=${list.memNo }">제보자 닉네임&nbsp;&#124;&nbsp;${list.reportWriter}</a></h4>
+						<h4><a href="reportdetail.do?reportNo=${list.reportNo}&targetTypeNo=${list.targetTypeNo}" id="content">
+							<c:set var="TextValue" value="${list.reportContent }"/> 
+								<span class="list-item-text-ck">신고 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,8)}</span>
+							</a>
+						</h4>
 						
 						<div class="gaadiex-list-item-text-ck">
-							<a href="reportdetail.do?reportNo=${list.reportNo}&targetTypeNo=${list.targetTypeNo}" id="content">
-							<c:set var="TextValue" value="${list.reportContent }"/> 
-								<span class="list-item-text-ck">신고 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,10)}</span>
-							</a>
+							<a href="profileform.do?memno=${list.memNo }">제보자 닉네임&nbsp;&#124;&nbsp;${list.reportWriter}</a>
 						</div>
 						
 						<div class="category">카테고리&nbsp;&#124;&nbsp;${list.categoryName }</div>
