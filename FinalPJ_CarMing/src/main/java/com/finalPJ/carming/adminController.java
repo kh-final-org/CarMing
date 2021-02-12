@@ -18,6 +18,10 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	
 @Autowired
 private adminBiz biz;
+	@RequestMapping("adminpage.do")
+	public String adminpage() {
+		return "Admin/adminPage";
+	}
 	
 	@RequestMapping("deletemem.do")
 	public String memberDetail(int memNo) {
