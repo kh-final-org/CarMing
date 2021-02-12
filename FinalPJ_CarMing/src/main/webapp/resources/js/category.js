@@ -141,5 +141,23 @@ $(document).ready(function(){
     })
 }
 
+function selView(){
+		var sort = document.getElementById("selViewSort").value;
+	 	var sel = document.getElementById("selViewNumber").value;
+	 	var pCateNo = document.getElementById("pCateNo").value;
+		
+		console.log("보여줄 게시물 갯수: "+sel);
+		
+		location.href="productlist.do?viewNo="+sel+"&pCateNo="+pCateNo+"&sort="+sort;
+	}
 
+function selSort(){
+		var sort = document.getElementById("selViewSort").value;
+		var sel = document.getElementById("selViewNumber").value;
+	 	var pCateNo = document.getElementById("pCateNo").value;
+	
+		alert("분류 순:"+sort);
+		
+		location.href="productlist.do?viewNo="+sel+"&pCateNo"+pCateNo+"&orderBy="+sort;
+}
 

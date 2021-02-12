@@ -245,26 +245,41 @@ public class RentController {
 		return "campingrent/productdetail";
 	}
 	@RequestMapping(value = "/productlist.do")
-	public String productlist(Model model, String search, String page) throws Exception{
+	public String productlist(	Model model, 
+								@RequestParam(value="search", required=false, defaultValue="")String search, 
+								@RequestParam(value="page", required=false, defaultValue="1")int page, 
+								@RequestParam(value="viewNo", required=false, defaultValue="9")int viewNo, 
+								@RequestParam(value="pCateNo", required=false, defaultValue="6")int pCateNo, 
+								@RequestParam(value="orderBy", required=false, defaultValue="pNo")String orderBy) 
+										throws Exception{
 		logger.info("[PRODUCT LIST]");
 		
-		String searchDefault = ""; // 검색이 없는 경우 기본값
-		if(search != null && !search.equals("")) { // 검색어가 있는 경우
-			searchDefault = search;
+//		String searchDefault = ""; // 검색이 없는 경우 기본값
+//		if(search != null && !search.equals("")) { // 검색어가 있는 경우
+//			searchDefault = search;
+//		}
+//		
+//		int pageDefault = 1; // 페이지 선택이 없는 경우 기본값
+//		if(page != null && !page.equals("")) {	// 페이지를 선택한 경우
+//			pageDefault = Integer.parseInt(page);
+//		}
+		
+		System.out.println("보여줄 게시물 갯수(viewNo): "+viewNo);
+		
+		//보여줄 게시물의 개수를 객체로 담아 보내준다.
+		if(viewNo == 6) {
+			model.addAttribute("viewNo", viewNo);
+		} else if(viewNo == 9) {
+			model.addAttribute("viewNo", viewNo);
+		} else if(viewNo == 12) {
+			model.addAttribute("viewNo", viewNo);
 		}
 		
-		int pageDefault = 1; // 페이지 선택이 없는 경우 기본값
-		if(page != null && !page.equals("")) {	// 페이지를 선택한 경우
-			pageDefault = Integer.parseInt(page);
-		}
-		
-		
-		model.addAttribute("productlist", biz.selectAll(searchDefault, pageDefault));
-		model.addAttribute("count", biz.getProductCnt(searchDefault));
-//		model.addAttribute("productlist", list);
+		model.addAttribute("productlist", biz.selectAll(search, page, viewNo, pCateNo, orderBy));
+		model.addAttribute("pCateNo", pCateNo);
+		model.addAttribute("orderBy", orderBy);
+		model.addAttribute("count", biz.getProductCnt(search));
 
-
-		
 		return "campingrent/category";
 	}
 	

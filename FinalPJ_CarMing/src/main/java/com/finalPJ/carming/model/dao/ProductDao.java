@@ -21,8 +21,8 @@ public interface ProductDao {
 	public int returnProduct(int cartNo);
 
 	
-	//검색, 페이징을 포함한 SELECT//
-	public List<ProductDto> selectAll(String search, int page);
+	//검색, 페이징, 카테고리를  포함한 SELECT//
+	public List<ProductDto> selectAll(String search, int page, int viewNo, int pCateNo, String orderBy);
 	public int getProductCnt(String search);
-
+	
 }
