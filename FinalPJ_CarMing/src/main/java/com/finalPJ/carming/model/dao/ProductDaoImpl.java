@@ -93,7 +93,6 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 	@Override
-
 	public int returnProduct(int cartNo) {
 		int res = 0;
 		
@@ -104,15 +103,22 @@ public class ProductDaoImpl implements ProductDao{
 			e.printStackTrace();
 		}
 		return res;
-		}
-
-	public List<ProductDto> selectAll(String search, int page) {
+	}
+	
+	@Override
+	public List<ProductDto> selectAll(String search, int page, int viewNo, int pCateNo, String orderBy) {
+		System.out.println("[DaoImpl] page/search/viewNo/pCateNo/orderBy: "+page+"/"+search+"/"+viewNo+"/"+pCateNo+"/"+orderBy);
 		List<ProductDto> list = new ArrayList<ProductDto>();
 		
 		//검색어, 페이지 데이터를 Map에 저장
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
-		map.put("page", Integer.toBinaryString(page));
+		map.put("page", page);
+		map.put("viewNo", viewNo);
+		map.put("pCateNo", pCateNo);
+		map.put("orderBy", orderBy);
+		
+		System.out.println("[DaoImpl] map: "+map);
 		
 		try {
 			list = sqlSession.selectList(NAMESPACE+"selectAll", map);

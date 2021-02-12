@@ -17,11 +17,8 @@ public interface ProductBiz {
 
 	public int returnProduct(int cartNo);
 	
-	//검색과 페이징을 통한 SELECT
-	public List<ProductDto> selectAll();
-	public List<ProductDto> selectAll(int page);
-	public List<ProductDto> selectAll(String search, int page);
-	
-	public int getProductCnt();
+	//검색, 페이징, 카테고리를  포함한 SELECT//
+	public List<ProductDto> selectAll(String search, int page, int viewNo, int pCateNo, String orderBy);
 	public int getProductCnt(String search);
+	
 }

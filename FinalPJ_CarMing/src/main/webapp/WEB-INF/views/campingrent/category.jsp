@@ -13,108 +13,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="resources/js/category.js?ver=4"></script>
-<script type="text/javascript">
-	function showall() {
-	var list = document.getElementsByClassName("single-product");
-		 for(i=0; i<list.length; i++){
-			 list[i].style.display ="block";
-		 }
-	}
-</script>
-
-
-<script type="text/javascript">
-	function tent() {
-	var list = document.getElementsByClassName("single-product");
-	
-	
-		 for(i=0; i<list.length; i++){
-			 var catNo = document.getElementsByClassName("pCategoryNo")[i].value;
-			
-			 console.log(catNo );
-				if(catNo == 1){
-				 list[i].style.display ="";
-				}else {
-					list[i].style.display = "none";
-				}
-			 
-		 }
-		 
-	}
-</script>
-
-
-<script type="text/javascript">
-	function mat() {
-	var list = document.getElementsByClassName("single-product");
-	 
-	for(i=0; i<list.length; i++){
-		 var cartNo = document.getElementsByClassName("pCategoryNo")[i].value;
-		
-		 console.log(cartNo );
-			if(cartNo == 2){
-			 list[i].style.display ="";
-			}else {
-				list[i].style.display = "none";
-			}
-		 
-		 }
-	}
-</script>
-
-<script type="text/javascript">
-	function cook() {
-	var list = document.getElementsByClassName("single-product");
-	
-	for(i=0; i<list.length; i++){
-		 var cartNo = document.getElementsByClassName("pCategoryNo")[i].value;
-		
-		 console.log(cartNo );
-			if(cartNo == 3){
-			 list[i].style.display ="";
-			}else {
-				list[i].style.display = "none";
-			}
-		 
-		 }
-	}
-</script>
-
-<script type="text/javascript">
-	function chair() {
-	var list = document.getElementsByClassName("single-product");
-	for(i=0; i<list.length; i++){
-		 var cartNo = document.getElementsByClassName("pCategoryNo")[i].value;
-		
-		 console.log(cartNo );
-			if(cartNo == 4){
-			 list[i].style.display ="";
-			}else {
-				list[i].style.display = "none";
-			}
-		 
-		 }
-	}
-</script>
-
-<script type="text/javascript">
-	function bbq() {
-	var list = document.getElementsByClassName("single-product");
-	for(i=0; i<list.length; i++){
-		 var cartNo = document.getElementsByClassName("pCategoryNo")[i].value;
-		
-		 console.log(cartNo );
-			if(cartNo == 5){
-			 list[i].style.display ="";
-			}else {
-				list[i].style.display = "none";
-			}
-		 
-		 }
-	}
-</script>
-
-
 </head>
 <body>
 	<%@include file="../common/header.jsp" %>
@@ -139,23 +37,24 @@
 			<div class="col-xl-3 col-lg-4 col-md-5">
 				<div class="sidebar-categories"> 	
 					<div class="head">렌트 카테고리</div>
+					<input type="hidden" id="pCateNo" value="${pCateNo}">
 					<ul class="main-categories">
-						<li class="main-nav-list"><a id="all_category" data-toggle="collapse" href="#" onclick="showall();" aria-expanded="false" aria-controls="fruitsVegetable"><span
+						<li class="main-nav-list"><a id="all_category"  href="productlist.do?viewNo=${viewNo}&pCateNo=6"><span
 								 class="lnr lnr-arrow-right"></span>전체<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="tent" data-toggle="collapse" data-pCategoryNo="1" href="#" onclick="tent();" aria-expanded="false" aria-controls="fruitsVegetable"><span
+						<li class="main-nav-list"><a id="tent" data-pCategoryNo="1" href="productlist.do?viewNo=${viewNo}&pCateNo=1" ><span
 								 class="lnr lnr-arrow-right"></span>텐트 / 타프<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="bag" data-toggle="collapse" data-pCategoryNo="2" href="#" onclick="mat();"aria-expanded="false" aria-controls="officeProduct"><span
+						<li class="main-nav-list"><a id="bag" data-pCategoryNo="2" href="productlist.do?viewNo=${viewNo}&pCateNo=2" ><span
 								 class="lnr lnr-arrow-right"></span>매트 / 침낭<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="pot" data-toggle="collapse" data-pCategoryNo="3" href="#" onclick="cook();" aria-expanded="false" aria-controls="beauttyProduct"><span
+						<li class="main-nav-list"><a id="bunner" data-pCategoryNo="3" href="productlist.do?viewNo=${viewNo}&pCateNo=3" ><span
 								 class="lnr lnr-arrow-right"></span>코펠 / 버너 / 취사<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="chair" data-toggle="collapse" data-pCategoryNo="4" href="#" onclick="chair();" aria-expanded="false" aria-controls="healthProduct"><span
+						<li class="main-nav-list"><a id="chair" data-pCategoryNo="4" href="productlist.do?viewNo=${viewNo}&pCateNo=4" ><span
 								 class="lnr lnr-arrow-right"></span>체어 / 테이블<span class="number"></span></a>
 						</li>
-						<li class="main-nav-list"><a id="bbq" data-toggle="collapse" data-pCategoryNo="5" href="#" onclick="bbq();" aria-expanded="false" aria-controls="homeAppliance"><span
+						<li class="main-nav-list"><a id="bbq" data-pCategoryNo="5" href="productlist.do?viewNo=${viewNo}&pCateNo=5" ><span
 								 class="lnr lnr-arrow-right"></span>화로대 / BBQ<span class="number"></span></a>
 						</li>
 					</ul>
@@ -182,16 +81,20 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
-						<select>
-							<option value="1" selected>분류 기준</option>
-							<option value="1">가격 순</option>
+						<select id="selViewSort" onchange="selSort()">
+							<option value="pNo">분류 기준</option>
+							<option value="pNo">최신 순</option>
+							<option value="oPNo">오래된 순</option>
+							<option value="expPrice">가격 순(높은)</option>
+							<option value="chpPrice">가격 순(낮은)</option>
 						</select>
 					</div>
 					<div class="sorting mr-auto">
-						<select>
-							<option value="1">Show 6</option>
-							<option value="1">Show 9</option>
-							<option value="1">Show 12</option>
+						<select id="selViewNumber" onchange="selView()">
+							<option value="9">게시물 수(개)&nbsp;${viewNo}</option>
+							<option value="6">Show 6</option>
+							<option value="9">Show 9</option>
+							<option value="12">Show 12</option>
 						</select>
 					</div>
 					<c:if test="${login.memcode == 1}">
@@ -228,7 +131,7 @@
 											<div class="product-details">
 											<h6>${productDto.pName }</h6>
 												<div class="price">
-													<h6><fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/></h6>
+													<h6><fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/>원</h6>
 												</div>
 												<c:if test="${productDto.pAmount != 0}">
 													<h6 style="font-size: 20px;">수량: ${productDto.pAmount }</h6>
@@ -262,9 +165,10 @@
 				
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
+			<c:set var="viewNo" value="${viewNo}"/>
 			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
-			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.')}"></c:set>
+			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/viewNo), '.')}"></c:set>
 			<div class="hint-text">
 				Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
 			</div>
@@ -294,7 +198,12 @@
 							<c:forEach var="i" begin="0" end="4">
 								<c:if test="${(startNum + i ) <= lastNum }">
 								<!-- 현재 페이지 style 변경 -->
-								<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
+									<c:if test="${viewNo >= count}">
+										<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}">1</a></li>
+									</c:if>
+									<c:if test="${viewNo < count}">
+										<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}">${startNum + i }</a></li>
+									</c:if>
 								</c:if>
 							</c:forEach>
 						  			

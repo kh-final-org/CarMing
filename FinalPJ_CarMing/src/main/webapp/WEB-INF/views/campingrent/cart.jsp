@@ -24,13 +24,11 @@
 						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
 	.banner-btn:hover::before{height: 180%;}
 	
-	
-	
-	
-	.cart_empty_img{text-align: center; width: 35%;}
+	.cart_empty_img{text-align: center;}
+	.cart_img{margin-top: 5%; width: 20%;}
 	.cart_empty_text{text-align: center;margin-bottom: 20%;}
-	.cart_empty_button{margin-top: 5%;}
-	
+	.cart_empty_button{margin-bottom: -10%;}
+	.cart_button{padding: 11px 10px; line-height: 26px; font-size:17px; background-color:#ffc107; border: 1px solid transparent; color:white; border-radius: 3px;}
 	
 </style>
 </head>
@@ -63,12 +61,11 @@
 	<c:choose>
 	<c:when test="${empty cartlist}">
 		<div class="cart_empty_img">
-			<img src="resources/img/cart.png"><br>
+			<img class="cart_img" src="resources/img/cart.png">
 		</div>
 		<div class="cart_empty_text">
-			<h1>"장바구니가 비어 있습니다."</h1>
 			<div class="cart_empty_button">
-				<button type="button" onclick="location.href='productlist.do';">상품 담기</button>
+				<button type="button" class="cart_button" onclick="location.href='productlist.do';">상품 담으러 가기</button>
 			</div>
 		</div>
 	</c:when>
