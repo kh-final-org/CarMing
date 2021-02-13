@@ -1,5 +1,3 @@
-
-
 /*<!-- 차박명소 등록 체크여부 -->*/
 	function YnCheck2(obj) {
 		$("#car").empty();
@@ -22,7 +20,6 @@
 		    N.setAttribute("value", value);
 		    
 		    document.getElementById("car").appendChild(N);	
-	       	
 	    }
 	 };
 
@@ -69,7 +66,6 @@
 			
 		});
 	
-		
 		if(category.val() == null){
 				$('#emptycategory').show();
 			}
@@ -99,17 +95,13 @@
 		var content = $('textarea[name=inquiryContent]');
 		var img = $('input[type=file]').val();
 		
-		
 				if(category == null ||
 				content.val().trim() == "" 	||
 				img == "" ){
 					alert(category+"/"+content.val()+"/"+img);
 					alert("모든 항목을 작성해 주세요");
 					return;
-					
-					
 				}
-				
 				
 				if(category != null &&
 				content.val() != "" 	&&
@@ -117,8 +109,6 @@
 					alert("문의주셔서 감사합니다.");
 					$("#target").submit();
 				}
-					
-	
 	
 };*/
 

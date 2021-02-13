@@ -11,11 +11,14 @@
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크</title>
 <style type="text/css">
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	
 	.card-container{width: 100%;}
-
 	.card-head-first{float: left;}
 	.card-head-second{float: left; margin-left: 605px;}
-	.card-head-third{position: absolute; top: 406px; right: 205px; float: right; margin-right: 10px;}
+	.card-head-third{position: absolute; top: 50.8%; right: 13.5%; float: right; margin-right: 10px;}
 	
 	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
 	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
@@ -46,7 +49,7 @@
 	.board-uploadimg-frame{display: relative;}
 	.video-thumbnail-img{position: relative;}
 	.video-icon{position: absolute; z-index: 5; top: 10px; left: 315px; cursor: pointer;}
-	.video-icon > img {width: 30px; height: 100%; opacity: 0.3;}
+	.video-icon > img {width: 30px; height: 100%; opacity: 0.5;}
 	
 	
 	#paging-container{margin: 50px 0px 20px 0px;}
@@ -107,12 +110,9 @@
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>
@@ -155,10 +155,11 @@
 			
 		
 			<div class="card-head-third" style="width: 140px;">
-				<button onclick="showall()">전체</button>
+<!-- 				<button onclick="showall()">전체</button> -->
 				<div class="dropdown-selectbox">
 			  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-						<option value="0" selected disabled>카테고리</option>
+						<option selected disabled>카테고리</option>
+						<option value="0">전체</option>
 						<option value="1">일반 캠핑</option>
 					    <option value="2">카라반</option>
 					    <option value="3">글램핑</option>
@@ -201,7 +202,7 @@
 							</div>
 							<div class="video-thumbnail-img">
 								<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
-								<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+									<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
 								</a><br>
 							</div>
 							</c:when>
@@ -227,9 +228,9 @@
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/9), '.')}"></c:set>
 			<!-- 현재 페이지 -->
-			<div class="hint-text">
-					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
-			</div>
+<!-- 			<div class="hint-text"> -->
+<%-- 					Page <b>${(empty param.page) ? 1:param.page}</b> / <b>${lastNum }</b> --%>
+<!-- 			</div> -->
 			<!-- paging 버튼  -->
 			<div class="container ml-auto" id="paging-container" align="center">
 				<nav aria-label="Page navigation example">

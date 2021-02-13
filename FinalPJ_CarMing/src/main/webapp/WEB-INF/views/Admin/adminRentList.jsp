@@ -70,6 +70,7 @@
 /* 	table.table td a:hover {color: #ff9b00;} */
 	table.table td a.settings {color: #2196f3;}
 	table.table td a.delete {color: #f44336;}
+	table.table td a .material-icons {margin: 10px 0;}
 	table.table td i {font-size: 19px;}
 	table.table .avatar {border-radius: 50%; vertical-align: middle; margin-right: 10px; }
 	.avatar {width: 5em; height: 5em;}
@@ -78,7 +79,7 @@
 	.text-info {color: #62c9e8;}
 	.text-warning {color: #FFC107;}
 	.text-danger {color: #ff5b5b;}
-	.hint-text {float: left; margin-top: 10px; font-size: 13px;}
+	.hint-text {float: left; margin-top: 20px; font-size: 13px;}
 	
 </style>
 
@@ -114,10 +115,7 @@ function myFunction() {
 	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first">
 	            <h1>The stars in the night sky</h1>
-	         	<nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	         	<nav class="d-flex align-items-center"></nav>
 	         </div>
 	      </div>
 	   </div>
@@ -176,11 +174,11 @@ function myFunction() {
 				<c:forEach var="list" items="${list}">
 					<tbody>
 						<tr>
-							<td class="cartNo" ><a href="adminRentDetail.do?cartNo=${list.cartNo}">${list.cartNo}</a></td>
+							<td class="cartNo" ><a href="adminRentDetail.do?cartNo=${list.cartNo}"><span>${list.cartNo}</span></a></td>
 							<td><a href="#"><img
 									src= "${list.memFile }" class="avatar"
-									alt="Avatar"></a></td>
-							<td>${list.memNick }</td>
+									alt="img"></a></td>
+							<td><span>${list.memNick }</span></td>
 							<td>${list.pCategoryName }</td>
 							<td>#${list.payNo }</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
@@ -231,17 +229,16 @@ function myFunction() {
 					</tbody>
 				</c:forEach>
 			</table>
-		</div>
-	</div>
-	<!-- End Container Area -->
-	<!-- ==================================================================================================
+	
+	
+			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
 			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/8), '.')}"></c:set>
 			<!-- 현재 페이지 -->
 			<div class="hint-text">
-					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
+					Page <b>${(empty param.page) ? 1:param.page}</b> / <b>${lastNum }</b> 
 			</div>
 			<!-- paging 버튼  -->
 			<div class="container ml-auto" id="paging-container" align="center">
@@ -292,6 +289,9 @@ function myFunction() {
 			</div>
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
+		</div>
+	</div>
+	<!-- End Container Area -->
 	
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>

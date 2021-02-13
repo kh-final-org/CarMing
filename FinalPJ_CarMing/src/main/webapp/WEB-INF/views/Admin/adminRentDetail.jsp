@@ -71,17 +71,13 @@
 	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
 	         <div class="col-first" id="banner-text-1">
 	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	            <nav class="d-flex align-items-center"></nav>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
 	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='sendRent.do?cartNo=${list.cartNo}'">상품 배송</button>
 	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='returnRent.do?cartNo=${list.cartNo}'">반납 완료</button>
-	       	 	<br>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminRentList.do'">렌트 목록</button>
 	         </div>
 		  </div>

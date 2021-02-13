@@ -13,49 +13,53 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="resources/js/category.js?ver=4"></script>
+<style type="text/css">
+ 	.col-first{margin: -1% 60% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}	
+
+</style>
+
 </head>
 <body>
 	<%@include file="../common/header.jsp" %>
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>캠핑 렌트</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.html">홈<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">마이페이지<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">카테고리</a><br><br>
-					</nav>
-				</div>
-			</div>
-		</div>
+	   <div class="container">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	         <div class="col-first" id="banner-text-1">
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
+	         </div>
+	      </div>
+	   </div>
 	</section>
 	<!-- End Banner Area -->
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-3 col-lg-4 col-md-5">
 				<div class="sidebar-categories"> 	
-					<div class="head">렌트 카테고리</div>
+					<div class="head">카테고리</div>
 					<input type="hidden" id="pCateNo" value="${pCateNo}">
 					<ul class="main-categories">
 						<li class="main-nav-list"><a id="all_category"  href="productlist.do?viewNo=${viewNo}&pCateNo=6"><span
-								 class="lnr lnr-arrow-right"></span>전체<span class="number"></span></a>
+							class="lnr lnr-arrow-right"></span>전체<span class="number"></span></a>
 						</li>
 						<li class="main-nav-list"><a id="tent" data-pCategoryNo="1" href="productlist.do?viewNo=${viewNo}&pCateNo=1" ><span
-								 class="lnr lnr-arrow-right"></span>텐트 / 타프<span class="number"></span></a>
+							class="lnr lnr-arrow-right"></span>텐트 / 타프<span class="number"></span></a>
 						</li>
 						<li class="main-nav-list"><a id="bag" data-pCategoryNo="2" href="productlist.do?viewNo=${viewNo}&pCateNo=2" ><span
-								 class="lnr lnr-arrow-right"></span>매트 / 침낭<span class="number"></span></a>
+					    	class="lnr lnr-arrow-right"></span>매트 / 침낭<span class="number"></span></a>
 						</li>
 						<li class="main-nav-list"><a id="bunner" data-pCategoryNo="3" href="productlist.do?viewNo=${viewNo}&pCateNo=3" ><span
-								 class="lnr lnr-arrow-right"></span>코펠 / 버너 / 취사<span class="number"></span></a>
+							class="lnr lnr-arrow-right"></span>코펠 / 버너 / 취사<span class="number"></span></a>
 						</li>
 						<li class="main-nav-list"><a id="chair" data-pCategoryNo="4" href="productlist.do?viewNo=${viewNo}&pCateNo=4" ><span
-								 class="lnr lnr-arrow-right"></span>체어 / 테이블<span class="number"></span></a>
+							class="lnr lnr-arrow-right"></span>체어 / 테이블<span class="number"></span></a>
 						</li>
 						<li class="main-nav-list"><a id="bbq" data-pCategoryNo="5" href="productlist.do?viewNo=${viewNo}&pCateNo=5" ><span
-								 class="lnr lnr-arrow-right"></span>화로대 / BBQ<span class="number"></span></a>
+							class="lnr lnr-arrow-right"></span>화로대 / BBQ<span class="number"></span></a>
 						</li>
 					</ul>
 				</div>
@@ -105,6 +109,7 @@
 					</c:if>
 				</div>
 				<!-- End Filter Bar -->
+				
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
 					<div class="row">
@@ -169,9 +174,9 @@
 			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/viewNo), '.')}"></c:set>
-			<div class="hint-text">
-				Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
-			</div>
+<!-- 			<div class="hint-text"> -->
+<%-- 				Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages --%>
+<!-- 			</div> -->
 			<!-- 현재 페이지 -->
 			<div class="filter-bar d-flex flex-wrap align-items-center">
 				<!-- paging 버튼  -->

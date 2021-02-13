@@ -13,6 +13,10 @@
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 게시글 상세 페이지</title>
 <style type="text/css">
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+
 	.card-first{float: left; margin: 100px 50px 100px 50px;}
 	.card-second{float: left; width: 500px;}
 	.card-third{float: right; margin: 100px 90px;}
@@ -39,6 +43,7 @@
 	.board-modify{float: left; margin-left: 0px 10px;}
 	.board-delete{float: left; margin-left: 1px; margin-right: 5px;}
 	#board-option-btn{color: gray; background:#fff; border: 0; padding: 0; cursor: pointer; outline: none;}
+	textarea#update2{width: 315px; pdding: 0; border: none; resize: none; outline: none; color: gray;}
 	
 	.card-body-5{margin: 10px 0px;}
 	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
@@ -130,14 +135,13 @@ function update(brdno){
 				if(msg.check==true){
 					location.href="boarddetailform.do?brdno="+brdno;
 				}else{
-					alert("수정 실패");
+					alert("게시글 수정에 실패하였습니다.");
 				}
 			},
 			error:function(){
-				console.error("게시글 수정 실패");
+				console.error("게시글 수정에 실패하였습니다.");
 				alert("통신에러");
 			}
-
 	});
 	}
 }
@@ -161,7 +165,7 @@ function update(brdno){
 	    var button = document.createElement("input");
 	    button.setAttribute("onclick","update(${dto.brdno})");
 	    button.setAttribute("type","button");
-	    button.setAttribute("value","올리기");
+	    button.setAttribute("value","수정 완료");
 	    button.setAttribute("id","board-option-btn");
 	   // <input type="button" onclick="updateform()"  value="수정" id="board-option-btn">
 	    
@@ -191,12 +195,9 @@ function update(brdno){
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>

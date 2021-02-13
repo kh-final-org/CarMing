@@ -22,7 +22,7 @@
     .login-logo{width: 140px; height: 100%; margin-top: -5px;}
 	    
 	.content-form{max-width: 78%; border: 1px solid #e2e2e2; border-radius: 10px; padding: 40px 0px; background: #fff5e9;}
-	h4{padding-left: 9%; text-align: left; margin: 0 10px 10px; color: #5f5f5f; font-size: 1.2em; font-weight: bold;}
+	h4{padding-left: 7%; text-align: left; margin: 0 10px 10px; color: #5f5f5f; font-size: 1.2em; font-weight: bold;}
 	.content-panel{width: 85%; padding: 15px 20px; border: 1px solid #ccc; border-radius: 5px; 
 				   background: #fafafa; color: gray;} 
 	.content-panel-text{font-size: 0.95em; text-align: left;}

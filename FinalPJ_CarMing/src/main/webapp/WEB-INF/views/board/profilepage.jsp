@@ -11,15 +11,18 @@
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 프로필 페이지</title>
 <style type="text/css">
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
 	.card-container{width: 100%;}
 
-	.card-profile{float: left; width: 27%; height: 400px; margin-right: 80px; margin-top: 40px; 
+	.card-profile{float: left; width: 27%; height: 400px; margin: 3.8% 5% 0 0; 
 				  border-radius: 10px; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.14);}	
-	.profilepage-profile{margin: 70px 63px 25px 63px;}	
+	.profilepage-profile{margin: 22% 21.5%;}	
 	.user-profile{width: 170px; height: 170px; border-radius: 5em;}
-	.user-id{font-size:1.6em; margin: 15px 38px 10px 38px; width: 100px; text-align: center;}
-	.profilepage-message{margin: 10px 0px 10px 74px;}
-	.user-message{width: 30px; height: 30px;opacity: 0.6;}
+	.user-id{font-size:1.6em; margin: 8% 23%; width: 100px; text-align: center; font-weight: bold;}
+	.profilepage-message{margin: -13% 25%; width: 80%;}
+	.user-message{width: 30px; height: 30px; opacity: 0.6;}
 	.user-message-text{font-size:1.2em; color: gray;}
 	#member-report-target{font-size: 1.2em; color: silver;}
 	
@@ -30,6 +33,11 @@
 	.boardlist-img{width: 235px; height: 235px; border-radius: 5px; transform: scale(1.00);	transition: transform .2s;}
 	.boardlist-img:hover{transform: scale(1.02); transition: transform .2s;}
 	.boardlistup{overflow: hidden; border-radius: 5px; margin-bottom: 10px;}
+	
+	.board-uploadimg-frame{display: relative;}
+	.video-thumbnail-img{position: relative;}
+	.video-icon{position: absolute; z-index: 5; top: 5px; left: 200px; cursor: pointer;}
+	.video-icon > img {width: 25px; height: 100%; opacity: 0.5;}
 	
 	#board-photo{float: left;}
 	
@@ -45,12 +53,9 @@
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>
@@ -88,9 +93,26 @@
 			<div class="card-boardlist">
 				<div class="boardlistup" id="board-photo">
 					<div class="boardlistup-frame">
-						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
-							<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
-						</a>
+						<c:choose>
+							<c:when test="${dto.brdvideoname eq 'N' }">
+								<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
+									<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
+								</a>
+							</c:when>
+							
+							<c:when test="${dto.brdvideoname ne 'N' }">
+								<div class="video-icon">
+									<img class="user-profile" src="./resources/img/video.png">
+								</div>
+								<div class="video-thumbnail-img">
+									<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
+										<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
+									</a>
+								</div>
+							</c:when>
+							
+						
+						</c:choose>
 					</div>
 				</div>
 			</div>

@@ -28,6 +28,7 @@
 
 <style type="text/css">
 	.container{padding-top: 50px;}
+	.col-first{margin-top: -10%;}
 	#memlist_tb{width:100%; }
 	#memlist_tb:hover tbody tr:hover td {background: #fff5e9; transition: 0.2s; }
 	#paging-container{margin: 50px 0px 20px 0px;}
@@ -58,6 +59,7 @@
 /* 	table.table td a:hover {color: #ff9b00;} */
 	table.table td a.settings {color: #2196f3;}
 	table.table td a.delete {color: #f44336;}
+	table.table td a .material-icons {margin: 10px 0;}
 	table.table td i {font-size: 19px;}
 	table.table .avatar {border-radius: 50%; vertical-align: middle; margin-right: 10px; }
 	.avatar {width: 5em; height: 5em;}
@@ -66,7 +68,7 @@
 	.text-info {color: #62c9e8;}
 	.text-warning {color: #FFC107;}
 	.text-danger {color: #ff5b5b;}
-	.hint-text {float: left; margin-top: 10px; font-size: 13px;}
+	.hint-text {float: left; margin-top: 20px; font-size: 13px;}
 </style>
 
 
@@ -109,8 +111,8 @@ function formAction() {
 	         <div class="col-first">
 	            <h1>The stars in the night sky</h1>
 	         	<nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
+<!-- 	        	<a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp; -->
+<!-- 	            <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a> -->
 	            </nav>
 	         </div>
 	      </div>
@@ -146,16 +148,16 @@ function formAction() {
 				<col style="width: 10%">
 				<col style="width: 7.5%">
 				<col style="width: 7.5%">
+				<col style="width: 12%">
 				<col style="width: 15%">
 				<col style="width: 15%">
-				<col style="width: 20%">
 				<col style="width: 15%">
-				<col style="width: 10%">
-				<col style="width: 10%">
+				<col style="width: 8%">
+				<col style="width: 8%">
 				<thead>
 					<tr>
 						<th>NO.</th>
-						<th>프로필 사진</th>
+						<th>프로필<br>사진</th>
 						<th>이름</th>
 						<th>닉네임</th>
 						<th>생년월일</th>
@@ -163,7 +165,7 @@ function formAction() {
 						<th>주소</th>
 						<th>핸드폰</th>
 						<th>성별</th>
-						<th>회원삭제</th>
+						<th>삭제</th>
 					</tr>
 				</thead>
 				<c:forEach var="list" items="${list }">
@@ -173,7 +175,7 @@ function formAction() {
 
 						<td>
 							<a href="profileform.do?memno=${list.memNo}">
-								<img src="${list.memFile }" class="avatar"alt="Avatar">
+								<img src="${list.memFile }" class="avatar" alt="img">
 							</a>
 						</td>
 						<td class="memName"><span>${list.memName}</span></td>
@@ -195,11 +197,10 @@ function formAction() {
 						<td>${list.memAddr}</td>
 						<td>${list.memPhone}</td>
 						<td><c:set var="gen" value="${list.memGender }" />
-
-								<c:choose>
-									<c:when test="${gen == 2 }">여</c:when>
-									<c:when test="${gen == 1 }">남</c:when>
-								</c:choose> <!--    <td><span class="status text-success">&bull;</span> Active</td> -->
+							<c:choose>
+								<c:when test="${gen == 2 }">여</c:when>
+								<c:when test="${gen == 1 }">남</c:when>
+							</c:choose> <!--    <td><span class="status text-success">&bull;</span> Active</td> -->
 						</td>
 						<td><a href="deletemem.do?memNo=${list.memNo}" class="delete" title="Delete"
 							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
@@ -217,7 +218,7 @@ function formAction() {
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.')}"></c:set>
 			<!-- 현재 페이지 -->
 			<div class="hint-text">
-					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
+					Page <b>${(empty param.page) ? 1:param.page}</b> / <b>${lastNum }</b> 
 			</div>
 			<!-- paging 버튼  -->
 			<div class="container ml-auto" id="paging-container" align="center">
@@ -268,9 +269,10 @@ function formAction() {
 			</div>
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
-			</div>
 		</div>
-
+	</div>
+	<!-- End Container Area -->
+	
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>
 	<!-- End footer Area -->

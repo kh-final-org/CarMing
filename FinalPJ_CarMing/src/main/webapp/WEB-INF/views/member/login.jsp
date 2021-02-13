@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 로그인</title>
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -82,8 +82,7 @@
 
 				</form>        
 		   	</div>
-		   									<!-- 암호화 다시 추가시 삭제구역 -->
-		   	<input type="button" value="비밀번호 암호화" onclick="passwordenc()"/>
+<!-- 	  	<input type="button" value="비밀번호 암호화" onclick="passwordenc()"/> -->
 		</section>
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

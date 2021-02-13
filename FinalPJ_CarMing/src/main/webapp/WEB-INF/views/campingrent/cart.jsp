@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@
-	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
-%>
- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
@@ -15,7 +12,11 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="resources/js/cartlist.js?ver=5"></script>
 <style type="text/css">
-	#banner-text-2{position: absolute; top: 255px; right: 245px;}
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	#banner-text-2{position: absolute; top: 62%; right: 14%;}
+	
 	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
@@ -24,12 +25,14 @@
 						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
 	.banner-btn:hover::before{height: 180%;}
 	
+	.card-container-cartform{padding: 60px 200px;}
 	.cart_empty_img{text-align: center;}
-	.cart_img{margin-top: 5%; width: 20%;}
-	.cart_empty_text{text-align: center;margin-bottom: 20%;}
-	.cart_empty_button{margin-bottom: -10%;}
-	.cart_button{padding: 11px 10px; line-height: 26px; font-size:17px; background-color:#ffc107; border: 1px solid transparent; color:white; border-radius: 3px;}
-	
+	.cart_img{width: 200px; height: 100%;}
+	.cart_empty_text{text-align: center; margin-bottom: 20%;}
+	.cart_empty_button{margin: 3% -1% -20% 1%;}
+	.cart_button{padding: 0.8% 1.5%; line-height: 30px; font-size: 1.2em; background: #ffe6be; border: none;
+				 color: gray; border-radius: 5px; cursor: pointer;}
+	.cart_button:hover{background: #ffdb9f; transition: 0.2s;}
 </style>
 </head>
 <body>
@@ -38,13 +41,10 @@
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first" id="banner-text-1">
-	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
@@ -60,12 +60,14 @@
 	<!--================Cart Area =================-->
 	<c:choose>
 	<c:when test="${empty cartlist}">
-		<div class="cart_empty_img">
-			<img class="cart_img" src="resources/img/cart.png">
-		</div>
-		<div class="cart_empty_text">
-			<div class="cart_empty_button">
-				<button type="button" class="cart_button" onclick="location.href='productlist.do';">상품 담으러 가기</button>
+		<div class="card-container-cartform">
+			<div class="cart_empty_img">
+				<img class="cart_img" src="resources/img/pengcart.jpg">
+			</div>
+			<div class="cart_empty_text">
+				<div class="cart_empty_button">
+					<button type="button" class="cart_button" onclick="location.href='productlist.do';">카트에 상품 담으러 가기</button>
+				</div>
 			</div>
 		</div>
 	</c:when>
