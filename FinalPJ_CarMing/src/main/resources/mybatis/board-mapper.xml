@@ -31,7 +31,7 @@
 	FROM BOARD B
 	JOIN BCATEGORY BC
 	ON B.BCATEGORYNO = BC.BCATEGORYNO
-	WHERE BRDWRITER LIKE '%' ||  #{search}  || '%' OR BCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR B.BCATEGORYNO LIKE  '%' ||  #{categoryNo}  || '%'
+	WHERE B.BCATEGORYNO LIKE  '%' ||  #{categoryNo}  || '%'
 	ORDER BY BRDDATE DESC) BRD WHERE BRDPRIVATE='N')
 	WHERE RNUM BETWEEN 1 + (#{page} -1) * 6 AND #{page}  * 6
 	
@@ -47,7 +47,7 @@
 	FROM BOARD B
 	JOIN BCATEGORY BC
 	ON B.BCATEGORYNO = BC.BCATEGORYNO
-	AND BRDWRITER LIKE '%' ||  #{search}  || '%' OR BCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR B.BCATEGORYNO LIKE  '%' ||  #{categoryNo}  || '%'
+	WHERE B.BCATEGORYNO LIKE  '%' ||  #{categoryNo}  || '%'
 	ORDER BY BRDDATE DESC) BRD WHERE BRDPRIVATE='N')
 	
 	</select>

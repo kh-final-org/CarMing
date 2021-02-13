@@ -55,37 +55,6 @@
 	       주황색: #ff9b00, 쨍한 노랑: #ffba00; 진진노랑(hover): #ffdb9f; 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
 
-<script type="text/javascript">
-	function myFunction() {
-	    var selectbox, filter, a, txtValue, list;
-	    selectbox = document.getElementById("selectbox");
-	    filter = selectbox.value
-	
-	    list = document.getElementsByClassName("card-body");
-
-	    for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("category")[i];
-	        txtValue = a.textContent || a.innerText;
-	       
-	        if (txtValue == 0){
-	        	list[i].style.display = "";
-	        }
-	        if (txtValue.indexOf(filter) > -1 ) {
-	        	list[i].style.display = "";
-	        } else {
-	        	list[i].style.display = "none";					
-	        }
-		}
-	}
-</script>
-<script type="text/javascript">
-	function showall() {
-		list = document.getElementsByClassName("card-body");
-		 for(i=0; i<list.length; i++){
-			 list[i].style.display ="";
-		 }
-	}
-</script>
 <script>
 	function popoutFunction() {
 		var x = document.getElementById("upload-popout");
@@ -97,7 +66,15 @@
 		}  
 </script>
 
+<!-- 카테고리 -->
+<script type="text/javascript">
+function category(){
 
+ 	var pCateNo = document.getElementById("selectbox").value;
+	
+	location.href="boardmainform.do?categoryNo="+pCateNo;
+}
+</script>
 
 
 </head>
@@ -158,15 +135,14 @@
 			
 		
 			<div class="card-head-third" style="width: 140px;">
-				<button onclick="showall()">전체</button>
 				<div class="dropdown-selectbox"> 
-			  		<select class="selectpicker form-control" name="selectbox" id="selectbox" aria-label="Example select with button addon" >
-						<option ${(param.selectbox == "") ? "selected" : ""} value="" selected>전체선택</option>
-						<option ${(param.selectbox == "1") ? "selected" : ""} value="1">일반 캠핑</option>
-					    <option ${(param.selectbox == "2") ? "selected" : ""} value="2">카라반</option>
-					    <option	${(param.selectbox == "3") ? "selected" : ""} value="3">글램핑</option>
-					    <option ${(param.selectbox == "4") ? "selected" : ""} value="4">차박</option>
-					    <option ${(param.selectbox == "5") ? "selected" : ""} value="5">나만의 캠핑</option>
+			  		<select onchange="category()"   class="selectpicker form-control" name="selectbox" id="selectbox" aria-label="Example select with button addon" >
+						<option value="" selected>전체선택</option>
+						<option value="1">일반 캠핑</option>
+					    <option value="2">카라반</option>
+					    <option	value="3">글램핑</option>
+					    <option value="4">차박</option>
+					    <option value="5">나만의 캠핑</option>
 				  	</select>
 
 				  	
@@ -231,7 +207,7 @@
 			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/6), '.')}"></c:set>
-	  	<%-- 	<c:set var="categoryNo" value="${param.selectbox }"></c:set> --%>
+	  		<c:set var="categoryNo" value="${param.selectbox }"></c:set>
 			<!-- 현재 페이지 -->
 			<div class="hint-text">
 					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
@@ -243,7 +219,7 @@
 						<!-- 이전 버튼 -->
 						<c:if test="${startNum > 1 }">
 							<li class="page-item">
-								<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}&categoryNo=${param.selectbox}" aria-label="Previous">
+								<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
 					 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
 						    	</a>
 						   	</li>
@@ -260,14 +236,14 @@
 						<c:forEach var="i" begin="0" end="4">
 							<c:if test="${(startNum + i ) <= lastNum }">
 							<!-- 현재 페이지 style 변경 -->
-							<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&categoryNo=${param.selectbox}">${startNum + i }</a></li>
+							<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
 							</c:if>
 						</c:forEach>
 					  			
 					  	<!-- 다음 버튼 -->
 					  	<c:if test="${startNum + 4 < lastNum }">
 						    <li class="page-item">
-						    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}&categoryNo=${param.selectbox}" aria-label="Next">
+						    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
 						    		<span aria-hidden="true">&raquo;</span>
 						      	</a>
 						   	</li>

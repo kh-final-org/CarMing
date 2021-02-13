@@ -47,6 +47,9 @@
 				<input type="button" class="profile-btn" id="profile-btn-1" value="회원 목록" onclick="location.href='memberlist.do'">
 				<input type="button" class="profile-btn" id="profile-btn-1" value="제품 목록" onclick="location.href='adminProductList.do'">
 			</div>
+			<div class="my-desc">
+			<input type="button" class="profile-btn" id="profile-btn-1" value="프로필 수정" onclick="location.href='profilechangeform.do'">
+			</div>
 		</div>
 		<!-- Start BoardList/Map Area -->
 		<div class="card-body" >

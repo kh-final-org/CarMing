@@ -188,9 +188,9 @@ private InquiryBiz Ibiz;
 		int res = biz.deleteRent(cartNo);
 		System.out.println(cartNo);
 		if(res>0) {
-			return "redirect: adminRentList.do";
+			return "redirect: adminPage.do";
 		}else {
-			return "redirect: adminRentDetail.do";
+			return "redirect: adminPage.do";
 		}
 	}
 }

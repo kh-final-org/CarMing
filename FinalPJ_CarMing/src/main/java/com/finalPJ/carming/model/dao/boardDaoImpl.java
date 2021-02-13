@@ -27,7 +27,7 @@ public class boardDaoImpl implements boardDao{
 		
 		map.put("search", search);
 		map.put("page", Integer.toString(page));
-		map.put("categorNo", categoryNo);
+		map.put("categoryNo", categoryNo);
 		
 		try {
 			list = sqlSession.selectList(NAMESPACE+"selectList",map);
