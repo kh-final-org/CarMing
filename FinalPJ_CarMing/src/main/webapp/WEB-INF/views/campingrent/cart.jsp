@@ -15,7 +15,7 @@
 	.col-first{margin: -1% 63.5% 0 -18%; } 
 	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
 	.text-1{margin: -5% 0 3%;}
-	#banner-text-2{position: absolute; top: 62%; right: 14%;}
+	#banner-text-2{position: absolute; top: 60%; right: 14%;}
 	
 	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  

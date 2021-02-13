@@ -9,299 +9,174 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 동영상 올리기</title>
-<link rel="stylesheet" href="resources/css/board_v.css">
+<!-- <link rel="stylesheet" href="resources/css/board_v.css"> -->
+<style type="text/css">
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	
+	.card-container{margin: 50px 190px 50px 220px;}
+    .card-body{padding: 0px;}
+   	
+   	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 0 2% 0 -2%;}
+   	.uploadimg {width: 310px; height: 310px;}
+	.img_wrap {width: 300px; height: 280px; margin-top: 10px;}
+	.img_wrap img {max-width: 100%; max-height: 100%;}
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 130px;}	
+	.upload-img-form{position: relative; width: 530px; height: 300px; border: 1px solid #e2e2e2;
+					 border-radius: 10px; margin-bottom: 15px; background: #fff; margin-bottom: -10px;}
+   	.upload-img-content{position: absolute; margin-top: 18px; width: 530px;}
+   	.upload-video-content{position: absolute; margin: 65px 0 0 1px; width: 530px;}
+   	.video-icon{margin-top: -8px; width: 120px; height: 120px; opacity: 25%;}
+	
+    .card-body-right{float: right; width: 530px; height: 450px;}
+    .current{padding-left: 5px;}
+    li.option.selected.disabled.focus{width: 503px;}
+    .body-content{margin-top: 55px; font-size: 1.2em;}
+    textarea {padding: 10px 14px; border: 1px solid silver; border-radius: 5px;}
+    textarea::placeholder{color: silver;}
+    .location-logo{width: 25px;height: 25px;}
+    .body-location{margin: 8px 0px;}
+    .body-location-left{float: left; width: 77%;}
+    .body-location-right{float: right; width: 21.5%; margin-right: 0;}
+    .location-logo-text{display: inline-block; vertical-align: middle;}
+    .body-checklist{margin: 3% 0.5% 0;}   
+    .latlong-input-value{margin-top: 10px;}
+	  
+    .card-body-bottom{clear: both; margin: 0 34.5% 0; padding: 0px;}   
+   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; outline: none;
+   						font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
+   	#button-boardupload:hover{background: #ffdb9f; transition: 0.2s; border: 0;}
 
+	.chkprivate-box{float: left;}
+	.chkcarplace-box{float: left; margin-left: 5px;}
+	.checkbox input{display: none;}
+	.checkbox span{display: inline-block;vertical-align: middle;cursor: pointer;}
+	.checkbox .icon{position: relative;width: 20px; height: 20px;border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
+	.checkbox .icon::after{content: ''; position: absolute;top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
+						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
+	.checkbox .text{margin-left: 5px;}
+	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
+	.checkbox input:checked ~ .icon::after{opacity: 1;transform: rotate(45deg) scale(1);}
+	  
+	.location-open{color: gray;}
+	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
+	        text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
+	.popup:target{opacity: 1;}
+	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 158%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
+	.popup:target + .popup-dim{opacity: 1; z-index: 2;} 
+	.popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
+	.location-cancel{position: absolute; top: 10px; right: 15px;}
+  
+	.popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
+	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
+	.searchimg{width: 20px; height: 20px; opacity: 50%;}
+	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
+	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px; outline: none;}
+	#location-finish-btn:hover{background-color: #ffdb9f;}
+	#clickLatlng{text-align: center; margin-top: -5px;}
+
+	.board-err{float: left; width: 72%; margin-left: 3%; font-size:1.1em; color:red; padding-bottom:1%;padding-top:1%; }
+	.board-img-err{float: left; width: 72%; margin-left: -1%; margin-bottom:2%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; }
+	.board-img-err-bottom{float: left; width: 72%; margin-left: -1%; margin-top: 10%; margin-bottom:-1%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; }
+	#emptyimg{position: absolute; z-index: 1000; bottom: -11%; left: 32%;}
+	#emptyvideo{position: absolute; z-index: 1000;  bottom: 35%; left: 58%;}
+	#emptycategory{position: absolute; z-index: 1000; top: 55%; left: 70%;}
+	#emptycontent{position: absolute; z-index: 1000; top: 81%; left: 60%; }
+	#emptymap{position: absolute; z-index: 1000; bottom: -11.2%; left: 50.5%; }
+
+</style>
+<script type="text/javascript" src="resources/js/board_v.js?ver=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
-
-<!-- location-popup -->
-<script>
-	function myFunction() {
-		var x = document.getElementById("location-popup");
-			if (x.style.display == "none") {
-				x.style.display = "block";
-			} else {
-				x.style.display = "none";
-			} 
-		}  
-</script>
-
-<!-- 사진 업로드(미리보기) -->
+<!-- 모든 항목 기입해야 insert -->
 <script type="text/javascript">
-	var sel_file;
-	$(document).ready(function() {
-		$("#input_img").on("change", handleImgFileSelect);
-	});
-
-	function handleImgFileSelect(e) {
-		$("#img").empty(); //remove는 태그 자체를 지운다 
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-
-		/* if (files.name == null) {
-		   resetInputFile();
-		} */
-		filesArr.forEach(function(f) {
-			if (!f.type.match("image.*")) {
-				alert("확장자는 이미지 확장자만 가능합니다.");
-				return;
-			}
-			sel_file = f;
-
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$("#img").attr("src", e.target.result);
-				$("#img").attr("width", "90%");
-				$("#img").attr("height", "440px");
-			}
-			reader.readAsDataURL(f);
-		})
-	}
-
-	function resetInputFile() {
-		$("#img").empty();
-	}
-</script>
-
-<!-- 업로드한 파일명 추출  -->
-<script type="text/javascript">
-	$(document).ready(function(){ 
-		var fileTarget = $('.upload-video-content .custom-file-input');
-		
-		fileTarget.on('change', function(){ // 값이 변경되면 
-			if(window.FileReader){ // modern browser 
-				var filename = $(this)[0].files[0].name; 
-			} else { // old IE
-				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-		
-			// 추출한 파일명 삽입
-			$(this).siblings('.custom-file-input').val(filename); 
-		}); 
-	});
-</script>
-
-<!-- 나만보기 체크여부 -->
-<script type="text/javascript">
-	function YnCheck(obj) {
-		$("#my").empty();
-	    var checked = obj.checked;
-	
-	    if(checked){
-	    	var value = obj.value = "Y";
-    	    var Y = document.createElement("input");
-		    Y.setAttribute("name", "brdprivate");
-		    Y.setAttribute("type", "text");
-		    Y.setAttribute("value", value);
-		    
-		    document.getElementById("my").appendChild(Y);	
-	
-	    }else{
-	    	var value = obj.value = "N";
-	       	var N = document.createElement("input");
-	       	N.setAttribute("name", "brdprivate");
-		    N.setAttribute("type", "text");
-		    N.setAttribute("value", value);
-		    
-		    document.getElementById("my").appendChild(N);	
-	    }
-	    
-	 };
-</script> 
-
-<!-- 차박명소 등록 체크여부 -->
-<script type="text/javascript">
-	function YnCheck2(obj) {
-		$("#car").empty();
-	    var checked = obj.checked;
-	
-	    if(checked){
-	    	var value = obj.value = "Y";
-	        var Y = document.createElement("input");
-		    Y.setAttribute("name", "carmapchk");
-		    Y.setAttribute("type", "text");
-		    Y.setAttribute("value", value);
-		    
-		    document.getElementById("car").appendChild(Y);	
-		    
-	    }else{
-	    	var value = obj.value = "N";
-	    	var N = document.createElement("input");
-	       	N.setAttribute("name", "carmapchk");
-		    N.setAttribute("type", "text");
-		    N.setAttribute("value", value);
-		    
-		    document.getElementById("car").appendChild(N);	
-	       	
-	    }
-	 };
-</script>
-
-<!-- 카테고리 차박이 아닐 경우 '차박 체크박스' 숨기기 -->
-<script type="text/javascript">
-	function carPlaceChk() {
-	    var selectbox, filter, a, txtValue, list;
-	    selectbox = document.getElementById("selectbox");
-	    filter = selectbox.value
-	
-	    list = document.getElementsByClassName("chkcarplace-box");
-	    
-	    for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("chkcarplace-box")[i];
-	        txtValue = a.textContent || a.innerText;
-	        
-	        
-	        if (txtValue.indexOf(filter) > -1) {
-	        	list[i].style.display = "";
-	        	
-	        } else {
-	        	list[i].style.display = "none";
-	        }
-		}
-	}
-</script>
-<!-- 이미지 이름 보여주기 -->
-<script type="text/javascript">
-	 $(document).ready(function(){
-			var img = $('#input_img');
-			var vid = $('#video-file');
-
-			
-
-				 img.change(function(){
-				$('#emptyimg').hide();
-				console.log(img.val())
-				
-				var filename = img.val().split('\\').pop();
-			    $('#filename').text(filename); 
-			 
-			    	
-				});
-			
-				vid.change(function(){
-				$('#emptyvideo').hide();
-				console.log(vid.val())
-				
-				var videofilename = vid.val().split('\\').pop();
-			    $('#videofilename').text(videofilename); 
-			 
-				    	
-					});
-				
-				
-		 });	
-</script>
-<!-- 넘어가지 않게 하는 스크립트 -->
-<script type="text/javascript">
-	 
- function board(){
-			
-			var img = $('#input_img');
-			var vid = $('#video-file');
-			var category = $('select[name=bcategoryno]');
-			var content = $('textarea[name=brdcontent]');	
-			var place = $('#place');
-			var mapname = $('#mapname')
-
-			
-				 
-					if(category.val() == null){
-						$('#emptycategory').show();
-						
-					} 
-					
-					category.change(function(){
-						$('#emptycategory').hide();
-						});
-					
-					
-					if(content.val().trim()== ""){
-						$('#emptycontent').show();
-						
-					}
-					content.keyup(function(){
-					$('#emptycontent').hide();
-					
-					}); 
-					
-					 if(img.val() == ""){
-						$('#emptyimg').show();
-					}
-					
-					 if(vid.val() == ""){
-						$('#emptyvideo').show();
-					}
-					
-
-					 if(place.val().trim() == ""){
-							$('#emptymap').show();
-							
-						};  
-					
-						/* if(mapname.val() != ""){
-							$('#emptymap').hide();
-					        alert(mapname.val()+"mapnameval"); 
-						};   */
-					
-
-						$('#location-finish-btn').click(function(){
-							if(mapname.val() != ""){
-								$('#emptymap').hide();
-							};  
-						}); 
-					
-				/* 	
-					  $('#location-finish-btn').click(function(){
-						 if(mapname.val().trim() == ""){
-								$('#emptymap').hide();
-								$('#emptymapname').show();
-						        alert(mapname.val()+"he"); 
-						};  
-						if(mapname.val() != ""){
-							$('#emptymap').hide();
-							$('#emptymapname').hide();
-					        alert(mapname.val()+"he2"); 
-						};  
-						alert("click");
-					});   */
-					
-					
-					
-					
-					 mapname.keyup(function(){
-						 if(mapname.val().trim() != ""){
-								$('#emptymap').hide();
-						}; 
-					}); 
+	function board(){
+		var img = $('#input_img');
+		var vid = $('#video-file');
+		var category = $('select[name=bcategoryno]');
+		var content = $('textarea[name=brdcontent]');	
+		var place = $('#place');
+		var mapname = $('#mapname')
 					 
+			if(category.val() == null){
+				$('#emptycategory').show();
+			} 
+			category.change(function(){
+				$('#emptycategory').hide();
+			});
+			
+			if(content.val().trim()== ""){
+				$('#emptycontent').show();
+			}
+			content.keyup(function(){
+				$('#emptycontent').hide();
+			}); 
+			
+			if(img.val() == ""){
+				$('#emptyimg').show();
+			}
+			
+			if(vid.val() == ""){
+				$('#emptyvideo').show();
+			}
+			
+			if(place.val().trim() == ""){
+				$('#emptymap').show();
+			};  
+			
+				/* if(mapname.val() != ""){
+					$('#emptymap').hide();
+			        alert(mapname.val()+"mapnameval"); 
+				};   */
+			
 
-						
-						
-					 if(category.val() == null ||
-					content.val().trim() == "" 	||
-					img.val() == "" ||
-					mapname.val() == ""){
-						alert("모든 항목을 작성해 주세요");
-						return;
-						
-						
-					}  	
-					
-					if(category != null &&
-					content.val() != "" &&
-					img != null &&
-					mapname.val() != null )	{
-						alert("게시글이 작성 되었습니다.");
-						$("#target").submit();
-					}
-						 
-
-
+				$('#location-finish-btn').click(function(){
+					if(mapname.val() != ""){
+						$('#emptymap').hide();
+					};  
+				}); 
+			
+			/* 	
+			  $('#location-finish-btn').click(function(){
+				 if(mapname.val().trim() == ""){
+						$('#emptymap').hide();
+						$('#emptymapname').show();
+				        alert(mapname.val()+"he"); 
+				};  
+				if(mapname.val() != ""){
+					$('#emptymap').hide();
+					$('#emptymapname').hide();
+			        alert(mapname.val()+"he2"); 
+				};  
+				alert("click");
+			});   */
+			
+			mapname.keyup(function(){
+				 if(mapname.val().trim() != ""){
+						$('#emptymap').hide();
+				}; 
+			}); 
+				
+				
+			if(category.val() == null ||
+				content.val().trim() == "" 	||
+				img.val() == "" ||
+				mapname.val() == ""){
+					alert("모든 항목을 기입해주세요.");
+				return;
+			}  	
+			
+			if(category != null &&
+				content.val() != "" &&
+				img != null &&
+				mapname.val() != null )	{
+				alert("게시글이 등록되었습니다.");
+				$("#target").submit();
+			}
 		};
-	 
-	 
 </script>
 
 
@@ -315,12 +190,9 @@
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>
@@ -336,7 +208,7 @@
 		</div>
 		
 		<div class="card-body">
-			<div class="board-img-err" id="emptyimg">사진을 선택헤 주세요</div>
+			<div class="board-img-err" id="emptyimg">썸네일 사진을 선택해주세요.</div>
 			<!-- Image/Video Upload-->
 			<div class="card-body-left">
 				<div class="upload-img-form">
@@ -352,16 +224,18 @@
 			
 				<div class="upload-video-form">
 					<div class="upload-video-content">
-						<label id="videofilename"  class="custom-file-label" for="video-file"><span class="board-img-err-bottom" id="emptyvideo">비디오를 선택헤 주세요</span></label>
+						<label id="videofilename"  class="custom-file-label" for="video-file">
+							<span class="board-img-err-bottom" id="emptyvideo">영상을 선택해주세요.</span>
+						</label>
 						<input type="file" class="custom-file-input" id="video-file" name="brdvideo" accept="video/*">
 					</div>
 				</div>
 			</div>
-			<br>
+			
 			<!-- Start Upload Contents Area -->
 			<div class="card-body-right">
 				<!-- Category -->
-				<div class="board-err" id="emptycategory">카테고리를 선택헤 주세요</div>
+				<div class="board-err" id="emptycategory">카테고리를 선택해주세요.</div>
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
 				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" 
@@ -377,7 +251,7 @@
 				</div>			
 				
 				<!-- Textarea -->
-				<div class="board-err" id="emptycontent">내용을 입력해 주세요</div>
+				<div class="board-err" id="emptycontent">내용을 입력해주세요.</div>
 				<div class="body-content">
 				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." name="brdcontent" style="resize: none;" required="required"></textarea>
 				</div>
@@ -479,11 +353,7 @@
 											lang.setAttribute("value", lng);
 											document.getElementById("lang").appendChild(lang); 
 										    
-										    
-										    
 										});
-										
-										
 										
 										function searchPlaces() {
 
@@ -492,7 +362,7 @@
 
 											if (!keyword.replace(/^\s+|\s+$/g,
 													'')) {
-												alert('키워드를 입력해주세요!');
+												alert('키워드를 입력해주세요.');
 												return false;
 											}
 
@@ -600,7 +470,7 @@
 					<span style="display: none"><strong>위도 : </strong></span><span id="lat"></span>
 					<span style="display: none"><strong>경도 : </strong></span><span id="lang"></span>
 				</div>
-				<div class="board-err" id="emptymap">장소를 선택해 주세요</div>
+				<div class="board-err" id="emptymap">장소를 선택해주세요.</div>
 				
 				<!-- Checkbox -->
 				<div class="body-checklist">
