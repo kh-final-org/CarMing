@@ -12,7 +12,14 @@
 <title>CarMing | 캠핑 렌트</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="resources/js/category.js?ver=4"></script>
+<script src="resources/js/category.js?ver=5"></script>
+<style type="text/css">
+	.board-share{float: right; margin-right: 10px; cursor: pointer; margin-left: 5px;  margin-right: -0.5px;}
+	.share-kakaotalk{width: 20px; height: 100%;}
+	.top-filter-head{background-color: #ffe6be; color: black;}
+	.filter-bar d-flex flex-wrap align-items-center{background-color: #ffe6be;}
+	.hint-text{display: block; position:absolute; float:right; margin-top: 6%;}
+</style>
 </head>
 <body>
 	<%@include file="../common/header.jsp" %>
@@ -32,11 +39,11 @@
 		</div>
 	</section>
 	<!-- End Banner Area -->
-	<div class="container">
+	<div class="container" style="margin-top: 3%; margin-bottom: 6%;">
 		<div class="row">
-			<div class="col-xl-3 col-lg-4 col-md-5">
+			<div class="col-xl-3 col-lg-4 col-md-5" style="padding-right: 5%;">
 				<div class="sidebar-categories"> 	
-					<div class="head">렌트 카테고리</div>
+					<div class="head" style="background-color:#ffe6be; color: #5f5f5f;">렌트 카테고리</div>
 					<input type="hidden" id="pCateNo" value="${pCateNo}">
 					<ul class="main-categories">
 						<li class="main-nav-list"><a id="all_category"  href="productlist.do?viewNo=${viewNo}&pCateNo=6"><span
@@ -60,7 +67,7 @@
 					</ul>
 				</div>
 				<div class="sidebar-filter mt-50">
-					<div class="top-filter-head">필터</div>
+					<div class="top-filter-head" style="background-color:#ffe6be; color: #5f5f5f;">필터</div>
 					<div class="common-filter">
 						<div class="head">가격</div>
 						<div class="price-range-area">
@@ -79,7 +86,7 @@
 			</div>
 			<div class="col-xl-9 col-lg-8 col-md-7">
 				<!-- Start Filter Bar -->
-				<div class="filter-bar d-flex flex-wrap align-items-center">
+				<div class="filter-bar d-flex flex-wrap align-items-center" style="background-color:#ffe6be; color: #5f5f5f;">
 					<div class="sorting">
 						<select id="selViewSort" onchange="selSort()">
 							<option value="pNo">분류 기준</option>
@@ -97,12 +104,12 @@
 							<option value="12">Show 12</option>
 						</select>
 					</div>
-					<c:if test="${login.memcode == 1}">
+					<%-- <c:if test="${login.memcode == 1}">
 						<div class="sorting mr-auto" style="float: right;">
 								<input type="checkbox" name="allCheck" id="allCheck"/><label for="allCheck">모두 선택</label>
 								<input type="button" class="selectDelete_btn" value="선택 삭제">
 						</div>
-					</c:if>
+					</c:if> --%>
 				</div>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
@@ -118,41 +125,45 @@
 	      						<div class="col-lg-4 col-md-6" >
 									<div class="single-product">
         								<input type="hidden" class="pCategoryNo" id="categoryNo" value="${productDto.pCategoryNo }">
-										<c:if test="${login.memcode == 1 }">
+										<%-- <c:if test="${login.memcode == 1 }">
 											<input type="checkbox" name="chBox" class="chBox" data-pNo="${productDto.pNo }">
 											<div class="delete_btn" style="float: right;">
 												<button type="button" class="delete_btn" data-pNo="${productDto.pNo }">삭제</button>
 											</div>
 											
-										</c:if>
+										</c:if> --%>
 										<a href="productdetail.do?pNo=${productDto.pNo }">
 											<img class="img-fluid" src="resources/img/rent/${productDto.pFile}" alt="" style="width: 255px; height: 200px;">
 										</a>
 											<div class="product-details">
-											<h6>${productDto.pName }</h6>
+											<a id="kakao-link-btn" href="javascript:sendLink(${productDto.pNo })">
+												<img class="share-kakaotalk" src="resources/img/kakaotalk(color).png" style="width: 10%; height: 10%; display: inline-block; float: right;">
+											</a> 
+											<a href="productdetail.do?pNo=${productDto.pNo }">
+												<h6>${productDto.pName }</h6>
+											</a>
 												<div class="price">
-													<h6><fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/>원</h6>
+													<h6><fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/>(원)</h6>
 												</div>
 												<c:if test="${productDto.pAmount != 0}">
-													<h6 style="font-size: 20px;">수량: ${productDto.pAmount }</h6>
+													<h6 style="font-size: 14px;">수량: ${productDto.pAmount }(개)</h6>
 												</c:if>
 												<c:if test="${productDto.pAmount == 0}">
-													<h6 style="font-size: 20px;">재고가 없습니다.</h6>
+													<h6 style="font-size: 14px;">재고가 없습니다.</h6>
 												</c:if>
-										<div class="prd-bottom">
  											<!--<div class="social-info">
 											  <a href="javascript:sendLink()"><img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width: 30px; height: 30px;"/></a>
 											  <p class="hover-text">카카오톡 공유하기</p>
 											</div> -->
-											<a href="productdetail.do?pNo=${productDto.pNo }" class="social-info">
+<%-- 											<a href="productdetail.do?pNo=${productDto.pNo }" class="social-info">
 												<span class="lnr lnr-move"></span>
 												<p class="hover-text">상세보기</p>
-											</a>
-											<a href="javascript:sendLink(${productDto.pNo })" class="social-info">
-												<span class="lnr lnr-sync"></span>
-												<p class="hover-text">카카오톡 공유</p>
-											</a> 
-										</div>
+											</a> --%>
+											<%-- <div class="board-share">
+												<a id="kakao-link-btn" href="javascript:sendLink(${productDto.pNo })">
+													<img class="share-kakaotalk" src="resources/img/kakaotalk.png">
+												</a> 
+											</div> --%>
 									</div>
 								</div>
 							</div>
@@ -165,6 +176,8 @@
 				
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
+			<c:set var="orderBy" value="${orderBy}"/>
+			<c:set var="pCateNo" value="${pCateNo}"/>
 			<c:set var="viewNo" value="${viewNo}"/>
 			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
@@ -173,59 +186,52 @@
 				Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
 			</div>
 			<!-- 현재 페이지 -->
-			<div class="filter-bar d-flex flex-wrap align-items-center">
-				<!-- paging 버튼  -->
-				<div class="container ml-auto" id="paging-container" align="center">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination justify-content-center" style="border-left: 0px;">
-							<!-- 이전 버튼 -->
-							<c:if test="${startNum > 1 }">
-								<li class="page-item">
-									<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
-						 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
-							    	</a>
-							   	</li>
-							</c:if>		
-						
-							<c:if test="${startNum <= 1 }">
-								<li class="page-item">
-									<a class="page-link text-warning" aria-label="Previous">
-						 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
-						    		</a>
-							   	</li>
-							</c:if>
-						
-							<c:forEach var="i" begin="0" end="4">
-								<c:if test="${(startNum + i ) <= lastNum }">
+			<!-- paging 버튼  -->
+			<div class="container ml-auto" id="paging-container" align="center">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center" style="border-left: 0px; margin-top: 6%;">
+						<!-- 이전 버튼 -->
+						<c:if test="${startNum > 1 }">
+							<li class="page-item">
+								<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
+					 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+						    	</a>
+						   	</li>
+						</c:if>		
+					
+						<c:if test="${startNum <= 1 }">
+							<li class="page-item">
+								<a class="page-link text-warning" aria-label="Previous">
+					 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+					    		</a>
+						   	</li>
+						</c:if>
+					
+						<c:forEach var="i" begin="0" end="4">
+							<c:if test="${(startNum + i ) <= lastNum }">
 								<!-- 현재 페이지 style 변경 -->
-									<c:if test="${viewNo >= count}">
-										<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}">1</a></li>
-									</c:if>
-									<c:if test="${viewNo < count}">
-										<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}">${startNum + i }</a></li>
-									</c:if>
-								</c:if>
-							</c:forEach>
-						  			
-						  	<!-- 다음 버튼 -->
-						  	<c:if test="${startNum + 4 < lastNum }">
-							    <li class="page-item">
-							    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
-							    		<span aria-hidden="true">&raquo;</span>
-							      	</a>
-							   	</li>
-						  	</c:if>
-						  	
-						  	<c:if test="${startNum + 4 >= lastNum }">
-							    <li class="page-item">
-							    	<a class="page-link text-warning " aria-label="Next">
-							    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
-							      	</a>
-							   	</li>
-						  	</c:if>	
-						</ul>
-					</nav>
-				</div>
+								<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}&pCateNo=${pCateNo}&orderBy=${orderBy}">${startNum + i }</a></li>
+							</c:if>
+						</c:forEach>
+					  			
+					  	<!-- 다음 버튼 -->
+					  	<c:if test="${startNum + 4 < lastNum }">
+						    <li class="page-item">
+						    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
+						    		<span aria-hidden="true">&raquo;</span>
+						      	</a>
+						   	</li>
+					  	</c:if>
+					  	
+					  	<c:if test="${startNum + 4 >= lastNum }">
+						    <li class="page-item">
+						    	<a class="page-link text-warning " aria-label="Next">
+						    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+						      	</a>
+						   	</li>
+					  	</c:if>	
+					</ul>
+				</nav>
 			</div>
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->

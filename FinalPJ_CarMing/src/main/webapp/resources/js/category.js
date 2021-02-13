@@ -123,7 +123,7 @@ $(document).ready(function(){
         content: {
             title: document.title,
             description: "캠핑 렌트 사이트 : CarMing",
-            imageUrl: "resources/img/tent(buffalo).jpg",
+            imageUrl: 'https://postfiles.pstatic.net/MjAyMTAxMjFfNDgg/MDAxNjExMjE5MDc4MjE2.jLlgUhy3A2J847CYZ_4Sp4X5FI3S8gz_luJHphBr6ocg.czFVIO2I_A-hEsZD7ucwCMfehhtK-PWhH1QFSqbrUmog.JPEG.ghkdwjdals33/kakaoCarMing.JPG?type=w966',
             link: {
                 mobileWebUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo,
                 webUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo
@@ -146,8 +146,6 @@ function selView(){
 	 	var sel = document.getElementById("selViewNumber").value;
 	 	var pCateNo = document.getElementById("pCateNo").value;
 		
-		console.log("보여줄 게시물 갯수: "+sel);
-		
 		location.href="productlist.do?viewNo="+sel+"&pCateNo="+pCateNo+"&sort="+sort;
 	}
 
@@ -155,8 +153,6 @@ function selSort(){
 		var sort = document.getElementById("selViewSort").value;
 		var sel = document.getElementById("selViewNumber").value;
 	 	var pCateNo = document.getElementById("pCateNo").value;
-	
-		alert("분류 순:"+sort);
 		
 		location.href="productlist.do?viewNo="+sel+"&pCateNo"+pCateNo+"&orderBy="+sort;
 }
