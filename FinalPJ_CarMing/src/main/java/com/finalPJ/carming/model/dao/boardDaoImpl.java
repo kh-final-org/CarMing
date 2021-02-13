@@ -20,13 +20,14 @@ public class boardDaoImpl implements boardDao{
 	
 	//01. 게시글 전체 목록
 	@Override
-	public List<boardDto> selectList(String search, int page) {
+	public List<boardDto> selectList(String search, int page, String categoryNo) {
 		List<boardDto> list = new ArrayList<boardDto>();
 		// 검색어, 페이지 맵에 저장
 		Map<String,String> map = new HashMap<String,String>();
 		
 		map.put("search", search);
 		map.put("page", Integer.toString(page));
+		map.put("categorNo", categoryNo);
 		
 		try {
 			list = sqlSession.selectList(NAMESPACE+"selectList",map);
@@ -38,11 +39,13 @@ public class boardDaoImpl implements boardDao{
 	}
 
 	@Override
-	public int listCnt(String search) {
+	public int listCnt(String search, String categoryNo) {
 		int res = 0;
-		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("search", search);
+		map.put("categoryNo",categoryNo);
 		try {
-			res = sqlSession.selectOne(NAMESPACE+"selectCnt",search);
+			res = sqlSession.selectOne(NAMESPACE+"selectCnt",map);
 		} catch (Exception e) {
 			System.out.println("[error]:select board Count");
 			e.printStackTrace();

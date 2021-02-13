@@ -20,31 +20,24 @@ public class boardBizImpl implements boardBiz{
 	
 	//01. 게시글 전체 목록
 	
-	@Override
-	public List<boardDto> selectList() {
-		return selectList("",1);
-	}
+	/*
+	 * @Override public List<boardDto> selectList() { return selectList("",1,""); }
+	 * 
+	 * @Override public List<boardDto> selectList(int page) { return selectList("",
+	 * page,""); }
+	 */
 	
 	@Override
-	public List<boardDto> selectList(int page) {
-		return selectList("", page);
-	}
-	
-	@Transactional(isolation = Isolation.READ_COMMITTED)
-	@Override
-	public List<boardDto> selectList(String search, int page) {
-		dao.viewCount(brdno);
-		return dao.selectList(search, page);
+	public List<boardDto> selectList(String search, int page, String categoryNo) {
+		return dao.selectList(search, page,categoryNo);
 	}
 
+	/*
+	 * @Override public int listCnt() { return dao.listCnt("",""); }
+	 */
 	@Override
-	public int listCnt() {
-		return dao.listCnt("");
-	}
-
-	@Override
-	public int listCnt(String search) {
-		return dao.listCnt(search);
+	public int listCnt(String search, String categoryNo) {
+		return dao.listCnt(search,categoryNo);
 	}
 
 

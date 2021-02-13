@@ -26,18 +26,20 @@ public interface boardBiz {
 	public int insert_v(boardDto dto);
 	
 	//01. 게시글 전체 목록
-	public List<boardDto> selectList();	
-	public List<boardDto> selectList(int page);	
-	public List<boardDto> selectList(String search, int page);	
+	/*
+	 * public List<boardDto> selectList(); public List<boardDto> selectList(int
+	 * page);
+	 */
+	public List<boardDto> selectList(String search, int page, String categoryNo);	
 	
 	//페이징 카운트
-	public int listCnt();
-	public int listCnt(String search);
+	/* public int listCnt(); */
+	public int listCnt(String search, String categoryNo);
 	
 	
 	//01. 마이페이 전체 목록
 		public List<boardDto> MypageList(int memno);	
-		public List<boardDto> MypageList(int page, int memno);	
+		public List<boardDto> MypageList(int page,int memno);	
 		public List<boardDto> MypageList(String search, int page, int memno);	
 		
 		//페이징 카운트

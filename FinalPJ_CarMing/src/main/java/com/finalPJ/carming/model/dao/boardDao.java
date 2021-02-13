@@ -12,7 +12,7 @@ public interface boardDao {
 	String NAMESPACE = "board.";
 	
 	//01. 게시글 전체 목록
-	public List<boardDto> selectList(String search, int page);	
+	public List<boardDto> selectList(String search, int page, String categoryNo);	
 	//02. 게시글 상세보기
 	public boardDto selectOne(int brdno);
 	//03. 게시글(사진) 추가
@@ -34,7 +34,7 @@ public interface boardDao {
 	public int insertMAP_v(boardDto dto);
 	
 	//페이징 카운트
-	public int listCnt(String search);
+	public int listCnt(String search, String categoryNo);
 	//마이페이지
 	public List<boardDto> MypageList(String search, int page, int memno);	
 	public int MypageListCnt(String search,int memno);
