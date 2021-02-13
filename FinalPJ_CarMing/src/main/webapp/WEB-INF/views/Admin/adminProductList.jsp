@@ -167,15 +167,17 @@ function myFunction() {
 							<td>${list.pCategoryName }</td>
 							<td>${list.pPrice }</td>
 							<td>#${list.pAmount }</td>
-							<td><form action="addAmount.do"><input type="number" name= "pAmount" value="1" min="1" style="width:15%">
-							<button type="submit" style="text-align: center; color: green; border:none; text-decoration: none; background: none;" value="" >
+							<td><form action="addAmount.do?pNo=${list.pNo}">
+							<input type="number" name= "pAmount" value="1" min="1" style="width:15%">
+							<input type="hidden" name="pNo" value="${list.pNo}"> 
+							<button type="submit" style="text-align: center; color: green; border:none; text-decoration: none; background: none;"  >
 							<i class="material-icons" >&#xE147;</i></button>
 							</form></td>
 							<td>
 							<a href="deleteProduct.do?pNo=${list.pNo}" class="delete" 
 							data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
 							</td>
-							<td> <a href="#" class="settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+							<td> <a href="updateProductForm.do?pNo=${list.pNo }" class="settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
 						</tr>
 					</tbody>
 				</c:forEach>

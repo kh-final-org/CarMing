@@ -2,6 +2,8 @@ package com.finalPJ.carming;
 
 
 import java.io.Console;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.finalPJ.carming.model.biz.InquiryBiz;
 import com.finalPJ.carming.model.biz.adminBiz;
+import com.finalPJ.carming.model.biz. ProductBiz;
+import com.finalPJ.carming.model.dto.ProductDto;
 import com.finalPJ.carming.model.dto.boardDto;
 
 @Controller
@@ -20,6 +24,9 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	
 @Autowired
 private adminBiz biz;
+
+@Autowired
+private ProductBiz pbiz;
 
 @Autowired
 private InquiryBiz Ibiz;
@@ -121,6 +128,38 @@ private InquiryBiz Ibiz;
 		return "Admin/adminProductList";
 	}
 	
+	
+	@RequestMapping("addAmount.do")
+	public String addAmount(int pAmount, int pNo) {
+		System.out.println(pNo);
+		Map<String,String> map = new HashMap<String,String>();
+		
+		map.put("pAmount", Integer.toString(pAmount));
+		map.put("pNo", Integer.toString(pNo));
+		
+		
+		int res = biz.addAmount(map);
+		System.out.println(map);
+		if(res>0) {
+			return "redirect: adminProductList.do";
+		}else {
+			return "redirect: adminProductList.do";
+		}
+	}
+	
+	@RequestMapping("updateProductForm.do")
+	public String updateProductForm(Model model, int pNo) {
+		model.addAttribute("list",pbiz.selectOne(pNo));
+		return "Admin/updateProduct";
+	}
+	
+	/*
+	 * @RequestMapping("updateProduct.do") public String updateProduct() {
+	 * 
+	 * 
+	 * if(res>0) { return "redirect: adminProductList.do"; }else { return
+	 * "redirect: adminProductList.do"; } }
+	 */
 	
 	
 	@RequestMapping(value = "/adminRentDetail.do")

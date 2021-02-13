@@ -2,6 +2,7 @@ package com.finalPJ.carming.model.biz;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -128,6 +129,11 @@ public class adminBizImpl implements adminBiz{
 	@Override
 	public int deleteProduct(int pNo) {
 		return dao.deleteProduct(pNo);
+	}
+
+	@Override
+	public int addAmount(Map<String, String> map) {
+		return dao.addAmount(map);
 	}
 
 

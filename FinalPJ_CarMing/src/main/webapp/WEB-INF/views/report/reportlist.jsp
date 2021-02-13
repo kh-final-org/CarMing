@@ -138,7 +138,7 @@ function myFunction() {
 					<div class="gaadiex-list-item-text">
 						<h4><a href="reportdetail.do?reportNo=${list.reportNo}&targetTypeNo=${list.targetTypeNo}" id="content">
 							<c:set var="TextValue" value="${list.reportContent }"/> 
-								<span class="list-item-text-ck">신고 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,8)}</span>
+								<span class="list-item-text-ck">신고 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,4)}</span>
 							</a>
 						</h4>
 						
@@ -148,6 +148,7 @@ function myFunction() {
 						
 						<div class="category">카테고리&nbsp;&#124;&nbsp;${list.categoryName }</div>
 						<div>작성날짜&nbsp;&#124;&nbsp;<fmt:formatDate pattern = "yyyy-MM-dd" value = "${list.reportDate}" /></div>
+						<button class="banner-btn" id="golist" type="button" style="color: orange;" onclick="location.href='deletereport.do?reportNo=${list.reportNo}'">삭제</button>	
 					</div>
 				</div>
 				</c:forEach>

@@ -260,6 +260,19 @@ public class adminDaoImpl implements adminDao{
 		return res;
 	}
 
+	@Override
+	public int addAmount(Map<String, String> map) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"addAmount",map);
+		} catch (Exception e) {
+			System.out.println("[error]: addAmount");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 
 
 	

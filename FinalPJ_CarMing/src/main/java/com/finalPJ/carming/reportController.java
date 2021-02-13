@@ -126,7 +126,7 @@ private ReportFileValidator fileValidator;
 		
 		int res = biz.insert(dto);
 		if(res>0) {
-			return "redirect:reportlist.do";
+			return "redirect:home.do";
 		}else {
 			redirect.addAttribute("dto",dto);
 			return "redirect:writereportform.do";

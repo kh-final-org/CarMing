@@ -50,10 +50,7 @@ function handleImgFileSelect(e) {
 
  $(document).ready(function(){
 	var img = $('#input_img');
-	var category = $('select[name=bcategoryno]');
-	var content = $('textarea[name=brdcontent]');	
-	var place = $('#place');
-	var mapname = $('#mapname')
+
 	
 
 		 img.change(function(){

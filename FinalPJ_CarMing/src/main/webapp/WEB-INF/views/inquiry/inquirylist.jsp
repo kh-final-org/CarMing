@@ -96,7 +96,6 @@ function myFunction() {
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
 	         </div>
 		  </div>
@@ -140,7 +139,7 @@ function myFunction() {
 						<h4>
 						<a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">
 							<c:set var="TextValue" value="${list.inquiryContent }"/> 
-								<span class="list-item-text-ck">문의 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,8)}</span>
+								<span class="list-item-text-ck">문의 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,4)}</span>
 							</a>
 						</h4>
 						

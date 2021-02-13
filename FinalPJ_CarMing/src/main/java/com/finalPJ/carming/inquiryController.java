@@ -133,7 +133,7 @@ private InquiryFileValidator fileValidator;
 		
 		int res = biz.insert(inquiry);
 		if(res>0) {
-			return "redirect:inquirylist.do";
+			return "redirect:home.do";
 		}else {
 			return "redirect:writeinquiryform.do";
 		}

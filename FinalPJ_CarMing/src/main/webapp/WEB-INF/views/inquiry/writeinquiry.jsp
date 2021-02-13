@@ -43,7 +43,7 @@
 <script src="resources/js/gmaps.min.js"></script>
 <!-- ★★★위 스크립트로 상단바 위치가 깨짐★★★
 <script src="resources/js/main.js"></script>-->
-<script src ="resources/js/inquiry.js" type="text/javascript"></script>
+
 
 
 </head>
@@ -66,8 +66,6 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
 	         </div>
 		  </div>
 		</div>
@@ -160,6 +158,6 @@
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>
 	<!-- End footer Area -->
-
+<script src ="resources/js/inquiry.js" type="text/javascript"></script>
 </body>
 </html>

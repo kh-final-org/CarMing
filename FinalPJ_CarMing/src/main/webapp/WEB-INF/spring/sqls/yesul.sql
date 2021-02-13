@@ -1053,12 +1053,16 @@ SELECT COUNT(BRDNO) COUNT FROM
 	WHERE RNUM BETWEEN 1 + (#{page} -1) * 6 AND #{page}  * 6
 	
 	
+	UPDATE MEMBER SET MEMCODE=1 WHERE MEMNO=1;
+	
+	SELECT * 
+		FROM PRODUCT
+		WHERE PNO = #{pNo}
 	
 	
+	select * from product
 	
-	
-	
-	
+	UPDATE PRODUCT SET PAMOUNT =3 WHERE PNO = 1
 	
 	
 	

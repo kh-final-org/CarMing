@@ -2,6 +2,7 @@ package com.finalPJ.carming.model.biz;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.finalPJ.carming.model.dto.AdmMemberDto;
 import com.finalPJ.carming.model.dto.AdmRentDto;
@@ -45,6 +46,9 @@ public interface adminBiz {
 	
 //	delete product 
 	public int deleteProduct(int pNo);
+	
+	// 제고 추가
+	public int addAmount(Map<String,String> map);
 	
 	
 	

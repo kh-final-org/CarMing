@@ -190,7 +190,11 @@
 		
 	</select>
 	
+	<!-- 제고 추가 -->
 	
+	<update id="addAmount" parameterType="hashMap">
+	UPDATE PRODUCT SET PAMOUNT = #{pAmount} WHERE PNO = #{pNo}
+	</update>
 	
 	
 	

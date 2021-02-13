@@ -137,7 +137,8 @@ function category(){
 			<div class="card-head-third" style="width: 140px;">
 				<div class="dropdown-selectbox"> 
 			  		<select onchange="category()"   class="selectpicker form-control" name="selectbox" id="selectbox" aria-label="Example select with button addon" >
-						<option value="" selected>전체선택</option>
+						<option value="" selected disabled>카테고리</option>
+						<option value="">전체선택</option>
 						<option value="1">일반 캠핑</option>
 					    <option value="2">카라반</option>
 					    <option	value="3">글램핑</option>

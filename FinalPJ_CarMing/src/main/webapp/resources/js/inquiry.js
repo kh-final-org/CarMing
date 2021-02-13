@@ -25,8 +25,21 @@
 			reader.readAsDataURL(f);
 		})
 	}
+/*사진 변경*/
+ $(document).ready(function(){
+	var img = $('input[type=file]');
+	
 
-
+				img.change(function(){
+					$('#emptyfile').hide();
+					
+				var filename = img.val().split('\\').pop();
+		        $('#filename').text(filename);
+					
+				});
+		
+		
+ 	});	 
 /*폼 안넘어가기*/
 function inquiry(){
 		
@@ -63,7 +76,6 @@ function inquiry(){
 					
 				});
 				
-	
 		
 				if(category.val() == null ||
 				content.val().trim() == "" 	||

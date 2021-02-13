@@ -12,7 +12,7 @@
 <style type="text/css">
 	.card-container{width: 100%;}
 		
-	.card-profile{float: left; width: 27%; height: 400px; margin-right: 2%; margin-top: 40px; 
+	.card-profile{float: left; width: 27%; height: 500px; margin-right: 2%; margin-top: 40px; 
 				  border-radius: 10px; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.14);}	
 	.profilepage-profile{margin: 55px 63px 25px;}	
 	.user-profile{width: 170px; height: 170px; border-radius: 5em;}
@@ -83,6 +83,8 @@
 				<input type="button" class="profile-btn" id="profile-btn-1" value="프로필 수정" onclick="location.href='profilechangeform.do'">
 				<br>
 				<button type="button" class="profile-btn" id="profile-btn-2" onclick="location.href='ordernpay.do'">주문 및 결제 내역</button>
+				<br>
+				<button class="profile-btn" id="profile-btn-2" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
 			</div>
 		</div>
 		</div>

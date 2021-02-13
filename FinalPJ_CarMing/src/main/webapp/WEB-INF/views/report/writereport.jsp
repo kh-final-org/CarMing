@@ -44,7 +44,6 @@
 <script src="resources/js/main.js"></script>-->
  
 
-<script src=resources/js/report.js></script>
 </head>
 <body>
 
@@ -66,8 +65,6 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writereportform.do'">신고하기</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='reportlist.do'">신고 목록</button>
 	         </div>
 		  </div>
 		</div>
@@ -175,5 +172,6 @@
 	<%@include file="../../views/common/footer.jsp"%>
 	<!-- End footer Area -->
 
+<script src=resources/js/report.js></script>
 </body>
 </html>
