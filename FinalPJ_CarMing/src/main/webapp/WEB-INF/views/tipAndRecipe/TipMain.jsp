@@ -20,7 +20,15 @@
 <meta charset="UTF-8">
 <!-- Site Title -->
 <title>CarMing | 캠핑 추천 - 카밍 꿀팁</title>
+<style type="text/css">
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
 
+
+
+
+</style>
 <!-- <script>
 /* 	article = document.getElementsByTagName("article");
 	var x = article.style.display;
@@ -137,12 +145,9 @@ function myFunction() {
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
 	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-	         <div class="col-first">
-	            <h1>The stars in the night sky</h1>
-	         	<nav class="d-flex align-items-center">
-	               <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="tipAndRecipeMain.do">Recipe</a>
-	            </nav>
+	         <div class="col-first" id="banner-text-1">
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 	   </div>

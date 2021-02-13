@@ -9,86 +9,60 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 사진 올리기</title>
-<!-- <link rel="stylesheet" href="resources/css/board.css"> -->
-<style type="text/css">
-	.col-first{margin: -1% 63.5% 0 -18%; } 
-	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
-	.text-1{margin: -5% 0 3%;}
-	.card-container{margin: 50px 190px 50px 220px;}
-    .card-body{padding: 0px;}
-   	
-   	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 0 2% 0 -2%;}
-	.uploadimg {width: 360px; height: 360px;}
-	.img_wrap {width: 340px; height: 310px; margin-top: 18px;}
-	.img_wrap img {max-width: 100%; max-height: 100%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 110px;}	
-	.upload-img-form{position: relative; width: 530px; height: 347px; border: 1px solid #e2e2e2;
-					 border-radius: 10px; margin-bottom: 15px; background: #fff; margin-bottom: -10px;}
-   	.upload-img-content{position: absolute; margin-top: 30px; width: 530px;}
-
-    .card-body-right{float: right; width: 530px; height: 450px;}
-    .current{padding-left: 5px;}
-    li.option.selected.disabled.focus{width: 503px;}
-    .body-content{margin-top: 55px; font-size: 1.2em;}
-    textarea {padding: 10px 14px; border: 1px solid silver; border-radius: 5px;}
-    textarea::placeholder{color: silver;}
-    .location-logo{width: 25px;height: 25px;}
-    .body-location{margin: 8px 0px;}
-    .body-location-left{float: left; width: 77%;}
-    .body-location-right{float: right; width: 21.5%; margin-right: 0;}
-    .location-logo-text{display: inline-block; vertical-align: middle;}
-    .body-checklist{margin: 3.9% 1% 0;}   
-    .latlong-input-value{margin-top: 10px;}
-	  
-    .card-body-bottom{clear: both; margin: 0 34.5% 0; padding: 0px;}   
-   	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; outline: none;
-   						font-size:1.2em; margin: 10% 0px 10% 0px; cursor: pointer; margin: 0; outline: none;}
-   	#button-boardupload:hover{background: #ffdb9f; transition: 0.2s; border: 0;}
-
-	.chkprivate-box{float: left;}
-	.chkcarplace-box{float: left; margin-left: 5px;}
-	.checkbox input{display: none;}
-	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
-	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
-	.checkbox .icon::after{content: ''; position: absolute; top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
-						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
-	.checkbox .text{margin-left: 5px;}
-	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
-	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
-	  
-	.location-open{color: gray;}
-	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
-	        text-align: right; padding: 10px 15px; box-sizing: border-box; background: #fff; opacity: 0; transition: all 0.5s;}
-	.popup:target{opacity: 1;}
-	.popup-dim{position: absolute; left: 0; top: 0; width: 100%; height: 158%; background: rgba(0,0,0,0.6); opacity: 0; transition: all 0.3s; z-index: -1;}
-	.popup:target + .popup-dim{opacity: 1; z-index: 2;} 
-	.popup-cancel{width: 12px; height: 12px; opacity: 0.7;}
-	.location-cancel{position: absolute; top: 10px; right: 15px;}
-  
-	.popup-title{margin-top:15px; text-align: center; font-size: 1.3em; color: #5f5f5f;}
-	#map{margin: 10px 0px; width:100%; height: 300px; border: 1px solid silver;}
-	.searchimg{width: 20px; height: 20px; opacity: 50%;}
-	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}   
-	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px; outline: none;}
-	#location-finish-btn:hover{background-color: #ffdb9f;}
-	#clickLatlng{text-align: center; margin-top: -5px;}
-	
-	.board-err{float: left; width: 72%; margin-left: 3%; font-size: 1.1em; color: red; padding-bottom: 1%; padding-top:1%; display: none;}
-	.board-img-err{float: left; width: 72%; margin-left: -3%; margin-bottom:-1%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; display: none;}
-	#emptyimg{position: absolute; z-index: 1000;  bottom: -11.5%; left: 37%;}
-	#emptycategory{position: absolute; z-index: 1000; top: 55%; left: 70%;}
-	#emptycontent{position: absolute; z-index: 1000; top: 81%; left: 60%; }
-	#emptymap{position: absolute; z-index: 1000; bottom: -11.2%; left: 50.5%; }
-/* 	#emptymapname{position: absolute; z-index: 1000;} */
-	
-</style>
+<link rel="stylesheet" href="resources/css/board.css">
 
 <script type="text/javascript" src="resources/js/board.js?ver=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<!-- 모든 항목 기입해야 insert -->
 <script type="text/javascript">
+	var sel_file;
+	$(document).ready(function() {
+		$("#input_img").on("change", handleImgFileSelect);
+	});
+	
+	
+	function handleImgFileSelect(e) {
+		$("#img").empty(); //remove는 태그 자체를 지운다 
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+
+		filesArr.forEach(function(f) {
+			if (!f.type.match("image.*")) {
+				alert("확장자는 이미지 확장자만 가능합니다.");
+				return;
+			}
+			sel_file = f;
+
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#img").attr("src", e.target.result);
+				$("#img").attr("width", "90%");
+				$("#img").attr("height", "440px");
+			}
+			reader.readAsDataURL(f);
+		})
+	}
+	
+	$(document).ready(function(){
+		var img = $('#input_img');
+		var category = $('select[name=bcategoryno]');
+		var content = $('textarea[name=brdcontent]');	
+		var place = $('#place');
+		var mapname = $('#mapname')
+
+			img.change(function(){
+			$('#emptyimg').hide();
+			console.log(img.val())
+			
+			var filename = img.val().split('\\').pop();
+		    $('#filename').text(filename); 
+		 
+			});
+			
+	 });
+	
+	
 	function board(){
 		var img = $('#input_img');
 		var category = $('select[name=bcategoryno]');
@@ -193,8 +167,8 @@
 	<div class="card-container">
 		<div class="card-head">
 			<h2 style="color: #5f5f5f;">게시글 작성하기</h2>	
-			<span class="board-img-err" id="emptyimg">사진을 선택해주세요.</span>
 		</div>
+		<span class="board-img-err" id="emptyimg">사진을 선택해주세요.</span>
 		
 		<div class="card-body">
 			<!-- Image Upload-->
@@ -262,7 +236,7 @@
 									    	</button>
 									  	</div>
 									</div>	
-									<div style="padding:0%; margin:0%">키워드 이외의 장소는 클릭해서 선택하실 수 있습니다.</div>
+									<div class="popup-desc-text">키워드 이외의 장소는 지도 상에서 위치를 클릭하여  선택할 수 있습니다.</div>
 								</div> 
 									<script type="text/javascript"
 											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>

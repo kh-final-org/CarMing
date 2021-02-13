@@ -26,6 +26,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!-- <link rel="stylesheet" href="resources/css/adminList.css"> -->
 <style type="text/css">
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	
 	#banner-text-2{position: absolute; top: 255px; right: 245px;}
 	.banner-btn{width: 130px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
@@ -113,9 +117,9 @@ function myFunction() {
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
 	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-	         <div class="col-first">
-	            <h1>The stars in the night sky</h1>
-	         	<nav class="d-flex align-items-center"></nav>
+	         <div class="col-first" id="banner-text-1">
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 	   </div>
@@ -175,9 +179,9 @@ function myFunction() {
 					<tbody>
 						<tr>
 							<td class="cartNo" ><a href="adminRentDetail.do?cartNo=${list.cartNo}"><span>${list.cartNo}</span></a></td>
-							<td><a href="#"><img
-									src= "${list.memFile }" class="avatar"
-									alt="img"></a></td>
+							<td><a href="profileform.do?memno=${list.memNo}">
+								<img src= "${list.memFile }" class="avatar" alt=""></a>
+							</td>
 							<td><span>${list.memNick }</span></td>
 							<td>${list.pCategoryName }</td>
 							<td>#${list.payNo }</td>

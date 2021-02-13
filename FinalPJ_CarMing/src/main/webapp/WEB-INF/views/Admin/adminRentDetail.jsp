@@ -27,7 +27,12 @@
 <script src="resources/js/gmaps.min.js"></script>
 <script src="resources/js/main.js"></script>
 <style type="text/css">
-	#banner-text-2{position: absolute; top: 255px; right: 245px;}
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+
+	#banner-text-2{position: absolute; top: 60%; right: 14%;}
+	
 	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
@@ -68,10 +73,10 @@
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first" id="banner-text-1">
-	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center"></nav>
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">

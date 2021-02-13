@@ -55,19 +55,16 @@
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first" id="banner-text-1">
-	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
 	         </div>
 		  </div>
 		</div>

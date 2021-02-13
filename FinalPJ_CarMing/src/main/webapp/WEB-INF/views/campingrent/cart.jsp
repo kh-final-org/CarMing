@@ -8,32 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 장바구니</title>
+<link rel="stylesheet" href="resources/css/cart.css">
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="resources/js/cartlist.js?ver=5"></script>
-<style type="text/css">
-	.col-first{margin: -1% 63.5% 0 -18%; } 
-	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
-	.text-1{margin: -5% 0 3%;}
-	#banner-text-2{position: absolute; top: 60%; right: 14%;}
-	
-	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
-				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
-				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
-	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
-	.banner-btn::before{content: ""; position: absolute; left:0; width:100%; height: 0%; background: #fff5e9; z-index: -1; 
-						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
-	.banner-btn:hover::before{height: 180%;}
-	
-	.card-container-cartform{padding: 60px 200px;}
-	.cart_empty_img{text-align: center;}
-	.cart_img{width: 200px; height: 100%;}
-	.cart_empty_text{text-align: center; margin-bottom: 20%;}
-	.cart_empty_button{margin: 3% -1% -20% 1%;}
-	.cart_button{padding: 0.8% 1.5%; line-height: 30px; font-size: 1.2em; background: #ffe6be; border: none;
-				 color: gray; border-radius: 5px; cursor: pointer;}
-	.cart_button:hover{background: #ffdb9f; transition: 0.2s;}
-</style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -49,8 +28,8 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='#'">캠핑렌트</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">장바구니</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
 	         </div>
 		  </div>
 		</div>
@@ -66,7 +45,7 @@
 			</div>
 			<div class="cart_empty_text">
 				<div class="cart_empty_button">
-					<button type="button" class="cart_button" onclick="location.href='productlist.do';">카트에 상품 담으러 가기</button>
+					<button type="button" class="cart_button" onclick="location.href='productlist.do';">+ 카트에 상품 담으러 가기</button>
 				</div>
 			</div>
 		</div>
@@ -141,26 +120,17 @@
                             <tr class="bottom_button">
                                 <td colspan="3">
 	                                <a class="gray_btn" id="selectDelete_btn">선택 삭제</a> 
-
-                                </td>
-                                <td>
-
                                 </td>
                                 <td></td>
                                 <td></td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                             	<td></td>
                             	<td></td>
-                                <td>
-
-                                </td>
+                            	<td></td>
                                 <td></td>
                                 <td></td>
                                 <td style="text-align: right;">

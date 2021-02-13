@@ -29,14 +29,15 @@ function empty_change() {
 	var membirth_input = $('input[name=membirth]');
 	
 	if(
-			memnick_input.val().trim()=="" ||
-			memzip_input.val().trim()=="" ||
-			memphone_input.val().trim()==""){
+		memnick_input.val().trim()=="" ||
+		memzip_input.val().trim()=="" ||
+		memphone_input.val().trim()==""){
 		
 		regist_chk = false;
 		alert("수정사항에 빈 칸을 채워주세요.");
 	}
 	
+	alert("수정된 프로필이 저장되었습니다.");
 	return regist_chk;
 }; // end submit()
 
@@ -61,8 +62,17 @@ function handleImgFileSelect(e) {
 			$("#img").attr("height", "250px");
 		}
 		reader.readAsDataURL(f);
-	});
+	})
 }
+
+//파일명 추출 (???)
+$(document).ready(function(){
+	var img = $('#input_img');
+
+		var filename = img.val().split('\\').pop();
+	    $('#filename').text(filename); 
+});
+
 
 //다음api 주소팝업창
 function sample6_execDaumPostcode() {

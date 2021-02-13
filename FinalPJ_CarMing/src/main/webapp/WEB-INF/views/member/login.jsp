@@ -21,37 +21,8 @@
 	<link rel="stylesheet" href="resources/css/nouislider.min.css">
 	<link rel="stylesheet" href="resources/css/bootstrap.css">
 	<link rel="stylesheet" href="resources/css/main.css">
+	<link rel="stylesheet" href="resources/css/login.css">
 	
-	<style type="text/css">
-		body {background-color: #fff; font-family: 'Ubuntu', sans-serif;}
-    	.main {background-color: #fff; width: 400px; height: 500px; margin: 7em auto; border-radius: 1.5em; box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);}
-    	
-	    .loginform-logo{padding-top: 33px;}   
-	    .login-logo{width: 150px; height: 100%; margin-right: 10px;}
-
-		.input-user-idpw {width: 75%; color: #5f5f5f; font-size: 14px; letter-spacing: 1px; padding: 10px 15px; background: #fff;
-				 		  border: none; border-radius: 5px; outline: none; box-sizing: border-box; border: 1px solid rgba(0, 0, 0, 0.1);
-						  margin-bottom: 8px; margin-left: 46px; text-align: left; font-family: 'Ubuntu', sans-serif;}
-	    .userid:focus, .userpass:focus {border: 2px solid rgba(0, 0, 0, 0.18) !important;}
-	    #memid:hover{background: #fafafa; transition: 0.2s;}
-	    #mempw:hover{background: #fafafa; transition: 0.2s;}
-	    
-	    .login-btn {cursor: pointer; color: #5f5f5f !important; background: #ffe6be; width: 300px; border: 0; border-radius: 5px; padding: 10px 40px;
-				 	font-weight: bold; margin-top: 15px; margin-left: 12%; font-size: 1.1em; box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04); outline: none;}
-	    .login-btn:hover {background: #ffdb9f; transition: 0.2s;}
-	    .signup{padding-top: 10px; margin: -2px 10px 20px 0;}
-	    .signup > a > span {display: inline-block; color: gray; font-size: 0.85em; font-weight: bold;}
-	    .register-img{width: 13px; height: 12px; opacity: 0.2;}
-	    a {text-decoration: none; } 
-	    form.form1 {padding-top: 30px;}
-	    input::placeholder{color: silver;}
-	    
-	    .naver_login_text{color: gray; font-size: 0.75em; margin-bottom: 3px;}
-	    
-		@media (max-width: 600px) {.main {border-radius: 7px;}
-    
-	</style>
-
 
 </head>
 <body>

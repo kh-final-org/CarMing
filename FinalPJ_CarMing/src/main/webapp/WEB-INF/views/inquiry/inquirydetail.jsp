@@ -21,7 +21,11 @@
 <meta charset="UTF-8">
 
 <style type="text/css">
-	#banner-text-2{position: absolute; top: 255px; right: 245px;}
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	#banner-text-2{position: absolute; top: 60%; right: 14%;}
+	
 	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
@@ -88,8 +92,7 @@
 <!--gmaps Js-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="resources/js/gmaps.min.js"></script>
-<!-- ★★★위 스크립트로 상단바 위치가 깨짐★★★
-<script src="resources/js/main.js"></script>-->
+<!-- <script src="resources/js/main.js"></script> -->
 
 </head>
 
@@ -102,19 +105,16 @@
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first" id="banner-text-1">
-	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='deleteinquiry.do?inquiryNo=${list.inquiryNo}'">삭제 하기</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
 	         </div>
 		  </div>
 		</div>

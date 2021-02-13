@@ -59,10 +59,10 @@ $(document).ready(function(){
 				data: {chbox : checkArr},
 				success: function(result){
 					if(result == 1){
-						alert("제품삭제에 성공하였습니다!")
+						alert("제품을 성공적으로 삭제하였습니다.")
 						location.href = "category.jsp";
 					} else{
-						alert("삭제 실패");
+						alert("제품 삭제에 실패하였습니다.");
 						location.href = "productlist.do";
 					}
 				}

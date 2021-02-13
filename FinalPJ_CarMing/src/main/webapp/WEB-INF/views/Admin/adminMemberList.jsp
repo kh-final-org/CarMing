@@ -27,8 +27,11 @@
 <!-- <link rel="stylesheet" href="resources/css/adminList.css"> -->
 
 <style type="text/css">
-	.container{padding-top: 50px;}
-	.col-first{margin-top: -10%;}
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+
+	.card-container{padding: 50px 200px;}
 	#memlist_tb{width:100%; }
 	#memlist_tb:hover tbody tr:hover td {background: #fff5e9; transition: 0.2s; }
 	#paging-container{margin: 50px 0px 20px 0px;}
@@ -56,7 +59,6 @@
 	table.table th i {font-size: 13px;margin: 0 5px;cursor: pointer;}	
 	table.table td:last-child i {opacity: 0.9; font-size: 22px; margin: 0 5px;}
 	table.table td span {font-weight: bold; color: #5f5f5f; display: inline-block; text-decoration: none;}
-/* 	table.table td a:hover {color: #ff9b00;} */
 	table.table td a.settings {color: #2196f3;}
 	table.table td a.delete {color: #f44336;}
 	table.table td a .material-icons {margin: 10px 0;}
@@ -108,36 +110,17 @@ function formAction() {
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
 	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-	         <div class="col-first">
-	            <h1>The stars in the night sky</h1>
-	         	<nav class="d-flex align-items-center">
-<!-- 	        	<a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp; -->
-<!-- 	            <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a> -->
-	            </nav>
+	         <div class="col-first" id="banner-text-1">
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 	   </div>
 	</section>
 	<!-- End Banner Area -->
 
-	<!-- <div class="blog_right_sidebar"
-		style="width: 30%; float: right; background-color: white; border: 0px;">
-		<aside class="single_sidebar_widget search_widget">
-			<div class="input-group">
-				<input type="text" id="input" onkeyup="myFunction()" class="form-control" placeholder="회원 검색하기"
-					onfocus="this.placeholder = ''"
-					onblur="this.placeholder = '회원 검색하기'"> <span
-					class="input-group-btn">
-					<button class="btn btn-default" type="button">
-						<i class="lnr lnr-magnifier"></i>
-					</button>
-				</span>
-			</div>
-		</aside>
-	</div> -->
-
 	<!-- Start Container Area -->	
-	<div class="container">
+	<div class="card-container">
 		<div class="gaadiex-list-title">
 			<h2>MEMBER LIST</h2>
 		</div>
@@ -175,7 +158,7 @@ function formAction() {
 
 						<td>
 							<a href="profileform.do?memno=${list.memNo}">
-								<img src="${list.memFile }" class="avatar" alt="img">
+								<img src="${list.memFile }" class="avatar" alt="">
 							</a>
 						</td>
 						<td class="memName"><span>${list.memName}</span></td>

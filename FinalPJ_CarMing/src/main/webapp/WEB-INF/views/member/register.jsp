@@ -14,36 +14,7 @@
 <link rel="stylesheet" href="resources/css/nouislider.min.css">
 <link rel="stylesheet" href="resources/css/bootstrap.css">
 <link rel="stylesheet" href="resources/css/main.css">
-
-<style type="text/css">
-	#content{text-align: -webkit-center; padding: 50px 100px;}
-	
-	.loginform-logo{margin-bottom: 15px;}   
-    .login-logo{width: 140px; height: 100%; margin-top: -5px;}
-	    
-	.content-form{max-width: 78%; border: 1px solid #e2e2e2; border-radius: 10px; padding: 40px 0px; background: #fff5e9;}
-	h4{padding-left: 7%; text-align: left; margin: 0 10px 10px; color: #5f5f5f; font-size: 1.2em; font-weight: bold;}
-	.content-panel{width: 85%; padding: 15px 20px; border: 1px solid #ccc; border-radius: 5px; 
-				   background: #fafafa; color: gray;} 
-	.content-panel-text{font-size: 0.95em; text-align: left;}
-	
-	.checkbox input{display: none;}
-	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
-	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; 
-					background: #fff; border-radius: 3px; transition: background 0.1s ease;}
-	.checkbox .icon::after{content: ''; position: absolute; top: 0.5px; left: 5px; width: 6px; height: 11px; 
-						   border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); 
-						   transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
-	.checkbox .text{margin-left: 5px; color: #5f5f5f; font-size: 1.25em;}
-	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
-	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
-	
-	.checkbox-form{margin: -15px 0 20px 0; font-size: 0.9em;}
-	.agree-btn{width: 300px; padding: 10px 0 10px; line-height: 25px; border: 0; border-radius: 10px; outline: none;
-				font-size: 1.3em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
-	.agree-btn:hover{background: #ffdb9f; transition: 0.2s;}
-	.agree-btn > span{font-size: 0.95em; font-weight: bold;}
-</style>
+<link rel="stylesheet" href="resources/css/register.css">
 
 </head>
 <body>
