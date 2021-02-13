@@ -11,8 +11,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 캠핑렌트</title>
+<style type="text/css">
+	.review-text{color: #ffc107; font-size: 26px;}
+</style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="resources/js/cart.js?ver=10"></script>
 <script type="text/javascript">
 var locked = 0;
 
@@ -59,7 +63,6 @@ function mark(star){
     document.getElementById("starvalue").value = star;
 }
 </script>
-<script src="resources/js/cart.js"></script>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -100,7 +103,7 @@ function mark(star){
 					</div>
 					<div class="col-lg-5 offset-lg-1">
 						<div class="s_product_text">
-							<h3>${productdto.pName }</h3>
+							<h2>${productdto.pName }<span>(<fmt:formatNumber value="${countreview}" pattern="###,###,###"/>개 리뷰)</span></h2>
 							<h2><fmt:formatNumber value="${productdto.pPrice }" pattern="###,###,###"/>&nbsp;원</h2>
 							<ul class="list">
 								<c:choose>
@@ -174,7 +177,7 @@ function mark(star){
 						 aria-selected="false">상품 리뷰</a>
 					</li>
 				</ul>
-				<div class="tab-content" id="myTabContent" style="text-align:center;">
+				<div class="tab-content" id="myTabContent" style="text-align:center; margin-top: 3%;">
 					<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
 						<img class="product_description" src="resources/img/rent/${productdto.pDesc}">
 					</div>
@@ -185,8 +188,8 @@ function mark(star){
 							<div class="col-lg-6">
 									<c:choose>
 									<c:when test="${empty reviewlist}">
-										<h3>등록되어 있는 리뷰가 존재하지 않습니다. <br>
-										리뷰를 남겨주세요.</h3>
+										<h3 style="margin-top: 18%; white-space: pre-line;">등록되어 있는 <span class="review-text">리뷰</span>가 존재하지 않습니다. <br>
+										<span class="review-text">리뷰</span>를 남겨주세요.</h3>
 									</c:when>
 									<c:otherwise>
 

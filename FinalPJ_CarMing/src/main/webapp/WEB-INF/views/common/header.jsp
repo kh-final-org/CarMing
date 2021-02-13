@@ -112,9 +112,6 @@
 			<div class="container">
 				<form class="d-flex justify-content-between" id="searchForm" onSubmit="formAction();">
 					<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
-					<input type="hidden" name="orderBy" value="${orderBy}">
-					<input type="hidden" name="pCateNo" value="${pCateNo }">
-					<input type="hidden" name="viewNo" value="${viewNo}">
 					<input type="hidden" name="page" value="${page}">
 					<input type="text" class="form-control" id="search_input" placeholder="Search Here" name="search" value="${param.search }">
 					<button type="submit" class="btn"></button>

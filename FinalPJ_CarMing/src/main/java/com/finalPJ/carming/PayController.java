@@ -150,6 +150,7 @@ public class PayController {
 		rttr.addAttribute("cNoArr", cNoArr);
 		rttr.addAttribute("cAmountArr", cAmountArr);
 		rttr.addAttribute("pNoArr", pNoArr);
+		
 		return "redirect:/kakao.do";
 	}
 	
