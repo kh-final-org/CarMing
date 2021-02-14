@@ -100,6 +100,22 @@ public class InquiryDaoImpl implements InquiryDao{
 	}
 
 
+	@Override
+	public int chatbotinsert(InquiryDto dto) {
+		int res = 0; 
+		
+		 try {
+			res = sqlSession.insert(NAMESPACE+"chatbotinsert", dto);
+		} catch (Exception e) {
+			System.out.println("[error]: insert");
+			System.out.println(dto.toString());
+			e.printStackTrace();
+		}
+		 
+		return res;
+	}
+
+
 
 
 
