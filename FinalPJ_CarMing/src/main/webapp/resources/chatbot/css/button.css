@@ -7,7 +7,7 @@
 /* Wide Mobile Layout: 480px */
 /* Section Gaps css
 ============================================================================================ */
-.no-padding {
+/* .no-padding {
   padding: 0; }
 
 .section_gap {
@@ -43,8 +43,8 @@
 .gray-bg {
   background: #f9f9ff; }
 
-/* Section title css
-============================================================================================ */
+Section title css
+============================================================================================
 .section-title {
   margin-bottom: 50px; }
   .section-title h1 {
@@ -52,8 +52,8 @@
   .section-title p {
     margin-bottom: 0; }
 
-/* Start Gradient Area css
-============================================================================================ */
+Start Gradient Area css
+============================================================================================
 .gradient-bg, .primary-btn, .add-bag .add-btn, .single-product .product-details .prd-bottom .social-info span:after, .grid-btn:hover, .list-btn:hover, .grid-btn.active, .list-btn.active, .pagination a.active, .pagination a:hover, .s_Product_carousel .owl-dots div.active, .s_product_text .card_area .icon_btn:after, .product_description_area .nav.nav-tabs li a.active, .blog-pagination .page-item.active .page-link, .single-footer-widget .click-btn {
   background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
   background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
@@ -74,8 +74,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-/* Start primary btn css
-============================================================================================ */
+Start primary btn css
+============================================================================================
 .primary-btn {
   position: relative;
   overflow: hidden;
@@ -1203,8 +1203,8 @@ h1, h2, h3, h4, h5, h6 {
   .navbar-expand-lg > .container-fluid {
     padding: 0px 15px; } }
 
-/* banner area css
-============================================================================================ */
+banner area css
+============================================================================================
 .banner-area {
   background: url(../img/banner/banner-bg.jpg) center no-repeat;
   background-size: cover;
@@ -1341,8 +1341,8 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-/* start features area css
-============================================================================================ */
+start features area css
+============================================================================================
 @media (max-width: 768px) {
   .features-area {
     padding-top: 0; } }
@@ -1381,10 +1381,10 @@ h1, h2, h3, h4, h5, h6 {
   .single-features:hover .f-icon img {
     opacity: .5; }
 
-/* start features area css
-============================================================================================ */
-/* start category area css
-============================================================================================ */
+start features area css
+============================================================================================
+start category area css
+============================================================================================
 .single-deal {
   position: relative;
   margin-bottom: 30px; }
@@ -1430,10 +1430,10 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     visibility: visible; }
 
-/* end category area css
-============================================================================================ */
-/* start product area css
-============================================================================================ */
+end category area css
+============================================================================================
+start product area css
+============================================================================================
 .active-product-area {
   padding-top: 70px;
   padding-bottom: 50px; }
@@ -1584,8 +1584,8 @@ h1, h2, h3, h4, h5, h6 {
           visibility: visible;
           left: 40px; }
 
-/* end product area css
-============================================================================================ */
+end product area css
+============================================================================================
 .exclusive-deal-area {
   background: #f9f9ff; }
   .exclusive-deal-area .exclusive-left {
@@ -2211,25 +2211,25 @@ label {
     .register-form .common-input:focus {
       border: 1px solid white; }
   .register-form ::-webkit-input-placeholder {
-    /* WebKit, Blink, Edge */
+    WebKit, Blink, Edge
     color: #fff;
     font-weight: 300; }
   .register-form :-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
+    Mozilla Firefox 4 to 18
     color: #fff;
     opacity: 1;
     font-weight: 300; }
   .register-form ::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
+    Mozilla Firefox 19+
     color: #fff;
     opacity: 1;
     font-weight: 300; }
   .register-form :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
+    Internet Explorer 10-11
     color: #fff;
     font-weight: 300; }
   .register-form ::-ms-input-placeholder {
-    /* Microsoft Edge */
+    Microsoft Edge
     color: #fff;
     font-weight: 300; }
 
@@ -3483,8 +3483,8 @@ label {
     margin-right: 5px;
     color: #777777; }
 
-/* Feature Product Area css
-============================================================================================ */
+Feature Product Area css
+============================================================================================
 .feature_product_area .main_box {
   box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.05);
   padding-top: 30px;
@@ -3598,10 +3598,10 @@ label {
 .latest_product_inner {
   margin-bottom: -35px; }
 
-/* End Feature Product Area css
-============================================================================================ */
-/* End Feature Product Area css
-============================================================================================ */
+End Feature Product Area css
+============================================================================================
+End Feature Product Area css
+============================================================================================
 .most_product_area .main_box {
   box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.05);
   padding-top: 100px;
@@ -3632,10 +3632,10 @@ label {
       color: #777777;
       margin-bottom: 0px; }
 
-/* End Feature Product Area css
-============================================================================================ */
-/* Product Sidebar Area css
-============================================================================================ */
+End Feature Product Area css
+============================================================================================
+Product Sidebar Area css
+============================================================================================
 .cat_product_area .latest_product_inner {
   padding-top: 30px;
   margin-bottom: -50px; }
@@ -3870,10 +3870,10 @@ label {
 .most_p_withoutbox {
   padding-bottom: 120px; }
 
-/* End Product Sidebar Area css
-============================================================================================ */
-/* Single Product Area css
-============================================================================================ */
+End Product Sidebar Area css
+============================================================================================
+Single Product Area css
+============================================================================================
 .product_image_area {
   padding-top: 120px; }
 
@@ -4164,10 +4164,10 @@ label {
   border-radius: 5px;
   border: none; }
 
-/* End Single Product Area css
-============================================================================================ */
-/* Cart Area css
-============================================================================================ */
+End Single Product Area css
+============================================================================================
+Cart Area css
+============================================================================================
 .cart_area {
   padding-top: 100px;
   padding-bottom: 100px; }
@@ -4376,10 +4376,10 @@ label {
   text-transform: uppercase;
   font-weight: 500; }
 
-/* End Cart Area css
-============================================================================================ */
-/* End Cart Area css
-============================================================================================ */
+End Cart Area css
+============================================================================================
+End Cart Area css
+============================================================================================
 .check_title h2 {
   font-size: 14px;
   font-weight: normal;
@@ -4704,10 +4704,10 @@ label {
       .order_details_table .table tbody tr:last-child td p {
         color: #222222; }
 
-/* End Cart Area css
-============================================================================================ */
-/* Login form Area css
-============================================================================================ */
+End Cart Area css
+============================================================================================
+Login form Area css
+============================================================================================
 .login_box_area .login_box_img {
   margin-right: -30px;
   position: relative; }
@@ -4792,10 +4792,10 @@ label {
   margin-top: 20px;
   display: block; }
 
-/* End Login form Area css
-============================================================================================ */
-/* Tracking Form Area css
-============================================================================================ */
+End Login form Area css
+============================================================================================
+Tracking Form Area css
+============================================================================================
 .tracking_box_area .tracking_box_inner p {
   max-width: 870px;
   color: #222222;
@@ -4838,8 +4838,8 @@ label {
   .tracking_box_area .tracking_box_inner .tracking_form .form-group .submit_btn {
     text-transform: uppercase; }
 
-/* End Tracking Form Area css
-============================================================================================ */
+End Tracking Form Area css
+============================================================================================
 .radion_btn input[type=radio] {
   position: absolute;
   visibility: hidden; }
@@ -4907,8 +4907,8 @@ label {
 .radion_btn input[type=radio]:checked ~ label {
   color: #000; }
 
-/* Latest Blog Area css
-============================================================================================ */
+Latest Blog Area css
+============================================================================================
 .l_blog_item .l_blog_text .date {
   margin-top: 24px;
   margin-bottom: 15px; }
@@ -4931,10 +4931,10 @@ label {
   margin-bottom: 0px;
   padding-top: 20px; }
 
-/* End Latest Blog Area css
-============================================================================================ */
-/* Causes Area css
-============================================================================================ */
+End Latest Blog Area css
+============================================================================================
+Causes Area css
+============================================================================================
 .causes_slider .owl-dots {
   text-align: center;
   margin-top: 80px; }
@@ -5009,9 +5009,9 @@ label {
       font-size: 14px;
       color: #222222; }
 
-/* End Causes Area css
-============================================================================================ */
-/*================= latest_blog_area css =============*/
+End Causes Area css
+============================================================================================
+================= latest_blog_area css =============
 .latest_blog_area {
   background: #f9f9ff; }
 
@@ -5050,7 +5050,7 @@ label {
   .tags .tag_btn + .tag_btn {
     margin-left: 2px; }
 
-/*========= blog_categorie_area css ===========*/
+========= blog_categorie_area css ===========
 .blog_categorie_area {
   padding-top: 80px;
   padding-bottom: 80px; }
@@ -5093,7 +5093,7 @@ label {
   .categories_post:hover .categories_details {
     background: rgba(255, 186, 0, 0.8); }
 
-/*============ blog_left_sidebar css ==============*/
+============ blog_left_sidebar css ==============
 .blog_item {
   margin-bottom: 40px; }
 
@@ -5357,7 +5357,7 @@ label {
   background-color: #c5322d;
   border-color: #eee; }
 
-/*============ Start Blog Single Styles  =============*/
+============ Start Blog Single Styles  =============
 .single-post-area .social-links {
   padding-top: 10px; }
   .single-post-area .social-links li {
@@ -5546,24 +5546,24 @@ label {
     height: 140px;
     resize: none; }
   .comment-form ::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
+    Chrome/Opera/Safari
     font-size: 13px;
     color: #777; }
   .comment-form ::-moz-placeholder {
-    /* Firefox 19+ */
+    Firefox 19+
     font-size: 13px;
     color: #777; }
   .comment-form :-ms-input-placeholder {
-    /* IE 10+ */
+    IE 10+
     font-size: 13px;
     color: #777; }
   .comment-form :-moz-placeholder {
-    /* Firefox 18- */
+    Firefox 18-
     font-size: 13px;
     color: #777; }
 
-/*============ End Blog Single Styles  =============*/
-/*============== contact_area css ================*/
+============ End Blog Single Styles  =============
+============== contact_area css ================
 .mapBox {
   height: 420px;
   margin-top: 80px;
@@ -5626,8 +5626,8 @@ label {
   border: none;
   border-radius: 0; }
 
-/* Contact Success and error Area css
-============================================================================================ */
+Contact Success and error Area css
+============================================================================================
 .modal-message .modal-dialog {
   position: absolute;
   top: 36%;
@@ -5659,8 +5659,8 @@ label {
     .modal-message .modal-dialog .modal-content .modal-header p {
       display: block; }
 
-/* End Contact Success and error Area css
-============================================================================================ */
+End Contact Success and error Area css
+============================================================================================
 .footer-area {
   padding-top: 100px;
   background-color: #222222; }
@@ -5752,32 +5752,32 @@ label {
     outline: none;
     box-shadow: none; }
 .single-footer-widget ::-moz-selection {
-  /* Code for Firefox */
+  Code for Firefox
   background-color: #191919 !important;
   color: #777777; }
 .single-footer-widget ::selection {
   background-color: #191919 !important;
   color: #777777; }
 .single-footer-widget ::-webkit-input-placeholder {
-  /* WebKit, Blink, Edge */
+  WebKit, Blink, Edge
   color: #777777;
   font-weight: 300; }
 .single-footer-widget :-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
+  Mozilla Firefox 4 to 18
   color: #777777;
   opacity: 1;
   font-weight: 300; }
 .single-footer-widget ::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
+  Mozilla Firefox 19+
   color: #777777;
   opacity: 1;
   font-weight: 300; }
 .single-footer-widget :-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
+  Internet Explorer 10-11
   color: #777777;
   font-weight: 300; }
 .single-footer-widget ::-ms-input-placeholder {
-  /* Microsoft Edge */
+  Microsoft Edge
   color: #777777;
   font-weight: 300; }
 
@@ -5789,5 +5789,5 @@ label {
   .footer-text a,
   .footer-text i {
     color: #ffba00; }
-
+ */
 /*# sourceMappingURL=main.css.map */

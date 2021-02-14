@@ -72,9 +72,7 @@ body {
 	</div>
 	<div class="conv-form-wrapper">
 		
-			<!-- <form action="insertres.do" method="GET" class="hidden" target="param"> -->
 			<form action="" method="GET" class="hidden" target="param">
-			<!-- <form action="insertres.do" method="GET" class="hidden"> -->
 				
 				<c:choose>
 				    <c:when test="${empty no}">
@@ -130,27 +128,34 @@ body {
 									<!-- 제출 버튼 -->
 									<option value="jechool">친구 프로필 보기</option>
 								</select>
-																
-								<!-- <select name="aaaa" data-conv-question="친구의 프로필을 소개합니다 :)">
-									<option value="def">친구 다시 찾기</option>
-									<option value="abc">처음으로</option>
-								</select> -->
 								
 							</div>
 							
 							<!-- Q & A -->
 							<div data-conv-case="question">
-								<select name="QNA1" data-conv-question="' CarMing '의 챗봇 서비스 핑구입니다! 무엇을 도와드릴까요? :)">
+								<input type="text" data-conv-question="문의하기를 선택하셨습니다." data-no-answer="true">
+								
+								<select name="categoryno" data-conv-question="해당하는 카테고리를 선택해주세요.">
 									<!-- 선택지 -->	
-									<option value="1">질문1</option>
-									<option value="2">질문2</option>
-									<option value="3">질문3</option>
-								</select>				
+									<option value="1">상품 및 배송</option>
+									<option value="2">교환 및 반품</option>
+									<option value="3">기타</option>
+								</select>
+								
+								<input type="text" name="inquirycontent" data-conv-question="문의할 내용을 입력해주세요.">
+								
+                                <!-- 제출하시겠습니까? -->
+								<select id="vvss" name="b" data-conv-question="제출하시겠습니까?" onchange="inquiry()" >
+									<!-- 제출 버튼 -->
+									<option value="jechooll">제출하기</option>
+								</select>
+								
+								<input type="text" data-conv-question="빠른 시일내에 답변드리겠습니다." data-no-answer="true">
 							</div>
 							
 						</div>
 						
-						<!-- <input type="text" name="company_name" data-conv-question="상담원과 연결됩니다."> -->			
+								
 						
 						<!-- 제출하시겠습니까? -->
 						<!-- <select data-conv-question="제출하시겠습니까 ?">

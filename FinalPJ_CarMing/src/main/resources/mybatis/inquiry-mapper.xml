@@ -63,11 +63,15 @@
 		INSERT INTO INQUIRYLIST
 		VALUES(SEQINQUIRY.NEXTVAL,(SELECT MEMNO FROM MEMBER WHERE MEMNO=#{memNo}), #{filename},#{inquiryContent}, SYSDATE,#{categoryNo})
 	</insert>
-	 
  
  	<delete id="delete" parameterType="int">
  		DELETE FROM INQUIRYLIST
  		WHERE INQUIRYNO = #{inquiryNo}
  	</delete>
+ 	
+ 	<insert id="chatbotinsert" parameterType="InquiryDto" >
+		INSERT INTO INQUIRYLIST
+		VALUES(SEQINQUIRY.NEXTVAL, #{memNo}, null, #{inquiryContent}, SYSDATE, #{categoryNo})
+	</insert>
  
  </mapper>
