@@ -16,4 +16,8 @@ public interface CartDao {
 	public int countProduct(int payNo);
 	public String pName(PayDto pDto);
 	public void updateCart(int cartNo);
+	
+	//검색, 페이징 SELECT//
+	public List<CartListDto> orderList(String search, int page);
+	public int getOrderCnt(String search);
 }

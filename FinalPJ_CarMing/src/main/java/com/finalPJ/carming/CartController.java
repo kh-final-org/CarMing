@@ -44,18 +44,20 @@ public class CartController {
 	
 	@ResponseBody
 	@RequestMapping(value="/cart.do")
-	public int cart(@RequestParam(value="cAmount") String cAmount, @RequestParam(value="pAmount") String pAmount, HttpServletRequest request, HttpSession session, CartDto cart) {
+	public int cart(@RequestParam(value="cAmount") String cAmount, HttpServletRequest request, HttpSession session, CartDto cart) {
 		logger.info("[CART INSERT]");
 		
 		//파라미터값 확인하기 위한 출력 구문
 		System.out.println("수량: "+cAmount);
-		System.out.println("재고: "+pAmount);
+//		System.out.println("재고: "+pAmount);
 		
 		int result = 1;
 		
 		MemberDto member = (MemberDto)session.getAttribute("member");
 		
 		System.out.println(cart);
+//		cart.setMemNo(member.getMemno());
+//		cart.setStateNo(1);
 		biz.insertCart(cart);
 		System.out.println(result);
 		

@@ -1,7 +1,9 @@
 package com.finalPJ.carming.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +65,38 @@ public class PayDaoImpl implements PayDao{
 			e.printStackTrace();
 		}
 		return pDto;
+	}
+
+	@Override
+	public List<PayDto> selectPay(String search, int page) {
+		System.out.println("[DaoImpl] page/search/viewNo/pCateNo/orderBy: "+page+"/"+search);
+		List<PayDto> list = new ArrayList<PayDto>();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("search", search);
+		map.put("page", page);
+		
+		System.out.println("[DaoImpl] map: "+map);
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"selectPay_paging", map);
+		} catch (Exception e) {
+			System.out.println("[ERROR: SELECT ORDERLIST]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int getPayCnt(String search) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectPayCnt", search);
+		} catch (Exception e) {
+			System.out.println("[ERROR: SELECT PRODUCTCNT]");
+			e.printStackTrace();
+		}
+		return res;
 	}
 	
 }

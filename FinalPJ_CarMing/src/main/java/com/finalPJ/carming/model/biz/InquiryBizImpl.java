@@ -67,5 +67,10 @@ public class InquiryBizImpl implements InquiryBiz{
 		return dao.deleteInquiry(inquiryNo);
 	}
 
+	@Override
+	public int chatbotinsert(InquiryDto dto) {
+		return dao.chatbotinsert(dto);
+	}
+
 
 }

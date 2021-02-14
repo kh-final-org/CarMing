@@ -15,28 +15,10 @@
 		WHERE PAYNO = #{payNo} AND CARTNO = #{cartNo}
 	</select>
 	<insert id="insertpay" parameterType="payDto">
-	
 		INSERT INTO 
 		PAY
 		VALUES(#{payNo}, #{cartNo}, #{method}, #{addr}, #{totalPrice}, SYSDATE)
 	</insert>
-	
-	
-<!-- 	<insert id="insertpay" parameterType="java.util.list">
-	
-		INSERT ALL
-		<foreach collection="list" item="item" separator=" " close="SELECT * FROM SYS.DUAL"> 
-		INTO PAY
-		VALUES( 
-		#{payNo}
-		, #{cartNo}
-		, #{method}
-		, #{addr}
-		, #{totalPrice}
-		, SYSDATE)
-		</foreach>
-	</insert> -->
-	
 	
 	<select id="pay_currval" resultType="Integer">
 		SELECT 
@@ -44,4 +26,21 @@
 		FROM DUAL
 	</select>
 	
+	<!-- 검색, 페이징 -->
+	<select id="selectPay_paging" resultType="payDto" parameterType="hashmap">
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, P.* 
+		FROM (SELECT * FROM PAY WHERE METHOD LIKE '%' || #{search} || '%' OR ADDR LIKE '%' || #{search} || '%'
+			 ORDER BY PAYNO DESC) P)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 10 AND #{page} * 10
+	</select>
+	
+	<select id="selectPayCnt" resultType="int" parameterType="string">
+		SELECT COUNT(PAYNO) COUNT FROM
+		(SELECT ROWNUM AS RNUM, P.*
+		FROM (SELECT * 
+				FROM PAY 
+				WHERE METHOD LIKE '%' || #{search} || '%' OR ADDR LIKE '%' || #{search} || '%' 
+				ORDER BY PAYNO DESC) P)
+	</select>
 </mapper>

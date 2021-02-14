@@ -69,15 +69,12 @@ $(document).ready(function(){
 			$("input[class='chBox']:checked").each(function(){
 				checkArr.push($(this).attr("data-cartNo"));
 			});
-			
-			alert(checkArr);
-			
+				
 			$.ajax({
 				url: "cartdelete.do",
 				type: "post",
 				data: {chBox : checkArr},
 				success: function(result){
-					alert("성공은 했나?");
 					if(result == 1){
 						alert("해당 항목이 삭제되었습니다.");
 						location.href = "cartlist.do";

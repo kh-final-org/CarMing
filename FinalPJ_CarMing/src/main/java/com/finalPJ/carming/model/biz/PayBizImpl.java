@@ -34,4 +34,14 @@ public class PayBizImpl implements PayBiz{
 		return pdao.selectOnePay(pDto);
 	}
 
+	@Override
+	public List<PayDto> selectPay(String search, int page) {
+		return pdao.selectPay(search, page);
+	}
+
+	@Override
+	public int getPayCnt(String search) {
+		return pdao.getPayCnt(search);
+	}
+
 }
