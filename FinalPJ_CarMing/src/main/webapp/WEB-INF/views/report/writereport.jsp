@@ -22,8 +22,8 @@
 <!-- meta character set -->
 <meta charset="UTF-8">
 
+<link rel="stylesheet" href="resources/css/writereport.css">
 
-<link rel="stylesheet" href="resources/css/report.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
@@ -39,9 +39,7 @@
 <!--gmaps Js-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="resources/js/gmaps.min.js"></script>
- 
-<!-- ★★★위 스크립트로 상단바 위치가 깨짐★★★
-<script src="resources/js/main.js"></script>-->
+<!-- <script src="resources/js/main.js"></script> -->
  
 
 </head>
@@ -54,17 +52,15 @@
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first" id="banner-text-1">
-	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='reportlist.do'">신고 목록</button>
 	         </div>
 		  </div>
 		</div>
@@ -132,7 +128,7 @@
 								<option value="2">욕설/비방이 심함</option>
 								<option value="3">기타</option>
 							</select>
-						<div class="report-category-err" id=emptycategory>카테고리를 선택해 주세요</div>
+						<div class="report-err" id="emptycategory">카테고리를 선택해주세요.</div>
 						</div>
 					</div>
 					
@@ -143,9 +139,9 @@
 						   	<textarea rows="3" cols="75" id="content" name="reportContent" placeholder="신고 내용을 입력해주세요." 
 						   			  style="resize: none;" required="required"></textarea>
 						</div>	
-						<div class="report-category-err" id=emptycontent>문의내용을 작성해 주세요</div>
+						<div class="report-err" id="emptycontent">신고 내용을 작성해주세요.</div>
 					</div>
-					<br>
+
 					<!-- 사진 업로드 -->
 					<div class="report-file"><strong>첨부 파일</strong></div>
 					<div class="upload-img-form">
@@ -157,7 +153,7 @@
 							<label class="custom-file-label" for="input_img" id="filename"></label>
 						</div>
 					</div>
-					<div class= "report-category-err" id=emptyfile>사진을 선택해 주세요</div>
+					<div class= "report-err" id="emptyfile">사진을 선택해주세요.</div>
 
 					<div class="report-submit-form">
 						<button type="button" class="btn btn-light" id="button-boardupload" onclick="report()">보내기</button>

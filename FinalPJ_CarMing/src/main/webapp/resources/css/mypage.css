@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	.card-container{width: 100%;}
+		
+	.card-profile{float: left; width: 27%; height: 400px; margin: 3.8% 5% 0 0; 
+				  border-radius: 10px; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.14);}	
+	.profilepage-profile{margin: 19% 21.5% 5%;}
+	.user-profile{width: 170px; height: 170px; border-radius: 10em;}
+	.user-id{font-size:1.6em; margin: 8% 2%; width: 100%; text-align: center;}
+	.user-email{font-size:1.2em; margin: 6% -15%; width:100%; text-align: center; color: silver;}
+	.my-desc{padding: 0 7%; margin-top: -1%;}
+	.profile-btn{width: 120px; padding: 8px 0 10px; line-height: 20px; border: 0; border-radius: 4px; outline: none;
+				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #fff; cursor: pointer;
+				margin: -2% 7%;}
+	#profile-btn-1{width: 85px !important; margin-right: 1.5% !important;}
+	#profile-btn-2{margin-left: 1% !important;}
+	
+	.card-body{float: right; width: 65.5%; height: 100%; padding: 0 !important;}
+	.card-mypage-title{font-size:1.8em; margin-bottom: 17px; color: #5f5f5f;}
+	.boardlistup{float: left; width: 33.3%}
+	.boardlistup-frame{position: relative; width: 235px; height: 235px; overflow: hidden; border-radius: 5px;}
+	.boardlist-img{width: 235px; height: 235px; border-radius: 5px; transform: scale(1.00);	transition: transform .2s;}
+	.boardlist-img:hover{transform: scale(1.02); transition: transform .2s;}
+	.boardlistup{overflow: hidden; border-radius: 5px; margin-bottom: 10px;}
+	.card-boardlist-board{margin-bottom: 5%; width: 100%;}
+	#board-photo{float: left;}
+
+

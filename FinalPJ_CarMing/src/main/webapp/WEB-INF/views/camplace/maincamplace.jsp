@@ -1,40 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠플레이스</title>
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<link rel="stylesheet" href="resources/css/camplace.css">
 
-<style type="text/css">
-	#content{padding: 50px 200px;}
-	.card-container{margin-bottom: 50%;}
-	
-	#mapcheck{place-content: center;}
- 	.badgebox{opacity: 0;} 
- 	.badgebox + .badge{text-indent: -999999px; width: 15px;} 
-/*  	.badgebox:focus + .badge{box-shadow: inset 0px 0px 5px;}  */
- 	.badgebox:checked + .badge{text-indent: 0;} 
- 	.btn{margin-left: 8px; font-size: 1.2em !important; font-weight: bold !important;
- 		 border: 0 !important; background: #ffe6be !important; color: #5f5f5f !important; }
- 	.btn:hover{background: #ffdb9f !important; transition: 0.2s;} 
- 	.btn > span{display: inline-block; padding: 0 -1% 0 15%;}
- 	.btn-default {border-color: #ccc !important;} 
-	
-	.mapcontent{float : left; width: 50%;}
-	#map{width: 540px; height: 450px; border-radius: 10px;}
-	.map-info{margin-top: 50px;}
-	
-	.camptable{float: right; width: 40%; width: 540px; height: 450px; overflow: auto; }
-	.campdata{width: 33%; float: left; text-align: center;}
-	
-	.map-pagination{clear: both; margin: 0 45%; text-align: center;}
-	.pagenum > a{width: 30px; border-radius: 3px; float: left;}
-	
-</style>
 </head>
 <body>
 	<section id="header">
@@ -45,12 +19,9 @@
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
 	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-	         <div class="col-first">
-	            <h1>The stars in the night sky</h1>
-	         	<nav class="d-flex align-items-center">
-	               <a href="home.do">Home<span class="lnr lnr-arrow-right"></span></a>
-	               <a href="boardmainform.do">캠플레이스</a>
-	            </nav>
+	         <div class="col-first" id="banner-text-1">
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 	   </div>
@@ -79,14 +50,15 @@
 			        </label>
 			        <input type="hidden" value="${login.memno }" name="memno">
 		        </c:if>
-		        
 			</div>
 			
 			<div class="map-info">
+				<!-- 지도 보이는 곳 -->
 				<div class="mapcontent">
 					<div id="map"></div>
 				</div>
 				
+				<!-- 캠핑 목록 -->
 				<div class="camptable" id="camptable">
 					<div class="camprow" id="camprow">
 						<ul id="placesList"></ul>  
@@ -119,7 +91,6 @@
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<script src="resources/js/gmaps.min.js"></script>
 <!-- 	<script src="resources/js/main.js"></script> -->
-
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d642f0ec29fa1aa1c0907815f0c88f11&libraries=services"></script>
 	<script src="resources/js/maincamplace.js"></script>
 

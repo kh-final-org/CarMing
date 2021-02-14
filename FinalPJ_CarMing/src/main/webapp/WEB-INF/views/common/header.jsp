@@ -19,9 +19,7 @@
 	<!-- Site Title -->
 	<title>CarMing</title>
 
-	<!--
-		CSS
-		============================================= -->
+	<!-- CSS -->
 	<link rel="stylesheet" href="resources/css/linearicons.css">
 	<link rel="stylesheet" href="resources/css/owl.carousel.css">
 	<link rel="stylesheet" href="resources/css/themify-icons.css">

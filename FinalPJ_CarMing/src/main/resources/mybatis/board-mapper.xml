@@ -19,6 +19,7 @@
 		<result property="memnick" column="MEMNICK"/>
 		<result property="mapname" column="MAPNAME"/>
 		<result property="comcount" column="COUNT"/>
+	
 	</resultMap>
 	
 	<!-- 01. 게시글 전체 목록 -->
@@ -31,9 +32,9 @@
 	FROM BOARD B
 	JOIN BCATEGORY BC
 	ON B.BCATEGORYNO = BC.BCATEGORYNO
-	WHERE B.BCATEGORYNO LIKE  '%' ||  #{categoryNo}  || '%'
+	WHERE B.BCATEGORYNO LIKE  '%' ||  #{categoryNo}  || '%' 
 	ORDER BY BRDDATE DESC) BRD WHERE BRDPRIVATE='N')
-	WHERE RNUM BETWEEN 1 + (#{page} -1) * 6 AND #{page}  * 6
+	WHERE RNUM BETWEEN 1 + (#{page} -1) * 9 AND #{page}  * 9
 	
 	</select>
 	
@@ -113,7 +114,7 @@
 	
 	<!-- 08. 사용자 프로필, 사용자 정보 -->
 	<select id="profilemem" resultType="MemberDto" parameterType="int">
-		SELECT * FROM MEMBER WHERE MEMNO=#{memno}
+		SELECT * FROM MEMBER WHERE MEMNO = #{memno} 
 	</select>
 	
 	<!-- 09. 게시글(영상) 추가 -->

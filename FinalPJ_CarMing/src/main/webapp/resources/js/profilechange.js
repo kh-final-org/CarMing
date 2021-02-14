@@ -3,10 +3,18 @@ var regist_chk = true;
 
 var sel_file;
 
+//닉네임 중복확인용 변수
+var nickduplcheck_profile = false;
+
+var user_memnick = $('input[name=memnick]').val();
+
 $(document).ready(function(){
 	
 	
+	var phone_regul = /^[0-9]{10,11}$/;
+	var memphone_input = $('input[name=memphone]');
 	var membirth_input = $('input[name=membirth]');
+	var memnick_input = $('input[name=memnick]');
 	
 	//생일입력창 max 년월일 입력
 	membirth_input.prop('max', function(){
@@ -16,12 +24,32 @@ $(document).ready(function(){
 	//이미지 미리보기
 	$("#input_img").on("change", handleImgFileSelect);
 	
+	//실시간 전화번호 형식 검사
+	memphone_input.keyup(function(){
+		if(check(phone_regul, memphone_input)){
+			$('#memphone_error').hide();
+		} else {
+			$('#memphone_error').show();
+		}
+	});
+	
+	memnick_input.keyup(function(){
+		if(user_memnick!=memnick_input.val()){
+			nickduplcheckprofile=false;
+		}else{
+			$('#memnick_error').hide();
+			$('#nick_dupl_good').hide();
+			$('#nick_dupl_bad').hide();
+		}
+	});
+	
 	
 });
 
 //가입항목에 빈칸인 칸이 있으면 경고창을 띄우고 해당 칸에 에러를 보여준뒤 false 리턴
 function empty_change() {
 	
+	var phone_regul = /^[0-9]{10,11}$/;
 
 	var memnick_input = $('input[name=memnick]');
 	var memzip_input = $('input[name=memzip]');
@@ -29,16 +57,46 @@ function empty_change() {
 	var membirth_input = $('input[name=membirth]');
 	
 	if(
-			memnick_input.val().trim()=="" ||
-			memzip_input.val().trim()=="" ||
-			memphone_input.val().trim()==""){
+		memnick_input.val().trim()=="" ||
+		memzip_input.val().trim()=="" ||
+		memphone_input.val().trim()==""){
 		
-		regist_chk = false;
-		alert("수정사항에 빈 칸을 채워주세요.");
+		alert("상세주소를 제외한 수정사항 항목을 빠짐없이 입력해주세요");
+		return false;
 	}
+	
+	if(user_memnick != memnick_input.val()){
+		if(nickduplcheck_profile==false){
+			alert("닉네임 중복확인이 완료되지 않았습니다.");
+			return false;
+		}
+	}
+	
+	if(	check(phone_regul, memphone_input))	
+		{	
+		}else{
+			regist_chk = false;
+			alert("전화번호 항목을 제대로 입력해주세요")
+			return false;
+		}
+	alert("수정된 프로필이 저장되었습니다.");
 	
 	return regist_chk;
 }; // end submit()
+
+
+//정규식과 해당 태그를 입력받아 검사
+function check(regul, content){
+    if (regul.test(content.val()) && (content.val().search(/\s/) == -1)) {
+    	regist_chk = true;
+        return true;
+    }else{
+    	regist_chk = false;
+    	return false;
+    }
+    
+}
+
 
 
 function handleImgFileSelect(e) {
@@ -61,8 +119,56 @@ function handleImgFileSelect(e) {
 			$("#img").attr("height", "250px");
 		}
 		reader.readAsDataURL(f);
-	});
+	})
 }
+
+function nickdupl(){
+	
+	var memnick_input = $('input[name=memnick]');
+	var nick = memnick_input.val();
+	
+	if(memnick_input.val().trim()==""){
+		$('#memnick_error').show();
+	}else if(user_memnick==memnick_input.val()){
+		$('#memnick_error').hide();
+		$('#nick_dupl_good').hide();
+		$('#nick_dupl_bad').hide();
+		alert("현재 계정에서 사용중입니다.");
+	}else{
+		$('#memnick_error').hide();
+		$.ajax({
+			type : 'post',
+			url : 'nickdupltest.do',
+			data : {
+				nick:nick
+				},
+			dataType :'json',
+			success:function(msg){
+				if(msg.check==true){
+					$('#nick_dupl_good').show();
+					$('#nick_dupl_bad').hide();
+					nickduplcheck_profile = true;
+				}else{
+					$('#nick_dupl_good').hide();
+					$('#nick_dupl_bad').show();
+					nickduplcheck_profile = false;
+				}
+			},
+			error:function(){
+				console.error("닉네임 아약스 통신관련 오류");
+				alert("닉네임을 다시 한번 확인해주세요.");
+			}
+		});
+	}
+}
+
+//파일명 추출 (???)
+$(document).ready(function(){
+	var img = $('#input_img');
+
+		var filename = img.val().split('\\').pop();
+	    $('#filename').text(filename); 
+});
 
 //다음api 주소팝업창
 function sample6_execDaumPostcode() {

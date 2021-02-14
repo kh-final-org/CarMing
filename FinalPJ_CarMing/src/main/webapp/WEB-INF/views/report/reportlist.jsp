@@ -27,7 +27,11 @@
 
 
 <style type="text/css">
-	#banner-text-2{position: absolute; top: 255px; right: 245px;}
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	#banner-text-2{position: absolute; top: 60%; right: 14%;}
+	
 	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
 				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
 				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
@@ -37,13 +41,13 @@
 	.banner-btn:hover::before{height: 180%;}
 
 	.card-container{padding: 50px 200px;}
-	.card {position: relative; width: 80%; margin-left: auto; margin-right: auto;}
+	.card {position: relative; width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 5%;}
 	
 	div.blog_right_sidebar{float: right; width: 22%; margin-bottom: -1.5%; margin-right: 7.5%; border: 0; background: #fff; }
 	.btn.btn-default{margin-top: -6%; margin-right: -3%;}
 	
 	.gaadiex-list {border-radius: 10px; list-style-type: none; margin: 0; padding: 0;}
-	.gaadiex-list-title > h2{float:left; width: 25%; margin: 1% 0 0 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
+	.gaadiex-list-title > h2{float:left; width: 25%; margin: 1% 0 0.8% 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
 	.gaadiex-list>.gaadiex-list-item {padding: 0 20px 0 25px;}
 	.gaadiex-list-item {width: 45%; float:left; margin-left: 2%;}
 	.gaadiex-list-item-img > img {float: left; width: 100px; height: 100px; margin: 50px 30px 8px 30px; border-radius: 50%;}
@@ -51,6 +55,7 @@
 	.gaadiex-list-item-text a{color: gray;}
 	.gaadiex-list-item-text a:hover{color: #ffba00; color: gray;}
 	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: gray;}
+	.list-item-text-ck{font-weight: bold;}
 	.list-item-text-ck:hover{border-radius: 2px; background: #fff5e9; transition: 0.2s;}
 </style>
 
@@ -84,13 +89,10 @@ function myFunction() {
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first" id="banner-text-1">
-	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
@@ -141,11 +143,11 @@ function myFunction() {
 								<span class="list-item-text-ck">신고 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,4)}</span>
 							</a>
 						</h4>
-						
 						<div class="gaadiex-list-item-text-ck">
-							<a href="profileform.do?memno=${list.memNo }">제보자 닉네임&nbsp;&#124;&nbsp;${list.reportWriter}</a>
+							<a href="profileform.do?memno=${list.memNo }">
+								<span class="list-item-text-ck">제보자 닉네임&nbsp;&#124;&nbsp;${list.reportWriter}</span>
+							</a>
 						</div>
-						
 						<div class="category">카테고리&nbsp;&#124;&nbsp;${list.categoryName }</div>
 						<div>작성날짜&nbsp;&#124;&nbsp;<fmt:formatDate pattern = "yyyy-MM-dd" value = "${list.reportDate}" /></div>
 						<button class="banner-btn" id="golist" type="button" style="color: orange;" onclick="location.href='deletereport.do?reportNo=${list.reportNo}'">삭제</button>	
@@ -154,8 +156,7 @@ function myFunction() {
 				</c:forEach>
 			</div>
 		</div>
-	</div>
-	<!-- End Container Area -->
+
 
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
@@ -163,9 +164,9 @@ function myFunction() {
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/8), '.')}"></c:set>
 			<!-- 현재 페이지 -->
-			<div class="hint-text">
-					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
-			</div>
+<!-- 			<div class="hint-text"> -->
+<%-- 					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages --%>
+<!-- 			</div> -->
 			<!-- paging 버튼  -->
 			<div class="container ml-auto" id="paging-container" align="center">
 				<nav aria-label="Page navigation example">
@@ -215,7 +216,9 @@ function myFunction() {
 			</div>
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
-
+	</div>
+	<!-- End Container Area -->
+	
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>
 	<!-- End footer Area -->

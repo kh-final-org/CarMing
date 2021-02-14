@@ -9,12 +9,11 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 동영상 올리기</title>
-<link rel="stylesheet" href="resources/css/board_v.css">
+<link rel="stylesheet" href="resources/css/boardinsert_v.css">
 
+<script type="text/javascript" src="resources/js/board_v.js?ver=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
 
 <!-- location-popup -->
 <script>
@@ -63,24 +62,6 @@
 	function resetInputFile() {
 		$("#img").empty();
 	}
-</script>
-
-<!-- 업로드한 파일명 추출  -->
-<script type="text/javascript">
-	$(document).ready(function(){ 
-		var fileTarget = $('.upload-video-content .custom-file-input');
-		
-		fileTarget.on('change', function(){ // 값이 변경되면 
-			if(window.FileReader){ // modern browser 
-				var filename = $(this)[0].files[0].name; 
-			} else { // old IE
-				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-		
-			// 추출한 파일명 삽입
-			$(this).siblings('.custom-file-input').val(filename); 
-		}); 
-	});
 </script>
 
 <!-- 나만보기 체크여부 -->
@@ -162,84 +143,91 @@
 		}
 	}
 </script>
-<!-- 이미지 이름 보여주기 -->
-<script type="text/javascript">
-	 $(document).ready(function(){
-			var img = $('#input_img');
-			var vid = $('#video-file');
 
-			
-
-				 img.change(function(){
-				$('#emptyimg').hide();
-				console.log(img.val())
-				
-				var filename = img.val().split('\\').pop();
-			    $('#filename').text(filename); 
-			 
-			    	
-				});
-			
-				vid.change(function(){
-				$('#emptyvideo').hide();
-				console.log(vid.val())
-				
-				var videofilename = vid.val().split('\\').pop();
-			    $('#videofilename').text(videofilename); 
-			 
-				    	
-					});
-				
-				
-		 });	
-</script>
-<!-- 넘어가지 않게 하는 스크립트 -->
+<!-- 사진 파일명 추출 -->
 <script type="text/javascript">
+	$(document).ready(function(){
+		var img = $('#input_img');
+		var vid = $('#video-file');
+
+		img.change(function(){
+		$('#emptyimg').hide();
+		console.log(img.val())
+		
+		var filename = img.val().split('\\').pop();
+	    $('#filename').text(filename); 
 	 
- function board(){
+		});
+	
+		vid.change(function(){
+		$('#emptyvideo').hide();
+		console.log(vid.val())
+		
+		var videofilename = vid.val().split('\\').pop();
+	    $('#videofilename').text(videofilename); 
+			    	
+		});
 			
-			var img = $('#input_img');
-			var vid = $('#video-file');
-			var category = $('select[name=bcategoryno]');
-			var content = $('textarea[name=brdcontent]');	
-			var place = $('#place');
-			var mapname = $('#mapname')
+	});	
+</script>
 
+<!-- 모든 항목 기입해야 insert -->
+<script type="text/javascript">
+	function board(){
+		var img = $('#input_img');
+		var vid = $('#video-file');
+		var category = $('select[name=bcategoryno]');
+		var content = $('textarea[name=brdcontent]');	
+		var place = $('#place');
+		var mapname = $('#mapname')
+		
+		if(category.val() == null ||
+				content.val().trim() == "" 	||
+				img.val() == "" ||
+				mapname.val() == ""){
+					alert("모든 항목을 기입해주세요.");
+				return;
+			}  	
 			
-				 
-					if(category.val() == null){
-						$('#emptycategory').show();
-						
-					} 
-					
-					category.change(function(){
-						$('#emptycategory').hide();
-						});
-					
-					
-					if(content.val().trim()== ""){
-						$('#emptycontent').show();
-						
-					}
-					content.keyup(function(){
-					$('#emptycontent').hide();
-					
-					}); 
-					
-					 if(img.val() == ""){
-						$('#emptyimg').show();
-					}
-					
-					 if(vid.val() == ""){
-						$('#emptyvideo').show();
-					}
-					
-
-					 if(place.val().trim() == ""){
-							$('#emptymap').show();
-							
-						};  
-					
+			if(category != null &&
+				content.val() != "" &&
+				img != null &&
+				mapname.val() != null )	{
+				alert("게시글이 등록되었습니다.");
+				$("#target").submit();
+			}
+					 
+			if(category.val() == null){
+				$('#emptycategory').show();
+			} 
+			category.change(function(){
+				$('#emptycategory').hide();
+			});
+			
+			if(content.val().trim()== ""){
+				$('#emptycontent').show();
+			}
+			content.keyup(function(){
+				$('#emptycontent').hide();
+			}); 
+			
+			if(img.val() == ""){
+				$('#emptyimg').show();
+			}
+			
+			if(vid.val() == ""){
+				$('#emptyvideo').show();
+			}
+			
+			if(place.val().trim() == ""){
+				$('#emptymap').show();
+			};  
+			
+				/* if(mapname.val() != ""){
+					$('#emptymap').hide();
+			        alert(mapname.val()+"mapnameval"); 
+				};   */
+			
 						/* if(mapname.val() != ""){
 							$('#emptymap').hide();
 					        alert(mapname.val()+"mapnameval"); 
@@ -268,42 +256,13 @@
 					});   */
 					
 					
-					
-					
 					 mapname.keyup(function(){
 						 if(mapname.val().trim() != ""){
 								$('#emptymap').hide();
 						}; 
 					}); 
 					 
-
-						
-						
-					 if(category.val() == null ||
-					content.val().trim() == "" 	||
-					img.val() == "" ||
-					vid.val() == "" ||
-					mapname.val() == ""){
-						alert("모든 항목을 작성해 주세요");
-						return;
-						
-						
-					}  	
-					
-					if(category != null &&
-					content.val() != "" &&
-					img.val() != null &&
-					vid.val() != null &&
-					mapname.val() != null )	{
-						alert("게시글이 작성 되었습니다.");
-						$("#target").submit();
-					}
-						 
-
-
 		};
-	 
-	 
 </script>
 
 
@@ -317,12 +276,9 @@
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>
@@ -338,7 +294,7 @@
 		</div>
 		
 		<div class="card-body">
-			<div class="board-img-err" id="emptyimg">사진을 선택헤 주세요</div>
+			<div class="board-img-err" id="emptyimg">썸네일 사진을 선택해주세요.</div>
 			<!-- Image/Video Upload-->
 			<div class="card-body-left">
 				<div class="upload-img-form">
@@ -354,16 +310,18 @@
 			
 				<div class="upload-video-form">
 					<div class="upload-video-content">
-						<label id="videofilename"  class="custom-file-label" for="video-file"><span class="board-img-err-bottom" id="emptyvideo">비디오를 선택헤 주세요</span></label>
+						<label id="videofilename"  class="custom-file-label" for="video-file">
+							<span class="board-img-err-bottom" id="emptyvideo">영상을 선택해주세요.</span>
+						</label>
 						<input type="file" class="custom-file-input" id="video-file" name="brdvideo" accept="video/*">
 					</div>
 				</div>
 			</div>
-			<br>
+			
 			<!-- Start Upload Contents Area -->
 			<div class="card-body-right">
 				<!-- Category -->
-				<div class="board-err" id="emptycategory">카테고리를 선택헤 주세요</div>
+				<div class="board-err" id="emptycategory">카테고리를 선택해주세요.</div>
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
 				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" 
@@ -379,7 +337,7 @@
 				</div>			
 				
 				<!-- Textarea -->
-				<div class="board-err" id="emptycontent">내용을 입력해 주세요</div>
+				<div class="board-err" id="emptycontent">내용을 입력해주세요.</div>
 				<div class="body-content">
 				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." name="brdcontent" style="resize: none;" required="required"></textarea>
 				</div>
@@ -412,6 +370,7 @@
 									    	</button>
 									  	</div>
 									</div>	
+									<div class="popup-desc-text">키워드 이외의 장소는 지도 상에서 위치를 클릭하여  선택할 수 있습니다.</div>
 								</div> 
 									<script type="text/javascript"
 											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>
@@ -481,11 +440,7 @@
 											lang.setAttribute("value", lng);
 											document.getElementById("lang").appendChild(lang); 
 										    
-										    
-										    
 										});
-										
-										
 										
 										function searchPlaces() {
 
@@ -494,7 +449,7 @@
 
 											if (!keyword.replace(/^\s+|\s+$/g,
 													'')) {
-												alert('키워드를 입력해주세요!');
+												alert('키워드를 입력해주세요.');
 												return false;
 											}
 
@@ -602,7 +557,7 @@
 					<span style="display: none"><strong>위도 : </strong></span><span id="lat"></span>
 					<span style="display: none"><strong>경도 : </strong></span><span id="lang"></span>
 				</div>
-				<div class="board-err" id="emptymap">장소를 선택해 주세요</div>
+				<div class="board-err" id="emptymap">장소를 선택해주세요.</div>
 				
 				<!-- Checkbox -->
 				<div class="body-checklist">

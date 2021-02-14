@@ -10,31 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 프로필 페이지</title>
-<style type="text/css">
-	.card-container{width: 100%;}
-
-	.card-profile{float: left; width: 27%; height: 400px; margin-right: 80px; margin-top: 40px; 
-				  border-radius: 10px; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.14);}	
-	.profilepage-profile{margin: 70px 63px 25px 63px;}	
-	.user-profile{width: 170px; height: 170px; border-radius: 5em;}
-	.user-id{font-size:1.6em; margin: 15px 38px 10px 38px; width: 100px; text-align: center;}
-	.profilepage-message{margin: 10px 0px 10px 74px;}
-	.user-message{width: 30px; height: 30px;opacity: 0.6;}
-	.user-message-text{font-size:1.2em; color: gray;}
-	#member-report-target{font-size: 1.2em; color: silver;}
+<link rel="stylesheet" href="resources/css/profilepage.css">
 	
-	.card-board{float: right; width: 65.5%; height: 100%;}
-	.card-boardtext{font-size:1.8em; margin-bottom: 17px; color: #5f5f5f;}
-	.boardlistup{float: left; width: 33.3%}
-	.boardlistup-frame{position: relative; width: 235px; height: 235px; overflow: hidden; border-radius: 5px;}
-	.boardlist-img{width: 235px; height: 235px; border-radius: 5px; transform: scale(1.00);	transition: transform .2s;}
-	.boardlist-img:hover{transform: scale(1.02); transition: transform .2s;}
-	.boardlistup{overflow: hidden; border-radius: 5px; margin-bottom: 10px;}
-	
-	#board-photo{float: left;}
-	
-</style>	
-
 </head>
 <body>
 <!-- Start Header Area -->
@@ -45,12 +22,9 @@
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>
@@ -63,7 +37,7 @@
 	<!-- 사용자 프로필/신고 -->
 	<div class="card-profile">
 		<div class="profilepage-profile">
-			<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">
+			<img class="user-profile" src="./resources/img/${mem.memfile }" alt="">
 			<div class="user-id"><strong></strong>${mem.memnick}</div>
 		</div>
 		<div class="profilepage-message">
@@ -88,9 +62,24 @@
 			<div class="card-boardlist">
 				<div class="boardlistup" id="board-photo">
 					<div class="boardlistup-frame">
-						<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
-							<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
-						</a>
+						<c:choose>
+							<c:when test="${dto.brdvideoname eq 'N' }">
+								<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
+									<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
+								</a>
+							</c:when>
+							
+							<c:when test="${dto.brdvideoname ne 'N' }">
+								<div class="video-icon">
+									<img class="user-profile" src="./resources/img/video.png">
+								</div>
+								<div class="video-thumbnail-img">
+									<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
+										<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
+									</a>
+								</div>
+							</c:when>
+						</c:choose>
 					</div>
 				</div>
 			</div>

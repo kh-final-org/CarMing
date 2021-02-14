@@ -7,6 +7,9 @@ var email_check = false;
 //인증확인용 변수
 var certnum_check = false;
 
+//닉네임 중복확인용 변수
+var nick_dupl_check = false;
+
 //인증번호
 var cumkey;
 
@@ -22,6 +25,7 @@ $(document).ready(function(){
 	var memname_input = $('input[name=memname]');
 	var memnick_input = $('input[name=memnick]');
 	var membirth_input = $('input[name=membirth]');
+	var memphone_input = $('input[name=memphone]');
 	
 	
 	
@@ -39,6 +43,7 @@ $(document).ready(function(){
 	var email_regul = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	var pass_regul = /^(?=.*[0-9])(?=.*[a-zA-Z]).{6,13}$/;
 	var name_regul = /^[가-힝a-zA-Z]{2,}$/;
+	var phone_regul = /^[0-9]{10,11}$/;
 	
 	//실시간 이메일 형식 검사
 	memid_input.keyup(function(){
@@ -83,6 +88,15 @@ $(document).ready(function(){
 		
 	});
 	
+	//실시간 전화번호 형식 검사
+	memphone_input.keyup(function(){
+		if(check(phone_regul, memphone_input)){
+			$('#memphone_error').hide();
+		} else {
+			$('#memphone_error').show();
+		}
+	})
+	
 	//네이버에서 가져온 정보라면 기본 체크를 true로 지정
 	if(memid_input.prop("readonly")){
 		certnum_check = true;
@@ -93,12 +107,13 @@ $(document).ready(function(){
 	
 });
 
-//가입항목에 빈칸인 칸이 있으면 경고창을 띄우고 해당 칸에 에러를 보여준뒤 false 리턴
+//가입항목에 빈칸인 칸이 있으면 경고창을 띄우고 해당 칸에 에러를 보여준뒤 false 리턴(최종확인)
 function regist_empty() {
 	
 	var email_regul = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	var pass_regul = /^(?=.*[0-9])(?=.*[a-zA-Z]).{6,13}$/;
 	var name_regul = /^[가-힝a-zA-Z]{2,}$/;
+	var phone_regul = /^[0-9]{10,11}$/;
 	
 	var memid_input = $('input[name=memid]');
 	var mempw_input = $('input[name=mempw]');
@@ -111,10 +126,17 @@ function regist_empty() {
 	//로드 문제 때문에 성별 값은 미리 집어넣는걸로
 	
 	if(!certnum_check){
-		alert("메일인증이 완료되지 않았습니다.");
+		alert("이메일 인증이 완료되지 않았습니다.");
 		regist_chk = false;
+		return regist_chk;
 	}else{
 		regist_chk = true;
+	}
+	
+	if(!nick_dupl_check){
+		alert("닉네임 중복확인이 완료되지 않았습니다.");
+		regist_chk = false;
+		return regist_chk;
 	}
 	
 	if(
@@ -128,21 +150,24 @@ function regist_empty() {
 			$('input[name=memgender]:checked').val()==null){
 		
 		regist_chk = false;
-		alert("필수 항목을 모두 기입해주세요.");
+		alert("상세주소 항목으로 제외한 항목들을 모두 기입해주세요.");
+		return regist_chk;
 	}
 	
 	if(	check(name_regul, memname_input) &&
 		check(email_regul, memid_input) &&
 		check(pass_regul, mempw_input) &&
+		check(phone_regul, memphone_input) &&
 		(mempw_input.val()==mempwchk_input.val())	
 	){	
 	}else{
 		regist_chk = false;
 		alert("가입항목을 제대로 입력해주세요")
+		return regist_chk;
 	}
-		
 	
 	return regist_chk;
+	
 }; // end submit()
 
 
@@ -155,13 +180,14 @@ function check(regul, content){
     	regist_chk = false;
     	return false;
     }
+    
 }
 
-//이메일 인증
+//이메일 인증 및 중복확인
 function sendMail(){
 	var certnum_input = $('input[name=certnum');
 	var mail = $('input[name=memid]').val();
-	
+	$('#mail_dupl_bad').hide();
 	
 	if(email_check){
 		
@@ -173,14 +199,23 @@ function sendMail(){
 				},
 			dataType :'json',
 			success:function(msg){
-				alert("인증번호가 전송되었습니다.");
-				certnum_input.show();
-				$('#certbutton').show();
-				cumkey = msg.cumkey;
+				
+				if(msg.cumkey=="false"){
+					$('#mail_dupl_bad').show();
+					certnum_input.hide();
+					$('#certbutton').hide();
+				}
+				else{
+					$('#mail_dupl_bad').hide();
+					alert("인증번호가 전송되었습니다.");
+					certnum_input.show();
+					$('#certbutton').show();
+					cumkey = msg.cumkey;
+				}
 			},
 			error:function(){
 				console.error("이메일 인증 아약스 통신관련 오류");
-				alert("이메일 정보가 잘 못 되었습니다.");
+				alert("이메일 정보가 잘못되었습니다.");
 			}
 		});
 		
@@ -198,7 +233,7 @@ function certcf(){
 	console.log(cumkey);
 	
 	if(certnum_input.val()==cumkey){
-		alert("인증이 성공하였습니다.");
+		alert("인증에 성공하였습니다.");
 		certnum_input.hide();
 		$('#certbutton').hide();
 		$('#certnum_good').show();
@@ -206,12 +241,47 @@ function certcf(){
 		certnum_check = true;
 		
 	}else{
-		alert("인증번호가 틀렸습니다!");
+		alert("인증번호가 틀렸습니다.");
 		certnum_check = false;
 	}
 	
 }
 
+//닉네임 중복확인
+function nickdupl(){
+	
+	var memnick_input = $('input[name=memnick]');
+	var nick = memnick_input.val();
+	
+	if(memnick_input.val().trim()==""){
+		$('#memnick_error').show();
+	}else{
+		$('#memnick_error').hide();
+		$.ajax({
+			type : 'post',
+			url : 'nickdupltest.do',
+			data : {
+				nick:nick
+				},
+			dataType :'json',
+			success:function(msg){
+				if(msg.check==true){
+					$('#nick_dupl_good').show();
+					$('#nick_dupl_bad').hide();
+					nick_dupl_check = true;
+				}else{
+					$('#nick_dupl_good').hide();
+					$('#nick_dupl_bad').show();
+					nick_dupl_check = false;
+				}
+			},
+			error:function(){
+				console.error("닉네임 아약스 통신관련 오류");
+				alert("닉네임을 다시 한번 확인해주세요.");
+			}
+		});
+	}
+}
 
 //다음api 주소팝업창
 function sample6_execDaumPostcode() {
@@ -260,3 +330,5 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+

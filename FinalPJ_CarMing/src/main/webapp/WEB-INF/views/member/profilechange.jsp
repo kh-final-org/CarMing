@@ -16,65 +16,7 @@
 <link rel="stylesheet" href="resources/css/nouislider.min.css">
 <link rel="stylesheet" href="resources/css/bootstrap.css">
 <link rel="stylesheet" href="resources/css/main.css">
-
-<style type="text/css">
-	.content{padding: 50px 580px;} 
-	
-	.loginform-logo{margin: 0 36% 2%;}   
-    .login-logo{width: 100px; height: 100%; margin-top: -5px;}
-	
-	.card-head-first{width: 100%; margin-bottom: 10%;}
-	.card-head-first > h2{font-weight: bold;}
-	.form-group{margin-bottom: 15px; padding: 0;}
-	
-	.col-sm-6{margin: 0; padding: 0; width: 800px; margin-right: auto; margin-left: auto; 
-			  max-width:100% !important;} 	/*input 태그*/
- 	.form-control{display: inline !important; width: 50% !important;} 
- 	#form-control-pw{background: #fff5e9; cursor: pointer; border: 1px solid #e2e2e2; outline: none;}
- 	#form-control-pw:hover{background: #ffe6be; transition: 0.2s; }
-	.form-main-text{margin-bottom: 8px; color: #5f5f5f; font-size: 1.2em;}
-	#main-text{cursor: pointer; font-weight: bold;}
-
-	.ex-text{margin-top: 3px; font-size: 1.0em;}
-	.chk_error{margin-top: 3px; font-size: 1.0em; color: red; display: none;}
-
-	#memzip.form-control{max-width: 30% !important;}
-	
-	.uploadimg {width: 360px; height: 360px;}
-	.img_wrap {width: 340px; height: 310px; margin-top: 18px;}
-	.img_wrap img {max-width: 100%; max-height: 100%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 110px;}	
-	.upload-img-form{position: relative; width: 400px; height: 250px; border: 1px solid #e2e2e2;
-					 border-radius: 5px; background: #fff; margin-bottom: 60px;}
-   	.upload-img-content{position: absolute; margin: -70px 0 0 -1px; width: 400px;}
-	
-	.checkbox input{display: none;}
-	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
-	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; 
-					background: #fff; border-radius: 3px; transition: background 0.1s ease;}
-	.checkbox .icon::after{content: ''; position: absolute; top: 0.5px; left: 5px; width: 6px; height: 11px; 
-						   border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); 
-						   transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
-	.checkbox .text{margin-left: 5px; color: #5f5f5f; font-size: 1.1em;}
-	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
-	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
-	.checkbox-subtext{color: silver;}
-	
-	.btn{width: 155px; height: 40px; border: 0; border-radius: 5px; outline: none; margin-top: -4px;
-   		 background-color: #fff5e9; color: #5f5f5f; font-size:1.2em; cursor: pointer;}
-	.btn:hover{background: #ffe6be; transition: 0.2s; outline: none;}
-	#btn-addr{border: 1px solid #e2e2e2; font-size: 1.15em;}
-	#btn-modify{width: 195px; height: 45px; margin-left: 3px; background-color: #ffe6be; font-weight: bold;}
-	#btn-modify:hover{background: #ffdb9f; transition: 0.2s;}
-	#btn-quit{width: 195px; height: 45px; background-color: #ffe6be; font-weight: bold;}
-	#btn-quit:hover{background: #ffdb9f; transition: 0.2s;}
-	
-	input#memphone::placeholder{color: silver;}
-
-
-</style>
-
-	
+<link rel="stylesheet" href="resources/css/profilechange.css">
 
 </head>
 <body>
@@ -89,6 +31,7 @@
     		</div>
     		
         	<form class="form-horizontal" action="profilechange.do" method="post" enctype="multipart/form-data" modelAttribute="MemberDto" >
+        	<input type="hidden" name="memno" value='${login.memno }'>
          		<!-- 이메일 -->
 	         	<div class="form-group">
 	            	<div class="form-main-text">
@@ -131,7 +74,10 @@
 		            </div>
 		            <div class="col-sm-6">
 		                <input type="text" class="form-control" name="memnick" id="memnick" value='${login.memnick}' >
+		                <input type="button" id="nickduplbutton" onclick="nickdupl()" class="btn btn-primary" value="중복확인">
 		                <span id="memnick_error" class="chk_error">닉네임을 입력해주세요.</span>
+		                <p id="nick_dupl_bad" class="chk_error"">이미 사용중인 닉네임입니다.</p>
+		                <p id="nick_dupl_good" class="chk_error" style="color:green;">사용하실 수 있는 닉네임입니다.</p>
 		            </div>
 		        </div>                
 
@@ -174,7 +120,7 @@
 		            </div>
 		            <div class="col-sm-6">
 		                <input type="text" class="form-control" name="memphone" id="memphone" placeholder="-없이 적어주세요." value='${login.memphone}'>
-		                <span id="memphone_error" class="chk_error">전화번호를 입력해주세요.</span>
+		                <span id="memphone_error" class="chk_error">전화번호는 -를 제외한 숫자로만 기입해주세요.</span>
 		            </div>
 		        </div>
          		
@@ -196,38 +142,38 @@
            		 	</div>
 	            	<div class="col-sm-6">
 	            		<c:choose>
-			        		<c:when test="${gender eq 'M'}"> 
+			        		<c:when test="${login.memgender eq 1}"> 
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1" checked="checked">
+				            		<input type="radio" name="memgender" value="1" checked="checked">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2">
+				            		<input type="radio" name="memgender" value="2">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
 		                	</c:when>
-			        		<c:when test="${gender eq 'F'}"> 
+			        		<c:when test="${login.memgender eq 2}"> 
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1">
+				            		<input type="radio" name="memgender" value="1">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2" checked="checked">
+				            		<input type="radio" name="memgender" value="2" checked="checked">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
 		                	</c:when>
 		                	<c:otherwise>
 		                		<label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1">
+				            		<input type="radio" name="memgender" value="1">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2">
+				            		<input type="radio" name="memgender" value="2">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
@@ -241,24 +187,6 @@
             		<div class="form-main-text">
                 		<label for="memfile" id="main-text">프로필 사진</label>
             		</div>
-            		
-            		
-            		
-            		<!-- ---------------------------------------------------------------------------------------------- -->
-            		<!-- 병인 -->
-<!-- 		            <div class="col-sm-6"> -->
-<!-- 		                <input type="file" id="photofile" name="photofile" accept="image/*"/> -->
-<%-- 		                <c:choose> --%>
-<%-- 		                	<c:when test="${not empty login.memfile }"> --%>
-<%-- 		                		<div class="select_img"><img id="thumbnail" src="${login.memfile}" /></div> --%>
-<%-- 		                	</c:when> --%>
-<%-- 		                	<c:otherwise> --%>
-<!-- 		                		<div class="select_img"><img id="thumbnail" src="" /></div> -->
-<%-- 		                	</c:otherwise> --%>
-<%-- 		                </c:choose> --%>
-<!-- 		            </div> -->
-		            
-		            
 					<div class="col-sm-6">
 						<div class="upload-img-form">
 							<div class="img_wrap center-block">
@@ -272,7 +200,7 @@
 							</c:choose>
 				  			</div>
 							<div class="upload-img-content">
-								<label class="custom-file-label" for="input_img"></label>
+								<label class="custom-file-label" for="input_img" id="filename"></label>
 								<input type="file" class="custom-file-input" id="input_img" name="photofile" accept="image/*">
 							</div>
 						</div>
@@ -299,7 +227,7 @@
 			            	</c:when>
 			            	<c:otherwise>
 				            	<label class="checkbox">
-				                	<input type="checkbox" id="memchk" name="memchk" value="Y" checked="checked">
+				                	<input type="checkbox" id="memchk" name="memchk" value="Y">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">친구 찾기를 위한 귀하의 개인정보 사용 동의</span>&nbsp;
 									<span class="checkbox-subtext">(선택)</span>
@@ -312,8 +240,8 @@
  				<!-- 버튼 -->
 		        <div class="form-group">
 		        	<div class="card-body-bottom">
-						<button type="submit" class="btn btn-light" id="btn-quit" onclick="location.href='deleteuserform.do'">탈퇴</button>
-						<button type="submit" class="btn btn-light" id="btn-modify" onclick="return empty_change()">완료</button>
+						<button type="button" class="btn btn-light" id="btn-quit" onclick="location.href='deleteuserform.do'">회원탈퇴</button>
+						<button type="submit" class="btn btn-light" id="btn-modify" onclick="return empty_change()">수정하기</button>
 					</div>
 				</div>
     		</form> 
