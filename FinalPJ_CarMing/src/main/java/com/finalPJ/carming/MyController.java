@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.finalPJ.carming.model.biz.CartBiz;
 import com.finalPJ.carming.model.biz.PayBiz;
@@ -29,14 +30,19 @@ public class MyController {
 	private boardBiz bbiz;
 	
 	@RequestMapping(value = "/ordernpay.do")
-	public String ordernpay(Model model) {
+	public String ordernpay(Model model, 
+							@RequestParam(value="page", required=false, defaultValue="1")int page, 
+							@RequestParam(value="search", required=false, defaultValue="")String search,
+							@RequestParam(value="cpage", required=false, defaultValue="1")int cpage) {
+		System.out.println("page: "+page+"/"+"search: "+search+"cpage");
 		
-		List<CartListDto> orderList = cBiz.orderList();
-		List<PayDto> payList = pBiz.selectPay();
+		List<CartListDto> orderList = cBiz.orderList(search, cpage);
+		List<PayDto> payList = pBiz.selectPay(search, page);
 		
 		model.addAttribute("cartList", orderList);
 		model.addAttribute("payList", payList);
-		
+		model.addAttribute("oCount", cBiz.getOrderCnt(search));
+		model.addAttribute("pCount", pBiz.getPayCnt(search));
 		return "my/ordernpay";
 	}
 	

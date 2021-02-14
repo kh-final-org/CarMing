@@ -4,6 +4,7 @@
 	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
 %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,6 +108,64 @@
 							</c:choose>
 						</table>
 				</div>
+				<!-- ==================================================================================================
+				================================================ paging ================================================ -->
+				<c:set var="cpage" value="${(empty param.page) ? 1 : param.page}"></c:set>
+				<c:set var="startNum" value="${cpage - (cpage-1) % 5}"></c:set>
+				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(oCount/10), '.')}"></c:set>
+				<div class="hint-text">
+					Showing <b>${(empty cpage) ? 1:cpage}</b> out of <b>${lastNum }</b> pages
+				</div>
+				<!-- 현재 페이지 -->
+				<!-- paging 버튼  -->
+				<div class="container ml-auto" id="paging-container" align="center">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center" style="border-left: 0px; margin-top: 6%;">
+							<!-- 이전 버튼 -->
+							<c:if test="${startNum > 1 }">
+								<li class="page-item">
+									<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
+						 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+							    	</a>
+							   	</li>
+							</c:if>		
+						
+							<c:if test="${startNum <= 1 }">
+								<li class="page-item">
+									<a class="page-link text-warning" aria-label="Previous">
+						 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+						    		</a>
+							   	</li>
+							</c:if>
+						
+							<c:forEach var="i" begin="0" end="4">
+								<c:if test="${(startNum + i ) <= lastNum }">
+									<!-- 현재 페이지 style 변경 -->
+									<li class="page-item"><a class="page-link text-warning ${(cpage == (startNum + i)) ? 'active' : ''}" href="?cpage=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
+								</c:if>
+							</c:forEach>
+						  			
+						  	<!-- 다음 버튼 -->
+						  	<c:if test="${startNum + 4 < lastNum }">
+							    <li class="page-item">
+							    	<a class="page-link text-warning" href="?cpage=${startNum + i }&search=${param.search}" aria-label="Next">
+							    		<span aria-hidden="true">&raquo;</span>
+							      	</a>
+							   	</li>
+						  	</c:if>
+						  	
+						  	<c:if test="${startNum + 4 >= lastNum }">
+							    <li class="page-item">
+							    	<a class="page-link text-warning " aria-label="Next">
+							    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+							      	</a>
+							   	</li>
+						  	</c:if>	
+						</ul>
+					</nav>
+				</div>
+			<!-- ==================================================================================================
+				================================================ paging ================================================ -->
 				<div class="table-responsive">
 					<tr>
 						<h2>결제 내역</h2>
@@ -148,8 +207,66 @@
 							</c:otherwise>
 						</c:choose>
 					</table>
+					<!-- ==================================================================================================
+				================================================ paging ================================================ -->
+					<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
+					<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
+					<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(pCount/10), '.')}"></c:set>
+					<div class="hint-text">
+						Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
+					</div>
+					<!-- 현재 페이지 -->
+					<!-- paging 버튼  -->
+					<div class="container ml-auto" id="paging-container" align="center">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination justify-content-center" style="border-left: 0px; margin-top: 6%;">
+								<!-- 이전 버튼 -->
+								<c:if test="${startNum > 1 }">
+									<li class="page-item">
+										<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
+							 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+								    	</a>
+								   	</li>
+								</c:if>		
+							
+								<c:if test="${startNum <= 1 }">
+									<li class="page-item">
+										<a class="page-link text-warning" aria-label="Previous">
+							 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+							    		</a>
+								   	</li>
+								</c:if>
+							
+								<c:forEach var="i" begin="0" end="10">
+									<c:if test="${(startNum + i ) <= lastNum }">
+										<!-- 현재 페이지 style 변경 -->
+										<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
+									</c:if>
+								</c:forEach>
+							  			
+							  	<!-- 다음 버튼 -->
+							  	<c:if test="${startNum + 4 < lastNum }">
+								    <li class="page-item">
+								    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
+								    		<span aria-hidden="true">&raquo;</span>
+								      	</a>
+								   	</li>
+							  	</c:if>
+							  	
+							  	<c:if test="${startNum + 4 >= lastNum }">
+								    <li class="page-item">
+								    	<a class="page-link text-warning " aria-label="Next">
+								    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+								      	</a>
+								   	</li>
+							  	</c:if>	
+							</ul>
+						</nav>
+					</div>
+			<!-- ==================================================================================================
+				================================================ paging ================================================ -->	
 				</div>
-			</div>	
+			</div>
     <!--================End Cart Area =================-->
 	<%@ include file="../common/footer.jsp" %>
 </body>

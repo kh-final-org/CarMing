@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 <title>CarMing</title>
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js">
-</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="resources/js/insertform.js?ver=2"></script>
 <style type="text/css">
 	*, ::after, ::before {
     	box-sizing: content-box;
@@ -76,7 +76,7 @@
                             <div class="form-group form-inline">
                                 <div class="form-group col-lg-6 col-md-6 name">
                                    	 <span>카테고리</span><select name="pCategoryNo" class="form-control" id="category" placeholder="카테고리를 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '카테고리를 입력해주세요.'">
-                                   	 		<option selected>카테고릐를 선택해주세요.</option>
+                                   	 		<option value="0" selected>카테고릐를 선택해주세요.</option>
 	                                   	 	<option value="1">텐트 / 타프</option>
 	                                   	 	<option value="2">매트 / 침낭</option>
 	                                   	 	<option value="3">코펠 / 버너 / 취사</option>
@@ -86,7 +86,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                     <span>제품명</span><input type="text" class="form-control" name="pName" placeholder="제품명을 입력해주세요. "
+                                     <span>제품명</span><input type="text" class="form-control" id="sel_pName" name="pName" placeholder="제품명을 입력해주세요. "
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = '제품명을 입력해주세요.'">
                                 </div>
                                 <br>
@@ -94,10 +94,10 @@
                                     <span>제품 이미지1(대표)</span><input type="file" class="form-control" id="input_img" name="prFile" accept="image/*"><form:errors path="pFile"/>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <span>제품 이미지2(대표)</span><input type="file" class="form-control" id="input_img2" name="prFile2" accept="image/*"><form:errors path="pFile2"/>
+                                    <span>제품 이미지2(대표)</span><input type="file" class="form-control" id="input_img2" name="prFile2" accept="image/*"><form:errors path="pFile"/>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <span>제품 이미지3(대표)</span><input type="file" class="form-control" id="input_img3" name="prFile3" accept="image/*"><form:errors path="pFile3"/>
+                                    <span>제품 이미지3(대표)</span><input type="file" class="form-control" id="input_img3" name="prFile3" accept="image/*"><form:errors path="pFile"/>
                                 </div>
                                <%--  <div class="form-group col-lg-6 col-md-6 name">
                                     <span>제품 이미지2(대표)</span><input type="file" class="form-control" name="pFile2"><form:errors path="pFile2"/>
@@ -113,11 +113,11 @@
                                 </div>
                                 <br>
                                 <div class="form-group col-lg-6 col-md-6 name">
-									<span>렌트 가격</span><input type="number" class="form-control" name="pPrice" min="1">
+									<span>렌트 가격</span><input type="number" class="form-control" id="sel_pPrice" name="pPrice">
 								</div>
 								<br>
 								<div class="form-group col-lg-6 col-md-6 name">
-									<span>렌트 가능한 재고</span><input type="number" class="form-control" name="pAmount" min="1">
+									<span>렌트 가능한 재고</span><input type="number" class="form-control" id="sel_pAmount" name="pAmount">
 								</div>
 	                            <div class="form-group col-lg-6 col-md-6 name">
 	                            	<div class="product_img">
@@ -125,7 +125,7 @@
 	                            	</div>
                             	</div>
                             </div>              
-                            <input type="submit" value="등록" class="primary-btn submit_btn">
+                            <input type="submit" value="등록" id="insertproduct" class="primary-btn submit_btn">
                             <input type="button" value="취소" class="primary-btn submit_btn" onclick="location.href='productlist.do'">
 
                         </form:form>

@@ -15,54 +15,11 @@
 <style type="text/css">
 	.review-text{color: #ffc107; font-size: 26px;}
 </style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="resources/js/cart.js?ver=10"></script>
-<script type="text/javascript">
-var locked = 0;
-
-function show(star){
-    if(locked){
-        return;
-    }
-    var i;
-    var image;
-    var el;
-    
-    for(i=1; i<=star; i++){
-        image = 'image'+i;
-        el = document.getElementById(image).src = "resources/img/star.png";
-    }
-}
-function noshow(star){
-    if(locked){
-        return;
-    }
-    var i;
-    var image;
-    var el;
-    
-    for(i=1; i<=star; i++){
-        image = 'image'+i;
-        el = document.getElementById(image).src = "resources/img/nonstar.png";
-    }
-}
-function lock(star){
-    show(star);
-    locked = 1;
-    for(i=5; i>=star; i--){
-    	image = 'image'+i;
-    	el = document.getElementById(image).src = "resources/img/nonstar.png";
-    }
-}
-function mark(star){
-    lock(star);
-    for(i=1; i<=star; i++){
-    	image = 'image'+i;
-    	el = document.getElementById(image).src = "resources/img/star.png";
-    }
-    document.getElementById("starvalue").value = star;
-}
-</script>
+<script src="resources/js/cart.js?ver=4"></script>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -158,7 +115,7 @@ function mark(star){
 		<!--================End Single Product Area =================-->
 	
 		<!--================Product Description Area =================-->
-		<form action="insertreview.do" method="post">
+		<form action="insertreview.do" method="post" id="insertreview">
 		<input type="hidden" id="starvalue" name="reviewStar" >
 		<input type="hidden" name="pNo" id="pNo" value="${productdto.pNo }">
 		<input type="hidden" name="pFile" id="pFile" value="${productdto.pFile }">
@@ -293,11 +250,11 @@ function mark(star){
 									<c:set var="reviewAvg" value="${reviewSum/countreview }"/>
 									<div id="rating">
 										<span>
-											<img style="width:15px; height:15px;" id="image1" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)" src="resources/img/nonstar.png">
-											<img style="width:15px; height:15px;" id="image2" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)" src="resources/img/nonstar.png">
-											<img style="width:15px; height:15px;" id="image3" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)" src="resources/img/nonstar.png">
-											<img style="width:15px; height:15px;" id="image4" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)" src="resources/img/nonstar.png">
-											<img style="width:15px; height:15px;" id="image5" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" class="star_image" id="image1" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" class="star_image" id="image2" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" class="star_image" id="image3" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" class="star_image" id="image4" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)" src="resources/img/nonstar.png">
+											<img style="width:15px; height:15px;" class="star_image" id="image5" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)" src="resources/img/nonstar.png">
 										</span>
 									</div>
 									<br>
@@ -312,7 +269,7 @@ function mark(star){
 											</div>
 										</div>
 										<div class="col-md-12 text-right">
-											<button type="submit" value="submit" class="primary-btn">리뷰 남기기</button>
+											<button type="submit" id="reviewinsert" value="submit" class="primary-btn">리뷰 남기기</button>
 										</div>
 								</div>
 							</div>

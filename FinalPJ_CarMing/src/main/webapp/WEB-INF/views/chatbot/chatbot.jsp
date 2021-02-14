@@ -48,7 +48,7 @@ body {
 		System.out.println("Session의 no : " + login.getMemno());
 	}
 	
-%> 	 -
+%> 	 
 <!-- Session에 값이 있으면  / 값이 없으면
 	챗봇 기능 사용 가능 / 로그인해야 한다고만 띄우기.
  -->	

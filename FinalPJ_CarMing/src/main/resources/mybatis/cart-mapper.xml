@@ -72,4 +72,20 @@
 		UPDATE CART
 		SET CAMOUNT = CAMOUNT - #{cAmount}
 	</update>
+	
+	<!-- 검색, 페이징 SELECT -->
+	<select id="orderlist_paging" resultType="cartListDto" parameterType="hashmap">
+		SELECT * FROM 
+		(SELECT ROWNUM AS RNUM, C.* 
+		FROM (SELECT * FROM CART JOIN PRODUCT ON CART.PNO = PRODUCT.PNO WHERE PRODUCT.PNAME LIKE '%' || #{search} || '%'  
+			 ORDER BY CARTNO DESC) C)
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 10 AND #{page} * 10
+	</select>
+	
+	<select id="selectCartCnt" resultType="int" parameterType="string">
+		SELECT COUNT(CARTNO) COUNT FROM
+		(SELECT ROWNUM AS RNUM, C.* 
+		FROM (SELECT * FROM CART JOIN PRODUCT ON CART.PNO = PRODUCT.PNO WHERE PRODUCT.PNAME LIKE '%' || #{search} || '%'  
+			 ORDER BY CARTNO DESC) C)
+	</select>
 </mapper>

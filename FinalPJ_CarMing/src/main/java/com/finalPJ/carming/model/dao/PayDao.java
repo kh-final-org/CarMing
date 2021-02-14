@@ -10,4 +10,8 @@ public interface PayDao {
 	public PayDto selectOnePay(PayDto pDto);
 	public void insertPay(PayDto pDto);
 	public int selectPaySeq();
+	
+	//검색과 페이징을 통한 SELECT//
+	public List<PayDto> selectPay(String search, int page);
+	public int getPayCnt(String search);
 }
