@@ -96,7 +96,6 @@ function myFunction() {
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
 	         </div>
 		  </div>
@@ -137,17 +136,20 @@ function myFunction() {
 						<img class="list-item-img" src="${list.profilepic }" alt="List user">
 					</div>
 					<div class="gaadiex-list-item-text">
-						<h4><a href="profileform.do?memno=${list.memNo }">닉네임&nbsp;&#124;&nbsp;${list.memNick }</a></h4>
+						<h4>
+						<a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">
+							<c:set var="TextValue" value="${list.inquiryContent }"/> 
+								<span class="list-item-text-ck">문의 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,4)}</span>
+							</a>
+						</h4>
 						
 						<div class="gaadiex-list-item-text-ck">
-							<a href="inquirydetail.do?inquiryNo=${list.inquiryNo }" id="content">
-							<c:set var="TextValue" value="${list.inquiryContent }"/> 
-								<span class="list-item-text-ck">문의 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,10)}</span>
-							</a>
+							<a href="profileform.do?memno=${list.memNo }">닉네임&nbsp;&#124;&nbsp;${list.memNick }</a>
 						</div>
 						
 						<div class="category">카테고리&nbsp;&#124;&nbsp;${list.categoryName}</div>
-						<div>작성 날짜&nbsp;&#124;&nbsp;<fmt:formatDate pattern = "yyyy-MM-dd" value = "${list.inquiryDate}"/></div>		
+						<div>작성 날짜&nbsp;&#124;&nbsp;<fmt:formatDate pattern = "yyyy-MM-dd" value = "${list.inquiryDate}"/></div>	
+						<button class="banner-btn" id="golist" type="button" style="color: orange;" onclick="location.href='deleteinquiry.do?inquiryNo=${list.inquiryNo}'">삭제</button>	
 					</div>
 				</div>
 				</c:forEach>

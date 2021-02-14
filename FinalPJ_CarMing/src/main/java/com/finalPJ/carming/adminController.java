@@ -2,6 +2,8 @@ package com.finalPJ.carming;
 
 
 import java.io.Console;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.finalPJ.carming.model.biz.InquiryBiz;
 import com.finalPJ.carming.model.biz.adminBiz;
+import com.finalPJ.carming.model.biz. ProductBiz;
+import com.finalPJ.carming.model.dto.ProductDto;
+import com.finalPJ.carming.model.dto.boardDto;
 
 @Controller
 public class adminController {
@@ -18,6 +24,45 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	
 @Autowired
 private adminBiz biz;
+
+@Autowired
+private ProductBiz pbiz;
+
+@Autowired
+private InquiryBiz Ibiz;
+
+	@RequestMapping("/adminPage.do")
+	public String adminpage(Model model, String page, String search) {
+		logger.info("[adminPage]");
+
+		String searchDefault = ""; // 검색이 없는 경우 기본값
+		if(search != null && !search.equals("")) { // 검색어가 있는 경우
+			searchDefault = search;
+		}
+		
+		int pageDefault = 1; // 페이지 선택이 없는 경우 기본값
+		if(page != null && !page.equals("")) { // 페이지를 선택한 경우
+			pageDefault = Integer.parseInt(page);
+		}
+		
+		
+		model.addAttribute("list",biz.RentList(searchDefault,pageDefault));
+		model.addAttribute("count", biz.rentListCnt(searchDefault));
+		
+		logger.info("[inquirylist]");
+		
+		return "Admin/adminPage";
+	}
+	
+	/*
+	 * //게시글쓰기(사진) 페이지로 이동
+	 * 
+	 * @RequestMapping(value = "/boardinsertform.do") public String
+	 * boardInsert(boardDto dto) { logger.info("[BOARD INSERT FORM]");
+	 * 
+	 * return "board/boardinsert"; }
+	 */
+	
 	
 	@RequestMapping("deletemem.do")
 	public String memberDetail(int memNo) {
@@ -83,6 +128,38 @@ private adminBiz biz;
 		return "Admin/adminProductList";
 	}
 	
+	
+	@RequestMapping("addAmount.do")
+	public String addAmount(int pAmount, int pNo) {
+		System.out.println(pNo);
+		Map<String,String> map = new HashMap<String,String>();
+		
+		map.put("pAmount", Integer.toString(pAmount));
+		map.put("pNo", Integer.toString(pNo));
+		
+		
+		int res = biz.addAmount(map);
+		System.out.println(map);
+		if(res>0) {
+			return "redirect: adminProductList.do";
+		}else {
+			return "redirect: adminProductList.do";
+		}
+	}
+	
+	@RequestMapping("updateProductForm.do")
+	public String updateProductForm(Model model, int pNo) {
+		model.addAttribute("list",pbiz.selectOne(pNo));
+		return "Admin/updateProduct";
+	}
+	
+	/*
+	 * @RequestMapping("updateProduct.do") public String updateProduct() {
+	 * 
+	 * 
+	 * if(res>0) { return "redirect: adminProductList.do"; }else { return
+	 * "redirect: adminProductList.do"; } }
+	 */
 	
 	
 	@RequestMapping(value = "/adminRentDetail.do")
@@ -150,9 +227,9 @@ private adminBiz biz;
 		int res = biz.deleteRent(cartNo);
 		System.out.println(cartNo);
 		if(res>0) {
-			return "redirect: adminRentList.do";
+			return "redirect: adminPage.do";
 		}else {
-			return "redirect: adminRentDetail.do";
+			return "redirect: adminPage.do";
 		}
 	}
 }

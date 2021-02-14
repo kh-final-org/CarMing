@@ -55,34 +55,6 @@
 	       주황색: #ff9b00, 쨍한 노랑: #ffba00; 진진노랑(hover): #ffdb9f; 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
 </style>
 
-<script type="text/javascript">
-	function myFunction() {
-	    var selectbox, filter, a, txtValue, list;
-	    selectbox = document.getElementById("selectbox");
-	    filter = selectbox.value
-	
-	    list = document.getElementsByClassName("card-body");
-
-	    for(i=0; i<list.length; i++){
-	        a = document.getElementsByClassName("category")[i];
-	        txtValue = a.textContent || a.innerText;
-	       
-	        if (txtValue.indexOf(filter) > -1 ) {
-	        	list[i].style.display = "";
-	        } else {
-	        	list[i].style.display = "none";					
-	        }
-		}
-	}
-</script>
-<script type="text/javascript">
-	function showall() {
-		list = document.getElementsByClassName("card-body");
-		 for(i=0; i<list.length; i++){
-			 list[i].style.display ="";
-		 }
-	}
-</script>
 <script>
 	function popoutFunction() {
 		var x = document.getElementById("upload-popout");
@@ -94,7 +66,15 @@
 		}  
 </script>
 
+<!-- 카테고리 -->
+<script type="text/javascript">
+function category(){
 
+ 	var pCateNo = document.getElementById("selectbox").value;
+	
+	location.href="boardmainform.do?categoryNo="+pCateNo;
+}
+</script>
 
 
 </head>
@@ -155,16 +135,18 @@
 			
 		
 			<div class="card-head-third" style="width: 140px;">
-				<button onclick="showall()">전체</button>
-				<div class="dropdown-selectbox">
-			  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
-						<option value="0" selected disabled>카테고리</option>
+				<div class="dropdown-selectbox"> 
+			  		<select onchange="category()"   class="selectpicker form-control" name="selectbox" id="selectbox" aria-label="Example select with button addon" >
+						<option value="" selected disabled>카테고리</option>
+						<option value="">전체선택</option>
 						<option value="1">일반 캠핑</option>
 					    <option value="2">카라반</option>
-					    <option value="3">글램핑</option>
+					    <option	value="3">글램핑</option>
 					    <option value="4">차박</option>
 					    <option value="5">나만의 캠핑</option>
 				  	</select>
+
+				  	
 				</div>
 			</div>
 		</div>

@@ -24,8 +24,8 @@
 	</select>
 	
 	<insert id="insert" parameterType="MemberDto">
-		INSERT INTO MEMBER(MEMNO, MEMNICK, MEMID, MEMPW, MEMNAME, MEMZIP, MEMADDR, MEMADDR2, MEMPHONE, MEMBIRTH, MEMGENDER, MEMCHK) 
-		VALUES(MEMSEQ.NEXTVAL, #{memnick}, #{memid}, #{mempw}, #{memname}, #{memzip}, #{memaddr}, #{memaddr2}, #{memphone}, #{membirth}, #{memgender}, #{memchk})
+		INSERT INTO MEMBER(MEMNO, MEMNICK, MEMID, MEMPW, MEMNAME, MEMZIP, MEMADDR, MEMADDR2, MEMPHONE, MEMBIRTH, MEMGENDER, MEMCHK, MEMFILE) 
+		VALUES(MEMSEQ.NEXTVAL, #{memnick}, #{memid}, #{mempw}, #{memname}, #{memzip}, #{memaddr}, #{memaddr2}, #{memphone}, #{membirth}, #{memgender}, #{memchk}, #{memfile})
 	</insert>
 	
 	<update id="update" parameterType="MemberDto">
@@ -55,5 +55,19 @@
 	<select id="selectAll" resultType="MemberDto">
 		SELECT * FROM MEMBER
 	</select>
+	
+	<select id="nickdupl" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMNICK = #{nick}
+	</select>
+	
+	<select id="maildupl" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMID = #{mail}
+	</select>
+	
+	
 	
 </mapper>

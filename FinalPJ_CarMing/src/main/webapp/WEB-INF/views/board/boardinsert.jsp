@@ -50,10 +50,7 @@ function handleImgFileSelect(e) {
 
  $(document).ready(function(){
 	var img = $('#input_img');
-	var category = $('select[name=bcategoryno]');
-	var content = $('textarea[name=brdcontent]');	
-	var place = $('#place');
-	var mapname = $('#mapname')
+
 	
 
 		 img.change(function(){
@@ -162,7 +159,7 @@ function board(){
 			content.val() != "" &&
 			img != null &&
 			mapname.val() != null )	{
-				alert("문의주셔서 감사합니다.");
+				alert("게시글이 작성되었습니다.");
 				$("#target").submit();
 			}
 				 

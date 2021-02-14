@@ -72,7 +72,7 @@
 			<div class="card-head-first">
 			    <h2 class="text-center">회원가입</h2>
 			</div>
-			<form class="form-horizontal" action="regist.do" method="post" onsubmit="regist_empty();">
+			<form class="form-horizontal" id="registform_data" name="registform_data" action="regist.do" method="post" >
 		         <!-- 이메일 -->
 		         <div class="form-group">
    		            <div class="form-main-text">
@@ -88,6 +88,7 @@
 		                </c:choose>
 		                <span class="chk_error" id="memid_error">이메일 주소를 다시 확인해주세요.</span>
 		                <div class="ex-text">이메일 예시 : example@gmail.com</div>
+		                <p id="mail_dupl_bad" class="chk_error">이미 사용중인 이메일입니다.</p>
 		                <input type="text" name="certnum" id="certnum" placeholder="인증번호를 입력해주세요." style="width:200px; border:1px solid #ced4da;">
 		                <input type="button" id="certbutton" onclick="certcf()" value="인증확인">
 		                <span id="certnum_good" class="chk_error" style="color:green;">인증번호가 확인되었습니다.</span>
@@ -144,6 +145,9 @@
 		            <div class="col-sm-6">
 		                <input type="text" class="form-control" name="memnick" id="memnick" value="${nickname }">
 		                <span id="memnick_error" class="chk_error">닉네임을 입력해주세요.</span>
+		                <input type="button" id="nickduplbutton" onclick="nickdupl()" class="btn btn-primary" value="중복확인">
+		                <p id="nick_dupl_bad" class="chk_error"">이미 사용중인 닉네임입니다.</p>
+		                <p id="nick_dupl_good" class="chk_error" style="color:green;">사용하실 수 있는 닉네임입니다.</p>
 		            </div>
 		         </div>                
 		
@@ -186,7 +190,7 @@
 		            </div>
 		            <div class="col-sm-6">
 		                <input type="text" class="form-control" name="memphone" id="memphone" placeholder="-없이 적어주세요.">
-		                <span id="memphone_error" class="chk_error">전화번호를 입력해주세요.</span>
+		                <span id="memphone_error" class="chk_error">전화번호는 -를 제외한 숫자로만 기입해주세요.</span>
 		            </div>
 		         </div>
 		         
@@ -210,36 +214,36 @@
 			        	<c:choose>
 			        		<c:when test="${gender eq 'M'}"> 
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1" checked="checked">
+				            		<input type="radio" name="memgender" value="1" checked="checked">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2">
+				            		<input type="radio" name="memgender" value="2">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
 		                	</c:when>
 			        		<c:when test="${gender eq 'F'}"> 
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1">
+				            		<input type="radio" name="memgender" value="1">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2" checked="checked">
+				            		<input type="radio" name="memgender" value="2" checked="checked">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
 		                	</c:when>
 		                	<c:otherwise>
 		                		<label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1">
+				            		<input type="radio" name="memgender" value="1">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2">
+				            		<input type="radio" name="memgender" value="2">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
@@ -265,7 +269,7 @@
 		 		<!-- 버튼 -->
 		        <div class="form-group" >
 		            <div class="card-body-bottom">
-			            <input type="submit" value="회원가입" class="btn btn-light" id="btn-register" onclick="return regist_empty()"/>
+			            <input type="submit" value="회원가입" class="btn btn-light" id="btn-register" onclick="return regist_empty();"/>
 			            <input type="button" value="취소" class="btn btn-light" id="btn-cancel" onclick="location.href='index.jsp'"/>
 		            </div>
 		        </div>
@@ -288,7 +292,7 @@
 <!-- 	<script src="resources/js/main.js"></script> -->
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-	<script src="resources/js/register2.js?ver=1"></script>
+	<script src="resources/js/register2.js"></script>
 
 </body>
 </html>

@@ -1,6 +1,8 @@
 	var sel_file;
 	$(document).ready(function() {
 		$("#input_img").on("change", handleImgFileSelect);
+		
+	
 	});
 
 	function handleImgFileSelect(e) {
@@ -32,7 +34,21 @@
 		$("#img").empty();
 	}
 	
+
+ $(document).ready(function(){
+	var img = $('input[type=file]');
 	
+
+		img.change(function(){
+				$('#emptyfile').hide();
+				
+			var filename = img.val().split('\\').pop();
+		    $('#filename').text(filename);
+				
+			});
+		
+		
+ 	});	 	
 
 function report(){
 		

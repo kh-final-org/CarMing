@@ -56,24 +56,6 @@
 						id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
 
-									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
-									<li class="nav-item submenu dropdown"><a href="#"
-										class="nav-link dropdown-toggle" data-toggle="dropdown"
-										role="button" aria-haspopup="true" aria-expanded="false"
-										style="font-size: 15px;">관리자</a>
-										<ul class="dropdown-menu">
-											<li class="nav-item"><a class="nav-link"
-												href="memberlist.do" style="font-size: 15px;">회원 목록</a></li>
-											<li class="nav-item"><a class="nav-link"
-												href="adminRentList.do" style="font-size: 15px;">렌탈 목록</a></li>
-											<li class="nav-item"><a class="nav-link"
-												href="inquirylist.do" style="font-size: 15px;">문의 목록</a></li>
-											<li class="nav-item"><a class="nav-link" href="reportlist.do" style="font-size: 15px;">신고 목록</a></li>
-											<li class="nav-item"><a class="nav-link" href="insertform.do" style="font-size: 15px;">제품 등록</a></li>
-											<li class="nav-item"><a class="nav-link" href="adminProductList.do" style="font-size: 15px;">제품 목록</a></li>
-										</ul></li>
-									<!-- 로그인 활성화후 if문으로 관리자가 아닐경우 숨기기 -->
-
 							<li class="nav-item"><a class="nav-link" href="recipeCrawling.do" style="font-size: 15px;">캠핑추천</a></li>
 							<!-- 네비바 캠핑렌트 드롭다운 제거 후 코드 수정 -->
 							<li class="nav-item"><a class="nav-link" href="productlist.do" style="font-size: 15px;">캠핑렌트</a></li>
@@ -84,8 +66,14 @@
 						
 						<ul class="nav navbar-nav navbar-right ml-auto">
 							<li class="nav-item" style="padding-left:0; margin-left:0">
-								<a href="mypage.do"> <!-- 마이페이지 -->        				
-								<span class="bi bi-person" style="font-size: 20px"></span></a>
+								<c:choose>
+								<c:when test="${login.memcode == 1 }">
+								<a href="adminPage.do"><span class="bi bi-person" style="font-size: 20px"></span></a> <!-- 마이페이지 --> 
+								</c:when>
+								<c:when test="${login.memcode == 2 }">
+								<a href="mypage.do?memno=${login.memno }"><span class="bi bi-person" style="font-size: 20px"></span></a>  <!-- 마이페이지 --> 
+								</c:when>
+								</c:choose>   
 							</li>
 							<li class="nav-item">
 								<a href="cartlist.do"> <!-- 장바구니 -->
@@ -112,9 +100,9 @@
 			<div class="container">
 				<form class="d-flex justify-content-between" id="searchForm" onSubmit="formAction();">
 					<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
-					<input type="hidden" name="orderBy" value="${orderBy}">
+<%-- 				<input type="hidden" name="orderBy" value="${orderBy}">
 					<input type="hidden" name="pCateNo" value="${pCateNo }">
-					<input type="hidden" name="viewNo" value="${viewNo}">
+					<input type="hidden" name="viewNo" value="${viewNo}"> --%>
 					<input type="hidden" name="page" value="${page}">
 					<input type="text" class="form-control" id="search_input" placeholder="Search Here" name="search" value="${param.search }">
 					<button type="submit" class="btn"></button>

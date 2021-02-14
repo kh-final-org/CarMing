@@ -52,7 +52,7 @@
 		ON C.CARTNO = PY.CARTNO
 		WHERE PCATEGORYNAME LIKE  '%' ||  #{search}  || '%' OR MEMNICK LIKE '%' ||  #{search}  || '%'
 		ORDER BY PY.PAYNO DESC) REN)
-		WHERE RNUM BETWEEN 1 + (#{page} -1) * 8 AND #{page}  * 8
+		WHERE RNUM BETWEEN 1 + (#{page} -1) * 6 AND #{page}  * 6
 			
 	</select>
 	
@@ -190,7 +190,11 @@
 		
 	</select>
 	
+	<!-- 제고 추가 -->
 	
+	<update id="addAmount" parameterType="hashMap">
+	UPDATE PRODUCT SET PAMOUNT = #{pAmount} WHERE PNO = #{pNo}
+	</update>
 	
 	
 	

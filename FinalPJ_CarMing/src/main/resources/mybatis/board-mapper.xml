@@ -19,9 +19,6 @@
 		<result property="memnick" column="MEMNICK"/>
 		<result property="mapname" column="MAPNAME"/>
 		<result property="comcount" column="COUNT"/>
-		
-		
-		
 	</resultMap>
 	
 	<!-- 01. 게시글 전체 목록 -->
@@ -34,14 +31,14 @@
 	FROM BOARD B
 	JOIN BCATEGORY BC
 	ON B.BCATEGORYNO = BC.BCATEGORYNO
-	AND BRDWRITER LIKE '%' ||  #{search}  || '%' OR BCATEGORYNAME LIKE  '%' ||  #{search}  || '%'
+	WHERE B.BCATEGORYNO LIKE  '%' ||  #{categoryNo}  || '%'
 	ORDER BY BRDDATE DESC) BRD WHERE BRDPRIVATE='N')
 	WHERE RNUM BETWEEN 1 + (#{page} -1) * 9 AND #{page}  * 9
 	
 	</select>
 	
 		<!-- 01. 게시글 카운트 -->
-	<select id="selectCnt" resultType="int" parameterType = "String">
+	<select id="selectCnt" resultType="int" parameterType = "hashMap">
 	
 	SELECT COUNT(BRDNO) COUNT FROM
 	(SELECT ROWNUM AS RNUM, BRD.*
@@ -50,7 +47,7 @@
 	FROM BOARD B
 	JOIN BCATEGORY BC
 	ON B.BCATEGORYNO = BC.BCATEGORYNO
-	AND BRDWRITER LIKE '%' ||  #{search}  || '%' OR BCATEGORYNAME LIKE  '%' ||  #{search}  || '%'
+	WHERE B.BCATEGORYNO LIKE  '%' ||  #{categoryNo}  || '%'
 	ORDER BY BRDDATE DESC) BRD WHERE BRDPRIVATE='N')
 	
 	</select>
@@ -116,7 +113,7 @@
 	
 	<!-- 08. 사용자 프로필, 사용자 정보 -->
 	<select id="profilemem" resultType="MemberDto" parameterType="int">
-		SELECT * FROM MEMBER
+		SELECT * FROM MEMBER WHERE MEMNO=#{memno}
 	</select>
 	
 	<!-- 09. 게시글(영상) 추가 -->
@@ -135,7 +132,29 @@
   	</insert>	
 	
 	
+	<select id="mypageList" resultMap="boardMap" parameterType = "hashMap">
 	
+	SELECT * FROM 
+	(SELECT ROWNUM AS RNUM, BRD.*
+	FROM 		
+	(SELECT * FROM BOARD 
+	WHERE MEMNO = #{memno} 
+	ORDER BY BRDDATE DESC) BRD)
+	WHERE RNUM BETWEEN 1 + (#{page} -1) * 6 AND #{page}  * 6
+	
+	</select>
+	
+		<!-- 01. 게시글 카운트 -->
+	<select id="mypageCnt" resultType="int" parameterType = "hashMap">
+	
+	SELECT COUNT(BRDNO) COUNT FROM
+	(SELECT ROWNUM AS RNUM, BRD.*
+	FROM 		
+	(SELECT * FROM BOARD 
+	WHERE MEMNO = #{memno} 
+	ORDER BY BRDDATE DESC) BRD)
+	
+	</select>
 	
 	
 

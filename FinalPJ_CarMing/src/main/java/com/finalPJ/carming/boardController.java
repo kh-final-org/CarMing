@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
@@ -43,22 +44,30 @@ public class boardController {
 	
 	//캠핑토크 메인 화면
 	@RequestMapping(value = "/boardmainform.do")
-	public String boardMain (Model model, String page, String search) {
+	public String boardMain (Model model, 
+							@RequestParam(value="search", required=false, defaultValue="")String search, 
+							@RequestParam(value="page", required=false, defaultValue="1")int page, 
+							@RequestParam(value="categoryNo", required=false, defaultValue="")String categoryNo) {
+		System.out.println(categoryNo);
+		System.out.println(search);
 		
-		String searchDefault = "";
-		if(search != null && !search.equals("")) {
-			searchDefault = search;
-		}
+		/*
+		 * String searchDefault = ""; if(search != null && !search.equals("")) {
+		 * searchDefault = search; }
+		 * 
+		 * int pageDefault = 1; if(page != null && !page.equals("")) { pageDefault =
+		 * Integer.parseInt(page); }
+		 * 
+		 * String categoryNoDefault = ""; if(categoryNo != null &&
+		 * !categoryNo.equals("")) { categoryNoDefault = categoryNo; }
+		 */
 		
-		int pageDefault = 1;
-		if(page != null && !page.equals("")) {
-			pageDefault = Integer.parseInt(page);
-		}
+		
 		
 		logger.info("[BOARD SELECT LIST]");
-		model.addAttribute("list", biz.selectList(searchDefault, pageDefault));
+		model.addAttribute("list", biz.selectList(search, page, categoryNo));
 		System.out.println(model.toString());
-		model.addAttribute("count", biz.listCnt(searchDefault));
+		model.addAttribute("count", biz.listCnt(search,categoryNo));
 
 	   return "board/boardmain";
 	}

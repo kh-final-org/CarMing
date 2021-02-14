@@ -147,8 +147,10 @@ public class MemberController {
 		if(dto.getMemchk()==null) {
 			dto.setMemchk("N");
 		}
-
-
+		
+		dto.setMemfile("resources/img/profile.png");
+		
+		System.out.println(dto.getMemfile());
 		System.out.println(dto.getMempw());
 		dto.setMempw(passwordEncoder.encode(dto.getMempw()));
 		System.out.println(dto.getMempw());
@@ -243,7 +245,8 @@ public class MemberController {
 		
 		String name = "profileimg_user"+dto.getMemno()+".png";
 		
-		
+		HttpSession session = request.getSession();
+		MemberDto sessiondto = (MemberDto)session.getAttribute("login");
 		
 		
 		String filename = photofile.getOriginalFilename();
@@ -252,53 +255,61 @@ public class MemberController {
 		System.out.println(filename);
 		System.out.println("=================");
 		
-
 		
-		InputStream inputStream = null;
-		OutputStream outputStream = null;
-		
-		try {
-			inputStream = photofile.getInputStream();
-			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/profileimg");
+		if(filename!=""&&filename!=null) {
 			
-			System.out.println("업로드 될 실제 경로: "+path);
 			
-			File storage = new File(path);
-			if(!storage.exists()) {
-				storage.mkdir();
-			}
+			InputStream inputStream = null;
+			OutputStream outputStream = null;
 			
-			File newFile = new File(path + "/" + name);
-			if(!newFile.exists()) {
-				newFile.createNewFile();
-			}
-			
-			outputStream = new FileOutputStream(newFile);
-			
-			int read = 0;
-			byte[] b = new byte[(int)photofile.getSize()];
-			
-			while((read=inputStream.read(b)) !=-1) {
-				outputStream.write(b,0,read);
-			}
-			
-			//경로명과 이름으로 db에 저장
-			dto.setMemfile("resources/img/profileimg/"+name);
-			System.out.println(name);
-			
-		} catch (IOException e) {
-			System.out.println("파일 저장 에러");
-			e.printStackTrace();
-		}finally {
 			try {
-				inputStream.close();
-				outputStream.close();
+				inputStream = photofile.getInputStream();
+				String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/img/profileimg");
+				
+				System.out.println("업로드 될 실제 경로: "+path);
+				
+				File storage = new File(path);
+				if(!storage.exists()) {
+					storage.mkdir();
+				}
+				
+				File newFile = new File(path + "/" + name);
+				if(!newFile.exists()) {
+					newFile.createNewFile();
+				}
+				
+				outputStream = new FileOutputStream(newFile);
+				
+				int read = 0;
+				byte[] b = new byte[(int)photofile.getSize()];
+				
+				while((read=inputStream.read(b)) !=-1) {
+					outputStream.write(b,0,read);
+				}
+				
+				//경로명과 이름으로 db에 저장
+				dto.setMemfile("resources/img/profileimg/"+name);
+				System.out.println(name);
+				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				System.out.println("파일 저장 에러");
 				e.printStackTrace();
+			}finally {
+				try {
+					inputStream.close();
+					outputStream.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
-			
+		}else {
+			dto.setMemfile(sessiondto.getMemfile());
 		}
+		
+		
+		
 		System.out.println("---------------------");
 		System.out.println(dto.getMemchk());
 		System.out.println(dto.getMemfile());
@@ -317,11 +328,9 @@ public class MemberController {
 		if(res==1) {
 			MemberDto redto = biz.selectOne(dto.getMemid());
 			
-			HttpSession session = request.getSession();
-			
 			session.setAttribute("login", redto);
 			
-			return "redirect:mypage.do";
+			return "redirect:mypage.do?memno="+dto.getMemno();
 	
 		}else {
 			return "redirect:profilechangeform.do";
@@ -407,36 +416,53 @@ public class MemberController {
 			res = biz.deleteUser(dto.getMemid());
 			if(res==1) {
 				session.invalidate();
-				return "redirect:home.do";
+				
+				return "<script>"
+				         + "alert('탈퇴가 완료되었습니다. 다음에 다시 만나요.');"
+				         //+ "location.href='home.do';"
+				         + "</script>";
+
+						//return "redirect:home.do";
 			}else {
 				return "member/deleteuser";
 			}
 		} 
 	}
 	
+	//이메일 인증 및 중복화인
 	@RequestMapping("/CheckMail.do") // AJAX와 URL을 매핑시켜줌 
 	@ResponseBody 
 	public Map<String, String> SendMail(String mail) {
-			Random random=new Random();  //난수 생성을 위한 랜덤 클래스
-			String key="";  //인증번호 
-
-			SimpleMailMessage message = new SimpleMailMessage();
-			message.setTo(mail); //스크립트에서 보낸 메일을 받을 사용자 이메일 주소 
-			//입력 키를 위한 코드
-			for(int i =0; i<3;i++) {
-				int index=random.nextInt(25)+65; //A~Z까지 랜덤 알파벳 생성
-				key+=(char)index;
+			
+			int res = biz.Maildupltest(mail);
+			
+			if(res==0) {
+				Random random=new Random();  //난수 생성을 위한 랜덤 클래스
+				String key="";  //인증번호 
+	
+				SimpleMailMessage message = new SimpleMailMessage();
+				message.setTo(mail); //스크립트에서 보낸 메일을 받을 사용자 이메일 주소 
+				//입력 키를 위한 코드
+				for(int i =0; i<3;i++) {
+					int index=random.nextInt(25)+65; //A~Z까지 랜덤 알파벳 생성
+					key+=(char)index;
+				}
+				int numIndex=random.nextInt(9999)+1000; //4자리 랜덤 정수를 생성
+				key+=numIndex;
+				message.setSubject("Carming 회원가입을 위한 인증번호 안내메일입니다.");
+				message.setText("인증 번호 : "+key);
+				mailSender.send(message);
+				
+				Map<String, String> map = new HashMap<String,String>();
+				map.put("cumkey",key);
+				
+				return map;
+			}else {
+				Map<String, String> map = new HashMap<String,String>();
+				map.put("cumkey", "false");
+				
+				return map;
 			}
-			int numIndex=random.nextInt(9999)+1000; //4자리 랜덤 정수를 생성
-			key+=numIndex;
-			message.setSubject("Carming 회원가입을 위한 인증번호 안내메일입니다.");
-			message.setText("인증 번호 : "+key);
-			mailSender.send(message);
-			
-			Map<String, String> map = new HashMap<String,String>();
-			map.put("cumkey",key);
-			
-			return map;
 	}
 	 
 	//암호화 재추가시 삭제
@@ -471,6 +497,28 @@ public class MemberController {
 		System.out.println("**********비밀번호 암호화 끝************");
 		
 		return "member/login";
+	}
+	
+	@RequestMapping("/nickdupltest.do")
+	@ResponseBody 
+	public Map<String, Boolean> NickDuplTest(String nick){
+		
+		int res = biz.Nickdupltest(nick); 
+		boolean check = false;
+		
+		System.out.println("중복한 닉네임을 가진 회원 수 : "+res);
+		
+		if(res==0) {
+			check=true;
+			
+		}else {
+			check=false;
+		}
+			
+		
+		Map<String, Boolean> map = new HashMap<String,Boolean>();
+		map.put("check", check);
+		return map;
 	}
 
 }

@@ -78,6 +78,18 @@ public class MemberBizImpl implements MemberBiz {
 		// TODO Auto-generated method stub
 		return dao.selectAll();
 	}
+
+	@Override
+	public int Nickdupltest(String nick) {
+		// TODO Auto-generated method stub
+		return dao.Nickdupltest(nick);
+	}
+
+	@Override
+	public int Maildupltest(String mail) {
+		// TODO Auto-generated method stub
+		return dao.Maildupltest(mail);
+	}
 	
 	
 
