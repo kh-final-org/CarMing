@@ -96,7 +96,7 @@
 			
 			<div class="card-head-third" style="width: 140px;">
 				<div class="dropdown-selectbox">
-			  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+			  		<select onchange="category()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
 						<option selected disabled>카테고리</option>
 						<option value="0">전체</option>
 						<option value="1">일반 캠핑</option>
