@@ -141,4 +141,30 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return res;
 	}
+
+	@Override
+	public int Nickdupltest(String nick) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"nickdupl", nick);
+		} catch (Exception e) {
+			System.out.println("[error] : Member/Nickdupltest");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int Maildupltest(String mail) {
+int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"maildupl", mail);
+		} catch (Exception e) {
+			System.out.println("[error] : Member/Maildupltest");
+			e.printStackTrace();
+		}
+		return res;
+	}
 }

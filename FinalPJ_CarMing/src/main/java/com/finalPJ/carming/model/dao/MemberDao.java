@@ -15,7 +15,11 @@ public interface MemberDao {
 	public int update(MemberDto dto);
 	public int deleteUser(String memid);
 	public int pwchange(MemberDto dto);
+	public int Nickdupltest(String nick);
+	public int Maildupltest(String mail);
+	
 	//암호화 다시 추가시 삭제
 	public int countuser();
 	public List<MemberDto> selectAll();
+	
 }

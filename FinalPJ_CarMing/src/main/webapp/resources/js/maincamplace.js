@@ -1,5 +1,12 @@
 $(document).ready(function(){
 	
+	if($('input:radio[name=campcategory]:checked').val()=="차박명소"){
+		
+		ajaxlocation();
+		
+	}else{
+		searchPlaces();
+	}
 	
 	$("input:radio[name=campcategory]").click(function(){
 		
@@ -36,7 +43,7 @@ var ps = new kakao.maps.services.Places();
 var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 // 키워드로 장소를 검색합니다
-searchPlaces();
+//searchPlaces();
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
@@ -253,7 +260,11 @@ function ajaxlocation(){
 			contentType : "application/json",
 			dataType : "json",
 			success:function(msg){
-				if(msg){
+				var count = 0;
+				for(var key in msg){
+						count++;
+				}
+				if(count>0){
 					
 					var positions = new Array();
 					for(var key in msg){
@@ -274,11 +285,13 @@ function ajaxlocation(){
 					//페이징 제거
 					var paginationEl = document.getElementById('pagination');
 					//paginationEl.removeChild(paginationEl.fisrtChild);
-					removeAllChildNods(paginationEl);
-					
+					if(paginationEl){
+						removeAllChildNods(paginationEl);
+					}
 					// 검색 결과 목록에 추가된 항목들을 제거합니다
-				    removeAllChildNods(listEl);
-
+					if(listEl){
+						removeAllChildNods(listEl);
+					}
 				    // 지도에 표시되고 있는 마커를 제거합니다
 				    removeMarker();
 		
@@ -347,12 +360,40 @@ function ajaxlocation(){
 					    
 					
 				}else{
-					alert("차박명소로 지정한게 없습니다.");
+					var listEl = document.getElementById('placesList');
+					var menuEl = document.getElementById('camptable');
+				    var fragment = document.createDocumentFragment();
+				    
+				  //페이징 제거
+					var paginationEl = document.getElementById('pagination');
+					//paginationEl.removeChild(paginationEl.fisrtChild);
+					if(paginationEl){
+						removeAllChildNods(paginationEl);
+					}
+					// 검색 결과 목록에 추가된 항목들을 제거합니다
+					if(listEl){
+						removeAllChildNods(listEl);
+					}
+				    // 지도에 표시되고 있는 마커를 제거합니다
+				    removeMarker();
+				    
+				    var el = document.createElement('li'),
+				    itemStr = '<span class="markerbg marker_0"></span>' +
+				                '<div class="info">' +
+				                '   <h5>저장하신 캠핑맵이 없습니다.</h5>'
+				                +'</div>';           
+
+				    el.innerHTML = itemStr+"<hr>";
+				    el.className = 'item';
+				    fragment.appendChild(el);
+				    listEl.appendChild(fragment);
+				    menuEl.scrollTop = 0;
 				}
 			},
 			error:function(){
 				console.error("차박 명소 불러들어오기 통신 오류");
 				alert("차박 명소 불러들어오기 통신 오류");
+				
 			}
 
 	});

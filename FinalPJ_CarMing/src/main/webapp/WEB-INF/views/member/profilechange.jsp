@@ -89,6 +89,7 @@
     		</div>
     		
         	<form class="form-horizontal" action="profilechange.do" method="post" enctype="multipart/form-data" modelAttribute="MemberDto" >
+        	<input type="hidden" name="memno" value='${login.memno }'>
          		<!-- 이메일 -->
 	         	<div class="form-group">
 	            	<div class="form-main-text">
@@ -131,7 +132,10 @@
 		            </div>
 		            <div class="col-sm-6">
 		                <input type="text" class="form-control" name="memnick" id="memnick" value='${login.memnick}' >
+		                <input type="button" id="nickduplbutton" onclick="nickdupl()" class="btn btn-primary" value="중복확인">
 		                <span id="memnick_error" class="chk_error">닉네임을 입력해주세요.</span>
+		                <p id="nick_dupl_bad" class="chk_error"">이미 사용중인 닉네임입니다.</p>
+		                <p id="nick_dupl_good" class="chk_error" style="color:green;">사용하실 수 있는 닉네임입니다.</p>
 		            </div>
 		        </div>                
 
@@ -174,7 +178,7 @@
 		            </div>
 		            <div class="col-sm-6">
 		                <input type="text" class="form-control" name="memphone" id="memphone" placeholder="-없이 적어주세요." value='${login.memphone}'>
-		                <span id="memphone_error" class="chk_error">전화번호를 입력해주세요.</span>
+		                <span id="memphone_error" class="chk_error">전화번호는 -를 제외한 숫자로만 기입해주세요.</span>
 		            </div>
 		        </div>
          		
@@ -196,38 +200,38 @@
            		 	</div>
 	            	<div class="col-sm-6">
 	            		<c:choose>
-			        		<c:when test="${gender eq 'M'}"> 
+			        		<c:when test="${login.memgender eq 1}"> 
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1" checked="checked">
+				            		<input type="radio" name="memgender" value="1" checked="checked">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2">
+				            		<input type="radio" name="memgender" value="2">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
 		                	</c:when>
-			        		<c:when test="${gender eq 'F'}"> 
+			        		<c:when test="${login.memgender eq 2}"> 
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1">
+				            		<input type="radio" name="memgender" value="1">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2" checked="checked">
+				            		<input type="radio" name="memgender" value="2" checked="checked">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
 		                	</c:when>
 		                	<c:otherwise>
 		                		<label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="1">
+				            		<input type="radio" name="memgender" value="1">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">남성</span>&nbsp;
 				                </label>&emsp;
 				                <label class="checkbox">
-				            		<input type="checkbox" name="memgender" value="2">
+				            		<input type="radio" name="memgender" value="2">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">여성</span>&nbsp;
 				                </label>
@@ -299,7 +303,7 @@
 			            	</c:when>
 			            	<c:otherwise>
 				            	<label class="checkbox">
-				                	<input type="checkbox" id="memchk" name="memchk" value="Y" checked="checked">
+				                	<input type="checkbox" id="memchk" name="memchk" value="Y">
 									<span class="icon"></span>&nbsp;
 									<span class="checkbox-text">친구 찾기를 위한 귀하의 개인정보 사용 동의</span>&nbsp;
 									<span class="checkbox-subtext">(선택)</span>
@@ -312,8 +316,8 @@
  				<!-- 버튼 -->
 		        <div class="form-group">
 		        	<div class="card-body-bottom">
-						<button type="submit" class="btn btn-light" id="btn-quit" onclick="location.href='deleteuserform.do'">탈퇴</button>
-						<button type="submit" class="btn btn-light" id="btn-modify" onclick="return empty_change()">완료</button>
+						<button type="button" class="btn btn-light" id="btn-quit" onclick="location.href='deleteuserform.do'">회원탈퇴</button>
+						<button type="submit" class="btn btn-light" id="btn-modify" onclick="return empty_change()">수정하기</button>
 					</div>
 				</div>
     		</form> 

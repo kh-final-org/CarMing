@@ -45,7 +45,7 @@
             <div class="col-sm-6">
                <input type="password" class="form-control" name="mempw" id="mempw">
                <c:if test="${not empty missmatch}">
-               <span id="mempwchk_error" class="chk_error">${missmatch}</span>
+               <span id="mempwchk_error" class="chk_error" style="color:red">${missmatch}</span>
                </c:if>
             </div>
           </c:if>
@@ -54,7 +54,7 @@
          <div class="form-group" >
             <div class="col-sm-12  text-center">
             <input type="submit" value="탈퇴" class="btn btn-success" onclick="return delete_empty()"/>
-            <input type="button" value="취소" class="btn btn-warning" onclick="location.href='home.do'"/>
+            <input type="button" value="취소" class="btn btn-warning" onclick="location.href='profilechangeform.do'"/>
             </div>
          </div>
       </form>
