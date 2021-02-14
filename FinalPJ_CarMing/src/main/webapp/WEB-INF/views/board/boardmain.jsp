@@ -98,7 +98,7 @@
 				<div class="dropdown-selectbox">
 			  		<select onchange="category()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
 						<option selected disabled>카테고리</option>
-						<option value="0">전체</option>
+						<option value="">전체</option>
 						<option value="1">일반 캠핑</option>
 					    <option value="2">카라반</option>
 					    <option	value="3">글램핑</option>
