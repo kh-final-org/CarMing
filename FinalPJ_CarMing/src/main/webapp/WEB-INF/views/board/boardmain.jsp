@@ -148,7 +148,7 @@
 						</c:choose>
 					</div>
 					<div class="board-count">조회수 ${dto.brdcount}</div>
-					<div class="board-count"> ${dto.categoryname }</div>
+					<div class="board-count" style="display: none;"> ${dto.categoryname }</div>
 					<div class="category" style="display: none;"> ${dto.bcategoryno }</div>
 				</div>
 			</div>
