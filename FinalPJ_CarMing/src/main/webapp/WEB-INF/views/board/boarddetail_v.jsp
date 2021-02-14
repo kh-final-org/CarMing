@@ -12,53 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 게시글 상세 페이지</title>
-<style type="text/css">
-	.card-first{float: left; margin: 100px 50px 100px 50px;}
-	.card-second{float: left; width: 500px;}
-	.card-third{float: right; margin: 100px 90px;}
-	
-	.user-profile{width: 50px; height: 50px; margin-right: 10px; border-radius: 5em;}
-	.board-profile{float: left; margin: 5px 50px;}
-	.board-location{float: right; text-align: right; margin: 10px 0px 5px 0px; }
-	.board-usernick{display: inline-block; font-size: 1.2em; margin-left: -10px; font-weight: bold;}
-	.uploadimg{width: 450px; height: 450px; margin: 0px 50px;}
-	.board-uploadvideo{margin-left: 50px;}
-	
-	.card-body-3{margin: 10px 0px 30px 50px; position: relative;}
-	.board-content{float: left; position: absolute; left: 0; width: 70%;}
-	.board-count{float: left; text-align: right; position: absolute; left: 326px; width: 20%; font-size: 0.85em;} 
-	.board-report{float: right; text-align: right; position: absolute; right: 0; width: 10%; font-size: 0.85em;}
-	#board-report-target{color: silver;}
-	#report{border: none; background-color: white;}	 	
-		
-	.board-comment-header-1{float: left; margin-left: 50px;}	
-	.board-comment-head{float: left; font-size:1.2em;}
-	.board-comment-count{float: right; margin-left: 15px; font-size: 1.2em;}
-	.board-comment-header-2{float: right;}
-	.board-share{float: right; margin-right: 10px; cursor: pointer; margin-left: 5px;  margin-right: -0.5px;}
-	.share-kakaotalk{width: 20px; height: 100%;}
-	.board-modify{float: left; margin-left: 0px 10px;}
-	.board-delete{float: left; margin-left: 1px; margin-right: 5px;}
-	#board-option-btn{color: gray; background:#fff; border: 0; padding: 0; cursor: pointer; outline: none;}
-	
-	.card-body-5{margin: 10px 0px;}
-	#button-addon2{background-color: #fff5e9; border: 1px solid silver;}	
-	.sendimg{width: 20px; height: 20px; opacity: 50%;}
-	.board-profile-comment{float: left;	margin-left: 50px;}
-	.board-input-comment{float: right; width: 385px; margin: 5px 0px;}
-	input.form-control{font-size: 1.0em;}
-
-	.card-body-6{float: left; width: 100%; margin-bottom: 13px;}
-	.commentuser-first{float: left; margin-left: 50px;}
-	.board-profile-commentuser{float: left;}
-	.commentuser-comment{float: right; margin: 11px 5px 11px 20px;}
-	.commentuser-second{float: right; margin: 10px 0px; font-size: 0.85em;}
-	.comment-time{float: left; text-align: right;}
-	.comment-delete{float: right;  margin-right: 2px;}
-	.comment-report{float: right;}
-	.board-delete-comment{color: #5f5f5f;}
-	
-</style>
+<link rel="stylesheet" href="resources/css/boarddetail_v.css">
 
 <!-- kakao share -->
 <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -82,15 +36,15 @@
 	   				description: '아웃도어 라이프 우리 모두의 캠핑',
 	   				imageUrl: 'https://postfiles.pstatic.net/MjAyMTAxMjFfNDgg/MDAxNjExMjE5MDc4MjE2.jLlgUhy3A2J847CYZ_4Sp4X5FI3S8gz_luJHphBr6ocg.czFVIO2I_A-hEsZD7ucwCMfehhtK-PWhH1QFSqbrUmog.JPEG.ghkdwjdals33/kakaoCarMing.JPG?type=w966',
 	   				link: {
-	     					mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno + '&brdfile',
-	     					webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	     					mobileWebUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno + '&brdfile',
+	     					webUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
 	   				},
 	 				},
 	 				buttons: [{
 	     				title: '게시글 보러가기',
 	     				link: {
-	       				mobileWebUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
-	       				webUrl: 'http://localhost:8899/carming/boarddetailform.do?brdno=' + brdno,
+	       				mobileWebUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
+	       				webUrl: 'http://localhost:8787/carming/boarddetailform.do?brdno=' + brdno,
 	     				},
 	   			}],
 				})
@@ -134,11 +88,11 @@ function update(brdno){
 				if(msg.check==true){
 					location.href="boarddetailform_v.do?brdno="+brdno;
 				}else{
-					alert("수정 실패");
+					alert("게시글 수정에 실패하였습니다.");
 				}
 			},
 			error:function(){
-				console.error("게시글 수정 실패");
+				console.error("게시글 수정에 실패하였습니다.");
 				alert("통신에러");
 			}
 
@@ -165,15 +119,13 @@ function update(brdno){
 	    var button = document.createElement("input");
 	    button.setAttribute("onclick","update(${dto.brdno})");
 	    button.setAttribute("type","button");
-	    button.setAttribute("value","올리기");
+	    button.setAttribute("value","수정 완료");
 	    button.setAttribute("id","board-option-btn");
 	   // <input type="button" onclick="updateform()"  value="수정" id="board-option-btn">
 	    
 	   document.getElementById("updatebutton").appendChild(button);
-	    
-	    
-
 	 };
+	 
 </script> 
 
 <script>
@@ -196,12 +148,9 @@ function update(brdno){
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>

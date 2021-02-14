@@ -10,50 +10,16 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크</title>
-<style type="text/css">
-	.card-container{width: 100%;}
+<link rel="stylesheet" href="resources/css/boardmain.css">
 
-	.card-head-first{float: left;}
-	.card-head-second{float: left; margin-left: 605px;}
-	.card-head-third{position: absolute; top: 406px; right: 205px; float: right; margin-right: 10px;}
-	
-	.card-body{float: left; width: 33.3%; margin-bottom: 20px;}
-	.user-profile{width: 50px; height: 50px; border-radius: 5em;}	
-	.board-usernick{font-size: 1.2em; font-weight: bold;}
-	.uploadimg{width: 360px; height: 360px; transform: scale(1.00); transition: transform .3s; border-radius: 10px;}
-	.uploadimg:hover{transform: scale(1.03); transition: transform 0.3s; border-radius: 10px;}
-	.board-uploadimg-frame{position: relative; width: 360px; height: 360px; overflow: hidden; border-radius: 10px;}
-	.board-profile{margin: 0px 0px 8px 8px;}	
-	.board-count{width: 360px; font-size: 0.8em; text-align: right; margin: 3px 0px 0px 0px;}
-	
-	#button-boardinsert{width: 140px; color: #5f5f5f; background-color: #ffe6be;}
-	.upload-btn{width: 140px; padding: 8px 0 10px; line-height: 20px; border: 0; border-radius: 4px;
-				font-size: 1.15em; text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
-	.upload-btn:hover{background: #ffdb9f; transition: 0.2s;}
-	.current{padding-left: 5px;}
-	li.option.selected.disabled.focus{width: 140px;}
-	#popout-layout{position: absolute; z-index: 1000; margin-top: 8px; padding: 10px 20px; 
-				   border-radius: 5px; background: #fff; box-shadow: 1.5px 1.5px 6px silver;}
-	.nice-select:hover{background: rgba(136, 126, 126, 0.04); transition: 0.2s;}
-	.content-item-icon{float: left;}
-	.content-item-content{float: right; color: gray;}
-	
-	.content-item-content-title{font-weight: bold; font-size: 1em; margin-top: 5px;}
-	.content-item-content-subtitle{font-size: 0.8em; margin-top: -5px; margin-bottom: 5px;}
-	.upload-icon-photo{width: 25px; height: 25px; opacity: 0.3; margin-top: 12px; margin-right: 12px;}
-	.upload-icon-video{width: 25px; height: 25px; opacity: 0.3; margin-top: 28px; margin-right: 12px;}
-	 
-	.board-uploadimg-frame{display: relative;}
-	.video-thumbnail-img{position: relative;}
-	.video-icon{position: absolute; z-index: 5; top: 10px; left: 315px; cursor: pointer;}
-	.video-icon > img {width: 30px; height: 100%; opacity: 0.3;}
-	
-	
-	#paging-container{margin: 50px 0px 20px 0px;}
-	
-	/* 진회색: #5f5f5f, 연연회색:#e2e2e2, 흰색 위 hover: #fafafa,
-	       주황색: #ff9b00, 쨍한 노랑: #ffba00; 진진노랑(hover): #ffdb9f; 진노랑: #ffe6be, 연노랑: #fff5e9 */ 
-</style>
+<script type="text/javascript">
+	function showall() {
+		list = document.getElementsByClassName("card-body");
+		 for(i=0; i<list.length; i++){
+			 list[i].style.display ="";
+		 }
+	}
+</script>
 
 <script>
 	function popoutFunction() {
@@ -68,12 +34,10 @@
 
 <!-- 카테고리 -->
 <script type="text/javascript">
-function category(){
-
- 	var pCateNo = document.getElementById("selectbox").value;
-	
-	location.href="boardmainform.do?categoryNo="+pCateNo;
-}
+	function category(){
+	 	var pCateNo = document.getElementById("selectbox").value;
+		location.href="boardmainform.do?categoryNo="+pCateNo;
+	}
 </script>
 
 
@@ -87,12 +51,9 @@ function category(){
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>
@@ -133,20 +94,17 @@ function category(){
 				</div>
 			</div>
 			
-		
 			<div class="card-head-third" style="width: 140px;">
-				<div class="dropdown-selectbox"> 
-			  		<select onchange="category()"   class="selectpicker form-control" name="selectbox" id="selectbox" aria-label="Example select with button addon" >
-						<option value="" selected disabled>카테고리</option>
-						<option value="">전체선택</option>
+				<div class="dropdown-selectbox">
+			  		<select onchange="myFunction()" class="selectpicker form-control" id="selectbox" aria-label="Example select with button addon">
+						<option selected disabled>카테고리</option>
+						<option value="0">전체</option>
 						<option value="1">일반 캠핑</option>
 					    <option value="2">카라반</option>
 					    <option	value="3">글램핑</option>
 					    <option value="4">차박</option>
 					    <option value="5">나만의 캠핑</option>
 				  	</select>
-
-				  	
 				</div>
 			</div>
 		</div>
@@ -154,7 +112,7 @@ function category(){
 	
 		<!-- 게시글이 없을 경우 -->
 		<c:if test="${empty list }">
-				<p>작성된 게시글이 없습니다.</p>
+			<p>작성된 게시글이 없습니다.</p>
 		</c:if>
 		
 		<!-- 게시글이 있을 경우 -->
@@ -183,7 +141,7 @@ function category(){
 							</div>
 							<div class="video-thumbnail-img">
 								<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
-								<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+									<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
 								</a><br>
 							</div>
 							</c:when>
@@ -203,65 +161,64 @@ function category(){
 <table class="table table-hover"></table>
 
 <!-- Start Paging Area -->
-			<!-- ==================================================================================================
-				================================================ paging ================================================ -->
-			<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
-			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
-			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/9), '.')}"></c:set>
-			<!-- 현재 페이지 -->
-			<div class="hint-text">
-					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
-			</div>
-			<!-- paging 버튼  -->
-			<div class="container ml-auto" id="paging-container" align="center">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-center" style="border-left: 0px;">
-						<!-- 이전 버튼 -->
-						<c:if test="${startNum > 1 }">
-							<li class="page-item">
-								<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
-					 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
-						    	</a>
-						   	</li>
-						</c:if>		
-					
-						<c:if test="${startNum <= 1 }">
-							<li class="page-item">
-								<a class="page-link text-warning" aria-label="Previous">
-					 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
-					    		</a>
-						   	</li>
-						</c:if>
-					
-						<c:forEach var="i" begin="0" end="4">
-							<c:if test="${(startNum + i ) <= lastNum }">
-							<!-- 현재 페이지 style 변경 -->
-							<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
-							</c:if>
-						</c:forEach>
-					  			
-					  	<!-- 다음 버튼 -->
-					  	<c:if test="${startNum + 4 < lastNum }">
-						    <li class="page-item">
-						    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
-						    		<span aria-hidden="true">&raquo;</span>
-						      	</a>
-						   	</li>
-					  	</c:if>
-					  	
-					  	<c:if test="${startNum + 4 >= lastNum }">
-						    <li class="page-item">
-						    	<a class="page-link text-warning" aria-label="Next">
-						    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
-						      	</a>
-						   	</li>
-					  	</c:if>	
-					</ul>
-				</nav>
-			</div>
-			<!-- ==================================================================================================
-				================================================ paging ================================================ -->
-
+	<!-- ==================================================================================================
+		================================================ paging ================================================ -->
+	<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
+	<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
+	<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/9), '.')}"></c:set>
+	<!-- 현재 페이지 -->
+<!-- 			<div class="hint-text"> -->
+<%-- 					Page <b>${(empty param.page) ? 1:param.page}</b> / <b>${lastNum }</b> --%>
+<!-- 			</div> -->
+	<!-- paging 버튼  -->
+	<div class="container ml-auto" id="paging-container" align="center">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center" style="border-left: 0px;">
+				<!-- 이전 버튼 -->
+				<c:if test="${startNum > 1 }">
+					<li class="page-item">
+						<a class="page-link text-warning" href="?page=${startNum - 1 }&search=${param.search}" aria-label="Previous">
+			 				<span aria-hidden="true" class="btn-prev">&laquo;</span>
+				    	</a>
+				   	</li>
+				</c:if>		
+			
+				<c:if test="${startNum <= 1 }">
+					<li class="page-item">
+						<a class="page-link text-warning" aria-label="Previous">
+			 				<span aria-hidden="true" class="btn-prev" onclick="alert('이전 페이지가 없습니다.');">&laquo;</span>
+			    		</a>
+				   	</li>
+				</c:if>
+			
+				<c:forEach var="i" begin="0" end="4">
+					<c:if test="${(startNum + i ) <= lastNum }">
+					<!-- 현재 페이지 style 변경 -->
+					<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
+					</c:if>
+				</c:forEach>
+			  			
+			  	<!-- 다음 버튼 -->
+			  	<c:if test="${startNum + 4 < lastNum }">
+				    <li class="page-item">
+				    	<a class="page-link text-warning" href="?page=${startNum + i }&search=${param.search}" aria-label="Next">
+				    		<span aria-hidden="true">&raquo;</span>
+				      	</a>
+				   	</li>
+			  	</c:if>
+			  	
+			  	<c:if test="${startNum + 4 >= lastNum }">
+				    <li class="page-item">
+				    	<a class="page-link text-warning" aria-label="Next">
+				    		<span aria-hidden="true" onclick="alert('다음 페이지가 없습니다.');">&raquo;</span>
+				      	</a>
+				   	</li>
+			  	</c:if>	
+			</ul>
+		</nav>
+	</div>
+	<!-- ==================================================================================================
+		================================================ paging ================================================ -->
 <!-- End Paging Area  -->
 </main>	
 

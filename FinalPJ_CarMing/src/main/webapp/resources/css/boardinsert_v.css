@@ -1,18 +1,24 @@
 @charset "UTF-8";
+
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	
 	.card-container{margin: 50px 190px 50px 220px;}
     .card-body{padding: 0px;}
    	
-   	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 3% 5% 0 -4%;}
-	
-	.uploadimg {width: 360px; height: 360px;}
-	.img_wrap {width: 340px; height: 310px; margin-top: 18px;}
+   	.card-body-left{position: relative; float: left; width: 530px; height: 350px; margin: 0 2% 0 -2%;}
+   	.uploadimg {width: 310px; height: 310px;}
+	.img_wrap {width: 300px; height: 280px; margin-top: 10px;}
 	.img_wrap img {max-width: 100%; max-height: 100%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 110px;}	
-	.upload-img-form{position: relative; width: 530px; height: 347px; border: 1px solid #e2e2e2;
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 130px;}	
+	.upload-img-form{position: relative; width: 530px; height: 300px; border: 1px solid #e2e2e2;
 					 border-radius: 10px; margin-bottom: 15px; background: #fff; margin-bottom: -10px;}
-   	.upload-img-content{position: absolute; margin-top: 30px; width: 530px;}
-
-    .card-body-right{float: right; width: 530px; height: 450px; margin: 3% 5% 0 -4%;}
+   	.upload-img-content{position: absolute; margin-top: 18px; width: 530px;}
+   	.upload-video-content{position: absolute; margin: 65px 0 0 1px; width: 530px;}
+   	.video-icon{margin-top: -8px; width: 120px; height: 120px; opacity: 25%;}
+	
+    .card-body-right{float: right; width: 530px; height: 450px;}
     .current{padding-left: 5px;}
     li.option.selected.disabled.focus{width: 503px;}
     .body-content{margin-top: 55px; font-size: 1.2em;}
@@ -23,24 +29,26 @@
     .body-location-left{float: left; width: 77%;}
     .body-location-right{float: right; width: 21.5%; margin-right: 0;}
     .location-logo-text{display: inline-block; vertical-align: middle;}
-    .body-checklist{margin: 10% 1% 0px;}   
+    .body-checklist{margin: 3% 0.5% 0;}   
     .latlong-input-value{margin-top: 10px;}
+	.popup-desc-text{padding:0%; margin: -1.5% 5% 0; color: silver; text-align: center; font-size: 0.9em;}
+    
 	  
-    .card-body-bottom{clear: both; margin: 50px 400px; padding: 0px;}   
+    .card-body-bottom{clear: both; margin: 0 34.5% 0; padding: 0px;}   
    	#button-boardupload{width: 350px; height: 50px; background-color: #ffe6be; border-radius: 10px; outline: none;
-   						font-size:1.2em; margin: 10% 0px 10% 0px; cursor: pointer;}
+   						font-size:1.2em; margin: -20px 0px 10px 0px; cursor: pointer;}
    	#button-boardupload:hover{background: #ffdb9f; transition: 0.2s; border: 0;}
 
 	.chkprivate-box{float: left;}
 	.chkcarplace-box{float: left; margin-left: 5px;}
 	.checkbox input{display: none;}
-	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
-	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
-	.checkbox .icon::after{content: ''; position: absolute; top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
+	.checkbox span{display: inline-block;vertical-align: middle;cursor: pointer;}
+	.checkbox .icon{position: relative;width: 20px; height: 20px;border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease;}
+	.checkbox .icon::after{content: ''; position: absolute;top: 0px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
 						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
 	.checkbox .text{margin-left: 5px;}
 	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
-	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
+	.checkbox input:checked ~ .icon::after{opacity: 1;transform: rotate(45deg) scale(1);}
 	  
 	.location-open{color: gray;}
 	.popup{position: absolute; left: 33%; top: 50%; width: 550px; height: 520px; box-shadow: 0px 0px 20px rgba(0,0,0,0.4); border-radius: 5px; z-index: 10;
@@ -58,5 +66,12 @@
 	#location-finish-btn{width: 200px; height: 40px; background-color: #ffe6be; border-radius: 7px; font-size:1.2em; margin: 10px 160px 0px 0px; outline: none;}
 	#location-finish-btn:hover{background-color: #ffdb9f;}
 	#clickLatlng{text-align: center; margin-top: -5px;}
-	.board-err{float: left; width: 72%; margin-left: 3%; font-size:1.1em; color:red; padding-bottom:1%;padding-top:1%; display: none;}
-	.board-img-err{float: left; width: 72%; margin-left: -3%; margin-bottom:-1%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; display: none;}
+
+	.board-err{float: left; width: 72%; margin-left: 3%; font-size:1.1em; color:red; padding-bottom:1%;padding-top:1%; }
+	.board-img-err{float: left; width: 72%; margin-left: -1%; margin-bottom:2%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; }
+	.board-img-err-bottom{float: left; width: 72%; margin-left: -1%; margin-top: 10%; margin-bottom:-1%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; }
+	#emptyimg{position: absolute; z-index: 2; bottom: -8.4%; left: 16.2%; width: 220px;}
+	#emptyvideo{position: absolute; z-index: 3;  bottom: 35%; left: 3%; width: 180px;}
+	#emptycategory{position: absolute; z-index: 2; top: 53.5%; left: 70%; width: 180px;}
+	#emptycontent{position: absolute; z-index: 2; top: 80%; left: 60%; width: 180px;}
+	#emptymap{position: absolute; z-index: 3; bottom: -8.8%; left: 50.5%; width: 180px;}

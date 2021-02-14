@@ -126,7 +126,7 @@ function regist_empty() {
 	//로드 문제 때문에 성별 값은 미리 집어넣는걸로
 	
 	if(!certnum_check){
-		alert("메일인증이 완료되지 않았습니다.");
+		alert("이메일 인증이 완료되지 않았습니다.");
 		regist_chk = false;
 		return regist_chk;
 	}else{
@@ -215,7 +215,7 @@ function sendMail(){
 			},
 			error:function(){
 				console.error("이메일 인증 아약스 통신관련 오류");
-				alert("이메일 정보가 잘 못 되었습니다.");
+				alert("이메일 정보가 잘못되었습니다.");
 			}
 		});
 		
@@ -233,7 +233,7 @@ function certcf(){
 	console.log(cumkey);
 	
 	if(certnum_input.val()==cumkey){
-		alert("인증이 성공하였습니다.");
+		alert("인증에 성공하였습니다.");
 		certnum_input.hide();
 		$('#certbutton').hide();
 		$('#certnum_good').show();
@@ -241,7 +241,7 @@ function certcf(){
 		certnum_check = true;
 		
 	}else{
-		alert("인증번호가 틀렸습니다!");
+		alert("인증번호가 틀렸습니다.");
 		certnum_check = false;
 	}
 	

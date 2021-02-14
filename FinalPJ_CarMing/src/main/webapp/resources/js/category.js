@@ -59,10 +59,10 @@ $(document).ready(function(){
 				data: {chbox : checkArr},
 				success: function(result){
 					if(result == 1){
-						alert("제품삭제에 성공하였습니다!")
+						alert("제품을 성공적으로 삭제하였습니다.")
 						location.href = "category.jsp";
 					} else{
-						alert("삭제 실패");
+						alert("제품 삭제에 실패하였습니다.");
 						location.href = "productlist.do";
 					}
 				}
@@ -122,8 +122,8 @@ $(document).ready(function(){
         objectType: 'feed',
         content: {
             title: document.title,
-            description: "캠핑 렌트 사이트 : CarMing",
-            imageUrl: "resources/img/tent(buffalo).jpg",
+            description: "아웃도어 라이프 우리 모두의 캠핑",
+            imageUrl: 'https://postfiles.pstatic.net/MjAyMTAxMjFfNDgg/MDAxNjExMjE5MDc4MjE2.jLlgUhy3A2J847CYZ_4Sp4X5FI3S8gz_luJHphBr6ocg.czFVIO2I_A-hEsZD7ucwCMfehhtK-PWhH1QFSqbrUmog.JPEG.ghkdwjdals33/kakaoCarMing.JPG?type=w966',
             link: {
                 mobileWebUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo,
                 webUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo
@@ -131,7 +131,7 @@ $(document).ready(function(){
         },
         buttons: [
             {
-                title: '상품 보기',
+                title: '렌트 상품 보러가기',
                 link: {
                     mobileWebUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo,
                     webUrl: 'http://localhost:8787/carming/productdetail.do?pNo='+pNo,

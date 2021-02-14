@@ -91,7 +91,7 @@ function report(){
 			if(category.val() == null ||
 			content.val().trim() == "" 	||
 			img.val() == "" ){
-				alert("모든 항목을 작성해 주세요");
+				alert("모든 항목을 기입해주세요.");
 				return;
 				
 				
@@ -101,7 +101,7 @@ function report(){
 			if(category.val() != null &&
 			content.val() != "" 	&&
 			img.val() != null  )	{
-				alert("신고에 적극 대응하겠습니다.");
+				alert("신고가 접수되었습니다.\n소중한 의견 남겨주셔서 감사합니다.");
 				$("#target").submit();
 			}
 					

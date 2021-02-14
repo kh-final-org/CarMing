@@ -15,53 +15,8 @@
 <link rel="stylesheet" href="resources/css/nouislider.min.css">
 <link rel="stylesheet" href="resources/css/bootstrap.css">
 <link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="resources/css/register2.css">
 
-<style type="text/css">
-	.content{padding: 50px 580px;} 
-	
-	.loginform-logo{margin: 0 36% 2%;}   
-    .login-logo{width: 100px; height: 100%; margin-top: -5px;}
-	
-	.card-head-first{width: 100%; margin-bottom: 10%;}
-	.card-head-first > h2{font-weight: bold;}
-	.form-group{margin: 0 0 15px 0; padding: 0;}
-	
-	.col-sm-6{margin: 0; padding: 0; width: 800px; margin-right: auto; margin-left: auto; 
-			  max-width:100% !important;} 	/*input 태그*/
- 	.form-control{display: inline !important; width: 50% !important;} 
-	.form-main-text{margin-bottom: 8px; color: #5f5f5f; font-size: 1.2em;} /*각 메인 텍스트*/
-	#main-text{cursor: pointer; font-weight: bold;}
-	
-	.ex-text{margin-top: 3px; font-size: 1.0em;}
-	.chk_error{margin-top: 3px; font-size: 1.0em; color: red; display: none;}
-
-	#memzip.form-control{max-width: 32% !important;}
-	
-	.checkbox input{display: none;}
-	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
-	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; 
-					background: #fff; border-radius: 3px; transition: background 0.1s ease;}
-	.checkbox .icon::after{content: ''; position: absolute; top: 0.5px; left: 5px; width: 6px; height: 11px; 
-						   border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); 
-						   transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
-	.checkbox .text{margin-left: 5px; color: #5f5f5f; font-size: 1.1em;}
-	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
-	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
-	.checkbox-subtext{color: silver;}
-	
-	.btn{width: 140px; height: 40px; border-radius: 5px; outline: none; margin-top: -4px;
-   		 background-color: #fff5e9; color: #5f5f5f; font-size:1.2em; cursor: pointer;}
-	.btn:hover{background: #ffe6be; transition: 0.2s; outline: none;}
-	#btn-addr{border: 1px solid #e2e2e2;}
-	#btn-register{width: 195px; height: 45px; background-color: #ffe6be; font-weight: bold;}
-	#btn-register:hover{background: #ffdb9f; transition: 0.2s;}
-	#btn-cancel{width: 195px; height: 45px; margin-left: 5px; background-color: #ffe6be; font-weight: bold;}
-	#btn-cancel:hover{background: #ffdb9f; transition: 0.2s;}
-	
-	input#memphone::placeholder{color: silver;}
-	
-
-</style>
 </head>
 <body>
 	<section class="content">
@@ -80,18 +35,19 @@
 	                </div>
 		            <div class="col-sm-6">
 		            	<c:choose>
-			                <c:when test='${not empty email}'><input type="email" class="form-control" name="memid" id="memid" value="${email}" readonly="readonly"></c:when>
+			                <c:when test='${not empty email}'>
+			                	<input type="email" class="form-control" name="memid" id="memid" value="${email}" readonly="readonly">
+			                </c:when>
 			                <c:otherwise>
-			                <input type="email" class="form-control" name="memid" id="memid">
-			                <input type="button" id="sendmail" onclick="sendMail()" value="인증하기" class="btn btn-primary" >
+				                <input type="email" class="form-control" name="memid" id="memid">
+				                <input type="button" id="sendmail" onclick="sendMail()" value="인증하기" class="btn btn-light" >
 			                </c:otherwise>
 		                </c:choose>
-		                <span class="chk_error" id="memid_error">이메일 주소를 다시 확인해주세요.</span>
-		                <div class="ex-text">이메일 예시 : example@gmail.com</div>
-		                <p id="mail_dupl_bad" class="chk_error">이미 사용중인 이메일입니다.</p>
-		                <input type="text" name="certnum" id="certnum" placeholder="인증번호를 입력해주세요." style="width:200px; border:1px solid #ced4da;">
+		                <div class="ex-text">작성 예시: carming@example.com</div>
+		                <div class="chk_error" id="memid_error">이메일 주소를 다시 확인해주세요.</div>
+		                <input type="text" name="certnum" id="certnum" placeholder="인증번호를 입력해주세요.">
 		                <input type="button" id="certbutton" onclick="certcf()" value="인증확인">
-		                <span id="certnum_good" class="chk_error" style="color:green;">인증번호가 확인되었습니다.</span>
+		                <div class="chk_error" id="certnum_good" style="color: #ff9b00;">인증번호가 확인되었습니다.</div>
 		            </div>
 		         </div>   
 		          
@@ -189,8 +145,8 @@
 		            	<label for="memphone" id="main-text">전화번호</label>
 		            </div>
 		            <div class="col-sm-6">
-		                <input type="text" class="form-control" name="memphone" id="memphone" placeholder="-없이 적어주세요.">
-		                <span id="memphone_error" class="chk_error">전화번호는 -를 제외한 숫자로만 기입해주세요.</span>
+		                <input type="text" class="form-control" name="memphone" id="memphone" placeholder="'-' 없이 적어주세요.">
+		                <span id="memphone_error" class="chk_error">전화번호를 입력해주세요.</span>
 		            </div>
 		         </div>
 		         

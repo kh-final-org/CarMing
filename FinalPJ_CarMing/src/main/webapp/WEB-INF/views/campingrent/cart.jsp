@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@
-	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
-%>
- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
@@ -11,26 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 장바구니</title>
+<link rel="stylesheet" href="resources/css/cart.css">
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="resources/js/cartlist.js?ver=5"></script>
-<style type="text/css">
-	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
-				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
-				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
-	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
-	.banner-btn::before{content: ""; position: absolute; left:0; width:100%; height: 0%; background: #fff5e9; z-index: -1; 
-						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
-	.banner-btn:hover::before{height: 180%;}
-	
-	.cart_empty_img{text-align: center;}
-	.cart_img{margin-top: 5%; width: 20%;}
-	.cart_empty_text{text-align: center;margin-bottom: 20%;}
-	.cart_empty_button{margin-bottom: -10%;}
-	.cart_button{padding: 11px 10px; line-height: 26px; font-size:17px; background-color:#ffc107; border: 1px solid transparent; color:white; border-radius: 3px;}
-	
-</style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -38,19 +20,16 @@
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first" id="banner-text-1">
-	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='#'">캠핑렌트</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">장바구니</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
 	         </div>
 		  </div>
 		</div>
@@ -60,12 +39,14 @@
 	<!--================Cart Area =================-->
 	<c:choose>
 	<c:when test="${empty cartlist}">
-		<div class="cart_empty_img">
-			<img class="cart_img" src="resources/img/cart.png">
-		</div>
-		<div class="cart_empty_text">
-			<div class="cart_empty_button">
-				<button type="button" class="cart_button" onclick="location.href='productlist.do';">상품 담으러 가기</button>
+		<div class="card-container-cartform">
+			<div class="cart_empty_img">
+				<img class="cart_img" src="resources/img/pengcart.jpg">
+			</div>
+			<div class="cart_empty_text">
+				<div class="cart_empty_button">
+					<button type="button" class="cart_button" onclick="location.href='productlist.do';">+ 카트에 상품 담으러 가기</button>
+				</div>
 			</div>
 		</div>
 	</c:when>
@@ -139,26 +120,17 @@
                             <tr class="bottom_button">
                                 <td colspan="3">
 	                                <a class="gray_btn" id="selectDelete_btn">선택 삭제</a> 
-
-                                </td>
-                                <td>
-
                                 </td>
                                 <td></td>
                                 <td></td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                             	<td></td>
                             	<td></td>
-                                <td>
-
-                                </td>
+                            	<td></td>
                                 <td></td>
                                 <td></td>
                                 <td style="text-align: right;">

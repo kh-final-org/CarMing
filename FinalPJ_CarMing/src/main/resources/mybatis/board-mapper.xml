@@ -19,6 +19,7 @@
 		<result property="memnick" column="MEMNICK"/>
 		<result property="mapname" column="MAPNAME"/>
 		<result property="comcount" column="COUNT"/>
+	
 	</resultMap>
 	
 	<!-- 01. 게시글 전체 목록 -->
@@ -113,7 +114,7 @@
 	
 	<!-- 08. 사용자 프로필, 사용자 정보 -->
 	<select id="profilemem" resultType="MemberDto" parameterType="int">
-		SELECT * FROM MEMBER WHERE MEMNO=#{memno}
+		SELECT * FROM MEMBER WHERE MEMNO = #{memno} 
 	</select>
 	
 	<!-- 09. 게시글(영상) 추가 -->

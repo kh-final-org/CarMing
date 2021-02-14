@@ -49,8 +49,7 @@ public class RentReivewController {
 		if(insertRes > 0) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>"
-					+"confirm('정말로 등록하시겠습니까?');"
-					+"alert('리뷰가 등록되었습니다.');"
+					+"confirm('리뷰를 등록하시겠습니까?');"
 					+"location.href='productdetail.do?pNo="
 					+pNo
 					+"'"
@@ -81,7 +80,7 @@ public class RentReivewController {
 		if(deleteres > 0) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>"
-					+"alert('해당 리뷰글이 삭제되었습니다.');"
+					+"alert('선택하신 리뷰가 삭제되었습니다.');"
 					+"location.href='productdetail.do?pNo="
 					+pNo
 					+"'"
@@ -90,7 +89,7 @@ public class RentReivewController {
 		} else {
 			PrintWriter out = response.getWriter();
 			out.println("<script>"
-					+"alert('리뷰삭제에 실패하였습니다.');"
+					+"alert('리뷰 삭제에 실패하였습니다.');"
 					+"location.href='productdetail.do?pNo="
 					+pNo
 					+"'"

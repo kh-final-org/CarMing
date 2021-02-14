@@ -20,44 +20,11 @@
 <!-- meta character set -->
 <meta charset="UTF-8">
 
-
-<!-- <link rel="stylesheet" href="resources/css/contactus.css"> -->
 <!--gmaps Js-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="resources/js/gmaps.min.js"></script>
 <script src="resources/js/main.js"></script>
-<style type="text/css">
-	#banner-text-2{position: absolute; top: 255px; right: 245px;}
-	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
-				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
-				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
-	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
-	.banner-btn::before{content: ""; position: absolute; left:0; width:100%; height: 0%; background: #fff5e9; z-index: -1; 
-						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
-	.banner-btn:hover::before{height: 180%;}
-	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
-
-	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin: -16% 0 8% 23%; z-index: 1;}
-	#pingu-check{width: 55px; height: 100%; margin: -7% 0 20% 36%; z-index: 10;}
-	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
-	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
-	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
-	
-	.col-md-9{padding: 3% 5% 1.5%; max-width: 100%; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem; border: 1px solid #e2e2e2; background: #fff5e9;}
-	.contact-form{width: 750px; height: 100%;}
-	.form-group-check{float: left; width: 100%;} 
-	#main-text{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
-	#nickname{float: right; width: 450px; margin-right: 10px;}
-	#category{float: right; width: 450px; margin-right: 10px;}
-	#product{float: right; width: 450px; margin-right: 10px;}
-	#paycode{float: right; width: 450px; margin-right: 10px;}
-	#price{float: right; width: 450px; margin-right: 10px;}
-	#startDate{float: right; width: 450px; margin-right: 10px;}
-	#endDate{float: right; width: 450px; margin-right: 10px;}
-	
-</style>
-
+<link rel="stylesheet" href="resources/css/adminRentDetail.css">
 
 </head>
 <body>
@@ -68,20 +35,16 @@
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 	   <div class="container">
-	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 	         <div class="col-first" id="banner-text-1">
-	            <h1>The stars in the night sky</h1>
-	            <nav class="d-flex align-items-center">
-	               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-	               <a href="#"><span class="lnr lnr-arrow-right-circle"></span>Camping</a>
-	            </nav>
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='sendRent.do?cartNo=${list.cartNo}'">상품 배송</button>
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='returnRent.do?cartNo=${list.cartNo}'">반납 완료</button>
-	       	 	<br>
+	       	 	<button class="banner-btn" id="godeliver" type="button" onclick="location.href='sendRent.do?cartNo=${list.cartNo}'">상품 배송</button>
+	       	 	<button class="banner-btn" id="goreturn" type="button" onclick="location.href='returnRent.do?cartNo=${list.cartNo}'">반납 완료</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminRentList.do'">렌트 목록</button>
 	         </div>
 		  </div>
@@ -156,7 +119,7 @@
 						</div>
 					</div>
 					<div class="form-group-check">
-						<label class="control-label col-sm-2" for="state" id="main-text">렌탈현황</label>
+						<label class="control-label col-sm-2" for="state" id="main-text">렌탈 현황</label>
 						<div class="col-sm-10">
 							<p class="form-control" id="price">${list.stateName }</p>
 						</div>

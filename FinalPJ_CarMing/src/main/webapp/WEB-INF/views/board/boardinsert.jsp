@@ -9,13 +9,11 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 사진 올리기</title>
-<link rel="stylesheet" href="resources/css/board.css">
+<link rel="stylesheet" href="resources/css/boardinsert.css">
 
 <script type="text/javascript" src="resources/js/board.js?ver=1"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
 
 <script type="text/javascript">
 var sel_file;
@@ -47,127 +45,105 @@ function handleImgFileSelect(e) {
 	})
 }
 
-
- $(document).ready(function(){
-	var img = $('#input_img');
-
 	
+	$(document).ready(function(){
+		var img = $('#input_img');
+		var category = $('select[name=bcategoryno]');
+		var content = $('textarea[name=brdcontent]');	
+		var place = $('#place');
+		var mapname = $('#mapname')
 
-		 img.change(function(){
-		$('#emptyimg').hide();
-		console.log(img.val())
-		
-		var filename = img.val().split('\\').pop();
-	    $('#filename').text(filename); 
+			img.change(function(){
+			$('#emptyimg').hide();
+			console.log(img.val())
+			
+			var filename = img.val().split('\\').pop();
+		    $('#filename').text(filename); 
+		 
+			});
+			
+	 });
+	
+	
+	function board(){
+		var img = $('#input_img');
+		var category = $('select[name=bcategoryno]');
+		var content = $('textarea[name=brdcontent]');	
+		var place = $('#place');
+		var mapname = $('#mapname')
 	 
-	    	
+		if(category.val() == null){
+			$('#emptycategory').show();
+		} 
+		category.change(function(){
+			$('#emptycategory').hide();
 		});
 		
-		
- });	 
-
-
-
-function board(){
-	
-	var img = $('#input_img');
-	var category = $('select[name=bcategoryno]');
-	var content = $('textarea[name=brdcontent]');	
-	var place = $('#place');
-	var mapname = $('#mapname')
-
-	
-		 
-			if(category.val() == null){
-				$('#emptycategory').show();
-				
-			} 
-			
-			category.change(function(){
-				$('#emptycategory').hide();
-				});
-			
-			
-			if(content.val().trim()== ""){
-				$('#emptycontent').show();
-				
-			}
-			content.keyup(function(){
+		if(content.val().trim()== ""){
+			$('#emptycontent').show();
+		}
+		content.keyup(function(){
 			$('#emptycontent').hide();
-			
-			}); 
-			
-			 if(img.val() == ""){
-				$('#emptyimg').show();
-			}
-			
-
-			 if(place.val().trim() == ""){
-					$('#emptymap').show();
-					
-				};  
-			
-				/* if(mapname.val() != ""){
-					$('#emptymap').hide();
-			        alert(mapname.val()+"mapnameval"); 
-				};   */
-			
-
-				$('#location-finish-btn').click(function(){
-					if(mapname.val() != ""){
-						$('#emptymap').hide();
-					};  
-				}); 
-			
-		/* 	
-			  $('#location-finish-btn').click(function(){
-				 if(mapname.val().trim() == ""){
-						$('#emptymap').hide();
-						$('#emptymapname').show();
-				        alert(mapname.val()+"he"); 
-				};  
+		}); 
+		
+		if(img.val() == ""){
+			$('#emptyimg').show();
+		}
+		
+		if(place.val().trim() == ""){
+			$('#emptymap').show();
+		};  
+		
+			/* if(mapname.val() != ""){
+				$('#emptymap').hide();
+		        alert(mapname.val()+"mapnameval"); 
+			};   */
+		
+			$('#location-finish-btn').click(function(){
 				if(mapname.val() != ""){
 					$('#emptymap').hide();
-					$('#emptymapname').hide();
-			        alert(mapname.val()+"he2"); 
 				};  
-				alert("click");
-			});   */
-			
-			
-			
-			 mapname.keyup(function(){
-				 if(mapname.val().trim() != ""){
-						$('#emptymap').hide();
-				}; 
 			}); 
-			 
-
-				
-				
-			 if(category.val() == null ||
+		
+		/* 	
+		  $('#location-finish-btn').click(function(){
+			 if(mapname.val().trim() == ""){
+					$('#emptymap').hide();
+					$('#emptymapname').show();
+			        alert(mapname.val()+"he"); 
+			};  
+			if(mapname.val() != ""){
+				$('#emptymap').hide();
+				$('#emptymapname').hide();
+		        alert(mapname.val()+"he2"); 
+			};  
+			alert("click");
+		});   */
+		
+		 mapname.keyup(function(){
+			 if(mapname.val().trim() != ""){
+					$('#emptymap').hide();
+			}; 
+		}); 
+		 
+		if(category.val() == null ||
 			content.val().trim() == "" 	||
 			img.val() == "" ||
 			mapname.val() == ""){
-				alert("모든 항목을 작성해 주세요");
-				return;
-				
-				
-			}  	
-			
-			if(category != null &&
+			alert("모든 항목을 기입해주세요.");
+			return;
+		}  
+		 
+		if(category != null &&
 			content.val() != "" &&
 			img != null &&
 			mapname.val() != null )	{
-				alert("게시글이 작성되었습니다.");
-				$("#target").submit();
-			}
-				 
 
-
-};
-
-
+			alert("게시글이 등록되었습니다.");
+			$("#target").submit();
+		}
+	};
+	
 </script>
 
 </head>
@@ -180,12 +156,9 @@ function board(){
 <section class="banner-area organic-breadcrumb">
    <div class="container">
       <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-         <div class="col-first">
-            <h1>The stars in the night sky</h1>
-         	<nav class="d-flex align-items-center">
-               <a href="home.do"><span class="lnr lnr-home"></span>Home</a>&emsp;
-               <a href="boardmainform.do"><span class="lnr lnr-arrow-right-circle"></span>Camping Talk</a>
-            </nav>
+         <div class="col-first" id="banner-text-1">
+         	<div class="maintext text-1">Everything has an end,</div>
+         	<div class="maintext text-2">so time feels more precious</div>
          </div>
       </div>
    </div>
@@ -197,12 +170,12 @@ function board(){
 		   method="post" enctype="multipart/form-data" modelAttribute="boardDto" id="target" >
 	<div class="card-container">
 		<div class="card-head">
-			<h2 style="color: #5f5f5f;">게시글 작성하기</h2>
+			<h2 style="color: #5f5f5f;">게시글 작성하기</h2>	
 		</div>
+		<span class="board-img-err" id="emptyimg">사진을 선택해주세요.</span>
 		
 		<div class="card-body">
 			<!-- Image Upload-->
-			<div class="board-img-err" id="emptyimg">사진을 선택헤 주세요</div>
 			<div class="card-body-left">
 				<div class="upload-img-form">
 					<div class="img_wrap center-block">
@@ -217,7 +190,7 @@ function board(){
 			
 			<div class="card-body-right">
 				<!-- Category -->
-				<div class="board-err" id="emptycategory">카테고리를 선택헤 주세요</div>
+				<span class="board-err" id="emptycategory">카테고리를 선택해주세요.</span>
 				<div class="body-category" style="width: 500px;">
 					<div class="dropdown-selectbox">
 				  		<select onchange="carPlaceChk()" class="selectpicker form-control" id="selectbox" 
@@ -233,7 +206,7 @@ function board(){
 				</div>			
 				
 				<!-- Textarea -->
-				<div class="board-err" id="emptycontent">내용을 입력해 주세요</div>
+				<span class="board-err" id="emptycontent">내용을 입력해주세요.</span>
 				<div class="body-content">
 				   	<textarea rows="10" cols="52" placeholder="게시글 내용을 입력해 주세요." name="brdcontent" style="resize: none;" required="required"></textarea>
 				</div>
@@ -267,7 +240,7 @@ function board(){
 									    	</button>
 									  	</div>
 									</div>	
-									<div style="padding:0%; margin:0%">키워드 이외의 장소는 클릭해서 선택하실 수 있습니다.</div>
+									<div class="popup-desc-text">키워드 이외의 장소는 지도 상에서 위치를 클릭하여  선택할 수 있습니다.</div>
 								</div> 
 									<script type="text/javascript"
 											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2908c95e9e6b6c236066424e7e8fa2&libraries=services,clusterer,drawing"></script>
@@ -347,7 +320,7 @@ function board(){
 
 											if (!keyword.replace(/^\s+|\s+$/g,
 													'')) {
-												alert('키워드를 입력해주세요!');
+												alert('키워드를 입력해주세요.');
 												return false;
 											}
 
@@ -456,8 +429,9 @@ function board(){
 					<span style="display: none"><strong>위도 : </strong></span><span id="lat"></span>
 					<span style="display: none"><strong>경도 : </strong></span><span id="lang"></span>
 				</div>
-				<div class="board-err" id="emptymap">장소를 선택해 주세요</div>
-				<div class="board-err" id="emptymapname">장소명을 작성해 주세요</div>
+				<div class="board-err" id="emptymap">장소를 선택해주세요.</div>
+<!-- 				<div class="board-err" id="emptymapname">장소명을 작성해주세요.</div> -->
+				
 				<!-- Checkbox -->
 				<div class="body-checklist">
 					<div class="chkprivate-box">
