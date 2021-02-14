@@ -5,10 +5,16 @@
   
 <mapper namespace="mapLocation">
 
-	<select id="locationlist" parameterType="int" resultType="mapLocationDto">
+	<select id="locationlistcampl" parameterType="int" resultType="mapLocationDto">
 		SELECT MAPNAME, MAPLATITUDE, MAPLONGTITUDE
 		FROM MAPLOCATION
 		WHERE MEMNO = #{memno} AND CARMAPCHK = 'Y'
+	</select>
+	
+	<select id="locationlistmy" parameterType="int" resultType="mapLocationDto">
+		SELECT MAPNAME, MAPLATITUDE, MAPLONGTITUDE
+		FROM MAPLOCATION
+		WHERE MEMNO = #{memno}
 	</select>
 	
 	

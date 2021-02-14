@@ -137,6 +137,7 @@
 
 			<input type="radio" name="campcategory" id="campcategory" checked="checked" value="차박명소" style="display:none"/>
 			<input type="hidden" value="${login.memno }" name="memno">
+			<input type="hidden" value='pagemy' name="pagename">
 
 			<div class="map-info">
 				<div class="mapcontent">

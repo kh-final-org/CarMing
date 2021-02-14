@@ -17,7 +17,8 @@ public interface mapLocationDao {
 	
 	
 	//ex. 차박명소조회
-	public List<mapLocationDto> locationlist(int memno);
+	public List<mapLocationDto> locationlistCampl(int memno);
+	public List<mapLocationDto> locationlistMy(int memno);
 
 	
 	

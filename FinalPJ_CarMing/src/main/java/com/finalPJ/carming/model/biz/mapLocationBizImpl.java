@@ -29,9 +29,15 @@ public class mapLocationBizImpl implements mapLocationBiz{
 	
 	//ex. 차박명소 조회
 	@Override
-	public List<mapLocationDto> locationlist(int memno) {
+	public List<mapLocationDto> locationlistCampl(int memno) {
 		// TODO Auto-generated method stub
-		return dao.locationlist(memno);
+		return dao.locationlistCampl(memno);
+	}
+
+	@Override
+	public List<mapLocationDto> locationlistMy(int memno) {
+		// TODO Auto-generated method stub
+		return dao.locationlistMy(memno);
 	}
 
 }
