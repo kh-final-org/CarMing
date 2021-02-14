@@ -1,115 +1,67 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑렌트 - 상품 상세 페이지 </title>
 <link rel="stylesheet" href="resources/css/productdetail.css">
-<style type="text/css">
-	.col-first{margin: -1% 63.5% 0 -18%; } 
-	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
-	.text-1{margin: -5% 0 3%;}
-	
-	.card-container{padding: 0 200px;}
-	.card-container-review{padding: 0 200px 50px;}
-	.product-name{color: #5f5f5f; font-size: 2.2em; font-weight: bold; margin-bottom: 3.5%;}
-	.product-price{color: #ff9b00; font-size: 1.7em; font-weight: bold; margin-bottom: 3%;}
-	.s_product_text > ul > li > span{font-weight: bold;}
-	.product_count > label > span{font-weight: bold;}
-	
-	.rentbtn{padding: 8px 0 10px; line-height: 20px; border: 0; border-radius: 4px; font-weight: bold;
-			 text-align: center; color: #5f5f5f; background-color: #ffe6be; cursor: pointer;}
-	.rentbtn:hover{background: #ffdb9f; transition: 0.2s;}
-	.cart-in{width: 140px; margin-right: 5px; font-size: 1.05em;}
-	.review-re{width: 140px; font-size: 1.05em;}
-	.rent-list{width: 100px; font-size: 1.05em;}
-	#qty{margin: 1% 0 0 5.5%; border: 1px solid silver; width: 163px; outline: none; border-radius: 3px;}
-	.product_count{width: 100%;}
-	
-	#startDate{border: 1px solid silver; padding: 1.5px 2px; border-radius: 3px;}
-	#endDate{border: 1px solid silver; padding: 1.5px 2px; border-radius: 3px;}
-		
-	#myTab{background: #ffba00; border-top-left-radius: 0.5em; border-top-right-radius: 0.5em;}
-	a#home-tab{font-size: 1em; color: #5f5f5f; background: #fff5e9; border-radius: 3px;}
-	a#home-tab:hover{background: #fff; transition: 0.2s;}
-	a#review-tab{font-size: 1em; color: #5f5f5f; background: #fff; border-radius: 3px;}
-	a#review-tab:hover{background: #fff5e9; transition: 0.2s;}
-	input#name.form-control{font-size: 1.1em; color: #5f5f5f;}
-    textarea#message.form-control{padding: 5px 10px; border: 1px solid silver; border-radius: 5px; 
-    							  font-size: 1.1em; resize: none;}
-	textarea#message.form-control::placeholder{color: silver;}
-	.tab-content{border-bottom-left-radius: 0.5em; border-bottom-right-radius: 0.5em;}	
-		
-	#user-profile{border-radius: 10em;}
-	.review_list{width: 100%; margin-bottom: 3%;}
-	.review_item{width: 100%}
-	.user-profile-form{float: left; margin-right: 3%;}
-	.media-body-form{float: left;}
-	.stars-icon{margin-left: -50%; align-content: left;}
-	.review-context{float: left; text-align: left;}
-	.review-delete-from{float: right;}	
-	.total_rate{clear: both; width: 100%}
-	
-		
-	#box-avg-form{background: #fff5e9; padding:5%;}
-	.avgbox{color: #5f5f5f; font-size: 1.2em;}
-	.text-1 {font-weight: bold;}
-	.text-2{color: #ff9b00; font-weight: bold;}	
-		
-</style>
-	
-	
+
+<script src="resources/js/cart.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-var locked = 0;
-
-function show(star){
-    if(locked){
-        return;
-    }
-    var i;
-    var image;
-    var el;
-    
-    for(i=1; i<=star; i++){
-        image = 'image'+i;
-        el = document.getElementById(image).src = "resources/img/star.png";
-    }
-}
-function noshow(star){
-    if(locked){
-        return;
-    }
-    var i;
-    var image;
-    var el;
-    
-    for(i=1; i<=star; i++){
-        image = 'image'+i;
-        el = document.getElementById(image).src = "resources/img/nonstar.png";
-    }
-}
-function lock(star){
-    show(star);
-    locked = 1;
-    for(i=5; i>=star; i--){
-    	image = 'image'+i;
-    	el = document.getElementById(image).src = "resources/img/nonstar.png";
-    }
-}
-function mark(star){
-    lock(star);
-    for(i=1; i<=star; i++){
-    	image = 'image'+i;
-    	el = document.getElementById(image).src = "resources/img/star.png";
-    }
-    document.getElementById("starvalue").value = star;
-}
+	var locked = 0;
+	
+	function show(star){
+	    if(locked){
+	        return;
+	    }
+	    var i;
+	    var image;
+	    var el;
+	    
+	    for(i=1; i<=star; i++){
+	        image = 'image'+i;
+	        el = document.getElementById(image).src = "resources/img/star.png";
+	    }
+	}
+	
+	function noshow(star){
+	    if(locked){
+	        return;
+	    }
+	    var i;
+	    var image;
+	    var el;
+	    
+	    for(i=1; i<=star; i++){
+	        image = 'image'+i;
+	        el = document.getElementById(image).src = "resources/img/nonstar.png";
+	    }
+	}
+	
+	function lock(star){
+	    show(star);
+	    locked = 1;
+	    for(i=5; i>=star; i--){
+	    	image = 'image'+i;
+	    	el = document.getElementById(image).src = "resources/img/nonstar.png";
+	    }
+	}
+	
+	function mark(star){
+	    lock(star);
+	    for(i=1; i<=star; i++){
+	    	image = 'image'+i;
+	    	el = document.getElementById(image).src = "resources/img/star.png";
+	    }
+	    document.getElementById("starvalue").value = star;
+	}
 </script>
-<script src="resources/js/cart.js"></script>
+
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -163,7 +115,7 @@ function mark(star){
 								</c:if>
 								<c:if test="${productdto.pAmount == 0}">
 									<li>
-										<span>상품 재고가 없습니다.&emsp;</span>
+										<span>제품 재고가 없습니다.&emsp;</span>
 										<button type="button"><span class="lnr lnr-arrow-right" style="">&emsp;재고 추가</span></button>
 									</li>
 								</c:if>
@@ -254,6 +206,7 @@ function mark(star){
 														
 														<!-- 사용자 이메일 / 평점 -->
 														<div class="media-body-form">
+															<!-- 평점 -->
 															<div class="stars-icon">
 																<c:if test="${rentReviewDtos.reviewStar == 1 }">
 																	<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
@@ -281,20 +234,24 @@ function mark(star){
 																	<img style="width:15px; height:15px;" id="simage5" src="resources/img/star.png">
 																</c:if>
 															</div>
-															<div>${rentReviewDtos.reviewWriter }</div>
+															<!-- 사용자 이메일 -->
+															<div class="review-usermail">${rentReviewDtos.reviewWriter }</div>
 															<!-- 사용자 리뷰 -->
 															<div class="review-context">${rentReviewDtos.reviewContext }</div>
 														</div>
+														
+														<!-- 리뷰 삭제 -->
+														<c:if test="${login.memid == rentReviewDtos.reviewWriter || login.memcode == 1}">
+															<div class="review-delete-from">
+																<a href="deletereview.do?reviewNo=${rentReviewDtos.reviewNo }&pNo=${productdto.pNo}" id="deletereview">
+																	<img src="resources/img/trash.svg">
+																</a>
+															</div>
+														</c:if>
 													</div>
 												</div>
 												
-												<c:if test="${login.memid == rentReviewDtos.reviewWriter || login.memcode == 1}">
-													<div class="review-delete-from">
-														<a href="deletereview.do?reviewNo=${rentReviewDtos.reviewNo }&pNo=${productdto.pNo}" id="deletereview">
-															<img src="resources/img/trash.svg">
-														</a>
-													</div>
-												</c:if>
+												
 												
 											</div>
 										</div>
@@ -305,7 +262,7 @@ function mark(star){
 								</c:choose>
 								
 								<!-- 평균 평점 -->
-								<div class="row total_rate" style="text-align: center;">
+								<div class="row total_rate">
 								 	<div class="col-6">
 										<c:set var="reviewSum" value="${reviewSum }" />
 										<c:set var="reviewAvg" value="${reviewSum/countreview }"/>

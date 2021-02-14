@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +29,8 @@
 	      </div>
 	       <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='insertform.do'">제품 등록</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminProductList.do'">제품 목록</button>
 	         </div>
 		  </div>
 	   </div>
@@ -140,7 +141,7 @@
 					<div class="row">
 						<c:choose>
         					<c:when test="${empty productlist}">
-        						<div class="empty-product">등록된 상품이 없습니다.</div>
+        						<div class="empty-product">등록된 제품이 없습니다.</div>
         					</c:when>
         					<c:otherwise>
         						<c:forEach var="productDto" items="${productlist}">
@@ -169,11 +170,11 @@
 												
 												<div class="price">
 													<div class="product-desc-1">
-														가격&nbsp;&#124;&nbsp;<fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/>원
+														가격&nbsp;&#124;&nbsp;<fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/>&nbsp;원
 													</div>
 												</div>
 												<c:if test="${productDto.pAmount != 0}">
-													<div class="product-desc-2">수량&nbsp;&#124;&nbsp;${productDto.pAmount }개</div>
+													<div class="product-desc-2">수량&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;${productDto.pAmount }개</div>
 												</c:if>
 												<c:if test="${productDto.pAmount == 0}">
 													<div class="product-desc-3">재고가 없습니다.</div>

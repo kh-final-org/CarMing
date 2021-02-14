@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,52 +20,6 @@
 <!-- meta character set -->
 <meta charset="UTF-8">
 
-<style type="text/css">
-	.col-first{margin: -1% 63.5% 0 -18%; } 
-	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
-	.text-1{margin: -5% 0 3%;}
-	#banner-text-2{position: absolute; top: 60%; right: 14%;}
-	
-	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
-				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
-				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
-	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
-	.banner-btn::before{content: ""; position: absolute; left:0; width:100%; height: 0%; background: #fff5e9; z-index: -1; 
-						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
-	.banner-btn:hover::before{height: 180%;}
-	.container-contact{margin: 50px 340px; box-shadow: 15px 5px 30px rgba(0, 0, 0, 0.14);}
-
-	.col-md-3{background: #ff9b00; padding: 4%; border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;}
-	#pingu-img{width: 100px; height: 100%; margin: -13.5% 0 8% 23%; z-index: 1;}
-	#pingu-confirm{width: 55px; height: 100%; margin: -5% 0 16% 35%; z-index: 10;}
-	.contact-info h3{margin-bottom: 1.8%; margin-top: -2%; margin-left: -1%; color: #fff; text-align: center; font-weight: bold;}
-	.contact-info h5{ margin-left: 1.5%; color: #fff; text-align: center; margin-bottom: 8%; font-weight: bold;}
-	.contact-info h6{ margin-left: 1.8%; color: #fff; text-align: center; opacity: 0.8;}
-
-	.col-md-9{padding: 3% 5% 0; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;border: 1px solid #e2e2e2; background: #fff5e9;}
-	.contact-form{width: 750px; height: 100%;}
-	#user-nickname{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
-	#nickname{float: right; width: 450px; margin-right: 10px;}
-	.form-group-inquiry-form{float: left; width:100%;}
-	#inquiry-date{float: left; width: 150px; padding: 0; margin: 5px 0 0 15px; font-size: 1.2em; font-weight: bold;}
-	#date{float: right; width: 450px; margin-right: 150px;}	
-	.form-group-category-form{float: left; margin-bottom: 4px; width: 100%;}
-	.inquiry-category{display: inline-block; float: left; margin: 5px 0 0 15px; width: 10%; font-size: 1.2em; }
-	.inquiry-category-wrap{float: left; width: 72%; margin-left: 60px;}
-	#category{width:450px;}
-	.current{font-size: 1.1em;}
-	textarea {padding: 10px 14px; border: 1px solid #e2e2e2; border-radius: 5px; font-size: 1.1em; color: gray; }
-	#inquiry-text{font-size: 1.2em; margin-bottom: 10px; font-weight: bold;}	
-	.inquiry-file{display: inline-block; font-size: 1.2em; margin-bottom: 10px; margin-left: 15px;}
-	.uploadimg {width: 350px; height: 350px; border-radius: 10px;}
-	.img_wrap {width: 350px; height: 350px; margin-top: 20px; }
-	.img_wrap img {max-width: 100%; max-height: 95%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin-left: 135px;}
-	.upload-img-form{position: relative; width: 590px; border: 1px solid #e2e2e2; margin-left: 15px; 
-					 border-radius: 5px; margin-bottom: 30px; background: #fff;}
-	
-</style>
-
 
 <!-- CSS -->
 <link rel="stylesheet" href="resources/css/linearicons.css">
@@ -76,6 +30,8 @@
 <link rel="stylesheet" href="resources/css/nouislider.min.css">
 <link rel="stylesheet" href="resources/css/bootstrap.css">
 <link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="resources/css/inquirydetail.css">
+
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script> -->
@@ -113,8 +69,8 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
 	         </div>
 		  </div>
 		</div>

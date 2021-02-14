@@ -1,13 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 탈퇴</title>
 <style type="text/css">
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+	
 	#content{text-align: -webkit-center;}
 	.panel-body{width: 80%;padding : 20px;}
 	h4{padding-left : 40px;text-align : left;margin:20px}
@@ -16,28 +19,27 @@
 </style>
 </head>
 <body>
-
 	<section id="header">
 		<%@include file="../../views/common/header.jsp"%>
 	</section>
 	
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div
-				class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>회원가입</h1>
-				</div>
-			</div>
-		</div>
+	   <div class="container">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	         <div class="col-first" id="banner-text-1">
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
+	         </div>
+	      </div>
+	   </div>
 	</section>
-	
+	<!-- End Banner Area -->
 	
 	<section id="content">
 	<form  class="form-horizontal" action="deleteuser.do" method="post" onsubmit="delete_empty();">
          <div class="form-group">
-         <h3>정말로 카밍에서 탈퇴하시겠습니까?</h3>
+         <h3>탈퇴한 계정은 복구가 불가능합니다.<br>계정을 탈퇴하시겠습니까?</h3>
          <c:if test="${logintype eq 'normal'}">
             <div class="col-sm-3 control-label">
                 <label for="memid">비밀번호 입력</label>

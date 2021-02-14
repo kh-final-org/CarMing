@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -24,55 +23,7 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!-- <link rel="stylesheet" href="resources/css/adminList.css"> -->
-
-<style type="text/css">
-	.col-first{margin: -1% 63.5% 0 -18%; } 
-	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
-	.text-1{margin: -5% 0 3%;}
-
-	.card-container{padding: 50px 200px;}
-	#memlist_tb{width:100%; }
-	#memlist_tb:hover tbody tr:hover td {background: #fff5e9; transition: 0.2s; }
-	#paging-container{margin: 50px 0px 20px 0px;}
-	.gaadiex-list-title > h2{float:left; width: 25%; margin-top: 1%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
-	
-	.table-responsive {margin: 30px 0;}
-	.table-wrapper {min-width: 1000px; background: #fff; padding: 20px 25px; border-radius: 3px; box-shadow: 0 1px 1px rgba(0,0,0,.05);}
-	.table-title {padding-bottom: 15px; background: #299be4; color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;}
-	.table-title h2 {margin: 5px 0 0; font-size: 24px;}
-	.table-title .btn {color: #566787; float: right; font-size: 13px; background: #fff; border: none; min-width: 50px;
-					   border-radius: 2px; border: none; outline: none !important;margin-left: 10px;}
-	.table-title .btn:hover, .table-title .btn:focus {color: #566787; background: #f2f2f2;}
-	.table-title .btn i {float: left;font-size: 21px; margin-right: 5px;}
-	.table-title .btn span {float: left;margin-top: 2px;}
-	table.table tr th, table.table tr td {border-color: #e9e9e9; padding: 12px 15px; vertical-align: middle;}
-	table.table tr th:first-child {width: 60px;} 
-	table.table tr th:last-child {width: 100px;}
-	table.table-striped tbody tr:nth-of-type(odd) {background-color: #fcfcfc;}
-	table.table-striped.table-hover tbody tr:hover {background: #f5f5f5;}
-	table.table-striped.table-hover tbody tr td{text-align: center;}
-	table.table-striped.table-hover tbody tr td a img{margin: 0;}
-
-	table.table-striped.table-hover thead tr th{text-align: center;}
-	
-	table.table th i {font-size: 13px;margin: 0 5px;cursor: pointer;}	
-	table.table td:last-child i {opacity: 0.9; font-size: 22px; margin: 0 5px;}
-	table.table td span {font-weight: bold; color: #5f5f5f; display: inline-block; text-decoration: none;}
-	table.table td a.settings {color: #2196f3;}
-	table.table td a.delete {color: #f44336;}
-	table.table td a .material-icons {margin: 10px 0;}
-	table.table td i {font-size: 19px;}
-	table.table .avatar {border-radius: 50%; vertical-align: middle; margin-right: 10px; }
-	.avatar {width: 5em; height: 5em;}
-	.status {font-size: 30px; margin: 2px 2px 0 0; display: inline-block; vertical-align: middle; line-height: 10px;}
-	.text-success {color: #10c469;}
-	.text-info {color: #62c9e8;}
-	.text-warning {color: #FFC107;}
-	.text-danger {color: #ff5b5b;}
-	.hint-text {float: left; margin-top: 20px; font-size: 13px;}
-</style>
-
+<link rel="stylesheet" href="resources/css/adminMemberList.css">
 
 <script>
 function myFunction() {
@@ -200,9 +151,9 @@ function formAction() {
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.')}"></c:set>
 			<!-- 현재 페이지 -->
-			<div class="hint-text">
-					Page <b>${(empty param.page) ? 1:param.page}</b> / <b>${lastNum }</b> 
-			</div>
+<!-- 			<div class="hint-text"> -->
+<%-- 					Page <b>${(empty param.page) ? 1:param.page}</b> / <b>${lastNum }</b>  --%>
+<!-- 			</div> -->
 			<!-- paging 버튼  -->
 			<div class="container ml-auto" id="paging-container" align="center">
 				<nav aria-label="Page navigation example">

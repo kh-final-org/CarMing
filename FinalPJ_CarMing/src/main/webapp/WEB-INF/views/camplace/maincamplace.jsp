@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,14 +50,15 @@
 			        </label>
 			        <input type="hidden" value="${login.memno }" name="memno">
 		        </c:if>
-		        
 			</div>
 			
 			<div class="map-info">
+				<!-- 지도 보이는 곳 -->
 				<div class="mapcontent">
 					<div id="map"></div>
 				</div>
 				
+				<!-- 캠핑 목록 -->
 				<div class="camptable" id="camptable">
 					<div class="camprow" id="camprow">
 						<ul id="placesList"></ul>  
@@ -90,7 +91,6 @@
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<script src="resources/js/gmaps.min.js"></script>
 <!-- 	<script src="resources/js/main.js"></script> -->
-
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d642f0ec29fa1aa1c0907815f0c88f11&libraries=services"></script>
 	<script src="resources/js/maincamplace.js"></script>
 

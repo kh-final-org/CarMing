@@ -69,7 +69,7 @@ function inquiry(){
 				content.val().trim() == "" 	||
 				img.val() == "" ){
 			/*		alert(category+"/"+content.val()+"/"+img);*/
-					alert("모든 항목을 작성해 주세요");
+					alert("모든 항목을 기입해주세요.");
 					return;
 					
 					
@@ -79,7 +79,7 @@ function inquiry(){
 				if(category.val() != null &&
 				content.val() != "" 	&&
 				img.val() != null  )	{
-					alert("문의주셔서 감사합니다.");
+					alert("문의주신 내용이 등록되었습니다.");
 					$("#target").submit();
 				}
 					

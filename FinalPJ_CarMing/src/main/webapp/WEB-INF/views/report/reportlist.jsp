@@ -41,13 +41,13 @@
 	.banner-btn:hover::before{height: 180%;}
 
 	.card-container{padding: 50px 200px;}
-	.card {position: relative; width: 80%; margin-left: auto; margin-right: auto;}
+	.card {position: relative; width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 5%;}
 	
 	div.blog_right_sidebar{float: right; width: 22%; margin-bottom: -1.5%; margin-right: 7.5%; border: 0; background: #fff; }
 	.btn.btn-default{margin-top: -6%; margin-right: -3%;}
 	
 	.gaadiex-list {border-radius: 10px; list-style-type: none; margin: 0; padding: 0;}
-	.gaadiex-list-title > h2{float:left; width: 25%; margin: 1% 0 0 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
+	.gaadiex-list-title > h2{float:left; width: 25%; margin: 1% 0 0.8% 10%; font-family:'Malgun Gothic'; color: #5f5f5f; font-size: 2.2em;}
 	.gaadiex-list>.gaadiex-list-item {padding: 0 20px 0 25px;}
 	.gaadiex-list-item {width: 45%; float:left; margin-left: 2%;}
 	.gaadiex-list-item-img > img {float: left; width: 100px; height: 100px; margin: 50px 30px 8px 30px; border-radius: 50%;}
@@ -55,6 +55,7 @@
 	.gaadiex-list-item-text a{color: gray;}
 	.gaadiex-list-item-text a:hover{color: #ffba00; color: gray;}
 	.gaadiex-list-item-text h4{margin-bottom: 5px; font-weight: bold; color: gray;}
+	.list-item-text-ck{font-weight: bold;}
 	.list-item-text-ck:hover{border-radius: 2px; background: #fff5e9; transition: 0.2s;}
 </style>
 
@@ -96,8 +97,7 @@ function myFunction() {
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writereportform.do'">신고하기</button>
 	         </div>
 		  </div>
 		</div>
@@ -138,15 +138,16 @@ function myFunction() {
 						<img class="gaadiex-item-img" src=${list.memFile } alt="List user"><%-- ${list.reportFileName } --%>
 					</div>
 					<div class="gaadiex-list-item-text">
-						<h4><a href="profileform.do?memno=${list.memNo }">제보자 닉네임&nbsp;&#124;&nbsp;${list.reportWriter}</a></h4>
-						
-						<div class="gaadiex-list-item-text-ck">
-							<a href="reportdetail.do?reportNo=${list.reportNo}&targetTypeNo=${list.targetTypeNo}" id="content">
+						<h4><a href="reportdetail.do?reportNo=${list.reportNo}&targetTypeNo=${list.targetTypeNo}" id="content">
 							<c:set var="TextValue" value="${list.reportContent }"/> 
 								<span class="list-item-text-ck">신고 내용&nbsp;&#124;&nbsp;${fn:substring(TextValue,0,10)}</span>
 							</a>
+						</h4>
+						<div class="gaadiex-list-item-text-ck">
+							<a href="profileform.do?memno=${list.memNo }">
+								<span class="list-item-text-ck">제보자 닉네임&nbsp;&#124;&nbsp;${list.reportWriter}</span>
+							</a>
 						</div>
-						
 						<div class="category">카테고리&nbsp;&#124;&nbsp;${list.categoryName }</div>
 						<div>작성날짜&nbsp;&#124;&nbsp;<fmt:formatDate pattern = "yyyy-MM-dd" value = "${list.reportDate}" /></div>
 					</div>
@@ -154,8 +155,7 @@ function myFunction() {
 				</c:forEach>
 			</div>
 		</div>
-	</div>
-	<!-- End Container Area -->
+
 
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
@@ -163,9 +163,9 @@ function myFunction() {
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/8), '.')}"></c:set>
 			<!-- 현재 페이지 -->
-			<div class="hint-text">
-					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
-			</div>
+<!-- 			<div class="hint-text"> -->
+<%-- 					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages --%>
+<!-- 			</div> -->
 			<!-- paging 버튼  -->
 			<div class="container ml-auto" id="paging-container" align="center">
 				<nav aria-label="Page navigation example">
@@ -215,7 +215,9 @@ function myFunction() {
 			</div>
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
-
+	</div>
+	<!-- End Container Area -->
+	
 	<!-- start footer Area -->
 	<%@include file="../../views/common/footer.jsp"%>
 	<!-- End footer Area -->

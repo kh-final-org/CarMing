@@ -4,26 +4,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 주문 및 결제내역 확인</title>
+<link rel="stylesheet" href="resources/css/pay_result.css">
+<style type="text/css">
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
+
+
+
+
+</style>
+
+
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
-	 <!-- Start Banner Area -->
-    <section class="banner-area organic-breadcrumb">
-        <div class="container">
-            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-                <div class="col-first">
-                    <h1>결제</h1>
-                    <nav class="d-flex align-items-center">
-                        <a href="index.html">장바구니<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="single-product.html">결제하기</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Banner Area -->
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+	   <div class="container">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	         <div class="col-first" id="banner-text-1">
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
+	         </div>
+	      </div>
+	   </div>
+	</section>
+	<!-- End Banner Area -->
+	
+	
 	<section class="order_details section_gap">
 		<div class="container">
 			<h1 class="title_confirmation" style="font-size: 20pt;">감사합니다. 고객님의 주문이 완료되었습니다.</h1>

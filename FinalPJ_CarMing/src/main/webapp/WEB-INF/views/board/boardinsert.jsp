@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 사진 올리기</title>
-<link rel="stylesheet" href="resources/css/board.css">
+<link rel="stylesheet" href="resources/css/boardinsert.css">
 
 <script type="text/javascript" src="resources/js/board.js?ver=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
