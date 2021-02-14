@@ -177,12 +177,15 @@
 			<div class="card-board" >
 			<div class="card-mypage-title">내 캠핑맵</div>
 
+			<input type="radio" name="campcategory" id="campcategory" checked="checked" value="차박명소" style="display:none"/>
+			<input type="hidden" value="${login.memno }" name="memno">
+
 			<div class="map-info">
 				<div class="mapcontent">
 					<div id="map" style="width:100%;height:350px;"></div>
 				</div>
 				
-				<div class="camptable" id="camptable">
+				<div class="camptable" id="camptable" style="width:40%;">
 					<div class="camprow" id="camprow">
 						<ul id="placesList"></ul>  
 					</div>
