@@ -14,7 +14,7 @@
 	<select id="locationlistmy" parameterType="int" resultType="mapLocationDto">
 		SELECT MAPNAME, MAPLATITUDE, MAPLONGTITUDE
 		FROM MAPLOCATION
-		WHERE MEMNO = #{memno}
+		WHERE MEMNO = #{memno} AND CARMAPCHK = 'Y'
 	</select>
 	
 	

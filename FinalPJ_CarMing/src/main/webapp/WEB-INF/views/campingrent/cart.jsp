@@ -26,12 +26,6 @@
 	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
-		  <div class="section-top-border text-right" id="banner-text-2">
-	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='productlist.do'">캠핑렌트</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href=''">장바구니</button>
-	         </div>
-		  </div>
 		</div>
 	</section>
 	<!-- End Banner Area -->
@@ -51,16 +45,30 @@
 		</div>
 	</c:when>
 	<c:otherwise>
-    <section class="cart_area">
+	
+    <section class="card-container">
         <div class="container">
             <div class="cart_inner">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-striped table-hover" id="memlist_tb">
+                        <col style="width: 5%">
+						<col style="width: 10%">
+						<col style="width: 15%">
+						<col style="width: 20%">
+						<col style="width: 20%">
+						<col style="width: 15%">
+						<col style="width: 5%">
+						<col style="width: 20%">
                         <thead>
                             <tr>
-                            	<th scope="col"><input type="checkbox" name="allCheck" id="allCheck"></th>
-                            	<th scope="col" style="width:100px;">전체 선택</th>
-                                <th scope="col">상품</th>
+                            	<th scope="col">
+                            		<label class="checkbox">
+										<input type="checkbox" name="allCheck" id="allCheck">
+										<span class="icon"></span>
+									</label>
+                            	</th>
+                                <th scope="col">상품 사진</th>
+                                <th scope="col">상품명</th>
                                 <th scope="col">렌트 대여일</th>
                                 <th scope="col">렌트 반납일</th>
                                 <th scope="col">가격</th>
@@ -76,14 +84,23 @@
 		                    <fmt:parseNumber var="isDate" value="${eDate / (1000*60*60*24)}" integerOnly="true" scope="request"/>
                         <tbody>
                             <tr>
-                            	<td><input type="checkbox" name="chBox" class="chBox" data-cartNo="${cartListDto.cartNo }"></td>
-                                <td colspan="2">
-                                    <div class="media">
+                            	<td>
+                            		<label class="checkbox">
+										<input type="checkbox" name="chBox" class="chBox" data-cartNo="${cartListDto.cartNo }">
+										<span class="icon"></span>
+									</label>
+                            	</td>
+                                <td colspan="1">
+                                    <div class="media" style="width: 80px;">
                                         <div class="d-flex">
-                                            <img style="width:152px; height:102px;" src="storage/${cartListDto.pFile }" alt="">
+                                            <img style="width: 100px; height: 85px;" src="storage/${cartListDto.pFile }" alt="">
                                         </div>
+                                    </div>
+                                </td>
+                                <td>
+                                	<div class="media">
                                         <div class="media-body">
-                                            <p>${cartListDto.pName } </p>
+                                            <span>${cartListDto.pName }</span>
                                         </div>
                                     </div>
                                 </td>
@@ -103,12 +120,12 @@
                                 <td>
                                     <div class="product_count">
                                         <input type="text" name="cAmount" id="sst" maxlength="12" value="${cartListDto.cAmount }" title="Quantity:"
-                                            class="input-text qty">
+                                               class="input-text qty" style="color: gray;">
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                                class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
+                                                class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                    </div> 
                                 </td>
                                 <td>
                                    <c:set var="sum" value="${sum+(cartListDto.pPrice*cartListDto.cAmount*(eDate-sDate)) }"/>
@@ -116,51 +133,33 @@
                                 </td>
                             </tr>
 							</c:forEach>
-
-                            <tr class="bottom_button">
-                                <td colspan="3">
-	                                <a class="gray_btn" id="selectDelete_btn">선택 삭제</a> 
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
                             <tr>
                             	<td></td>
                             	<td></td>
                             	<td></td>
                                 <td></td>
                                 <td></td>
-                                <td style="text-align: right;">
-									<h5>총 금액</h5>
-                                </td>
+                                <td><h5 style="font-weight: bold; color: #5f5f5f;">총 합계</h5></td>
+                                <td></td>
                                 <td colspan="2" style="text-align: right;">
                                    <fmt:formatNumber value="${sum}" pattern="###,###,###"/><span>원</span>
                                 </td>
                             </tr>
-                            <tr class="out_button_area">
-                            	<td></td>
-                            	<td></td>
-                                <td></td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-								<td></td>
-								<td></td>
-                                <td style="text-align: center;"> 
-		                            <div class="checkout_btn_inner d-flex align-items-center">
-			                            <a class="gray_btn" href="productlist.do">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			                            <a class="primary-btn" href="payinfo.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-		                            </div>
-                                </td>
-
-                            </tr>
                         </tbody>
                     </table>
-                </div>
+                    
+              	 	<div class="bottom_button">
+                   		<a class="gray_btn" id="selectDelete_btn">선택 삭제</a> 
+                    </div>
+                    <div class="out_button_area">
+                    	<div style="text-align: center;"> 
+	                        <div class="checkout_btn_inner d-flex align-items-center">
+		                        <button type="button" class="btn btn-light" id="btn-ongoing" onclick="location.href='productlist.do'">쇼핑 계속하기</button>
+		                        <button type="button" class="btn btn-light" id="btn-pay" onclick="location.href='payinfo.do'">결제하기</button>
+	                    	</div>
+                        </div>
+                    </div>
+            	</div>
             </div>
         </div>
     </section>

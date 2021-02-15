@@ -437,7 +437,7 @@ function handleImgFileSelect(e) {
 							<input type="checkbox" id="chkprivate" value="chkprivate" onclick="YnCheck(this)">
 							<span class="icon"></span>
 							<span class="text">나만 보기</span>
-							<span id="my" ><input type="text" value="N" name="brdprivate"></span>
+							<span id="my"><input type="text" value="N" name="brdprivate"></span>
 						</label>&emsp;&emsp;
 					</div>
 					<div class="chkcarplace-box" style="display: none">

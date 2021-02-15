@@ -7,15 +7,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing | 결제 내역</title>
+<title>CarMing | 결제하기</title>
+	<link rel="stylesheet" href="resources/css/pay.css">
 	<style type="text/css">
-		.order_box{background: #fff5e9;}
+	.col-first{margin: -1% 63.5% 0 -18%; } 
+	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
+	.text-1{margin: -5% 0 3%;}
 	
+	.checkbox input{display: none;}
+	.checkbox span{display: inline-block; vertical-align: middle; cursor: pointer;}
+	.checkbox .icon{position: relative; width: 20px; height: 20px; border: 2px solid silver; border-radius: 3px; transition: background 0.1s ease; background: #fff;}
+	.checkbox .icon::after{content: ''; position: absolute; top: 0.5px; left: 5px; width: 6px; height: 11px; border-right: 2px solid #fff;
+						   border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: all 0.1s ease; transition-delay: 0.1s; opacity: 0;}
+	.checkbox .text{margin-left: 5px;}
+	.checkbox input:checked ~ .icon{border-color: transparent; background: orange;}
+	.checkbox input:checked ~ .icon::after{opacity: 1; transform: rotate(45deg) scale(1);}
 	
+	div.order_box{background: #fff5e9; border-radius: 5px; box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.14);}
+	#pay_go{width: 140px; height: 40px; background: #ffe6be; border-radius: 5px; color: #5f5f5f;
+			cursor: pointer; border: 0; outline: none; font-size: 1.1em; font-weight: bold;
+			border: 1px solid #e2e2e2; }
+	#pay_go:hover{background: #ffdb9f;}
 	
 	</style>
-
-
 
 	<link rel="stylesheet" href="resources/scss/theme/_product.scss">
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -42,21 +56,18 @@
 
 <body>
 	<%@ include file="../common/header.jsp" %>
-    <!-- Start Banner Area -->
-    <section class="banner-area organic-breadcrumb">
-        <div class="container">
-            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-                <div class="col-first">
-                    <h1>결제</h1>
-                    <nav class="d-flex align-items-center">
-                        <a href="index.html">장바구니<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="single-product.html">결제하기</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Banner Area -->
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+	   <div class="container">
+	      <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+	         <div class="col-first" id="banner-text-1">
+	         	<div class="maintext text-1">Everything has an end,</div>
+	         	<div class="maintext text-2">so time feels more precious</div>
+	         </div>
+	      </div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
 
     <!--================Checkout Area =================-->
     <form action="" method="post" id="formId">
@@ -65,7 +76,7 @@
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h3>배송 정보   <a href="" id="change_addr" style="font-size: 12pt; float: right;">배송지 변경</a></h3>
+                        <h3>배송 정보   <a href="" id="change_addr" style="font-size: 12pt; float: right; color: #ff9b00;">배송지 변경</a></h3>
                             <div class="col-md-6 form-group p_star">
                                 <label for="">받는 분</label>
                                 <div>
@@ -167,13 +178,15 @@
                            	</ul>
                             <div class="payment_item">
                                 <div class="create_account">
-                                    <input type="checkbox" id="f-option4" name="selector" onclick="agree_btn(this);">
-                                    <label for="f-option4">아래 내용에 모두 동의합니다. (필수)</label>
-                                    <div id="agree_alert" style="color: red; font-size:8pt;">결제 진행 필수사항에 동의해주세요.</div>
+                                    <label class="checkbox">
+										<input type="checkbox" id="f-option4" name="selector" onclick="agree_btn(this);">
+										<span class="icon"></span>
+										<span class="text"><strong>아래 내용에 모두 동의합니다. (필수)</strong></span>
+									</label>
+                                    <div id="agree_alert" style="color: red; font-size:0.9em; font-weight: bold;">&emsp;&nbsp;&nbsp;&emsp;결제 진행 필수사항에 동의해주세요.</div><br>
                                     <div class="check"></div>
                                 </div>
-                                <p>개인정보 제3자 제공 및 결제대행 서비스 표준 이용약관에 동의하겠습니다. <br>본인은 만 14세 이상이고, 위 내용을 확인하였습니다.
-                                </p>
+                                <p>개인정보 제3자 제공 및 결제대행 서비스 표준 이용약관에 동의하겠습니다.<br>본인은 만 14세 이상이고,<br>위 내용을 확인하였습니다.</p>
                             </div>
                             <!-- <a class="primary-btn" id="pay_go">결제 진행하기</a> -->
                             <input type="submit" value="결제 진행하기" id="pay_go">

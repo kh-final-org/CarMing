@@ -10,6 +10,7 @@
 <title>CarMing | 제품 등록</title>
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
 <link rel="stylesheet" href="resources/css/productInsert.css">
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="resources/js/insertform.js?ver=5"></script>
 
@@ -113,7 +114,8 @@
 	
 	<!-- Start Container Area -->
 	<div class="card-container">
-		<div class="comment-form">
+		<div class="comment-form" style="background: #fff5e9;">
+			<h3 style="font-weight: bold; color: #5f5f5f;">제품 등록</h3><br>
 		    <form:form method="post" enctype="multipart/form-data" modelAttribute="fileUpload" action="productinsert.do">
 		        <div class="form-group form-inline" style="margin: 0;">
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
@@ -136,40 +138,33 @@
 		            </div>
 		            
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
-		                <span class="main-text">제품 이미지1(대표)</span>
+		                <span class="main-text">제품 대표 사진</span>
 		                <input type="file" class="form-control" id="input_img" name="prFile" accept="image/*">
 		                <form:errors path="pFile"/>
 		            </div>
 		            
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
-		                <span class="main-text">제품 이미지2(대표)</span>
-		                <input type="file" class="form-control" id="input_img2" name="prFile2" accept="image/*">
-		                <form:errors path="pFile2"/>
-		            </div>
-		            
-		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
-		                <span class="main-text">제품 이미지3(대표)</span>
-		                <input type="file" class="form-control" id="input_img3" name="prFile3" accept="image/*">
-		                <form:errors path="pFile3"/>
-		            </div>
-		           <%--  <div class="form-group col-lg-6 col-md-6 name">
-		                <span>제품 이미지2(대표)</span><input type="file" class="form-control" name="pFile2"><form:errors path="pFile2"/>
-		            </div>
-		            <div class="form-group col-lg-6 col-md-6 name">
-		                <span>제품 이미지3(대표)</span><input type="file" class="form-control" name="pFile3"><form:errors path="pFile3"/>
-		            </div>
-		            <br>
-		            --%>
-		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 		                <span class="main-text">제품 설명</span>
 		                <input type="file" class="form-control" id="sel_pName2" name="prDesc"><form:errors path="prDesc"/>
 		                <input type="hidden" value="1">
+		            </div>
+					
+					<div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
+		                <span class="main-text">제품 사진-1</span>
+		                <input type="file" class="form-control" id="input_img2" name="prFile2" accept="image/*">
+		                <form:errors path="pFile2"/>
 		            </div>
 		            
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 						<span class="main-text">렌트 가격</span>
 						<input type="number" class="form-control" id="input-form" name="pPrice" min="1">
 					</div>
+		            
+		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
+		                <span class="main-text">제품 사진-2</span>
+		                <input type="file" class="form-control" id="input_img3" name="prFile3" accept="image/*">
+		                <form:errors path="pFile3"/>
+		            </div>
 					
 					<div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 						<span class="main-text">렌트 가능한 재고</span>
@@ -189,7 +184,7 @@
             	<!-- 버튼 -->  
 	            <div class="form-group" >
 	            	<div class="card-body-bottom">           
-		                <input type="submit" value="제품 등록" class="btn btn-light" id="btn-register">
+		                <input type="submit" value="등록" class="btn btn-light" id="btn-register">
 		                <input type="button" value="취소" class="btn btn-light" id="btn-cancel" onclick="location.href='productlist.do'">
 			    	</div>
 			    </div>

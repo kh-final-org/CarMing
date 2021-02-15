@@ -10,10 +10,6 @@
 <title>CarMing | 캠핑렌트</title>
 <link rel="stylesheet" href="resources/css/productdetail.css">
 
-<style type="text/css">
-	.single-prd-item{margin: 12% 0 0 35%;}
-	.s_Product_carousel{border-radius: 7px; width: 400px; height: 300px; margin: 12% 0 0 15%;}
-</style>
 
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

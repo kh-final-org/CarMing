@@ -232,7 +232,7 @@ function myFunction() {
 					<div class="blog_right_sidebar">
 						<aside class="single_sidebar_widget search_widget">
 							<div class="input-group">
-								<input type="text" id="input" onkeyup="myFunction()" class="form-control" placeholder="카밍 검색하기"
+								<input type="text" id="input" onkeyup="myFunction()" class="form-control" placeholder="무엇을 검색할까요?"
 									onfocus="this.placeholder = ''"
 									onblur="this.placeholder = '검색하기'"
 									style="padding: 12%; font-size: 1.15em; border-radius: 5px; margin-top: -15%;"> 

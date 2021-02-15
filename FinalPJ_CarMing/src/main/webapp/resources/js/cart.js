@@ -40,7 +40,7 @@ $(document).ready(function(){
 							return false;
 						} else{
 							alert("회원만 사용할 수 있습니다.");
-							$("#sst").val("1");
+							$("#qty").val("1");
 						}
 					},
 					error: function(){

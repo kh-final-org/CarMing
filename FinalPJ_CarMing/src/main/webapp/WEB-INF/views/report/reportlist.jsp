@@ -112,7 +112,7 @@ function myFunction() {
 		</div>
 		
 		<!-- 카테고리 검색 -->
-		<div class="blog_right_sidebar">
+<!-- 		<div class="blog_right_sidebar">
 			<aside class="single_sidebar_widget search_widget">
 				<div class="input-group">
 					<input type="text" id="input" onkeyup="myFunction()"
@@ -127,7 +127,7 @@ function myFunction() {
 					</span>
 				</div>
 			</aside>
-		</div>
+		</div> -->
 		
 		<!-- 신고자 목록 -->
 		<div class="card">

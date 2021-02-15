@@ -45,7 +45,7 @@
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
 	       	 	<button class="banner-btn" id="godeliver" type="button" onclick="location.href='sendRent.do?cartNo=${list.cartNo}'">상품 배송</button>
 	       	 	<button class="banner-btn" id="goreturn" type="button" onclick="location.href='returnRent.do?cartNo=${list.cartNo}'">반납 완료</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminRentList.do'">렌트 목록</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminPage.do'">렌트 목록</button>
 	         </div>
 		  </div>
 		</div>
