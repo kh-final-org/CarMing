@@ -10,6 +10,11 @@
 <meta charset="UTF-8">
 <title>CarMing | 마이페이지</title>
 <link rel="stylesheet" href="resources/css/mypage.css">
+<style type="text/css">
+	.mapcontent{float : left; width: 50%;}
+	#map{width: 500px; height: 400px; border-radius: 10px;}
+	.map-info{margin-top: 10px;}
+</style>
 
 </head>
 <body>
@@ -65,16 +70,22 @@
 							<div class="boardlistup" id="board-photo">
 								<div class="boardlistup-frame">
 									<c:choose>
-									<c:when test="${dto.brdvideoname eq 'N' }">
-									<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
-										<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
-									</a>
-									</c:when>
-									<c:when test="${dto.brdvideoname ne 'N' }">
-									<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
-									<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
-									</a>
-									</c:when>
+										<c:when test="${dto.brdvideoname eq 'N' }">
+											<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
+												<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
+											</a>
+										</c:when>
+										
+										<c:when test="${dto.brdvideoname ne 'N' }">
+											<div class="video-icon">
+												<img class="user-profile" src="./resources/img/video.png">
+											</div>
+											<div class="video-thumbnail-img">
+												<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
+													<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
+												</a>
+											</div>
+										</c:when>
 									</c:choose>
 								</div>
 							</div>
@@ -154,7 +165,7 @@
 					<div class="mapcontent">
 						<div id="map" style="width:100%;"></div>
 					</div>
-					<div class="camptable" id="camptable" style="width:40%;">
+					<div class="camptable" id="camptable" style="width: 45%; height: 400px;">
 						<div class="camprow" id="camprow">
 							<ul id="placesList"></ul>  
 						</div>

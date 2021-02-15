@@ -11,7 +11,9 @@
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크 - 프로필 페이지</title>
 <link rel="stylesheet" href="resources/css/profilepage.css">
-	
+<style type="text/css">
+.profilepage-message{margin: -13% 40.5%; width: 80%;}
+</style>
 </head>
 <body>
 <!-- Start Header Area -->
@@ -37,12 +39,16 @@
 	<!-- 사용자 프로필/신고 -->
 	<div class="card-profile">
 		<div class="profilepage-profile">
-			<img class="user-profile" src="${mem.memfile }" alt="">
+			<img class="user-profile" src="${login.memfile}" alt="">
 			<div class="user-id"><strong></strong>${mem.memnick}</div>
 		</div>
 		<div class="profilepage-message">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="writereportform.do?targetNo=${mem.memno }&targetTypeNo=3" class="board-report-target3" id="member-report-target">신고하기</a>
+<%-- 			<a href="privateform.do?memno=${mem.memno }"> --%>
+<!-- 				<img class="user-message" src="./resources/img/message.png"> -->
+<!-- 				<span class="user-message-text">&nbsp;1:1 채팅</span> -->
+<!-- 			</a>&nbsp;&middot;&nbsp; -->
+			<a href="writereportform.do?targetNo=${mem.memno }&targetTypeNo=3" 
+			   class="board-report-target3" id="member-report-target">신고하기</a>
 		</div>
 	</div>
 	
