@@ -149,12 +149,6 @@
         						<div class="product-frame-form">
 									<div class="single-product">
         								<input type="hidden" class="pCategoryNo" id="categoryNo" value="${productDto.pCategoryNo }">
-										<c:if test="${login.memcode == 1 }">
-											<input type="checkbox" name="chBox" class="chBox" data-pNo="${productDto.pNo }">
-											<div class="delete_btn" style="float: right;">
-												<button type="button" class="delete_btn" data-pNo="${productDto.pNo }">삭제</button>
-											</div>
-										</c:if>
 										
 										<div class="product-left">
 											<!-- 상품 이미지 -->

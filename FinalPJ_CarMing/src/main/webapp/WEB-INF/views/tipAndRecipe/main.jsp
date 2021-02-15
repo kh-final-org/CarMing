@@ -13,8 +13,13 @@
 	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
 	.text-1{margin: -5% 0 3%;}
 
-
-
+ 	#category_detail{background: #ffe6be; border-radius: 8px; width: 60%; height: 100%; color: #5f5f5f;}
+ 	#category_detail:hover{background: #ffdb9f;}
+ 	
+ 	.bee-img{width: 70px; height: 70px;}
+ 	.recipe-img{width: 70px; height: 70px;}
+ 	.categories-img{margin-right: 5%;}
+	
 	.container-form{width: 100%;}
 	.categories_post{float: left; width: 50%;}
 	div.categories_details{background: transparent; }
@@ -120,14 +125,15 @@ function myFunction() {
 	<div class="card-container">
 	
 		<div class="container-form">
-			<div class="categories_post">
+			<div class="categories_post" id="category_post">
 				<img src="resources/img/white.JPG" style="height: 150px;" alt="post">
-				<div class="categories_details">
+				<div class="categories_details" id="category_detail">
 					<div class="categories_text">
+						<img class="recipe-img" src="./resources/img/recipe.png">
 						<a href="recipeCrawling.do">
-							<h5>카밍 레시피</h5>
+							<h5 style="color: #5f5f5f; font-weight: bold;">카밍 레시피</h5>
 						</a>
-						<div class="border_line"></div>
+						<div class="border_line" style="background: #5f5f5f;"></div>
 						<p>카밍이 추천하는 맛있는 요리</p>
 					</div>
 				</div>
@@ -135,12 +141,13 @@ function myFunction() {
 		
 			<div class="categories_post">
 				<img src="resources/img/white.JPG" style="height: 150px;" alt="post">
-				<div class="categories_details">
+				<div class="categories_details" id="category_detail">
 					<div class="categories_text">
+						<img class="bee-img" src="./resources/img/bee.png">
 						<a href="TipCrawling.do">
-							<h5>카밍 꿀팁</h5>
+							<h5 style="color: #5f5f5f; font-weight: bold;">카밍 꿀팁</h5>
 						</a>
-						<div class="border_line"></div>
+						<div class="border_line" style="background: #5f5f5f;"></div>
 						<p>캠핑에 꼭 필요한 유용한 정보들</p>
 					</div>
 				</div>
@@ -228,52 +235,6 @@ function myFunction() {
 									</button>
 								</span>
 							</div>
-							<!-- /input-group -->
-							<div class="br"></div>
-						</aside>
-						<aside class="single_sidebar_widget popular_post_widget">
-							<h3 class="widget_title">카밍 추천 글</h3>
-							<div class="media post_item">
-								<img src="resources/img/banner/banner-bg.jpg"
-									style="width: 60px; height: 50px;" alt="post">
-								<div class="media-body">
-									<a href="blog-details.html">
-										<h3>Space The Final Frontier</h3>
-									</a>
-									<p>02 Hours ago</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="resources/img/banner/banner-bg.jpg"
-									style="width: 60px; height: 50px;" alt="post">
-								<div class="media-body">
-									<a href="blog-details.html">
-										<h3>The Amazing Hubble</h3>
-									</a>
-									<p>02 Hours ago</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="resources/img/banner/banner-bg.jpg"
-									style="width: 60px; height: 50px;" alt="post">
-								<div class="media-body">
-									<a href="blog-details.html">
-										<h3>Astronomy Or Astrology</h3>
-									</a>
-									<p>03 Hours ago</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="resources/img/banner/banner-bg.jpg"
-									style="width: 60px; height: 50px;" alt="post">
-								<div class="media-body">
-									<a href="blog-details.html">
-										<h3>Asteroids telescope</h3>
-									</a>
-									<p>01 Hours ago</p>
-								</div>
-							</div>
-							<div class="br"></div>
 						</aside>
 					</div>
 				</div>
