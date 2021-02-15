@@ -11,6 +11,9 @@
 <meta charset="UTF-8">
 <title>CarMing | 캠핑토크</title>
 <link rel="stylesheet" href="resources/css/boardmain.css">
+<style type="text/css">
+	.card-head-third{position: absolute; top: 47.7%; right: 13.5%; float: right; margin-right: 10px;}
+</style>
 
 <script type="text/javascript">
 	function showall() {

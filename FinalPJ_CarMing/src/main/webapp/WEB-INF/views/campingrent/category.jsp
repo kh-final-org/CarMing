@@ -227,13 +227,6 @@
 							<c:if test="${(startNum + i ) <= lastNum }">
 								<!-- 현재 페이지 style 변경 -->
 								<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}&pCateNo=${pCateNo}&orderBy=${orderBy}">${startNum + i }</a></li>
-							<!-- 현재 페이지 style 변경 -->
-								<c:if test="${viewNo >= count}">
-									<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}">1</a></li>
-								</c:if>
-								<c:if test="${viewNo < count}">
-									<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}">${startNum + i }</a></li>
-								</c:if>
 							</c:if>
 						</c:forEach>
 					  			
