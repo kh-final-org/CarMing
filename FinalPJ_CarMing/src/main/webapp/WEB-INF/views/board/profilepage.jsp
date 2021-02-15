@@ -37,14 +37,11 @@
 	<!-- 사용자 프로필/신고 -->
 	<div class="card-profile">
 		<div class="profilepage-profile">
-			<img class="user-profile" src="./resources/img/${mem.memfile }" alt="">
+			<img class="user-profile" src="${mem.memfile }" alt="">
 			<div class="user-id"><strong></strong>${mem.memnick}</div>
 		</div>
 		<div class="profilepage-message">
-			<a href="privateform.do?memno=${mem.memno }">
-				<img class="user-message" src="./resources/img/message.png">
-				<span class="user-message-text">&nbsp;1:1 채팅</span>
-			</a>&nbsp;&middot;&nbsp;
+			&nbsp;&middot;&nbsp;
 			<a href="writereportform.do?targetNo=${mem.memno }&targetTypeNo=3" class="board-report-target3" id="member-report-target">신고</a>
 		</div>
 	</div>

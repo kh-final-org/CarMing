@@ -240,7 +240,7 @@ function update(brdno){
 			<div class="card-body-6">
 				<div class="commentuser-first">
 					<div class="board-profile-commentuser">
-						<a href="profileform.do?memno=${dto.memno }"><img class="user-profile" src="./resources/img/profile.png" ></a>
+						<a href="profileform.do?memno=${comment.memno }"><img class="user-profile" src="${comment.memfile }" ></a>
 						<span><strong>${comment.comwriter }</strong></span>
 					</div>
 					<div class="commentuser-comment" id="comupdate">${comment.comcontext }</div>

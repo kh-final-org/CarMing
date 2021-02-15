@@ -19,6 +19,7 @@
  		<result property="targetWriter" column="BRDWRITER"/>
  		<result property="targetTypeNo" column="TARGETTYPENO"/>
  		<result property="targetTypeName" column="TARGETNAME"/>
+ 		<result property="boardVideo" column="BRDVIDEO"/>
 </resultMap>
 
 <resultMap type="ReportDto" id="reportMapCom">
@@ -98,7 +99,8 @@
 	REPORTLIST.*,
 	REPORTCATEGORY.CATEGORYNAME,
 	TARGETCATEGORY.TARGETNAME,
-	BOARD.BRDWRITER
+	BOARD.BRDWRITER,
+	BOARD.BRDVIDEO
 	FROM REPORTLIST
 	JOIN MEMBER
 	ON REPORTLIST.MEMNO = MEMBER.MEMNO

@@ -148,8 +148,15 @@
 					<div class="form-group-report-form">
 						<label class="control-label col-sm-2"  id="user-nickname"  for="receiverNickname">신고대상 닉네임</label>
 						<div class="col-sm-10">
-							<p class="form-control" id="writerNickname">				
-								<a class="receiver-name" href="boarddetailform.do?brdno=${list.targetNo}">${list.targetWriter }</a>
+							<p class="form-control" id="writerNickname">	
+								<c:choose>
+								<c:when test="${list.targetTypeNo == 1 or list.targetTypeNo == 2}">
+									<a class="receiver-name" href="boarddetailform.do?brdno=${list.targetNo}">${list.targetWriter }</a>
+								</c:when>
+								<c:when test="${list.targetTypeNo == 3}">
+								<a class="receiver-name" href="profileform.do?memno=${list.targetNo}">${list.targetWriter }</a>
+								</c:when>
+								</c:choose>
 							</p>	
 						</div>
 					</div>
