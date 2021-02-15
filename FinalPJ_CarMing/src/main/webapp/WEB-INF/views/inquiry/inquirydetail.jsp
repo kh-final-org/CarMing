@@ -69,7 +69,7 @@
 	      </div>
 		  <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
+	       	 	<button class="banner-btn" id="gowrite" type="button" onclick="location.href='deleteinquiry.do?inquiryNo=${list.inquiryNo}'">문의 삭제</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
 	         </div>
 		  </div>

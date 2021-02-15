@@ -45,5 +45,8 @@
 	
 	.camptable{float: right; width: 48%; width: 570px; height: 450px; overflow: auto;}
 	.campdata{width: 33%; float: left; text-align: center;}
-
+	.uploadimg{
+	width: 235px; height: 235px; border-radius: 5px; transform: scale(1.00);	transition: transform .2s;
+	 }
+	.uploadimg:hover{transform: scale(1.03); transition: transform 0.3s; border-radius: 10px;}
 

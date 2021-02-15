@@ -6,7 +6,11 @@
   <mapper namespace="bcomment">
   	<select id="selectList" resultType="bcommentDto" parameterType="int">
   
-  		SELECT * FROM  BCOMMENT WHERE BRDNO = #{brdno}
+  		SELECT BCOMMENT.*, MEMBER.MEMFILE, MEMBER.MEMNO FROM  
+  		BCOMMENT 
+  		JOIN MEMBER 
+  		ON BCOMMENT.COMWRITER = MEMBER.MEMNICK
+  		WHERE BRDNO = #{brdno}
   		ORDER BY COMNO
   		
   		

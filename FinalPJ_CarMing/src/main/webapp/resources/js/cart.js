@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$(document).ajaxStart(function(){console.log("ajaxStart");});
 	//장바구니 담기
 	$("#insertCart_btn").click(function(){
-		var cAmount = $("#sst").val();
+		var cAmount = $("#qty").val();
 		var pAmount = $("#pAmount").val();
 		var startDate = $("#startDate").val();
 		var endDate = $("#endDate").val();
@@ -40,7 +40,7 @@ $(document).ready(function(){
 							return false;
 						} else{
 							alert("회원만 사용할 수 있습니다.");
-							$("#sst").val("1");
+							$("#qty").val("1");
 						}
 					},
 					error: function(){

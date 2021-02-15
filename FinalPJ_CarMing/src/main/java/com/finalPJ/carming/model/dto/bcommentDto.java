@@ -10,14 +10,24 @@ public class bcommentDto {
 	private String comcontext;	//댓글 내용
 	private Date comdate;		//댓글 작성 날짜
 	private int brdno; 			//캠핑토크 게시글 번호
-
+	private String memfile;
 	
 	public bcommentDto() {
 		super();
 	}
 
 
-	public bcommentDto(int memno, int comno, String comwriter, String comcontext, Date comdate, int brdno) {
+
+	
+
+	
+
+
+
+	
+
+	public bcommentDto(int memno, int comno, String comwriter, String comcontext, Date comdate, int brdno,
+			String memfile) {
 		super();
 		this.memno = memno;
 		this.comno = comno;
@@ -25,7 +35,43 @@ public class bcommentDto {
 		this.comcontext = comcontext;
 		this.comdate = comdate;
 		this.brdno = brdno;
+		this.memfile = memfile;
 	}
+
+
+
+	
+
+
+
+
+
+	public String getMemfile() {
+		return memfile;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public void setMemfile(String memfile) {
+		this.memfile = memfile;
+	}
+
+
+
+
+
+
+
+
+
 
 
 	public int getMemno() {
@@ -88,11 +134,28 @@ public class bcommentDto {
 	}
 
 
+
+
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "bcommentDto [memno=" + memno + ", comno=" + comno + ", comwriter=" + comwriter + ", comcontext="
-				+ comcontext + ", comdate=" + comdate + ", brdno=" + brdno + "]";
+				+ comcontext + ", comdate=" + comdate + ", brdno=" + brdno + ", memfile=" + memfile + "]";
 	}
+
+
+
+
+
+	
+
+	
 
 	
 }

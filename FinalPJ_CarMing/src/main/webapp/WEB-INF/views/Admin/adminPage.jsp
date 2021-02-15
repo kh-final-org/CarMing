@@ -153,7 +153,7 @@
 	      <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
 	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='inquirylist.do'">문의 목록</button>
-	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='reportlist.do'">신고 등록</button>
+	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='reportlist.do'">신고 목록</button>
 	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='memberlist.do'">회원 목록</button>
 	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='adminProductList.do'">제품 목록</button>
 	       	 	<button class="banner-btn" id="gomodify" type="button" onclick="location.href='profilechangeform.do'">프로필 수정</button>

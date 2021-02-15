@@ -68,7 +68,7 @@ function report(){
 				$('#emptycontent').show();
 			}
 			
-			if(content.val().trim() == ""){
+			if(content.val().trim() != ""){
 				$('#emptycontent').hide();
 			}
 			if(content.text().trim() != null){

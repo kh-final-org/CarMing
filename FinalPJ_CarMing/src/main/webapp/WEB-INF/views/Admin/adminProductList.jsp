@@ -76,7 +76,7 @@ function myFunction() {
 		</div>
 		
 		<!-- 카테고리 검색 -->
-		<div class="blog_right_sidebar">
+		<!-- <div class="blog_right_sidebar">
 			<aside class="single_sidebar_widget search_widget">
 				<div class="input-group">
 					<input type="text" id="input" onkeyup="myFunction()"
@@ -91,7 +91,7 @@ function myFunction() {
 					</span>
 				</div>
 			</aside>
-		</div>
+		</div>  -->
 
 		<!-- 렌탈 목록 -->
 		<div class="table-responsive">
@@ -103,7 +103,6 @@ function myFunction() {
 				<col style="width: 7%">
 				<col style="width: 12%">
 				<col style="width: 5%">
-				<col style="width: 5%">
 				<thead>
 					<tr>
 						<th>NO.</th>
@@ -113,7 +112,6 @@ function myFunction() {
 						<th>재고 현황</th>
 						<th>추가 재고 수량</th>
 						<th>삭제</th>
-						<th>수정</th>
 					</tr>
 				</thead>
 				<c:forEach var="list" items="${list}">
@@ -126,8 +124,9 @@ function myFunction() {
 							<td><fmt:formatNumber value="${list.pAmount }" pattern="###,###,###"/>&nbsp;개</td>
 							<td>
 								<form action="addAmount.do">
-									<input type="number" name= "pAmount" value="1" min="1">
-									<button type="submit" value="" >
+									<input type="hidden" name=pNo value="${list.pNo}">
+									<input type="number" name= "pAmount" value="1" min="1" style="width: 50px">
+									<button type="submit">
 										<i class="material-icons" >&#xE147;</i>
 									</button>
 								</form>
@@ -137,12 +136,6 @@ function myFunction() {
 									<i class="material-icons">&#xE5C9;</i>
 								</a>
 							</td>
-							<td>
-								<a href="#" class="settings" data-toggle="tooltip">
-									<i class="material-icons">&#xE8B8;</i>
-								</a>
-							</td>
-							<td> <a href="updateProductForm.do?pNo=${list.pNo }" class="settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
 						</tr>
 					</tbody>
 				</c:forEach>

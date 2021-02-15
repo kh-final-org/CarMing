@@ -64,9 +64,18 @@
 						<div class="card-boardlist">
 							<div class="boardlistup" id="board-photo">
 								<div class="boardlistup-frame">
+									<c:choose>
+									<c:when test="${dto.brdvideoname eq 'N' }">
 									<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
 										<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
 									</a>
+									</c:when>
+									<c:when test="${dto.brdvideoname ne 'N' }">
+									<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
+									<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+									</a>
+									</c:when>
+									</c:choose>
 								</div>
 							</div>
 						</div>

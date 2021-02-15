@@ -22,12 +22,12 @@
 	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
-	      <div class="section-top-border text-right" id="banner-text-2">
+<!-- 	      <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
 	         </div>
-		  </div>
+		  </div> -->
 	   </div>
 	</section>
 	<!-- End Banner Area -->
