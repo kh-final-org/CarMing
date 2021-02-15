@@ -27,10 +27,18 @@
 	         </div>
 	      </div>
 	      <div class="section-top-border text-right" id="banner-text-2">
+	      <c:if test="${login.memcode == 1}">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
 	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='insertform.do'">제품 등록</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminProductList.do'">제품 목록</button>
 	         </div>
+	      </c:if>
+	      <c:if test="${login.memcode != 1}">
+	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em; display: none;">
+	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='insertform.do'">제품 등록</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminProductList.do'">제품 목록</button>
+	         </div>
+	      </c:if>
 		  </div>
 	   </div>
 	</section>
@@ -86,7 +94,7 @@
 				</div>
 				
 				<!-- 필터 -->
-				<div class="sidebar-filter mt-50">
+				<!-- <div class="sidebar-filter mt-50">
 					<div class="top-filter-head" id="left-menu">필터</div>
 					<div class="common-filter">
 						<div class="head" id="left-menu">가격</div>
@@ -102,7 +110,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>  -->
 			</div>
 			<!-- End Left Menu -->
 			

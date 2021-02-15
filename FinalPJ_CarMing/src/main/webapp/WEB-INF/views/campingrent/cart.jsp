@@ -80,7 +80,7 @@
                                 <td colspan="2">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img style="width:152px; height:102px;" src="storage/${cartListDto.pFile }" alt="">
+                                            <img style="width:152px; height:102px;" src="resources/img/rent/${cartListDto.pFile }" alt="">
                                         </div>
                                         <div class="media-body">
                                             <p>${cartListDto.pName } </p>

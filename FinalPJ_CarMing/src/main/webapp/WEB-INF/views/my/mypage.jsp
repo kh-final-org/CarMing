@@ -10,7 +10,8 @@
 <meta charset="UTF-8">
 <title>CarMing | 마이페이지</title>
 <link rel="stylesheet" href="resources/css/mypage.css">
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d642f0ec29fa1aa1c0907815f0c88f11&libraries=services"></script>
+<script src="resources/js/maincamplace.js?ver=2"></script>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -157,9 +158,6 @@
 	<!-- End Container Area -->
 	<table class="table table-hover"></table>
 	</main>
-	
 	<%@ include file="../common/footer.jsp" %>
 </body>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d642f0ec29fa1aa1c0907815f0c88f11&libraries=services"></script>
-<script src="resources/js/maincamplace.js"></script>
 </html>

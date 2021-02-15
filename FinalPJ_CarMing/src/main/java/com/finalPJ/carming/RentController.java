@@ -64,16 +64,16 @@ public class RentController {
 		return "campingrent/insertform";
 	}
 	@RequestMapping(value = "/productinsert.do")
-	public String productinsert(HttpServletRequest request, Model model,
+	public void productinsert(HttpServletRequest request, HttpServletResponse response, Model model,
 			FileUpload uploadFile, BindingResult result, ProductDto dto) throws IOException {
 		logger.info("[PRODUCT INSERT]");
 		//uploadFile : jsp 페이지에서 보내준 이미지 파일과 desc 데이터
 		fileValidator.validate(uploadFile, result);
 		
 		//결과 에러 시 upload로 보내기 (파일이 없을 시)
-		if(result.hasErrors()) {
-			return "campingrent/insertform";
-		}
+		/*
+		 * if(result.hasErrors()) { return "campingrent/insertform"; }
+		 */
 		//데이터가 잘 넘어왔는지 확인
 		System.out.println("카테고리 번호:"+request.getParameter("pCategoryNo"));
 		System.out.println("제품명:"+request.getParameter("pName"));
@@ -182,7 +182,7 @@ public class RentController {
 			}
 
 			while((read=inputStream2.read(b2)) != -1) {
-				outputStream2.write(b2,0,read2);
+				outputStream2.write(b2,0,read);
 			}
 			
 			while((read=inputStream3.read(b3)) != -1) {
@@ -210,16 +210,30 @@ public class RentController {
 			
 		}
 		
+		//인코딩 설정
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		int insertres = biz.insertProduct(dto);
 		System.out.println(insertres);
 		//제품 등록 성공 여부인지 alert창을 띄운다.
 		if(insertres > 0) {
-			return "redirect:  productlist.do";
+			PrintWriter out = response.getWriter();
+			out.println("<script>"
+					+"alert('제품이 등록되었습니다.');"
+					+"location.href='productlist.do;"
+					+"'"
+					+ "</script>");
+			out.flush();
 		} else {
-			return "redirect: insertform.do";
+			PrintWriter out = response.getWriter();
+			out.println("<script>"
+					+"alert('제품 등록에 실패하였습니다.');"
+					+"location.href='insertform.do;"
+					+"'"
+					+ "</script>");
+			out.flush();
 		}
-
 	}
 	
 	@RequestMapping(value = "/productdetail.do")

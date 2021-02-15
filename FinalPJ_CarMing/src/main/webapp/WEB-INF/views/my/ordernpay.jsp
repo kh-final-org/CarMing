@@ -73,7 +73,7 @@
 							<c:forEach var="cartListDto" items="${cartList }">
 								<tr>
 									<td>${cartListDto.cartNo }</td>
-									<td><img src="storage/${cartListDto.pFile }" id="rent-img"></td>
+									<td><img src="resources/img/rent/${cartListDto.pFile }" id="rent-img"></td>
 									<td>${cartListDto.pName }</td>
 									<td>${cartListDto.cAmount }</td>
 									<td><fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>&nbsp;~&nbsp;<fmt:formatDate value="${cartListDto.endDate }" pattern="yyyy-MM-dd" var="endDate" />${endDate }</td>

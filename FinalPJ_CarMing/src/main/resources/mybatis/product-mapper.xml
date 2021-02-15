@@ -82,8 +82,20 @@
 		FROM (SELECT * FROM PRODUCT WHERE PNAME LIKE '%' ||  #{search} || '%'
 		ORDER BY PNO DESC) PRO JOIN PCATEGORY P ON (PRO.PCATEGORYNO = P.PCATEGORYNO))
 		WHERE RNUM BETWEEN 1 + (#{page} -1) * #{viewNo} AND #{page} * #{viewNo} 
-		<if test="pCateNo != 6">
-			AND PCATEGORYNO = #{pCateNo}
+		<if test="pCateNo == 1">
+			AND PCATEGORYNO = 1
+		</if> 
+		<if test="pCateNo == 2">
+			AND PCATEGORYNO = 2
+		</if> 
+		<if test="pCateNo == 3">
+			AND PCATEGORYNO = 3
+		</if>
+		<if test="pCateNo == 4">
+			AND PCATEGORYNO = 4
+		</if> 
+		<if test="pCateNo == 5">
+			AND PCATEGORYNO = 5
 		</if> 
 		<if test="pCateNo == 6">
 			OR PCATEGORYNO = #{pCateNo}
@@ -99,6 +111,9 @@
 		</if>
 		<if test='orderBy == "chpPrice"'>
 			ORDER BY PPRICE
+		</if>
+		<if test='orderBy == ""'>
+			
 		</if>
 	</select>
 	
