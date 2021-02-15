@@ -25,7 +25,7 @@
 	      <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='mypage.do?memno=${login.memno}'">돌아가기</button>
 	         </div>
 		  </div>
 	   </div>
@@ -213,9 +213,7 @@
 					</c:choose>
 				</table>
 			</div>
-		</div>
-
-	
+				
 					<!-- ==================================================================================================
 
 				================================================ paging ================================================ -->
@@ -244,7 +242,7 @@
 								   	</li>
 								</c:if>
 							
-								<c:forEach var="i" begin="0" end="10">
+								<c:forEach var="i" begin="0" end="4">
 									<c:if test="${(startNum + i ) <= lastNum }">
 										<!-- 현재 페이지 style 변경 -->
 										<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>
@@ -269,9 +267,12 @@
 							  	</c:if>	
 							</ul>
 						</nav>
-					</div><br><br><br>
+					</div>
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->	
+			
+		</div>
+
 
 	<%@ include file="../common/footer.jsp" %>
 </body>
