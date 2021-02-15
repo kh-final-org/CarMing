@@ -11,6 +11,10 @@
 	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
 	.text-1{margin: -5% 0 3%;}
 	
+	#btn{width: 140px; height: 40px; border-radius: 5px; outline: none;
+   		 background-color: #fff5e9; color: #5f5f5f; font-size:1.2em; cursor: pointer;}
+	#btn:hover{background: #ffe6be; transition: 0.2s; outline: none;}
+	
 	#content{text-align: -webkit-center;}
 	.panel-body{width: 80%;padding : 20px;}
 	h4{padding-left : 40px;text-align : left;margin:20px}
@@ -37,9 +41,9 @@
 	<!-- End Banner Area -->
 	
 	<section id="content">
-	<form  class="form-horizontal" action="deleteuser.do" method="post" onsubmit="delete_empty();">
+	<form class="form-horizontal" action="deleteuser.do" method="post" onsubmit="delete_empty();">
          <div class="form-group">
-         <h3>탈퇴한 계정은 복구가 불가능합니다.<br>계정을 탈퇴하시겠습니까?</h3>
+         <h3 style="color: #5f5f5f; font-size: 1.6em;">탈퇴한 계정은 복구가 불가능합니다.<br>계정을 탈퇴하시겠습니까?</h3>
          <c:if test="${logintype eq 'normal'}">
             <div class="col-sm-3 control-label">
                 <label for="memid">비밀번호 입력</label>
@@ -53,10 +57,10 @@
           </c:if>
            </div>
            
-         <div class="form-group" >
+         <div class="form-group">
             <div class="col-sm-12  text-center">
-            <input type="submit" value="탈퇴" class="btn btn-success" onclick="return delete_empty()"/>
-            <input type="button" value="취소" class="btn btn-warning" onclick="location.href='profilechangeform.do'"/>
+            <input type="submit" value="탈퇴" class="btn btn-light" id="btn" onclick="return delete_empty()"/>
+            <input type="button" value="취소" class="btn btn-light" id="btn" onclick="location.href='profilechangeform.do'"/>
             </div>
          </div>
       </form>

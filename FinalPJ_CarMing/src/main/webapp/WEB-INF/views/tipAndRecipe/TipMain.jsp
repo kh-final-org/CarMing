@@ -25,6 +25,7 @@
 	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
 	.text-1{margin: -5% 0 3%;}
 
+ 	#category_detail{background: #ffba00; border-radius: 8px; width: 80%;}
 
 
 
@@ -160,9 +161,8 @@ function myFunction() {
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="categories_post">
-						<img src="resources/img/tipandrecipe/fire.jpg"
-							style="width: 400px; height: 300px;" alt="post">
-						<div class="categories_details">
+					<img src="resources/img/white.JPG" style="height: 150px;" alt="post">
+						<div class="categories_details" id="category_detail">
 							<div class="categories_text">
 								<a href="recipeCrawling.do">
 									<h5>카밍 레시피</h5>
@@ -175,9 +175,8 @@ function myFunction() {
 				</div>
 				<div class="col-lg-6">
 					<div class="categories_post">
-						<img src="resources/img/tipandrecipe/honey.jpg"
-							style="width: 400px; height: 300px;" alt="post">
-						<div class="categories_details">
+						<img src="resources/img/white.JPG" style="height: 150px;" alt="post">
+						<div class="categories_details" id="category_detail">
 							<div class="categories_text">
 								<a href="TipCrawling.do">
 									<h5>카밍 꿀팁</h5>
@@ -271,52 +270,6 @@ function myFunction() {
 									</button>
 								</span>
 							</div>
-							<!-- /input-group -->
-							<div class="br"></div>
-						</aside>
-						<aside class="single_sidebar_widget popular_post_widget">
-							<h3 class="widget_title">카밍 추천 글</h3>
-							<div class="media post_item">
-								<img src="resources/img/banner/banner-bg.jpg"
-									style="width: 60px; height: 50px;" alt="post">
-								<div class="media-body">
-									<a href="blog-details.html">
-										<h3>Space The Final Frontier</h3>
-									</a>
-									<p>02 Hours ago</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="resources/img/banner/banner-bg.jpg"
-									style="width: 60px; height: 50px;" alt="post">
-								<div class="media-body">
-									<a href="blog-details.html">
-										<h3>The Amazing Hubble</h3>
-									</a>
-									<p>02 Hours ago</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="resources/img/banner/banner-bg.jpg"
-									style="width: 60px; height: 50px;" alt="post">
-								<div class="media-body">
-									<a href="blog-details.html">
-										<h3>Astronomy Or Astrology</h3>
-									</a>
-									<p>03 Hours ago</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="resources/img/banner/banner-bg.jpg"
-									style="width: 60px; height: 50px;" alt="post">
-								<div class="media-body">
-									<a href="blog-details.html">
-										<h3>Asteroids telescope</h3>
-									</a>
-									<p>01 Hours ago</p>
-								</div>
-							</div>
-							<div class="br"></div>
 						</aside>
 					</div>
 				</div>
