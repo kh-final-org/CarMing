@@ -10,6 +10,8 @@
 <title>CarMing | 제품 등록</title>
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
 <link rel="stylesheet" href="resources/css/productInsert.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="resources/js/insertform.js?ver=2"></script>
 
 <style type="text/css">
 	.col-first{margin: -1% 63.5% 0 -18%; } 
@@ -114,7 +116,7 @@
 		               	 <span class="main-text">카테고리</span>
 		               	 <select name="pCategoryNo" class="form-control" id="category" placeholder="카테고리를 선택해주세요." 
 		               	 		 onfocus="this.placeholder = ''" onblur="this.placeholder = '카테고리를 선택해주세요.'">
-		               	 		<option selected disabled>카테고리 (필수)</option>
+		               	 		<option value="0" selected disabled>카테고리 (필수)</option>
 		                	 	<option value="1">텐트 / 타프</option>
 		                	 	<option value="2">매트 / 침낭</option>
 		                	 	<option value="3">코펠 / 버너 / 취사</option>
@@ -125,7 +127,7 @@
 		            
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 		                 <span class="main-text">제품명</span>
-		                 <input type="text" class="form-control" id="input-form" name="pName" placeholder="제품명을 입력해주세요. "
+		                 <input type="text" class="form-control" id="input-form" name="pName" id="sel_pName" placeholder="제품명을 입력해주세요. "
 		                    	onfocus="this.placeholder = ''" onblur="this.placeholder = '제품명을 입력해주세요.'">
 		            </div>
 		            

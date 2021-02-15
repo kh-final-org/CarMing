@@ -137,4 +137,40 @@ function friendProfile(friendNo) {
 }
 
 
+/////////////
+/// 문의하기 ///
+/////////////
+
+function inquiry() {
+	console.log("inquiry 함수 실행");
+	
+ 	var categoryNo = $("select[name=categoryno]").val();
+	var inquiryContent = $("input[name=inquirycontent]").val();
+	console.log(categoryNo + "/" + inquiryContent + "/" + memno);
+	
+	// JSON 형식으로 설문조사 결과 저장.
+	var inquiryVal = {
+		"memNo" : memno,
+		"categoryNo" : categoryNo,
+		"inquiryContent" : inquiryContent
+	};
+	console.log(inquiryVal.categoryNo + "//" + inquiryVal.inquiryContent + "/" + inquiryVal.memNo);
+	
+	
+	$.ajax({
+		 type:"post",
+		 url:"insertInquiry.do",
+		 data:JSON.stringify(inquiryVal),
+//		 data:inquirycontent,
+		 contentType:"application/json",
+		 dataType:"json",
+		 success:function(msg) {
+//			alert("chatbot insert ajax success");
+		 },
+		 error:function() {
+			alert("통신 에러");
+		 }
+	});
+}
+
 	

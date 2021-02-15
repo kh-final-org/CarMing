@@ -55,4 +55,14 @@ public class CartBizImpl implements CartBiz{
 		return dao.orderList();
 	}
 
+	@Override
+	public List<CartListDto> orderList(String search, int page) {
+		return dao.orderList(search, page);
+	}
+
+	@Override
+	public int getOrderCnt(String search) {
+		return dao.getOrderCnt(search);
+	}
+
 }

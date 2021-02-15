@@ -15,4 +15,9 @@ public interface CartBiz {
 	public int countProduct(int payNo);
 	public String pName(PayDto pDto);
 	public void updateCart(int cartNo);
+	
+	
+	//검색과 페이징을 통한 SELECT//
+	public List<CartListDto> orderList(String search, int page);
+	public int getOrderCnt(String search);
 }

@@ -49,6 +49,7 @@
 			        	<span class="badge">&check;</span>
 			        </label>
 			        <input type="hidden" value="${login.memno }" name="memno">
+			        <input type="hidden" value='pagecampl' name="pagename">
 		        </c:if>
 			</div>
 			

@@ -1,7 +1,9 @@
 package com.finalPJ.carming.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +111,38 @@ public class CartDaoImpl implements CartDao {
 			e.printStackTrace();
 		}
 		return orderList;
+	}
+
+	@Override
+	public List<CartListDto> orderList(String search, int page) {
+		System.out.println("[DaoImpl] page/search/viewNo/pCateNo/orderBy: "+page+"/"+search);
+		List<CartListDto> list = new ArrayList<CartListDto>();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("search", search);
+		map.put("page", page);
+		
+		System.out.println("[DaoImpl] map: "+map);
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"orderlist_paging", map);
+		} catch (Exception e) {
+			System.out.println("[ERROR: SELECT ORDERLIST]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int getOrderCnt(String search) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"selectCartCnt", search);
+		} catch (Exception e) {
+			System.out.println("[ERROR: SELECT ORDERCOUNT]");
+			e.printStackTrace();
+		}
+		return res;
 	}
 	
 	

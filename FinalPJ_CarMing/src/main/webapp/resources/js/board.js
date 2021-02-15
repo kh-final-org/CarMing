@@ -1,3 +1,28 @@
+/*<!-- 나만보기 체크여부 -->*/
+	function YnCheck(obj) {
+		$("#my").empty();
+	    var checked = obj.checked;
+	
+	    if(checked){
+	    	var value = obj.value = "Y";
+    	    var Y = document.createElement("input");
+		    Y.setAttribute("name", "brdprivate");
+		    Y.setAttribute("type", "text");
+		    Y.setAttribute("value", value);
+		    
+		    document.getElementById("my").appendChild(Y);	
+	
+	    }else{
+	    	var value = obj.value = "N";
+	       	var N = document.createElement("input");
+	       	N.setAttribute("name", "brdprivate");
+		    N.setAttribute("type", "text");
+		    N.setAttribute("value", value);
+		    
+		    document.getElementById("my").appendChild(N);	
+	    }
+	    
+	 };
 
 
 /*<!-- 차박명소 등록 체크여부 -->*/

@@ -57,14 +57,40 @@
 					</c:if>
 					
 					<!-- 게시글이 있을 경우 -->
-					<c:forEach items="${list }" var="dto">
-						<div class="card-boardlist">
-							<div class="boardlistup" id="board-photo">
-								<div class="boardlistup-frame">
-									<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno}">
-										<img class="boardlist-img" src="resources/img/board/${dto.brdfilename }">
-									</a>
+					<c:forEach items="${list}" var="dto">
+						<div class="card-body" style="padding: 0px">
+							<!-- 프로필 사진/아이디 -->
+							<div class="board-profile">
+								<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }">
+									<img class="user-profile" src="./resources/img/profile.png" alt="profile-photo">
+								</a>&nbsp; 
+								<span class="board-usernick">&nbsp;${dto.brdwriter}</span>
+							</div>	
+							<!-- 사용자가 업로드한 이미지 -->
+							<div class="board-uploadimg">
+								<div class="board-uploadimg-frame">
+									<c:choose>
+										<c:when test="${dto.brdvideoname eq 'N' }">
+											<a href="boarddetailform.do?brdno=${dto.brdno }&memno=${dto.memno }">
+												<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+											</a><br>
+										</c:when>
+										
+										<c:when test="${dto.brdvideoname ne 'N' }">
+										<div class="video-icon">
+											<img class="user-profile" src="./resources/img/video.png">
+										</div>
+										<div class="video-thumbnail-img">
+											<a href="boarddetailform_v.do?brdno=${dto.brdno }&memno=${dto.memno }">
+												<img class="uploadimg" src="resources/img/board/${dto.brdfilename}">
+											</a><br>
+										</div>
+										</c:when>
+									</c:choose>
 								</div>
+								<div class="board-count">조회수 ${dto.brdcount}</div>
+								<div class="board-count"> ${dto.categoryname }</div>
+								<div class="category" style="display: none;"> ${dto.bcategoryno }</div>
 							</div>
 						</div>
 					</c:forEach>
@@ -137,6 +163,7 @@
 
 			<input type="radio" name="campcategory" id="campcategory" checked="checked" value="차박명소" style="display:none"/>
 			<input type="hidden" value="${login.memno }" name="memno">
+			<input type="hidden" value='pagemy' name="pagename">
 
 			<div class="map-info">
 				<div class="mapcontent">

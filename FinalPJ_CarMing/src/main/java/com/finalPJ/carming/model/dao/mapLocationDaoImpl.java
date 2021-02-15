@@ -49,12 +49,30 @@ public class mapLocationDaoImpl implements mapLocationDao{
 	
 	//ex. 차박명소 조회
 	@Override
-	public List<mapLocationDto> locationlist(int memno) {
+	public List<mapLocationDto> locationlistCampl(int memno) {
 		List<mapLocationDto> list = new ArrayList<mapLocationDto>();
 		
-		System.out.println("다오");
 		 try {
-			list = sqlSession.selectList(NAMESPACE+"locationlist", memno);
+				 list = sqlSession.selectList(NAMESPACE+"locationlistcampl", memno);
+			 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("[error : mapLocation_locationlist]");
+			e.printStackTrace();
+		}
+		
+		 System.out.println(list.isEmpty());
+		 
+		return list;
+	}
+
+	@Override
+	public List<mapLocationDto> locationlistMy(int memno) {
+		List<mapLocationDto> list = new ArrayList<mapLocationDto>();
+		
+		 try {
+				 list = sqlSession.selectList(NAMESPACE+"locationlistmy", memno);
+			 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("[error : mapLocation_locationlist]");

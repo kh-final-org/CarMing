@@ -21,4 +21,7 @@ public interface InquiryBiz {
 //	페이징 카운트	
 	public int getlistCount();
 	public int getlistCount(String search);
+	
+	// 챗봇 문의하기 insert
+	public int chatbotinsert(InquiryDto dto);
 }

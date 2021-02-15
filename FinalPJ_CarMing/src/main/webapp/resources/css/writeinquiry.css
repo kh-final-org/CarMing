@@ -50,7 +50,7 @@
    	#button-boardupload{width: 350px; height: 50px; margin: 25px 125px 0 135px; border-radius: 10px; 
    						background-color: #ffe6be; font-size:1.2em; color: #5f5f5f; margin-bottom: 5%;}
 
-	.inquiry-err{font-size: 1.1em; color: red;}
+	.inquiry-err{font-size: 1.1em; color: red; display: none;}
 	#emptycategory{position: absolute; z-index: 1;  top: 15.2%; left: 63%; width: 180px;}
 	#emptycontent{position: absolute; z-index: 1;  top: 28%; left: 37%; width: 180px;}
 	#emptyfile{position: absolute; z-index: 1;  bottom: 13.9%; left: 6.5%; width: 180px;}
