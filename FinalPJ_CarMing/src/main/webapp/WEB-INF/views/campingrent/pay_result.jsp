@@ -6,16 +6,6 @@
 <meta charset="UTF-8">
 <title>CarMing | 주문 및 결제내역 확인</title>
 <link rel="stylesheet" href="resources/css/pay_result.css">
-<style type="text/css">
-	.col-first{margin: -1% 63.5% 0 -18%; } 
-	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
-	.text-1{margin: -5% 0 3%;}
-
-
-
-
-</style>
-
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
