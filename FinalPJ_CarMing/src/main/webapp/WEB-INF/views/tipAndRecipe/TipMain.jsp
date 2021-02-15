@@ -25,10 +25,12 @@
 	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
 	.text-1{margin: -5% 0 3%;}
 
- 	#category_detail{background: #ffba00; border-radius: 8px; width: 80%;}
+ 	#category_detail{background: #ffe6be; border-radius: 8px;}
 
-
-
+ 	div.blog_right_sidebar{float: left;  margin-bottom: -1.5%; margin-left: -15%; border: 0; } 
+ 	.btn.btn-default{margin-top: -6%; margin-right: -3%;} 
+	
+	
 </style>
 <!-- <script>
 /* 	article = document.getElementsByTagName("article");
@@ -156,7 +158,7 @@ function myFunction() {
 	<!-- End Banner Area -->
 
 	<!--================Blog Categorie Area =================-->
-	<section class="blog_categorie_area">
+	<section class="blog_categorie_area" style="padding: 50px 0 2%;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
@@ -165,10 +167,10 @@ function myFunction() {
 						<div class="categories_details" id="category_detail">
 							<div class="categories_text">
 								<a href="recipeCrawling.do">
-									<h5>카밍 레시피</h5>
+									<h5 style="font-weight: bold; color: #5f5f5f;">카밍 레시피</h5>
 								</a>
-								<div class="border_line"></div>
-								<p>카밍이 추천하는 맛있는 요리</p>
+								<div class="border_line" style="background: #5f5f5f;"></div>
+								<p style="color: #5f5f5f;">카밍이 추천하는 맛있는 요리</p>
 							</div>
 						</div>
 					</div>
@@ -179,10 +181,10 @@ function myFunction() {
 						<div class="categories_details" id="category_detail">
 							<div class="categories_text">
 								<a href="TipCrawling.do">
-									<h5>카밍 꿀팁</h5>
+									<h5 style="font-weight: bold; color: #5f5f5f;">카밍 꿀팁</h5>
 								</a>
-								<div class="border_line"></div>
-								<p>캠핑에 꼭 필요한 정보들</p>
+								<div class="border_line" style="background: #5f5f5f;"></div>
+								<p style="color: #5f5f5f;">캠핑에 꼭 필요한 유용한 정보들</p>
 							</div>
 						</div>
 					</div>
@@ -201,31 +203,37 @@ function myFunction() {
 
 						<c:forEach var="list" items="${list}">
 
-							<article class="row blog_item">
+							<article class="row blog_item" style="margin: -0.3% -8% 0 8%;">
 								<div class="col-md-3">
 									<div class="blog_info text-right">
 										<div class="post_tag">
-											<a class="active" href="#"><b>카밍 꿀팁</b></a>
+											<a class="active" href="#">
+												<span style="font-weight: bold; color: #5f5f5f; font-family: 'TmoneyRoundWindRegular';">카밍 꿀팁</span>
+											</a>
 
 										</div>
 
 										<ul class="blog_meta list">
 											<li>${list.views }<i class="lnr lnr-eye"></i></li>
-											<li>카카오 공유하기 &nbsp;<a id="kakao-link-btn" onClick="sendLinkDefault('${list.tipURL}','${list.tipFile }');"><img class="share-kakaotalk" src="./resources/img/kakaotalk.png" style="height:25px; width: 25px"></a><li>
+											<li>카카오 공유하기 &nbsp;<a id="kakao-link-btn" onClick="sendLinkDefault('${list.tipURL}','${list.tipFile }');">
+												<img class="share-kakaotalk" src="./resources/img/kakaotalk.png" style="height:20px; width: 20px"></a>
+											<li>
 										</ul>
 									</div>
 								</div>
-								<div class="col-md-9">
+								<div class="col-md-9" style="margin-bottom: 6%;">
 									<div class="blog_post">
 										<a href="https://www.5gcamp.com${list.tipURL }"><img
 											src="https://www.5gcamp.com/${list.tipFile }"
-											style="width: 500px; height: 300px;"></a>
+											style="width: 450px; height: 350px; border-radius: 5px;"></a>
 										<div class="blog_details">
 											<a class="name" href="https://www.5gcamp.com${list.tipURL }">
-												<h2>${list.tipTitle}</h2>
+												<h5 style="color: #5f5f5f; font-weight: bold; width: 450px;">${list.tipTitle}</h5>
 											</a> <a href="https://www.5gcamp.com${list.tipURL }"
-												class="genric-btn primary" style="margin-top: 3%;"><strong>꿀팁
-													보기</strong></a>
+												class="genric-btn primary"
+												style="margin-top: 1.5%; border-radius: 3px; font-size: 1em; margin-top: -0.3%;">
+												<span>꿀팁 보기</span>
+											</a>
 										</div>
 									</div>
 								</div>
@@ -262,9 +270,10 @@ function myFunction() {
 							<div class="input-group">
 								<input type="text" class="form-control" id="input"
 									onkeyup="myFunction()" placeholder="무엇을 검색할까요?"
-									onfocus="this.placeholder = '무엇을 검색할까요?'"
-									onblur="this.placeholder = '무엇을 검색할까요?'"> <span
-									class="input-group-btn">
+									onfocus="this.placeholder = '검색하기'"
+									onblur="this.placeholder = '검색하기'"
+									style="padding: 12%; font-size: 1.15em; border-radius: 5px; margin-top: -15%;"> 
+									<span class="input-group-btn">
 									<button class="btn btn-default" type="button">
 										<i class="lnr lnr-magnifier"></i>
 									</button>
