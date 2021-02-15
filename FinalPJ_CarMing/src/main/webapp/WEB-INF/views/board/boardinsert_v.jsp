@@ -11,7 +11,6 @@
 <title>CarMing | 캠핑토크 - 동영상 올리기</title>
 <link rel="stylesheet" href="resources/css/boardinsert_v.css">
 
-<script type="text/javascript" src="resources/js/board_v.js?ver=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -167,6 +166,14 @@
 	    $('#videofilename').text(videofilename); 
 			    	
 		});
+		
+		 if(mapname.val().trim() != ""){
+				$('#emptymap').hide();
+		}; 
+		
+		if(place.val().trim() != ""){
+			$('#emptymap').hide();
+		}; 
 			
 	});	
 </script>
@@ -181,24 +188,13 @@
 		var place = $('#place');
 		var mapname = $('#mapname')
 		
-		if(category.val() == null ||
-				content.val().trim() == "" 	||
-				img.val() == "" ||
-				mapname.val() == ""){
-					alert("모든 항목을 기입해주세요.");
-				return;
-			}  	
-			
-			if(category != null &&
-				content.val() != "" &&
-				img != null &&
-				mapname.val() != null )	{
-				alert("게시글이 등록되었습니다.");
-				$("#target").submit();
-			}
-					 
+		
 			if(category.val() == null){
 				$('#emptycategory').show();
+			} 
+			
+			if(category.val() != null){
+				$('#emptycategory').hide();
 			} 
 			category.change(function(){
 				$('#emptycategory').hide();
@@ -206,6 +202,10 @@
 			
 			if(content.val().trim()== ""){
 				$('#emptycontent').show();
+			}
+			
+			if(content.val().trim() != ""){
+				$('#emptycontent').hide();
 			}
 			content.keyup(function(){
 				$('#emptycontent').hide();
@@ -223,47 +223,47 @@
 				$('#emptymap').show();
 			};  
 			
-				/* if(mapname.val() != ""){
-					$('#emptymap').hide();
-			        alert(mapname.val()+"mapnameval"); 
-				};   */
-			
-						/* if(mapname.val() != ""){
-							$('#emptymap').hide();
-					        alert(mapname.val()+"mapnameval"); 
-						};   */
-					
 
-						$('#location-finish-btn').click(function(){
-							if(mapname.val() != ""){
-								$('#emptymap').hide();
-							};  
-						}); 
-					
-				/* 	
-					  $('#location-finish-btn').click(function(){
-						 if(mapname.val().trim() == ""){
-								$('#emptymap').hide();
-								$('#emptymapname').show();
-						        alert(mapname.val()+"he"); 
-						};  
-						if(mapname.val() != ""){
-							$('#emptymap').hide();
-							$('#emptymapname').hide();
-					        alert(mapname.val()+"he2"); 
-						};  
-						alert("click");
-					});   */
-					
-					
-					 mapname.keyup(function(){
-						 if(mapname.val().trim() != ""){
-								$('#emptymap').hide();
-						}; 
-					}); 
+			$('#location-finish-btn').click(function(){
+				if(mapname.val() != ""){
+					$('#emptymap').hide();
+				};  
+			}); 
+
+			 mapname.keyup(function(){
+				 if(mapname.val().trim() != ""){
+						$('#emptymap').hide();
+				}; 
+			}); 
+			 
+			 if(mapname.val().trim() != ""){
+					$('#emptymap').hide();
+			}; 
+			
+			if(place.val().trim() != ""){
+				$('#emptymap').hide();
+			}; 
+			
+			 if(category.val() == null ||
+					content.val().trim() == "" 	||
+					img.val() == "" ||
+					mapname.val() == ""){
+						alert("모든 항목을 기입해주세요.");
+					return;
+				}  	
+				
+				if(category != null &&
+					content.val() != "" &&
+					img != null &&
+					mapname.val() != null )	{
+					alert("게시글이 등록되었습니다.");
+					$("#target").submit();
+				}
+						 
 					 
 		};
 </script>
+
 
 
 </head>

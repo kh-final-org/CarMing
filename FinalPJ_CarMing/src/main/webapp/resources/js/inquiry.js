@@ -57,6 +57,12 @@ function inquiry(){
 				if(content.text().trim() == ""){
 					$('#emptycontent').show();
 				}
+				
+				if(content.val().trim() != ""){
+					$('#emptycontent').hide();
+				}
+				
+				
 				if(content.text().trim() != null){
 					content.keyup(function(){
 					$('#emptycontent').hide();
@@ -80,7 +86,6 @@ function inquiry(){
 				if(category.val() == null ||
 				content.val().trim() == "" 	||
 				img.val() == "" ){
-			/*		alert(category+"/"+content.val()+"/"+img);*/
 					alert("모든 항목을 기입해주세요.");
 					return;
 					
