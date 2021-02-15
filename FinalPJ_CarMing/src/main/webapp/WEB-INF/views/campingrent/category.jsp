@@ -142,30 +142,12 @@
         						<div class="empty-product">등록된 제품이 없습니다.</div>
         					</c:when>
         					<c:otherwise>
-        						<c:forEach var="productDto" items="${productlist}">
+								<c:forEach var="productDto" items="${productlist}">
         						<!-- Start Product List Area -->
         						<div class="product-frame-form">
 									<div class="single-product">
         								<input type="hidden" class="pCategoryNo" id="categoryNo" value="${productDto.pCategoryNo }">
-										<a href="productdetail.do?pNo=${productDto.pNo }">
-											<img class="img-fluid" src="resources/img/rent/${productDto.pFile}" alt="" style="width: 255px; height: 200px;">
-										</a>
-											<div class="product-details">
-											<a id="kakao-link-btn" href="javascript:sendLink(${productDto.pNo })">
-												<img class="share-kakaotalk" src="resources/img/kakaotalk(color).png" style="width: 10%; height: 10%; display: inline-block; float: right;">
-											</a> 
-											<a href="productdetail.do?pNo=${productDto.pNo }">
-												<h6>${productDto.pName }</h6>
-											</a>
-												<div class="price">
-													<h6><fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/>(원)</h6>
-												</div>
-												<c:if test="${productDto.pAmount != 0}">
-													<h6 style="font-size: 14px;">수량: ${productDto.pAmount }(개)</h6>
-												</c:if>
-												<c:if test="${productDto.pAmount == 0}">
-													<h6 style="font-size: 14px;">재고가 없습니다.</h6>
-												</c:if>
+										
 										<div class="product-left">
 											<!-- 상품 이미지 -->
 				      						<div class="product-uploadimg-frame">
@@ -173,6 +155,7 @@
 													<img class="product-img" src="resources/img/rent/${productDto.pFile}" alt="">
 												</a>
 											</div>
+											
 											<!-- 상품 정보 -->
 											<div class="product-details">
 												<h6>${productDto.pName }</h6>
@@ -200,9 +183,9 @@
 										</div> 
 									</div>
 								</div>
-								</div>
 								<!-- End Product List Area -->
         						</c:forEach>
+								
         					</c:otherwise>
         				</c:choose>
 					</div>
@@ -215,13 +198,12 @@
 		<c:set var="orderBy" value="${orderBy}"/>
 		<c:set var="pCateNo" value="${pCateNo}"/>
 		<c:set var="viewNo" value="${viewNo}"/>
-		<c:set var="viewNo" value="${viewNo}"/>
 		<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 		<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 		<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/viewNo), '.')}"></c:set>
 		<!-- 현재 페이지 -->
 			<!-- paging 버튼  -->
-			<div class="container ml-auto" id="paging-container" align="center">
+			<div class="container ml-auto" id="paging-container" align="center" style="margin: 50px 0 30px;">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center" style="border-left: 0px;">
 						<!-- 이전 버튼 -->
