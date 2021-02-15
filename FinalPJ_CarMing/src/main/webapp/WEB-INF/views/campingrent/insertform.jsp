@@ -43,7 +43,7 @@
 	.img_wrap img {max-width: 100%; max-height: 100%;}
 	.center-block {display: block; margin-left: auto; margin-right: auto; margin: 20px 60px 0;}	
 	.upload-img-form{position: relative; width: 600px; height: 350px; border: 1px solid #e2e2e2;
-					 border-radius: 10px; margin: 3% 55%; background: #fff;}
+					 border-radius: 10px; margin: 3% 55% 8%; background: #fff;}
 	
 	.btn{width: 150px; height: 45px; border-radius: 8px; outline: none; margin-top: -4px;
    		 background-color: #fff5e9; color: #5f5f5f !important; font-size:1.2em; cursor: pointer;}
