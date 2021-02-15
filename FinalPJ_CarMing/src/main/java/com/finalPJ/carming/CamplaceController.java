@@ -40,15 +40,43 @@ public class CamplaceController {
 	}
 	
 	
-	@RequestMapping(value="/ajaxlocation.do", method = RequestMethod.POST)
+	@RequestMapping(value="/ajaxlocationCampl.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> ajaxlocation(@RequestBody int memno){
+	public Map<String, Object> ajaxlocationCampl(@RequestBody int memno){
 
 		logger.info("[ajaxlocation]");
 
 		
 		System.out.println(memno);
-		List<mapLocationDto> mapdto = mapbiz.locationlist(memno);
+		List<mapLocationDto> mapdto = mapbiz.locationlistCampl(memno);
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(mapdto!=null) {
+		
+			for(mapLocationDto dto : mapdto) {
+				List<Double> maploc = new ArrayList<Double>();
+				double lat = Double.parseDouble(String.format("%.6f", Double.parseDouble(dto.getMaplatitude())));
+				double longt = Double.parseDouble(String.format("%.6f", Double.parseDouble(dto.getMaplongtitude())));
+				maploc.add(lat);
+				maploc.add(longt);
+				
+				map.put(dto.getMapname(), maploc);
+			}
+		}
+
+		 
+		return map;
+	}
+	
+	@RequestMapping(value="/ajaxlocationMy.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> ajaxlocationMy(@RequestBody int memno){
+
+		logger.info("[ajaxlocation]");
+
+		
+		System.out.println(memno);
+		List<mapLocationDto> mapdto = mapbiz.locationlistMy(memno);
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		if(mapdto!=null) {

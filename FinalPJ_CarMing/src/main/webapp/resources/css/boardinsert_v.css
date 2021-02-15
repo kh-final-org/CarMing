@@ -67,11 +67,14 @@
 	#location-finish-btn:hover{background-color: #ffdb9f;}
 	#clickLatlng{text-align: center; margin-top: -5px;}
 
-	.board-err{float: left; width: 72%; margin-left: 3%; font-size:1.1em; color:red; padding-bottom:1%;padding-top:1%; }
-	.board-img-err{float: left; width: 72%; margin-left: -1%; margin-bottom:2%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; }
-	.board-img-err-bottom{float: left; width: 72%; margin-left: -1%; margin-top: 10%; margin-bottom:-1%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; }
-	#emptyimg{position: absolute; z-index: 2; bottom: -8.4%; left: 16.2%; width: 220px;}
+	.board-err{float: left; width: 72%; margin-left: 3%; font-size:1.1em; color:red; padding-bottom:1%;padding-top:1%; display: none;}
+	.board-img-err{float: left; width: 72%; margin-left: -1%; margin-bottom:2%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; display: none;}
+	.board-img-err-bottom{float: left; width: 72%; margin-left: -1%; margin-top: 10%; margin-bottom:-1%; font-size:1.1em; color:red; padding-bottom:-5%;padding-top:1%; display: none; }
+	#emptyimg{position: absolute; z-index: 2; bottom: -5%; left: 16.2%; width: 220px;}
 	#emptyvideo{position: absolute; z-index: 3;  bottom: 35%; left: 3%; width: 180px;}
-	#emptycategory{position: absolute; z-index: 2; top: 53.5%; left: 70%; width: 180px;}
-	#emptycontent{position: absolute; z-index: 2; top: 80%; left: 60%; width: 180px;}
-	#emptymap{position: absolute; z-index: 3; bottom: -8.8%; left: 50.5%; width: 180px;}
+	#emptycategory{position: absolute; z-index: 2; top: 55%; left: 66%; width: 180px;}
+	#emptycontent{position: absolute; z-index: 2; top: 77%; left: 60%; width: 180px;}
+	#emptymap{position: absolute; z-index: 2; bottom: -5.5%; left: 50.5%; width: 180px;}
+	
+	
+	

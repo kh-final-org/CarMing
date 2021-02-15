@@ -435,7 +435,7 @@ ConvState.prototype.answerWith = function(answerText, answerObject) {
                         }
                     }
                 }
-                autosize.update($(state.wrapper).find(parameters.inputIdHashTagName));
+                //autosize.update($(state.wrapper).find(parameters.inputIdHashTagName));
             }).on('input', function(e){
                 if(state.current.input.type=="select"){
                     var input = $(this).val();
@@ -508,7 +508,7 @@ ConvState.prototype.answerWith = function(answerText, answerObject) {
                         $(state.wrapper).find(parameters.inputIdHashTagName).focus();
                     }
                 }
-                autosize.update($(state.wrapper).find(parameters.inputIdHashTagName));
+                //autosize.update($(state.wrapper).find(parameters.inputIdHashTagName));
             });
 
             //binds form submit to state functions
@@ -528,10 +528,10 @@ ConvState.prototype.answerWith = function(answerText, answerObject) {
             });
 
 
-            if(typeof autosize == 'function') {
-                $textarea = $(state.wrapper).find(parameters.inputIdHashTagName);
-                autosize($textarea);
-            }
+            //if(typeof autosize == 'function') {
+                //$textarea = $(state.wrapper).find(parameters.inputIdHashTagName);
+                //autosize($textarea);
+            //}
 
             return state;
         } else {

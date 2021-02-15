@@ -49,7 +49,7 @@
 		
 		
  	});	 	
-
+/*폼 안넘어가기*/
 function report(){
 		
 			var category = $('select[name=categoryNo]');
@@ -67,10 +67,13 @@ function report(){
 			if(content.text().trim() == ""){
 				$('#emptycontent').show();
 			}
+			
+			if(content.val().trim() == ""){
+				$('#emptycontent').hide();
+			}
 			if(content.text().trim() != null){
 				content.keyup(function(){
 				$('#emptycontent').hide();
-				console.log(content.text())
 				});
 			}
 			

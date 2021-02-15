@@ -8,18 +8,24 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.finalPJ.carming.model.biz.InquiryBiz;
 import com.finalPJ.carming.model.biz.MemberBiz;
 import com.finalPJ.carming.model.biz.SurveyBiz;
+import com.finalPJ.carming.model.dto.InquiryDto;
+import com.finalPJ.carming.model.dto.InquiryDto2;
 import com.finalPJ.carming.model.dto.MemberDto;
 import com.finalPJ.carming.model.dto.SurveyDto;
 
@@ -35,6 +41,8 @@ public class ChatbotController {
 	private SurveyBiz surveyBiz;
 	@Autowired
 	private MemberBiz memberBiz;
+	@Autowired
+	private InquiryBiz inquiryBiz;
 	
 	// 임시 세션(제거)
 	HttpSession session;
@@ -211,6 +219,47 @@ public class ChatbotController {
 		map.put("friendNick", friendDto.getMemnick());
 		map.put("friendGender", gender);
 
+		return map;
+	}
+	
+	@RequestMapping(value="/insertInquiry.do", method=RequestMethod.POST)
+	@ResponseBody //@ResponseBody 추가.						// @RequestBody 추가.
+	public Map<String, Boolean> insertInquiry(@RequestBody InquiryDto2 dto) {
+//	public Map<String, Boolean> insertInquiry(@RequestBody String dto) {
+		/*
+		 * @ResponseBody : 응답시 java 객체를 response 객체에 binding
+		 * @RequestBody : 요청시 request객체로 넘어오는 데이터를 java 객체로
+		 */
+		System.out.println("insertInquiry.do로 넘어옴.");
+		
+		logger.info("[INSERT AJAX]");
+		
+		// 받아온 설문조사(SurveyDto)에 session번호 추가.
+		// dto.setMemno((Integer)session.getAttribute("memno"));
+		
+		System.out.println("dto.getCategoryNo : " + dto.getCategoryNo());
+		System.out.println("dto.getInquiryContent : " + dto.getInquiryContent());
+		System.out.println("dto.getMemNo : " + dto.getMemNo());
+		System.out.println("dto.toString : " + dto.toString());
+		
+		InquiryDto inquiry = new InquiryDto();
+
+		inquiry.setInquiryContent(dto.getInquiryContent());
+		inquiry.setCategoryNo(dto.getCategoryNo());
+		inquiry.setMemNo(dto.getMemNo());
+		
+		
+		int res = inquiryBiz.chatbotinsert(inquiry);
+		
+		boolean check = false;
+		if(res > 0) {
+			check = true;
+		}
+		
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		map.put("check", check);
+		
+		// check 값을 넘겨주자.
 		return map;
 	}
 	

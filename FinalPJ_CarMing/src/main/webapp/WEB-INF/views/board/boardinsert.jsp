@@ -61,6 +61,14 @@ function handleImgFileSelect(e) {
 		    $('#filename').text(filename); 
 		 
 			});
+		
+			 if(mapname.val().trim() != ""){
+					$('#emptymap').hide();
+			}; 
+			
+			if(place.val().trim() != ""){
+				$('#emptymap').hide();
+			};
 			
 	 });
 	
@@ -94,37 +102,27 @@ function handleImgFileSelect(e) {
 			$('#emptymap').show();
 		};  
 		
-			/* if(mapname.val() != ""){
-				$('#emptymap').hide();
-		        alert(mapname.val()+"mapnameval"); 
-			};   */
 		
-			$('#location-finish-btn').click(function(){
-				if(mapname.val() != ""){
-					$('#emptymap').hide();
-				};  
-			}); 
-		
-		/* 	
-		  $('#location-finish-btn').click(function(){
-			 if(mapname.val().trim() == ""){
-					$('#emptymap').hide();
-					$('#emptymapname').show();
-			        alert(mapname.val()+"he"); 
-			};  
+		$('#location-finish-btn').click(function(){
 			if(mapname.val() != ""){
 				$('#emptymap').hide();
-				$('#emptymapname').hide();
-		        alert(mapname.val()+"he2"); 
 			};  
-			alert("click");
-		});   */
+		}); 
+		
 		
 		 mapname.keyup(function(){
 			 if(mapname.val().trim() != ""){
 					$('#emptymap').hide();
 			}; 
 		}); 
+		
+		 if(mapname.val().trim() != ""){
+				$('#emptymap').hide();
+		}; 
+		
+		if(place.val().trim() != ""){
+			$('#emptymap').hide();
+		}; 
 		 
 		if(category.val() == null ||
 			content.val().trim() == "" 	||

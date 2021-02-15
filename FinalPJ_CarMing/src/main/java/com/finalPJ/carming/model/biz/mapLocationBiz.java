@@ -15,7 +15,8 @@ public interface mapLocationBiz {
 	
 	
 	//ex.차박 명소용 값 조회
-	public List<mapLocationDto> locationlist(int memno);
+	public List<mapLocationDto> locationlistCampl(int memno);
+	public List<mapLocationDto> locationlistMy(int memno);
 
 	
 }

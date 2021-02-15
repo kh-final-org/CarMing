@@ -29,13 +29,23 @@
 	#profile-btn-2{margin-left: 1% !important;}
 	
 	.card-body{float: right; width: 65.5%; height: 100%; padding: 0 !important;}
-	.card-mypage-title, .card-boardtext{font-size:1.8em; margin-bottom: 17px; color: #5f5f5f;}
-	.boardlistup{float: left; width: 33.3%}
+
+	.card-mypage-title{font-size:1.8em; margin-bottom: 17px; color: #5f5f5f;}
+	.boardlistup{float: left; width: 22%}
+
 	.boardlistup-frame{position: relative; width: 235px; height: 235px; overflow: hidden; border-radius: 5px;}
 	.boardlist-img{width: 235px; height: 235px; border-radius: 5px; transform: scale(1.00);	transition: transform .2s;}
 	.boardlist-img:hover{transform: scale(1.02); transition: transform .2s;}
 	.boardlistup{overflow: hidden; border-radius: 5px; margin-bottom: 10px;}
 	.card-boardlist-board{margin-bottom: 5%; width: 100%;}
 	#board-photo{float: left;}
+	.card-board-paging{width: 100%; margin: 50% 15% 5%;}
+
+	.mapcontent{float : left; width: 54%;}
+	#map{width: 600px; height: 400px; border-radius: 10px;}
+	.map-info{margin-top: 10px;}
+	
+	.camptable{float: right; width: 48%; width: 570px; height: 450px; overflow: auto;}
+	.campdata{width: 33%; float: left; text-align: center;}
 
 

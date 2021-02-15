@@ -81,23 +81,6 @@ function myFunction() {
 			<h2>INQUIRY LIST</h2>
 		</div>
 		
-		<!-- 카테고리 검색 -->
-		<!-- <div class="blog_right_sidebar">
-			<aside class="single_sidebar_widget search_widget">
-				<div class="input-group">
-					<input type="text" id="input" onkeyup="myFunction()"
-						   class="form-control" placeholder="카테고리 검색하기" 
-						   onfocus="this.placeholder = ''"
-						   onblur="this.placeholder = '카테고리 검색하기'" 
-						   style="padding: 12%; font-size: 1.15em; border-radius: 5px; margin-top: -15%;"> 
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
-							<i class="lnr lnr-magnifier"></i>
-						</button>
-					</span>
-				</div>
-			</aside>
-		</div> -->
 		
 		<!-- 문의자 목록 -->
 		<div class="card">

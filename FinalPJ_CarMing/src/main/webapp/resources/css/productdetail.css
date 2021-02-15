@@ -23,8 +23,6 @@
 	#startDate{border: 1px solid silver; padding: 1.5px 2px; border-radius: 3px;}
 	#endDate{border: 1px solid silver; padding: 1.5px 2px; border-radius: 3px;}
 	
-/* 	.card-container-review{box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.14);} */
-		
 	#myTab{background: #ffba00; border-top-left-radius: 0.5em; border-top-right-radius: 0.5em;}
 	a#home-tab{font-size: 1em; color: #5f5f5f; background: #fff5e9; border-radius: 3px;}
 	a#home-tab:hover{background: #fff; transition: 0.2s;}

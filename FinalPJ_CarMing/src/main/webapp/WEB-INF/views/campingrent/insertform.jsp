@@ -32,14 +32,18 @@
 	
 	.main-text{font-size: 1.15em; font-weight: bold; display: inline-block; margin: 0 0 1% 0.5%;}
     li.option.selected{width: 452px;}
-	#main-frame-form{margin-bottom: 1.5%;}
+	#main-frame-form{margin-top: 1.5%;}
 	input#input_img.form-control,input#input_img2.form-control,input#input_img3.form-control
 		{border: 1px solid #e2e2e2; border-radius: 5px;}
 	#input-form{border: 1px solid #e2e2e2; border-radius: 5px;}
 	div.nice-select.form-control{border: 1px solid #e2e2e2; border-radius: 5px;}
 	
-	
-	
+	.uploadimg {width: 360px; height: 360px;}
+	.img_wrap {width: 320px; height: 310px; margin-top: 16px; }
+	.img_wrap img {max-width: 100%; max-height: 100%;}
+	.center-block {display: block; margin-left: auto; margin-right: auto; margin: 20px 60px 0;}	
+	.upload-img-form{position: relative; width: 600px; height: 350px; border: 1px solid #e2e2e2;
+					 border-radius: 10px; margin: 3% 55% 8%; background: #fff;}
 	
 	.btn{width: 150px; height: 45px; border-radius: 8px; outline: none; margin-top: -4px;
    		 background-color: #fff5e9; color: #5f5f5f !important; font-size:1.2em; cursor: pointer;}
@@ -174,8 +178,10 @@
 					
 					<!-- 사진 (미리보기) -->
 	                <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
-	                	<div class="product_img">
-	                		<img id="img" src="">
+	                	<div class="upload-img-form">
+		                	<div class="img_wrap center-block">
+									<img id="img" src="">
+				  			</div>
 	                	</div>
 	               	</div>
             	</div>

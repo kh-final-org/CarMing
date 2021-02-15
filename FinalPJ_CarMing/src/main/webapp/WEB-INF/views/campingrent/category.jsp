@@ -26,7 +26,7 @@
 	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
-	       <div class="section-top-border text-right" id="banner-text-2">
+	      <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
 	       	 	<button class="banner-btn" id="goinsert" type="button" onclick="location.href='insertform.do'">제품 등록</button>
 	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='adminProductList.do'">제품 목록</button>
@@ -143,11 +143,12 @@
         						<div class="empty-product">등록된 제품이 없습니다.</div>
         					</c:when>
         					<c:otherwise>
-        						<c:forEach var="productDto" items="${productlist}">
+								<c:forEach var="productDto" items="${productlist}">
         						<!-- Start Product List Area -->
         						<div class="product-frame-form">
 									<div class="single-product">
         								<input type="hidden" class="pCategoryNo" id="categoryNo" value="${productDto.pCategoryNo }">
+
 										<div class="product-left">
 											<!-- 상품 이미지 -->
 				      						<div class="product-uploadimg-frame">
@@ -155,6 +156,7 @@
 													<img class="product-img" src="resources/img/rent/${productDto.pFile}" alt="">
 												</a>
 											</div>
+											
 											<!-- 상품 정보 -->
 											<div class="product-details">
 												<h6>${productDto.pName }</h6>
@@ -182,6 +184,7 @@
 								</div>
 								<!-- End Product List Area -->
         						</c:forEach>
+								
         					</c:otherwise>
         				</c:choose>
 					</div>
@@ -193,7 +196,6 @@
 			================================================ paging ================================================ -->
 		<c:set var="orderBy" value="${orderBy}"/>
 		<c:set var="pCateNo" value="${pCateNo}"/>
-		<c:set var="viewNo" value="${viewNo}"/>
 		<c:set var="viewNo" value="${viewNo}"/>
 		<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 		<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
