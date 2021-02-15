@@ -164,7 +164,7 @@ function update(brdno){
 		<div class="card-body-1">
 			<div class="board-profile">
 				<a href="profileform.do?memno=${dto.memno }&brdwriter=${dto.brdwriter }">
-					<img class="user-profile" src="./resources/img/profile.png">
+					<img class="user-profile" src="${login.memfile}">
 				</a>&nbsp; 
 				<span class="board-usernick">&nbsp;${dto.brdwriter }</span>
 			</div>	
@@ -218,7 +218,7 @@ function update(brdno){
 		<form:form action="writebcomment.do?memno=${login.memno }&brdno=${dto.brdno}" method="post">
 			<div class="card-body-5">
 				<div class="board-profile-comment">
-					<img class="user-profile" src="./resources/img/profile.png">
+					<img class="user-profile" src="${login.memfile}">
 				</div>	
 				<div class="board-input-comment">
 					<div class="input-group mb-3" >

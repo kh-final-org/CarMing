@@ -140,7 +140,7 @@
             	<!-- 버튼 -->  
 	            <div class="form-group" >
 	            	<div class="card-body-bottom">           
-		                <input type="submit" value="제품 등록" class="btn btn-light" id="btn-register">
+		                <input type="submit" value="등록" class="btn btn-light" id="btn-register">
 		                <input type="button" value="취소" class="btn btn-light" id="btn-cancel" onclick="location.href='productlist.do'">
 			    	</div>
 			    </div>
