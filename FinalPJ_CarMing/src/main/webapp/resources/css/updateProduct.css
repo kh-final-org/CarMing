@@ -38,3 +38,11 @@
 	#btn-register:hover{background: #ffdb9f; transition: 0.2s;}
 	#btn-cancel{margin-left: 5px; background-color: #ffe6be; font-weight: bold;}
 	#btn-cancel:hover{background: #ffdb9f; transition: 0.2s;}
+	
+	.product_img-frame{width: 100%; margin: 3% 0 8%;}
+	.product_imgs-1{position: relative; width: 30%; float:left; margin-right: 38%; }
+	.product_imgs-2{position: absolute; width: 30%; float:left; margin-right: 3.5%; right: 0; }
+	.product_imgs-3{position: absolute; width: 30%; float:right; right: 0; margin-right: -63%;}
+	.product_img-1, .product_img-2, .product_img-3{width: 300px; height: 300px; border-radius: 5px;}
+
+

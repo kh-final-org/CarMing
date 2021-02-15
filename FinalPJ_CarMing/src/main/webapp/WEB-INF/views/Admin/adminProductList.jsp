@@ -75,7 +75,7 @@ function myFunction() {
 			<h2>PRODUCT LIST</h2>
 		</div>
 		
-		<!-- 카테고리 검색 -->
+		<!-- 제품 검색 -->
 		<div class="blog_right_sidebar">
 			<aside class="single_sidebar_widget search_widget">
 				<div class="input-group">
@@ -119,7 +119,7 @@ function myFunction() {
 				<c:forEach var="list" items="${list}">
 					<tbody>
 						<tr>
-							<td class="cartNo" >${list.pNo}</td>
+							<td class="cartNo">${list.pNo}</td>
 							<td><a href="productdetail.do?pNo=${list.pNo}">${list.pName}</a></td>
 							<td>${list.pCategoryName }</td>
 							<td><fmt:formatNumber value="${list.pPrice }" pattern="###,###,###"/>&nbsp;원</td>
@@ -138,11 +138,10 @@ function myFunction() {
 								</a>
 							</td>
 							<td>
-								<a href="#" class="settings" data-toggle="tooltip">
+								<a href="updateProductForm.do?pNo=${list.pNo }" class="settings" data-toggle="tooltip">
 									<i class="material-icons">&#xE8B8;</i>
 								</a>
 							</td>
-							<td> <a href="updateProductForm.do?pNo=${list.pNo }" class="settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
 						</tr>
 					</tbody>
 				</c:forEach>

@@ -10,52 +10,9 @@
 <title>CarMing | 제품 등록</title>
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
 <link rel="stylesheet" href="resources/css/productInsert.css">
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="resources/js/insertform.js?ver=2"></script>
-
-<style type="text/css">
-	.col-first{margin: -1% 63.5% 0 -18%; } 
-	.col-first > .maintext{font-weight: bold; font-size: 2.0em; color: #fff; text-align: left;}
-	.text-1{margin: -5% 0 3%;}
-	#banner-text-2{position: absolute; top: 60%; right: 14%;}
-	
-	.banner-btn{width: 115px; padding: 8px 0 10px; line-height: 18px; border: 2px solid #fff5e9; border-radius: 3px;
-				font-size: 1.1em; text-align: center; color: #fff5e9; background: transparent; opacity: 0.95;  
-				position:relative; overflow: hidden; transition: 0.95s; cursor: pointer;}
-	.banner-btn:hover{background: #fff5e9; color: #5f5f5f;}
-	.banner-btn::before{content: ""; position: absolute; left:0; width:100%; height: 0%; background: #fff5e9; z-index: -1; 
-						top:0; border-radius: 0 0 50% 50%; transition: 0.95s;}
-	.banner-btn:hover::before{height: 180%;}
-	
-	.card-container{padding: 50px 250px; margin: 0;}
-	.comment-form{margin: 0 !important; padding: 40px !important; background: #fff; border-radius: 10px; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.14);}
-	
-	.main-text{font-size: 1.15em; font-weight: bold; display: inline-block; margin: 0 0 1% 0.5%;}
-    li.option.selected{width: 452px;}
-	#main-frame-form{margin-top: 1.5%;}
-	input#input_img.form-control,input#input_img2.form-control,input#input_img3.form-control
-		{border: 1px solid #e2e2e2; border-radius: 5px;}
-	#input-form{border: 1px solid #e2e2e2; border-radius: 5px;}
-	div.nice-select.form-control{border: 1px solid #e2e2e2; border-radius: 5px;}
-	
-	.uploadimg {width: 360px; height: 360px;}
-	.img_wrap {width: 320px; height: 310px; margin-top: 16px; }
-	.img_wrap img {max-width: 100%; max-height: 100%;}
-	.center-block {display: block; margin-left: auto; margin-right: auto; margin: 20px 60px 0;}	
-	.upload-img-form{position: relative; width: 600px; height: 350px; border: 1px solid #e2e2e2;
-					 border-radius: 10px; margin: 3% 55% 8%; background: #fff;}
-	
-	.btn{width: 150px; height: 45px; border-radius: 8px; outline: none; margin-top: -4px;
-   		 background-color: #fff5e9; color: #5f5f5f !important; font-size:1.2em; cursor: pointer;}
-	.btn:hover{background: #ffe6be; transition: 0.2s; outline: none;}
-	#btn-register{ background-color: #ffe6be; font-weight: bold;}
-	#btn-register:hover{background: #ffdb9f; transition: 0.2s;}
-	#btn-cancel{margin-left: 5px; background-color: #ffe6be; font-weight: bold;}
-	#btn-cancel:hover{background: #ffdb9f; transition: 0.2s;}
-	
-	
-</style>
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	var sel_file;
@@ -113,7 +70,8 @@
 	
 	<!-- Start Container Area -->
 	<div class="card-container">
-		<div class="comment-form">
+		<div class="comment-form" style="background: #fff5e9;">
+			<h3 style="font-weight: bold; color: #5f5f5f;">제품 등록</h3><br>
 		    <form:form method="post" enctype="multipart/form-data" modelAttribute="fileUpload" action="productinsert.do">
 		        <div class="form-group form-inline" style="margin: 0;">
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
@@ -136,40 +94,33 @@
 		            </div>
 		            
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
-		                <span class="main-text">제품 이미지1(대표)</span>
+		                <span class="main-text">제품 대표 사진</span>
 		                <input type="file" class="form-control" id="input_img" name="prFile" accept="image/*">
 		                <form:errors path="pFile"/>
 		            </div>
 		            
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
-		                <span class="main-text">제품 이미지2(대표)</span>
-		                <input type="file" class="form-control" id="input_img2" name="prFile2" accept="image/*">
-		                <form:errors path="pFile2"/>
-		            </div>
-		            
-		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
-		                <span class="main-text">제품 이미지3(대표)</span>
-		                <input type="file" class="form-control" id="input_img3" name="prFile3" accept="image/*">
-		                <form:errors path="pFile3"/>
-		            </div>
-		           <%--  <div class="form-group col-lg-6 col-md-6 name">
-		                <span>제품 이미지2(대표)</span><input type="file" class="form-control" name="pFile2"><form:errors path="pFile2"/>
-		            </div>
-		            <div class="form-group col-lg-6 col-md-6 name">
-		                <span>제품 이미지3(대표)</span><input type="file" class="form-control" name="pFile3"><form:errors path="pFile3"/>
-		            </div>
-		            <br>
-		            --%>
-		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 		                <span class="main-text">제품 설명</span>
 		                <input type="file" class="form-control" id="input-form" name="prDesc"><form:errors path="prDesc"/>
 		                <input type="hidden" value="1">
+		            </div>
+					
+					<div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
+		                <span class="main-text">제품 사진-1</span>
+		                <input type="file" class="form-control" id="input_img2" name="prFile2" accept="image/*">
+		                <form:errors path="pFile2"/>
 		            </div>
 		            
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 						<span class="main-text">렌트 가격</span>
 						<input type="number" class="form-control" id="input-form" name="pPrice" min="1">
 					</div>
+		            
+		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
+		                <span class="main-text">제품 사진-2</span>
+		                <input type="file" class="form-control" id="input_img3" name="prFile3" accept="image/*">
+		                <form:errors path="pFile3"/>
+		            </div>
 					
 					<div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 						<span class="main-text">렌트 가능한 재고</span>
