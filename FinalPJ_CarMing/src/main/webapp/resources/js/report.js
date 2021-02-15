@@ -67,6 +67,10 @@ function report(){
 			if(content.text().trim() == ""){
 				$('#emptycontent').show();
 			}
+			
+			if(content.val().trim() == ""){
+				$('#emptycontent').hide();
+			}
 			if(content.text().trim() != null){
 				content.keyup(function(){
 				$('#emptycontent').hide();
