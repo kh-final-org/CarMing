@@ -8,9 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>CarMing | 캠핑렌트</title>
-<style type="text/css">
-	.review-text{color: #ffc107; font-size: 26px;}
-</style>
+<link rel="stylesheet" href="resources/css/productdetail.css">
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -115,6 +114,7 @@
 		<input type="hidden" name="pName" id="pName" value="${productdto.pName }">
 		<input type="hidden" name="pAmount" id="pAmount" value="${productdto.pAmount }">
 		<input type="hidden" name="pCategoryNo" id="pCategoryNo" value="${productdto.pCategoryNo}">
+		<input type="hidden" name="memNo" id="memNo" value="${login.memno }">
 		<section class="product_description_area">
 			<div class="card-container-review">
 				<!-- 상품 설명 및 리뷰 버튼 -->
@@ -266,7 +266,7 @@
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="rentbtn review-re" id="insertCart_btn">리뷰 등록하기</button>
+										<button type="submit" value="submit" class="rentbtn review-re" id="reviewinsert">리뷰 등록하기</button>
 									</div>
 								</div>
 							</div>

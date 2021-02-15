@@ -105,15 +105,12 @@
 						</c:otherwise>
 					</c:choose>
 				</table>
-			</div><br>
+			</div>
 				<!-- ==================================================================================================
 				================================================ paging ================================================ -->
 				<c:set var="cpage" value="${(empty param.page) ? 1 : param.page}"></c:set>
 				<c:set var="startNum" value="${cpage - (cpage-1) % 5}"></c:set>
 				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(oCount/10), '.')}"></c:set>
-				<div class="hint-text">
-					Showing <b>${(empty cpage) ? 1:cpage}</b> out of <b>${lastNum }</b> pages
-				</div>
 				<!-- 현재 페이지 -->
 				<!-- paging 버튼  -->
 				<div class="container ml-auto" id="paging-container" align="center">
@@ -215,15 +212,12 @@
 				</table>
 			</div>
 		</div>
-	</div>
-					<!-- ==================================================================================================
+			<!-- ==================================================================================================
 				================================================ paging ================================================ -->
 					<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 					<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 					<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(pCount/10), '.')}"></c:set>
-					<div class="hint-text">
-						Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
-					</div>
+
 					<!-- 현재 페이지 -->
 					<!-- paging 버튼  -->
 					<div class="container ml-auto" id="paging-container" align="center">
@@ -271,9 +265,11 @@
 							  	</c:if>	
 							</ul>
 						</nav>
-					</div>
+					</div><br><br><br>
 			<!-- ==================================================================================================
 				================================================ paging ================================================ -->	
+	</div>
+				
 
 	<%@ include file="../common/footer.jsp" %>
 </body>

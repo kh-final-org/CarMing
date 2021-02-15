@@ -6,7 +6,7 @@
 <mapper namespace="cart"> 
 	<insert id="insertcart" parameterType="cartDto">
 		INSERT INTO CART
-		VALUES (CART_SEQ.NEXTVAL, #{cAmount}, #{startDate}, #{endDate}, 2, #{pNo}, 1, #{pCategoryNo})
+		VALUES (CART_SEQ.NEXTVAL, #{cAmount}, #{startDate}, #{endDate}, #{memNo}, #{pNo}, 1, #{pCategoryNo})
 	</insert>
 	
 	<select id="cartlist" resultType="cartListDto">

@@ -7,7 +7,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CarMing</title>
+<title>CarMing | 결제 내역</title>
+	<style type="text/css">
+		.order_box{background: #fff5e9;}
+	
+	
+	
+	</style>
+
+
 
 	<link rel="stylesheet" href="resources/scss/theme/_product.scss">
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -22,6 +30,7 @@
 	       
 	       if(confirm_val){
 	          $("#addr_btn").show();
+	          
 	          return false;
 	       } else{
 	          $("#addr_btn").hide();
@@ -130,7 +139,7 @@
                                 </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="order_box">
+                        <div class="order_box" style="background: #fff5e9;">
                             <h2>결제 내역</h2>
                            	<ul class="list">
                             <c:set var="sum" value="0" />
@@ -160,7 +169,7 @@
                                 <div class="create_account">
                                     <input type="checkbox" id="f-option4" name="selector" onclick="agree_btn(this);">
                                     <label for="f-option4">아래 내용에 모두 동의합니다. (필수)</label>
-                                    <div id="agree_alert" style="color: red; font-size:8pt;">결제 진행 필수사항을 동의해주세요.</div>
+                                    <div id="agree_alert" style="color: red; font-size:8pt;">결제 진행 필수사항에 동의해주세요.</div>
                                     <div class="check"></div>
                                 </div>
                                 <p>개인정보 제3자 제공 및 결제대행 서비스 표준 이용약관에 동의하겠습니다. <br>본인은 만 14세 이상이고, 위 내용을 확인하였습니다.

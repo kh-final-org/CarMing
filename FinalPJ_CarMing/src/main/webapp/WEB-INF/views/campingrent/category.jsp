@@ -35,6 +35,7 @@
 	   </div>
 	</section>
 	<!-- End Banner Area -->
+	
 	<!-- Start Container Area -->
 	<div class="card-container">
 		<div class="row">
@@ -147,25 +148,6 @@
         						<div class="product-frame-form">
 									<div class="single-product">
         								<input type="hidden" class="pCategoryNo" id="categoryNo" value="${productDto.pCategoryNo }">
-										<a href="productdetail.do?pNo=${productDto.pNo }">
-											<img class="img-fluid" src="resources/img/rent/${productDto.pFile}" alt="" style="width: 255px; height: 200px;">
-										</a>
-											<div class="product-details">
-											<a id="kakao-link-btn" href="javascript:sendLink(${productDto.pNo })">
-												<img class="share-kakaotalk" src="resources/img/kakaotalk(color).png" style="width: 10%; height: 10%; display: inline-block; float: right;">
-											</a> 
-											<a href="productdetail.do?pNo=${productDto.pNo }">
-												<h6>${productDto.pName }</h6>
-											</a>
-												<div class="price">
-													<h6><fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/>(원)</h6>
-												</div>
-												<c:if test="${productDto.pAmount != 0}">
-													<h6 style="font-size: 14px;">수량: ${productDto.pAmount }(개)</h6>
-												</c:if>
-												<c:if test="${productDto.pAmount == 0}">
-													<h6 style="font-size: 14px;">재고가 없습니다.</h6>
-												</c:if>
 										<div class="product-left">
 											<!-- 상품 이미지 -->
 				      						<div class="product-uploadimg-frame">
@@ -176,7 +158,6 @@
 											<!-- 상품 정보 -->
 											<div class="product-details">
 												<h6>${productDto.pName }</h6>
-												
 												<div class="price">
 													<div class="product-desc-1">
 														가격&nbsp;&#124;&nbsp;<fmt:formatNumber value="${productDto.pPrice }" pattern="###,###,###"/>&nbsp;원
@@ -190,7 +171,6 @@
 												</c:if>
 											</div>
 										</div>
-										
 										<div class="product-right">
 											<div class="product-share">
 												<a href="javascript:sendLink(${productDto.pNo })" class="social-info">
@@ -199,7 +179,6 @@
 											</div>
 										</div> 
 									</div>
-								</div>
 								</div>
 								<!-- End Product List Area -->
         						</c:forEach>
@@ -221,7 +200,7 @@
 		<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/viewNo), '.')}"></c:set>
 		<!-- 현재 페이지 -->
 			<!-- paging 버튼  -->
-			<div class="container ml-auto" id="paging-container" align="center">
+			<div class="container ml-auto" id="paging-container" align="center" style="margin: 50px 0 30px;">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center" style="border-left: 0px;">
 						<!-- 이전 버튼 -->
@@ -245,13 +224,6 @@
 							<c:if test="${(startNum + i ) <= lastNum }">
 								<!-- 현재 페이지 style 변경 -->
 								<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}&pCateNo=${pCateNo}&orderBy=${orderBy}">${startNum + i }</a></li>
-							<!-- 현재 페이지 style 변경 -->
-								<c:if test="${viewNo >= count}">
-									<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}">1</a></li>
-								</c:if>
-								<c:if test="${viewNo < count}">
-									<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}&viewNo=${viewNo}">${startNum + i }</a></li>
-								</c:if>
 							</c:if>
 						</c:forEach>
 					  			

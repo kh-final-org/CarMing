@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/scss/theme/_product.scss">
 <link rel="stylesheet" href="resources/css/productInsert.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="resources/js/insertform.js?ver=2"></script>
+<script src="resources/js/insertform.js?ver=5"></script>
 
 <style type="text/css">
 	.col-first{margin: -1% 63.5% 0 -18%; } 
@@ -127,7 +127,7 @@
 		            
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 		                 <span class="main-text">제품명</span>
-		                 <input type="text" class="form-control" id="input-form" name="pName" id="sel_pName" placeholder="제품명을 입력해주세요. "
+		                 <input type="text" class="form-control" id="input-form" name="pName"  placeholder="제품명을 입력해주세요. "
 		                    	onfocus="this.placeholder = ''" onblur="this.placeholder = '제품명을 입력해주세요.'">
 		            </div>
 		            
@@ -158,7 +158,7 @@
 		            --%>
 		            <div class="form-group col-lg-6 col-md-6 name" id="main-frame-form">
 		                <span class="main-text">제품 설명</span>
-		                <input type="file" class="form-control" id="input-form" name="prDesc"><form:errors path="prDesc"/>
+		                <input type="file" class="form-control" id="sel_pName2" name="prDesc"><form:errors path="prDesc"/>
 		                <input type="hidden" value="1">
 		            </div>
 		            

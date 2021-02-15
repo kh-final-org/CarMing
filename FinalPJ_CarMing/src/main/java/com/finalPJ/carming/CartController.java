@@ -49,15 +49,15 @@ public class CartController {
 		
 		//파라미터값 확인하기 위한 출력 구문
 		System.out.println("수량: "+cAmount);
-//		System.out.println("재고: "+pAmount);
+		System.out.println("멤버 no: "+request.getParameter("memNo"));
 		
 		int result = 1;
 		
-		MemberDto member = (MemberDto)session.getAttribute("member");
+		MemberDto mDto = new MemberDto();
 		
 		System.out.println(cart);
-//		cart.setMemNo(member.getMemno());
 //		cart.setStateNo(1);
+		cart.setMemNo(mDto.getMemno());
 		biz.insertCart(cart);
 		System.out.println(result);
 		

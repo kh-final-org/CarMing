@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/register2.css">
 
+
 </head>
 <body>
 	<section class="content">
@@ -45,7 +46,7 @@
 		                </c:choose>
 		                <div class="ex-text">작성 예시: carming@example.com</div>
 		                <div class="chk_error" id="memid_error">이메일 주소를 다시 확인해주세요.</div>
-		                <input type="text" name="certnum" id="certnum" placeholder="인증번호를 입력해주세요.">
+		                <input type="text"  name="certnum" id="certnum" placeholder="인증번호를 입력해주세요.">
 		                <input type="button" id="certbutton" onclick="certcf()" value="인증확인">
 		                <div class="chk_error" id="certnum_good" style="color: #ff9b00;">인증번호가 확인되었습니다.</div>
 		            </div>

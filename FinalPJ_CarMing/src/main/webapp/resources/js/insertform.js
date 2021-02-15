@@ -1,7 +1,7 @@
 $(function(){
 	$("#btn-register").click(function(){
 		var sel_pCategory = $("#category option:selected").val();
-		var sel_pName = $("#sel_pName").val();
+		var sel_pName = $("#input-form").val();
 		var sel_prFile = $("input[name=prFile]").val();
 		var sel_prFile2 = $("input[name=prFile2]").val();
 		var sel_prFile3 = $("input[name=prFile3]").val();

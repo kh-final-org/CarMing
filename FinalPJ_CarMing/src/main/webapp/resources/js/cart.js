@@ -3,13 +3,14 @@ $(document).ready(function(){
 	$(document).ajaxStart(function(){console.log("ajaxStart");});
 	//장바구니 담기
 	$("#insertCart_btn").click(function(){
-		var cAmount = $("#sst").val();
+		var cAmount = $("#qty").val();
 		var pAmount = $("#pAmount").val();
 		var startDate = $("#startDate").val();
 		var endDate = $("#endDate").val();
 		var pNo = $("#pNo").val();
 		var pCategoryNo = $("#pCategoryNo").val();
-
+		/*var memNo = $("#memNo").val();*/
+		/*alert("멤버no"+memNo);*/
 		var data = {
 					cAmount : cAmount,
 					pAmount : pAmount,
@@ -18,7 +19,6 @@ $(document).ready(function(){
 					pNo : pNo,
 					pCategoryNo : pCategoryNo
 		};
-		
 		
 		if(startDate == ""){
 			alert("렌트 대여일(시작일)을 선택하세요.");
@@ -54,7 +54,7 @@ $(document).ready(function(){
 	});
 	
 	//리뷰 등록 시 제약조건
-	$("#reviewinsert").click(function(){
+	$("#insertreview").click(function(){
 		if($("#message").val() == ""){
 			alert("리뷰를 작성해주세요.");
 			return false;

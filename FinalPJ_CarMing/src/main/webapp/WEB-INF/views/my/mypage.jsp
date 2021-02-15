@@ -24,6 +24,11 @@
 	         	<div class="maintext text-2">so time feels more precious</div>
 	         </div>
 	      </div>
+	      <div class="section-top-border text-right" id="banner-text-2">
+	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
+	       	 	<button class="banner-btn" id="goinquiry" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
+	         </div>
+		  </div>
 	   </div>
 	</section>
 	<!-- End Banner Area -->
@@ -41,8 +46,6 @@
 			<div class="my-desc">
 				<input type="button" class="profile-btn" id="profile-btn-1" value="프로필 수정" onclick="location.href='profilechangeform.do'">&middot;
 				<button type="button" class="profile-btn" id="profile-btn-2" onclick="location.href='ordernpay.do'">주문 및 결제 내역</button>
-				<br>
-				<button class="profile-btn" id="profile-btn-2" type="button" onclick="location.href='writeinquiryform.do'">문의하기</button>
 			</div>
 		</div>
 		</div>
@@ -76,9 +79,9 @@
 			<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
 			<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/6), '.')}"></c:set>
 			<!-- 현재 페이지 -->
-			<div class="hint-text">
-					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages
-			</div>
+<!-- 			<div class="hint-text"> -->
+<%-- 					Showing <b>${(empty param.page) ? 1:param.page}</b> out of <b>${lastNum }</b> pages --%>
+<!-- 			</div> -->
 			<!-- paging 버튼  -->
 			<div class="container ml-auto" id="paging-container" align="center">
 				<nav aria-label="Page navigation example">
