@@ -19,15 +19,12 @@
 							$(".licartNo").each(function(){
 								cNoArr.push($(this).children().attr("data-cartNo"));
 							});
-							alert(cNoArr);
 							$(".lipNo").each(function(){
 								pNo.push($(this).children().attr("data-pNo"));
 							});
-							alert(pNo);
 							$(".licAmount").each(function(){
 								cAmount.push($(this).children().attr("data-cAmount"));
 							});
-							alert(cAmount);
 							
 							var payDay = $(".payDay").val();
 							var payNo = $(".payNo").val();
@@ -94,8 +91,7 @@
 											"payNo": payNo
 										},
 										success: function(){
-											alert("incispay");
-											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay;
+											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmountArr="+cAmount+"&pNoArr="+pNo;
 										},
 										error: function(){
 											location.href="payinfo.do";
@@ -161,11 +157,9 @@
 											"payNo": payNo
 										},
 										success: function(){
-											alert("되면 되는거지");
 											location.href="payresult.do?totalPrice="+totalPrice+"&pName="+pName+"&pay_method="+pay_method+"&payNo="+payNo+"&payDay="+payDay+"&cNoArr="+cNoArr+"&cAmountArr="+cAmount+"&pNoArr="+pNo;
 										},
 										error: function(){
-											alert("에러요");
 											location.href="payinfo.do";
 										}
 									});		

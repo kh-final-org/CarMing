@@ -152,7 +152,7 @@
 								<td></td>
                                 <td style="text-align: center;"> 
 		                            <div class="checkout_btn_inner d-flex align-items-center">
-			                            <a class="gray_btn" href="productlist.do">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			                            <a class="primary-btn" href="productlist.do">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			                            <a class="primary-btn" href="payinfo.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 		                            </div>
                                 </td>

@@ -127,12 +127,9 @@ window.onload = function() {
 				alert("배송 메모를 선택해주세요.");
 				return;
 			} else{
-				alert("컨트롤러로 넘기기 전 알림창");
 				if(pay_option == 'kakaopay'){
-					alert("결제 수단: "+pay_option);
 					$("#formId").attr("action", "kakaopay.do").submit();
 				} else if(pay_option == 'inicis'){
-					alert("결제 수단: "+pay_option);
 					$("#formId").attr("action", "inicispay.do").submit();
 				}
 			}

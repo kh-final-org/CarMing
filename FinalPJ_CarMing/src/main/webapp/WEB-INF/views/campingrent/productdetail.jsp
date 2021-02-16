@@ -169,7 +169,7 @@
 															<!-- 평점 -->
 															<div class="stars-icon">
 																<c:if test="${rentReviewDtos.reviewStar == 1 }">
-																	<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
+																	<img style="width:15px; height:15px;" id="simage1" src="resources/img/star.png">
 																</c:if>
 																<c:if test="${rentReviewDtos.reviewStar == 2 }">
 																	<img style="width:15px; height:15px;" id="simage1" src="resources/img/star.png">
