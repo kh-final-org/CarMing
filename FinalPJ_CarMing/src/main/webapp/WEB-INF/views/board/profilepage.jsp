@@ -39,7 +39,7 @@
 	<!-- 사용자 프로필/신고 -->
 	<div class="card-profile">
 		<div class="profilepage-profile">
-			<img class="user-profile" src="${login.memfile}" alt="">
+			<img class="user-profile" src="${mem.memfile}" alt="">
 			<div class="user-id"><strong></strong>${mem.memnick}</div>
 		</div>
 		<div class="profilepage-message">
