@@ -417,12 +417,7 @@ public class MemberController {
 			if(res==1) {
 				session.invalidate();
 				
-				return "<script>"
-				         + "alert('탈퇴가 완료되었습니다. 다음에 다시 만나요.');"
-				         //+ "location.href='home.do';"
-				         + "</script>";
-
-						//return "redirect:home.do";
+				return "member/deleteuser";
 			}else {
 				return "member/deleteuser";
 			}
