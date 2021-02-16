@@ -35,22 +35,8 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="resources/js/pay.js?ver=8"></script>
+	<script src="resources/js/pay.js?ver=11"></script>
 	<script type="text/javascript">
-	$(document).ready(function(){
-		/* 배송지 변경 클릭 시 우편번호찾기 버튼 생성*/
-	    $("#change_addr").click(function(){
-	       var confirm_val = confirm("배송지를 변경하시겠습니까?");
-	       
-	       if(confirm_val){
-	          $("#addr_btn").show();
-	          
-	          return false;
-	       } else{
-	          $("#addr_btn").hide();
-	       }
-	    });
-	});
 	</script>
 </head>
 

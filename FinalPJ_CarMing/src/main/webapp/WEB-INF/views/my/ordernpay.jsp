@@ -24,8 +24,7 @@
 	      </div>
 <!-- 	      <div class="section-top-border text-right" id="banner-text-2">
 	       	 <div class="button-group-area mt-40" style="padding-bottom: 5em">
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
-	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='#'">버튼</button>
+	       	 	<button class="banner-btn" id="golist" type="button" onclick="location.href='mypage.do?memno=${login.memno}'">마이페이지</button>
 	         </div>
 		  </div> -->
 	   </div>
@@ -73,7 +72,7 @@
 							<c:forEach var="cartListDto" items="${cartList }">
 								<tr>
 									<td>${cartListDto.cartNo }</td>
-									<td><img src="storage/${cartListDto.pFile }" id="rent-img"></td>
+									<td><img src="resources/img/rent/${cartListDto.pFile }" id="rent-img"></td>
 									<td>${cartListDto.pName }</td>
 									<td>${cartListDto.cAmount }</td>
 									<td><fmt:formatDate value="${cartListDto.startDate }" pattern="yyyy-MM-dd"/>&nbsp;~&nbsp;<fmt:formatDate value="${cartListDto.endDate }" pattern="yyyy-MM-dd" var="endDate" />${endDate }</td>
@@ -215,6 +214,10 @@
 			</div>
 				<!-- ==================================================================================================
 
+				
+					<!-- ==================================================================================================
+
+
 				================================================ paging ================================================ -->
 					<c:set var="page" value="${(empty param.page) ? 1 : param.page}"></c:set>
 					<c:set var="startNum" value="${page - (page-1) % 5}"></c:set>
@@ -241,7 +244,7 @@
 								   	</li>
 								</c:if>
 							
-								<c:forEach var="i" begin="0" end="10">
+								<c:forEach var="i" begin="0" end="4">
 									<c:if test="${(startNum + i ) <= lastNum }">
 										<!-- 현재 페이지 style 변경 -->
 										<li class="page-item"><a class="page-link text-warning ${(page == (startNum + i)) ? 'active' : ''}" href="?page=${startNum + i }&search=${param.search}">${startNum + i }</a></li>

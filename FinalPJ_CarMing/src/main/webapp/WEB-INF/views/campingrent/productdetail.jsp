@@ -11,12 +11,14 @@
 <link rel="stylesheet" href="resources/css/productdetail.css">
 
 
-
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="resources/js/cart.js?ver=4"></script>
+<script src="resources/js/cart.js?ver=5"></script>
+<style type="text/css">
+	.img-fluid{width: 300px; height:300px;}
+</style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -38,16 +40,16 @@
 			<div class="card-container">
 				<div class="row s_product_inner" style="margin: 0; padding: 0;">
 					<!-- 상품 사진 -->
-					<div class="col-lg-6">
+					<div class="col-lg-6" style="text-align: center;">
 						<div class="s_Product_carousel">
-							<div class="single-prd-item" >
+							<div class="single-prd-item">
 								<img class="img-fluid" src="resources/img/rent/${productdto.pFile }" alt="">
 							</div>
 							<div class="single-prd-item">
-								<img class="img-fluid" src="resources/img/rent/${productdto.pFile2 }" alt="">
+								<img class="img-fluid" src="resources/img/rent/${productdto.pFile2 }" alt="" >
 							</div>
 							<div class="single-prd-item">
-								<img class="img-fluid" src="resources/img/rent/${productdto.pFile3 }" alt="">
+								<img class="img-fluid" src="resources/img/rent/${productdto.pFile3 }" alt="" >
 							</div>
 						</div>
 					</div>
@@ -156,7 +158,7 @@
 													<div class="media-body">
 														<!-- 사용자 프로필 사진 -->
 														<div class="user-profile-form">
-															<img id="user-profile" src="resources/img/${login.memfile }" alt="" style="width:70px; height:70px;">
+															<img id="user-profile" src="${login.memfile }" alt="" style="width:70px; height:70px;">
 														</div>
 														
 														<!-- 사용자 이메일 / 평점 -->
@@ -164,7 +166,7 @@
 															<!-- 평점 -->
 															<div class="stars-icon">
 																<c:if test="${rentReviewDtos.reviewStar == 1 }">
-																	<img style="width:15px; height:15px;" id="image1" src="resources/img/star.png">
+																	<img style="width:15px; height:15px;" id="simage1" src="resources/img/star.png">
 																</c:if>
 																<c:if test="${rentReviewDtos.reviewStar == 2 }">
 																	<img style="width:15px; height:15px;" id="simage1" src="resources/img/star.png">

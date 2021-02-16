@@ -54,7 +54,7 @@ $(document).ready(function(){
 	});
 	
 	//리뷰 등록 시 제약조건
-	$("#insertreview").click(function(){
+	$("#reviewinsert").click(function(){
 		if($("#message").val() == ""){
 			alert("리뷰를 작성해주세요.");
 			return false;

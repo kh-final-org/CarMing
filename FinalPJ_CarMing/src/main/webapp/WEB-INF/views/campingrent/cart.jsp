@@ -93,7 +93,7 @@
                                 <td colspan="1">
                                     <div class="media" style="width: 80px;">
                                         <div class="d-flex">
-                                            <img style="width: 100px; height: 85px;" src="storage/${cartListDto.pFile }" alt="">
+                                            <img style="width:152px; height:102px;" src="resources/img/rent/${cartListDto.pFile }" alt="">
                                         </div>
                                     </div>
                                 </td>
@@ -144,6 +144,24 @@
                                 <td colspan="2" style="text-align: right;">
                                    <fmt:formatNumber value="${sum}" pattern="###,###,###"/><span>원</span>
                                 </td>
+                            </tr>
+                            <tr class="out_button_area">
+                            	<td></td>
+                            	<td></td>
+                                <td></td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+								<td></td>
+								<td></td>
+                                <td style="text-align: center;"> 
+		                            <div class="checkout_btn_inner d-flex align-items-center">
+			                            <a class="primary-btn" href="productlist.do">&nbsp;&nbsp;&nbsp;&nbsp;쇼핑 계속하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			                            <a class="primary-btn" href="payinfo.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		                            </div>
+                                </td>
+
                             </tr>
                         </tbody>
                     </table>

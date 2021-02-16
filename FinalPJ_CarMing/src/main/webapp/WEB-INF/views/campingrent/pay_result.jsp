@@ -61,7 +61,7 @@
 							<li><a href="#"><span>금액</span><fmt:formatNumber value="${totalPrice }" pattern="###,###,###"/>&nbsp;원</a></li>
 							<c:choose>
 								<c:when test="${pay_method == 'kakaopay' }">
-									<li><a href="#"><span>결제 수단</span>카카오페이</a></li>
+									<li><a href="#"><span>결제 수단</span>카드</a></li>
 								</c:when>
 								<c:when test="${pay_method == 'inicis' }">
 									<li><a href="#"><span>결제 수단</span> 카드</a></li>
