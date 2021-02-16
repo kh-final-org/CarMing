@@ -44,7 +44,8 @@
 	<form class="form-horizontal" action="deleteuser.do" method="post" onsubmit="delete_empty();">
          <div class="form-group">
          <h3 style="color: #5f5f5f; font-size: 1.6em;">탈퇴한 계정은 복구가 불가능합니다.<br>계정을 탈퇴하시겠습니까?</h3>
-         <c:if test="${logintype eq 'normal'}">
+         <c:choose>
+         <c:when test="${logintype eq 'normal'}">
             <div class="col-sm-3 control-label">
                 <label for="memid">비밀번호 입력</label>
             </div>
@@ -54,7 +55,11 @@
                <span id="mempwchk_error" class="chk_error" style="color:red">${missmatch}</span>
                </c:if>
             </div>
-          </c:if>
+          </c:when>
+          <c:otherwise>
+          	<input type="hidden" name="mempw" value="">
+          </c:otherwise>
+          </c:choose>
            </div>
            
          <div class="form-group">
