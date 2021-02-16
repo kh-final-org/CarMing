@@ -75,11 +75,8 @@ function myFunction() {
 			<h2>PRODUCT LIST</h2>
 		</div>
 		
-		<!-- 제품 검색 -->
-		<div class="blog_right_sidebar">
 		<!-- 카테고리 검색 -->
 		<!-- <div class="blog_right_sidebar">
->>>>>>> yesul3
 			<aside class="single_sidebar_widget search_widget">
 				<div class="input-group">
 					<input type="text" id="input" onkeyup="myFunction()"
@@ -120,7 +117,7 @@ function myFunction() {
 				<c:forEach var="list" items="${list}">
 					<tbody>
 						<tr>
-							<td class="cartNo">${list.pNo}</td>
+							<td class="cartNo" >${list.pNo}</td>
 							<td><a href="productdetail.do?pNo=${list.pNo}">${list.pName}</a></td>
 							<td>${list.pCategoryName }</td>
 							<td><fmt:formatNumber value="${list.pPrice }" pattern="###,###,###"/>&nbsp;원</td>
