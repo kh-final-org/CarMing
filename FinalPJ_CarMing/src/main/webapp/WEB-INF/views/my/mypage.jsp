@@ -16,8 +16,6 @@
 	#map{width: 500px; height: 400px; border-radius: 10px;}
 	.map-info{margin-top: 10px;}
 	</style>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d642f0ec29fa1aa1c0907815f0c88f11&libraries=services"></script>
-<script src="resources/js/maincamplace.js?ver=2"></script>
 
 </head>
 <body>
@@ -181,5 +179,8 @@
 	<table class="table table-hover"></table>
 	</main>
 	<%@ include file="../common/footer.jsp" %>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d642f0ec29fa1aa1c0907815f0c88f11&libraries=services"></script>
+	<script src="resources/js/maincamplace.js?ver=2"></script>
+	
 </body>
 </html>
