@@ -1,4 +1,4 @@
-<%@page import="com.finalPJ.carming.model.dto.MemberDto"%>
+<%-- <%@page import="com.finalPJ.carming.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -187,4 +187,4 @@ body {
 	
 <!-- ChatBot End-->
 </body>
-</html>
+</html> --%>

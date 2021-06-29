@@ -50,11 +50,11 @@ private TipBiz biz;
 		
 		Elements element = doc.select("div.tse-content");
 		count = element.select("div > div.contbottom");
-	for(int i = 0; i<count.size(); i++) {
+	for(int i = 0; i<count.size()-1; i++) {
 			tmp = element.select("div.listwrap");
 			title = tmp.select("div.subject > a").get(i).text();
 			tipURL = tmp.select("div.subject > a").get(i).attr("href");
-			file = tmp.select("div.photo > a > img").get(i).attr("src");
+			file = tmp.select("div.photo > a > img").get(i).attr("src"); 
 			views = Integer.parseInt(tmp.select("div.shc > span").get(i).text());
 			list.add(new TipDto(title, tipURL, file, views));
 

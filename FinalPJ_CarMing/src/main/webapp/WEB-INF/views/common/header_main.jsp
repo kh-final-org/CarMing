@@ -73,7 +73,7 @@
 						</ul>
 								
 						<ul class="nav navbar-nav navbar-right ml-auto">
-							<li class="nav-item" style="padding-left:0; margin-left:0">
+							<%-- <li class="nav-item" style="padding-left:0; margin-left:0">
 								<c:choose>
 								<c:when test="${login.memcode == 1 }">
 								<a href="adminPage.do">
@@ -84,7 +84,7 @@
 								<span class="bi bi-person" style="font-size: 20px"></span></a>  <!-- 마이페이지 --> 
 								</c:when>
 								</c:choose>   
-							</li>
+							</li> --%>
 							<li class="nav-item">
 								<a href="cartlist.do"> <!-- 장바구니 -->
 								<span class="bi bi-cart2" style="font-size: 20px"></span></a>
